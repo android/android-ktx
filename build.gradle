@@ -1,0 +1,39 @@
+buildscript {
+  ext.versions = [
+      'kotlin': '1.2.0'
+  ]
+
+  repositories {
+    mavenCentral()
+    google()
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.0.1'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+  }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+repositories {
+  mavenCentral()
+  google()
+}
+
+android {
+  compileSdkVersion 27
+
+  defaultConfig {
+    minSdkVersion 14
+  }
+}
+
+dependencies {
+  api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+  implementation 'com.android.support:support-annotations:27.0.2'
+
+  testImplementation 'junit:junit:4.12'
+}

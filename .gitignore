@@ -1,0 +1,12 @@
+# IDEA
+*.iml
+.idea/*
+
+# Gradle
+.gradle
+build
+/reports
+
+# Gradle Android
+/local.properties
+/captures
