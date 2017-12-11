@@ -1,0 +1,40 @@
+version: 2.0
+
+jobs:
+  build:
+    working_directory: ~/kotlin-extensions
+
+    docker:
+      - image: circleci/android:api-27-alpha
+
+    environment:
+      TERM: dumb
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}
+
+      - run:
+          name: Compile
+          command: ./gradlew assemble
+
+      - run:
+          name: JVM Tests & Lint
+          command: ./gradlew check
+
+      - save_cache:
+          key: jars-{{ checksum "build.gradle" }}
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+      - store_test_results:
+          path: build/reports
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
