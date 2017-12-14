@@ -1,12 +1,11 @@
 buildscript {
   ext.versions = [
-      'kotlin': '1.2.0'
+      'kotlin': '1.2.10'
   ]
 
   repositories {
-    mavenCentral()
-    google()
     jcenter()
+    google()
   }
 
   dependencies {
@@ -19,7 +18,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
 
 repositories {
-  mavenCentral()
+  jcenter()
   google()
 }
 
