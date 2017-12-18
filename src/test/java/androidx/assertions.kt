@@ -20,13 +20,13 @@ import com.google.common.truth.ThrowableSubject
 import com.google.common.truth.Truth.assertThat
 
 inline fun <reified T : Throwable> assertThrows(body: () -> Unit): ThrowableSubject {
-  try {
-    body()
-  } catch (e: Throwable) {
-    if (e is T) {
-      return assertThat(e)
+    try {
+        body()
+    } catch (e: Throwable) {
+        if (e is T) {
+            return assertThat(e)
+        }
+        throw e
     }
-    throw e
-  }
-  throw AssertionError("Body completed successfully. Expected ${T::class.java.simpleName}.")
+    throw AssertionError("Body completed successfully. Expected ${T::class.java.simpleName}.")
 }
