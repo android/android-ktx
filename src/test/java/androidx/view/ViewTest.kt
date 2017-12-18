@@ -33,7 +33,18 @@ class ViewTest {
     private val view = View(context)
 
     @Test
-    fun doOnLayout() {
+    fun doOnNextLayout() {
+        var called = false
+        view.doOnNextLayout {
+            called = true
+        }
+        view.layout(0, 0, 10, 10)
+        assertTrue(called)
+    }
+
+    @Test
+    @Config(sdk = [NEWEST_SDK])
+    fun doOnLayoutBeforeLayout() {
         var called = false
         view.doOnLayout {
             called = true
@@ -44,22 +55,11 @@ class ViewTest {
 
     @Test
     @Config(sdk = [NEWEST_SDK])
-    fun doWhenLaidOutBeforeLayout() {
-        var called = false
-        view.doWhenLaidOut {
-            called = true
-        }
-        view.layout(0, 0, 10, 10)
-        assertTrue(called)
-    }
-
-    @Test
-    @Config(sdk = [NEWEST_SDK])
-    fun doWhenLaidOutAfterLayout() {
+    fun doOnLayoutAfterLayout() {
         view.layout(0, 0, 10, 10)
 
         var called = false
-        view.doWhenLaidOut {
+        view.doOnLayout {
             called = true
         }
         assertTrue(called)

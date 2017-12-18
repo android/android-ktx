@@ -25,10 +25,9 @@ import android.view.ViewTreeObserver
 /**
  * Performs the given action when this view is next laid out.
  *
- * @see doWhenLaidOut
+ * @see doOnLayout
  */
-@RequiresApi(14)
-inline fun View.doOnLayout(crossinline action: (View) -> Unit) {
+inline fun View.doOnNextLayout(crossinline action: (View) -> Unit) {
     addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
         override fun onLayoutChange(view: View, left: Int, top: Int, right: Int, bottom: Int,
                                     oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int) {
@@ -39,17 +38,18 @@ inline fun View.doOnLayout(crossinline action: (View) -> Unit) {
 }
 
 /**
- * Performs the given action when this view is laid out. If the view has not laid out yet,
- * the action will be performed after the view is laid out.
+ * Performs the given action when this view is laid out. If the view has been laid out, the action
+ * will be performed straight away, otherwise the action will be performed after the
+ * view is laid out.
  *
- * @see doOnLayout
+ * @see doOnNextLayout
  */
 @RequiresApi(19)
-fun View.doWhenLaidOut(action: (View) -> Unit) {
+fun View.doOnLayout(action: (View) -> Unit) {
     if (isLaidOut) {
         action(this)
     } else {
-        doOnLayout {
+        doOnNextLayout {
             action(it)
         }
     }
@@ -74,7 +74,7 @@ fun View.doOnPreDraw(action: (View) -> Unit) {
 
 /**
  * Updates this view's relative padding. This version of the method allows using named parameters
- * to set just 1 or more axis.
+ * to just set one or more axes.
  *
  * @see View.setPaddingRelative
  */
@@ -88,7 +88,7 @@ fun View.updatePaddingRelative(start: Int = paddingStart,
 
 /**
  * Updates this view's padding. This version of the method allows using named parameters
- * to set just 1 or more axis.
+ * to just set one or more axes.
  *
  * @see View.setPadding
  */
