@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to other public API.
-
 package androidx.view
 
 import android.support.annotation.RequiresApi
@@ -45,7 +43,7 @@ inline fun View.doOnNextLayout(crossinline action: (View) -> Unit) {
  * @see doOnNextLayout
  */
 @RequiresApi(19)
-fun View.doOnLayout(action: (View) -> Unit) {
+inline fun View.doOnLayout(crossinline action: (View) -> Unit) {
     if (isLaidOut) {
         action(this)
     } else {
@@ -58,7 +56,7 @@ fun View.doOnLayout(action: (View) -> Unit) {
 /**
  * Performs the given action when the view tree is about to be drawn.
  */
-fun View.doOnPreDraw(action: (View) -> Unit) {
+inline fun View.doOnPreDraw(crossinline action: (View) -> Unit) {
     val vto = viewTreeObserver
     vto.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
         override fun onPreDraw(): Boolean {

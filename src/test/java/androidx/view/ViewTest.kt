@@ -34,12 +34,16 @@ class ViewTest {
 
     @Test
     fun doOnNextLayout() {
-        var called = false
+        var calls = 0
         view.doOnNextLayout {
-            called = true
+            calls++
         }
         view.layout(0, 0, 10, 10)
-        assertTrue(called)
+        assertEquals(1, calls)
+
+        // Now layout again and make sure that the listener was removed
+        view.layout(0, 0, 10, 10)
+        assertEquals(1, calls)
     }
 
     @Test
@@ -67,12 +71,16 @@ class ViewTest {
 
     @Test
     fun doOnPreDraw() {
-        var called = false
+        var calls = 0
         view.doOnPreDraw {
-            called = true
+            calls++
         }
         view.viewTreeObserver.dispatchOnPreDraw()
-        assertTrue(called)
+        assertEquals(1, calls)
+
+        // Now dispatch again to make sure that the listener was removed
+        view.viewTreeObserver.dispatchOnPreDraw()
+        assertEquals(1, calls)
     }
 
     @Test
