@@ -14,18 +14,26 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
       - run:
           name: Compile
           command: ./gradlew assemble
+      - store_artifacts:
+          path: build/outputs/aar
 
       - run:
           name: JVM Tests & Lint
           command: ./gradlew check
+      - store_test_results:
+          path: build/test-results
+      - store_artifacts:
+          path: build/test-results
+      - store_artifacts:
+          path: build/reports/lint-results.html
 
       - save_cache:
-          key: jars-{{ checksum "build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
           paths:
             - ~/.gradle/caches
             - ~/.gradle/wrapper
