@@ -93,6 +93,15 @@ class ViewTest {
     }
 
     @Test
+    fun updatePaddingAllSides() {
+        view.updatePadding(42)
+        assertEquals(42, view.paddingLeft)
+        assertEquals(42, view.paddingTop)
+        assertEquals(42, view.paddingRight)
+        assertEquals(42, view.paddingBottom)
+    }
+
+    @Test
     @Config(sdk = [NEWEST_SDK])
     fun updatePaddingRelative() {
         view.updatePaddingRelative(start = 10, end = 20)
@@ -100,5 +109,15 @@ class ViewTest {
         assertEquals(0, view.paddingTop)
         assertEquals(20, view.paddingEnd)
         assertEquals(0, view.paddingBottom)
+    }
+
+    @Test
+    @Config(sdk = [NEWEST_SDK])
+    fun updatePaddingRelativeAllSides() {
+        view.updatePaddingRelative(42)
+        assertEquals(42, view.paddingStart)
+        assertEquals(42, view.paddingTop)
+        assertEquals(42, view.paddingEnd)
+        assertEquals(42, view.paddingBottom)
     }
 }

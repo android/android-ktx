@@ -77,3 +77,13 @@ fun ViewGroup.MarginLayoutParams.updateMargins(
         bottom: Int = bottomMargin) {
     setMargins(left, top, right, bottom)
 }
+
+/**
+ * Updates the margins in the ViewGroup's MarginLayoutParams. This version of the method sets all
+ * axes to the provided size.
+ *
+ * @see ViewGroup.MarginLayoutParams.setMargins
+ */
+fun ViewGroup.MarginLayoutParams.updateMargins(size: Int) {
+    setMargins(size, size, size, size)
+}
