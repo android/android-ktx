@@ -81,8 +81,6 @@ fun Animator.addListener(
     onStart: ((Animator) -> Unit)? = null,
     onCancel: ((Animator) -> Unit)? = null,
     onRepeat: ((Animator) -> Unit)? = null) {
-    if (onEnd == null && onStart == null && onCancel == null && onRepeat == null) return
-
     addListener(object : Animator.AnimatorListener {
         override fun onAnimationRepeat(animator: Animator) {
             onRepeat?.invoke(animator)
@@ -109,8 +107,6 @@ fun Animator.addListener(
 fun Animator.addPauseListener(
     onResume: ((Animator) -> Unit)? = null,
     onPause: ((Animator) -> Unit)? = null) {
-    if (onResume == null && onPause == null) return
-
     addPauseListener(object : Animator.AnimatorPauseListener {
         override fun onAnimationPause(animator: Animator) {
             onPause?.invoke(animator)
