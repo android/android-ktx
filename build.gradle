@@ -1,7 +1,6 @@
 buildscript {
   ext.versions = [
-      'kotlin': '1.2.10',
-      'dokka': '0.9.15'
+      'kotlin': '1.2.10'
   ]
 
   repositories {
@@ -12,7 +11,7 @@ buildscript {
   dependencies {
     classpath 'com.android.tools.build:gradle:3.0.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-    classpath "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}"
+    classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.15"
   }
 }
 
