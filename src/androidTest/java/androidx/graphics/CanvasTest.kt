@@ -42,7 +42,6 @@ class CanvasTest {
 
             assertEquals(16.0f, values[Matrix.MTRANS_X])
             assertEquals(32.0f, values[Matrix.MTRANS_Y])
-
         }
         assertEquals(beforeCount, canvas.saveCount)
     }
@@ -59,7 +58,6 @@ class CanvasTest {
             assertEquals(16.0f, values[Matrix.MTRANS_Y])
             assertEquals(-1.0f, values[Matrix.MSKEW_X])
             assertEquals(1.0f, values[Matrix.MSKEW_Y])
-
         }
         assertEquals(beforeCount, canvas.saveCount)
     }
@@ -76,7 +74,6 @@ class CanvasTest {
             assertEquals(-96.0f, values[Matrix.MTRANS_Y])
             assertEquals(2.0f, values[Matrix.MSCALE_X])
             assertEquals(4.0f, values[Matrix.MSCALE_Y])
-
         }
         assertEquals(beforeCount, canvas.saveCount)
     }
@@ -91,7 +88,6 @@ class CanvasTest {
 
             assertEquals(2.0f, values[Matrix.MSKEW_X])
             assertEquals(4.0f, values[Matrix.MSKEW_Y])
-
         }
         assertEquals(beforeCount, canvas.saveCount)
     }
