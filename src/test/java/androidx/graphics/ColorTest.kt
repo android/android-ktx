@@ -35,9 +35,9 @@ class ColorTest {
         assertEquals(0.2f, a, 1e-2f)
     }
 
-    @Test fun alpha() = assertEquals(0x33, 0x337f3010.alpha())
-    @Test fun red() = assertEquals(0x7f, 0x337f3010.red())
-    @Test fun green() = assertEquals(0x30, 0x337f3010.green())
-    @Test fun blue() = assertEquals(0x10, 0x337f3010.blue())
+    @Test fun alpha() = assertEquals(0x33, 0x337f3010.alpha)
+    @Test fun red() = assertEquals(0x7f, 0x337f3010.red)
+    @Test fun green() = assertEquals(0x30, 0x337f3010.green)
+    @Test fun blue() = assertEquals(0x10, 0x337f3010.blue)
     @Test fun luminance() = assertEquals(0.212f, 0xff7f7f7f.toInt().luminance(), 1e-3f)
 }
