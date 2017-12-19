@@ -11,11 +11,13 @@ buildscript {
   dependencies {
     classpath 'com.android.tools.build:gradle:3.0.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+    classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.15"
   }
 }
 
 apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'org.jetbrains.dokka'
 
 repositories {
   jcenter()
@@ -58,4 +60,9 @@ task ktFormat(type: JavaExec, group: 'formatting') {
   classpath = configurations.ktlint
   main = 'com.github.shyiko.ktlint.Main'
   args '-F', 'src/**/*.kt'
+}
+
+dokka {
+  outputFormat = 'html' 
+  outputDirectory = "$buildDir/documentation"
 }
