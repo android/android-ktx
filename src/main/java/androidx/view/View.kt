@@ -85,17 +85,6 @@ fun View.updatePaddingRelative(start: Int = paddingStart,
 }
 
 /**
- * Updates this view's relative padding. This version of the method sets all axes to the provided
- * size.
- *
- * @see View.setPaddingRelative
- */
-@RequiresApi(17)
-fun View.updatePaddingRelative(size: Int) {
-    setPaddingRelative(size, size, size, size)
-}
-
-/**
  * Updates this view's padding. This version of the method allows using named parameters
  * to just set one or more axes.
  *
@@ -109,10 +98,10 @@ fun View.updatePadding(left: Int = paddingLeft,
 }
 
 /**
- * Updates this view's padding. This version of the method sets all axes to the provided size.
+ * Sets the view's padding. This version of the method sets all axes to the provided size.
  *
  * @see View.setPadding
  */
-fun View.updatePadding(size: Int) {
+fun View.setPadding(size: Int) {
     setPadding(size, size, size, size)
 }
