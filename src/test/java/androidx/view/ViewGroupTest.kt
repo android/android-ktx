@@ -37,7 +37,6 @@ import org.robolectric.annotation.Config
 class ViewGroupTest {
     private val context = RuntimeEnvironment.application
     private val viewGroup = LinearLayout(context)
-    private val layoutParams = ViewGroup.MarginLayoutParams(100, 200)
 
     @Test fun get() {
         val view1 = View(context)
@@ -164,6 +163,7 @@ class ViewGroupTest {
     }
 
     @Test fun updateMargin() {
+        val layoutParams = ViewGroup.MarginLayoutParams(100, 200)
         layoutParams.updateMargins(top = 10, right = 20)
         assertEquals(0, layoutParams.leftMargin)
         assertEquals(10, layoutParams.topMargin)
@@ -172,6 +172,7 @@ class ViewGroupTest {
     }
 
     @Test fun updateMarginNoOp() {
+        val layoutParams = ViewGroup.MarginLayoutParams(100, 200)
         layoutParams.setMargins(10, 20, 30, 40)
         layoutParams.updateMargins()
         assertEquals(10, layoutParams.leftMargin)
