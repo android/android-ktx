@@ -96,3 +96,12 @@ fun View.updatePadding(left: Int = paddingLeft,
                        bottom: Int = paddingBottom) {
     setPadding(left, top, right, bottom)
 }
+
+/**
+ * Sets the view's padding. This version of the method sets all axes to the provided size.
+ *
+ * @see View.setPadding
+ */
+fun View.setPadding(size: Int) {
+    setPadding(size, size, size, size)
+}

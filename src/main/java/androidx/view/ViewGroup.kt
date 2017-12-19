@@ -65,6 +65,16 @@ fun ViewGroup.children() = object : Iterable<View> {
 }
 
 /**
+ * Sets the margins in the ViewGroup's MarginLayoutParams. This version of the method sets all axes
+ * to the provided size.
+ *
+ * @see ViewGroup.MarginLayoutParams.setMargins
+ */
+fun ViewGroup.MarginLayoutParams.setMargins(size: Int) {
+    setMargins(size, size, size, size)
+}
+
+/**
  * Updates the margins in the ViewGroup's MarginLayoutParams.
  * This version of the method allows using named parameters to just set one or more axes.
  *

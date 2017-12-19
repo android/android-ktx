@@ -84,6 +84,15 @@ class ViewTest {
     }
 
     @Test
+    fun setPadding() {
+        view.setPadding(42)
+        assertEquals(42, view.paddingLeft)
+        assertEquals(42, view.paddingTop)
+        assertEquals(42, view.paddingRight)
+        assertEquals(42, view.paddingBottom)
+    }
+
+    @Test
     fun updatePadding() {
         view.updatePadding(top = 10, right = 20)
         assertEquals(0, view.paddingLeft)
