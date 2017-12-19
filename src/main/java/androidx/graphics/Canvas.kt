@@ -1,5 +1,5 @@
 /*
- * CopivotYright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,10 @@ import android.graphics.Canvas
  * Wrap the specified `block` in calls to [Canvas.save]/[Canvas.translate]
  * and [Canvas.restoreToCount].
  */
-inline fun Canvas.withTranslation(x: Float = 0.0f, y: Float = 0.0f, block: Canvas.() -> Unit) {
+inline fun Canvas.withTranslation(
+        x: Float = 0.0f,
+        y: Float = 0.0f,
+        block: Canvas.() -> Unit) {
     val checkpoint = save()
     translate(x, y)
     try {
@@ -36,7 +39,10 @@ inline fun Canvas.withTranslation(x: Float = 0.0f, y: Float = 0.0f, block: Canva
  * Wrap the specified `block` in calls to [Canvas.save]/[Canvas.rotate]
  * and [Canvas.restoreToCount].
  */
-inline fun Canvas.withRotation(degrees: Float = 0.0f, pivotX: Float = 0.0f, pivotY: Float = 0.0f,
+inline fun Canvas.withRotation(
+        degrees: Float = 0.0f,
+        pivotX: Float = 0.0f,
+        pivotY: Float = 0.0f,
         block: Canvas.() -> Unit) {
     val checkpoint = save()
     rotate(degrees, pivotX, pivotY)
@@ -51,8 +57,12 @@ inline fun Canvas.withRotation(degrees: Float = 0.0f, pivotX: Float = 0.0f, pivo
  * Wrap the specified `block` in calls to [Canvas.save]/[Canvas.scale]
  * and [Canvas.restoreToCount].
  */
-inline fun Canvas.withScale(x: Float = 1.0f, y: Float = 1.0f,
-        pivotX: Float = 0.0f, pivotY: Float = 0.0f, block: Canvas.() -> Unit) {
+inline fun Canvas.withScale(
+        x: Float = 1.0f,
+        y: Float = 1.0f,
+        pivotX: Float = 0.0f,
+        pivotY: Float = 0.0f,
+        block: Canvas.() -> Unit) {
     val checkpoint = save()
     scale(x, y, pivotX, pivotY)
     try {
@@ -66,7 +76,10 @@ inline fun Canvas.withScale(x: Float = 1.0f, y: Float = 1.0f,
  * Wrap the specified `block` in calls to [Canvas.save]/[Canvas.skew]
  * and [Canvas.restoreToCount].
  */
-inline fun Canvas.withSkew(x: Float = 0.0f, y: Float = 0.0f, block: Canvas.() -> Unit) {
+inline fun Canvas.withSkew(
+        x: Float = 0.0f,
+        y: Float = 0.0f,
+        block: Canvas.() -> Unit) {
     val checkpoint = save()
     skew(x, y)
     try {
