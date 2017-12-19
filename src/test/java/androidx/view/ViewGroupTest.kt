@@ -17,6 +17,7 @@
 package androidx.view
 
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.assertThrows
 import com.google.common.truth.Truth.assertThat
@@ -159,5 +160,14 @@ class ViewGroupTest {
         assertThrows<IndexOutOfBoundsException> {
             children.next()
         }
+    }
+
+    @Test fun updateMargin() {
+        val layoutParams = ViewGroup.MarginLayoutParams(100, 200)
+        layoutParams.updateMargins(top = 10, right = 20)
+        assertEquals(0, layoutParams.leftMargin)
+        assertEquals(10, layoutParams.topMargin)
+        assertEquals(20, layoutParams.rightMargin)
+        assertEquals(0, layoutParams.bottomMargin)
     }
 }

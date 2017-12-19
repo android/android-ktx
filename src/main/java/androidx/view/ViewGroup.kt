@@ -63,3 +63,16 @@ fun ViewGroup.children() = object : Iterable<View> {
         override fun next() = getChildAt(index++) ?: throw IndexOutOfBoundsException()
     }
 }
+
+/**
+ * Updates the margins in the ViewGroup's MarginLayoutParams.
+ * This version of the method allows using named parameters to just set one or more axes.
+ *
+ * @see ViewGroup.MarginLayoutParams.setMargins
+ */
+fun ViewGroup.MarginLayoutParams.updateMargins(left: Int = leftMargin,
+        top: Int = topMargin,
+        right: Int = rightMargin,
+        bottom: Int = bottomMargin) {
+    setMargins(left, top, right, bottom)
+}
