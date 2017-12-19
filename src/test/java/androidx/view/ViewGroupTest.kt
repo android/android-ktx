@@ -162,6 +162,15 @@ class ViewGroupTest {
         }
     }
 
+    @Test fun setMargins() {
+        val layoutParams = ViewGroup.MarginLayoutParams(100, 200)
+        layoutParams.setMargins(42)
+        assertEquals(42, layoutParams.leftMargin)
+        assertEquals(42, layoutParams.topMargin)
+        assertEquals(42, layoutParams.rightMargin)
+        assertEquals(42, layoutParams.bottomMargin)
+    }
+
     @Test fun updateMargin() {
         val layoutParams = ViewGroup.MarginLayoutParams(100, 200)
         layoutParams.updateMargins(top = 10, right = 20)
