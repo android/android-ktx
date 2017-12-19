@@ -1,7 +1,7 @@
 buildscript {
   ext.versions = [
       'kotlin': '1.2.10',
-	  'dokka': '0.9.15'
+      'dokka': '0.9.15'
   ]
 
   repositories {
@@ -12,7 +12,7 @@ buildscript {
   dependencies {
     classpath 'com.android.tools.build:gradle:3.0.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-	classpath "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}"
+    classpath "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}"
   }
 }
 
@@ -64,6 +64,6 @@ task ktFormat(type: JavaExec, group: 'formatting') {
 }
 
 dokka {
-    outputFormat = 'html' 
-    outputDirectory = "./documentation"
+  outputFormat = 'html' 
+  outputDirectory = "./documentation"
 }
