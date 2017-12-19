@@ -70,7 +70,8 @@ fun ViewGroup.children() = object : Iterable<View> {
  *
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
-fun ViewGroup.MarginLayoutParams.updateMargins(left: Int = leftMargin,
+fun ViewGroup.MarginLayoutParams.updateMargins(
+        left: Int = leftMargin,
         top: Int = topMargin,
         right: Int = rightMargin,
         bottom: Int = bottomMargin) {
