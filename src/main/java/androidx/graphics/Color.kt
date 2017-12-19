@@ -23,7 +23,8 @@ import android.support.annotation.RequiresApi
 
 /**
  * Returns the first component of the color. For instance, when the color model
- * of the color is [ColorSpace.Model.RGB], the first component is "red".
+ * of the color is [android.graphics.ColorSpace.Model.RGB], the first component
+ * is "red".
  *
  * This method allows to use destructuring declarations when working with colors,
  * for example:
@@ -36,7 +37,8 @@ inline operator fun Color.component1() = getComponent(0)
 
 /**
  * Returns the second component of the color. For instance, when the color model
- * of the color is [ColorSpace.Model.RGB], the second component is "green".
+ * of the color is [android.graphics.ColorSpace.Model.RGB], the second component
+ * is "green".
  *
  * This method allows to use destructuring declarations when working with colors,
  * for example:
@@ -49,8 +51,9 @@ inline operator fun Color.component2() = getComponent(1)
 
 /**
  * Returns the third component of the color. For instance, when the color model
- * of the color is [ColorSpace.Model.RGB], the third component is "blue".
- *
+ * of the color is [android.graphics.ColorSpace.Model.RGB], the third component
+ * is "blue".
+= *
  * This method allows to use destructuring declarations when working with colors,
  * for example:
  * ```
@@ -62,7 +65,8 @@ inline operator fun Color.component3() = getComponent(2)
 
 /**
  * Returns the fourth component of the color. For instance, when the color model
- * of the color is [ColorSpace.Model.RGB], the fourth component is "alpha".
+ * of the color is [android.graphics.ColorSpace.Model.RGB], the fourth component
+ * is "alpha".
  *
  * This method allows to use destructuring declarations when working with colors,
  * for example:
@@ -115,7 +119,7 @@ inline fun Int.luminance() = Color.luminance(this)
 
 /**
  * Creates a new [Color] instance from a color int. The resulting color
- * is in the [sRGB][ColorSpace.Named#SRGB] color space.
+ * is in the [sRGB][android.graphics.ColorSpace.Named#SRGB] color space.
  */
 @RequiresApi(26)
 inline fun Int.toColor() = Color.valueOf(this)
