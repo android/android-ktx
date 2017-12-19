@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE")
+@file:Suppress("NOTHING_TO_INLINE", "WRONG_ANNOTATION_TARGET_WITH_USE_SITE_TARGET_ON_TYPE")
 
 package androidx.graphics
 
 import android.graphics.Color
+import android.support.annotation.ColorInt
 import android.support.annotation.RequiresApi
 
 /**
@@ -83,7 +84,7 @@ inline operator fun Color.component4() = getComponent(3)
  * Color.alpha(myInt)
  * ```
  */
-inline fun Int.alpha() = (this shr 24) and 0xff
+inline val @receiver:ColorInt Int.alpha get() = (this shr 24) and 0xff
 
 /**
  * Return the red component of a color int. This is equivalent to calling:
@@ -91,7 +92,7 @@ inline fun Int.alpha() = (this shr 24) and 0xff
  * Color.red(myInt)
  * ```
  */
-inline fun Int.red() = (this shr 16) and 0xff
+inline val @receiver:ColorInt Int.red get() = (this shr 16) and 0xff
 
 /**
  * Return the green component of a color int. This is equivalent to calling:
@@ -99,7 +100,7 @@ inline fun Int.red() = (this shr 16) and 0xff
  * Color.green(myInt)
  * ```
  */
-inline fun Int.green() = (this shr 8) and 0xff
+inline val @receiver:ColorInt Int.green get() = (this shr 8) and 0xff
 
 /**
  * Return the blue component of a color int. This is equivalent to calling:
@@ -107,7 +108,7 @@ inline fun Int.green() = (this shr 8) and 0xff
  * Color.blue(myInt)
  * ```
  */
-inline fun Int.blue() = this and 0xff
+inline val @receiver:ColorInt Int.blue get() = this and 0xff
 
 /**
  * Returns the relative luminance of a color int, assuming sRGB encoding.
@@ -115,11 +116,11 @@ inline fun Int.blue() = this and 0xff
  * W3C Recommendation 11 December 2008.
  */
 @RequiresApi(26)
-inline fun Int.luminance() = Color.luminance(this)
+inline fun @receiver:ColorInt Int.luminance() = Color.luminance(this)
 
 /**
  * Creates a new [Color] instance from a color int. The resulting color
  * is in the [sRGB][android.graphics.ColorSpace.Named#SRGB] color space.
  */
 @RequiresApi(26)
-inline fun Int.toColor() = Color.valueOf(this)
+inline fun @receiver:ColorInt Int.toColor() = Color.valueOf(this)
