@@ -27,6 +27,7 @@ android {
 
   defaultConfig {
     minSdkVersion 14
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
 }
 
@@ -41,6 +42,11 @@ dependencies {
   testImplementation 'junit:junit:4.12'
   testImplementation 'org.robolectric:robolectric:3.5.1'
   testImplementation 'com.google.truth:truth:0.37'
+
+  androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.1", {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+  androidTestImplementation 'com.android.support.test:runner:1.0.1'
 
   ktlint 'com.github.shyiko:ktlint:0.14.0'
 }
