@@ -32,6 +32,34 @@ jobs:
       - store_artifacts:
           path: build/reports/lint-results.html
 
+      - run:
+          name: Fetch system image
+          command: sdkmanager "system-images;android-24;default;armeabi-v7a"
+
+      - run:
+          name: Create Android Virtual Device
+          command: echo "no" | avdmanager create avd -n test -k "system-images;android-24;default;armeabi-v7a"
+
+      - run:
+          name: Start emulator
+          command: emulator -avd test -noaudio -no-boot-anim -no-window
+          background: true
+
+      - run:
+          name: Wait for emulator to boot and unlock the emulator screen
+          command: |
+              circle-android wait-for-boot
+              sleep 30
+              adb shell input keyevent 82
+
+      - run:
+          name: Instrumentation Tests
+          command: ./gradlew connectedAndroidTest
+      - store_test_results:
+          path: build/outputs/androidTest-results
+      - store_artifacts:
+          path: build/outputs/androidTest-results
+
       - save_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
           paths:
