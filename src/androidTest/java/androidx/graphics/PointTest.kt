@@ -20,12 +20,7 @@ import android.graphics.Point
 import android.graphics.PointF
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [26])
 class PointTest {
     @Test fun destructuringInt() {
         val (x, y) = Point(2, 3)

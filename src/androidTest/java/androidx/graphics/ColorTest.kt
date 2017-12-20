@@ -19,12 +19,7 @@ package androidx.graphics
 import android.graphics.Color
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [26])
 class ColorTest {
     @Test fun toColor() = assertEquals(Color.valueOf(0x337f3010), 0x337f3010.toColor())
     @Test fun destructuring() {
