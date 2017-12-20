@@ -27,9 +27,13 @@ import android.os.Handler
  *     doSomething()
  * }
  * ```
+ *
+ * @return the created Runnable
  */
-fun Handler.postDelayed(delayInMillis: Long, r: () -> Unit) {
-    postDelayed(r, delayInMillis)
+fun Handler.postDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
+    return Runnable(action).apply {
+        postDelayed(this, delayInMillis)
+    }
 }
 
 /**
@@ -41,9 +45,13 @@ fun Handler.postDelayed(delayInMillis: Long, r: () -> Unit) {
  *     doSomething()
  * }
  * ```
+ *
+ * @return the created Runnable
  */
-fun Handler.postAtTime(uptimeMillis: Long, r: () -> Unit) {
-    postAtTime(r, uptimeMillis)
+fun Handler.postAtTime(uptimeMillis: Long, action: () -> Unit): Runnable {
+    return Runnable(action).apply {
+        postAtTime(this, uptimeMillis)
+    }
 }
 
 /**
@@ -55,7 +63,11 @@ fun Handler.postAtTime(uptimeMillis: Long, r: () -> Unit) {
  *     doSomething()
  * }
  * ```
+ *
+ * @return the created Runnable
  */
-fun Handler.postAtTime(token: Any, uptimeMillis: Long, r: () -> Unit) {
-    postAtTime(r, token, uptimeMillis)
+fun Handler.postAtTime(token: Any, uptimeMillis: Long, action: () -> Unit): Runnable {
+    return Runnable(action).apply {
+        postAtTime(this, token, uptimeMillis)
+    }
 }

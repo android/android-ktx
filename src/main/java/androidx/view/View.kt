@@ -115,9 +115,13 @@ fun View.setPadding(size: Int) {
  *     doSomething()
  * }
  * ```
+ *
+ * @return the created Runnable
  */
-fun View.postDelayed(delayInMillis: Long, action: () -> Unit) {
-    postDelayed(action, delayInMillis)
+fun View.postDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
+    return Runnable(action).apply {
+        postDelayed(this, delayInMillis)
+    }
 }
 
 /**
@@ -129,8 +133,12 @@ fun View.postDelayed(delayInMillis: Long, action: () -> Unit) {
  *     doSomething()
  * }
  * ```
+ *
+ * @return the created Runnable
  */
 @RequiresApi(16)
-fun View.postOnAnimationDelayed(delayInMillis: Long, action: () -> Unit) {
-    postOnAnimationDelayed(action, delayInMillis)
+fun View.postOnAnimationDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
+    return Runnable(action).apply {
+        postOnAnimationDelayed(this, delayInMillis)
+    }
 }
