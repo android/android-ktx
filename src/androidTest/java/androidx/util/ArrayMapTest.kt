@@ -19,20 +19,20 @@ package androidx.util
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [Config.NEWEST_SDK])
-class ArraySetTest {
+class ArrayMapTest {
     @Test fun empty() {
-        val set = arraySetOf<String>()
-        assertEquals(0, set.size)
+        val map = arrayMapOf<String, String>()
+        assertEquals(0, map.size)
     }
 
     @Test fun nonEmpty() {
-        val set = arraySetOf("foo", "bar", "baz")
-        assertThat(set).containsExactly("foo", "bar", "baz")
+        val map = arrayMapOf("foo" to "bar", "bar" to "baz")
+        assertThat(map).containsExactly("foo", "bar", "bar", "baz")
+    }
+
+    @Test fun duplicateKeyKeepsLast() {
+        val map = arrayMapOf("foo" to "bar", "foo" to "baz")
+        assertThat(map).containsExactly("foo", "baz")
     }
 }
