@@ -16,32 +16,26 @@
 
 package androidx.animation
 
+import android.animation.Animator
 import android.animation.ObjectAnimator
+import android.support.test.InstrumentationRegistry
+import android.support.test.annotation.UiThreadTest
+import android.support.test.runner.AndroidJUnit4
 import android.view.View
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.Robolectric
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.RuntimeEnvironment
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [Config.NEWEST_SDK])
+@RunWith(AndroidJUnit4::class)
 class AnimatorTest {
-    private val context = RuntimeEnvironment.application
+    private val context = InstrumentationRegistry.getContext()
     private val view = View(context)
 
-    private val animatorDuration = 1000L
-    private lateinit var animator: ObjectAnimator
+    private lateinit var animator: Animator
 
-    @Before fun setup() {
-        // Pause Robolectric's fg thread since we'll be advancing manually
-        Robolectric.getForegroundThreadScheduler().pause()
-
+    @Before fun before() {
         animator = ObjectAnimator.ofFloat(view, View.ALPHA, 0f, 1f)
-        animator.duration = animatorDuration
     }
 
     @Test fun testDoOnStart() {
@@ -50,10 +44,7 @@ class AnimatorTest {
             called = true
         }
 
-        // Start and advance to within animation
-        animator.start()
-        advance()
-        // Assert that doOnStart was called
+        animator.listeners.forEach { it.onAnimationStart(animator) }
         assertTrue(called)
     }
 
@@ -63,83 +54,59 @@ class AnimatorTest {
             called = true
         }
 
-        // Start and move to the end of the animation
-        animator.start()
-        advanceToEnd()
-        // Assert that doOnEnd was called
+        animator.listeners.forEach { it.onAnimationEnd(animator) }
         assertTrue(called)
     }
 
     @Test fun testDoOnCancel() {
         var cancelCalled = false
-        var endCalled = false
         animator.doOnCancel {
             cancelCalled = true
         }
-        animator.doOnEnd {
-            endCalled = true
-        }
 
-        // Start and advance to within animation
-        animator.start()
-        advance()
-        // Now cancel and assert that doOnEnd and doOnCancel were called
-        animator.cancel()
+        animator.listeners.forEach { it.onAnimationCancel(animator) }
         assertTrue(cancelCalled)
-        assertTrue(endCalled)
     }
 
     @Test fun testDoOnRepeat() {
-        animator.repeatMode = ObjectAnimator.RESTART
-        animator.repeatCount = 1
-
         var called = false
         animator.doOnRepeat {
             called = true
         }
 
-        // Start and advance to the end
-        animator.start()
-        advanceToEnd()
-
+        animator.listeners.forEach { it.onAnimationRepeat(animator) }
         assertTrue(called)
     }
 
+    @UiThreadTest
     @Test fun testDoOnPause() {
         var called = false
         animator.doOnPause {
             called = true
         }
 
-        // Start and advance to within animation
+        // Start and pause and assert doOnPause was called
         animator.start()
-        advance()
-        // Now pause and assert doOnPause was called
         animator.pause()
         assertTrue(called)
+
+        animator.cancel()
     }
 
+    @UiThreadTest
     @Test fun testDoOnResume() {
         var called = false
         animator.doOnResume {
             called = true
         }
-        // Start and advance to within animation
+
         animator.start()
-        advance()
-        // Now pause and advance
         animator.pause()
-        advance()
+
         // Now resume and assert doOnResume was called
         animator.resume()
         assertTrue(called)
-    }
 
-    private fun advanceToEnd() {
-        Robolectric.getForegroundThreadScheduler().advanceToLastPostedRunnable()
-    }
-
-    private fun advance() {
-        Robolectric.getForegroundThreadScheduler().runOneTask()
+        animator.cancel()
     }
 }
