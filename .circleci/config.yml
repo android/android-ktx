@@ -1,48 +1,123 @@
 version: 2.0
 
-jobs:
-  build:
-    working_directory: ~/kotlin-extensions
+references:
+  workspace: &workspace
+    ~/kotlin-extensions
 
+  config_android: &config_android
+    working_directory: *workspace
     docker:
       - image: circleci/android:api-27-alpha
-
     environment:
       TERM: dumb
 
+  config_gcloud: &config_gcloud
+    working_directory: *workspace
+    docker:
+      - image: google/cloud-sdk:latest
+    environment:
+      TERM: dumb
+
+  cache_key: &cache_key
+    key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+  restore_cache: &restore_cache
+    restore_cache:
+      <<: *cache_key
+  save_cache: &save_cache
+     save_cache:
+      <<: *cache_key
+      paths:
+        - ~/.gradle/caches
+        - ~/.gradle/wrapper
+
+  export_gcloud_key: &export_gcloud_key
+    run:
+      name: Export Google Cloud Service key environment variable
+      command: echo 'export GCLOUD_SERVICE_KEY="$GCLOUD_SERVICE_KEY"' >> $BASH_ENV
+  decode_gcloud_key: &decode_gcloud_key
+    run:
+      name: Decode Google Cloud credentials
+      command: echo $GCLOUD_SERVICE_KEY | base64 -di > client-secret.json
+
+  persist_to_workspace: &persist_to_workspace
+    persist_to_workspace:
+      root: .
+      paths:
+        - .gradle
+        - build
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace
+
+jobs:
+  build:
+    <<: *config_android
+
     steps:
       - checkout
-
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+      - *restore_cache
 
       - run:
           name: Compile
-          command: ./gradlew assemble
+          command: ./gradlew assemble assembleAndroidTest --no-daemon
       - store_artifacts:
           path: build/outputs/aar
 
       - run:
           name: JVM Tests & Lint
-          command: ./gradlew check
+          command: ./gradlew check --no-daemon
       - store_test_results:
           path: build/test-results
       - store_artifacts:
           path: build/test-results
       - store_artifacts:
           path: build/reports/lint-results.html
-
-      - save_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
-          paths:
-            - ~/.gradle/caches
-            - ~/.gradle/wrapper
-
       - store_test_results:
           path: build/reports
+
+      - *save_cache
+      - *persist_to_workspace
+
+  test_instrumented:
+    <<: *config_gcloud
+
+    steps:
+      - checkout
+      - *attach_workspace
+      - *export_gcloud_key
+      - *decode_gcloud_key
+      - run:
+          name: Set Google Cloud target project
+          command: gcloud config set project android-devrel-ci
+      - run:
+          name: Authenticate with Google Cloud
+          command: gcloud auth activate-service-account androidktx-ftl@android-devrel-ci.iam.gserviceaccount.com --key-file client-secret.json
+      - run:
+          name: Run instrumentation tests on Firebase Test Lab
+          command: |
+              gcloud firebase test android run \
+                  --type instrumentation \
+                  --app dummyapk/dummy.apk \
+                  --test build/outputs/apk/androidTest/debug/kotlin-extensions-debug-androidTest.apk \
+                  --device model=Nexus6P,version=27,locale=en_US,orientation=portrait \
+                  --timeout 20m \
+                  --results-bucket cloud-test-android-devrel-ci
+      - run:
+          name: Directory for test results
+          command: mkdir firebase_test_results
+      - run:
+          name: Download test results from Firebase Test Lab
+          command: gsutil -m cp -r -U "`gsutil ls gs://cloud-test-android-devrel-ci | tail -1`*" firebase_test_results
+      - store_artifacts:
+          path: firebase_test_results
+      - store_test_results:
+          path: firebase_test_results
 
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
+      - test_instrumented:
+          requires:
+            - build

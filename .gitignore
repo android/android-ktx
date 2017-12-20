@@ -12,3 +12,6 @@ build
 # Gradle Android
 /local.properties
 /captures
+
+# Secrets
+client-secret.json
