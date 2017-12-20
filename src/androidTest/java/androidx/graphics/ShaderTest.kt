@@ -24,6 +24,7 @@ import org.junit.Test
 class ShaderTest {
     @Test
     fun testTransform() {
+        @Suppress("DEPRECATION")
         val shader = Shader()
         val values = FloatArray(9)
         val matrix = Matrix()

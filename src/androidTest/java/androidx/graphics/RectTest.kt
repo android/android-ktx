@@ -21,6 +21,7 @@ import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -49,12 +50,66 @@ class RectTest {
         assertEquals(6, b)
     }
 
+    @Test fun unionAsAndInt() {
+        val (l, t, r, b) = Rect(0, 0, 4, 4) and Rect(-1, -1, 6, 6)
+        assertEquals(-1, l)
+        assertEquals(-1, t)
+        assertEquals(6, r)
+        assertEquals(6, b)
+    }
+
     @Test fun unionFloat() {
         val (l, t, r, b) = RectF(0.0f, 0.0f, 4.0f, 4.0f) + RectF(-1.0f, -1.0f, 6.0f, 6.0f)
         assertEquals(-1.0f, l)
         assertEquals(-1.0f, t)
         assertEquals(6.0f, r)
         assertEquals(6.0f, b)
+    }
+
+    @Test fun unionAsAndFloat() {
+        val (l, t, r, b) = RectF(0.0f, 0.0f, 4.0f, 4.0f) and RectF(-1.0f, -1.0f, 6.0f, 6.0f)
+        assertEquals(-1.0f, l)
+        assertEquals(-1.0f, t)
+        assertEquals(6.0f, r)
+        assertEquals(6.0f, b)
+    }
+
+    @Test fun differenceInt() {
+        val r = Rect(0, 0, 4, 4) - Rect(-1, 2, 6, 6)
+        assertEquals(Rect(0, 0, 4, 2), r.bounds)
+    }
+
+    @Test fun differenceFloat() {
+        val r = RectF(0.0f, 0.0f, 4.0f, 4.0f) - RectF(-1.0f, 2.0f, 6.0f, 6.0f)
+        assertEquals(Rect(0, 0, 4, 2), r.bounds)
+    }
+
+    @Test fun intersectionAsOrInt() {
+        val (l, t, r, b) = Rect(0, 0, 4, 4) or Rect(2, 2, 6, 6)
+        assertEquals(2, l)
+        assertEquals(2, t)
+        assertEquals(4, r)
+        assertEquals(4, b)
+    }
+
+    @Test fun intersectionAsOrFloat() {
+        val (l, t, r, b) = RectF(0.0f, 0.0f, 4.0f, 4.0f) or RectF(2.0f, 2.0f, 6.0f, 6.0f)
+        assertEquals(2.0f, l)
+        assertEquals(2.0f, t)
+        assertEquals(4.0f, r)
+        assertEquals(4.0f, b)
+    }
+
+    @Test fun xorInt() {
+        val r = Rect(0, 0, 4, 4) xor Rect(2, 2, 6, 6)
+        assertEquals(Rect(0, 0, 4, 4) and Rect(2, 2, 6, 6), r.bounds)
+        assertFalse(r.contains(3, 3))
+    }
+
+    @Test fun xorFloat() {
+        val r = RectF(0.0f, 0.0f, 4.0f, 4.0f) xor RectF(2.0f, 2.0f, 6.0f, 6.0f)
+        assertEquals(Rect(0, 0, 4, 4) and Rect(2, 2, 6, 6), r.bounds)
+        assertFalse(r.contains(3, 3))
     }
 
     @Test fun offsetInt() {
@@ -89,6 +144,38 @@ class RectTest {
         assertEquals(b, 4.0f)
     }
 
+    @Test fun negativeOffsetInt() {
+        val (l, t, r, b) = Rect(0, 0, 2, 2) - 2
+        assertEquals(l, -2)
+        assertEquals(t, -2)
+        assertEquals(r, 0)
+        assertEquals(b, 0)
+    }
+
+    @Test fun negativeOffsetPoint() {
+        val (l, t, r, b) = Rect(0, 0, 2, 2) - Point(1, 2)
+        assertEquals(l, -1)
+        assertEquals(t, -2)
+        assertEquals(r, 1)
+        assertEquals(b, 0)
+    }
+
+    @Test fun negativeOffsetFloat() {
+        val (l, t, r, b) = RectF(0.0f, 0.0f, 2.0f, 2.0f) - 2.0f
+        assertEquals(l, -2.0f)
+        assertEquals(t, -2.0f)
+        assertEquals(r, 0.0f)
+        assertEquals(b, 0.0f)
+    }
+
+    @Test fun negativeOffsetPointF() {
+        val (l, t, r, b) = RectF(0.0f, 0.0f, 2.0f, 2.0f) - PointF(1.0f, 2.0f)
+        assertEquals(l, -1.0f)
+        assertEquals(t, -2.0f)
+        assertEquals(r, 1.0f)
+        assertEquals(b, 0.0f)
+    }
+
     @Test fun pointInside() {
         assertTrue(Point(1, 1) in Rect(0, 0, 2, 2))
         assertTrue(PointF(1.0f, 1.0f) in RectF(0.0f, 0.0f, 2.0f, 2.0f))
@@ -108,5 +195,13 @@ class RectTest {
         assertEquals(
                 RectF(0f, 1f, 2f, 3f),
                 Rect(0, 1, 2, 3).toRectF())
+    }
+
+    @Test fun toRegionInt() {
+        assertEquals(Rect(1, 1, 5, 5), Rect(1, 1, 5, 5).toRegion().bounds)
+    }
+
+    @Test fun toRegionFloat() {
+        assertEquals(Rect(1, 1, 5, 5), RectF(1.1f, 1.1f, 4.8f, 4.8f).toRegion().bounds)
     }
 }
