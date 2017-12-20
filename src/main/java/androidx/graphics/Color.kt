@@ -111,6 +111,38 @@ inline val @receiver:ColorInt Int.green get() = (this shr 8) and 0xff
 inline val @receiver:ColorInt Int.blue get() = this and 0xff
 
 /**
+ * Return the alpha component of a color int. This is equivalent to calling:
+ * ```
+ * Color.alpha(myInt)
+ * ```
+ */
+inline operator fun @receiver:ColorInt Int.component1() = (this shr 24) and 0xff
+
+/**
+ * Return the red component of a color int. This is equivalent to calling:
+ * ```
+ * Color.red(myInt)
+ * ```
+ */
+inline operator fun @receiver:ColorInt Int.component2() = (this shr 16) and 0xff
+
+/**
+ * Return the green component of a color int. This is equivalent to calling:
+ * ```
+ * Color.green(myInt)
+ * ```
+ */
+inline operator fun @receiver:ColorInt Int.component3() = (this shr 8) and 0xff
+
+/**
+ * Return the blue component of a color int. This is equivalent to calling:
+ * ```
+ * Color.blue(myInt)
+ * ```
+ */
+inline operator fun @receiver:ColorInt Int.component4() = this and 0xff
+
+/**
  * Returns the relative luminance of a color int, assuming sRGB encoding.
  * Based on the formula for relative luminance defined in WCAG 2.0,
  * W3C Recommendation 11 December 2008.

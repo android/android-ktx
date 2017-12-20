@@ -22,12 +22,21 @@ import org.junit.Test
 
 class ColorTest {
     @Test fun toColor() = assertEquals(Color.valueOf(0x337f3010), 0x337f3010.toColor())
-    @Test fun destructuring() {
+
+    @Test fun destructuringColor() {
         val (r, g, b, a) = 0x337f3010.toColor()
         assertEquals(0.5f, r, 1e-2f)
         assertEquals(0.19f, g, 1e-2f)
         assertEquals(0.06f, b, 1e-2f)
         assertEquals(0.2f, a, 1e-2f)
+    }
+
+    @Test fun destructuringInt() {
+        val (a, r, g, b) = 0x337f3010
+        assertEquals(0x33, a)
+        assertEquals(0x7f, r)
+        assertEquals(0x30, g)
+        assertEquals(0x10, b)
     }
 
     @Test fun alpha() = assertEquals(0x33, 0x337f3010.alpha)

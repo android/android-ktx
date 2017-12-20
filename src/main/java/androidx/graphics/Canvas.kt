@@ -19,7 +19,7 @@ package androidx.graphics
 import android.graphics.Canvas
 
 /**
- * Wrap the specified `block` in calls to [Canvas.save]
+ * Wrap the specified [block] in calls to [Canvas.save]
  * and [Canvas.restoreToCount].
  */
 inline fun Canvas.withSave(block: Canvas.() -> Unit) {
@@ -32,7 +32,7 @@ inline fun Canvas.withSave(block: Canvas.() -> Unit) {
 }
 
 /**
- * Wrap the specified `block` in calls to [Canvas.save]/[Canvas.translate]
+ * Wrap the specified [block] in calls to [Canvas.save]/[Canvas.translate]
  * and [Canvas.restoreToCount].
  */
 inline fun Canvas.withTranslation(
@@ -49,7 +49,7 @@ inline fun Canvas.withTranslation(
 }
 
 /**
- * Wrap the specified `block` in calls to [Canvas.save]/[Canvas.rotate]
+ * Wrap the specified [block] in calls to [Canvas.save]/[Canvas.rotate]
  * and [Canvas.restoreToCount].
  */
 inline fun Canvas.withRotation(
@@ -67,7 +67,7 @@ inline fun Canvas.withRotation(
 }
 
 /**
- * Wrap the specified `block` in calls to [Canvas.save]/[Canvas.scale]
+ * Wrap the specified [block] in calls to [Canvas.save]/[Canvas.scale]
  * and [Canvas.restoreToCount].
  */
 inline fun Canvas.withScale(
@@ -86,7 +86,7 @@ inline fun Canvas.withScale(
 }
 
 /**
- * Wrap the specified `block` in calls to [Canvas.save]/[Canvas.skew]
+ * Wrap the specified [block] in calls to [Canvas.save]/[Canvas.skew]
  * and [Canvas.restoreToCount].
  */
 inline fun Canvas.withSkew(
