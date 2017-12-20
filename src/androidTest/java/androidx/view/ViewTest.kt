@@ -16,20 +16,14 @@
 
 package androidx.view
 
+import android.support.test.InstrumentationRegistry
 import android.view.View
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.RuntimeEnvironment
-import org.robolectric.annotation.Config
-import org.robolectric.annotation.Config.NEWEST_SDK
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE)
 class ViewTest {
-    private val context = RuntimeEnvironment.application
+    private val context = InstrumentationRegistry.getContext()
     private val view = View(context)
 
     @Test
@@ -47,7 +41,6 @@ class ViewTest {
     }
 
     @Test
-    @Config(sdk = [NEWEST_SDK])
     fun doOnLayoutBeforeLayout() {
         var called = false
         view.doOnLayout {
@@ -58,7 +51,6 @@ class ViewTest {
     }
 
     @Test
-    @Config(sdk = [NEWEST_SDK])
     fun doOnLayoutAfterLayout() {
         view.layout(0, 0, 10, 10)
 
@@ -112,7 +104,6 @@ class ViewTest {
     }
 
     @Test
-    @Config(sdk = [NEWEST_SDK])
     fun updatePaddingRelative() {
         view.updatePaddingRelative(start = 10, end = 20)
         assertEquals(10, view.paddingStart)
@@ -122,7 +113,6 @@ class ViewTest {
     }
 
     @Test
-    @Config(sdk = [NEWEST_SDK])
     fun updatePaddingRelativeNoOp() {
         view.setPaddingRelative(10, 20, 30, 40)
         view.updatePaddingRelative()

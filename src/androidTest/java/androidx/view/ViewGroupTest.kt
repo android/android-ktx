@@ -16,6 +16,7 @@
 
 package androidx.view
 
+import android.support.test.InstrumentationRegistry
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -27,15 +28,9 @@ import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.RuntimeEnvironment
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE)
 class ViewGroupTest {
-    private val context = RuntimeEnvironment.application
+    private val context = InstrumentationRegistry.getContext()
     private val viewGroup = LinearLayout(context)
 
     @Test fun get() {
