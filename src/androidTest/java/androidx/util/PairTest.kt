@@ -20,12 +20,7 @@ import android.util.Pair
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE)
 class PairTest {
     @Test fun destructuringNonNull() {
         val pair = Pair("one", "two")

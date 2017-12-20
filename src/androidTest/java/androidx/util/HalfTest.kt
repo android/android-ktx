@@ -19,12 +19,7 @@ package androidx.util
 import android.util.Half
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [26])
 class HalfTest {
     @Test fun shortToHalf() = assertEquals(Half(1.toShort()), 1.toShort().toHalf())
 
