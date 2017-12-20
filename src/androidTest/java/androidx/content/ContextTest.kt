@@ -16,27 +16,26 @@
 
 package androidx.content
 
+import android.test.mock.MockContext
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertSame
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.RuntimeEnvironment
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE)
-class SharedPreferencesTest {
-    private val context = RuntimeEnvironment.application
+class ContextTest {
+    @Test fun systemService() {
+        var lookup: Class<*>? = null
+        val context = object : MockContext() {
+            override fun getSystemServiceName(serviceClass: Class<*>): String? {
+                lookup = serviceClass
+                return if (serviceClass == Unit::class.java) "unit" else null
+            }
 
-    @Test fun edit() {
-        val preferences = context.getSharedPreferences("prefs", 0)
-
-        preferences.edit {
-            putString("test_key1", "test_value")
-            putInt("test_key2", 100)
+            override fun getSystemService(name: String): Any? {
+                return if (name == "unit") Unit else null
+            }
         }
-
-        assertEquals("test_value", preferences.getString("test_key1", null))
-        assertEquals(100, preferences.getInt("test_key2", 0))
+        val actual = context.systemService<Unit>()
+        assertEquals(Unit::class.java, lookup)
+        assertSame(Unit, actual)
     }
 }
