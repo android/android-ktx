@@ -24,26 +24,17 @@ references:
     restore_cache:
       <<: *cache_key
   save_cache: &save_cache
-     save_cache:
+    save_cache:
       <<: *cache_key
       paths:
         - ~/.gradle/caches
         - ~/.gradle/wrapper
 
-  export_gcloud_key: &export_gcloud_key
-    run:
-      name: Export Google Cloud Service key environment variable
-      command: echo 'export GCLOUD_SERVICE_KEY="$GCLOUD_SERVICE_KEY"' >> $BASH_ENV
-  decode_gcloud_key: &decode_gcloud_key
-    run:
-      name: Decode Google Cloud credentials
-      command: echo $GCLOUD_SERVICE_KEY | base64 -di > client-secret.json
-
   persist_to_workspace: &persist_to_workspace
     persist_to_workspace:
       root: .
       paths:
-        - .gradle
+        - ftl-tests
         - build
   attach_workspace: &attach_workspace
     attach_workspace:
@@ -82,32 +73,16 @@ jobs:
     <<: *config_gcloud
 
     steps:
-      - checkout
       - *attach_workspace
-      - *export_gcloud_key
-      - *decode_gcloud_key
       - run:
-          name: Set Google Cloud target project
-          command: gcloud config set project android-devrel-ci
+          name: Setup Google Cloud auth
+          command: ftl-tests/setup.sh
       - run:
-          name: Authenticate with Google Cloud
-          command: gcloud auth activate-service-account androidktx-ftl@android-devrel-ci.iam.gserviceaccount.com --key-file client-secret.json
+          name: Run tests on Firebase Test Lab
+          command: ftl-tests/run-tests.sh
       - run:
-          name: Run instrumentation tests on Firebase Test Lab
-          command: |
-              gcloud firebase test android run \
-                  --type instrumentation \
-                  --app dummyapk/dummy.apk \
-                  --test build/outputs/apk/androidTest/debug/kotlin-extensions-debug-androidTest.apk \
-                  --device model=Nexus6P,version=27,locale=en_US,orientation=portrait \
-                  --timeout 20m \
-                  --results-bucket cloud-test-android-devrel-ci
-      - run:
-          name: Directory for test results
-          command: mkdir firebase_test_results
-      - run:
-          name: Download test results from Firebase Test Lab
-          command: gsutil -m cp -r -U "`gsutil ls gs://cloud-test-android-devrel-ci | tail -1`*" firebase_test_results
+          name: Download results
+          command: ftl-tests/download-results.sh firebase_test_results
       - store_artifacts:
           path: firebase_test_results
       - store_test_results:
