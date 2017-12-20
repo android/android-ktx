@@ -16,15 +16,19 @@
 
 package androidx.graphics
 
-import android.graphics.Matrix
-import android.graphics.Shader
+import android.graphics.Bitmap
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
-/**
- * Wrap the specified [block] in calls to [Shader.getLocalMatrix] and [Shader.setLocalMatrix].
- */
-inline fun Shader.transform(block: Matrix.() -> Unit) {
-    val matrix = Matrix()
-    getLocalMatrix(matrix)
-    block(matrix)
-    setLocalMatrix(matrix)
+class BitmapTest {
+    @Test fun applyCanvas() {
+        val (a, r, g, b) = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888).applyCanvas {
+            drawColor(0x40302010)
+        }.getPixel(1, 1)
+
+        assertEquals(64, a)
+        assertEquals(48, r)
+        assertEquals(32, g)
+        assertEquals(16, b)
+    }
 }

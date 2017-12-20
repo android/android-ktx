@@ -16,15 +16,23 @@
 
 package androidx.graphics
 
-import android.graphics.Matrix
-import android.graphics.Shader
+import android.graphics.Bitmap
+import android.graphics.Canvas
 
 /**
- * Wrap the specified [block] in calls to [Shader.getLocalMatrix] and [Shader.setLocalMatrix].
+ * Creates a new [Canvas] to draw on this bitmap and execute the specified
+ * [block] on the newly created canvas. Example:
+ *
+ * ```
+ * return Bitmap.createBitmap(…).applyCanvas {
+ *    drawLine(…)
+ *    translate(…)
+ *    drawRect(…)
+ * }
+ * ```
  */
-inline fun Shader.transform(block: Matrix.() -> Unit) {
-    val matrix = Matrix()
-    getLocalMatrix(matrix)
-    block(matrix)
-    setLocalMatrix(matrix)
+inline fun Bitmap.applyCanvas(block: Canvas.() -> Unit): Bitmap {
+    val c = Canvas(this)
+    c.block()
+    return this
 }
