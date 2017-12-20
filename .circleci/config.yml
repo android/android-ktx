@@ -1,48 +1,98 @@
 version: 2.0
 
-jobs:
-  build:
-    working_directory: ~/kotlin-extensions
+references:
+  workspace: &workspace
+    ~/kotlin-extensions
 
+  config_android: &config_android
+    working_directory: *workspace
     docker:
       - image: circleci/android:api-27-alpha
-
     environment:
       TERM: dumb
 
+  config_gcloud: &config_gcloud
+    working_directory: *workspace
+    docker:
+      - image: google/cloud-sdk:latest
+    environment:
+      TERM: dumb
+
+  cache_key: &cache_key
+    key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+  restore_cache: &restore_cache
+    restore_cache:
+      <<: *cache_key
+  save_cache: &save_cache
+    save_cache:
+      <<: *cache_key
+      paths:
+        - ~/.gradle/caches
+        - ~/.gradle/wrapper
+
+  persist_to_workspace: &persist_to_workspace
+    persist_to_workspace:
+      root: .
+      paths:
+        - ftl-tests
+        - build
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace
+
+jobs:
+  build:
+    <<: *config_android
+
     steps:
       - checkout
-
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+      - *restore_cache
 
       - run:
           name: Compile
-          command: ./gradlew assemble
+          command: ./gradlew assemble assembleAndroidTest --no-daemon
       - store_artifacts:
           path: build/outputs/aar
 
       - run:
           name: JVM Tests & Lint
-          command: ./gradlew check
+          command: ./gradlew check --no-daemon
       - store_test_results:
           path: build/test-results
       - store_artifacts:
           path: build/test-results
       - store_artifacts:
           path: build/reports/lint-results.html
-
-      - save_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
-          paths:
-            - ~/.gradle/caches
-            - ~/.gradle/wrapper
-
       - store_test_results:
           path: build/reports
+
+      - *save_cache
+      - *persist_to_workspace
+
+  test_instrumented:
+    <<: *config_gcloud
+
+    steps:
+      - *attach_workspace
+      - run:
+          name: Setup Google Cloud auth
+          command: ftl-tests/setup.sh
+      - run:
+          name: Run tests on Firebase Test Lab
+          command: ftl-tests/run-tests.sh
+      - run:
+          name: Download results
+          command: ftl-tests/download-results.sh firebase_test_results
+      - store_artifacts:
+          path: firebase_test_results
+      - store_test_results:
+          path: firebase_test_results
 
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
+      - test_instrumented:
+          requires:
+            - build
