@@ -19,12 +19,7 @@ package androidx.net
 import android.net.Uri
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE)
 class UriTest {
     @Test fun uri() {
         val string = "https://test.example.com/foo?bar#baz"
