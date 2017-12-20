@@ -42,10 +42,7 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     implementation 'com.android.support:support-annotations:27.0.2'
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:3.5.1'
-    testImplementation 'com.google.truth:truth:0.37'
-
+    androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support:support-annotations:27.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
