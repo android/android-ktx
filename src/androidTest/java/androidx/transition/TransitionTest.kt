@@ -20,7 +20,6 @@ import android.kotlin.R
 import android.support.test.InstrumentationRegistry
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import android.transition.AutoTransition
 import android.transition.Fade
 import android.transition.Transition
 import android.transition.TransitionManager
@@ -69,23 +68,6 @@ class TransitionTest {
         endTransitions()
 
         // Assert that doOnEnd was called
-        assertTrue(called)
-    }
-
-    @Test fun testDoOnPause() {
-        var called = false
-        transition.doOnPause {
-            called = true
-        }
-
-        // Start transition
-        startTransition(transition)
-
-        // Now start a second transition which will pause the first
-        val secondTransition = AutoTransition()
-        startTransition(secondTransition)
-
-        // Assert that doOnPause was called
         assertTrue(called)
     }
 
