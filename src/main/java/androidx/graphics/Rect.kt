@@ -22,6 +22,8 @@ import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
+import kotlin.math.ceil
+import kotlin.math.floor
 
 /**
  * Returns "left", the first component of the rectangle.
@@ -186,3 +188,17 @@ inline operator fun Rect.contains(p: Point) = contains(p.x, p.y)
  * An empty rectangle never contains any point.
  */
 inline operator fun RectF.contains(p: PointF) = contains(p.x, p.y)
+
+/**
+ * Returns a [RectF] representation of this rectangle.
+ */
+fun Rect.toRectF(): RectF = RectF(this)
+
+/**
+ * Returns a [Rect] representation of this rectangle. The resulting rect will be sized such
+ * that this rect can fit within it.
+ */
+fun RectF.toRect(): Rect {
+    return Rect(floor(left).toInt(), floor(top).toInt(),
+            ceil(right).toInt(), ceil(bottom).toInt())
+}
