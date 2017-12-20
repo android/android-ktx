@@ -83,6 +83,7 @@ jobs:
       - run:
           name: Download results
           command: ftl-tests/download-results.sh firebase_test_results
+          when: always
       - store_artifacts:
           path: firebase_test_results
       - store_test_results:
