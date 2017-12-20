@@ -22,13 +22,10 @@ import org.junit.Test
 
 class BitmapTest {
     @Test fun applyCanvas() {
-        val (a, r, g, b) = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888).applyCanvas {
+        val p = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888).applyCanvas {
             drawColor(0x40302010)
         }.getPixel(1, 1)
 
-        assertEquals(64, a)
-        assertEquals(48, r)
-        assertEquals(32, g)
-        assertEquals(16, b)
+        assertEquals(0x40302010, p)
     }
 }
