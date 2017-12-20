@@ -69,18 +69,18 @@ inline operator fun PointF.component2() = this.y
  * Offsets this point by the specified point and returns the result as a new point.
  */
 inline operator fun Point.plus(p: Point): Point {
-    val l = Point(this)
-    l.offset(p.x, p.y)
-    return l
+    return Point(x, y).apply {
+        offset(p.x, p.y)
+    }
 }
 
 /**
  * Offsets this point by the specified point and returns the result as a new point.
  */
 inline operator fun PointF.plus(p: PointF): PointF {
-    val l = PointF(x, y)
-    l.offset(p.x, p.y)
-    return l
+    return PointF(x, y).apply {
+        offset(p.x, p.y)
+    }
 }
 
 /**
@@ -88,9 +88,9 @@ inline operator fun PointF.plus(p: PointF): PointF {
  * result as a new point.
  */
 inline operator fun Point.plus(xy: Int): Point {
-    val l = Point(this)
-    l.offset(xy, xy)
-    return l
+    return Point(x, y).apply {
+        offset(xy, xy)
+    }
 }
 
 /**
@@ -98,9 +98,49 @@ inline operator fun Point.plus(xy: Int): Point {
  * result as a new point.
  */
 inline operator fun PointF.plus(xy: Float): PointF {
-    val l = PointF(x, y)
-    l.offset(xy, xy)
-    return l
+    return PointF(x, y).apply {
+        offset(xy, xy)
+    }
+}
+
+/**
+ * Offsets this point by the negation of the specified point and returns the result
+ * as a new point.
+ */
+inline operator fun Point.minus(p: Point): Point {
+    return Point(x, y).apply {
+        offset(-p.x, -p.y)
+    }
+}
+
+/**
+ * Offsets this point by the negation of the specified point and returns the result
+ * as a new point.
+ */
+inline operator fun PointF.minus(p: PointF): PointF {
+    return PointF(x, y).apply {
+        offset(-p.x, -p.y)
+    }
+}
+
+/**
+ * Offsets this point by the negation of the specified amount on both X and Y axis and
+ * returns the result as a new point.
+ */
+inline operator fun Point.minus(xy: Int): Point {
+    return Point(x, y).apply {
+        offset(-xy, -xy)
+    }
+}
+
+/**
+ * Offsets this point by the negation of the specified amount on both X and Y axis and
+ * returns the result as a new point.
+ */
+inline operator fun PointF.minus(xy: Float): PointF {
+    return PointF(x, y).apply {
+        offset(-xy, -xy)
+    }
 }
 
 /**
@@ -112,3 +152,13 @@ inline operator fun Point.unaryMinus() = Point(-x, -y)
  * Returns a new point representing the negation of this point.
  */
 inline operator fun PointF.unaryMinus() = PointF(-x, -y)
+
+/**
+ * Returns a [PointF] representation of this point.
+ */
+inline fun Point.toPointF() = PointF(this)
+
+/**
+ * Returns a [Point] representation of this point.
+ */
+inline fun PointF.toPoint() = Point(x.toInt(), y.toInt())

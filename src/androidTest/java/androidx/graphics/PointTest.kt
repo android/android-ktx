@@ -58,6 +58,30 @@ class PointTest {
         assertEquals(5.0f, y)
     }
 
+    @Test fun negativeOffsetInt() {
+        val (x, y) = Point(2, 3) - 2
+        assertEquals(0, x)
+        assertEquals(1, y)
+    }
+
+    @Test fun negativeOffsetFloat() {
+        val (x, y) = PointF(2.0f, 3.0f) - 2.0f
+        assertEquals(0.0f, x)
+        assertEquals(1.0f, y)
+    }
+
+    @Test fun negativeOffsetPoint() {
+        val (x, y) = Point(2, 3) - Point(1, 2)
+        assertEquals(1, x)
+        assertEquals(1, y)
+    }
+
+    @Test fun negativeOffsetPointF() {
+        val (x, y) = PointF(2.0f, 3.0f) - PointF(1.0f, 2.0f)
+        assertEquals(1.0f, x)
+        assertEquals(1.0f, y)
+    }
+
     @Test fun negateInt() {
         val (x, y) = -Point(2, 3)
         assertEquals(-2, x)
@@ -68,5 +92,13 @@ class PointTest {
         val (x, y) = -PointF(2.0f, 3.0f)
         assertEquals(-2.0f, x)
         assertEquals(-3.0f, y)
+    }
+
+    @Test fun toPointF() {
+        assertEquals(PointF(1.0f, 2.0f), Point(1, 2).toPointF())
+    }
+
+    @Test fun toPoint() {
+        assertEquals(Point(1, 2), PointF(1.1f, 2.8f).toPoint())
     }
 }

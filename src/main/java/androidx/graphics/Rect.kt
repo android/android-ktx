@@ -118,9 +118,9 @@ inline operator fun RectF.component4() = this.bottom
  * the result as a new rectangle.
  */
 inline operator fun Rect.plus(r: Rect): Rect {
-    val l = Rect(this)
-    l.union(r)
-    return l
+    return Rect(this).apply {
+        union(r)
+    }
 }
 
 /**
@@ -128,9 +128,9 @@ inline operator fun Rect.plus(r: Rect): Rect {
  * the result as a new rectangle.
  */
 inline operator fun RectF.plus(r: RectF): RectF {
-    val l = RectF(this)
-    l.union(r)
-    return l
+    return RectF(this).apply {
+        union(r)
+    }
 }
 
 /**
@@ -138,9 +138,9 @@ inline operator fun RectF.plus(r: RectF): RectF {
  * amount on both X and Y axis.
  */
 inline operator fun Rect.plus(xy: Int): Rect {
-    val l = Rect(this)
-    l.offset(xy, xy)
-    return l
+    return Rect(this).apply {
+        offset(xy, xy)
+    }
 }
 
 /**
@@ -148,9 +148,9 @@ inline operator fun Rect.plus(xy: Int): Rect {
  * amount on both X and Y axis.
  */
 inline operator fun RectF.plus(xy: Float): RectF {
-    val l = RectF(this)
-    l.offset(xy, xy)
-    return l
+    return RectF(this).apply {
+        offset(xy, xy)
+    }
 }
 
 /**
@@ -158,9 +158,9 @@ inline operator fun RectF.plus(xy: Float): RectF {
  * point.
  */
 inline operator fun Rect.plus(xy: Point): Rect {
-    val l = Rect(this)
-    l.offset(xy.x, xy.y)
-    return l
+    return Rect(this).apply {
+        offset(xy.x, xy.y)
+    }
 }
 
 /**
@@ -168,18 +168,18 @@ inline operator fun Rect.plus(xy: Point): Rect {
  * point.
  */
 inline operator fun RectF.plus(xy: PointF): RectF {
-    val l = RectF(this)
-    l.offset(xy.x, xy.y)
-    return l
+    return RectF(this).apply {
+        offset(xy.x, xy.y)
+    }
 }
 
 /**
  * Returns the difference of this rectangle and the specified rectangle as a new region.
  */
 inline operator fun Rect.minus(r: Rect): Region {
-    val l = Region(this)
-    l.op(r, Region.Op.DIFFERENCE)
-    return l
+    return Region(this).apply {
+        op(r, Region.Op.DIFFERENCE)
+    }
 }
 
 /**
@@ -187,9 +187,9 @@ inline operator fun Rect.minus(r: Rect): Region {
  * This rectangle is first converted to a [Rect] using [RectF.toRect].
  */
 inline operator fun RectF.minus(r: RectF): Region {
-    val l = Region(this.toRect())
-    l.op(r.toRect(), Region.Op.DIFFERENCE)
-    return l
+    return Region(this.toRect()).apply {
+        op(r.toRect(), Region.Op.DIFFERENCE)
+    }
 }
 
 /**
@@ -197,9 +197,9 @@ inline operator fun RectF.minus(r: RectF): Region {
  * of the specified amount on both X and Y axis.
  */
 inline operator fun Rect.minus(xy: Int): Rect {
-    val l = Rect(this)
-    l.offset(-xy, -xy)
-    return l
+    return Rect(this).apply {
+        offset(-xy, -xy)
+    }
 }
 
 /**
@@ -207,9 +207,9 @@ inline operator fun Rect.minus(xy: Int): Rect {
  * of the specified amount on both X and Y axis.
  */
 inline operator fun RectF.minus(xy: Float): RectF {
-    val l = RectF(this)
-    l.offset(-xy, -xy)
-    return l
+    return RectF(this).apply {
+        offset(-xy, -xy)
+    }
 }
 
 /**
@@ -217,9 +217,9 @@ inline operator fun RectF.minus(xy: Float): RectF {
  * the specified point.
  */
 inline operator fun Rect.minus(xy: Point): Rect {
-    val l = Rect(this)
-    l.offset(-xy.x, -xy.y)
-    return l
+    return Rect(this).apply {
+        offset(-xy.x, -xy.y)
+    }
 }
 
 /**
@@ -227,9 +227,9 @@ inline operator fun Rect.minus(xy: Point): Rect {
  * the specified point.
  */
 inline operator fun RectF.minus(xy: PointF): RectF {
-    val l = RectF(this)
-    l.offset(-xy.x, -xy.y)
-    return l
+    return RectF(this).apply {
+        offset(-xy.x, -xy.y)
+    }
 }
 
 /**
@@ -249,9 +249,9 @@ inline infix fun RectF.and(r: RectF) = this + r
  */
 @SuppressLint("CheckResult")
 inline infix fun Rect.or(r: Rect): Rect {
-    val l = Rect(this)
-    l.intersect(r)
-    return l
+    return Rect(this).apply {
+        intersect(r)
+    }
 }
 
 /**
@@ -261,18 +261,18 @@ inline infix fun Rect.or(r: Rect): Rect {
  */
 @SuppressLint("CheckResult")
 inline infix fun RectF.or(r: RectF): RectF {
-    val l = RectF(this)
-    l.intersect(r)
-    return l
+    return RectF(this).apply {
+        intersect(r)
+    }
 }
 
 /**
  * Returns the union minus the intersection of two rectangles as a new region.
  */
 inline infix fun Rect.xor(r: Rect): Region {
-    val l = Region(this)
-    l.op(r, Region.Op.XOR)
-    return l
+    return Region(this).apply {
+        op(r, Region.Op.XOR)
+    }
 }
 
 /**
@@ -280,9 +280,9 @@ inline infix fun Rect.xor(r: Rect): Region {
  * The two rectangles are first converted to [Rect] using [RectF.toRect].
  */
 inline infix fun RectF.xor(r: RectF): Region {
-    val l = Region(this.toRect())
-    l.op(r.toRect(), Region.Op.XOR)
-    return l
+    return Region(this.toRect()).apply {
+        op(r.toRect(), Region.Op.XOR)
+    }
 }
 
 /**
