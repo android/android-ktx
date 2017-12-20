@@ -32,6 +32,26 @@ class CanvasTest {
     private val values = FloatArray(9)
     private val canvas = Canvas(Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888))
 
+    @Suppress("DEPRECATION")
+    @Test fun withSave() {
+        val beforeCount = canvas.saveCount
+
+        canvas.matrix.getValues(values)
+        val x = values[Matrix.MTRANS_X]
+        val y = values[Matrix.MTRANS_Y]
+
+        canvas.withSave {
+            assertThat(beforeCount).isLessThan(saveCount)
+            translate(10.0f, 10.0f)
+        }
+
+        canvas.matrix.getValues(values)
+        assertEquals(x, values[Matrix.MTRANS_X])
+        assertEquals(y, values[Matrix.MTRANS_Y])
+
+        assertEquals(beforeCount, canvas.saveCount)
+    }
+
     @Test fun withTranslation() {
         val beforeCount = canvas.saveCount
         canvas.withTranslation(x = 16.0f, y = 32.0f) {
