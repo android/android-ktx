@@ -105,3 +105,32 @@ fun View.updatePadding(left: Int = paddingLeft,
 fun View.setPadding(size: Int) {
     setPadding(size, size, size, size)
 }
+
+/**
+ * Version of [View.postDelayed] which re-orders the parameters, allowing the action to be placed
+ * outside of parentheses.
+ *
+ * ```
+ * view.postDelayed(200) {
+ *     doSomething()
+ * }
+ * ```
+ */
+fun View.postDelayed(delayInMillis: Long, action: () -> Unit) {
+    postDelayed(action, delayInMillis)
+}
+
+/**
+ * Version of [View.postOnAnimationDelayed] which re-orders the parameters, allowing the action
+ * to be placed outside of parentheses.
+ *
+ * ```
+ * view.postOnAnimationDelayed(16) {
+ *     doSomething()
+ * }
+ * ```
+ */
+@RequiresApi(16)
+fun View.postOnAnimationDelayed(delayInMillis: Long, action: () -> Unit) {
+    postOnAnimationDelayed(action, delayInMillis)
+}
