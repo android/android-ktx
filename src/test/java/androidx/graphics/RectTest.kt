@@ -98,4 +98,20 @@ class RectTest {
         assertTrue(Point(1, 1) in Rect(0, 0, 2, 2))
         assertTrue(PointF(1.0f, 1.0f) in RectF(0.0f, 0.0f, 2.0f, 2.0f))
     }
+
+    @Test fun toRect() {
+        assertEquals(
+                Rect(0, 1, 2, 3),
+                RectF(0f, 1f, 2f, 3f).toRect())
+
+        assertEquals(
+                Rect(0, 1, 2, 3),
+                RectF(0.1f, 1.1f, 1.9f, 2.9f).toRect())
+    }
+
+    @Test fun toRectF() {
+        assertEquals(
+                RectF(0f, 1f, 2f, 3f),
+                Rect(0, 1, 2, 3).toRectF())
+    }
 }
