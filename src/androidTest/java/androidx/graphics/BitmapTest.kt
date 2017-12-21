@@ -28,4 +28,17 @@ class BitmapTest {
 
         assertEquals(0x40302010, p)
     }
+
+    @Test fun getPixel() {
+        val b = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888).applyCanvas {
+            drawColor(0x40302010)
+        }
+        assertEquals(0x40302010, b[1, 1])
+    }
+
+    @Test fun setPixel() {
+        val b = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888)
+        b[1, 1] = 0x40302010
+        assertEquals(0x40302010, b[1, 1])
+    }
 }

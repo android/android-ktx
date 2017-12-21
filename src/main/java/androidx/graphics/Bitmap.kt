@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
+@file:Suppress("NOTHING_TO_INLINE")
+
 package androidx.graphics
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.support.annotation.ColorInt
 
 /**
  * Creates a new [Canvas] to draw on this bitmap and execute the specified
@@ -36,3 +39,16 @@ inline fun Bitmap.applyCanvas(block: Canvas.() -> Unit): Bitmap {
     c.block()
     return this
 }
+
+/**
+ * Returns the value of the pixel at the specified location. The returned value
+ * is a [color int][android.graphics.Color] in the sRGB color space.
+ */
+inline operator fun Bitmap.get(x: Int, y: Int) = getPixel(x, y)
+
+/**
+ * Writes the specified [color int][android.graphics.Color] into the bitmap
+ * (assuming it is mutable) at the specified `(x, y)` coordinate. The specified
+ * color is converted from sRGB to the bitmap's color space if needed.
+ */
+inline operator fun Bitmap.set(x: Int, y: Int, @ColorInt color: Int) = setPixel(x, y, color)
