@@ -194,6 +194,7 @@ class ViewGroupTest {
         assertEquals(0, layoutParams.bottomMargin)
         assertEquals(10, layoutParams.marginStart)
         assertEquals(20, layoutParams.marginEnd)
+        assertTrue(layoutParams.isMarginRelative)
     }
 
     @Test fun updateMarginsRelativeNoOp() {
