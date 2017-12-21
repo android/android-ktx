@@ -21,12 +21,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.assertThrows
+import androidx.fail
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
 import org.junit.Test
 
 class ViewGroupTest {
