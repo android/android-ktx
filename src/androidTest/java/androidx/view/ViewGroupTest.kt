@@ -188,9 +188,9 @@ class ViewGroupTest {
     @Test fun updateMarginsRelative() {
         val layoutParams = ViewGroup.MarginLayoutParams(100, 200)
         layoutParams.updateMarginsRelative(start = 10, end = 20)
-        assertEquals(10, layoutParams.leftMargin)
+        assertEquals(0, layoutParams.leftMargin)
         assertEquals(0, layoutParams.topMargin)
-        assertEquals(20, layoutParams.rightMargin)
+        assertEquals(0, layoutParams.rightMargin)
         assertEquals(0, layoutParams.bottomMargin)
         assertEquals(10, layoutParams.marginStart)
         assertEquals(20, layoutParams.marginEnd)

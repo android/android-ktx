@@ -102,6 +102,7 @@ fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
         end: Int = marginEnd,
         bottom: Int = bottomMargin) {
     marginStart = start
+    topMargin = top
     marginEnd = end
-    setMargins(start, top, end, bottom)
+    bottomMargin = bottom
 }
