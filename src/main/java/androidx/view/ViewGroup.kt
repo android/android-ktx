@@ -18,6 +18,7 @@
 
 package androidx.view
 
+import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.ViewGroup
 
@@ -86,4 +87,19 @@ fun ViewGroup.MarginLayoutParams.updateMargins(
         right: Int = rightMargin,
         bottom: Int = bottomMargin) {
     setMargins(left, top, right, bottom)
+}
+
+/**
+ * Updates the relative margins in the ViewGroup's MarginLayoutParams.
+ * This version of the method allows using named parameters to just set one or more axes.
+ *
+ * @see ViewGroup.MarginLayoutParams.setMargins
+ */
+@RequiresApi(17)
+fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
+        start: Int = marginStart,
+        top: Int = topMargin,
+        end: Int = marginEnd,
+        bottom: Int = bottomMargin) {
+    setMargins(start, top, end, bottom)
 }
