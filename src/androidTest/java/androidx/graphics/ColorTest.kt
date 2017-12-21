@@ -17,12 +17,13 @@
 package androidx.graphics
 
 import android.graphics.Color
+import android.graphics.ColorSpace
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class ColorTest {
-    @Test fun toColor() = assertEquals(Color.valueOf(0x337f3010), 0x337f3010.toColor())
-
     @Test fun destructuringColor() {
         val (r, g, b, a) = 0x337f3010.toColor()
         assertEquals(0.5f, r, 1e-2f)
@@ -39,9 +40,56 @@ class ColorTest {
         assertEquals(0x10, b)
     }
 
+    @Test fun intToColor() = assertEquals(Color.valueOf(0x337f3010), 0x337f3010.toColor())
+    @Test fun intToColorLong() = assertEquals(Color.pack(0x337f3010), 0x337f3010.toColorLong())
+
     @Test fun alpha() = assertEquals(0x33, 0x337f3010.alpha)
     @Test fun red() = assertEquals(0x7f, 0x337f3010.red)
     @Test fun green() = assertEquals(0x30, 0x337f3010.green)
     @Test fun blue() = assertEquals(0x10, 0x337f3010.blue)
-    @Test fun luminance() = assertEquals(0.212f, 0xff7f7f7f.toInt().luminance(), 1e-3f)
+    @Test fun luminance() = assertEquals(0.212f, 0xff7f7f7f.toInt().luminance, 1e-3f)
+
+    @Test fun longToColor() {
+        assertEquals(Color.valueOf(0x337f3010), Color.pack(0x337f3010).toColor())
+    }
+
+    @Test fun longToColorInt() = assertEquals(0x337f3010, Color.pack(0x337f3010).toColorInt())
+
+    @Test fun destructuringLong() {
+        val (r, g, b, a) = Color.pack(0x337f3010)
+        assertEquals(0.20f, a, 1e-2f)
+        assertEquals(0.50f, r, 1e-2f)
+        assertEquals(0.19f, g, 1e-2f)
+        assertEquals(0.06f, b, 1e-2f)
+    }
+
+    @Test fun alphaLong() = assertEquals(0.20f, Color.pack(0x337f3010).alpha, 1e-2f)
+    @Test fun redLong() = assertEquals(0.50f, Color.pack(0x337f3010).red, 1e-2f)
+    @Test fun greenLong() = assertEquals(0.19f, Color.pack(0x337f3010).green, 1e-2f)
+    @Test fun blueLong() = assertEquals(0.06f, Color.pack(0x337f3010).blue, 1e-2f)
+
+    @Test fun luminanceLong() {
+        assertEquals(0.212f, Color.pack(0xff7f7f7f.toInt()).luminance, 1e-3f)
+    }
+
+    @Test fun isSrgb() {
+        assertTrue(0x337f3010.toColorLong().isSrgb)
+        val c = Color.pack(1.0f, 0.0f, 0.0f, 1.0f, ColorSpace.get(ColorSpace.Named.BT2020))
+        assertFalse(c.isSrgb)
+    }
+
+    @Test fun isWideGamut() {
+        assertFalse(0x337f3010.toColorLong().isWideGamut)
+        val c = Color.pack(1.0f, 0.0f, 0.0f, 1.0f, ColorSpace.get(ColorSpace.Named.BT2020))
+        assertTrue(c.isWideGamut)
+    }
+
+    @Test fun getColorSpace() {
+        val sRGB = ColorSpace.get(ColorSpace.Named.SRGB)
+        assertEquals(sRGB, 0x337f3010.toColorLong().colorSpace)
+
+        val bt2020 = ColorSpace.get(ColorSpace.Named.BT2020)
+        val c = Color.pack(1.0f, 0.0f, 0.0f, 1.0f, bt2020)
+        assertEquals(bt2020, c.colorSpace)
+    }
 }

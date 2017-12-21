@@ -19,7 +19,9 @@
 package androidx.graphics
 
 import android.graphics.Color
+import android.graphics.ColorSpace
 import android.support.annotation.ColorInt
+import android.support.annotation.ColorLong
 import android.support.annotation.RequiresApi
 
 /**
@@ -147,12 +149,151 @@ inline operator fun @receiver:ColorInt Int.component4() = this and 0xff
  * Based on the formula for relative luminance defined in WCAG 2.0,
  * W3C Recommendation 11 December 2008.
  */
-@RequiresApi(26)
-inline fun @receiver:ColorInt Int.luminance() = Color.luminance(this)
+@get:RequiresApi(26)
+inline val @receiver:ColorInt Int.luminance get() = Color.luminance(this)
 
 /**
  * Creates a new [Color] instance from a color int. The resulting color
- * is in the [sRGB][android.graphics.ColorSpace.Named#SRGB] color space.
+ * is in the [sRGB][android.graphics.ColorSpace.Named.SRGB] color space.
  */
 @RequiresApi(26)
-inline fun @receiver:ColorInt Int.toColor() = Color.valueOf(this)
+inline fun @receiver:ColorInt Int.toColor(): Color = Color.valueOf(this)
+
+/**
+ * Converts the specified ARGB [color int][Color] to an RGBA [color long][Color]
+ * in the [sRGB][android.graphics.ColorSpace.Named.SRGB] color space.
+ */
+@RequiresApi(26)
+@ColorLong
+inline fun @receiver:ColorInt Int.toColorLong() = Color.pack(this)
+
+/**
+ * Returns the first component of the color. For instance, when the color model
+ * of the color is [android.graphics.ColorSpace.Model.RGB], the first component
+ * is "red".
+ *
+ * This method allows to use destructuring declarations when working with colors,
+ * for example:
+ * ```
+ * val (red, green, blue, alpha) = myColorLong
+ * ```
+ */
+@RequiresApi(26)
+inline operator fun @receiver:ColorLong Long.component1() = Color.red(this)
+
+/**
+ * Returns the second component of the color. For instance, when the color model
+ * of the color is [android.graphics.ColorSpace.Model.RGB], the second component
+ * is "green".
+ *
+ * This method allows to use destructuring declarations when working with colors,
+ * for example:
+ * ```
+ * val (red, green, blue, alpha) = myColorLong
+ * ```
+ */
+@RequiresApi(26)
+inline operator fun @receiver:ColorLong Long.component2() = Color.green(this)
+
+/**
+ * Returns the third component of the color. For instance, when the color model
+ * of the color is [android.graphics.ColorSpace.Model.RGB], the third component
+ * is "blue".
+ *
+ * This method allows to use destructuring declarations when working with colors,
+ * for example:
+ * ```
+ * val (red, green, blue, alpha) = myColorLong
+ * ```
+ */
+@RequiresApi(26)
+inline operator fun @receiver:ColorLong Long.component3() = Color.blue(this)
+
+/**
+ * Returns the fourth component of the color. For instance, when the color model
+ * of the color is [android.graphics.ColorSpace.Model.RGB], the fourth component
+ * is "alpha".
+ *
+ * This method allows to use destructuring declarations when working with colors,
+ * for example:
+ * ```
+ * val (red, green, blue, alpha) = myColorLong
+ * ```
+ */
+@RequiresApi(26)
+inline operator fun @receiver:ColorLong Long.component4() = Color.alpha(this)
+
+/**
+ * Return the alpha component of a color long. This is equivalent to calling:
+ * ```
+ * Color.alpha(myLong)
+ * ```
+ */
+@get:RequiresApi(26)
+inline val @receiver:ColorLong Long.alpha get() = Color.alpha(this)
+
+/**
+ * Return the red component of a color long. This is equivalent to calling:
+ * ```
+ * Color.red(myLong)
+ * ```
+ */
+@get:RequiresApi(26)
+inline val @receiver:ColorLong Long.red get() = Color.red(this)
+
+/**
+ * Return the green component of a color long. This is equivalent to calling:
+ * ```
+ * Color.green(myLong)
+ * ```
+ */
+@get:RequiresApi(26)
+inline val @receiver:ColorLong Long.green get() = Color.green(this)
+
+/**
+ * Return the blue component of a color long. This is equivalent to calling:
+ * ```
+ * Color.blue(myLong)
+ * ```
+ */
+@get:RequiresApi(26)
+inline val @receiver:ColorLong Long.blue get() = Color.blue(this)
+
+/**
+ * Returns the relative luminance of a color. Based on the formula for
+ * relative luminance defined in WCAG 2.0, W3C Recommendation 11 December 2008.
+ */
+@get:RequiresApi(26)
+inline val @receiver:ColorLong Long.luminance get() = Color.luminance(this)
+
+/**
+ * Creates a new [Color] instance from a [color long][Color].
+ */
+@RequiresApi(26)
+inline fun @receiver:ColorLong Long.toColor(): Color = Color.valueOf(this)
+
+/**
+ * Converts the specified [color long][Color] to an ARGB [color int][Color].
+ */
+@RequiresApi(26)
+@ColorInt
+inline fun @receiver:ColorLong Long.toColorInt() = Color.toArgb(this)
+
+/**
+ * Indicates whether the color is in the [sRGB][android.graphics.ColorSpace.Named.SRGB]
+ * color space.
+ */
+@get:RequiresApi(26)
+inline val @receiver:ColorLong Long.isSrgb get() = Color.isSrgb(this)
+
+/**
+ * Indicates whether the color is in a [wide-gamut][android.graphics.ColorSpace] color space.
+ */
+@get:RequiresApi(26)
+inline val @receiver:ColorLong Long.isWideGamut get() = Color.isWideGamut(this)
+
+/**
+ * Returns the color space encoded in the specified color long.
+ */
+@get:RequiresApi(26)
+inline val @receiver:ColorLong Long.colorSpace: ColorSpace get() = Color.colorSpace(this)
