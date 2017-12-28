@@ -1,6 +1,6 @@
 #AndroidKtx: Kotlin Extensions for Android
 
-AndroidKtx is a set of Kotlin extensions for Android app development. The goal of AndroidKtx is to make Android development with Kotlin more concise, pleasant and idiomatic. It is an explicit goal of this project to **NOT** add any new feature to the existing Android APIs.
+AndroidKtx is a set of Kotlin extensions for Android app development. The goal of AndroidKtx is to make Android development with Kotlin more concise, pleasant and idiomatic. It is an explicit goal of this project to not add any new feature to the existing Android APIs.
 
 Sample use of AndroidKtx:
 ==TODO: add some sample code snippets.==
