@@ -18,7 +18,11 @@ package androidx.content
 
 import android.content.ContentValues
 
-/** Returns a new [ContentValues] with the given key/value pairs as elements. */
+/**
+ * Returns a new [ContentValues] with the given key/value pairs as elements.
+ *
+ * @throws IllegalArgumentException When a value is not a supported type of [ContentValues].
+ */
 fun contentValuesOf(vararg pairs: Pair<String, Any?>) = ContentValues(pairs.size).apply {
     for ((key, value) in pairs) {
         when (value) {
