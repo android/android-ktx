@@ -17,6 +17,23 @@
 package androidx.os
 
 import android.os.Handler
+import android.os.Message
+import android.support.annotation.RequiresApi
+import java.time.Duration
+import java.util.concurrent.TimeUnit
+
+/**
+ * Version of [Handler.postDelayed] which adds the ability to specify [token], enabling the use
+ * of [Handler.removeCallbacksAndMessages].
+ */
+fun Handler.postDelayed(runnable: Runnable, token: Any?, delayInMillis: Long) {
+    // Note: this method signature ordering is designed to be an overload to the existing
+    // postDelayed methods on Handler and matches the existing overloads for postAtTime.
+
+    val message = Message.obtain(this, runnable)
+    message.obj = token
+    sendMessageDelayed(message, delayInMillis)
+}
 
 /**
  * Version of [Handler.postDelayed] which re-orders the parameters, allowing the action to be
@@ -30,11 +47,51 @@ import android.os.Handler
  *
  * @return the created Runnable
  */
-fun Handler.postDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
-    return Runnable(action).apply {
-        postDelayed(this, delayInMillis)
-    }
+inline fun Handler.postDelayed(
+        delayInMillis: Long,
+        token: Any? = null,
+        crossinline action: () -> Unit
+) = Runnable { action() }.also {
+    postDelayed(it, token, delayInMillis)
 }
+
+/**
+ * Version of [Handler.postDelayed] which re-orders the parameters, allowing the action to be
+ * placed outside of parentheses.
+ *
+ * ```
+ * handler.postDelayed(2, SECONDS) {
+ *     doSomething()
+ * }
+ * ```
+ *
+ * @return the created Runnable
+ */
+inline fun Handler.postDelayed(
+    amount: Long,
+    unit: TimeUnit,
+    token: Any? = null,
+    crossinline action: () -> Unit
+) = postDelayed(unit.toMillis(amount), token, action)
+
+/**
+ * Version of [Handler.postDelayed] which re-orders the parameters, allowing the action to be
+ * placed outside of parentheses.
+ *
+ * ```
+ * handler.postDelayed(Duration.ofSeconds(2)) {
+ *     doSomething()
+ * }
+ * ```
+ *
+ * @return the created Runnable
+ */
+@RequiresApi(26)
+inline fun Handler.postDelayed(
+    duration: Duration,
+    token: Any? = null,
+    crossinline action: () -> Unit
+) = postDelayed(duration.toMillis(), token, action)
 
 /**
  * Version of [Handler.postAtTime] which re-orders the parameters, allowing the action to be
@@ -46,28 +103,13 @@ fun Handler.postDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
  * }
  * ```
  *
+ * @param token An optional object with which the posted message will be associated.
  * @return the created Runnable
  */
-fun Handler.postAtTime(uptimeMillis: Long, action: () -> Unit): Runnable {
-    return Runnable(action).apply {
-        postAtTime(this, uptimeMillis)
-    }
-}
-
-/**
- * Version of [Handler.postAtTime] which re-orders the parameters, allowing the action to be
- * placed outside of parentheses.
- *
- * ```
- * handler.postAtTime(token, 200) {
- *     doSomething()
- * }
- * ```
- *
- * @return the created Runnable
- */
-fun Handler.postAtTime(token: Any, uptimeMillis: Long, action: () -> Unit): Runnable {
-    return Runnable(action).apply {
-        postAtTime(this, token, uptimeMillis)
-    }
+inline fun Handler.postAtTime(
+    uptimeMillis: Long,
+    token: Any? = null,
+    crossinline action: () -> Unit
+) = Runnable { action() }.also {
+    postAtTime(it, token, uptimeMillis)
 }
