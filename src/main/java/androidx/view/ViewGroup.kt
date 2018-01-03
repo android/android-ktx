@@ -57,12 +57,11 @@ inline fun ViewGroup.forEachIndexed(action: (Int, View) -> Unit) {
 }
 
 /** Returns a [MutableIterator] over the views in this view group. */
-fun ViewGroup.children() = object : Iterable<View> {
-    override fun iterator() = object : Iterator<View> {
-        private var index = 0
-        override fun hasNext() = index < childCount
-        override fun next() = getChildAt(index++) ?: throw IndexOutOfBoundsException()
-    }
+operator fun ViewGroup.iterator() = object : MutableIterator<View> {
+    private var index = 0
+    override fun hasNext() = index < childCount
+    override fun next() = getChildAt(index++) ?: throw IndexOutOfBoundsException()
+    override fun remove() = removeViewAt(--index)
 }
 
 /**

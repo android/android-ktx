@@ -140,20 +140,49 @@ class ViewGroupTest {
         assertThat(views).containsExactly(view1, view2)
     }
 
-    @Test fun children() {
+    @Test fun iterator() {
         val view1 = View(context)
         viewGroup.addView(view1)
         val view2 = View(context)
         viewGroup.addView(view2)
 
-        val children = viewGroup.children().iterator()
-        assertTrue(children.hasNext())
-        assertSame(view1, children.next())
-        assertTrue(children.hasNext())
-        assertSame(view2, children.next())
-        assertFalse(children.hasNext())
+        val iterator = viewGroup.iterator()
+        assertTrue(iterator.hasNext())
+        assertSame(view1, iterator.next())
+        assertTrue(iterator.hasNext())
+        assertSame(view2, iterator.next())
+        assertFalse(iterator.hasNext())
         assertThrows<IndexOutOfBoundsException> {
-            children.next()
+            iterator.next()
+        }
+    }
+
+    @Test fun iteratorRemoving() {
+        val view1 = View(context)
+        viewGroup.addView(view1)
+        val view2 = View(context)
+        viewGroup.addView(view2)
+
+        val iterator = viewGroup.iterator()
+
+        assertSame(view1, iterator.next())
+        iterator.remove()
+        assertFalse(view1 in viewGroup)
+        assertEquals(1, viewGroup.childCount)
+
+        assertSame(view2, iterator.next())
+        iterator.remove()
+        assertFalse(view2 in viewGroup)
+        assertEquals(0, viewGroup.childCount)
+    }
+
+    @Test fun iteratorForEach() {
+        val views = listOf(View(context), View(context))
+        views.forEach(viewGroup::addView)
+
+        var index = 0
+        for (view in viewGroup) {
+            assertSame(views[index++], view)
         }
     }
 
