@@ -105,6 +105,18 @@ class ViewGroupTest {
         assertEquals(1, viewGroup.size)
     }
 
+    @Test fun isEmpty() {
+        assertTrue(viewGroup.isEmpty())
+        viewGroup.addView(View(context))
+        assertFalse(viewGroup.isEmpty())
+    }
+
+    @Test fun isNotEmpty() {
+        assertFalse(viewGroup.isNotEmpty())
+        viewGroup.addView(View(context))
+        assertTrue(viewGroup.isNotEmpty())
+    }
+
     @Test fun forEach() {
         viewGroup.forEach {
             fail("Empty view group should not invoke lambda")
