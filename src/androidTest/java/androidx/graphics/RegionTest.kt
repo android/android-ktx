@@ -19,6 +19,7 @@ package androidx.graphics
 import android.graphics.Point
 import android.graphics.Rect
 import android.graphics.Region
+import androidx.assertThrows
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotSame
@@ -130,13 +131,15 @@ class RegionTest {
         assertEquals(2, count)
     }
 
-    @Test(expected = IndexOutOfBoundsException::class) fun iteratorOutOfBounds() {
+    @Test fun iteratorOutOfBounds() {
         val region = Region(0, 0, 4, 4) -
                 Rect(2, 2, 6, 6)
         val it = region.iterator()
         it.next()
         it.next()
-        it.next()
+        assertThrows<IndexOutOfBoundsException> {
+            it.next()
+        }
     }
 
     @Test fun iteratorForEach() {

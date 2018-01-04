@@ -128,10 +128,13 @@ inline infix fun Region.xor(r: Region): Region {
 
 /** Performs the given action on each rect in this region. */
 inline fun Region.forEach(action: (Rect) -> Unit) {
-    val it = RegionIterator(this)
-    val r = Rect()
-    while (it.next(r)) {
-        action(Rect(r))
+    val iterator = RegionIterator(this)
+    while (true) {
+        val r = Rect()
+        if (!iterator.next(r)) {
+            break
+        }
+        action(r)
     }
 }
 
