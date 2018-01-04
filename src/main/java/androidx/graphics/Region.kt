@@ -21,6 +21,7 @@ package androidx.graphics
 import android.graphics.Point
 import android.graphics.Rect
 import android.graphics.Region
+import android.graphics.RegionIterator
 
 /**
  * Return true if the region contains the specified [Point].
@@ -122,5 +123,35 @@ inline infix fun Region.xor(r: Rect): Region {
 inline infix fun Region.xor(r: Region): Region {
     return Region(this).apply {
         op(r, Region.Op.XOR)
+    }
+}
+
+/** Performs the given action on each rect in this region. */
+inline fun Region.forEach(action: (Rect) -> Unit) {
+    val iterator = RegionIterator(this)
+    while (true) {
+        val r = Rect()
+        if (!iterator.next(r)) {
+            break
+        }
+        action(r)
+    }
+}
+
+/** Returns an [Iterator] over the rects in this region. */
+operator fun Region.iterator() = object : Iterator<Rect> {
+    private val iterator = RegionIterator(this@iterator)
+    private val rect = Rect()
+    private var hasMore = iterator.next(rect)
+
+    override fun hasNext() = hasMore
+
+    override fun next(): Rect {
+        if (hasMore) {
+            val r = Rect(rect)
+            hasMore = iterator.next(rect)
+            return r
+        }
+        throw IndexOutOfBoundsException()
     }
 }
