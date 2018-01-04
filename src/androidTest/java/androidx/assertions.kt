@@ -31,4 +31,4 @@ inline fun <reified T : Throwable> assertThrows(body: () -> Unit): ThrowableSubj
     throw AssertionError("Body completed successfully. Expected ${T::class.java.simpleName}.")
 }
 
-fun fail(message: String? = null): Nothing = throw AssertionError(null)
+fun fail(message: String? = null): Nothing = throw AssertionError(message)
