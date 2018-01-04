@@ -133,7 +133,6 @@ class PathTest {
         assertTrue(p.isEmpty)
     }
 
-
     @Test fun testXor() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 10.0f, 10.0f, Path.Direction.CW) }
         val r2 = Path().apply { addRect(5.0f, 5.0f, 15.0f, 15.0f, Path.Direction.CW) }
