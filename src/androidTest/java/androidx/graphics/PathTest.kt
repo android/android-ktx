@@ -83,7 +83,7 @@ class PathTest {
 
     @Test fun testUnion() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 10.0f, 10.0f, Path.Direction.CW) }
-        val r2 = Path().apply { addRect(5.0f, 5.0f, 15.0f, 15.0f, Path.Direction.CW) }
+        val r2 = Path().apply { addRect(5.0f, 0.0f, 15.0f, 15.0f, Path.Direction.CW) }
 
         val p = r1 + r2
         val r = RectF()
@@ -94,7 +94,7 @@ class PathTest {
 
     @Test fun testAnd() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 10.0f, 10.0f, Path.Direction.CW) }
-        val r2 = Path().apply { addRect(5.0f, 5.0f, 15.0f, 15.0f, Path.Direction.CW) }
+        val r2 = Path().apply { addRect(5.0f, 0.0f, 15.0f, 15.0f, Path.Direction.CW) }
 
         val p = r1 and r2
         val r = RectF()
@@ -116,13 +116,13 @@ class PathTest {
 
     @Test fun testIntersection() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 10.0f, 10.0f, Path.Direction.CW) }
-        val r2 = Path().apply { addRect(5.0f, 5.0f, 15.0f, 15.0f, Path.Direction.CW) }
+        val r2 = Path().apply { addRect(5.0f, 0.0f, 15.0f, 15.0f, Path.Direction.CW) }
 
         val p = r1 or r2
         val r = RectF()
         p.computeBounds(r, true)
 
-        assertEquals(RectF(5.0f, 5.0f, 10.0f, 10.0f), r)
+        assertEquals(RectF(5.0f, 0.0f, 10.0f, 10.0f), r)
     }
 
     @Test fun testEmptyIntersection() {
