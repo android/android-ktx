@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("NOTHING_TO_INLINE")
+
 package androidx.graphics
 
 import android.graphics.Path
@@ -66,4 +68,51 @@ fun Path.flatten(error: Float = 0.5f): Iterable<PathSegment> {
         }
     }
     return segments
+}
+
+/**
+ * Returns the union of two paths as a new [Path].
+ */
+@RequiresApi(19)
+inline operator fun Path.plus(p: Path): Path {
+    return Path(this).apply {
+        op(p, Path.Op.UNION)
+    }
+}
+
+/**
+ * Returns the difference of two paths as a new [Path].
+ */
+@RequiresApi(19)
+inline operator fun Path.minus(p: Path): Path {
+    return Path(this).apply {
+        op(p, Path.Op.DIFFERENCE)
+    }
+}
+
+/**
+ * Returns the union of two paths as a new [Path].
+ */
+@RequiresApi(19)
+inline infix fun Path.and(p: Path) = this + p
+
+/**
+ * Returns the intersection of two paths as a new [Path].
+ * If the paths do not intersect, returns an empty path.
+ */
+@RequiresApi(19)
+inline infix fun Path.or(p: Path): Path {
+    return Path().apply {
+        op(this@or, p, Path.Op.INTERSECT)
+    }
+}
+
+/**
+ * Returns the union minus the intersection of two paths as a new [Path].
+ */
+@RequiresApi(19)
+inline infix fun Path.xor(p: Path): Path {
+    return Path(this).apply {
+        op(p, Path.Op.XOR)
+    }
 }
