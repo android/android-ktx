@@ -47,6 +47,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
     androidTestImplementation 'com.google.truth:truth:0.37'
+    androidTestImplementation 'com.squareup.okio:okio:1.13.0'
 
     ktlint 'com.github.shyiko:ktlint:0.14.0'
 }
