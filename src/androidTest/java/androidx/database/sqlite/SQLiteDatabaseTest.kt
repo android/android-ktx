@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package androidx.database
+package androidx.database.sqlite
 
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
