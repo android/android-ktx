@@ -23,7 +23,7 @@ import android.graphics.Canvas
 import android.support.annotation.ColorInt
 
 /**
- * Creates a new [Canvas] to draw on this bitmap and execute the specified
+ * Creates a new [Canvas] to draw on this bitmap and executes the specified
  * [block] on the newly created canvas. Example:
  *
  * ```
