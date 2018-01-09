@@ -105,7 +105,7 @@ operator fun Color.plus(c: Color): Color {
         throw IllegalArgumentException("Color models must match ($model vs ${c.model}")
     }
 
-    val s = if (!colorSpace.equals(c.colorSpace)) c.convert(colorSpace) else c
+    val s = if (colorSpace != c.colorSpace) c.convert(colorSpace) else c
 
     val src = s.components
     val dst = components
