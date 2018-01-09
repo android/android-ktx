@@ -49,14 +49,14 @@ inline fun ViewGroup.isEmpty() = childCount == 0
 inline fun ViewGroup.isNotEmpty() = childCount != 0
 
 /** Performs the given action on each view in this view group. */
-inline fun ViewGroup.forEach(action: (View) -> Unit) {
+inline fun ViewGroup.forEach(action: (view: View) -> Unit) {
     for (index in 0 until childCount) {
         action(getChildAt(index))
     }
 }
 
 /** Performs the given action on each view in this view group, providing its sequential index. */
-inline fun ViewGroup.forEachIndexed(action: (Int, View) -> Unit) {
+inline fun ViewGroup.forEachIndexed(action: (index: Int, view: View) -> Unit) {
     for (index in 0 until childCount) {
         action(index, getChildAt(index))
     }

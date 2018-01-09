@@ -75,7 +75,7 @@ fun SparseBooleanArray.remove(key: Int, value: Boolean): Boolean {
 fun SparseBooleanArray.putAll(other: SparseBooleanArray) = other.forEach(::put)
 
 /** Performs the given [action] for each key/value entry. */
-inline fun SparseBooleanArray.forEach(action: (Int, Boolean) -> Unit) {
+inline fun SparseBooleanArray.forEach(action: (key: Int, value: Boolean) -> Unit) {
     for (index in 0 until size()) {
         action(keyAt(index), valueAt(index))
     }

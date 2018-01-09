@@ -28,7 +28,7 @@ import java.nio.charset.Charset
  * write will be failed. Otherwise the write will be applied atomically to the file.
  */
 @RequiresApi(17)
-inline fun AtomicFile.tryWrite(block: (FileOutputStream) -> Unit) {
+inline fun AtomicFile.tryWrite(block: (out: FileOutputStream) -> Unit) {
     val stream = startWrite()
     var success = false
     try {

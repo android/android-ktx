@@ -23,7 +23,7 @@ import android.transition.Transition
  * Add an action which will be invoked when this transition has ended.
  */
 @RequiresApi(19)
-fun Transition.doOnEnd(action: (Transition) -> Unit) {
+fun Transition.doOnEnd(action: (transition: Transition) -> Unit) {
     addListener(onEnd = action)
 }
 
@@ -31,7 +31,7 @@ fun Transition.doOnEnd(action: (Transition) -> Unit) {
  * Add an action which will be invoked when this transition has started.
  */
 @RequiresApi(19)
-fun Transition.doOnStart(action: (Transition) -> Unit) {
+fun Transition.doOnStart(action: (transition: Transition) -> Unit) {
     addListener(onStart = action)
 }
 
@@ -39,7 +39,7 @@ fun Transition.doOnStart(action: (Transition) -> Unit) {
  * Add an action which will be invoked when this transition has been cancelled.
  */
 @RequiresApi(19)
-fun Transition.doOnCancel(action: (Transition) -> Unit) {
+fun Transition.doOnCancel(action: (transition: Transition) -> Unit) {
     addListener(onCancel = action)
 }
 
@@ -47,7 +47,7 @@ fun Transition.doOnCancel(action: (Transition) -> Unit) {
  * Add an action which will be invoked when this transition has resumed after a pause.
  */
 @RequiresApi(19)
-fun Transition.doOnResume(action: (Transition) -> Unit) {
+fun Transition.doOnResume(action: (transition: Transition) -> Unit) {
     addListener(onResume = action)
 }
 
@@ -55,7 +55,7 @@ fun Transition.doOnResume(action: (Transition) -> Unit) {
  * Add an action which will be invoked when this transition has been paused.
  */
 @RequiresApi(19)
-fun Transition.doOnPause(action: (Transition) -> Unit) {
+fun Transition.doOnPause(action: (transition: Transition) -> Unit) {
     addListener(onPause = action)
 }
 
@@ -64,11 +64,11 @@ fun Transition.doOnPause(action: (Transition) -> Unit) {
  */
 @RequiresApi(19)
 fun Transition.addListener(
-        onEnd: ((Transition) -> Unit)? = null,
-        onStart: ((Transition) -> Unit)? = null,
-        onCancel: ((Transition) -> Unit)? = null,
-        onResume: ((Transition) -> Unit)? = null,
-        onPause: ((Transition) -> Unit)? = null) {
+        onEnd: ((transition: Transition) -> Unit)? = null,
+        onStart: ((transition: Transition) -> Unit)? = null,
+        onCancel: ((transition: Transition) -> Unit)? = null,
+        onResume: ((transition: Transition) -> Unit)? = null,
+        onPause: ((transition: Transition) -> Unit)? = null) {
     addListener(object : Transition.TransitionListener {
         override fun onTransitionEnd(transition: Transition) {
             onEnd?.invoke(transition)
