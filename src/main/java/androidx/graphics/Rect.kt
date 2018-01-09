@@ -19,6 +19,7 @@
 package androidx.graphics
 
 import android.annotation.SuppressLint
+import android.graphics.Matrix
 import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
@@ -326,3 +327,9 @@ inline fun Rect.toRegion() = Region(this)
  * that this rect can fit within it.
  */
 inline fun RectF.toRegion() = Region(this.toRect())
+
+/**
+ * Transform this rectangle in place using the supplied [Matrix] and returns
+ * this rectangle.
+ */
+inline fun RectF.transform(m: Matrix) = apply { m.mapRect(this@transform) }

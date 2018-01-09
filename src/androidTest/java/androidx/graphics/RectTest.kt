@@ -16,6 +16,7 @@
 
 package androidx.graphics
 
+import android.graphics.Matrix
 import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
@@ -203,5 +204,24 @@ class RectTest {
 
     @Test fun toRegionFloat() {
         assertEquals(Rect(1, 1, 5, 5), RectF(1.1f, 1.1f, 4.8f, 4.8f).toRegion().bounds)
+    }
+
+    @Test fun transformRectToRect() {
+        val m = Matrix()
+        m.setScale(2.0f, 2.0f)
+
+        val r = RectF(2.0f, 2.0f, 5.0f, 7.0f).transform(m)
+        assertEquals(RectF(4.0f, 4.0f, 10.0f, 14.0f), r)
+    }
+
+    @Test fun transformRectNotPreserved() {
+        val m = Matrix()
+        m.setRotate(45.0f)
+
+        val (l, t, r, b) = RectF(-1.0f, -1.0f, 1.0f, 1.0f).transform(m)
+        assertEquals(-1.414f, l, 1e-3f)
+        assertEquals(-1.414f, t, 1e-3f)
+        assertEquals( 1.414f, r, 1e-3f)
+        assertEquals( 1.414f, b, 1e-3f)
     }
 }
