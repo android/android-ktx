@@ -45,7 +45,7 @@ fun scaleMatrix(sx: Float = 1.0f, sy: Float = 1.0f) = Matrix().apply { setScale(
 
 /**
  * Creates a rotation matrix, defined by a rotation angle in degrees around the pivot
- * point located at the coordinates ([px],[py]).
+ * point located at the coordinates ([px], [py]).
  */
 fun rotationMatrix(degrees: Float, px: Float = 0.0f, py: Float = 0.0f) =
         Matrix().apply { setRotate(degrees, px, py) }
