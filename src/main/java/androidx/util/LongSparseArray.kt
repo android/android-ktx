@@ -83,7 +83,7 @@ fun <T> LongSparseArray<T>.putAll(other: LongSparseArray<T>) = other.forEach(::p
 
 /** Performs the given [action] for each key/value entry. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.forEach(action: (Long, T) -> Unit) {
+inline fun <T> LongSparseArray<T>.forEach(action: (key: Long, value: T) -> Unit) {
     for (index in 0 until size()) {
         action(keyAt(index), valueAt(index))
     }

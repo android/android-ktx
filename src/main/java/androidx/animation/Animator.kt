@@ -24,7 +24,7 @@ import android.support.annotation.RequiresApi
  *
  * @see Animator.end
  */
-fun Animator.doOnEnd(action: (Animator) -> Unit) {
+fun Animator.doOnEnd(action: (animator: Animator) -> Unit) {
     addListener(onEnd = action)
 }
 
@@ -33,7 +33,7 @@ fun Animator.doOnEnd(action: (Animator) -> Unit) {
  *
  * @see Animator.start
  */
-fun Animator.doOnStart(action: (Animator) -> Unit) {
+fun Animator.doOnStart(action: (animator: Animator) -> Unit) {
     addListener(onStart = action)
 }
 
@@ -42,14 +42,14 @@ fun Animator.doOnStart(action: (Animator) -> Unit) {
  *
  * @see Animator.cancel
  */
-fun Animator.doOnCancel(action: (Animator) -> Unit) {
+fun Animator.doOnCancel(action: (animator: Animator) -> Unit) {
     addListener(onCancel = action)
 }
 
 /**
  * Add an action which will be invoked when the animation has repeated.
  */
-fun Animator.doOnRepeat(action: (Animator) -> Unit) {
+fun Animator.doOnRepeat(action: (animator: Animator) -> Unit) {
     addListener(onRepeat = action)
 }
 
@@ -59,7 +59,7 @@ fun Animator.doOnRepeat(action: (Animator) -> Unit) {
  * @see Animator.resume
  */
 @RequiresApi(19)
-fun Animator.doOnResume(action: (Animator) -> Unit) {
+fun Animator.doOnResume(action: (animator: Animator) -> Unit) {
     addPauseListener(onResume = action)
 }
 
@@ -69,7 +69,7 @@ fun Animator.doOnResume(action: (Animator) -> Unit) {
  * @see Animator.pause
  */
 @RequiresApi(19)
-fun Animator.doOnPause(action: (Animator) -> Unit) {
+fun Animator.doOnPause(action: (animator: Animator) -> Unit) {
     addPauseListener(onPause = action)
 }
 
@@ -77,10 +77,10 @@ fun Animator.doOnPause(action: (Animator) -> Unit) {
  * Add a listener to this Animator using the provided actions.
  */
 fun Animator.addListener(
-    onEnd: ((Animator) -> Unit)? = null,
-    onStart: ((Animator) -> Unit)? = null,
-    onCancel: ((Animator) -> Unit)? = null,
-    onRepeat: ((Animator) -> Unit)? = null) {
+    onEnd: ((animator: Animator) -> Unit)? = null,
+    onStart: ((animator: Animator) -> Unit)? = null,
+    onCancel: ((animator: Animator) -> Unit)? = null,
+    onRepeat: ((animator: Animator) -> Unit)? = null) {
     addListener(object : Animator.AnimatorListener {
         override fun onAnimationRepeat(animator: Animator) {
             onRepeat?.invoke(animator)
@@ -105,8 +105,8 @@ fun Animator.addListener(
  */
 @RequiresApi(19)
 fun Animator.addPauseListener(
-    onResume: ((Animator) -> Unit)? = null,
-    onPause: ((Animator) -> Unit)? = null) {
+    onResume: ((animator: Animator) -> Unit)? = null,
+    onPause: ((animator: Animator) -> Unit)? = null) {
     addPauseListener(object : Animator.AnimatorPauseListener {
         override fun onAnimationPause(animator: Animator) {
             onPause?.invoke(animator)
