@@ -17,7 +17,6 @@
 package androidx.graphics.drawable
 
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.support.test.InstrumentationRegistry
 import org.junit.Assert.assertEquals
 import org.junit.Test
