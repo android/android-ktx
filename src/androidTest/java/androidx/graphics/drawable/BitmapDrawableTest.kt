@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE", "WRONG_ANNOTATION_TARGET_WITH_USE_SITE_TARGET_ON_TYPE")
-
 package androidx.graphics.drawable
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.support.annotation.ColorInt
-import android.support.annotation.RequiresApi
+import android.graphics.Bitmap
+import android.support.test.InstrumentationRegistry
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
-/** Create a [ColorDrawable] from this color value. */
-inline fun @receiver:ColorInt Int.toDrawable() = ColorDrawable(this)
+class BitmapDrawableTest {
+    private val context = InstrumentationRegistry.getContext()
 
-/** Create a [ColorDrawable] from this [Color] (via [Color.toArgb]). */
-@RequiresApi(26)
-inline fun Color.toDrawable() = ColorDrawable(toArgb())
+    @Test fun fromBitmap() {
+        val b = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
+        val drawable = b.toDrawable(context.resources)
+        assertEquals(b, drawable.bitmap)
+    }
+}
