@@ -18,14 +18,9 @@
 
 package androidx.graphics.drawable
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.support.annotation.ColorInt
-import android.support.annotation.RequiresApi
+import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 
-/** Create a [ColorDrawable] from this color value. */
-inline fun @receiver:ColorInt Int.toDrawable() = ColorDrawable(this)
-
-/** Create a [ColorDrawable] from this [Color] (via [Color.toArgb]). */
-@RequiresApi(26)
-inline fun Color.toDrawable() = ColorDrawable(toArgb())
+/** Create a [BitmapDrawable] from this [Bitmap]. */
+inline fun Bitmap.toDrawable(resources: Resources) = BitmapDrawable(resources, this)
