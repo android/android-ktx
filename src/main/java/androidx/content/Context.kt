@@ -63,7 +63,7 @@ inline fun Context.withStyledAttributes(
  * @see android.content.res.Resources.Theme.obtainStyledAttributes
  */
 inline fun Context.withStyledAttributes(
-        @StyleRes resourceId: Int = 0,
+        @StyleRes resourceId: Int,
         attrs: IntArray,
         block: TypedArray.() -> Unit) {
     val typedArray = obtainStyledAttributes(resourceId, attrs)

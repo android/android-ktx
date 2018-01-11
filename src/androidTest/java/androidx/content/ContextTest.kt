@@ -70,7 +70,6 @@ class ContextTest {
         }
 
         context.withStyledAttributes(attrs, R.styleable.SampleAttrs) {
-            android.util.Log.d("Test", "test" + getInt(R.styleable.SampleAttrs_sample, -1))
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
         }
 
