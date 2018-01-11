@@ -16,7 +16,7 @@
 
 package androidx.transition
 
-import android.kotlin.R
+import android.kotlin.test.R
 import android.support.test.InstrumentationRegistry
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4

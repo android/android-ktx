@@ -16,12 +16,29 @@
 
 package androidx.content
 
+import android.kotlin.test.R
+import android.support.test.InstrumentationRegistry
 import android.test.mock.MockContext
+import android.util.Xml
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
+import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
+import org.xmlpull.v1.XmlPullParser
 
 class ContextTest {
+    private val context = InstrumentationRegistry.getContext()
+    private val parser = context.resources.getXml(R.layout.test_attrs)
+    private val attrs = Xml.asAttributeSet(parser)
+
+    @Before fun prepareAttrs() {
+        var type = parser.next()
+        while (type != XmlPullParser.START_TAG) {
+            type = parser.next()
+        }
+    }
+
     @Test fun systemService() {
         var lookup: Class<*>? = null
         val context = object : MockContext() {
@@ -37,5 +54,27 @@ class ContextTest {
         val actual = context.systemService<Unit>()
         assertEquals(Unit::class.java, lookup)
         assertSame(Unit, actual)
+    }
+
+    @Test fun withStyledAttributes() {
+        context.withStyledAttributes(attrs = intArrayOf(android.R.attr.textColorPrimary)) {
+            val resourceId = getResourceId(0, -1)
+            assertTrue(resourceId != 1)
+        }
+
+        context.withStyledAttributes(
+                android.R.style.Theme_Light,
+                intArrayOf(android.R.attr.textColorPrimary)) {
+            val resourceId = getResourceId(0, -1)
+            assertTrue(resourceId != 1)
+        }
+
+        context.withStyledAttributes(attrs, R.styleable.SampleAttrs) {
+            assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
+        }
+
+        context.withStyledAttributes(attrs, R.styleable.SampleAttrs, 0, 0) {
+            assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
+        }
     }
 }
