@@ -23,6 +23,8 @@ package androidx.content {
 
   public final class ContextKt {
     ctor public ContextKt();
+    method public static final void withStyledAttributes(android.content.Context, android.util.AttributeSet?, int[], @AttrRes int, @StyleRes int, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit>);
+    method public static final void withStyledAttributes(android.content.Context, @StyleRes int, int[], kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit>);
   }
 
   public final class SharedPreferencesKt {
