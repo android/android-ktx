@@ -16,7 +16,7 @@
 
 package androidx.content
 
-import android.kotlin.R
+import android.kotlin.test.R
 import android.support.test.InstrumentationRegistry
 import android.test.mock.MockContext
 import android.util.Xml
@@ -57,7 +57,7 @@ class ContextTest {
     }
 
     @Test fun withStyledAttributes() {
-        context.withStyledAttributes(intArrayOf(android.R.attr.textColorPrimary)) {
+        context.withStyledAttributes(attrs = intArrayOf(android.R.attr.textColorPrimary)) {
             val resourceId = getResourceId(0, -1)
             assertTrue(resourceId != 1)
         }

@@ -2,7 +2,9 @@ package androidx.content
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.support.annotation.AttrRes
 import android.support.annotation.RequiresApi
+import android.support.annotation.StyleRes
 import android.util.AttributeSet
 
 /**
@@ -27,31 +29,6 @@ inline fun <reified T> Context.systemService() = getSystemService(T::class.java)
  * @param set The base set of attribute values.
  * @param attrs	The desired attributes to be retrieved. These attribute IDs must be
  *              sorted in ascending order.
- *
- * @see Context.obtainStyledAttributes
- * @see android.content.res.Resources.Theme.obtainStyledAttributes
- */
-inline fun Context.withStyledAttributes(
-        set: AttributeSet?,
-        attrs: IntArray,
-        block: TypedArray.() -> Unit) {
-    val typedArray = obtainStyledAttributes(set, attrs)
-    try {
-        typedArray.block()
-    } finally {
-        typedArray.recycle()
-    }
-}
-
-/**
- * Executes [block] on a [TypedArray] receiver. The [TypedArray] holds the attribute
- * values in [set] that are listed in [attrs]. In addition, if the given [AttributeSet]
- * specifies a style class (through the `style` attribute), that style will be applied
- * on top of the base attributes it defines.
- *
- * @param set The base set of attribute values.
- * @param attrs	The desired attributes to be retrieved. These attribute IDs must be
- *              sorted in ascending order.
  * @param defStyleAttr An attribute in the current theme that contains a reference to
  *                     a style resource that supplies defaults values for the [TypedArray].
  *                     Can be 0 to not look for defaults.
@@ -63,33 +40,12 @@ inline fun Context.withStyledAttributes(
  * @see android.content.res.Resources.Theme.obtainStyledAttributes
  */
 inline fun Context.withStyledAttributes(
-        set: AttributeSet?,
+        set: AttributeSet? = null,
         attrs: IntArray,
-        defStyleAttr: Int,
-        defStyleRes: Int,
+        @AttrRes defStyleAttr: Int = 0,
+        @StyleRes defStyleRes: Int = 0,
         block: TypedArray.() -> Unit) {
     val typedArray = obtainStyledAttributes(set, attrs, defStyleAttr, defStyleRes)
-    try {
-        typedArray.block()
-    } finally {
-        typedArray.recycle()
-    }
-}
-
-/**
- * Executes [block] on a [TypedArray] receiver. The [TypedArray] holds the the values
- * defined by this context's [theme][android.content.res.Resources.Theme] which are
- * listed in [attrs].
- *
- * @param attrs	The desired attributes. These attribute IDs must be sorted in ascending order.
- *
- * @see Context.obtainStyledAttributes
- * @see android.content.res.Resources.Theme.obtainStyledAttributes
- */
-inline fun Context.withStyledAttributes(
-        attrs: IntArray,
-        block: TypedArray.() -> Unit) {
-    val typedArray = obtainStyledAttributes(attrs)
     try {
         typedArray.block()
     } finally {
@@ -107,7 +63,7 @@ inline fun Context.withStyledAttributes(
  * @see android.content.res.Resources.Theme.obtainStyledAttributes
  */
 inline fun Context.withStyledAttributes(
-        resourceId: Int,
+        @StyleRes resourceId: Int = 0,
         attrs: IntArray,
         block: TypedArray.() -> Unit) {
     val typedArray = obtainStyledAttributes(resourceId, attrs)

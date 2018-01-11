@@ -17,7 +17,7 @@
 package androidx.kotlin
 
 import android.app.Activity
-import android.kotlin.R
+import android.kotlin.test.R
 import android.os.Bundle
 
 class TestActivity : Activity() {
