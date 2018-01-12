@@ -16,8 +16,13 @@
 
 package androidx
 
+import android.content.Context
+import android.support.annotation.LayoutRes
+import android.util.AttributeSet
+import android.util.Xml
 import com.google.common.truth.ThrowableSubject
 import com.google.common.truth.Truth.assertThat
+import org.xmlpull.v1.XmlPullParser
 
 inline fun <reified T : Throwable> assertThrows(body: () -> Unit): ThrowableSubject {
     try {
@@ -32,3 +37,12 @@ inline fun <reified T : Throwable> assertThrows(body: () -> Unit): ThrowableSubj
 }
 
 fun fail(message: String? = null): Nothing = throw AssertionError(message)
+
+fun Context.getAttributeSet(@LayoutRes layoutId: Int): AttributeSet {
+    val parser = resources.getXml(layoutId)
+    var type = parser.next()
+    while (type != XmlPullParser.START_TAG) {
+        type = parser.next()
+    }
+    return Xml.asAttributeSet(parser)
+}

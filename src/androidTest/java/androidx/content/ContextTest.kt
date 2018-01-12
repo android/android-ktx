@@ -18,26 +18,15 @@ package androidx.content
 
 import android.support.test.InstrumentationRegistry
 import android.test.mock.MockContext
-import android.util.Xml
+import androidx.getAttributeSet
 import androidx.kotlin.test.R
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
-import org.junit.Before
 import org.junit.Test
-import org.xmlpull.v1.XmlPullParser
 
 class ContextTest {
     private val context = InstrumentationRegistry.getContext()
-    private val parser = context.resources.getXml(R.layout.test_attrs)
-    private val attrs = Xml.asAttributeSet(parser)
-
-    @Before fun prepareAttrs() {
-        var type = parser.next()
-        while (type != XmlPullParser.START_TAG) {
-            type = parser.next()
-        }
-    }
 
     @Test fun systemService() {
         var lookup: Class<*>? = null
@@ -69,6 +58,7 @@ class ContextTest {
             assertTrue(resourceId != 1)
         }
 
+        val attrs = context.getAttributeSet(R.layout.test_attrs)
         context.withStyledAttributes(attrs, R.styleable.SampleAttrs) {
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
         }
