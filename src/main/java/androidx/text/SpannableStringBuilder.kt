@@ -50,7 +50,7 @@ inline fun SpannableStringBuilder.inSpans(
 ): SpannableStringBuilder {
     val start = length
     builderAction()
-    for(span in spans) setSpan(span, start, length, SPAN_INCLUSIVE_EXCLUSIVE)
+    for (span in spans) setSpan(span, start, length, SPAN_INCLUSIVE_EXCLUSIVE)
     return this
 }
 
@@ -76,7 +76,7 @@ inline fun SpannableStringBuilder.italic(builderAction: SpannableStringBuilder.(
  * @see SpannableStringBuilder.inSpans
  */
 inline fun SpannableStringBuilder.underline(builderAction: SpannableStringBuilder.() -> Unit) =
-        inSpans(UnderlineSpan(),builderAction = builderAction)
+        inSpans(UnderlineSpan(), builderAction = builderAction)
 
 /**
  * Wrap appended text in `builderAction` in a [ForegroundColorSpan].

@@ -208,10 +208,10 @@ class SpannableStringBuilderTest {
         assertEquals(10, result.getSpanEnd(bold))
     }
 
-    @Test fun multipleSpans(){
+    @Test fun multipleSpans() {
         val result: SpannedString = buildSpannedString {
             append("Hello, ")
-            inSpans(BulletSpan(), UnderlineSpan()){
+            inSpans(BulletSpan(), UnderlineSpan()) {
                 append("World")
             }
         }
