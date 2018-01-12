@@ -16,10 +16,10 @@
 
 package androidx.content
 
-import android.kotlin.test.R
 import android.support.test.InstrumentationRegistry
 import android.test.mock.MockContext
 import android.util.Xml
+import androidx.kotlin.test.R
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
