@@ -312,7 +312,7 @@ package androidx.text {
     method public static final android.text.SpannableStringBuilder bold(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
     method public static final android.text.SpannedString buildSpannedString(kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
     method public static final android.text.SpannableStringBuilder color(android.text.SpannableStringBuilder, @ColorInt int, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
-    method public static final android.text.SpannableStringBuilder inSpan(android.text.SpannableStringBuilder, Object, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
+    method public static final android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, Object, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
     method public static final android.text.SpannableStringBuilder italic(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
     method public static final android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
   }

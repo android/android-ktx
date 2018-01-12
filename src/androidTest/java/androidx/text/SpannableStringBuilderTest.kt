@@ -22,6 +22,7 @@ import android.graphics.Typeface.BOLD
 import android.graphics.Typeface.ITALIC
 import android.text.SpannedString
 import android.text.style.BackgroundColorSpan
+import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.text.style.SubscriptSpan
@@ -44,7 +45,7 @@ class SpannableStringBuilderTest {
         val bold = StyleSpan(BOLD)
         val result: SpannedString = buildSpannedString {
             append("Hello, ")
-            inSpan(bold) {
+            inSpans(bold) {
                 append("World")
             }
         }
@@ -53,7 +54,7 @@ class SpannableStringBuilderTest {
         val spans = result.getSpans(0, result.length, Any::class.java)
         assertEquals(1, spans.size)
 
-        val boldSpan = spans[0] as StyleSpan
+        val boldSpan = spans.filterIsInstance<StyleSpan>().single()
         assertSame(bold, boldSpan)
         assertEquals(7, result.getSpanStart(bold))
         assertEquals(12, result.getSpanEnd(bold))
@@ -71,7 +72,7 @@ class SpannableStringBuilderTest {
         val spans = result.getSpans(0, result.length, Any::class.java)
         assertEquals(1, spans.size)
 
-        val bold = spans[0] as StyleSpan
+        val bold = spans.filterIsInstance<StyleSpan>().single()
         assertEquals(BOLD, bold.style)
         assertEquals(7, result.getSpanStart(bold))
         assertEquals(12, result.getSpanEnd(bold))
@@ -89,7 +90,7 @@ class SpannableStringBuilderTest {
         val spans = result.getSpans(0, result.length, Any::class.java)
         assertEquals(1, spans.size)
 
-        val italic = spans[0] as StyleSpan
+        val italic = spans.filterIsInstance<StyleSpan>().single()
         assertEquals(ITALIC, italic.style)
         assertEquals(7, result.getSpanStart(italic))
         assertEquals(12, result.getSpanEnd(italic))
@@ -107,7 +108,7 @@ class SpannableStringBuilderTest {
         val spans = result.getSpans(0, result.length, Any::class.java)
         assertEquals(1, spans.size)
 
-        val underline = spans[0] as UnderlineSpan
+        val underline = spans.filterIsInstance<UnderlineSpan>().single()
         assertEquals(7, result.getSpanStart(underline))
         assertEquals(12, result.getSpanEnd(underline))
     }
@@ -124,7 +125,7 @@ class SpannableStringBuilderTest {
         val spans = result.getSpans(0, result.length, Any::class.java)
         assertEquals(1, spans.size)
 
-        val color = spans[0] as ForegroundColorSpan
+        val color = spans.filterIsInstance<ForegroundColorSpan>().single()
         assertEquals(RED, color.foregroundColor)
         assertEquals(7, result.getSpanStart(color))
         assertEquals(12, result.getSpanEnd(color))
@@ -142,7 +143,7 @@ class SpannableStringBuilderTest {
         val spans = result.getSpans(0, result.length, Any::class.java)
         assertEquals(1, spans.size)
 
-        val color = spans[0] as BackgroundColorSpan
+        val color = spans.filterIsInstance<BackgroundColorSpan>().single()
         assertEquals(RED, color.backgroundColor)
         assertEquals(7, result.getSpanStart(color))
         assertEquals(12, result.getSpanEnd(color))
@@ -152,11 +153,11 @@ class SpannableStringBuilderTest {
         val result: SpannedString = buildSpannedString {
             color(RED) {
                 append('H')
-                inSpan(SubscriptSpan()) {
+                inSpans(SubscriptSpan()) {
                     append('e')
                 }
                 append('l')
-                inSpan(SuperscriptSpan()) {
+                inSpans(SuperscriptSpan()) {
                     append('l')
                 }
                 append('o')
@@ -205,5 +206,25 @@ class SpannableStringBuilderTest {
         assertEquals(BOLD, bold.style)
         assertEquals(9, result.getSpanStart(bold))
         assertEquals(10, result.getSpanEnd(bold))
+    }
+
+    @Test fun multipleSpans() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            inSpans(BulletSpan(), UnderlineSpan()) {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans(0, result.length, Any::class.java)
+        assertEquals(2, spans.size)
+
+        val bullet = spans.filterIsInstance<BulletSpan>().single()
+        assertEquals(7, result.getSpanStart(bullet))
+        assertEquals(12, result.getSpanEnd(bullet))
+        val underline = spans.filterIsInstance<UnderlineSpan>().single()
+        assertEquals(7, result.getSpanStart(underline))
+        assertEquals(12, result.getSpanEnd(underline))
     }
 }
