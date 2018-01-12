@@ -34,6 +34,28 @@ package androidx.content {
 
 }
 
+package androidx.content.res {
+
+  public final class TypedArrayKt {
+    ctor public TypedArrayKt();
+    method public static final boolean getBooleanOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method @ColorInt public static final int getColorOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final android.content.res.ColorStateList getColorStateListOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final float getDimensionOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method @Dimension public static final int getDimensionPixelOffsetOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method @Dimension public static final int getDimensionPixelSizeOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final android.graphics.drawable.Drawable getDrawableOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final float getFloatOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method @RequiresApi(26) public static final android.graphics.Typeface getFontOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final int getIntOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final int getIntegerOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final String getStringOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final CharSequence[] getTextArrayOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final CharSequence getTextOrThrow(android.content.res.TypedArray, @StyleableRes int);
+  }
+
+}
+
 package androidx.database {
 
   public final class CursorKt {
