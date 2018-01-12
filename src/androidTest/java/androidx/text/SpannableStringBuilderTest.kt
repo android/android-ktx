@@ -22,6 +22,7 @@ import android.graphics.Typeface.BOLD
 import android.graphics.Typeface.ITALIC
 import android.text.SpannedString
 import android.text.style.BackgroundColorSpan
+import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.text.style.SubscriptSpan
@@ -44,7 +45,7 @@ class SpannableStringBuilderTest {
         val bold = StyleSpan(BOLD)
         val result: SpannedString = buildSpannedString {
             append("Hello, ")
-            inSpan(bold) {
+            inSpans(bold) {
                 append("World")
             }
         }
@@ -152,11 +153,11 @@ class SpannableStringBuilderTest {
         val result: SpannedString = buildSpannedString {
             color(RED) {
                 append('H')
-                inSpan(SubscriptSpan()) {
+                inSpans(SubscriptSpan()) {
                     append('e')
                 }
                 append('l')
-                inSpan(SuperscriptSpan()) {
+                inSpans(SuperscriptSpan()) {
                     append('l')
                 }
                 append('o')
@@ -205,5 +206,25 @@ class SpannableStringBuilderTest {
         assertEquals(BOLD, bold.style)
         assertEquals(9, result.getSpanStart(bold))
         assertEquals(10, result.getSpanEnd(bold))
+    }
+
+    @Test fun multipleSpans(){
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            inSpans(BulletSpan(), UnderlineSpan()){
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans(0, result.length, Any::class.java)
+        assertEquals(2, spans.size)
+
+        val bullet = spans[0] as BulletSpan
+        assertEquals(7, result.getSpanStart(bullet))
+        assertEquals(12, result.getSpanEnd(bullet))
+        val underline = spans[1] as UnderlineSpan
+        assertEquals(7, result.getSpanStart(underline))
+        assertEquals(12, result.getSpanEnd(underline))
     }
 }
