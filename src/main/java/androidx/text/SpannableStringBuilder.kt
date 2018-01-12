@@ -38,62 +38,62 @@ inline fun buildSpannedString(builderAction: SpannableStringBuilder.() -> Unit):
 }
 
 /**
- * Wrap appended text in `builderAction` in `span`.
+ * Wrap appended text in `builderAction` in `spans`.
  *
- * Note: the span will only have the correct position if the `builderAction` only appends or
+ * Note: the spans will only have the correct position if the `builderAction` only appends or
  * replaces text. Inserting, deleting, or clearing the text will cause the span to be placed at
  * an incorrect position.
  */
-inline fun SpannableStringBuilder.inSpan(
-    span: Any,
+inline fun SpannableStringBuilder.inSpans(
+    vararg spans: Any,
     builderAction: SpannableStringBuilder.() -> Unit
 ): SpannableStringBuilder {
     val start = length
     builderAction()
-    setSpan(span, start, length, SPAN_INCLUSIVE_EXCLUSIVE)
+    for (span in spans) setSpan(span, start, length, SPAN_INCLUSIVE_EXCLUSIVE)
     return this
 }
 
 /**
  * Wrap appended text in `builderAction` in a bold [StyleSpan].
  *
- * @see SpannableStringBuilder.inSpan
+ * @see SpannableStringBuilder.inSpans
  */
 inline fun SpannableStringBuilder.bold(builderAction: SpannableStringBuilder.() -> Unit) =
-        inSpan(StyleSpan(BOLD), builderAction)
+        inSpans(StyleSpan(BOLD), builderAction = builderAction)
 
 /**
  * Wrap appended text in `builderAction` in an italic [StyleSpan].
  *
- * @see SpannableStringBuilder.inSpan
+ * @see SpannableStringBuilder.inSpans
  */
 inline fun SpannableStringBuilder.italic(builderAction: SpannableStringBuilder.() -> Unit) =
-        inSpan(StyleSpan(ITALIC), builderAction)
+        inSpans(StyleSpan(ITALIC), builderAction = builderAction)
 
 /**
  * Wrap appended text in `builderAction` in an [UnderlineSpan].
  *
- * @see SpannableStringBuilder.inSpan
+ * @see SpannableStringBuilder.inSpans
  */
 inline fun SpannableStringBuilder.underline(builderAction: SpannableStringBuilder.() -> Unit) =
-        inSpan(UnderlineSpan(), builderAction)
+        inSpans(UnderlineSpan(), builderAction = builderAction)
 
 /**
  * Wrap appended text in `builderAction` in a [ForegroundColorSpan].
  *
- * @see SpannableStringBuilder.inSpan
+ * @see SpannableStringBuilder.inSpans
  */
 inline fun SpannableStringBuilder.color(
     @ColorInt color: Int,
     builderAction: SpannableStringBuilder.() -> Unit
-) = inSpan(ForegroundColorSpan(color), builderAction)
+) = inSpans(ForegroundColorSpan(color), builderAction = builderAction)
 
 /**
  * Wrap appended text in `builderAction` in a [BackgroundColorSpan].
  *
- * @see SpannableStringBuilder.inSpan
+ * @see SpannableStringBuilder.inSpans
  */
 inline fun SpannableStringBuilder.backgroundColor(
     @ColorInt color: Int,
     builderAction: SpannableStringBuilder.() -> Unit
-) = inSpan(BackgroundColorSpan(color), builderAction)
+) = inSpans(BackgroundColorSpan(color), builderAction = builderAction)

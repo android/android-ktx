@@ -25,7 +25,7 @@ import android.view.ViewTreeObserver
  *
  * @see doOnLayout
  */
-inline fun View.doOnNextLayout(crossinline action: (View) -> Unit) {
+inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
     addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
         override fun onLayoutChange(view: View, left: Int, top: Int, right: Int, bottom: Int,
                                     oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int) {
@@ -43,7 +43,7 @@ inline fun View.doOnNextLayout(crossinline action: (View) -> Unit) {
  * @see doOnNextLayout
  */
 @RequiresApi(19)
-inline fun View.doOnLayout(crossinline action: (View) -> Unit) {
+inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
     if (isLaidOut) {
         action(this)
     } else {
@@ -56,7 +56,7 @@ inline fun View.doOnLayout(crossinline action: (View) -> Unit) {
 /**
  * Performs the given action when the view tree is about to be drawn.
  */
-inline fun View.doOnPreDraw(crossinline action: (View) -> Unit) {
+inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
     val vto = viewTreeObserver
     vto.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
         override fun onPreDraw(): Boolean {

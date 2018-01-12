@@ -81,6 +81,60 @@ inline operator fun Color.component3() = getComponent(2)
 inline operator fun Color.component4() = getComponent(3)
 
 /**
+ * Composites two translucent colors together. More specifically, adds two colors using
+ * the [source over][android.graphics.PorterDuff.Mode.SRC_OVER] blending mode. The colors
+ * must not be pre-multiplied and the result is a non pre-multiplied color.
+ *
+ * If the two colors have different color spaces, the color in the right-hand part
+ * of the expression is converted to the color space of the color in left-hand part
+ * of the expression.
+ *
+ * The following example creates a purple color by blending opaque blue with
+ * semi-translucent red:
+ *
+ * ```
+ * val purple = Color.valueOf(0f, 0f, 1f) + Color.valueOf(1f, 0f, 0f, 0.5f)
+ * ```
+ *
+ * @throws IllegalArgumentException if the [color models][android.graphics.Color.getModel]
+ *                                  of the colors do not match
+ */
+@RequiresApi(26)
+operator fun Color.plus(c: Color): Color {
+    if (model != c.model) {
+        throw IllegalArgumentException("Color models must match ($model vs ${c.model}")
+    }
+
+    val s = if (colorSpace != c.colorSpace) c.convert(colorSpace) else c
+
+    val src = s.components
+    val dst = components
+
+    var sa = s.alpha()
+    // Destination alpha pre-composited
+    var da = alpha() * (1.0f - sa)
+
+    // Index of the alpha component
+    val ai = componentCount - 1
+
+    // Final alpha: src_alpha + dst_alpha * (1 - src_alpha)
+    dst[ai] = sa + da
+
+    // Divide by final alpha to return non pre-multiplied color
+    if (dst[ai] > 0) {
+        sa /= dst[ai]
+        da /= dst[ai]
+    }
+
+    // Composite non-alpha components
+    for (i in 0 until ai) {
+        dst[i] = src[i] * sa + dst[i] * da
+    }
+
+    return Color.valueOf(dst, colorSpace)
+}
+
+/**
  * Return the alpha component of a color int. This is equivalent to calling:
  * ```
  * Color.alpha(myInt)

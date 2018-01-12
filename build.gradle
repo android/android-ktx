@@ -36,6 +36,7 @@ android {
 
 configurations {
     ktlint
+    metalava
 }
 
 dependencies {
@@ -47,8 +48,18 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
     androidTestImplementation 'com.google.truth:truth:0.37'
+    androidTestImplementation 'com.squareup.okio:okio:1.13.0'
 
     ktlint 'com.github.shyiko:ktlint:0.14.0'
+
+    // Metalava isn't released yet. Check in its jar and explicitly track its transitive deps.
+    metalava files('metalava.jar')
+    metalava 'com.android.tools.external.org-jetbrains:uast:26.1.0-alpha06'
+    metalava 'com.android.tools.external.com-intellij:intellij-core:26.1.0-alpha06'
+    metalava 'com.android.tools.lint:lint-api:26.1.0-alpha06'
+    metalava 'com.android.tools.lint:lint-checks:26.1.0-alpha06'
+    metalava 'com.android.tools.lint:lint:26.1.0-alpha06'
+    metalava 'org.jetbrains.kotlin:kotlin-stdlib:1.2.10'
 }
 
 task ktlint(type: JavaExec, group: LifecycleBasePlugin.VERIFICATION_GROUP) {
@@ -65,6 +76,52 @@ task ktFormat(type: JavaExec, group: 'formatting') {
     main = 'com.github.shyiko.ktlint.Main'
     args '-F', 'src/**/*.kt'
 }
+
+task updateApi(type: JavaExec) {
+    classpath = configurations.metalava
+    main = 'com.android.tools.metalava.Driver'
+
+    // Defer setting arguments so that we can read a variant-specific configuration.
+    doFirst {
+        args = [
+            '--source-path',
+            'src/main/java',
+            '--compatible-output=no',
+            '--omit-common-packages=yes',
+            '--output-kotlin-nulls=yes',
+            '--allow-referencing-unknown-classes', // TODO we probably shouldn't need this
+            '--classpath',
+            (android.bootClasspath + configurations.releaseCompileClasspath.asFileTree.files).join(File.pathSeparator),
+            '--api',
+            'src/main/api/0.txt'
+        ]
+    }
+}
+
+task checkApi(type: JavaExec) {
+    classpath = configurations.metalava
+    main = 'com.android.tools.metalava.Driver'
+
+    // Defer setting arguments so that we can read a variant-specific configuration.
+    doFirst {
+        args = [
+            '--source-path',
+            'src/main/java',
+            '--compatible-output=no',
+            '--omit-common-packages=yes',
+            '--output-kotlin-nulls=yes',
+            '--input-kotlin-nulls=yes',
+            '--allow-referencing-unknown-classes', // TODO we probably shouldn't need this
+            '--classpath',
+            (android.bootClasspath + configurations.releaseCompileClasspath.asFileTree.files).join(File.pathSeparator),
+            '--check-compatibility',
+            '--warnings-as-errors',
+            '--previous-api',
+            'src/main/api/0.txt'
+        ]
+    }
+}
+check.dependsOn checkApi
 
 dokka {
     outputFormat = 'html'

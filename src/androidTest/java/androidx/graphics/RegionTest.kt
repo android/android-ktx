@@ -19,7 +19,10 @@ package androidx.graphics
 import android.graphics.Point
 import android.graphics.Rect
 import android.graphics.Region
+import androidx.assertThrows
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -113,5 +116,42 @@ class RegionTest {
         val r = Region(0, 0, 4, 4) xor Region(2, 2, 6, 6)
         assertFalse(Point(3, 3) in r)
         assertTrue(Point(1, 1) in r)
+    }
+
+    @Test fun iteratorForLoop() {
+        val region = Region(0, 0, 4, 4) -
+                Rect(2, 2, 6, 6)
+        var count = 0
+        var r = Rect()
+        for (rect in region) {
+            count++
+            assertNotSame(r, rect)
+            r = rect
+        }
+        assertEquals(2, count)
+    }
+
+    @Test fun iteratorOutOfBounds() {
+        val region = Region(0, 0, 4, 4) -
+                Rect(2, 2, 6, 6)
+        val it = region.iterator()
+        it.next()
+        it.next()
+        assertThrows<IndexOutOfBoundsException> {
+            it.next()
+        }
+    }
+
+    @Test fun iteratorForEach() {
+        val region = Region(0, 0, 4, 4) -
+                Rect(2, 2, 6, 6)
+        var count = 0
+        var r = Rect()
+        region.forEach {
+            count++
+            assertNotSame(r, it)
+            r = it
+        }
+        assertEquals(2, count)
     }
 }

@@ -16,7 +16,6 @@
 
 package androidx.transition
 
-import android.kotlin.R
 import android.support.test.InstrumentationRegistry
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
@@ -26,6 +25,7 @@ import android.transition.TransitionManager
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.kotlin.test.R
 import androidx.kotlin.TestActivity
 import org.junit.Assert.assertTrue
 import org.junit.Before

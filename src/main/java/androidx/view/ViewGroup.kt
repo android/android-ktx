@@ -42,27 +42,32 @@ inline operator fun ViewGroup.minusAssign(view: View) = removeView(view)
 /** Returns the number of views in this view group. */
 inline val ViewGroup.size get() = childCount
 
+/** Returns true if this view group contains no views. */
+inline fun ViewGroup.isEmpty() = childCount == 0
+
+/** Returns true if this view group contains one or more views. */
+inline fun ViewGroup.isNotEmpty() = childCount != 0
+
 /** Performs the given action on each view in this view group. */
-inline fun ViewGroup.forEach(action: (View) -> Unit) {
+inline fun ViewGroup.forEach(action: (view: View) -> Unit) {
     for (index in 0 until childCount) {
         action(getChildAt(index))
     }
 }
 
 /** Performs the given action on each view in this view group, providing its sequential index. */
-inline fun ViewGroup.forEachIndexed(action: (Int, View) -> Unit) {
+inline fun ViewGroup.forEachIndexed(action: (index: Int, view: View) -> Unit) {
     for (index in 0 until childCount) {
         action(index, getChildAt(index))
     }
 }
 
 /** Returns a [MutableIterator] over the views in this view group. */
-fun ViewGroup.children() = object : Iterable<View> {
-    override fun iterator() = object : Iterator<View> {
-        private var index = 0
-        override fun hasNext() = index < childCount
-        override fun next() = getChildAt(index++) ?: throw IndexOutOfBoundsException()
-    }
+operator fun ViewGroup.iterator() = object : MutableIterator<View> {
+    private var index = 0
+    override fun hasNext() = index < childCount
+    override fun next() = getChildAt(index++) ?: throw IndexOutOfBoundsException()
+    override fun remove() = removeViewAt(--index)
 }
 
 /**
