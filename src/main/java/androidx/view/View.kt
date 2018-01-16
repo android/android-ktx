@@ -29,8 +29,8 @@ inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
     addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
         override fun onLayoutChange(view: View, left: Int, top: Int, right: Int, bottom: Int,
                                     oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int) {
-            action(view)
             view.removeOnLayoutChangeListener(this)
+            action(view)
         }
     })
 }
