@@ -2,14 +2,14 @@ package androidx.animation {
 
   public final class AnimatorKt {
     ctor public AnimatorKt();
-    method public static final void addListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?);
-    method @RequiresApi(19) public static final void addPauseListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?);
-    method public static final void doOnCancel(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method public static final void doOnEnd(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method @RequiresApi(19) public static final void doOnPause(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method public static final void doOnRepeat(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method @RequiresApi(19) public static final void doOnResume(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method public static final void doOnStart(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
+    method public static final android.animation.Animator.AnimatorListener addListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?);
+    method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener addPauseListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?);
+    method public static final android.animation.Animator.AnimatorListener doOnCancel(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
+    method public static final android.animation.Animator.AnimatorListener doOnEnd(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
+    method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener doOnPause(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
+    method public static final android.animation.Animator.AnimatorListener doOnRepeat(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
+    method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener doOnResume(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
+    method public static final android.animation.Animator.AnimatorListener doOnStart(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
   }
 
 }
@@ -334,7 +334,7 @@ package androidx.text {
     method public static final android.text.SpannableStringBuilder bold(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
     method public static final android.text.SpannedString buildSpannedString(kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
     method public static final android.text.SpannableStringBuilder color(android.text.SpannableStringBuilder, @ColorInt int, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
-    method public static final android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, Object, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
+    method public static final android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, Object[], kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
     method public static final android.text.SpannableStringBuilder italic(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
     method public static final android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
   }
