@@ -1,6 +1,6 @@
 buildscript {
     ext.versions = [
-        'kotlin': '1.2.10'
+        'kotlin': '1.2.20'
     ]
 
     repositories {
