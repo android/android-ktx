@@ -130,3 +130,17 @@ dokka {
     outputFormat = 'html'
     outputDirectory = "$buildDir/documentation"
 }
+task dokkaJar(type: Jar, dependsOn: dokka) {
+    classifier = 'javadoc'
+    from dokka.outputDirectory
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.source
+}
+
+artifacts {
+    archives dokkaJar
+    archives sourcesJar
+}
