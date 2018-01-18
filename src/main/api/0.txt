@@ -2,14 +2,14 @@ package androidx.animation {
 
   public final class AnimatorKt {
     ctor public AnimatorKt();
-    method public static final android.animation.Animator.AnimatorListener addListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?);
-    method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener addPauseListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>?);
-    method public static final android.animation.Animator.AnimatorListener doOnCancel(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method public static final android.animation.Animator.AnimatorListener doOnEnd(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener doOnPause(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method public static final android.animation.Animator.AnimatorListener doOnRepeat(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener doOnResume(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
-    method public static final android.animation.Animator.AnimatorListener doOnStart(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>);
+    method public static final android.animation.Animator.AnimatorListener addListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onEnd, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onStart, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onCancel, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onRepeat);
+    method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener addPauseListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onResume, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onPause);
+    method public static final android.animation.Animator.AnimatorListener doOnCancel(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+    method public static final android.animation.Animator.AnimatorListener doOnEnd(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+    method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener doOnPause(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+    method public static final android.animation.Animator.AnimatorListener doOnRepeat(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+    method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener doOnResume(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+    method public static final android.animation.Animator.AnimatorListener doOnStart(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
   }
 
 }
@@ -18,18 +18,18 @@ package androidx.content {
 
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
-    method public static final error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>...);
+    method public static final error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
   public final class ContextKt {
     ctor public ContextKt();
-    method public static final void withStyledAttributes(android.content.Context, android.util.AttributeSet?, int[], @AttrRes int, @StyleRes int, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit>);
-    method public static final void withStyledAttributes(android.content.Context, @StyleRes int, int[], kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit>);
+    method public static final void withStyledAttributes(android.content.Context, android.util.AttributeSet? set, int[] attrs, @AttrRes int defStyleAttr, @StyleRes int defStyleRes, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
+    method public static final void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }
 
   public final class SharedPreferencesKt {
     ctor public SharedPreferencesKt();
-    method public static final void edit(android.content.SharedPreferences, kotlin.jvm.functions.Function1<? super android.content.SharedPreferences.Editor,kotlin.Unit>);
+    method public static final void edit(android.content.SharedPreferences, kotlin.jvm.functions.Function1<? super android.content.SharedPreferences.Editor,kotlin.Unit> action);
   }
 
 }
@@ -38,20 +38,20 @@ package androidx.content.res {
 
   public final class TypedArrayKt {
     ctor public TypedArrayKt();
-    method public static final boolean getBooleanOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method @ColorInt public static final int getColorOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method public static final android.content.res.ColorStateList getColorStateListOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method public static final float getDimensionOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method @Dimension public static final int getDimensionPixelOffsetOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method @Dimension public static final int getDimensionPixelSizeOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method public static final android.graphics.drawable.Drawable getDrawableOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method public static final float getFloatOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method @RequiresApi(26) public static final android.graphics.Typeface getFontOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method public static final int getIntOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method public static final int getIntegerOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method public static final String getStringOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method public static final CharSequence[] getTextArrayOrThrow(android.content.res.TypedArray, @StyleableRes int);
-    method public static final CharSequence getTextOrThrow(android.content.res.TypedArray, @StyleableRes int);
+    method public static final boolean getBooleanOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method @ColorInt public static final int getColorOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final android.content.res.ColorStateList getColorStateListOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final float getDimensionOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method @Dimension public static final int getDimensionPixelOffsetOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method @Dimension public static final int getDimensionPixelSizeOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final android.graphics.drawable.Drawable getDrawableOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final float getFloatOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method @RequiresApi(26) public static final android.graphics.Typeface getFontOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final int getIntOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final int getIntegerOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final String getStringOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final CharSequence[] getTextArrayOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final CharSequence getTextOrThrow(android.content.res.TypedArray, @StyleableRes int index);
   }
 
 }
@@ -60,27 +60,27 @@ package androidx.database {
 
   public final class CursorKt {
     ctor public CursorKt();
-    method public static final byte[] getBlob(android.database.Cursor, String);
-    method public static final byte[]? getBlobOrNull(android.database.Cursor, int);
-    method public static final error.NonExistentClass getBlobOrNull(android.database.Cursor, String);
-    method public static final double getDouble(android.database.Cursor, String);
-    method public static final Double? getDoubleOrNull(android.database.Cursor, int);
-    method public static final error.NonExistentClass getDoubleOrNull(android.database.Cursor, String);
-    method public static final float getFloat(android.database.Cursor, String);
-    method public static final Float? getFloatOrNull(android.database.Cursor, int);
-    method public static final error.NonExistentClass getFloatOrNull(android.database.Cursor, String);
-    method public static final int getInt(android.database.Cursor, String);
-    method public static final Integer? getIntOrNull(android.database.Cursor, int);
-    method public static final error.NonExistentClass getIntOrNull(android.database.Cursor, String);
-    method public static final long getLong(android.database.Cursor, String);
-    method public static final Long? getLongOrNull(android.database.Cursor, int);
-    method public static final error.NonExistentClass getLongOrNull(android.database.Cursor, String);
-    method public static final short getShort(android.database.Cursor, String);
-    method public static final Short? getShortOrNull(android.database.Cursor, int);
-    method public static final error.NonExistentClass getShortOrNull(android.database.Cursor, String);
-    method public static final String getString(android.database.Cursor, String);
-    method public static final String? getStringOrNull(android.database.Cursor, int);
-    method public static final error.NonExistentClass getStringOrNull(android.database.Cursor, String);
+    method public static final byte[] getBlob(android.database.Cursor, String columnName);
+    method public static final byte[]? getBlobOrNull(android.database.Cursor, int index);
+    method public static final error.NonExistentClass getBlobOrNull(android.database.Cursor, String columnName);
+    method public static final double getDouble(android.database.Cursor, String columnName);
+    method public static final Double? getDoubleOrNull(android.database.Cursor, int index);
+    method public static final error.NonExistentClass getDoubleOrNull(android.database.Cursor, String columnName);
+    method public static final float getFloat(android.database.Cursor, String columnName);
+    method public static final Float? getFloatOrNull(android.database.Cursor, int index);
+    method public static final error.NonExistentClass getFloatOrNull(android.database.Cursor, String columnName);
+    method public static final int getInt(android.database.Cursor, String columnName);
+    method public static final Integer? getIntOrNull(android.database.Cursor, int index);
+    method public static final error.NonExistentClass getIntOrNull(android.database.Cursor, String columnName);
+    method public static final long getLong(android.database.Cursor, String columnName);
+    method public static final Long? getLongOrNull(android.database.Cursor, int index);
+    method public static final error.NonExistentClass getLongOrNull(android.database.Cursor, String columnName);
+    method public static final short getShort(android.database.Cursor, String columnName);
+    method public static final Short? getShortOrNull(android.database.Cursor, int index);
+    method public static final error.NonExistentClass getShortOrNull(android.database.Cursor, String columnName);
+    method public static final String getString(android.database.Cursor, String columnName);
+    method public static final String? getStringOrNull(android.database.Cursor, int index);
+    method public static final error.NonExistentClass getStringOrNull(android.database.Cursor, String columnName);
   }
 
 }
@@ -89,7 +89,7 @@ package androidx.database.sqlite {
 
   public final class SQLiteDatabaseKt {
     ctor public SQLiteDatabaseKt();
-    method public static final void transaction(android.database.sqlite.SQLiteDatabase, boolean, kotlin.jvm.functions.Function1<? super android.database.sqlite.SQLiteDatabase,kotlin.Unit>);
+    method public static final void transaction(android.database.sqlite.SQLiteDatabase, boolean exclusive, kotlin.jvm.functions.Function1<? super android.database.sqlite.SQLiteDatabase,kotlin.Unit> body);
   }
 
 }
@@ -98,18 +98,18 @@ package androidx.graphics {
 
   public final class BitmapKt {
     ctor public BitmapKt();
-    method public static final android.graphics.Bitmap applyCanvas(android.graphics.Bitmap, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit>);
-    method public static final int get(android.graphics.Bitmap, int, int);
-    method public static final void set(android.graphics.Bitmap, int, int, @ColorInt int);
+    method public static final android.graphics.Bitmap applyCanvas(android.graphics.Bitmap, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
+    method public static final int get(android.graphics.Bitmap, int x, int y);
+    method public static final void set(android.graphics.Bitmap, int x, int y, @ColorInt int color);
   }
 
   public final class CanvasKt {
     ctor public CanvasKt();
-    method public static final void withRotation(android.graphics.Canvas, float, float, float, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit>);
-    method public static final void withSave(android.graphics.Canvas, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit>);
-    method public static final void withScale(android.graphics.Canvas, float, float, float, float, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit>);
-    method public static final void withSkew(android.graphics.Canvas, float, float, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit>);
-    method public static final void withTranslation(android.graphics.Canvas, float, float, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit>);
+    method public static final void withRotation(android.graphics.Canvas, float degrees, float pivotX, float pivotY, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
+    method public static final void withSave(android.graphics.Canvas, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
+    method public static final void withScale(android.graphics.Canvas, float x, float y, float pivotX, float pivotY, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
+    method public static final void withSkew(android.graphics.Canvas, float x, float y, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
+    method public static final void withTranslation(android.graphics.Canvas, float x, float y, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
   }
 
   public final class ColorKt {
@@ -139,7 +139,7 @@ package androidx.graphics {
     method @RequiresApi(26) public static final float getRed(long);
     method @RequiresApi(26) public static final boolean isSrgb(long);
     method @RequiresApi(26) public static final boolean isWideGamut(long);
-    method @RequiresApi(26) public static final android.graphics.Color plus(android.graphics.Color, android.graphics.Color);
+    method @RequiresApi(26) public static final android.graphics.Color plus(android.graphics.Color, android.graphics.Color c);
     method @RequiresApi(26) public static final android.graphics.Color toColor(int);
     method @RequiresApi(26) public static final android.graphics.Color toColor(long);
     method @RequiresApi(26) @ColorInt public static final int toColorInt(long);
@@ -148,30 +148,30 @@ package androidx.graphics {
 
   public final class MatrixKt {
     ctor public MatrixKt();
-    method public static final error.NonExistentClass rotationMatrix(float, float, float);
-    method public static final error.NonExistentClass scaleMatrix(float, float);
-    method public static final error.NonExistentClass times(android.graphics.Matrix, android.graphics.Matrix);
-    method public static final error.NonExistentClass translationMatrix(float, float);
+    method public static final error.NonExistentClass rotationMatrix(float degrees, float px, float py);
+    method public static final error.NonExistentClass scaleMatrix(float sx, float sy);
+    method public static final error.NonExistentClass times(android.graphics.Matrix, android.graphics.Matrix m);
+    method public static final error.NonExistentClass translationMatrix(float tx, float ty);
     method public static final error.NonExistentClass values(android.graphics.Matrix);
   }
 
   public final class PathKt {
     ctor public PathKt();
-    method @RequiresApi(19) public static final android.graphics.Path and(android.graphics.Path, android.graphics.Path);
-    method @RequiresApi(26) public static final java.lang.Iterable<androidx.graphics.PathSegment> flatten(android.graphics.Path, float);
-    method @RequiresApi(19) public static final android.graphics.Path minus(android.graphics.Path, android.graphics.Path);
-    method @RequiresApi(19) public static final android.graphics.Path or(android.graphics.Path, android.graphics.Path);
-    method @RequiresApi(19) public static final android.graphics.Path plus(android.graphics.Path, android.graphics.Path);
-    method @RequiresApi(19) public static final android.graphics.Path xor(android.graphics.Path, android.graphics.Path);
+    method @RequiresApi(19) public static final android.graphics.Path and(android.graphics.Path, android.graphics.Path p);
+    method @RequiresApi(26) public static final java.lang.Iterable<androidx.graphics.PathSegment> flatten(android.graphics.Path, float error);
+    method @RequiresApi(19) public static final android.graphics.Path minus(android.graphics.Path, android.graphics.Path p);
+    method @RequiresApi(19) public static final android.graphics.Path or(android.graphics.Path, android.graphics.Path p);
+    method @RequiresApi(19) public static final android.graphics.Path plus(android.graphics.Path, android.graphics.Path p);
+    method @RequiresApi(19) public static final android.graphics.Path xor(android.graphics.Path, android.graphics.Path p);
   }
 
   public final class PathSegment {
-    ctor public PathSegment(android.graphics.PointF, float, android.graphics.PointF, float);
+    ctor public PathSegment(android.graphics.PointF start, float startFraction, android.graphics.PointF end, float endFraction);
     method public final android.graphics.PointF component1();
     method public final float component2();
     method public final android.graphics.PointF component3();
     method public final float component4();
-    method public final androidx.graphics.PathSegment copy(android.graphics.PointF, float, android.graphics.PointF, float);
+    method public final androidx.graphics.PathSegment copy(android.graphics.PointF start, float startFraction, android.graphics.PointF end, float endFraction);
     method public final android.graphics.PointF getEnd();
     method public final float getEndFraction();
     method public final android.graphics.PointF getStart();
@@ -180,7 +180,7 @@ package androidx.graphics {
 
   public final class PictureKt {
     ctor public PictureKt();
-    method public static final android.graphics.Picture record(android.graphics.Picture, int, int, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit>);
+    method public static final android.graphics.Picture record(android.graphics.Picture, int width, int height, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
   }
 
   public final class PointKt {
@@ -189,14 +189,14 @@ package androidx.graphics {
     method public static final float component1(android.graphics.PointF);
     method public static final int component2(android.graphics.Point);
     method public static final float component2(android.graphics.PointF);
-    method public static final android.graphics.Point minus(android.graphics.Point, android.graphics.Point);
-    method public static final android.graphics.PointF minus(android.graphics.PointF, android.graphics.PointF);
-    method public static final android.graphics.Point minus(android.graphics.Point, int);
-    method public static final android.graphics.PointF minus(android.graphics.PointF, float);
-    method public static final android.graphics.Point plus(android.graphics.Point, android.graphics.Point);
-    method public static final android.graphics.PointF plus(android.graphics.PointF, android.graphics.PointF);
-    method public static final android.graphics.Point plus(android.graphics.Point, int);
-    method public static final android.graphics.PointF plus(android.graphics.PointF, float);
+    method public static final android.graphics.Point minus(android.graphics.Point, android.graphics.Point p);
+    method public static final android.graphics.PointF minus(android.graphics.PointF, android.graphics.PointF p);
+    method public static final android.graphics.Point minus(android.graphics.Point, int xy);
+    method public static final android.graphics.PointF minus(android.graphics.PointF, float xy);
+    method public static final android.graphics.Point plus(android.graphics.Point, android.graphics.Point p);
+    method public static final android.graphics.PointF plus(android.graphics.PointF, android.graphics.PointF p);
+    method public static final android.graphics.Point plus(android.graphics.Point, int xy);
+    method public static final android.graphics.PointF plus(android.graphics.PointF, float xy);
     method public static final android.graphics.Point toPoint(android.graphics.PointF);
     method public static final android.graphics.PointF toPointF(android.graphics.Point);
     method public static final android.graphics.Point unaryMinus(android.graphics.Point);
@@ -205,8 +205,8 @@ package androidx.graphics {
 
   public final class RectKt {
     ctor public RectKt();
-    method public static final android.graphics.Rect and(android.graphics.Rect, android.graphics.Rect);
-    method public static final android.graphics.RectF and(android.graphics.RectF, android.graphics.RectF);
+    method public static final android.graphics.Rect and(android.graphics.Rect, android.graphics.Rect r);
+    method public static final android.graphics.RectF and(android.graphics.RectF, android.graphics.RectF r);
     method public static final int component1(android.graphics.Rect);
     method public static final float component1(android.graphics.RectF);
     method public static final int component2(android.graphics.Rect);
@@ -215,53 +215,53 @@ package androidx.graphics {
     method public static final float component3(android.graphics.RectF);
     method public static final int component4(android.graphics.Rect);
     method public static final float component4(android.graphics.RectF);
-    method public static final boolean contains(android.graphics.Rect, android.graphics.Point);
-    method public static final boolean contains(android.graphics.RectF, android.graphics.PointF);
-    method public static final android.graphics.Region minus(android.graphics.Rect, android.graphics.Rect);
-    method public static final android.graphics.Region minus(android.graphics.RectF, android.graphics.RectF);
-    method public static final android.graphics.Rect minus(android.graphics.Rect, int);
-    method public static final android.graphics.RectF minus(android.graphics.RectF, float);
-    method public static final android.graphics.Rect minus(android.graphics.Rect, android.graphics.Point);
-    method public static final android.graphics.RectF minus(android.graphics.RectF, android.graphics.PointF);
-    method public static final android.graphics.Rect or(android.graphics.Rect, android.graphics.Rect);
-    method public static final android.graphics.RectF or(android.graphics.RectF, android.graphics.RectF);
-    method public static final android.graphics.Rect plus(android.graphics.Rect, android.graphics.Rect);
-    method public static final android.graphics.RectF plus(android.graphics.RectF, android.graphics.RectF);
-    method public static final android.graphics.Rect plus(android.graphics.Rect, int);
-    method public static final android.graphics.RectF plus(android.graphics.RectF, float);
-    method public static final android.graphics.Rect plus(android.graphics.Rect, android.graphics.Point);
-    method public static final android.graphics.RectF plus(android.graphics.RectF, android.graphics.PointF);
+    method public static final boolean contains(android.graphics.Rect, android.graphics.Point p);
+    method public static final boolean contains(android.graphics.RectF, android.graphics.PointF p);
+    method public static final android.graphics.Region minus(android.graphics.Rect, android.graphics.Rect r);
+    method public static final android.graphics.Region minus(android.graphics.RectF, android.graphics.RectF r);
+    method public static final android.graphics.Rect minus(android.graphics.Rect, int xy);
+    method public static final android.graphics.RectF minus(android.graphics.RectF, float xy);
+    method public static final android.graphics.Rect minus(android.graphics.Rect, android.graphics.Point xy);
+    method public static final android.graphics.RectF minus(android.graphics.RectF, android.graphics.PointF xy);
+    method public static final android.graphics.Rect or(android.graphics.Rect, android.graphics.Rect r);
+    method public static final android.graphics.RectF or(android.graphics.RectF, android.graphics.RectF r);
+    method public static final android.graphics.Rect plus(android.graphics.Rect, android.graphics.Rect r);
+    method public static final android.graphics.RectF plus(android.graphics.RectF, android.graphics.RectF r);
+    method public static final android.graphics.Rect plus(android.graphics.Rect, int xy);
+    method public static final android.graphics.RectF plus(android.graphics.RectF, float xy);
+    method public static final android.graphics.Rect plus(android.graphics.Rect, android.graphics.Point xy);
+    method public static final android.graphics.RectF plus(android.graphics.RectF, android.graphics.PointF xy);
     method public static final android.graphics.Rect toRect(android.graphics.RectF);
     method public static final android.graphics.RectF toRectF(android.graphics.Rect);
     method public static final android.graphics.Region toRegion(android.graphics.Rect);
     method public static final android.graphics.Region toRegion(android.graphics.RectF);
-    method public static final error.NonExistentClass transform(android.graphics.RectF, android.graphics.Matrix);
-    method public static final android.graphics.Region xor(android.graphics.Rect, android.graphics.Rect);
-    method public static final android.graphics.Region xor(android.graphics.RectF, android.graphics.RectF);
+    method public static final error.NonExistentClass transform(android.graphics.RectF, android.graphics.Matrix m);
+    method public static final android.graphics.Region xor(android.graphics.Rect, android.graphics.Rect r);
+    method public static final android.graphics.Region xor(android.graphics.RectF, android.graphics.RectF r);
   }
 
   public final class RegionKt {
     ctor public RegionKt();
-    method public static final android.graphics.Region and(android.graphics.Region, android.graphics.Rect);
-    method public static final android.graphics.Region and(android.graphics.Region, android.graphics.Region);
-    method public static final boolean contains(android.graphics.Region, android.graphics.Point);
-    method public static final void forEach(android.graphics.Region, kotlin.jvm.functions.Function1<? super android.graphics.Rect,kotlin.Unit>);
+    method public static final android.graphics.Region and(android.graphics.Region, android.graphics.Rect r);
+    method public static final android.graphics.Region and(android.graphics.Region, android.graphics.Region r);
+    method public static final boolean contains(android.graphics.Region, android.graphics.Point p);
+    method public static final void forEach(android.graphics.Region, kotlin.jvm.functions.Function1<? super android.graphics.Rect,kotlin.Unit> action);
     method public static final java.util.Iterator<android.graphics.Rect> iterator(android.graphics.Region);
-    method public static final android.graphics.Region minus(android.graphics.Region, android.graphics.Rect);
-    method public static final android.graphics.Region minus(android.graphics.Region, android.graphics.Region);
+    method public static final android.graphics.Region minus(android.graphics.Region, android.graphics.Rect r);
+    method public static final android.graphics.Region minus(android.graphics.Region, android.graphics.Region r);
     method public static final android.graphics.Region not(android.graphics.Region);
-    method public static final android.graphics.Region or(android.graphics.Region, android.graphics.Rect);
-    method public static final android.graphics.Region or(android.graphics.Region, android.graphics.Region);
-    method public static final android.graphics.Region plus(android.graphics.Region, android.graphics.Rect);
-    method public static final android.graphics.Region plus(android.graphics.Region, android.graphics.Region);
+    method public static final android.graphics.Region or(android.graphics.Region, android.graphics.Rect r);
+    method public static final android.graphics.Region or(android.graphics.Region, android.graphics.Region r);
+    method public static final android.graphics.Region plus(android.graphics.Region, android.graphics.Rect r);
+    method public static final android.graphics.Region plus(android.graphics.Region, android.graphics.Region r);
     method public static final android.graphics.Region unaryMinus(android.graphics.Region);
-    method public static final android.graphics.Region xor(android.graphics.Region, android.graphics.Rect);
-    method public static final android.graphics.Region xor(android.graphics.Region, android.graphics.Region);
+    method public static final android.graphics.Region xor(android.graphics.Region, android.graphics.Rect r);
+    method public static final android.graphics.Region xor(android.graphics.Region, android.graphics.Region r);
   }
 
   public final class ShaderKt {
     ctor public ShaderKt();
-    method public static final void transform(android.graphics.Shader, kotlin.jvm.functions.Function1<? super android.graphics.Matrix,kotlin.Unit>);
+    method public static final void transform(android.graphics.Shader, kotlin.jvm.functions.Function1<? super android.graphics.Matrix,kotlin.Unit> block);
   }
 
 }
@@ -270,13 +270,18 @@ package androidx.graphics.drawable {
 
   public final class BitmapDrawableKt {
     ctor public BitmapDrawableKt();
-    method public static final android.graphics.drawable.BitmapDrawable toDrawable(android.graphics.Bitmap, android.content.res.Resources);
+    method public static final android.graphics.drawable.BitmapDrawable toDrawable(android.graphics.Bitmap, android.content.res.Resources resources);
   }
 
   public final class ColorDrawableKt {
     ctor public ColorDrawableKt();
     method public static final android.graphics.drawable.ColorDrawable toDrawable(int);
     method @RequiresApi(26) public static final android.graphics.drawable.ColorDrawable toDrawable(android.graphics.Color);
+  }
+
+  public final class DrawableKt {
+    ctor public DrawableKt();
+    method public static final android.graphics.Bitmap toBitmap(android.graphics.drawable.Drawable, int width, int height, android.graphics.Bitmap.Config? config);
   }
 
   public final class IconKt {
@@ -302,26 +307,26 @@ package androidx.os {
 
   public final class BundleKt {
     ctor public BundleKt();
-    method public static final error.NonExistentClass bundleOf(kotlin.Pair<java.lang.String,?>...);
+    method public static final error.NonExistentClass bundleOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
   public final class HandlerKt {
     ctor public HandlerKt();
-    method public static final error.NonExistentClass postAtTime(android.os.Handler, long, Object?, kotlin.jvm.functions.Function0<kotlin.Unit>);
-    method public static final void postDelayed(android.os.Handler, Runnable, Object?, long);
-    method public static final error.NonExistentClass postDelayed(android.os.Handler, long, Object?, kotlin.jvm.functions.Function0<kotlin.Unit>);
-    method public static final error.NonExistentClass postDelayed(android.os.Handler, long, java.util.concurrent.TimeUnit, Object?, kotlin.jvm.functions.Function0<kotlin.Unit>);
-    method @RequiresApi(26) public static final error.NonExistentClass postDelayed(android.os.Handler, java.time.Duration, Object?, kotlin.jvm.functions.Function0<kotlin.Unit>);
+    method public static final error.NonExistentClass postAtTime(android.os.Handler, long uptimeMillis, Object? token, kotlin.jvm.functions.Function0<kotlin.Unit> action);
+    method public static final void postDelayed(android.os.Handler, Runnable runnable, Object? token, long delayInMillis);
+    method public static final error.NonExistentClass postDelayed(android.os.Handler, long delayInMillis, Object? token, kotlin.jvm.functions.Function0<kotlin.Unit> action);
+    method public static final error.NonExistentClass postDelayed(android.os.Handler, long amount, java.util.concurrent.TimeUnit unit, Object? token, kotlin.jvm.functions.Function0<kotlin.Unit> action);
+    method @RequiresApi(26) public static final error.NonExistentClass postDelayed(android.os.Handler, java.time.Duration duration, Object? token, kotlin.jvm.functions.Function0<kotlin.Unit> action);
   }
 
   public final class PersistableBundleKt {
     ctor public PersistableBundleKt();
-    method @RequiresApi(21) public static final error.NonExistentClass persistableBundleOf(kotlin.Pair<java.lang.String,?>...);
+    method @RequiresApi(21) public static final error.NonExistentClass persistableBundleOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
   public final class TraceKt {
     ctor public TraceKt();
-    method @RequiresApi(18) public static final <T> T! trace(String, kotlin.jvm.functions.Function0<? extends T>);
+    method @RequiresApi(18) public static final <T> T! trace(String sectionName, kotlin.jvm.functions.Function0<? extends T> block);
   }
 
 }
@@ -330,13 +335,13 @@ package androidx.text {
 
   public final class SpannableStringBuilderKt {
     ctor public SpannableStringBuilderKt();
-    method public static final android.text.SpannableStringBuilder backgroundColor(android.text.SpannableStringBuilder, @ColorInt int, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
-    method public static final android.text.SpannableStringBuilder bold(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
-    method public static final android.text.SpannedString buildSpannedString(kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
-    method public static final android.text.SpannableStringBuilder color(android.text.SpannableStringBuilder, @ColorInt int, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
-    method public static final android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, Object[], kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
-    method public static final android.text.SpannableStringBuilder italic(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
-    method public static final android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit>);
+    method public static final android.text.SpannableStringBuilder backgroundColor(android.text.SpannableStringBuilder, @ColorInt int color, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
+    method public static final android.text.SpannableStringBuilder bold(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
+    method public static final android.text.SpannedString buildSpannedString(kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
+    method public static final android.text.SpannableStringBuilder color(android.text.SpannableStringBuilder, @ColorInt int color, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
+    method public static final android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, Object[] spans, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
+    method public static final android.text.SpannableStringBuilder italic(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
+    method public static final android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
   }
 
 }
@@ -353,7 +358,7 @@ package androidx.time {
     ctor public DurationKt();
     method @RequiresApi(26) public static final long component1(java.time.Duration);
     method @RequiresApi(26) public static final int component2(java.time.Duration);
-    method @RequiresApi(26) public static final java.time.Duration div(java.time.Duration, long);
+    method @RequiresApi(26) public static final java.time.Duration div(java.time.Duration, long divisor);
     method @RequiresApi(260) public static final java.time.Duration hours(int);
     method @RequiresApi(260) public static final java.time.Duration hours(long);
     method @RequiresApi(26) public static final java.time.Duration millis(int);
@@ -364,7 +369,7 @@ package androidx.time {
     method @RequiresApi(26) public static final java.time.Duration nanos(long);
     method @RequiresApi(26) public static final java.time.Duration seconds(int);
     method @RequiresApi(26) public static final java.time.Duration seconds(long);
-    method @RequiresApi(26) public static final java.time.Duration times(java.time.Duration, long);
+    method @RequiresApi(26) public static final java.time.Duration times(java.time.Duration, long multiplicand);
     method @RequiresApi(26) public static final java.time.Duration unaryMinus(java.time.Duration);
   }
 
@@ -428,7 +433,7 @@ package androidx.time {
     method @RequiresApi(26) public static final int component3(java.time.Period);
     method @RequiresApi(26) public static final java.time.Period days(int);
     method @RequiresApi(26) public static final java.time.Period months(int);
-    method @RequiresApi(26) public static final java.time.Period times(java.time.Period, int);
+    method @RequiresApi(26) public static final java.time.Period times(java.time.Period, int multiplicand);
     method @RequiresApi(26) public static final java.time.Period unaryMinus(java.time.Period);
     method @RequiresApi(26) public static final java.time.Period years(int);
   }
@@ -457,12 +462,12 @@ package androidx.transition {
 
   public final class TransitionKt {
     ctor public TransitionKt();
-    method @RequiresApi(19) public static final void addListener(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>?, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>?);
-    method @RequiresApi(19) public static final void doOnCancel(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>);
-    method @RequiresApi(19) public static final void doOnEnd(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>);
-    method @RequiresApi(19) public static final void doOnPause(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>);
-    method @RequiresApi(19) public static final void doOnResume(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>);
-    method @RequiresApi(19) public static final void doOnStart(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>);
+    method @RequiresApi(19) public static final void addListener(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>? onEnd, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>? onStart, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>? onCancel, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>? onResume, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit>? onPause);
+    method @RequiresApi(19) public static final void doOnCancel(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit> action);
+    method @RequiresApi(19) public static final void doOnEnd(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit> action);
+    method @RequiresApi(19) public static final void doOnPause(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit> action);
+    method @RequiresApi(19) public static final void doOnResume(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit> action);
+    method @RequiresApi(19) public static final void doOnStart(android.transition.Transition, kotlin.jvm.functions.Function1<? super android.transition.Transition,kotlin.Unit> action);
   }
 
 }
@@ -472,22 +477,22 @@ package androidx.util {
   public final class ArrayMapKt {
     ctor public ArrayMapKt();
     method @RequiresApi(19) public static final <K, V> android.util.ArrayMap<K,V> arrayMapOf();
-    method @RequiresApi(19) public static final <K, V> android.util.ArrayMap<K,V> arrayMapOf(kotlin.Pair<? extends K,? extends V>...);
+    method @RequiresApi(19) public static final <K, V> android.util.ArrayMap<K,V> arrayMapOf(kotlin.Pair<? extends K,? extends V>... pairs);
   }
 
   public final class ArraySetKt {
     ctor public ArraySetKt();
     method @RequiresApi(23) public static final <T> android.util.ArraySet<T> arraySetOf();
-    method @RequiresApi(23) public static final <T> android.util.ArraySet<T> arraySetOf(T...);
+    method @RequiresApi(23) public static final <T> android.util.ArraySet<T> arraySetOf(T... values);
   }
 
   public final class AtomicFileKt {
     ctor public AtomicFileKt();
     method @RequiresApi(17) public static final byte[] readBytes(android.util.AtomicFile);
-    method @RequiresApi(17) public static final String readText(android.util.AtomicFile, java.nio.charset.Charset);
-    method @RequiresApi(17) public static final void tryWrite(android.util.AtomicFile, kotlin.jvm.functions.Function1<? super java.io.FileOutputStream,kotlin.Unit>);
-    method @RequiresApi(17) public static final void writeBytes(android.util.AtomicFile, byte[]);
-    method @RequiresApi(17) public static final void writeText(android.util.AtomicFile, String, java.nio.charset.Charset);
+    method @RequiresApi(17) public static final String readText(android.util.AtomicFile, java.nio.charset.Charset charset);
+    method @RequiresApi(17) public static final void tryWrite(android.util.AtomicFile, kotlin.jvm.functions.Function1<? super java.io.FileOutputStream,kotlin.Unit> block);
+    method @RequiresApi(17) public static final void writeBytes(android.util.AtomicFile, byte[] array);
+    method @RequiresApi(17) public static final void writeText(android.util.AtomicFile, String text, java.nio.charset.Charset charset);
   }
 
   public final class HalfKt {
@@ -500,20 +505,20 @@ package androidx.util {
 
   public final class LongSparseArrayKt {
     ctor public LongSparseArrayKt();
-    method @RequiresApi(16) public static final <T> boolean contains(android.util.LongSparseArray<T>, long);
-    method @RequiresApi(16) public static final <T> boolean containsKey(android.util.LongSparseArray<T>, long);
-    method @RequiresApi(16) public static final <T> boolean containsValue(android.util.LongSparseArray<T>, T!);
-    method @RequiresApi(16) public static final <T> void forEach(android.util.LongSparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Long,? super T,kotlin.Unit>);
-    method @RequiresApi(16) public static final <T> T! getOrDefault(android.util.LongSparseArray<T>, long, T!);
-    method @RequiresApi(16) public static final <T> T! getOrElse(android.util.LongSparseArray<T>, long, kotlin.jvm.functions.Function0<? extends T>);
+    method @RequiresApi(16) public static final <T> boolean contains(android.util.LongSparseArray<T>, long key);
+    method @RequiresApi(16) public static final <T> boolean containsKey(android.util.LongSparseArray<T>, long key);
+    method @RequiresApi(16) public static final <T> boolean containsValue(android.util.LongSparseArray<T>, T! value);
+    method @RequiresApi(16) public static final <T> void forEach(android.util.LongSparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Long,? super T,kotlin.Unit> action);
+    method @RequiresApi(16) public static final <T> T! getOrDefault(android.util.LongSparseArray<T>, long key, T! defaultValue);
+    method @RequiresApi(16) public static final <T> T! getOrElse(android.util.LongSparseArray<T>, long key, kotlin.jvm.functions.Function0<? extends T> defaultValue);
     method @RequiresApi(16) public static final <T> int getSize(android.util.LongSparseArray<T>);
     method @RequiresApi(16) public static final <T> boolean isEmpty(android.util.LongSparseArray<T>);
     method @RequiresApi(16) public static final <T> boolean isNotEmpty(android.util.LongSparseArray<T>);
     method @RequiresApi(16) public static final <T> kotlin.collections.LongIterator keyIterator(android.util.LongSparseArray<T>);
-    method @RequiresApi(16) public static final <T> android.util.LongSparseArray<T> plus(android.util.LongSparseArray<T>, android.util.LongSparseArray<T>);
-    method @RequiresApi(16) public static final <T> void putAll(android.util.LongSparseArray<T>, android.util.LongSparseArray<T>);
-    method @RequiresApi(16) public static final <T> boolean remove(android.util.LongSparseArray<T>, long, T!);
-    method @RequiresApi(16) public static final <T> void set(android.util.LongSparseArray<T>, long, T!);
+    method @RequiresApi(16) public static final <T> android.util.LongSparseArray<T> plus(android.util.LongSparseArray<T>, android.util.LongSparseArray<T> other);
+    method @RequiresApi(16) public static final <T> void putAll(android.util.LongSparseArray<T>, android.util.LongSparseArray<T> other);
+    method @RequiresApi(16) public static final <T> boolean remove(android.util.LongSparseArray<T>, long key, T! value);
+    method @RequiresApi(16) public static final <T> void set(android.util.LongSparseArray<T>, long key, T! value);
     method @RequiresApi(16) public static final <T> java.util.Iterator<T> valueIterator(android.util.LongSparseArray<T>);
   }
 
@@ -535,78 +540,78 @@ package androidx.util {
 
   public final class SparseArrayKt {
     ctor public SparseArrayKt();
-    method public static final <T> boolean contains(android.util.SparseArray<T>, int);
-    method public static final <T> boolean containsKey(android.util.SparseArray<T>, int);
-    method public static final <T> boolean containsValue(android.util.SparseArray<T>, T!);
-    method public static final <T> void forEach(android.util.SparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super T,kotlin.Unit>);
-    method public static final <T> T! getOrDefault(android.util.SparseArray<T>, int, T!);
-    method public static final <T> T! getOrElse(android.util.SparseArray<T>, int, kotlin.jvm.functions.Function0<? extends T>);
+    method public static final <T> boolean contains(android.util.SparseArray<T>, int key);
+    method public static final <T> boolean containsKey(android.util.SparseArray<T>, int key);
+    method public static final <T> boolean containsValue(android.util.SparseArray<T>, T! value);
+    method public static final <T> void forEach(android.util.SparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super T,kotlin.Unit> action);
+    method public static final <T> T! getOrDefault(android.util.SparseArray<T>, int key, T! defaultValue);
+    method public static final <T> T! getOrElse(android.util.SparseArray<T>, int key, kotlin.jvm.functions.Function0<? extends T> defaultValue);
     method public static final <T> int getSize(android.util.SparseArray<T>);
     method public static final <T> boolean isEmpty(android.util.SparseArray<T>);
     method public static final <T> boolean isNotEmpty(android.util.SparseArray<T>);
     method public static final <T> kotlin.collections.IntIterator keyIterator(android.util.SparseArray<T>);
-    method public static final <T> android.util.SparseArray<T> plus(android.util.SparseArray<T>, android.util.SparseArray<T>);
-    method public static final <T> void putAll(android.util.SparseArray<T>, android.util.SparseArray<T>);
-    method public static final <T> boolean remove(android.util.SparseArray<T>, int, T!);
-    method public static final <T> void set(android.util.SparseArray<T>, int, T!);
+    method public static final <T> android.util.SparseArray<T> plus(android.util.SparseArray<T>, android.util.SparseArray<T> other);
+    method public static final <T> void putAll(android.util.SparseArray<T>, android.util.SparseArray<T> other);
+    method public static final <T> boolean remove(android.util.SparseArray<T>, int key, T! value);
+    method public static final <T> void set(android.util.SparseArray<T>, int key, T! value);
     method public static final <T> java.util.Iterator<T> valueIterator(android.util.SparseArray<T>);
   }
 
   public final class SparseBooleanArrayKt {
     ctor public SparseBooleanArrayKt();
-    method public static final boolean contains(android.util.SparseBooleanArray, int);
-    method public static final boolean containsKey(android.util.SparseBooleanArray, int);
-    method public static final boolean containsValue(android.util.SparseBooleanArray, boolean);
-    method public static final void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Boolean,kotlin.Unit>);
-    method public static final boolean getOrDefault(android.util.SparseBooleanArray, int, boolean);
-    method public static final error.NonExistentClass getOrElse(android.util.SparseBooleanArray, int, kotlin.jvm.functions.Function0<java.lang.Boolean>);
+    method public static final boolean contains(android.util.SparseBooleanArray, int key);
+    method public static final boolean containsKey(android.util.SparseBooleanArray, int key);
+    method public static final boolean containsValue(android.util.SparseBooleanArray, boolean value);
+    method public static final void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Boolean,kotlin.Unit> action);
+    method public static final boolean getOrDefault(android.util.SparseBooleanArray, int key, boolean defaultValue);
+    method public static final error.NonExistentClass getOrElse(android.util.SparseBooleanArray, int key, kotlin.jvm.functions.Function0<java.lang.Boolean> defaultValue);
     method public static final int getSize(android.util.SparseBooleanArray);
     method public static final boolean isEmpty(android.util.SparseBooleanArray);
     method public static final boolean isNotEmpty(android.util.SparseBooleanArray);
     method public static final kotlin.collections.IntIterator keyIterator(android.util.SparseBooleanArray);
-    method public static final android.util.SparseBooleanArray plus(android.util.SparseBooleanArray, android.util.SparseBooleanArray);
-    method public static final void putAll(android.util.SparseBooleanArray, android.util.SparseBooleanArray);
-    method public static final boolean remove(android.util.SparseBooleanArray, int, boolean);
-    method public static final void removeAt(android.util.SparseBooleanArray, int);
-    method public static final void set(android.util.SparseBooleanArray, int, boolean);
+    method public static final android.util.SparseBooleanArray plus(android.util.SparseBooleanArray, android.util.SparseBooleanArray other);
+    method public static final void putAll(android.util.SparseBooleanArray, android.util.SparseBooleanArray other);
+    method public static final boolean remove(android.util.SparseBooleanArray, int key, boolean value);
+    method public static final void removeAt(android.util.SparseBooleanArray, int index);
+    method public static final void set(android.util.SparseBooleanArray, int key, boolean value);
     method public static final kotlin.collections.BooleanIterator valueIterator(android.util.SparseBooleanArray);
   }
 
   public final class SparseIntArrayKt {
     ctor public SparseIntArrayKt();
-    method public static final boolean contains(android.util.SparseIntArray, int);
-    method public static final boolean containsKey(android.util.SparseIntArray, int);
-    method public static final boolean containsValue(android.util.SparseIntArray, int);
-    method public static final void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit>);
-    method public static final int getOrDefault(android.util.SparseIntArray, int, int);
-    method public static final error.NonExistentClass getOrElse(android.util.SparseIntArray, int, kotlin.jvm.functions.Function0<java.lang.Integer>);
+    method public static final boolean contains(android.util.SparseIntArray, int key);
+    method public static final boolean containsKey(android.util.SparseIntArray, int key);
+    method public static final boolean containsValue(android.util.SparseIntArray, int value);
+    method public static final void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit> action);
+    method public static final int getOrDefault(android.util.SparseIntArray, int key, int defaultValue);
+    method public static final error.NonExistentClass getOrElse(android.util.SparseIntArray, int key, kotlin.jvm.functions.Function0<java.lang.Integer> defaultValue);
     method public static final int getSize(android.util.SparseIntArray);
     method public static final boolean isEmpty(android.util.SparseIntArray);
     method public static final boolean isNotEmpty(android.util.SparseIntArray);
     method public static final kotlin.collections.IntIterator keyIterator(android.util.SparseIntArray);
-    method public static final android.util.SparseIntArray plus(android.util.SparseIntArray, android.util.SparseIntArray);
-    method public static final void putAll(android.util.SparseIntArray, android.util.SparseIntArray);
-    method public static final boolean remove(android.util.SparseIntArray, int, int);
-    method public static final void set(android.util.SparseIntArray, int, int);
+    method public static final android.util.SparseIntArray plus(android.util.SparseIntArray, android.util.SparseIntArray other);
+    method public static final void putAll(android.util.SparseIntArray, android.util.SparseIntArray other);
+    method public static final boolean remove(android.util.SparseIntArray, int key, int value);
+    method public static final void set(android.util.SparseIntArray, int key, int value);
     method public static final kotlin.collections.IntIterator valueIterator(android.util.SparseIntArray);
   }
 
   public final class SparseLongArrayKt {
     ctor public SparseLongArrayKt();
-    method @RequiresApi(18) public static final boolean contains(android.util.SparseLongArray, int);
-    method @RequiresApi(18) public static final boolean containsKey(android.util.SparseLongArray, int);
-    method @RequiresApi(18) public static final boolean containsValue(android.util.SparseLongArray, long);
-    method @RequiresApi(18) public static final void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Long,kotlin.Unit>);
-    method @RequiresApi(18) public static final long getOrDefault(android.util.SparseLongArray, int, long);
-    method @RequiresApi(18) public static final error.NonExistentClass getOrElse(android.util.SparseLongArray, int, kotlin.jvm.functions.Function0<java.lang.Long>);
+    method @RequiresApi(18) public static final boolean contains(android.util.SparseLongArray, int key);
+    method @RequiresApi(18) public static final boolean containsKey(android.util.SparseLongArray, int key);
+    method @RequiresApi(18) public static final boolean containsValue(android.util.SparseLongArray, long value);
+    method @RequiresApi(18) public static final void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Long,kotlin.Unit> action);
+    method @RequiresApi(18) public static final long getOrDefault(android.util.SparseLongArray, int key, long defaultValue);
+    method @RequiresApi(18) public static final error.NonExistentClass getOrElse(android.util.SparseLongArray, int key, kotlin.jvm.functions.Function0<java.lang.Long> defaultValue);
     method @RequiresApi(18) public static final int getSize(android.util.SparseLongArray);
     method @RequiresApi(18) public static final boolean isEmpty(android.util.SparseLongArray);
     method @RequiresApi(18) public static final boolean isNotEmpty(android.util.SparseLongArray);
     method @RequiresApi(18) public static final kotlin.collections.IntIterator keyIterator(android.util.SparseLongArray);
-    method @RequiresApi(18) public static final android.util.SparseLongArray plus(android.util.SparseLongArray, android.util.SparseLongArray);
-    method @RequiresApi(18) public static final void putAll(android.util.SparseLongArray, android.util.SparseLongArray);
-    method @RequiresApi(18) public static final boolean remove(android.util.SparseLongArray, int, long);
-    method @RequiresApi(18) public static final void set(android.util.SparseLongArray, int, long);
+    method @RequiresApi(18) public static final android.util.SparseLongArray plus(android.util.SparseLongArray, android.util.SparseLongArray other);
+    method @RequiresApi(18) public static final void putAll(android.util.SparseLongArray, android.util.SparseLongArray other);
+    method @RequiresApi(18) public static final boolean remove(android.util.SparseLongArray, int key, long value);
+    method @RequiresApi(18) public static final void set(android.util.SparseLongArray, int key, long value);
     method @RequiresApi(18) public static final kotlin.collections.LongIterator valueIterator(android.util.SparseLongArray);
   }
 
@@ -616,31 +621,31 @@ package androidx.view {
 
   public final class ViewGroupKt {
     ctor public ViewGroupKt();
-    method public static final boolean contains(android.view.ViewGroup, android.view.View);
-    method public static final void forEach(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit>);
-    method public static final void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.view.View,kotlin.Unit>);
-    method public static final android.view.View get(android.view.ViewGroup, int);
+    method public static final boolean contains(android.view.ViewGroup, android.view.View view);
+    method public static final void forEach(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.view.View,kotlin.Unit> action);
+    method public static final android.view.View get(android.view.ViewGroup, int index);
     method public static final int getSize(android.view.ViewGroup);
     method public static final boolean isEmpty(android.view.ViewGroup);
     method public static final boolean isNotEmpty(android.view.ViewGroup);
     method public static final java.util.Iterator<android.view.View> iterator(android.view.ViewGroup);
-    method public static final void minusAssign(android.view.ViewGroup, android.view.View);
-    method public static final void plusAssign(android.view.ViewGroup, android.view.View);
-    method public static final void setMargins(android.view.ViewGroup.MarginLayoutParams, int);
-    method public static final void updateMargins(android.view.ViewGroup.MarginLayoutParams, int, int, int, int);
-    method @RequiresApi(17) public static final void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, int, int, int, int);
+    method public static final void minusAssign(android.view.ViewGroup, android.view.View view);
+    method public static final void plusAssign(android.view.ViewGroup, android.view.View view);
+    method public static final void setMargins(android.view.ViewGroup.MarginLayoutParams, int size);
+    method public static final void updateMargins(android.view.ViewGroup.MarginLayoutParams, int left, int top, int right, int bottom);
+    method @RequiresApi(17) public static final void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, int start, int top, int end, int bottom);
   }
 
   public final class ViewKt {
     ctor public ViewKt();
-    method @RequiresApi(19) public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit>);
-    method public static final void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit>);
-    method public static final void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit>);
-    method public static final Runnable postDelayed(android.view.View, long, kotlin.jvm.functions.Function0<kotlin.Unit>);
-    method @RequiresApi(16) public static final Runnable postOnAnimationDelayed(android.view.View, long, kotlin.jvm.functions.Function0<kotlin.Unit>);
-    method public static final void setPadding(android.view.View, int);
-    method public static final void updatePadding(android.view.View, int, int, int, int);
-    method @RequiresApi(17) public static final void updatePaddingRelative(android.view.View, int, int, int, int);
+    method @RequiresApi(19) public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final Runnable postDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
+    method @RequiresApi(16) public static final Runnable postOnAnimationDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
+    method public static final void setPadding(android.view.View, int size);
+    method public static final void updatePadding(android.view.View, int left, int top, int right, int bottom);
+    method @RequiresApi(17) public static final void updatePaddingRelative(android.view.View, int start, int top, int end, int bottom);
   }
 
 }
