@@ -19,9 +19,7 @@ package androidx.graphics
 import android.graphics.Bitmap
 import android.graphics.Paint
 import android.graphics.PorterDuff
-import android.graphics.PorterDuffXfermode
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class PorterDuffTest {
