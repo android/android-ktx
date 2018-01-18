@@ -49,7 +49,7 @@ dependencies {
     androidTestImplementation "com.android.support:support-annotations:${versions.supportLibrary}"
     androidTestImplementation "com.android.support.test:runner:${versions.atsl}"
     androidTestImplementation "com.android.support.test:rules:${versions.atsl}"
-    androidTestImplementation 'com.google.truth:truth:0.37'
+    androidTestImplementation 'com.google.truth:truth:0.39'
     androidTestImplementation 'com.squareup.okio:okio:1.13.0'
 
     ktlint 'com.github.shyiko:ktlint:0.14.0'
