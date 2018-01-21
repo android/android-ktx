@@ -144,3 +144,8 @@ artifacts {
     archives dokkaJar
     archives sourcesJar
 }
+
+task googleZip(type: Exec, dependsOn: assemble) {
+    workingDir projectDir
+    commandLine './make-google-zip.sh'
+}
