@@ -53,6 +53,8 @@ jobs:
           command: ./gradlew assemble assembleAndroidTest --no-daemon
       - store_artifacts:
           path: build/outputs/aar
+      - store_artifacts:
+          path: build/libs
 
       - run:
           name: JVM Tests & Lint
@@ -65,6 +67,12 @@ jobs:
           path: build/reports/lint-results.html
       - store_test_results:
           path: build/reports
+
+      - run:
+          name: Google Maven Zip
+          command: ./gradlew googleZip --no-daemon
+      - store_artifacts:
+          path: build/google.zip
 
       - *save_cache
       - *persist_to_workspace
