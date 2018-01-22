@@ -118,7 +118,6 @@ task checkApi(type: JavaExec) {
             '--classpath',
             (android.bootClasspath + configurations.releaseCompileClasspath.asFileTree.files).join(File.pathSeparator),
             '--check-compatibility',
-            '--warnings-as-errors',
             '--previous-api',
             'src/main/api/0.txt'
         ]
