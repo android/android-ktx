@@ -17,9 +17,13 @@ buildscript {
     }
 }
 
+group = 'androidx.core'
+version = '0.1'
+
 apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: 'maven'
 
 repositories {
     jcenter()
@@ -149,7 +153,41 @@ artifacts {
     archives sourcesJar
 }
 
-task googleZip(type: Exec, dependsOn: assemble) {
-    workingDir projectDir
-    commandLine './make-google-zip.sh'
+def googleRepo = "$buildDir/google-repo"
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://$googleRepo")
+            pom.project {
+                name "Android KTX Core"
+                description "A set of Kotlin extensions for Android app development."
+                url "https://github.com/android/kotlin-extensions"
+                inceptionYear 2017
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        name "The Android Open Source Project"
+                    }
+                }
+
+                scm {
+                    url "https://github.com/android/kotlin-extensions"
+                    connection "scm:git:git://github.com/android/kotlin-extensions.git"
+                }
+            }
+        }
+    }
 }
+
+task googleZip(type: Zip, dependsOn: uploadArchives) {
+    from googleRepo
+}
+assemble.dependsOn(googleZip)
