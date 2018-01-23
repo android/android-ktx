@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.android.support:androidktx:<version>' // placeholder name
+    implementation 'androidx.core:core-ktx:0.1'
 }
 ```
 
