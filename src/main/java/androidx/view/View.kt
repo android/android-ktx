@@ -16,9 +16,11 @@
 
 package androidx.view
 
+import android.graphics.Bitmap
 import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.ViewTreeObserver
+import androidx.graphics.applyCanvas
 
 /**
  * Performs the given action when this view is next laid out.
@@ -141,4 +143,26 @@ fun View.postOnAnimationDelayed(delayInMillis: Long, action: () -> Unit): Runnab
     return Runnable(action).apply {
         postOnAnimationDelayed(this, delayInMillis)
     }
+}
+
+/**
+ * Return a [Bitmap] representation of this [View].
+ *
+ * The resulting bitmap will be the same width and height as this view's current layout
+ * dimensions. This does not take into account any transformations such as scale or translation.
+ *
+ * Note, this will use the software rendering pipeline to draw the view to the bitmap. This may
+ * result with different drawing to what is rendered on a hardware accelerated canvas (such as
+ * the device screen).
+ *
+ * If this view has not been laid out this method will throw a [IllegalStateException].
+ *
+ * @param config Bitmap config of the desired bitmap. Defaults to [Config.ARGB_8888].
+ */
+@RequiresApi(19)
+fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
+    if (!isLaidOut) {
+        throw IllegalStateException("View needs to be laid out before calling toBitmap()")
+    }
+    return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
 }

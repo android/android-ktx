@@ -16,9 +16,11 @@
 
 package androidx.view
 
+import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
 import android.view.View
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -120,5 +122,27 @@ class ViewTest {
         assertEquals(20, view.paddingTop)
         assertEquals(30, view.paddingEnd)
         assertEquals(40, view.paddingBottom)
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun toBitmapBeforeLayout() {
+        view.toBitmap()
+    }
+
+    @Test
+    fun toBitmap() {
+        view.layout(0, 0, 100, 100)
+        val bitmap = view.toBitmap()
+
+        assertEquals(100, bitmap.width)
+        assertEquals(100, bitmap.height)
+    }
+
+    @Test
+    fun toBitmapCustomConfig() {
+        view.layout(0, 0, 100, 100)
+        val bitmap = view.toBitmap(Bitmap.Config.RGB_565)
+
+        assertSame(Bitmap.Config.RGB_565, bitmap.config)
     }
 }
