@@ -63,3 +63,18 @@ fun Drawable.toBitmap(
     setBounds(oldLeft, oldTop, oldRight, oldBottom)
     return bitmap
 }
+
+/**
+ * Updates this drawable's bounds. This version of the method allows using named parameters
+ * to just set one or more axes.
+ *
+ * @see Drawable.setBounds
+ */
+fun Drawable.updateBounds(
+        left: Int = bounds.left,
+        top: Int = bounds.top,
+        right: Int = bounds.right,
+        bottom: Int = bounds.bottom
+) {
+    setBounds(left, top, right, bottom)
+}

@@ -149,4 +149,19 @@ class DrawableTest {
         assertEquals(8, drawable.bounds.right)
         assertEquals(8, drawable.bounds.bottom)
     }
+
+    @Test fun updateBoundsTest() {
+        val drawable = object : ColorDrawable(Color.RED) {
+            override fun getIntrinsicWidth() = 10
+            override fun getIntrinsicHeight() = 10
+        }
+        drawable.setBounds(0, 0, 10, 10)
+
+        drawable.updateBounds(1, 2, 3, 4)
+
+        assertEquals(1, drawable.bounds.left)
+        assertEquals(2, drawable.bounds.top)
+        assertEquals(3, drawable.bounds.right)
+        assertEquals(4, drawable.bounds.bottom)
+    }
 }
