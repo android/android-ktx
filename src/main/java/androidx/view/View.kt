@@ -18,6 +18,7 @@ package androidx.view
 
 import android.graphics.Bitmap
 import android.support.annotation.RequiresApi
+import android.support.v4.view.ViewCompat
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.graphics.applyCanvas
@@ -44,9 +45,8 @@ inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
  *
  * @see doOnNextLayout
  */
-@RequiresApi(19)
 inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
-    if (isLaidOut) {
+    if (ViewCompat.isLaidOut(this)) {
         action(this)
     } else {
         doOnNextLayout {
@@ -159,9 +159,8 @@ fun View.postOnAnimationDelayed(delayInMillis: Long, action: () -> Unit): Runnab
  *
  * @param config Bitmap config of the desired bitmap. Defaults to [Config.ARGB_8888].
  */
-@RequiresApi(19)
 fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
-    if (!isLaidOut) {
+    if (!ViewCompat.isLaidOut(this)) {
         throw IllegalStateException("View needs to be laid out before calling toBitmap()")
     }
     return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)

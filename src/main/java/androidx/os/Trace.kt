@@ -17,18 +17,17 @@
 package androidx.os
 
 import android.os.Trace
-import android.support.annotation.RequiresApi
+import android.support.v4.os.TraceCompat
 
 /**
  * Wrap the specified `block` in calls to [Trace.beginSection] (with the supplied `sectionName`)
  * and [Trace.endSection].
  */
-@RequiresApi(18)
 inline fun <T> trace(sectionName: String, block: () -> T): T {
-    Trace.beginSection(sectionName)
+    TraceCompat.beginSection(sectionName)
     try {
         return block()
     } finally {
-        Trace.endSection()
+        TraceCompat.endSection()
     }
 }

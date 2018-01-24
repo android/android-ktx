@@ -326,7 +326,7 @@ package androidx.os {
 
   public final class TraceKt {
     ctor public TraceKt();
-    method @RequiresApi(18) public static final <T> T! trace(String sectionName, kotlin.jvm.functions.Function0<? extends T> block);
+    method public static final <T> T! trace(String sectionName, kotlin.jvm.functions.Function0<? extends T> block);
   }
 
 }
@@ -638,12 +638,13 @@ package androidx.view {
 
   public final class ViewKt {
     ctor public ViewKt();
-    method @RequiresApi(19) public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final Runnable postDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method @RequiresApi(16) public static final Runnable postOnAnimationDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method public static final void setPadding(android.view.View, int size);
+    method public static final android.graphics.Bitmap toBitmap(android.view.View, android.graphics.Bitmap.Config config);
     method public static final void updatePadding(android.view.View, int left, int top, int right, int bottom);
     method @RequiresApi(17) public static final void updatePaddingRelative(android.view.View, int start, int top, int end, int bottom);
   }
