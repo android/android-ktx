@@ -1,3 +1,5 @@
+import com.android.build.gradle.api.BaseVariant
+
 buildscript {
     ext.versions = [
         'kotlin': '1.2.21',
@@ -53,6 +55,7 @@ configurations {
 dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     implementation "com.android.support:support-annotations:${versions.supportLibrary}"
+    implementation "com.android.support:support-compat:${versions.supportLibrary}"
 
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation "com.android.support:support-annotations:${versions.supportLibrary}"
@@ -89,50 +92,57 @@ task ktFormat(type: JavaExec, group: 'formatting') {
     args '-F', 'src/**/*.kt'
 }
 
-task updateApi(type: JavaExec) {
-    classpath = configurations.metalava
-    main = 'com.android.tools.metalava.Driver'
 
-    // Defer setting arguments so that we can read a variant-specific configuration.
-    doFirst {
-        args = [
-            '--source-path',
-            'src/main/java',
-            '--compatible-output=no',
-            '--omit-common-packages=yes',
-            '--output-kotlin-nulls=yes',
-            '--allow-referencing-unknown-classes', // TODO we probably shouldn't need this
-            '--classpath',
-            (android.bootClasspath + configurations.releaseCompileClasspath.asFileTree.files).join(File.pathSeparator),
-            '--api',
-            'src/main/api/0.txt'
-        ]
-    }
+def variantClasspath(BaseVariant variant) {
+    return (android.bootClasspath + variant.compileConfiguration.incoming.artifactView { config ->
+        config.attributes { container ->
+            container.attribute(Attribute.of("artifactType", String.class), "jar")
+        }
+    }.artifacts.artifacts.collect { it.file }).join(File.pathSeparator)
 }
-
-task checkApi(type: JavaExec) {
-    classpath = configurations.metalava
-    main = 'com.android.tools.metalava.Driver'
-
-    // Defer setting arguments so that we can read a variant-specific configuration.
-    doFirst {
-        args = [
-            '--source-path',
-            'src/main/java',
-            '--compatible-output=no',
-            '--omit-common-packages=yes',
-            '--output-kotlin-nulls=yes',
-            '--input-kotlin-nulls=yes',
-            '--allow-referencing-unknown-classes', // TODO we probably shouldn't need this
-            '--classpath',
-            (android.bootClasspath + configurations.releaseCompileClasspath.asFileTree.files).join(File.pathSeparator),
-            '--check-compatibility',
-            '--previous-api',
-            'src/main/api/0.txt'
-        ]
+android.libraryVariants.all { variant ->
+    // TODO eliminate variants https://issuetracker.google.com/issues/62201427
+    if (variant.buildType.isDebuggable()) {
+        return
     }
+
+    task updateApi(type: JavaExec) {
+        classpath = configurations.metalava
+        main = 'com.android.tools.metalava.Driver'
+
+        doFirst {
+            args = [
+                    '--source-path', 'src/main/java',
+                    '--compatible-output=no',
+                    '--omit-common-packages=yes',
+                    '--output-kotlin-nulls=yes',
+                    '--allow-referencing-unknown-classes', // TODO we probably shouldn't need this
+                    '--classpath', variantClasspath(variant),
+                    '--api', 'src/main/api/0.txt'
+            ]
+        }
+    }
+
+    task checkApi(type: JavaExec) {
+        classpath = configurations.metalava
+        main = 'com.android.tools.metalava.Driver'
+
+        doFirst {
+            args = [
+                    '--source-path', 'src/main/java',
+                    '--compatible-output=no',
+                    '--omit-common-packages=yes',
+                    '--output-kotlin-nulls=yes',
+                    '--input-kotlin-nulls=yes',
+                    '--allow-referencing-unknown-classes', // TODO we probably shouldn't need this
+                    '--classpath', variantClasspath(variant),
+                    '--check-compatibility',
+                    '--previous-api', 'src/main/api/0.txt'
+            ]
+        }
+    }
+    check.dependsOn checkApi
 }
-check.dependsOn checkApi
 
 dokka {
     outputFormat = 'html'
