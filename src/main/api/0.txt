@@ -203,6 +203,12 @@ package androidx.graphics {
     method public static final android.graphics.PointF unaryMinus(android.graphics.PointF);
   }
 
+  public final class PorterDuffKt {
+    ctor public PorterDuffKt();
+    method public static final android.graphics.PorterDuffColorFilter toColorFilter(android.graphics.PorterDuff.Mode, int color);
+    method public static final android.graphics.PorterDuffXfermode toXfermode(android.graphics.PorterDuff.Mode);
+  }
+
   public final class RectKt {
     ctor public RectKt();
     method public static final android.graphics.Rect and(android.graphics.Rect, android.graphics.Rect r);
@@ -282,6 +288,7 @@ package androidx.graphics.drawable {
   public final class DrawableKt {
     ctor public DrawableKt();
     method public static final android.graphics.Bitmap toBitmap(android.graphics.drawable.Drawable, int width, int height, android.graphics.Bitmap.Config? config);
+    method public static final void updateBounds(android.graphics.drawable.Drawable, int left, int top, int right, int bottom);
   }
 
   public final class IconKt {
