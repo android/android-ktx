@@ -16,7 +16,6 @@
 
 package androidx.graphics
 
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Picture
 import org.junit.Assert.assertEquals
@@ -27,7 +26,7 @@ class PictureTest {
         val p = Picture().record(1, 1) {
             drawColor(Color.valueOf(1.0f, 0.0f, 0.0f).toArgb())
         }
-        val v = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888).applyCanvas {
+        val v = createBitmap(1, 1).applyCanvas {
             drawPicture(p)
         }.getPixel(0, 0)
         assertEquals(0xffff0000.toInt(), v)

@@ -16,12 +16,12 @@
 
 package androidx.graphics.drawable
 
-import android.graphics.Bitmap
 import android.graphics.Bitmap.Config
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.support.test.InstrumentationRegistry
+import androidx.graphics.createBitmap
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -30,7 +30,7 @@ class DrawableTest {
     private val resources = context.resources
 
     @Test fun bitmapDrawableNoSizeNoConfig() {
-        val original = Bitmap.createBitmap(10, 10, Config.ARGB_8888).apply {
+        val original = createBitmap(10, 10).apply {
             eraseColor(Color.RED)
         }
         val drawable = BitmapDrawable(resources, original)
@@ -43,7 +43,7 @@ class DrawableTest {
     }
 
     @Test fun bitmapDrawableNoSizeRetainedConfig() {
-        val original = Bitmap.createBitmap(10, 10, Config.ARGB_8888).apply {
+        val original = createBitmap(10, 10).apply {
             eraseColor(Color.RED)
         }
         val drawable = BitmapDrawable(resources, original)
@@ -56,7 +56,7 @@ class DrawableTest {
     }
 
     @Test fun bitmapDrawableNoSizeDifferentConfig() {
-        val original = Bitmap.createBitmap(10, 10, Config.RGBA_F16).apply {
+        val original = createBitmap(10, 10).apply {
             eraseColor(Color.RED)
         }
         val drawable = BitmapDrawable(resources, original)
@@ -69,7 +69,7 @@ class DrawableTest {
     }
 
     @Test fun bitmapDrawableDifferentSizeNoConfig() {
-        val original = Bitmap.createBitmap(10, 10, Config.ARGB_8888).apply {
+        val original = createBitmap(10, 10).apply {
             eraseColor(Color.RED)
         }
         val drawable = BitmapDrawable(resources, original)
@@ -82,7 +82,7 @@ class DrawableTest {
     }
 
     @Test fun bitmapDrawableDifferentSizeDifferentConfig() {
-        val original = Bitmap.createBitmap(10, 10, Config.RGBA_F16).apply {
+        val original = createBitmap(10, 10).apply {
             eraseColor(Color.RED)
         }
         val drawable = BitmapDrawable(resources, original)
