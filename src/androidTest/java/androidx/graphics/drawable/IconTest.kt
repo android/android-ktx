@@ -24,6 +24,7 @@ import android.graphics.drawable.Icon
 import android.net.Uri
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
+import androidx.graphics.createBitmap
 import okio.Okio.buffer
 import okio.Okio.sink
 import okio.Okio.source
@@ -53,7 +54,7 @@ class IconTest {
     }
 
     @Test fun fromBitmap() {
-        val bitmap = Bitmap.createBitmap(1, 1, ARGB_8888).apply {
+        val bitmap = createBitmap(1, 1).apply {
             eraseColor(Color.RED)
         }
         val icon = bitmap.toIcon()
@@ -94,7 +95,7 @@ class IconTest {
 
     private fun Icon.toIntrinsicBitmap(): Bitmap {
         val drawable = loadDrawable(context)
-        val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, ARGB_8888)
+        val bitmap = createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight)
         drawable.setBounds(0, 0, drawable.intrinsicHeight, drawable.intrinsicHeight)
         drawable.draw(Canvas(bitmap))
         return bitmap

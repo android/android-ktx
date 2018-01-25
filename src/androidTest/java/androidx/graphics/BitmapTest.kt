@@ -17,12 +17,35 @@
 package androidx.graphics
 
 import android.graphics.Bitmap
+import android.graphics.ColorSpace
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class BitmapTest {
+    @Test fun create() {
+        val b1 = createBitmap(7, 9)
+        assertEquals(7, b1.width)
+        assertEquals(9, b1.height)
+        assertEquals(Bitmap.Config.ARGB_8888, b1.config)
+        assertTrue(b1.colorSpace.isSrgb)
+
+        val b2 = createBitmap(7, 9, config = Bitmap.Config.RGBA_F16)
+        assertEquals(Bitmap.Config.RGBA_F16, b2.config)
+
+        val colorSpace = ColorSpace.get(ColorSpace.Named.ADOBE_RGB)
+        val b3 = createBitmap(7, 9, colorSpace = colorSpace)
+        assertEquals(colorSpace, b3.colorSpace)
+    }
+
+    @Test fun scale() {
+        val b = createBitmap(7, 9).scale(3, 5)
+        assertEquals(3, b.width)
+        assertEquals(5, b.height)
+    }
+
     @Test fun applyCanvas() {
-        val p = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888).applyCanvas {
+        val p = createBitmap(2, 2).applyCanvas {
             drawColor(0x40302010)
         }.getPixel(1, 1)
 
@@ -30,14 +53,14 @@ class BitmapTest {
     }
 
     @Test fun getPixel() {
-        val b = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888).applyCanvas {
+        val b = createBitmap(2, 2).applyCanvas {
             drawColor(0x40302010)
         }
         assertEquals(0x40302010, b[1, 1])
     }
 
     @Test fun setPixel() {
-        val b = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888)
+        val b = createBitmap(2, 2)
         b[1, 1] = 0x40302010
         assertEquals(0x40302010, b[1, 1])
     }

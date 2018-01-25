@@ -16,8 +16,8 @@
 
 package androidx.graphics.drawable
 
-import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
+import androidx.graphics.createBitmap
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -25,7 +25,7 @@ class BitmapDrawableTest {
     private val context = InstrumentationRegistry.getContext()
 
     @Test fun fromBitmap() {
-        val b = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
+        val b = createBitmap(1, 1)
         val drawable = b.toDrawable(context.resources)
         assertEquals(b, drawable.bitmap)
     }

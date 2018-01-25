@@ -99,7 +99,10 @@ package androidx.graphics {
   public final class BitmapKt {
     ctor public BitmapKt();
     method public static final android.graphics.Bitmap applyCanvas(android.graphics.Bitmap, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
+    method public static final android.graphics.Bitmap createBitmap(int width, int height, android.graphics.Bitmap.Config config);
+    method @RequiresApi(26) public static final android.graphics.Bitmap createBitmap(int width, int height, android.graphics.Bitmap.Config config, boolean hasAlpha, android.graphics.ColorSpace colorSpace);
     method public static final int get(android.graphics.Bitmap, int x, int y);
+    method public static final android.graphics.Bitmap scale(android.graphics.Bitmap, int width, int height, boolean filter);
     method public static final void set(android.graphics.Bitmap, int x, int y, @ColorInt int color);
   }
 

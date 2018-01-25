@@ -16,7 +16,6 @@
 
 package androidx.graphics
 
-import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Matrix
 import com.google.common.truth.Truth.assertThat
@@ -25,7 +24,7 @@ import org.junit.Test
 
 class CanvasTest {
     private val values = FloatArray(9)
-    private val canvas = Canvas(Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888))
+    private val canvas = Canvas(createBitmap(1, 1))
 
     @Suppress("DEPRECATION")
     @Test fun withSave() {

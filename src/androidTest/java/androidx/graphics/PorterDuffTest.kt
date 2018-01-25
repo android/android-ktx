@@ -16,7 +16,6 @@
 
 package androidx.graphics
 
-import android.graphics.Bitmap
 import android.graphics.Paint
 import android.graphics.PorterDuff
 import org.junit.Assert.assertEquals
@@ -24,7 +23,7 @@ import org.junit.Test
 
 class PorterDuffTest {
     @Test fun xfermode() {
-        val p = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888).applyCanvas {
+        val p = createBitmap(1, 1).applyCanvas {
             val p = Paint().apply { color = 0xffffffff.toInt() }
             drawRect(0f, 0f, 1f, 1f, p)
 
@@ -37,7 +36,7 @@ class PorterDuffTest {
     }
 
     @Test fun colorFilter() {
-        val p = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888).applyCanvas {
+        val p = createBitmap(1, 1).applyCanvas {
             val p = Paint().apply { color = 0xffffffff.toInt() }
             drawRect(0f, 0f, 1f, 1f, p)
 
