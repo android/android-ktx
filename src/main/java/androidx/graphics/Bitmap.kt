@@ -60,7 +60,7 @@ inline operator fun Bitmap.set(x: Int, y: Int, @ColorInt color: Int) = setPixel(
  * [width] and [height] are the same as the current width and height of this bitmap,
  * this bitmap is returned and no new bitmap is created.
  *
- * @param width  The new bitmap's desired width
+ * @param width The new bitmap's desired width
  * @param height The new bitmap's desired height
  * @param filter `true` if the source should be filtered (`true` by default)
  *
@@ -74,7 +74,7 @@ inline fun Bitmap.scale(width: Int, height: Int, filter: Boolean = true): Bitmap
  * Returns a mutable bitmap with the specified [width] and [height]. A config
  * can be optionally specified. If not, the default config is [Bitmap.Config.ARGB_8888].
  *
- * @param width  The new bitmap's desired width
+ * @param width The new bitmap's desired width
  * @param height The new bitmap's desired height
  * @param config The new bitmap's desired [config][Bitmap.Config]
  *
@@ -92,7 +92,7 @@ inline fun createBitmap(
  * transparency and color space can optionally be specified. They respectively
  * default to [Bitmap.Config.ARGB_8888], `true` and [sRGB][ColorSpace.Named.SRGB].
  *
- * @param width  The new bitmap's desired width
+ * @param width The new bitmap's desired width
  * @param height The new bitmap's desired height
  * @param config The new bitmap's desired [config][Bitmap.Config]
  * @param hasAlpha Whether the new bitmap is opaque or not
