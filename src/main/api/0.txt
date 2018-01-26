@@ -542,6 +542,9 @@ package androidx.util {
 
   public final class RangeKt {
     ctor public RangeKt();
+    method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> android.util.Range<T> and(android.util.Range<T>, android.util.Range<T> other);
+    method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> android.util.Range<T> plus(android.util.Range<T>, T value);
+    method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> android.util.Range<T> plus(android.util.Range<T>, android.util.Range<T> other);
     method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> android.util.Range<T> rangeTo(T, T that);
     method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> kotlin.ranges.ClosedRange<T> toClosedRange(android.util.Range<T>);
     method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> android.util.Range<T> toRange(kotlin.ranges.ClosedRange<T>);
