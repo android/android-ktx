@@ -27,6 +27,24 @@ class RangeTest {
         assertEquals("c", range.upper)
     }
 
+    @Test fun extendValue() {
+        val range = ("a" rangeTo "c") + "e"
+        assertEquals("a", range.lower)
+        assertEquals("e", range.upper)
+    }
+
+    @Test fun extendRange() {
+        val range = ("a" rangeTo "c") + ("e" rangeTo "g")
+        assertEquals("a", range.lower)
+        assertEquals("g", range.upper)
+    }
+
+    @Test fun intersection() {
+        val range = ("a" rangeTo "e") and ("c" rangeTo "g")
+        assertEquals("c", range.lower)
+        assertEquals("e", range.upper)
+    }
+
     @Test fun kotlinToAndroid() {
         val range: Range<Int> = (1..3).toRange()
         assertEquals(1, range.lower)
