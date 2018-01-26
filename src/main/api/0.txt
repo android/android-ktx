@@ -540,6 +540,13 @@ package androidx.util {
     method public static final <F, S> kotlin.Pair<F,S> toKotlinPair(android.util.Pair<F,S>);
   }
 
+  public final class RangeKt {
+    ctor public RangeKt();
+    method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> android.util.Range<T> rangeTo(T, T that);
+    method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> kotlin.ranges.ClosedRange<T> toClosedRange(android.util.Range<T>);
+    method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> android.util.Range<T> toRange(kotlin.ranges.ClosedRange<T>);
+  }
+
   public final class SizeKt {
     ctor public SizeKt();
     method @RequiresApi(21) public static final int component1(android.util.Size);
