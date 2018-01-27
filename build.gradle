@@ -120,7 +120,7 @@ android.libraryVariants.all { variant ->
                     '--compatible-output=no',
                     '--omit-common-packages=yes',
                     '--output-kotlin-nulls=yes',
-                    '--allow-referencing-unknown-classes', // TODO we probably shouldn't need this
+                    '--hide', 'HiddenSuperclass',
                     '--classpath', variantClasspath(variant),
                     '--api', 'src/main/api/0.txt'
             ]
@@ -138,7 +138,7 @@ android.libraryVariants.all { variant ->
                     '--omit-common-packages=yes',
                     '--output-kotlin-nulls=yes',
                     '--input-kotlin-nulls=yes',
-                    '--allow-referencing-unknown-classes', // TODO we probably shouldn't need this
+                    '--hide', 'HiddenSuperclass',
                     '--classpath', variantClasspath(variant),
                     '--check-compatibility',
                     '--previous-api', 'src/main/api/0.txt'
