@@ -18,24 +18,28 @@ package androidx.graphics
 
 import android.graphics.Bitmap
 import android.graphics.ColorSpace
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class BitmapTest {
     @Test fun create() {
-        val b1 = createBitmap(7, 9)
-        assertEquals(7, b1.width)
-        assertEquals(9, b1.height)
-        assertEquals(Bitmap.Config.ARGB_8888, b1.config)
-        assertTrue(b1.colorSpace.isSrgb)
+        val bitmap = createBitmap(7, 9)
+        assertEquals(7, bitmap.width)
+        assertEquals(9, bitmap.height)
+        assertEquals(Bitmap.Config.ARGB_8888, bitmap.config)
+    }
 
-        val b2 = createBitmap(7, 9, config = Bitmap.Config.RGBA_F16)
-        assertEquals(Bitmap.Config.RGBA_F16, b2.config)
+    @Test fun createWithConfig() {
+        val bitmap = createBitmap(7, 9, config = Bitmap.Config.RGB_565)
+        assertEquals(Bitmap.Config.RGB_565, bitmap.config)
+    }
 
+    @SdkSuppress(minSdkVersion = 26)
+    @Test fun createWithColorSpace() {
         val colorSpace = ColorSpace.get(ColorSpace.Named.ADOBE_RGB)
-        val b3 = createBitmap(7, 9, colorSpace = colorSpace)
-        assertEquals(colorSpace, b3.colorSpace)
+        val bitmap = createBitmap(7, 9, colorSpace = colorSpace)
+        assertEquals(colorSpace, bitmap.colorSpace)
     }
 
     @Test fun scale() {

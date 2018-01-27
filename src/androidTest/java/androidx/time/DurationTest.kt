@@ -16,10 +16,12 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Duration
 
+@SdkSuppress(minSdkVersion = 26)
 class DurationTest {
     @Test fun destructuring() {
         val (seconds, nanos) = Duration.ofSeconds(12, 3456789)

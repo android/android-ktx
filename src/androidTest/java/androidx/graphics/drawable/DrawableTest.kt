@@ -113,10 +113,10 @@ class DrawableTest {
             override fun getIntrinsicHeight() = 10
         }
 
-        val bitmap = drawable.toBitmap(config = Config.RGBA_F16)
+        val bitmap = drawable.toBitmap(config = Config.RGB_565)
         assertEquals(10, bitmap.width)
         assertEquals(10, bitmap.height)
-        assertEquals(Config.RGBA_F16, bitmap.config)
+        assertEquals(Config.RGB_565, bitmap.config)
         assertEquals(Color.RED, bitmap.getPixel(5, 5))
     }
 

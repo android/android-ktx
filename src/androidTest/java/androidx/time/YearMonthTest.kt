@@ -16,11 +16,13 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Month
 import java.time.YearMonth
 
+@SdkSuppress(minSdkVersion = 26)
 class YearMonthTest {
     @Test fun destructuring() {
         val (year, month) = YearMonth.of(2017, 12)

@@ -16,10 +16,12 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Year
 
+@SdkSuppress(minSdkVersion = 26)
 class YearTest {
     @Test fun fromInt() {
         assertEquals(Year.of(2017), 2017.asYear())

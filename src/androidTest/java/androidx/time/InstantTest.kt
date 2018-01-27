@@ -16,10 +16,12 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Instant
 
+@SdkSuppress(minSdkVersion = 26)
 class InstantTest {
     @Test fun destructuring() {
         val (seconds, nanos) = Instant.ofEpochSecond(12, 3456789)

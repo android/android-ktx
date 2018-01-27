@@ -18,6 +18,7 @@ package androidx.content.res
 
 import android.graphics.Color
 import android.support.test.InstrumentationRegistry
+import android.support.test.filters.SdkSuppress
 import androidx.assertThrows
 import androidx.getAttributeSet
 import androidx.kotlin.test.R
@@ -118,6 +119,7 @@ class TypedArrayTest {
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
     }
 
+    @SdkSuppress(minSdkVersion = 26)
     @Test fun font() {
         val attrs = context.getAttributeSet(R.layout.typed_array)
         val array = context.obtainStyledAttributes(attrs, R.styleable.TypedArrayTypes)

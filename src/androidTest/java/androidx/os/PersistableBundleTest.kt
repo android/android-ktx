@@ -32,14 +32,12 @@ class PersistableBundleTest {
         val bundle = persistableBundleOf(
                 "null" to null,
 
-                "boolean" to true,
                 "double" to 1.0,
                 "int" to 1,
                 "long" to 1L,
 
                 "string" to "hey",
 
-                "booleanArray" to booleanArrayOf(),
                 "doubleArray" to doubleArrayOf(),
                 "intArray" to intArrayOf(),
                 "longArray" to longArrayOf(),
@@ -47,23 +45,32 @@ class PersistableBundleTest {
                 "stringArray" to arrayOf("hey")
         )
 
-        assertEquals(11, bundle.size())
+        assertEquals(9, bundle.size())
 
         assertNull(bundle["null"])
 
-        assertEquals(true, bundle["boolean"])
         assertEquals(1.0, bundle["double"])
         assertEquals(1, bundle["int"])
         assertEquals(1L, bundle["long"])
 
         assertEquals("hey", bundle["string"])
 
-        assertArrayEquals(booleanArrayOf(), bundle["booleanArray"] as BooleanArray)
         assertArrayEquals(doubleArrayOf(), bundle["doubleArray"] as DoubleArray, 0.0)
         assertArrayEquals(intArrayOf(), bundle["intArray"] as IntArray)
         assertArrayEquals(longArrayOf(), bundle["longArray"] as LongArray)
 
         assertThat(bundle["stringArray"] as Array<*>).asList().containsExactly("hey")
+    }
+
+    @SdkSuppress(minSdkVersion = 22)
+    @Test fun persistableBundleOfValidApi22() {
+        val bundle = persistableBundleOf(
+                "boolean" to true,
+                "booleanArray" to booleanArrayOf()
+        )
+
+        assertEquals(true, bundle["boolean"])
+        assertArrayEquals(booleanArrayOf(), bundle["booleanArray"] as BooleanArray)
     }
 
     @Test fun persistableBundleOfInvalid() {

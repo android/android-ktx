@@ -17,6 +17,7 @@
 package androidx.os
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.PersistableBundle
 import android.support.annotation.RequiresApi
 
@@ -33,7 +34,13 @@ fun persistableBundleOf(vararg pairs: Pair<String, Any?>) = PersistableBundle(pa
             null -> putString(key, null) // Any nullable type will suffice.
 
             // Scalars
-            is Boolean -> putBoolean(key, value)
+            is Boolean -> {
+                if (Build.VERSION.SDK_INT >= 22) {
+                    putBoolean(key, value)
+                } else {
+                    throw IllegalArgumentException("Illegal value type boolean for key \"$key\"")
+                }
+            }
             is Double -> putDouble(key, value)
             is Int -> putInt(key, value)
             is Long -> putLong(key, value)
@@ -42,7 +49,13 @@ fun persistableBundleOf(vararg pairs: Pair<String, Any?>) = PersistableBundle(pa
             is String -> putString(key, value)
 
             // Scalar arrays
-            is BooleanArray -> putBooleanArray(key, value)
+            is BooleanArray -> {
+                if (Build.VERSION.SDK_INT >= 22) {
+                    putBooleanArray(key, value)
+                } else {
+                    throw IllegalArgumentException("Illegal value type boolean[] for key \"$key\"")
+                }
+            }
             is DoubleArray -> putDoubleArray(key, value)
             is IntArray -> putIntArray(key, value)
             is LongArray -> putLongArray(key, value)

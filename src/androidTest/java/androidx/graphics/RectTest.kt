@@ -193,9 +193,11 @@ class RectTest {
     }
 
     @Test fun toRectF() {
-        assertEquals(
-                RectF(0f, 1f, 2f, 3f),
-                Rect(0, 1, 2, 3).toRectF())
+        val rectF = Rect(0, 1, 2, 3).toRectF()
+        assertEquals(0f, rectF.left, 0f)
+        assertEquals(1f, rectF.top, 0f)
+        assertEquals(2f, rectF.right, 0f)
+        assertEquals(3f, rectF.bottom, 0f)
     }
 
     @Test fun toRegionInt() {
@@ -211,7 +213,10 @@ class RectTest {
         m.setScale(2.0f, 2.0f)
 
         val r = RectF(2.0f, 2.0f, 5.0f, 7.0f).transform(m)
-        assertEquals(RectF(4.0f, 4.0f, 10.0f, 14.0f), r)
+        assertEquals(4f, r.left, 0f)
+        assertEquals(4f, r.top, 0f)
+        assertEquals(10f, r.right, 0f)
+        assertEquals(14f, r.bottom, 0f)
     }
 
     @Test fun transformRectNotPreserved() {

@@ -16,10 +16,12 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Period
 
+@SdkSuppress(minSdkVersion = 26)
 class PeriodTest {
     @Test fun destructuring() {
         val (years, months, days) = Period.of(10, 3, 22)

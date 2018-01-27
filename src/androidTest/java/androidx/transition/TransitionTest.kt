@@ -17,30 +17,31 @@
 package androidx.transition
 
 import android.support.test.InstrumentationRegistry
+import android.support.test.filters.SdkSuppress
 import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
 import android.transition.Fade
 import android.transition.Transition
 import android.transition.TransitionManager
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.kotlin.test.R
 import androidx.kotlin.TestActivity
+import androidx.kotlin.test.R
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
-@RunWith(AndroidJUnit4::class)
+@SdkSuppress(minSdkVersion = 19)
 class TransitionTest {
     @JvmField @Rule val rule = ActivityTestRule<TestActivity>(TestActivity::class.java)
 
     private lateinit var transition: Transition
 
     @Before fun setup() {
-        transition = Fade()
+        transition = Fade().setDuration(50)
     }
 
     @Test fun testDoOnStart() {
@@ -49,10 +50,7 @@ class TransitionTest {
             called = true
         }
 
-        // Start transition
         startTransition(transition)
-
-        // Assert that doOnStart was called
         assertTrue(called)
     }
 
@@ -62,12 +60,21 @@ class TransitionTest {
             called = true
         }
 
-        // Start transition
         startTransition(transition)
-        // Now end transition
-        endTransitions()
 
-        // Assert that doOnEnd was called
+        val latch = CountDownLatch(1)
+        transition.addListener(object : Transition.TransitionListener {
+            override fun onTransitionEnd(transition: Transition?) {
+                latch.countDown()
+            }
+
+            override fun onTransitionResume(transition: Transition?) = Unit
+            override fun onTransitionPause(transition: Transition?) = Unit
+            override fun onTransitionCancel(transition: Transition?) = Unit
+            override fun onTransitionStart(transition: Transition?) = Unit
+        })
+        assertTrue(latch.await(1, TimeUnit.SECONDS))
+
         assertTrue(called)
     }
 
@@ -79,14 +86,6 @@ class TransitionTest {
             TransitionManager.beginDelayedTransition(sceneRoot, t)
 
             view.visibility = View.INVISIBLE
-        }
-        InstrumentationRegistry.getInstrumentation().waitForIdleSync()
-    }
-
-    private fun endTransitions() {
-        rule.runOnUiThread {
-            val sceneRoot = rule.activity.findViewById<ViewGroup>(R.id.root)
-            TransitionManager.endTransitions(sceneRoot)
         }
         InstrumentationRegistry.getInstrumentation().waitForIdleSync()
     }

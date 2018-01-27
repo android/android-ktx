@@ -19,6 +19,7 @@ package androidx.os
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.SystemClock
+import android.support.test.filters.SdkSuppress
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -40,7 +41,7 @@ class HandlerTest {
     }
 
     @After fun after() {
-        handlerThread.quitSafely()
+        handlerThread.quit()
     }
 
     @Test fun postDelayedWithToken() {
@@ -105,6 +106,7 @@ class HandlerTest {
         assertEquals(0, called)
     }
 
+    @SdkSuppress(minSdkVersion = 26)
     @Test fun postDelayedLambdaDuration() {
         var called = 0
         handler.postDelayed(Duration.ofMillis(10)) {
@@ -115,6 +117,7 @@ class HandlerTest {
         assertEquals(1, called)
     }
 
+    @SdkSuppress(minSdkVersion = 26)
     @Test fun postDelayedLambdaDurationRemoved() {
         var called = 0
         val runnable = handler.postDelayed(Duration.ofMillis(10)) {

@@ -19,6 +19,7 @@ package androidx.graphics
 import android.graphics.Path
 import android.graphics.PointF
 import android.graphics.RectF
+import android.support.test.filters.SdkSuppress
 import androidx.fail
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
@@ -26,10 +27,12 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class PathTest {
+    @SdkSuppress(minSdkVersion = 26)
     @Test fun testFlattenEmptyPath() {
         Path().flatten().forEach { fail("An empty path should not have segments: " + it) }
     }
 
+    @SdkSuppress(minSdkVersion = 26)
     @Test fun testFlatten() {
         val p = Path()
 
@@ -81,6 +84,7 @@ class PathTest {
         assertEquals(3, count)
     }
 
+    @SdkSuppress(minSdkVersion = 19)
     @Test fun testUnion() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 10.0f, 10.0f, Path.Direction.CW) }
         val r2 = Path().apply { addRect(5.0f, 0.0f, 15.0f, 15.0f, Path.Direction.CW) }
@@ -92,6 +96,7 @@ class PathTest {
         assertEquals(RectF(0.0f, 0.0f, 15.0f, 15.0f), r)
     }
 
+    @SdkSuppress(minSdkVersion = 19)
     @Test fun testAnd() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 10.0f, 10.0f, Path.Direction.CW) }
         val r2 = Path().apply { addRect(5.0f, 0.0f, 15.0f, 15.0f, Path.Direction.CW) }
@@ -103,6 +108,7 @@ class PathTest {
         assertEquals(RectF(0.0f, 0.0f, 15.0f, 15.0f), r)
     }
 
+    @SdkSuppress(minSdkVersion = 19)
     @Test fun testDifference() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 10.0f, 10.0f, Path.Direction.CW) }
         val r2 = Path().apply { addRect(5.0f, 0.0f, 15.0f, 15.0f, Path.Direction.CW) }
@@ -114,6 +120,7 @@ class PathTest {
         assertEquals(RectF(0.0f, 0.0f, 5.0f, 10.0f), r)
     }
 
+    @SdkSuppress(minSdkVersion = 19)
     @Test fun testIntersection() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 10.0f, 10.0f, Path.Direction.CW) }
         val r2 = Path().apply { addRect(5.0f, 0.0f, 15.0f, 15.0f, Path.Direction.CW) }
@@ -125,6 +132,7 @@ class PathTest {
         assertEquals(RectF(5.0f, 0.0f, 10.0f, 10.0f), r)
     }
 
+    @SdkSuppress(minSdkVersion = 19)
     @Test fun testEmptyIntersection() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 2.0f, 2.0f, Path.Direction.CW) }
         val r2 = Path().apply { addRect(5.0f, 5.0f, 7.0f, 7.0f, Path.Direction.CW) }
@@ -133,6 +141,7 @@ class PathTest {
         assertTrue(p.isEmpty)
     }
 
+    @SdkSuppress(minSdkVersion = 19)
     @Test fun testXor() {
         val r1 = Path().apply { addRect(0.0f, 0.0f, 10.0f, 10.0f, Path.Direction.CW) }
         val r2 = Path().apply { addRect(5.0f, 5.0f, 15.0f, 15.0f, Path.Direction.CW) }

@@ -17,10 +17,12 @@
 package androidx.util
 
 import android.annotation.SuppressLint
+import android.support.test.filters.SdkSuppress
 import android.util.Half
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
+@SdkSuppress(minSdkVersion = 26)
 class HalfTest {
     @SuppressLint("HalfFloat") // TODO remove https://issuetracker.google.com/issues/72509078
     @Test fun shortToHalf() = assertEquals(Half(1.toShort()), 1.toShort().toHalf())
