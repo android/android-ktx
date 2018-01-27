@@ -175,10 +175,13 @@ package androidx.graphics {
     method public final android.graphics.PointF component3();
     method public final float component4();
     method public final androidx.graphics.PathSegment copy(android.graphics.PointF start, float startFraction, android.graphics.PointF end, float endFraction);
+    method public boolean equals(Object! p);
     method public final android.graphics.PointF getEnd();
     method public final float getEndFraction();
     method public final android.graphics.PointF getStart();
     method public final float getStartFraction();
+    method public int hashCode();
+    method public String! toString();
   }
 
   public final class PictureKt {
