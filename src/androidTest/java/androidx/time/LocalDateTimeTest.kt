@@ -16,12 +16,14 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 
+@SdkSuppress(minSdkVersion = 26)
 class LocalDateTimeTest {
     @Test fun destructuring() {
         val actualDate = LocalDate.of(2017, 12, 20)

@@ -16,10 +16,12 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.DayOfWeek
 
+@SdkSuppress(minSdkVersion = 26)
 class DayOfWeekTest {
     @Test fun fromInt() {
         assertEquals(DayOfWeek.MONDAY, 1.asDayOfWeek())

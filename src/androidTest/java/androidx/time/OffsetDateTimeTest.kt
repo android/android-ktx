@@ -16,12 +16,14 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 
+@SdkSuppress(minSdkVersion = 26)
 class OffsetDateTimeTest {
     @Test fun destructuring() {
         val (dateTime, offset) = OffsetDateTime.of(2017, 12, 20, 5, 16, 42, 0, ZoneOffset.UTC)

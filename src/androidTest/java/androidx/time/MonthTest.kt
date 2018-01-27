@@ -16,10 +16,12 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Month
 
+@SdkSuppress(minSdkVersion = 26)
 class MonthTest {
     @Test fun fromInt() {
         assertEquals(Month.DECEMBER, 12.asMonth())

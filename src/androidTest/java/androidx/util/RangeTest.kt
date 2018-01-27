@@ -16,10 +16,12 @@
 
 package androidx.util
 
+import android.support.test.filters.SdkSuppress
 import android.util.Range
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
+@SdkSuppress(minSdkVersion = 21)
 class RangeTest {
     @Test fun infixFactory() {
         val range: Range<String> = "a" rangeTo "c"

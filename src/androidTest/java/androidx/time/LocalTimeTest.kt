@@ -16,10 +16,12 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.LocalTime
 
+@SdkSuppress(minSdkVersion = 26)
 class LocalTimeTest {
     @Test fun destructuring() {
         val (hour, minute, second, nanos) = LocalTime.of(5, 12, 42, 55678)

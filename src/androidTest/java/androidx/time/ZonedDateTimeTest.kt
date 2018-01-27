@@ -16,12 +16,14 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
+@SdkSuppress(minSdkVersion = 26)
 class ZonedDateTimeTest {
     @Test fun destructuring() {
         val paris = ZoneId.of("Europe/Paris")

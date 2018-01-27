@@ -17,6 +17,7 @@
 package androidx.content
 
 import android.support.test.InstrumentationRegistry
+import android.support.test.filters.SdkSuppress
 import android.test.mock.MockContext
 import androidx.getAttributeSet
 import androidx.kotlin.test.R
@@ -28,6 +29,7 @@ import org.junit.Test
 class ContextTest {
     private val context = InstrumentationRegistry.getContext()
 
+    @SdkSuppress(minSdkVersion = 23)
     @Test fun systemService() {
         var lookup: Class<*>? = null
         val context = object : MockContext() {

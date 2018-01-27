@@ -45,9 +45,9 @@ class SQLiteDatabaseTest {
             }
         }.isSameAs(exception)
 
-        db.rawQuery("SELECT COUNT(*) FROM test", emptyArray()).use {
-            it.moveToFirst()
-            assertEquals(0L, it.getLong(0))
-        }
+        val query = db.rawQuery("SELECT COUNT(*) FROM test", emptyArray())
+        query.moveToFirst()
+        assertEquals(0L, query.getLong(0))
+        query.close()
     }
 }

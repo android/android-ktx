@@ -20,6 +20,7 @@ import android.graphics.Rect
 import android.os.Binder
 import android.os.Bundle
 import android.support.test.InstrumentationRegistry
+import android.support.test.filters.SdkSuppress
 import android.util.Size
 import android.util.SizeF
 import android.view.View
@@ -34,11 +35,8 @@ import java.util.concurrent.atomic.AtomicInteger
 
 class BundleTest {
     @Test fun bundleOfValid() {
-        val binderValue = Binder()
         val bundleValue = Bundle()
         val charSequenceValue = "hey"
-        val sizeValue = Size(1, 1)
-        val sizeFValue = SizeF(1f, 1f)
         val parcelableValue = Rect(1, 2, 3, 4)
         val serializableValue = AtomicInteger(1)
 
@@ -54,11 +52,8 @@ class BundleTest {
                 "long" to 1L,
                 "short" to 1.toShort(),
 
-                "binder" to binderValue,
                 "bundle" to bundleValue,
                 "charSequence" to charSequenceValue,
-                "size" to sizeValue,
-                "sizeF" to sizeFValue,
                 "parcelable" to parcelableValue,
 
                 "booleanArray" to booleanArrayOf(),
@@ -78,7 +73,7 @@ class BundleTest {
                 "serializable" to serializableValue
         )
 
-        assertEquals(28, bundle.size())
+        assertEquals(25, bundle.size())
 
         assertNull(bundle["null"])
 
@@ -91,11 +86,8 @@ class BundleTest {
         assertEquals(1L, bundle["long"])
         assertEquals(1.toShort(), bundle["short"])
 
-        assertSame(binderValue, bundle["binder"])
         assertSame(bundleValue, bundle["bundle"])
         assertSame(charSequenceValue, bundle["charSequence"])
-        assertSame(sizeValue, bundle["size"])
-        assertSame(sizeFValue, bundle["sizeF"])
         assertSame(parcelableValue, bundle["parcelable"])
 
         assertArrayEquals(booleanArrayOf(), bundle["booleanArray"] as BooleanArray)
@@ -113,6 +105,27 @@ class BundleTest {
         assertThat(bundle["serializableArray"] as Array<*>).asList().containsExactly(serializableValue)
 
         assertSame(serializableValue, bundle["serializable"])
+    }
+
+    @SdkSuppress(minSdkVersion = 18)
+    @Test fun bundleOfValidApi18() {
+        val binderValue = Binder()
+        val bundle = bundleOf("binder" to binderValue)
+        assertSame(binderValue, bundle["binder"])
+    }
+
+    @SdkSuppress(minSdkVersion = 21)
+    @Test fun bundleOfValidApi21() {
+        val sizeValue = Size(1, 1)
+        val sizeFValue = SizeF(1f, 1f)
+
+        val bundle = bundleOf(
+                "size" to sizeValue,
+                "sizeF" to sizeFValue
+        )
+
+        assertSame(sizeValue, bundle["size"])
+        assertSame(sizeFValue, bundle["sizeF"])
     }
 
     @Test fun bundleOfInvalid() {

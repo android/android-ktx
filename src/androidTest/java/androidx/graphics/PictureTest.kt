@@ -24,7 +24,7 @@ import org.junit.Test
 class PictureTest {
     @Test fun record() {
         val p = Picture().record(1, 1) {
-            drawColor(Color.valueOf(1.0f, 0.0f, 0.0f).toArgb())
+            drawColor(Color.RED)
         }
         val v = createBitmap(1, 1).applyCanvas {
             drawPicture(p)

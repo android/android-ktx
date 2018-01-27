@@ -17,8 +17,9 @@
 package androidx.os
 
 import android.annotation.SuppressLint
+import android.os.Binder
+import android.os.Build
 import android.os.Bundle
-import android.os.IBinder
 import android.os.Parcelable
 import android.util.Size
 import android.util.SizeF
@@ -46,11 +47,8 @@ fun bundleOf(vararg pairs: Pair<String, Any?>) = Bundle(pairs.size).apply {
             is Short -> putShort(key, value)
 
             // References
-            is IBinder -> putBinder(key, value)
             is Bundle -> putBundle(key, value)
             is CharSequence -> putCharSequence(key, value)
-            is Size -> putSize(key, value)
-            is SizeF -> putSizeF(key, value)
             is Parcelable -> putParcelable(key, value)
 
             // Scalar arrays
@@ -92,8 +90,16 @@ fun bundleOf(vararg pairs: Pair<String, Any?>) = Bundle(pairs.size).apply {
             is Serializable -> putSerializable(key, value)
 
             else -> {
-                val valueType = value.javaClass.canonicalName
-                throw IllegalArgumentException("Illegal value type $valueType for key \"$key\"")
+                if (Build.VERSION.SDK_INT >= 18 && value is Binder) {
+                    putBinder(key, value)
+                } else if (Build.VERSION.SDK_INT >= 21 && value is Size) {
+                    putSize(key, value)
+                } else if (Build.VERSION.SDK_INT >= 21 && value is SizeF) {
+                    putSizeF(key, value)
+                } else {
+                    val valueType = value.javaClass.canonicalName
+                    throw IllegalArgumentException("Illegal value type $valueType for key \"$key\"")
+                }
             }
         }
     }

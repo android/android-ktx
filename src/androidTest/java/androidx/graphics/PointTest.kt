@@ -95,7 +95,9 @@ class PointTest {
     }
 
     @Test fun toPointF() {
-        assertEquals(PointF(1.0f, 2.0f), Point(1, 2).toPointF())
+        val pointF = Point(1, 2).toPointF()
+        assertEquals(1f, pointF.x, 0f)
+        assertEquals(2f, pointF.y, 0f)
     }
 
     @Test fun toPoint() {

@@ -16,10 +16,12 @@
 
 package androidx.util
 
+import android.support.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
+@SdkSuppress(minSdkVersion = 23)
 class ArraySetTest {
     @Test fun empty() {
         val set = arraySetOf<String>()

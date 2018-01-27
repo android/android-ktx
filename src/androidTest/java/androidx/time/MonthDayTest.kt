@@ -16,11 +16,13 @@
 
 package androidx.time
 
+import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.Month
 import java.time.MonthDay
 
+@SdkSuppress(minSdkVersion = 26)
 class MonthDayTest {
     @Test fun destructuring() {
         val (month, day) = MonthDay.of(Month.DECEMBER, 20)

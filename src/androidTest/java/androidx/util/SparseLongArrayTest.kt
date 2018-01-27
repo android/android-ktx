@@ -16,6 +16,7 @@
 
 package androidx.util
 
+import android.support.test.filters.SdkSuppress
 import android.util.SparseLongArray
 import androidx.fail
 import com.google.common.truth.Truth.assertThat
@@ -24,6 +25,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
+@SdkSuppress(minSdkVersion = 18)
 class SparseLongArrayTest {
     @Test fun sizeProperty() {
         val array = SparseLongArray()
