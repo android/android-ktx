@@ -33,6 +33,7 @@ import org.junit.Rule
 import org.junit.Test
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
 
 @SdkSuppress(minSdkVersion = 19)
 class TransitionTest {
@@ -45,22 +46,20 @@ class TransitionTest {
     }
 
     @Test fun testDoOnStart() {
-        var called = false
+        val called = AtomicBoolean()
         transition.doOnStart {
-            called = true
+            called.set(true)
         }
 
         startTransition(transition)
-        assertTrue(called)
+        assertTrue(called.get())
     }
 
     @Test fun testDoOnEnd() {
-        var called = false
+        val called = AtomicBoolean()
         transition.doOnEnd {
-            called = true
+            called.set(true)
         }
-
-        startTransition(transition)
 
         val latch = CountDownLatch(1)
         transition.addListener(object : Transition.TransitionListener {
@@ -73,9 +72,13 @@ class TransitionTest {
             override fun onTransitionCancel(transition: Transition?) = Unit
             override fun onTransitionStart(transition: Transition?) = Unit
         })
-        assertTrue(latch.await(1, TimeUnit.SECONDS))
 
-        assertTrue(called)
+        startTransition(transition)
+
+        assertTrue(latch.await(1, TimeUnit.SECONDS))
+        InstrumentationRegistry.getInstrumentation().waitForIdleSync()
+
+        assertTrue(called.get())
     }
 
     private fun startTransition(t: Transition) {
