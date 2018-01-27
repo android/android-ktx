@@ -16,6 +16,7 @@
 
 package androidx
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.support.annotation.LayoutRes
 import android.util.AttributeSet
@@ -38,6 +39,7 @@ inline fun <reified T : Throwable> assertThrows(body: () -> Unit): ThrowableSubj
 
 fun fail(message: String? = null): Nothing = throw AssertionError(message)
 
+@SuppressLint("ResourceType")
 fun Context.getAttributeSet(@LayoutRes layoutId: Int): AttributeSet {
     val parser = resources.getXml(layoutId)
     var type = parser.next()

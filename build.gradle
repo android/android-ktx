@@ -13,7 +13,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.0-alpha09'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.15"
     }
@@ -39,6 +39,10 @@ android {
         minSdkVersion 14
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        checkTestSources true
     }
 
     // TODO replace with https://issuetracker.google.com/issues/72050365 once released.

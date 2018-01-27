@@ -16,11 +16,13 @@
 
 package androidx.util
 
+import android.annotation.SuppressLint
 import android.util.Half
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class HalfTest {
+    @SuppressLint("HalfFloat") // TODO remove https://issuetracker.google.com/issues/72509078
     @Test fun shortToHalf() = assertEquals(Half(1.toShort()), 1.toShort().toHalf())
 
     @Test fun floatToHalf() = assertEquals(Half(1f), 1f.toHalf())
