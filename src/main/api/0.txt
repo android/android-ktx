@@ -18,7 +18,7 @@ package androidx.content {
 
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
-    method public static final error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
+    method public static final error.NonExistentClass contentValuesOf(kotlin.Pair<String,?>... pairs);
   }
 
   public final class ContextKt {
@@ -161,7 +161,7 @@ package androidx.graphics {
   public final class PathKt {
     ctor public PathKt();
     method @RequiresApi(19) public static final android.graphics.Path and(android.graphics.Path, android.graphics.Path p);
-    method @RequiresApi(26) public static final java.lang.Iterable<androidx.graphics.PathSegment> flatten(android.graphics.Path, float error);
+    method @RequiresApi(26) public static final Iterable<androidx.graphics.PathSegment> flatten(android.graphics.Path, float error);
     method @RequiresApi(19) public static final android.graphics.Path minus(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(19) public static final android.graphics.Path or(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(19) public static final android.graphics.Path plus(android.graphics.Path, android.graphics.Path p);
@@ -175,13 +175,10 @@ package androidx.graphics {
     method public final android.graphics.PointF component3();
     method public final float component4();
     method public final androidx.graphics.PathSegment copy(android.graphics.PointF start, float startFraction, android.graphics.PointF end, float endFraction);
-    method public boolean equals(Object! p);
     method public final android.graphics.PointF getEnd();
     method public final float getEndFraction();
     method public final android.graphics.PointF getStart();
     method public final float getStartFraction();
-    method public int hashCode();
-    method public String! toString();
   }
 
   public final class PictureKt {
@@ -320,7 +317,7 @@ package androidx.os {
 
   public final class BundleKt {
     ctor public BundleKt();
-    method public static final error.NonExistentClass bundleOf(kotlin.Pair<java.lang.String,?>... pairs);
+    method public static final error.NonExistentClass bundleOf(kotlin.Pair<String,?>... pairs);
   }
 
   public final class HandlerKt {
@@ -334,7 +331,7 @@ package androidx.os {
 
   public final class PersistableBundleKt {
     ctor public PersistableBundleKt();
-    method @RequiresApi(21) public static final error.NonExistentClass persistableBundleOf(kotlin.Pair<java.lang.String,?>... pairs);
+    method @RequiresApi(21) public static final error.NonExistentClass persistableBundleOf(kotlin.Pair<String,?>... pairs);
   }
 
   public final class TraceKt {
@@ -521,7 +518,7 @@ package androidx.util {
     method @RequiresApi(16) public static final <T> boolean contains(android.util.LongSparseArray<T>, long key);
     method @RequiresApi(16) public static final <T> boolean containsKey(android.util.LongSparseArray<T>, long key);
     method @RequiresApi(16) public static final <T> boolean containsValue(android.util.LongSparseArray<T>, T! value);
-    method @RequiresApi(16) public static final <T> void forEach(android.util.LongSparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Long,? super T,kotlin.Unit> action);
+    method @RequiresApi(16) public static final <T> void forEach(android.util.LongSparseArray<T>, kotlin.jvm.functions.Function2<? super Long,? super T,kotlin.Unit> action);
     method @RequiresApi(16) public static final <T> T! getOrDefault(android.util.LongSparseArray<T>, long key, T! defaultValue);
     method @RequiresApi(16) public static final <T> T! getOrElse(android.util.LongSparseArray<T>, long key, kotlin.jvm.functions.Function0<? extends T> defaultValue);
     method @RequiresApi(16) public static final <T> int getSize(android.util.LongSparseArray<T>);
@@ -566,7 +563,7 @@ package androidx.util {
     method public static final <T> boolean contains(android.util.SparseArray<T>, int key);
     method public static final <T> boolean containsKey(android.util.SparseArray<T>, int key);
     method public static final <T> boolean containsValue(android.util.SparseArray<T>, T! value);
-    method public static final <T> void forEach(android.util.SparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super T,kotlin.Unit> action);
+    method public static final <T> void forEach(android.util.SparseArray<T>, kotlin.jvm.functions.Function2<? super Integer,? super T,kotlin.Unit> action);
     method public static final <T> T! getOrDefault(android.util.SparseArray<T>, int key, T! defaultValue);
     method public static final <T> T! getOrElse(android.util.SparseArray<T>, int key, kotlin.jvm.functions.Function0<? extends T> defaultValue);
     method public static final <T> int getSize(android.util.SparseArray<T>);
@@ -585,9 +582,9 @@ package androidx.util {
     method public static final boolean contains(android.util.SparseBooleanArray, int key);
     method public static final boolean containsKey(android.util.SparseBooleanArray, int key);
     method public static final boolean containsValue(android.util.SparseBooleanArray, boolean value);
-    method public static final void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Boolean,kotlin.Unit> action);
+    method public static final void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super Integer,? super Boolean,kotlin.Unit> action);
     method public static final boolean getOrDefault(android.util.SparseBooleanArray, int key, boolean defaultValue);
-    method public static final error.NonExistentClass getOrElse(android.util.SparseBooleanArray, int key, kotlin.jvm.functions.Function0<java.lang.Boolean> defaultValue);
+    method public static final error.NonExistentClass getOrElse(android.util.SparseBooleanArray, int key, kotlin.jvm.functions.Function0<Boolean> defaultValue);
     method public static final int getSize(android.util.SparseBooleanArray);
     method public static final boolean isEmpty(android.util.SparseBooleanArray);
     method public static final boolean isNotEmpty(android.util.SparseBooleanArray);
@@ -605,9 +602,9 @@ package androidx.util {
     method public static final boolean contains(android.util.SparseIntArray, int key);
     method public static final boolean containsKey(android.util.SparseIntArray, int key);
     method public static final boolean containsValue(android.util.SparseIntArray, int value);
-    method public static final void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit> action);
+    method public static final void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super Integer,? super Integer,kotlin.Unit> action);
     method public static final int getOrDefault(android.util.SparseIntArray, int key, int defaultValue);
-    method public static final error.NonExistentClass getOrElse(android.util.SparseIntArray, int key, kotlin.jvm.functions.Function0<java.lang.Integer> defaultValue);
+    method public static final error.NonExistentClass getOrElse(android.util.SparseIntArray, int key, kotlin.jvm.functions.Function0<Integer> defaultValue);
     method public static final int getSize(android.util.SparseIntArray);
     method public static final boolean isEmpty(android.util.SparseIntArray);
     method public static final boolean isNotEmpty(android.util.SparseIntArray);
@@ -624,9 +621,9 @@ package androidx.util {
     method @RequiresApi(18) public static final boolean contains(android.util.SparseLongArray, int key);
     method @RequiresApi(18) public static final boolean containsKey(android.util.SparseLongArray, int key);
     method @RequiresApi(18) public static final boolean containsValue(android.util.SparseLongArray, long value);
-    method @RequiresApi(18) public static final void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Long,kotlin.Unit> action);
+    method @RequiresApi(18) public static final void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super Integer,? super Long,kotlin.Unit> action);
     method @RequiresApi(18) public static final long getOrDefault(android.util.SparseLongArray, int key, long defaultValue);
-    method @RequiresApi(18) public static final error.NonExistentClass getOrElse(android.util.SparseLongArray, int key, kotlin.jvm.functions.Function0<java.lang.Long> defaultValue);
+    method @RequiresApi(18) public static final error.NonExistentClass getOrElse(android.util.SparseLongArray, int key, kotlin.jvm.functions.Function0<Long> defaultValue);
     method @RequiresApi(18) public static final int getSize(android.util.SparseLongArray);
     method @RequiresApi(18) public static final boolean isEmpty(android.util.SparseLongArray);
     method @RequiresApi(18) public static final boolean isNotEmpty(android.util.SparseLongArray);
@@ -646,7 +643,7 @@ package androidx.view {
     ctor public ViewGroupKt();
     method public static final boolean contains(android.view.ViewGroup, android.view.View view);
     method public static final void forEach(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
-    method public static final void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.view.View,kotlin.Unit> action);
+    method public static final void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super Integer,? super android.view.View,kotlin.Unit> action);
     method public static final android.view.View get(android.view.ViewGroup, int index);
     method public static final int getSize(android.view.ViewGroup);
     method public static final boolean isEmpty(android.view.ViewGroup);

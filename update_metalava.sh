@@ -4,12 +4,12 @@ set -e
 
 echo -n "Cloning…"
 
-if [ ! -d build/metalava ]; then
-    git clone -q https://android.googlesource.com/platform/tools/metalava/ build/metalava
+if [ ! -d build/fake-aosp/tools/metalava ]; then
+    git clone -q https://android.googlesource.com/platform/tools/metalava/ build/fake-aosp/tools/metalava
 fi
 
 (
-    cd build/metalava
+    cd build/fake-aosp/tools/metalava
 
     # Update in case the repo was already cloned.
     git pull -q
@@ -17,7 +17,7 @@ fi
 
     echo -n "Building…"
     ./gradlew jar --console=plain -q --no-daemon
-    cp build/libs/metalava.jar ../../metalava.jar
+    cp ../../out/host/common/libs/metalava-*.jar ../../../../metalava.jar
     echo " Done"
 
     echo -e "\nDependencies:\n"
