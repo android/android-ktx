@@ -19,6 +19,7 @@ package androidx.graphics
 import android.graphics.Color
 import android.graphics.ColorSpace
 import android.support.test.filters.SdkSuppress
+import androidx.assertThrows
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -115,13 +116,15 @@ class ColorTest {
     }
 
     @SdkSuppress(minSdkVersion = 26)
-    @Test(expected = IllegalArgumentException::class) fun addColorsDifferentModels() {
+    @Test fun addColorsDifferentModels() {
         val lab = Color.valueOf(
                 floatArrayOf(54.0f, 80.0f, 70.0f, 1.0f),
                 ColorSpace.get(ColorSpace.Named.CIE_LAB))
         val rgb = Color.valueOf(floatArrayOf(0.0f, 0.5f, 0.0f, 0.5f),
                 ColorSpace.get(ColorSpace.Named.SRGB))
-        lab + rgb
+        assertThrows<IllegalArgumentException> {
+            lab + rgb
+        }
     }
 
     @SdkSuppress(minSdkVersion = 26)
