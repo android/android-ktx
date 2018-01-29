@@ -19,6 +19,7 @@ package androidx.view
 import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
 import android.view.View
+import androidx.assertThrows
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
@@ -124,9 +125,11 @@ class ViewTest {
         assertEquals(40, view.paddingBottom)
     }
 
-    @Test(expected = IllegalStateException::class)
+    @Test
     fun toBitmapBeforeLayout() {
-        view.toBitmap()
+        assertThrows<IllegalStateException> {
+            view.toBitmap()
+        }
     }
 
     @Test
