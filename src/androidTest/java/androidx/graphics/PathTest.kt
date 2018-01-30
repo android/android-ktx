@@ -39,8 +39,8 @@ class PathTest {
         // Single line
         p.lineTo(10.0f, 10.0f)
         assertEquals(
-                PathSegment(PointF(), 0.0f, PointF(10.0f, 10.0f), 1.0f),
-                p.flatten().iterator().next())
+            PathSegment(PointF(), 0.0f, PointF(10.0f, 10.0f), 1.0f),
+            p.flatten().iterator().next())
 
         // Only moves
         p.reset()

@@ -16,7 +16,6 @@
 
 package androidx.os
 
-import android.annotation.SuppressLint
 import android.os.Binder
 import android.os.Build
 import android.os.Bundle
@@ -30,7 +29,6 @@ import java.io.Serializable
  *
  * @throws IllegalArgumentException When a value is not a supported type of [Bundle].
  */
-@SuppressLint("NewApi") // No way to propagate API requirements to callers.
 fun bundleOf(vararg pairs: Pair<String, Any?>) = Bundle(pairs.size).apply {
     for ((key, value) in pairs) {
         when (value) {
@@ -81,7 +79,7 @@ fun bundleOf(vararg pairs: Pair<String, Any?>) = Bundle(pairs.size).apply {
                     else -> {
                         val valueType = componentType.canonicalName
                         throw IllegalArgumentException(
-                                "Illegal value array type $valueType for key \"$key\"")
+                            "Illegal value array type $valueType for key \"$key\"")
                     }
                 }
             }

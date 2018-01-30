@@ -60,7 +60,7 @@ inline fun SpannableStringBuilder.inSpans(
  * @see SpannableStringBuilder.inSpans
  */
 inline fun SpannableStringBuilder.bold(builderAction: SpannableStringBuilder.() -> Unit) =
-        inSpans(StyleSpan(BOLD), builderAction = builderAction)
+    inSpans(StyleSpan(BOLD), builderAction = builderAction)
 
 /**
  * Wrap appended text in `builderAction` in an italic [StyleSpan].
@@ -68,7 +68,7 @@ inline fun SpannableStringBuilder.bold(builderAction: SpannableStringBuilder.() 
  * @see SpannableStringBuilder.inSpans
  */
 inline fun SpannableStringBuilder.italic(builderAction: SpannableStringBuilder.() -> Unit) =
-        inSpans(StyleSpan(ITALIC), builderAction = builderAction)
+    inSpans(StyleSpan(ITALIC), builderAction = builderAction)
 
 /**
  * Wrap appended text in `builderAction` in an [UnderlineSpan].
@@ -76,7 +76,7 @@ inline fun SpannableStringBuilder.italic(builderAction: SpannableStringBuilder.(
  * @see SpannableStringBuilder.inSpans
  */
 inline fun SpannableStringBuilder.underline(builderAction: SpannableStringBuilder.() -> Unit) =
-        inSpans(UnderlineSpan(), builderAction = builderAction)
+    inSpans(UnderlineSpan(), builderAction = builderAction)
 
 /**
  * Wrap appended text in `builderAction` in a [ForegroundColorSpan].

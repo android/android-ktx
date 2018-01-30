@@ -79,7 +79,8 @@ class TypedArrayTest {
         val attrs = context.getAttributeSet(R.layout.typed_array)
         val array = context.obtainStyledAttributes(attrs, R.styleable.TypedArrayTypes)
 
-        assertEquals(1, array.getDimensionPixelSizeOrThrow(R.styleable.TypedArrayTypes_dimension_present))
+        assertEquals(1,
+            array.getDimensionPixelSizeOrThrow(R.styleable.TypedArrayTypes_dimension_present))
 
         assertThrows<IllegalArgumentException> {
             array.getDimensionPixelSizeOrThrow(R.styleable.TypedArrayTypes_dimension_absent)
@@ -90,7 +91,8 @@ class TypedArrayTest {
         val attrs = context.getAttributeSet(R.layout.typed_array)
         val array = context.obtainStyledAttributes(attrs, R.styleable.TypedArrayTypes)
 
-        assertEquals(1, array.getDimensionPixelOffsetOrThrow(R.styleable.TypedArrayTypes_dimension_present))
+        assertEquals(1,
+            array.getDimensionPixelOffsetOrThrow(R.styleable.TypedArrayTypes_dimension_present))
 
         assertThrows<IllegalArgumentException> {
             array.getDimensionPixelOffsetOrThrow(R.styleable.TypedArrayTypes_dimension_absent)

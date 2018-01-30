@@ -87,10 +87,11 @@ fun ViewGroup.MarginLayoutParams.setMargins(size: Int) {
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
 fun ViewGroup.MarginLayoutParams.updateMargins(
-        left: Int = leftMargin,
-        top: Int = topMargin,
-        right: Int = rightMargin,
-        bottom: Int = bottomMargin) {
+    left: Int = leftMargin,
+    top: Int = topMargin,
+    right: Int = rightMargin,
+    bottom: Int = bottomMargin
+) {
     setMargins(left, top, right, bottom)
 }
 
@@ -102,10 +103,11 @@ fun ViewGroup.MarginLayoutParams.updateMargins(
  */
 @RequiresApi(17)
 fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
-        start: Int = marginStart,
-        top: Int = topMargin,
-        end: Int = marginEnd,
-        bottom: Int = bottomMargin) {
+    start: Int = marginStart,
+    top: Int = topMargin,
+    end: Int = marginEnd,
+    bottom: Int = bottomMargin
+) {
     marginStart = start
     topMargin = top
     marginEnd = end

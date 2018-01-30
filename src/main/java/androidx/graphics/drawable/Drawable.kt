@@ -71,10 +71,10 @@ fun Drawable.toBitmap(
  * @see Drawable.setBounds
  */
 fun Drawable.updateBounds(
-        left: Int = bounds.left,
-        top: Int = bounds.top,
-        right: Int = bounds.right,
-        bottom: Int = bounds.bottom
+    left: Int = bounds.left,
+    top: Int = bounds.top,
+    right: Int = bounds.right,
+    bottom: Int = bounds.bottom
 ) {
     setBounds(left, top, right, bottom)
 }

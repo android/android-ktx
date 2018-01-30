@@ -48,7 +48,7 @@ inline fun SparseIntArray.getOrDefault(key: Int, defaultValue: Int) = get(key, d
 
 /** Return the value corresponding to [key], or from [defaultValue] when not present. */
 inline fun SparseIntArray.getOrElse(key: Int, defaultValue: () -> Int) =
-        indexOfKey(key).let { if (it != -1) valueAt(it) else defaultValue() }
+    indexOfKey(key).let { if (it != -1) valueAt(it) else defaultValue() }
 
 /** Return true when the collection contains no elements. */
 inline fun SparseIntArray.isEmpty() = size() == 0

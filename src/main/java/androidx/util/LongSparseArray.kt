@@ -52,11 +52,13 @@ inline fun <T> LongSparseArray<T>.containsValue(value: T) = indexOfValue(value) 
 
 /** Return the value corresponding to [key], or [defaultValue] when not present. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.getOrDefault(key: Long, defaultValue: T) = get(key) ?: defaultValue
+inline fun <T> LongSparseArray<T>.getOrDefault(key: Long, defaultValue: T) =
+    get(key) ?: defaultValue
 
 /** Return the value corresponding to [key], or from [defaultValue] when not present. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.getOrElse(key: Long, defaultValue: () -> T) = get(key) ?: defaultValue()
+inline fun <T> LongSparseArray<T>.getOrElse(key: Long, defaultValue: () -> T) =
+    get(key) ?: defaultValue()
 
 /** Return true when the collection contains no elements. */
 @RequiresApi(16)

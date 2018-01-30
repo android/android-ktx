@@ -64,11 +64,12 @@ fun Transition.doOnPause(action: (transition: Transition) -> Unit) {
  */
 @RequiresApi(19)
 fun Transition.addListener(
-        onEnd: ((transition: Transition) -> Unit)? = null,
-        onStart: ((transition: Transition) -> Unit)? = null,
-        onCancel: ((transition: Transition) -> Unit)? = null,
-        onResume: ((transition: Transition) -> Unit)? = null,
-        onPause: ((transition: Transition) -> Unit)? = null) {
+    onEnd: ((transition: Transition) -> Unit)? = null,
+    onStart: ((transition: Transition) -> Unit)? = null,
+    onCancel: ((transition: Transition) -> Unit)? = null,
+    onResume: ((transition: Transition) -> Unit)? = null,
+    onPause: ((transition: Transition) -> Unit)? = null
+) {
     addListener(object : Transition.TransitionListener {
         override fun onTransitionEnd(transition: Transition) {
             onEnd?.invoke(transition)

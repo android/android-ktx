@@ -16,7 +16,6 @@
 
 package androidx.os
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.PersistableBundle
 import android.support.annotation.RequiresApi
@@ -27,7 +26,6 @@ import android.support.annotation.RequiresApi
  * @throws IllegalArgumentException When a value is not a supported type of [PersistableBundle].
  */
 @RequiresApi(21)
-@SuppressLint("NewApi") // No way to propagate API requirements to callers.
 fun persistableBundleOf(vararg pairs: Pair<String, Any?>) = PersistableBundle(pairs.size).apply {
     for ((key, value) in pairs) {
         when (value) {
@@ -71,7 +69,7 @@ fun persistableBundleOf(vararg pairs: Pair<String, Any?>) = PersistableBundle(pa
                     else -> {
                         val valueType = componentType.canonicalName
                         throw IllegalArgumentException(
-                                "Illegal value array type $valueType for key \"$key\"")
+                            "Illegal value array type $valueType for key \"$key\"")
                     }
                 }
             }

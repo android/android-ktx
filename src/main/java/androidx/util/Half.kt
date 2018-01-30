@@ -23,7 +23,8 @@ import android.support.annotation.HalfFloat
 import android.support.annotation.RequiresApi
 import android.util.Half
 
-@Suppress("WRONG_ANNOTATION_TARGET_WITH_USE_SITE_TARGET_ON_TYPE") // TODO https://youtrack.jetbrains.com/issue/KT-21696
+// TODO https://youtrack.jetbrains.com/issue/KT-21696
+@Suppress("WRONG_ANNOTATION_TARGET_WITH_USE_SITE_TARGET_ON_TYPE")
 @SuppressLint("HalfFloat") // TODO remove https://issuetracker.google.com/issues/72509078
 @RequiresApi(26)
 inline fun @receiver:HalfFloat Short.toHalf(): Half = Half.valueOf(this)

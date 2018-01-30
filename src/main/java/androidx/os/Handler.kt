@@ -48,9 +48,9 @@ fun Handler.postDelayed(runnable: Runnable, token: Any?, delayInMillis: Long) {
  * @return the created Runnable
  */
 inline fun Handler.postDelayed(
-        delayInMillis: Long,
-        token: Any? = null,
-        crossinline action: () -> Unit
+    delayInMillis: Long,
+    token: Any? = null,
+    crossinline action: () -> Unit
 ) = Runnable { action() }.also {
     postDelayed(it, token, delayInMillis)
 }

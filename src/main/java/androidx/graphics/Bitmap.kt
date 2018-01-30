@@ -81,9 +81,10 @@ inline fun Bitmap.scale(width: Int, height: Int, filter: Boolean = true): Bitmap
  * @return A new bitmap with the specified dimensions and config
  */
 inline fun createBitmap(
-        width: Int,
-        height: Int,
-        config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
+    width: Int,
+    height: Int,
+    config: Bitmap.Config = Bitmap.Config.ARGB_8888
+): Bitmap {
     return Bitmap.createBitmap(width, height, config)
 }
 
@@ -102,10 +103,11 @@ inline fun createBitmap(
  */
 @RequiresApi(26)
 inline fun createBitmap(
-        width: Int,
-        height: Int,
-        config: Bitmap.Config = Bitmap.Config.ARGB_8888,
-        hasAlpha: Boolean = true,
-        colorSpace: ColorSpace = ColorSpace.get(ColorSpace.Named.SRGB)): Bitmap {
+    width: Int,
+    height: Int,
+    config: Bitmap.Config = Bitmap.Config.ARGB_8888,
+    hasAlpha: Boolean = true,
+    colorSpace: ColorSpace = ColorSpace.get(ColorSpace.Named.SRGB)
+): Bitmap {
     return Bitmap.createBitmap(width, height, config, hasAlpha, colorSpace)
 }

@@ -32,10 +32,11 @@ import android.support.annotation.RequiresApi
  * @param startFraction Fraction along the length of the path that the end point resides
  */
 data class PathSegment(
-        val start: PointF,
-        val startFraction: Float,
-        val end: PointF,
-        val endFraction: Float)
+    val start: PointF,
+    val startFraction: Float,
+    val end: PointF,
+    val endFraction: Float
+)
 
 /**
  * Flattens (or approximate) the [Path] with a series of line segments.

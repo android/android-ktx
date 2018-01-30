@@ -47,7 +47,8 @@ inline fun <T> SparseArray<T>.containsValue(value: T) = indexOfValue(value) != -
 inline fun <T> SparseArray<T>.getOrDefault(key: Int, defaultValue: T) = get(key) ?: defaultValue
 
 /** Return the value corresponding to [key], or from [defaultValue] when not present. */
-inline fun <T> SparseArray<T>.getOrElse(key: Int, defaultValue: () -> T) = get(key) ?: defaultValue()
+inline fun <T> SparseArray<T>.getOrElse(key: Int, defaultValue: () -> T) =
+    get(key) ?: defaultValue()
 
 /** Return true when the collection contains no elements. */
 inline fun <T> SparseArray<T>.isEmpty() = size() == 0
