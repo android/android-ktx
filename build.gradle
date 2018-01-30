@@ -111,6 +111,9 @@ android.libraryVariants.all { variant ->
     }
 
     task updateApi(type: JavaExec) {
+        inputs.dir('src/main/java')
+        outputs.file('api/current.txt')
+
         classpath = configurations.metalava
         main = 'com.android.tools.metalava.Driver'
 
@@ -128,6 +131,10 @@ android.libraryVariants.all { variant ->
     }
 
     task checkApi(type: JavaExec) {
+        inputs.file('api/current.txt')
+        inputs.dir('src/main/java')
+        outputs.file('api/current.txt')
+
         classpath = configurations.metalava
         main = 'com.android.tools.metalava.Driver'
 
