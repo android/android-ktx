@@ -24,6 +24,12 @@ import java.time.Instant
 /**
  * Return the seconds of this [Instant].
  *
+ * This method allows to use destructuring declarations when working with instants,
+ * for example:
+ * ```
+ * val (seconds, nanoOffset) = myInstant
+ * ```
+ *
  * @see Instant.getEpochSecond
  */
 @RequiresApi(26)
@@ -31,6 +37,12 @@ inline operator fun Instant.component1(): Long = epochSecond
 
 /**
  * Return the nanosecond offset of this [Instant].
+ *
+ * This method allows to use destructuring declarations when working with instants,
+ * for example:
+ * ```
+ * val (seconds, nanoOffset) = myInstant
+ * ```
  *
  * @see Instant.getNano
  */

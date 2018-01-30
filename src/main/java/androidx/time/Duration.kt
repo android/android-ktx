@@ -24,6 +24,12 @@ import java.time.Duration
 /**
  * Return the seconds component of this [Duration].
  *
+ * This method allows to use destructuring declarations when working with durations,
+ * for example:
+ * ```
+ * val (seconds, nanoOffset) = myDuration
+ * ```
+ *
  * @see Duration.getSeconds
  */
 @RequiresApi(26)
@@ -31,6 +37,12 @@ inline operator fun Duration.component1(): Long = seconds
 
 /**
  * Returns the nanosecond offset of this [Duration].
+ *
+ * This method allows to use destructuring declarations when working with durations,
+ * for example:
+ * ```
+ * val (seconds, nanoOffset) = myDuration
+ * ```
  *
  * @see Duration.getNano
  */

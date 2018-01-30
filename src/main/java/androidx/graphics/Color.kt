@@ -171,6 +171,12 @@ inline val @receiver:ColorInt Int.blue get() = this and 0xff
  * ```
  * Color.alpha(myInt)
  * ```
+ *
+ * This method allows to use destructuring declarations when working with colors,
+ * for example:
+ * ```
+ * val (alpha, red, green, blue) = myColor
+ * ```
  */
 inline operator fun @receiver:ColorInt Int.component1() = (this shr 24) and 0xff
 
@@ -178,6 +184,12 @@ inline operator fun @receiver:ColorInt Int.component1() = (this shr 24) and 0xff
  * Return the red component of a color int. This is equivalent to calling:
  * ```
  * Color.red(myInt)
+ * ```
+ *
+ * This method allows to use destructuring declarations when working with colors,
+ * for example:
+ * ```
+ * val (alpha, red, green, blue) = myColor
  * ```
  */
 inline operator fun @receiver:ColorInt Int.component2() = (this shr 16) and 0xff
@@ -187,6 +199,12 @@ inline operator fun @receiver:ColorInt Int.component2() = (this shr 16) and 0xff
  * ```
  * Color.green(myInt)
  * ```
+ *
+ * This method allows to use destructuring declarations when working with colors,
+ * for example:
+ * ```
+ * val (alpha, red, green, blue) = myColor
+ * ```
  */
 inline operator fun @receiver:ColorInt Int.component3() = (this shr 8) and 0xff
 
@@ -194,6 +212,12 @@ inline operator fun @receiver:ColorInt Int.component3() = (this shr 8) and 0xff
  * Return the blue component of a color int. This is equivalent to calling:
  * ```
  * Color.blue(myInt)
+ * ```
+ *
+ * This method allows to use destructuring declarations when working with colors,
+ * for example:
+ * ```
+ * val (alpha, red, green, blue) = myColor
  * ```
  */
 inline operator fun @receiver:ColorInt Int.component4() = this and 0xff

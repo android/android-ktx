@@ -25,6 +25,12 @@ import java.time.YearMonth
 /**
  * Return the year component of this [YearMonth].
  *
+ * This method allows to use destructuring declarations when working with year-months,
+ * for example:
+ * ```
+ * val (year, month) = myYearMonth
+ * ```
+ *
  * @see YearMonth.getYear
  */
 @RequiresApi(26)
@@ -32,6 +38,12 @@ inline operator fun YearMonth.component1(): Int = year
 
 /**
  * Return the [Month] component of this [YearMonth].
+ *
+ * This method allows to use destructuring declarations when working with year-months,
+ * for example:
+ * ```
+ * val (year, month) = myYearMonth
+ * ```
  *
  * @see YearMonth.getMonth
  */

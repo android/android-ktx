@@ -25,7 +25,7 @@ import android.util.Pair
  *
  * This method allows to use destructuring declarations when working with pairs, for example:
  * ```
- * val (first, second) = somethingReturningPair()
+ * val (first, second) = myPair
  * ```
  */
 @Suppress("HasPlatformType") // Intentionally propagating platform type with unknown nullability.
@@ -36,7 +36,7 @@ inline operator fun <F, S> Pair<F, S>.component1() = first
  *
  * This method allows to use destructuring declarations when working with pairs, for example:
  * ```
- * val (first, second) = somethingReturningPair()
+ * val (first, second) = myPair
  * ```
  */
 @Suppress("HasPlatformType") // Intentionally propagating platform type with unknown nullability.

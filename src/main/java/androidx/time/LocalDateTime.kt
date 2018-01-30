@@ -26,6 +26,12 @@ import java.time.LocalTime
 /**
  * Return the [LocalDate] of this [LocalDateTime].
  *
+ * This method allows to use destructuring declarations when working with date/times,
+ * for example:
+ * ```
+ * val (date, time) = myDateTime
+ * ```
+ *
  * @see LocalDateTime.toLocalDate
  */
 @RequiresApi(26)
@@ -33,6 +39,12 @@ inline operator fun LocalDateTime.component1(): LocalDate = toLocalDate()
 
 /**
  * Return the [LocalTime] of this [LocalDateTime].
+ *
+ * This method allows to use destructuring declarations when working with date/times,
+ * for example:
+ * ```
+ * val (date, time) = myDateTime
+ * ```
  *
  * @see LocalDateTime.toLocalTime
  */

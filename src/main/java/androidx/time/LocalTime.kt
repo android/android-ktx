@@ -24,6 +24,12 @@ import java.time.LocalTime
 /**
  * Return the hour of this [LocalTime].
  *
+ * This method allows to use destructuring declarations when working with times,
+ * for example:
+ * ```
+ * val (hour, minute, second) = myLocalTime
+ * ```
+ *
  * @see LocalTime.getHour
  */
 @RequiresApi(26)
@@ -31,6 +37,12 @@ inline operator fun LocalTime.component1(): Int = hour
 
 /**
  * Return the minute of this [LocalTime].
+ *
+ * This method allows to use destructuring declarations when working with times,
+ * for example:
+ * ```
+ * val (hour, minute, second) = myLocalTime
+ * ```
  *
  * @see LocalTime.getMinute
  */
@@ -40,6 +52,12 @@ inline operator fun LocalTime.component2(): Int = minute
 /**
  * Return the second of this [LocalTime].
  *
+ * This method allows to use destructuring declarations when working with times,
+ * for example:
+ * ```
+ * val (hour, minute, second) = myLocalTime
+ * ```
+ *
  * @see LocalTime.getSecond
  */
 @RequiresApi(26)
@@ -47,6 +65,12 @@ inline operator fun LocalTime.component3(): Int = second
 
 /**
  * Return the nanosecond offset of this [LocalTime].
+ *
+ * This method allows to use destructuring declarations when working with times,
+ * for example:
+ * ```
+ * val (hour, minute, second, nanoOffset) = myLocalTime
+ * ```
  *
  * @see LocalTime.getNano
  */

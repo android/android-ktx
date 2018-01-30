@@ -24,6 +24,12 @@ import java.time.Period
 /**
  * Return the years component of this [Period].
  *
+ * This method allows to use destructuring declarations when working with periods,
+ * for example:
+ * ```
+ * val (years, months, days) = myPeriod
+ * ```
+ *
  * @see Period.getYears
  */
 @RequiresApi(26)
@@ -32,6 +38,12 @@ inline operator fun Period.component1(): Int = years
 /**
  * Return the months component of this [Period].
  *
+ * This method allows to use destructuring declarations when working with periods,
+ * for example:
+ * ```
+ * val (years, months, days) = myPeriod
+ * ```
+ *
  * @see Period.getMonths
  */
 @RequiresApi(26)
@@ -39,6 +51,12 @@ inline operator fun Period.component2(): Int = months
 
 /**
  * Return the days component of this [Period].
+ *
+ * This method allows to use destructuring declarations when working with periods,
+ * for example:
+ * ```
+ * val (years, months, days) = myPeriod
+ * ```
  *
  * @see Period.getDays
  */
