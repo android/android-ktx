@@ -201,6 +201,11 @@ uploadArchives {
     }
 }
 
+task deleteGoogleRepo(type: Delete) {
+    delete googleRepo
+}
+uploadArchives.dependsOn(deleteGoogleRepo)
+
 task googleZip(type: Zip, dependsOn: uploadArchives) {
     from googleRepo
 }
