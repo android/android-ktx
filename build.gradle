@@ -122,7 +122,7 @@ android.libraryVariants.all { variant ->
                     '--output-kotlin-nulls=yes',
                     '--hide', 'HiddenSuperclass',
                     '--classpath', variantClasspath(variant),
-                    '--api', 'src/main/api/0.txt'
+                    '--api', 'api/current.txt'
             ]
         }
     }
@@ -141,7 +141,7 @@ android.libraryVariants.all { variant ->
                     '--hide', 'HiddenSuperclass',
                     '--classpath', variantClasspath(variant),
                     '--check-compatibility',
-                    '--previous-api', 'src/main/api/0.txt'
+                    '--previous-api', 'api/current.txt'
             ]
         }
     }
