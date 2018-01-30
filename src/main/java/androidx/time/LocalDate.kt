@@ -25,6 +25,12 @@ import java.time.Month
 /**
  * Return the year of this [LocalDate].
  *
+ * This method allows to use destructuring declarations when working with dates,
+ * for example:
+ * ```
+ * val (year, month, day) = myLocalDate
+ * ```
+ *
  * @see LocalDate.getYear
  */
 @RequiresApi(26)
@@ -33,6 +39,12 @@ inline operator fun LocalDate.component1(): Int = year
 /**
  * Return the [Month] of this [LocalDate].
  *
+ * This method allows to use destructuring declarations when working with dates,
+ * for example:
+ * ```
+ * val (year, month, day) = myLocalDate
+ * ```
+ *
  * @see LocalDate.getMonth
  */
 @RequiresApi(26)
@@ -40,6 +52,12 @@ inline operator fun LocalDate.component2(): Month = month
 
 /**
  * Return the day (of the month) of this [LocalDate].
+ *
+ * This method allows to use destructuring declarations when working with dates,
+ * for example:
+ * ```
+ * val (year, month, day) = myLocalDate
+ * ```
  *
  * @see LocalDate.getDayOfMonth
  */

@@ -25,6 +25,12 @@ import java.time.MonthDay
 /**
  * Return the [Month] component of this [MonthDay].
  *
+ * This method allows to use destructuring declarations when working with month-days,
+ * for example:
+ * ```
+ * val (month, day) = myMonthDay
+ * ```
+ *
  * @see MonthDay.getMonth
  */
 @RequiresApi(26)
@@ -32,6 +38,12 @@ inline operator fun MonthDay.component1(): Month = month
 
 /**
  * Return the day component of this [MonthDay].
+ *
+ * This method allows to use destructuring declarations when working with month-days,
+ * for example:
+ * ```
+ * val (month, day) = myMonthDay
+ * ```
  *
  * @see MonthDay.getDayOfMonth
  */

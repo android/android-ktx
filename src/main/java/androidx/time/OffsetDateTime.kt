@@ -26,6 +26,12 @@ import java.time.ZoneOffset
 /**
  * Return the [LocalDateTime] of this [OffsetDateTime].
  *
+ * This method allows to use destructuring declarations when working with offset date/times,
+ * for example:
+ * ```
+ * val (dateTime, offset) = myOffsetTime
+ * ```
+ *
  * @see OffsetDateTime.toLocalDateTime
  */
 @RequiresApi(26)
@@ -33,6 +39,12 @@ inline operator fun OffsetDateTime.component1(): LocalDateTime = toLocalDateTime
 
 /**
  * Return the [ZoneOffset] of this [OffsetDateTime].
+ *
+ * This method allows to use destructuring declarations when working with offset date/times,
+ * for example:
+ * ```
+ * val (dateTime, offset) = myOffsetTime
+ * ```
  *
  * @see OffsetDateTime.getOffset
  */
