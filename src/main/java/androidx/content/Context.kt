@@ -43,7 +43,7 @@ inline fun <reified T> Context.systemService() = getSystemService(T::class.java)
  * on top of the base attributes it defines.
  *
  * @param set The base set of attribute values.
- * @param attrs	The desired attributes to be retrieved. These attribute IDs must be
+ * @param attrs The desired attributes to be retrieved. These attribute IDs must be
  *              sorted in ascending order.
  * @param defStyleAttr An attribute in the current theme that contains a reference to
  *                     a style resource that supplies defaults values for the [TypedArray].
@@ -56,11 +56,12 @@ inline fun <reified T> Context.systemService() = getSystemService(T::class.java)
  * @see android.content.res.Resources.Theme.obtainStyledAttributes
  */
 inline fun Context.withStyledAttributes(
-        set: AttributeSet? = null,
-        attrs: IntArray,
-        @AttrRes defStyleAttr: Int = 0,
-        @StyleRes defStyleRes: Int = 0,
-        block: TypedArray.() -> Unit) {
+    set: AttributeSet? = null,
+    attrs: IntArray,
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = 0,
+    block: TypedArray.() -> Unit
+) {
     val typedArray = obtainStyledAttributes(set, attrs, defStyleAttr, defStyleRes)
     try {
         typedArray.block()
@@ -73,15 +74,16 @@ inline fun Context.withStyledAttributes(
  * Executes [block] on a [TypedArray] receiver. The [TypedArray] holds the the values
  * defined by the style resource [resourceId] which are listed in [attrs].
  *
- * @param attrs	The desired attributes. These attribute IDs must be sorted in ascending order.
+ * @param attrs The desired attributes. These attribute IDs must be sorted in ascending order.
  *
  * @see Context.obtainStyledAttributes
  * @see android.content.res.Resources.Theme.obtainStyledAttributes
  */
 inline fun Context.withStyledAttributes(
-        @StyleRes resourceId: Int,
-        attrs: IntArray,
-        block: TypedArray.() -> Unit) {
+    @StyleRes resourceId: Int,
+    attrs: IntArray,
+    block: TypedArray.() -> Unit
+) {
     val typedArray = obtainStyledAttributes(resourceId, attrs)
     try {
         typedArray.block()

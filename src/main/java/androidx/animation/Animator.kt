@@ -74,7 +74,8 @@ fun Animator.addListener(
     onEnd: ((animator: Animator) -> Unit)? = null,
     onStart: ((animator: Animator) -> Unit)? = null,
     onCancel: ((animator: Animator) -> Unit)? = null,
-    onRepeat: ((animator: Animator) -> Unit)? = null): Animator.AnimatorListener {
+    onRepeat: ((animator: Animator) -> Unit)? = null
+): Animator.AnimatorListener {
     val listener = object : Animator.AnimatorListener {
         override fun onAnimationRepeat(animator: Animator) {
             onRepeat?.invoke(animator)
@@ -102,7 +103,8 @@ fun Animator.addListener(
 @RequiresApi(19)
 fun Animator.addPauseListener(
     onResume: ((animator: Animator) -> Unit)? = null,
-    onPause: ((animator: Animator) -> Unit)? = null): Animator.AnimatorPauseListener {
+    onPause: ((animator: Animator) -> Unit)? = null
+): Animator.AnimatorPauseListener {
     val listener = object : Animator.AnimatorPauseListener {
         override fun onAnimationPause(animator: Animator) {
             onPause?.invoke(animator)

@@ -36,9 +36,10 @@ inline fun Canvas.withSave(block: Canvas.() -> Unit) {
  * and [Canvas.restoreToCount].
  */
 inline fun Canvas.withTranslation(
-        x: Float = 0.0f,
-        y: Float = 0.0f,
-        block: Canvas.() -> Unit) {
+    x: Float = 0.0f,
+    y: Float = 0.0f,
+    block: Canvas.() -> Unit
+) {
     val checkpoint = save()
     translate(x, y)
     try {
@@ -53,10 +54,11 @@ inline fun Canvas.withTranslation(
  * and [Canvas.restoreToCount].
  */
 inline fun Canvas.withRotation(
-        degrees: Float = 0.0f,
-        pivotX: Float = 0.0f,
-        pivotY: Float = 0.0f,
-        block: Canvas.() -> Unit) {
+    degrees: Float = 0.0f,
+    pivotX: Float = 0.0f,
+    pivotY: Float = 0.0f,
+    block: Canvas.() -> Unit
+) {
     val checkpoint = save()
     rotate(degrees, pivotX, pivotY)
     try {
@@ -71,11 +73,12 @@ inline fun Canvas.withRotation(
  * and [Canvas.restoreToCount].
  */
 inline fun Canvas.withScale(
-        x: Float = 1.0f,
-        y: Float = 1.0f,
-        pivotX: Float = 0.0f,
-        pivotY: Float = 0.0f,
-        block: Canvas.() -> Unit) {
+    x: Float = 1.0f,
+    y: Float = 1.0f,
+    pivotX: Float = 0.0f,
+    pivotY: Float = 0.0f,
+    block: Canvas.() -> Unit
+) {
     val checkpoint = save()
     scale(x, y, pivotX, pivotY)
     try {
@@ -90,9 +93,10 @@ inline fun Canvas.withScale(
  * and [Canvas.restoreToCount].
  */
 inline fun Canvas.withSkew(
-        x: Float = 0.0f,
-        y: Float = 0.0f,
-        block: Canvas.() -> Unit) {
+    x: Float = 0.0f,
+    y: Float = 0.0f,
+    block: Canvas.() -> Unit
+) {
     val checkpoint = save()
     skew(x, y)
     try {

@@ -48,7 +48,7 @@ inline fun SparseBooleanArray.getOrDefault(key: Int, defaultValue: Boolean) = ge
 
 /** Return the value corresponding to [key], or from [defaultValue] when not present. */
 inline fun SparseBooleanArray.getOrElse(key: Int, defaultValue: () -> Boolean) =
-        indexOfKey(key).let { if (it != -1) valueAt(it) else defaultValue() }
+    indexOfKey(key).let { if (it != -1) valueAt(it) else defaultValue() }
 
 /** Return true when the collection contains no elements. */
 inline fun SparseBooleanArray.isEmpty() = size() == 0

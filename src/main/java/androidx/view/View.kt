@@ -30,8 +30,10 @@ import androidx.graphics.applyCanvas
  */
 inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
     addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
-        override fun onLayoutChange(view: View, left: Int, top: Int, right: Int, bottom: Int,
-                                    oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int) {
+        override fun onLayoutChange(
+            view: View, left: Int, top: Int, right: Int, bottom: Int,
+            oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int
+        ) {
             view.removeOnLayoutChangeListener(this)
             action(view)
         }
@@ -79,10 +81,12 @@ inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
  * @see View.setPaddingRelative
  */
 @RequiresApi(17)
-fun View.updatePaddingRelative(start: Int = paddingStart,
-                               top: Int = paddingTop,
-                               end: Int = paddingEnd,
-                               bottom: Int = paddingBottom) {
+fun View.updatePaddingRelative(
+    start: Int = paddingStart,
+    top: Int = paddingTop,
+    end: Int = paddingEnd,
+    bottom: Int = paddingBottom
+) {
     setPaddingRelative(start, top, end, bottom)
 }
 
@@ -92,10 +96,12 @@ fun View.updatePaddingRelative(start: Int = paddingStart,
  *
  * @see View.setPadding
  */
-fun View.updatePadding(left: Int = paddingLeft,
-                       top: Int = paddingTop,
-                       right: Int = paddingRight,
-                       bottom: Int = paddingBottom) {
+fun View.updatePadding(
+    left: Int = paddingLeft,
+    top: Int = paddingTop,
+    right: Int = paddingRight,
+    bottom: Int = paddingBottom
+) {
     setPadding(left, top, right, bottom)
 }
 

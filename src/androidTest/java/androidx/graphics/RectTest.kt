@@ -184,12 +184,12 @@ class RectTest {
 
     @Test fun toRect() {
         assertEquals(
-                Rect(0, 1, 2, 3),
-                RectF(0f, 1f, 2f, 3f).toRect())
+            Rect(0, 1, 2, 3),
+            RectF(0f, 1f, 2f, 3f).toRect())
 
         assertEquals(
-                Rect(0, 1, 2, 3),
-                RectF(0.1f, 1.1f, 1.9f, 2.9f).toRect())
+            Rect(0, 1, 2, 3),
+            RectF(0.1f, 1.1f, 1.9f, 2.9f).toRect())
     }
 
     @Test fun toRectF() {

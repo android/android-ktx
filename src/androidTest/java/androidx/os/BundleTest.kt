@@ -41,36 +41,36 @@ class BundleTest {
         val serializableValue = AtomicInteger(1)
 
         val bundle = bundleOf(
-                "null" to null,
+            "null" to null,
 
-                "boolean" to true,
-                "byte" to 1.toByte(),
-                "char" to 'a',
-                "double" to 1.0,
-                "float" to 1f,
-                "int" to 1,
-                "long" to 1L,
-                "short" to 1.toShort(),
+            "boolean" to true,
+            "byte" to 1.toByte(),
+            "char" to 'a',
+            "double" to 1.0,
+            "float" to 1f,
+            "int" to 1,
+            "long" to 1L,
+            "short" to 1.toShort(),
 
-                "bundle" to bundleValue,
-                "charSequence" to charSequenceValue,
-                "parcelable" to parcelableValue,
+            "bundle" to bundleValue,
+            "charSequence" to charSequenceValue,
+            "parcelable" to parcelableValue,
 
-                "booleanArray" to booleanArrayOf(),
-                "byteArray" to byteArrayOf(),
-                "charArray" to charArrayOf(),
-                "doubleArray" to doubleArrayOf(),
-                "floatArray" to floatArrayOf(),
-                "intArray" to intArrayOf(),
-                "longArray" to longArrayOf(),
-                "shortArray" to shortArrayOf(),
+            "booleanArray" to booleanArrayOf(),
+            "byteArray" to byteArrayOf(),
+            "charArray" to charArrayOf(),
+            "doubleArray" to doubleArrayOf(),
+            "floatArray" to floatArrayOf(),
+            "intArray" to intArrayOf(),
+            "longArray" to longArrayOf(),
+            "shortArray" to shortArrayOf(),
 
-                "parcelableArray" to arrayOf(parcelableValue),
-                "stringArray" to arrayOf("hey"),
-                "charSequenceArray" to arrayOf<CharSequence>("hey"),
-                "serializableArray" to arrayOf(serializableValue),
+            "parcelableArray" to arrayOf(parcelableValue),
+            "stringArray" to arrayOf("hey"),
+            "charSequenceArray" to arrayOf<CharSequence>("hey"),
+            "serializableArray" to arrayOf(serializableValue),
 
-                "serializable" to serializableValue
+            "serializable" to serializableValue
         )
 
         assertEquals(25, bundle.size())
@@ -102,7 +102,8 @@ class BundleTest {
         assertThat(bundle["parcelableArray"] as Array<*>).asList().containsExactly(parcelableValue)
         assertThat(bundle["stringArray"] as Array<*>).asList().containsExactly("hey")
         assertThat(bundle["charSequenceArray"] as Array<*>).asList().containsExactly("hey")
-        assertThat(bundle["serializableArray"] as Array<*>).asList().containsExactly(serializableValue)
+        assertThat(bundle["serializableArray"] as Array<*>).asList()
+            .containsExactly(serializableValue)
 
         assertSame(serializableValue, bundle["serializable"])
     }
@@ -120,8 +121,8 @@ class BundleTest {
         val sizeFValue = SizeF(1f, 1f)
 
         val bundle = bundleOf(
-                "size" to sizeValue,
-                "sizeF" to sizeFValue
+            "size" to sizeValue,
+            "sizeF" to sizeFValue
         )
 
         assertSame(sizeValue, bundle["size"])

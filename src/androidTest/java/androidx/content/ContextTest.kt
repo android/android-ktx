@@ -54,8 +54,9 @@ class ContextTest {
         }
 
         context.withStyledAttributes(
-                android.R.style.Theme_Light,
-                intArrayOf(android.R.attr.textColorPrimary)) {
+            android.R.style.Theme_Light,
+            intArrayOf(android.R.attr.textColorPrimary)
+        ) {
             val resourceId = getResourceId(0, -1)
             assertTrue(resourceId != 1)
         }

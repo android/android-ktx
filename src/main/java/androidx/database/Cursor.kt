@@ -29,7 +29,8 @@ import android.database.Cursor
  * @see Cursor.getColumnIndexOrThrow
  * @see Cursor.getBlob
  */
-inline fun Cursor.getBlob(columnName: String): ByteArray = getBlob(getColumnIndexOrThrow(columnName))
+inline fun Cursor.getBlob(columnName: String): ByteArray =
+    getBlob(getColumnIndexOrThrow(columnName))
 
 /**
  * Returns the value of the requested column as a double.
@@ -40,7 +41,8 @@ inline fun Cursor.getBlob(columnName: String): ByteArray = getBlob(getColumnInde
  * @see Cursor.getColumnIndexOrThrow
  * @see Cursor.getDouble
  */
-inline fun Cursor.getDouble(columnName: String): Double = getDouble(getColumnIndexOrThrow(columnName))
+inline fun Cursor.getDouble(columnName: String): Double =
+    getDouble(getColumnIndexOrThrow(columnName))
 
 /**
  * Returns the value of the requested column as a float.
@@ -95,7 +97,8 @@ inline fun Cursor.getShort(columnName: String): Short = getShort(getColumnIndexO
  * @see Cursor.getColumnIndexOrThrow
  * @see Cursor.getString
  */
-inline fun Cursor.getString(columnName: String): String = getString(getColumnIndexOrThrow(columnName))
+inline fun Cursor.getString(columnName: String): String =
+    getString(getColumnIndexOrThrow(columnName))
 
 /**
  * Returns the value of the requested column as a nullable byte array.
@@ -184,7 +187,8 @@ inline fun Cursor.getStringOrNull(index: Int) = if (isNull(index)) null else get
  * @see Cursor.isNull
  * @see Cursor.getBlob
  */
-inline fun Cursor.getBlobOrNull(columnName: String) = getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getBlob(it) }
+inline fun Cursor.getBlobOrNull(columnName: String) =
+    getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getBlob(it) }
 
 /**
  * Returns the value of the requested column as a nullable double.
@@ -196,7 +200,8 @@ inline fun Cursor.getBlobOrNull(columnName: String) = getColumnIndexOrThrow(colu
  * @see Cursor.isNull
  * @see Cursor.getDouble
  */
-inline fun Cursor.getDoubleOrNull(columnName: String) = getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getDouble(it) }
+inline fun Cursor.getDoubleOrNull(columnName: String) =
+    getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getDouble(it) }
 
 /**
  * Returns the value of the requested column as a nullable float.
@@ -208,7 +213,8 @@ inline fun Cursor.getDoubleOrNull(columnName: String) = getColumnIndexOrThrow(co
  * @see Cursor.isNull
  * @see Cursor.getFloat
  */
-inline fun Cursor.getFloatOrNull(columnName: String) = getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getFloat(it) }
+inline fun Cursor.getFloatOrNull(columnName: String) =
+    getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getFloat(it) }
 
 /**
  * Returns the value of the requested column as a nullable integer.
@@ -220,7 +226,8 @@ inline fun Cursor.getFloatOrNull(columnName: String) = getColumnIndexOrThrow(col
  * @see Cursor.isNull
  * @see Cursor.getInt
  */
-inline fun Cursor.getIntOrNull(columnName: String) = getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getInt(it) }
+inline fun Cursor.getIntOrNull(columnName: String) =
+    getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getInt(it) }
 
 /**
  * Returns the value of the requested column as a nullable long.
@@ -232,7 +239,8 @@ inline fun Cursor.getIntOrNull(columnName: String) = getColumnIndexOrThrow(colum
  * @see Cursor.isNull
  * @see Cursor.getLong
  */
-inline fun Cursor.getLongOrNull(columnName: String) = getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getLong(it) }
+inline fun Cursor.getLongOrNull(columnName: String) =
+    getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getLong(it) }
 
 /**
  * Returns the value of the requested column as a nullable short.
@@ -244,7 +252,8 @@ inline fun Cursor.getLongOrNull(columnName: String) = getColumnIndexOrThrow(colu
  * @see Cursor.isNull
  * @see Cursor.getShort
  */
-inline fun Cursor.getShortOrNull(columnName: String) = getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getShort(it) }
+inline fun Cursor.getShortOrNull(columnName: String) =
+    getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getShort(it) }
 
 /**
  * Returns the value of the requested column as a nullable string.
@@ -256,4 +265,5 @@ inline fun Cursor.getShortOrNull(columnName: String) = getColumnIndexOrThrow(col
  * @see Cursor.isNull
  * @see Cursor.getString
  */
-inline fun Cursor.getStringOrNull(columnName: String) = getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getString(it) }
+inline fun Cursor.getStringOrNull(columnName: String) =
+    getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getString(it) }
