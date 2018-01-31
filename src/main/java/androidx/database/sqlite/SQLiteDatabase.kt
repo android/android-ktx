@@ -23,15 +23,19 @@ import android.database.sqlite.SQLiteDatabase
  *
  * @param exclusive Run in `EXCLUSIVE` mode when true, `IMMEDIATE` mode otherwise.
  */
-inline fun SQLiteDatabase.transaction(exclusive: Boolean = true, body: SQLiteDatabase.() -> Unit) {
+inline fun <T> SQLiteDatabase.transaction(
+    exclusive: Boolean = true,
+    body: SQLiteDatabase.() -> T
+): T {
     if (exclusive) {
         beginTransaction()
     } else {
         beginTransactionNonExclusive()
     }
     try {
-        body()
+        val result = body()
         setTransactionSuccessful()
+        return result
     } finally {
         endTransaction()
     }

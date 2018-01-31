@@ -89,7 +89,7 @@ package androidx.database.sqlite {
 
   public final class SQLiteDatabaseKt {
     ctor public SQLiteDatabaseKt();
-    method public static final void transaction(android.database.sqlite.SQLiteDatabase, boolean exclusive, kotlin.jvm.functions.Function1<? super android.database.sqlite.SQLiteDatabase,kotlin.Unit> body);
+    method public static final <T> T! transaction(android.database.sqlite.SQLiteDatabase, boolean exclusive, kotlin.jvm.functions.Function1<? super android.database.sqlite.SQLiteDatabase,? extends T> body);
   }
 
 }

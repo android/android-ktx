@@ -50,4 +50,11 @@ class SQLiteDatabaseTest {
         assertEquals(0L, query.getLong(0))
         query.close()
     }
+
+    @Test fun bodyReturnValue() {
+        val result = db.transaction {
+            "Hey"
+        }
+        assertEquals("Hey", result)
+    }
 }
