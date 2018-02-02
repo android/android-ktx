@@ -17,7 +17,7 @@ fi
 
     echo -n "Building…"
     ./gradlew jar --console=plain -q --no-daemon
-    cp ../../out/host/common/libs/metalava-*.jar ../../../../metalava.jar
+    find ../../out/host/common/libs ! -name '*full*' -type f -exec cp {} ../../../../metalava.jar \;
     echo " Done"
 
     echo -e "\nDependencies:\n"
