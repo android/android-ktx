@@ -101,9 +101,9 @@ package androidx.graphics {
     method public static final android.graphics.Bitmap applyCanvas(android.graphics.Bitmap, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
     method public static final android.graphics.Bitmap createBitmap(int width, int height, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
     method @RequiresApi(26) public static final android.graphics.Bitmap createBitmap(int width, int height, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888", boolean hasAlpha = "true", android.graphics.ColorSpace colorSpace = "ColorSpace.get(ColorSpace.Named.SRGB)");
-    method public static final operator inline int get(android.graphics.Bitmap, int x, int y);
+    method public static final operator int get(android.graphics.Bitmap, int x, int y);
     method public static final android.graphics.Bitmap scale(android.graphics.Bitmap, int width, int height, boolean filter = "true");
-    method public static final operator inline void set(android.graphics.Bitmap, int x, int y, @ColorInt int color);
+    method public static final operator void set(android.graphics.Bitmap, int x, int y, @ColorInt int color);
   }
 
   public final class CanvasKt {
@@ -117,18 +117,18 @@ package androidx.graphics {
 
   public final class ColorKt {
     ctor public ColorKt();
-    method @RequiresApi(26) public static final operator inline float component1(android.graphics.Color);
-    method public static final operator inline int component1(int);
-    method @RequiresApi(26) public static final operator inline float component1(long);
-    method @RequiresApi(26) public static final operator inline float component2(android.graphics.Color);
-    method public static final operator inline int component2(int);
-    method @RequiresApi(26) public static final operator inline float component2(long);
-    method @RequiresApi(26) public static final operator inline float component3(android.graphics.Color);
-    method public static final operator inline int component3(int);
-    method @RequiresApi(26) public static final operator inline float component3(long);
-    method @RequiresApi(26) public static final operator inline float component4(android.graphics.Color);
-    method public static final operator inline int component4(int);
-    method @RequiresApi(26) public static final operator inline float component4(long);
+    method @RequiresApi(26) public static final operator float component1(android.graphics.Color);
+    method public static final operator int component1(int);
+    method @RequiresApi(26) public static final operator float component1(long);
+    method @RequiresApi(26) public static final operator float component2(android.graphics.Color);
+    method public static final operator int component2(int);
+    method @RequiresApi(26) public static final operator float component2(long);
+    method @RequiresApi(26) public static final operator float component3(android.graphics.Color);
+    method public static final operator int component3(int);
+    method @RequiresApi(26) public static final operator float component3(long);
+    method @RequiresApi(26) public static final operator float component4(android.graphics.Color);
+    method public static final operator int component4(int);
+    method @RequiresApi(26) public static final operator float component4(long);
     method public static final int getAlpha(int);
     method @RequiresApi(26) public static final float getAlpha(long);
     method public static final int getBlue(int);
@@ -142,7 +142,7 @@ package androidx.graphics {
     method @RequiresApi(26) public static final float getRed(long);
     method @RequiresApi(26) public static final boolean isSrgb(long);
     method @RequiresApi(26) public static final boolean isWideGamut(long);
-    method @RequiresApi(26) public static final operator inline android.graphics.Color plus(android.graphics.Color, android.graphics.Color c);
+    method @RequiresApi(26) public static final operator android.graphics.Color plus(android.graphics.Color, android.graphics.Color c);
     method @RequiresApi(26) public static final android.graphics.Color toColor(int);
     method @RequiresApi(26) public static final android.graphics.Color toColor(long);
     method @RequiresApi(26) @ColorInt public static final int toColorInt(long);
@@ -153,7 +153,7 @@ package androidx.graphics {
     ctor public MatrixKt();
     method public static final error.NonExistentClass rotationMatrix(float degrees, float px = "0.0f", float py = "0.0f");
     method public static final error.NonExistentClass scaleMatrix(float sx = "1.0f", float sy = "1.0f");
-    method public static final operator inline error.NonExistentClass times(android.graphics.Matrix, android.graphics.Matrix m);
+    method public static final operator error.NonExistentClass times(android.graphics.Matrix, android.graphics.Matrix m);
     method public static final error.NonExistentClass translationMatrix(float tx = "0.0f", float ty = "0.0f");
     method public static final error.NonExistentClass values(android.graphics.Matrix);
   }
@@ -162,9 +162,9 @@ package androidx.graphics {
     ctor public PathKt();
     method @RequiresApi(19) public static final infix android.graphics.Path and(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(26) public static final Iterable<androidx.graphics.PathSegment> flatten(android.graphics.Path, float error = "0.5f");
-    method @RequiresApi(19) public static final operator inline android.graphics.Path minus(android.graphics.Path, android.graphics.Path p);
+    method @RequiresApi(19) public static final operator android.graphics.Path minus(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(19) public static final infix android.graphics.Path or(android.graphics.Path, android.graphics.Path p);
-    method @RequiresApi(19) public static final operator inline android.graphics.Path plus(android.graphics.Path, android.graphics.Path p);
+    method @RequiresApi(19) public static final operator android.graphics.Path plus(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(19) public static final infix android.graphics.Path xor(android.graphics.Path, android.graphics.Path p);
   }
 
@@ -188,22 +188,22 @@ package androidx.graphics {
 
   public final class PointKt {
     ctor public PointKt();
-    method public static final operator inline int component1(android.graphics.Point);
-    method public static final operator inline float component1(android.graphics.PointF);
-    method public static final operator inline int component2(android.graphics.Point);
-    method public static final operator inline float component2(android.graphics.PointF);
-    method public static final operator inline android.graphics.Point minus(android.graphics.Point, android.graphics.Point p);
-    method public static final operator inline android.graphics.PointF minus(android.graphics.PointF, android.graphics.PointF p);
-    method public static final operator inline android.graphics.Point minus(android.graphics.Point, int xy);
-    method public static final operator inline android.graphics.PointF minus(android.graphics.PointF, float xy);
-    method public static final operator inline android.graphics.Point plus(android.graphics.Point, android.graphics.Point p);
-    method public static final operator inline android.graphics.PointF plus(android.graphics.PointF, android.graphics.PointF p);
-    method public static final operator inline android.graphics.Point plus(android.graphics.Point, int xy);
-    method public static final operator inline android.graphics.PointF plus(android.graphics.PointF, float xy);
+    method public static final operator int component1(android.graphics.Point);
+    method public static final operator float component1(android.graphics.PointF);
+    method public static final operator int component2(android.graphics.Point);
+    method public static final operator float component2(android.graphics.PointF);
+    method public static final operator android.graphics.Point minus(android.graphics.Point, android.graphics.Point p);
+    method public static final operator android.graphics.PointF minus(android.graphics.PointF, android.graphics.PointF p);
+    method public static final operator android.graphics.Point minus(android.graphics.Point, int xy);
+    method public static final operator android.graphics.PointF minus(android.graphics.PointF, float xy);
+    method public static final operator android.graphics.Point plus(android.graphics.Point, android.graphics.Point p);
+    method public static final operator android.graphics.PointF plus(android.graphics.PointF, android.graphics.PointF p);
+    method public static final operator android.graphics.Point plus(android.graphics.Point, int xy);
+    method public static final operator android.graphics.PointF plus(android.graphics.PointF, float xy);
     method public static final android.graphics.Point toPoint(android.graphics.PointF);
     method public static final android.graphics.PointF toPointF(android.graphics.Point);
-    method public static final operator inline android.graphics.Point unaryMinus(android.graphics.Point);
-    method public static final operator inline android.graphics.PointF unaryMinus(android.graphics.PointF);
+    method public static final operator android.graphics.Point unaryMinus(android.graphics.Point);
+    method public static final operator android.graphics.PointF unaryMinus(android.graphics.PointF);
   }
 
   public final class PorterDuffKt {
@@ -216,30 +216,30 @@ package androidx.graphics {
     ctor public RectKt();
     method public static final infix android.graphics.Rect and(android.graphics.Rect, android.graphics.Rect r);
     method public static final infix android.graphics.RectF and(android.graphics.RectF, android.graphics.RectF r);
-    method public static final operator inline int component1(android.graphics.Rect);
-    method public static final operator inline float component1(android.graphics.RectF);
-    method public static final operator inline int component2(android.graphics.Rect);
-    method public static final operator inline float component2(android.graphics.RectF);
-    method public static final operator inline int component3(android.graphics.Rect);
-    method public static final operator inline float component3(android.graphics.RectF);
-    method public static final operator inline int component4(android.graphics.Rect);
-    method public static final operator inline float component4(android.graphics.RectF);
-    method public static final operator inline boolean contains(android.graphics.Rect, android.graphics.Point p);
-    method public static final operator inline boolean contains(android.graphics.RectF, android.graphics.PointF p);
-    method public static final operator inline android.graphics.Region minus(android.graphics.Rect, android.graphics.Rect r);
-    method public static final operator inline android.graphics.Region minus(android.graphics.RectF, android.graphics.RectF r);
-    method public static final operator inline android.graphics.Rect minus(android.graphics.Rect, int xy);
-    method public static final operator inline android.graphics.RectF minus(android.graphics.RectF, float xy);
-    method public static final operator inline android.graphics.Rect minus(android.graphics.Rect, android.graphics.Point xy);
-    method public static final operator inline android.graphics.RectF minus(android.graphics.RectF, android.graphics.PointF xy);
+    method public static final operator int component1(android.graphics.Rect);
+    method public static final operator float component1(android.graphics.RectF);
+    method public static final operator int component2(android.graphics.Rect);
+    method public static final operator float component2(android.graphics.RectF);
+    method public static final operator int component3(android.graphics.Rect);
+    method public static final operator float component3(android.graphics.RectF);
+    method public static final operator int component4(android.graphics.Rect);
+    method public static final operator float component4(android.graphics.RectF);
+    method public static final operator boolean contains(android.graphics.Rect, android.graphics.Point p);
+    method public static final operator boolean contains(android.graphics.RectF, android.graphics.PointF p);
+    method public static final operator android.graphics.Region minus(android.graphics.Rect, android.graphics.Rect r);
+    method public static final operator android.graphics.Region minus(android.graphics.RectF, android.graphics.RectF r);
+    method public static final operator android.graphics.Rect minus(android.graphics.Rect, int xy);
+    method public static final operator android.graphics.RectF minus(android.graphics.RectF, float xy);
+    method public static final operator android.graphics.Rect minus(android.graphics.Rect, android.graphics.Point xy);
+    method public static final operator android.graphics.RectF minus(android.graphics.RectF, android.graphics.PointF xy);
     method public static final infix android.graphics.Rect or(android.graphics.Rect, android.graphics.Rect r);
     method public static final infix android.graphics.RectF or(android.graphics.RectF, android.graphics.RectF r);
-    method public static final operator inline android.graphics.Rect plus(android.graphics.Rect, android.graphics.Rect r);
-    method public static final operator inline android.graphics.RectF plus(android.graphics.RectF, android.graphics.RectF r);
-    method public static final operator inline android.graphics.Rect plus(android.graphics.Rect, int xy);
-    method public static final operator inline android.graphics.RectF plus(android.graphics.RectF, float xy);
-    method public static final operator inline android.graphics.Rect plus(android.graphics.Rect, android.graphics.Point xy);
-    method public static final operator inline android.graphics.RectF plus(android.graphics.RectF, android.graphics.PointF xy);
+    method public static final operator android.graphics.Rect plus(android.graphics.Rect, android.graphics.Rect r);
+    method public static final operator android.graphics.RectF plus(android.graphics.RectF, android.graphics.RectF r);
+    method public static final operator android.graphics.Rect plus(android.graphics.Rect, int xy);
+    method public static final operator android.graphics.RectF plus(android.graphics.RectF, float xy);
+    method public static final operator android.graphics.Rect plus(android.graphics.Rect, android.graphics.Point xy);
+    method public static final operator android.graphics.RectF plus(android.graphics.RectF, android.graphics.PointF xy);
     method public static final android.graphics.Rect toRect(android.graphics.RectF);
     method public static final android.graphics.RectF toRectF(android.graphics.Rect);
     method public static final android.graphics.Region toRegion(android.graphics.Rect);
@@ -253,17 +253,17 @@ package androidx.graphics {
     ctor public RegionKt();
     method public static final infix android.graphics.Region and(android.graphics.Region, android.graphics.Rect r);
     method public static final infix android.graphics.Region and(android.graphics.Region, android.graphics.Region r);
-    method public static final operator inline boolean contains(android.graphics.Region, android.graphics.Point p);
+    method public static final operator boolean contains(android.graphics.Region, android.graphics.Point p);
     method public static final void forEach(android.graphics.Region, kotlin.jvm.functions.Function1<? super android.graphics.Rect,kotlin.Unit> action);
-    method public static final operator inline java.util.Iterator<android.graphics.Rect> iterator(android.graphics.Region);
-    method public static final operator inline android.graphics.Region minus(android.graphics.Region, android.graphics.Rect r);
-    method public static final operator inline android.graphics.Region minus(android.graphics.Region, android.graphics.Region r);
-    method public static final operator inline android.graphics.Region not(android.graphics.Region);
+    method public static final operator java.util.Iterator<android.graphics.Rect> iterator(android.graphics.Region);
+    method public static final operator android.graphics.Region minus(android.graphics.Region, android.graphics.Rect r);
+    method public static final operator android.graphics.Region minus(android.graphics.Region, android.graphics.Region r);
+    method public static final operator android.graphics.Region not(android.graphics.Region);
     method public static final infix android.graphics.Region or(android.graphics.Region, android.graphics.Rect r);
     method public static final infix android.graphics.Region or(android.graphics.Region, android.graphics.Region r);
-    method public static final operator inline android.graphics.Region plus(android.graphics.Region, android.graphics.Rect r);
-    method public static final operator inline android.graphics.Region plus(android.graphics.Region, android.graphics.Region r);
-    method public static final operator inline android.graphics.Region unaryMinus(android.graphics.Region);
+    method public static final operator android.graphics.Region plus(android.graphics.Region, android.graphics.Rect r);
+    method public static final operator android.graphics.Region plus(android.graphics.Region, android.graphics.Region r);
+    method public static final operator android.graphics.Region unaryMinus(android.graphics.Region);
     method public static final infix android.graphics.Region xor(android.graphics.Region, android.graphics.Rect r);
     method public static final infix android.graphics.Region xor(android.graphics.Region, android.graphics.Region r);
   }
@@ -366,9 +366,9 @@ package androidx.time {
 
   public final class DurationKt {
     ctor public DurationKt();
-    method @RequiresApi(26) public static final operator inline long component1(java.time.Duration);
-    method @RequiresApi(26) public static final operator inline int component2(java.time.Duration);
-    method @RequiresApi(26) public static final operator inline java.time.Duration div(java.time.Duration, long divisor);
+    method @RequiresApi(26) public static final operator long component1(java.time.Duration);
+    method @RequiresApi(26) public static final operator int component2(java.time.Duration);
+    method @RequiresApi(26) public static final operator java.time.Duration div(java.time.Duration, long divisor);
     method @RequiresApi(260) public static final java.time.Duration hours(int);
     method @RequiresApi(260) public static final java.time.Duration hours(long);
     method @RequiresApi(26) public static final java.time.Duration millis(int);
@@ -379,43 +379,43 @@ package androidx.time {
     method @RequiresApi(26) public static final java.time.Duration nanos(long);
     method @RequiresApi(26) public static final java.time.Duration seconds(int);
     method @RequiresApi(26) public static final java.time.Duration seconds(long);
-    method @RequiresApi(26) public static final operator inline java.time.Duration times(java.time.Duration, long multiplicand);
-    method @RequiresApi(26) public static final operator inline java.time.Duration unaryMinus(java.time.Duration);
+    method @RequiresApi(26) public static final operator java.time.Duration times(java.time.Duration, long multiplicand);
+    method @RequiresApi(26) public static final operator java.time.Duration unaryMinus(java.time.Duration);
   }
 
   public final class InstantKt {
     ctor public InstantKt();
     method @RequiresApi(26) public static final java.time.Instant asEpochMillis(long);
     method @RequiresApi(26) public static final java.time.Instant asEpochSeconds(long);
-    method @RequiresApi(26) public static final operator inline long component1(java.time.Instant);
-    method @RequiresApi(26) public static final operator inline int component2(java.time.Instant);
+    method @RequiresApi(26) public static final operator long component1(java.time.Instant);
+    method @RequiresApi(26) public static final operator int component2(java.time.Instant);
   }
 
   public final class LocalDateKt {
     ctor public LocalDateKt();
-    method @RequiresApi(26) public static final operator inline int component1(java.time.LocalDate);
-    method @RequiresApi(26) public static final operator inline java.time.Month component2(java.time.LocalDate);
-    method @RequiresApi(26) public static final operator inline int component3(java.time.LocalDate);
+    method @RequiresApi(26) public static final operator int component1(java.time.LocalDate);
+    method @RequiresApi(26) public static final operator java.time.Month component2(java.time.LocalDate);
+    method @RequiresApi(26) public static final operator int component3(java.time.LocalDate);
   }
 
   public final class LocalDateTimeKt {
     ctor public LocalDateTimeKt();
-    method @RequiresApi(26) public static final operator inline java.time.LocalDate component1(java.time.LocalDateTime);
-    method @RequiresApi(26) public static final operator inline java.time.LocalTime component2(java.time.LocalDateTime);
+    method @RequiresApi(26) public static final operator java.time.LocalDate component1(java.time.LocalDateTime);
+    method @RequiresApi(26) public static final operator java.time.LocalTime component2(java.time.LocalDateTime);
   }
 
   public final class LocalTimeKt {
     ctor public LocalTimeKt();
-    method @RequiresApi(26) public static final operator inline int component1(java.time.LocalTime);
-    method @RequiresApi(26) public static final operator inline int component2(java.time.LocalTime);
-    method @RequiresApi(26) public static final operator inline int component3(java.time.LocalTime);
-    method @RequiresApi(26) public static final operator inline int component4(java.time.LocalTime);
+    method @RequiresApi(26) public static final operator int component1(java.time.LocalTime);
+    method @RequiresApi(26) public static final operator int component2(java.time.LocalTime);
+    method @RequiresApi(26) public static final operator int component3(java.time.LocalTime);
+    method @RequiresApi(26) public static final operator int component4(java.time.LocalTime);
   }
 
   public final class MonthDayKt {
     ctor public MonthDayKt();
-    method @RequiresApi(26) public static final operator inline java.time.Month component1(java.time.MonthDay);
-    method @RequiresApi(26) public static final operator inline int component2(java.time.MonthDay);
+    method @RequiresApi(26) public static final operator java.time.Month component1(java.time.MonthDay);
+    method @RequiresApi(26) public static final operator int component2(java.time.MonthDay);
   }
 
   public final class MonthKt {
@@ -426,25 +426,25 @@ package androidx.time {
 
   public final class OffsetDateTimeKt {
     ctor public OffsetDateTimeKt();
-    method @RequiresApi(26) public static final operator inline java.time.LocalDateTime component1(java.time.OffsetDateTime);
-    method @RequiresApi(26) public static final operator inline java.time.ZoneOffset component2(java.time.OffsetDateTime);
+    method @RequiresApi(26) public static final operator java.time.LocalDateTime component1(java.time.OffsetDateTime);
+    method @RequiresApi(26) public static final operator java.time.ZoneOffset component2(java.time.OffsetDateTime);
   }
 
   public final class OffsetTimeKt {
     ctor public OffsetTimeKt();
-    method @RequiresApi(26) public static final operator inline java.time.LocalTime component1(java.time.OffsetTime);
-    method @RequiresApi(26) public static final operator inline java.time.ZoneOffset component2(java.time.OffsetTime);
+    method @RequiresApi(26) public static final operator java.time.LocalTime component1(java.time.OffsetTime);
+    method @RequiresApi(26) public static final operator java.time.ZoneOffset component2(java.time.OffsetTime);
   }
 
   public final class PeriodKt {
     ctor public PeriodKt();
-    method @RequiresApi(26) public static final operator inline int component1(java.time.Period);
-    method @RequiresApi(26) public static final operator inline int component2(java.time.Period);
-    method @RequiresApi(26) public static final operator inline int component3(java.time.Period);
+    method @RequiresApi(26) public static final operator int component1(java.time.Period);
+    method @RequiresApi(26) public static final operator int component2(java.time.Period);
+    method @RequiresApi(26) public static final operator int component3(java.time.Period);
     method @RequiresApi(26) public static final java.time.Period days(int);
     method @RequiresApi(26) public static final java.time.Period months(int);
-    method @RequiresApi(26) public static final operator inline java.time.Period times(java.time.Period, int multiplicand);
-    method @RequiresApi(26) public static final operator inline java.time.Period unaryMinus(java.time.Period);
+    method @RequiresApi(26) public static final operator java.time.Period times(java.time.Period, int multiplicand);
+    method @RequiresApi(26) public static final operator java.time.Period unaryMinus(java.time.Period);
     method @RequiresApi(26) public static final java.time.Period years(int);
   }
 
@@ -456,14 +456,14 @@ package androidx.time {
 
   public final class YearMonthKt {
     ctor public YearMonthKt();
-    method @RequiresApi(26) public static final operator inline int component1(java.time.YearMonth);
-    method @RequiresApi(26) public static final operator inline java.time.Month component2(java.time.YearMonth);
+    method @RequiresApi(26) public static final operator int component1(java.time.YearMonth);
+    method @RequiresApi(26) public static final operator java.time.Month component2(java.time.YearMonth);
   }
 
   public final class ZonedDateTimeKt {
     ctor public ZonedDateTimeKt();
-    method @RequiresApi(26) public static final operator inline java.time.LocalDateTime component1(java.time.ZonedDateTime);
-    method @RequiresApi(26) public static final operator inline java.time.ZoneId component2(java.time.ZonedDateTime);
+    method @RequiresApi(26) public static final operator java.time.LocalDateTime component1(java.time.ZonedDateTime);
+    method @RequiresApi(26) public static final operator java.time.ZoneId component2(java.time.ZonedDateTime);
   }
 
 }
@@ -515,7 +515,7 @@ package androidx.util {
 
   public final class LongSparseArrayKt {
     ctor public LongSparseArrayKt();
-    method @RequiresApi(16) public static final operator inline <T> boolean contains(android.util.LongSparseArray<T>, long key);
+    method @RequiresApi(16) public static final operator <T> boolean contains(android.util.LongSparseArray<T>, long key);
     method @RequiresApi(16) public static final <T> boolean containsKey(android.util.LongSparseArray<T>, long key);
     method @RequiresApi(16) public static final <T> boolean containsValue(android.util.LongSparseArray<T>, T! value);
     method @RequiresApi(16) public static final <T> void forEach(android.util.LongSparseArray<T>, kotlin.jvm.functions.Function2<? super Long,? super T,kotlin.Unit> action);
@@ -525,17 +525,17 @@ package androidx.util {
     method @RequiresApi(16) public static final <T> boolean isEmpty(android.util.LongSparseArray<T>);
     method @RequiresApi(16) public static final <T> boolean isNotEmpty(android.util.LongSparseArray<T>);
     method @RequiresApi(16) public static final <T> kotlin.collections.LongIterator keyIterator(android.util.LongSparseArray<T>);
-    method @RequiresApi(16) public static final operator inline <T> android.util.LongSparseArray<T> plus(android.util.LongSparseArray<T>, android.util.LongSparseArray<T> other);
+    method @RequiresApi(16) public static final operator <T> android.util.LongSparseArray<T> plus(android.util.LongSparseArray<T>, android.util.LongSparseArray<T> other);
     method @RequiresApi(16) public static final <T> void putAll(android.util.LongSparseArray<T>, android.util.LongSparseArray<T> other);
     method @RequiresApi(16) public static final <T> boolean remove(android.util.LongSparseArray<T>, long key, T! value);
-    method @RequiresApi(16) public static final operator inline <T> void set(android.util.LongSparseArray<T>, long key, T! value);
+    method @RequiresApi(16) public static final operator <T> void set(android.util.LongSparseArray<T>, long key, T! value);
     method @RequiresApi(16) public static final <T> java.util.Iterator<T> valueIterator(android.util.LongSparseArray<T>);
   }
 
   public final class PairKt {
     ctor public PairKt();
-    method public static final operator inline <F, S> F! component1(android.util.Pair<F,S>);
-    method public static final operator inline <F, S> S! component2(android.util.Pair<F,S>);
+    method public static final operator <F, S> F! component1(android.util.Pair<F,S>);
+    method public static final operator <F, S> S! component2(android.util.Pair<F,S>);
     method public static final <F, S> android.util.Pair<F,S> toAndroidPair(kotlin.Pair<? extends F,? extends S>);
     method public static final <F, S> kotlin.Pair<F,S> toKotlinPair(android.util.Pair<F,S>);
   }
@@ -543,8 +543,8 @@ package androidx.util {
   public final class RangeKt {
     ctor public RangeKt();
     method @RequiresApi(21) public static final infix <T extends java.lang.Comparable<? super T>> android.util.Range<T> and(android.util.Range<T>, android.util.Range<T> other);
-    method @RequiresApi(21) public static final operator inline <T extends java.lang.Comparable<? super T>> android.util.Range<T> plus(android.util.Range<T>, T value);
-    method @RequiresApi(21) public static final operator inline <T extends java.lang.Comparable<? super T>> android.util.Range<T> plus(android.util.Range<T>, android.util.Range<T> other);
+    method @RequiresApi(21) public static final operator <T extends java.lang.Comparable<? super T>> android.util.Range<T> plus(android.util.Range<T>, T value);
+    method @RequiresApi(21) public static final operator <T extends java.lang.Comparable<? super T>> android.util.Range<T> plus(android.util.Range<T>, android.util.Range<T> other);
     method @RequiresApi(21) public static final infix <T extends java.lang.Comparable<? super T>> android.util.Range<T> rangeTo(T, T that);
     method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> kotlin.ranges.ClosedRange<T> toClosedRange(android.util.Range<T>);
     method @RequiresApi(21) public static final <T extends java.lang.Comparable<? super T>> android.util.Range<T> toRange(kotlin.ranges.ClosedRange<T>);
@@ -552,15 +552,15 @@ package androidx.util {
 
   public final class SizeKt {
     ctor public SizeKt();
-    method @RequiresApi(21) public static final operator inline int component1(android.util.Size);
-    method @RequiresApi(21) public static final operator inline float component1(android.util.SizeF);
-    method @RequiresApi(21) public static final operator inline int component2(android.util.Size);
-    method @RequiresApi(21) public static final operator inline float component2(android.util.SizeF);
+    method @RequiresApi(21) public static final operator int component1(android.util.Size);
+    method @RequiresApi(21) public static final operator float component1(android.util.SizeF);
+    method @RequiresApi(21) public static final operator int component2(android.util.Size);
+    method @RequiresApi(21) public static final operator float component2(android.util.SizeF);
   }
 
   public final class SparseArrayKt {
     ctor public SparseArrayKt();
-    method public static final operator inline <T> boolean contains(android.util.SparseArray<T>, int key);
+    method public static final operator <T> boolean contains(android.util.SparseArray<T>, int key);
     method public static final <T> boolean containsKey(android.util.SparseArray<T>, int key);
     method public static final <T> boolean containsValue(android.util.SparseArray<T>, T! value);
     method public static final <T> void forEach(android.util.SparseArray<T>, kotlin.jvm.functions.Function2<? super Integer,? super T,kotlin.Unit> action);
@@ -570,16 +570,16 @@ package androidx.util {
     method public static final <T> boolean isEmpty(android.util.SparseArray<T>);
     method public static final <T> boolean isNotEmpty(android.util.SparseArray<T>);
     method public static final <T> kotlin.collections.IntIterator keyIterator(android.util.SparseArray<T>);
-    method public static final operator inline <T> android.util.SparseArray<T> plus(android.util.SparseArray<T>, android.util.SparseArray<T> other);
+    method public static final operator <T> android.util.SparseArray<T> plus(android.util.SparseArray<T>, android.util.SparseArray<T> other);
     method public static final <T> void putAll(android.util.SparseArray<T>, android.util.SparseArray<T> other);
     method public static final <T> boolean remove(android.util.SparseArray<T>, int key, T! value);
-    method public static final operator inline <T> void set(android.util.SparseArray<T>, int key, T! value);
+    method public static final operator <T> void set(android.util.SparseArray<T>, int key, T! value);
     method public static final <T> java.util.Iterator<T> valueIterator(android.util.SparseArray<T>);
   }
 
   public final class SparseBooleanArrayKt {
     ctor public SparseBooleanArrayKt();
-    method public static final operator inline boolean contains(android.util.SparseBooleanArray, int key);
+    method public static final operator boolean contains(android.util.SparseBooleanArray, int key);
     method public static final boolean containsKey(android.util.SparseBooleanArray, int key);
     method public static final boolean containsValue(android.util.SparseBooleanArray, boolean value);
     method public static final void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super Integer,? super Boolean,kotlin.Unit> action);
@@ -589,17 +589,17 @@ package androidx.util {
     method public static final boolean isEmpty(android.util.SparseBooleanArray);
     method public static final boolean isNotEmpty(android.util.SparseBooleanArray);
     method public static final kotlin.collections.IntIterator keyIterator(android.util.SparseBooleanArray);
-    method public static final operator inline android.util.SparseBooleanArray plus(android.util.SparseBooleanArray, android.util.SparseBooleanArray other);
+    method public static final operator android.util.SparseBooleanArray plus(android.util.SparseBooleanArray, android.util.SparseBooleanArray other);
     method public static final void putAll(android.util.SparseBooleanArray, android.util.SparseBooleanArray other);
     method public static final boolean remove(android.util.SparseBooleanArray, int key, boolean value);
     method public static final void removeAt(android.util.SparseBooleanArray, int index);
-    method public static final operator inline void set(android.util.SparseBooleanArray, int key, boolean value);
+    method public static final operator void set(android.util.SparseBooleanArray, int key, boolean value);
     method public static final kotlin.collections.BooleanIterator valueIterator(android.util.SparseBooleanArray);
   }
 
   public final class SparseIntArrayKt {
     ctor public SparseIntArrayKt();
-    method public static final operator inline boolean contains(android.util.SparseIntArray, int key);
+    method public static final operator boolean contains(android.util.SparseIntArray, int key);
     method public static final boolean containsKey(android.util.SparseIntArray, int key);
     method public static final boolean containsValue(android.util.SparseIntArray, int value);
     method public static final void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super Integer,? super Integer,kotlin.Unit> action);
@@ -609,16 +609,16 @@ package androidx.util {
     method public static final boolean isEmpty(android.util.SparseIntArray);
     method public static final boolean isNotEmpty(android.util.SparseIntArray);
     method public static final kotlin.collections.IntIterator keyIterator(android.util.SparseIntArray);
-    method public static final operator inline android.util.SparseIntArray plus(android.util.SparseIntArray, android.util.SparseIntArray other);
+    method public static final operator android.util.SparseIntArray plus(android.util.SparseIntArray, android.util.SparseIntArray other);
     method public static final void putAll(android.util.SparseIntArray, android.util.SparseIntArray other);
     method public static final boolean remove(android.util.SparseIntArray, int key, int value);
-    method public static final operator inline void set(android.util.SparseIntArray, int key, int value);
+    method public static final operator void set(android.util.SparseIntArray, int key, int value);
     method public static final kotlin.collections.IntIterator valueIterator(android.util.SparseIntArray);
   }
 
   public final class SparseLongArrayKt {
     ctor public SparseLongArrayKt();
-    method @RequiresApi(18) public static final operator inline boolean contains(android.util.SparseLongArray, int key);
+    method @RequiresApi(18) public static final operator boolean contains(android.util.SparseLongArray, int key);
     method @RequiresApi(18) public static final boolean containsKey(android.util.SparseLongArray, int key);
     method @RequiresApi(18) public static final boolean containsValue(android.util.SparseLongArray, long value);
     method @RequiresApi(18) public static final void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super Integer,? super Long,kotlin.Unit> action);
@@ -628,10 +628,10 @@ package androidx.util {
     method @RequiresApi(18) public static final boolean isEmpty(android.util.SparseLongArray);
     method @RequiresApi(18) public static final boolean isNotEmpty(android.util.SparseLongArray);
     method @RequiresApi(18) public static final kotlin.collections.IntIterator keyIterator(android.util.SparseLongArray);
-    method @RequiresApi(18) public static final operator inline android.util.SparseLongArray plus(android.util.SparseLongArray, android.util.SparseLongArray other);
+    method @RequiresApi(18) public static final operator android.util.SparseLongArray plus(android.util.SparseLongArray, android.util.SparseLongArray other);
     method @RequiresApi(18) public static final void putAll(android.util.SparseLongArray, android.util.SparseLongArray other);
     method @RequiresApi(18) public static final boolean remove(android.util.SparseLongArray, int key, long value);
-    method @RequiresApi(18) public static final operator inline void set(android.util.SparseLongArray, int key, long value);
+    method @RequiresApi(18) public static final operator void set(android.util.SparseLongArray, int key, long value);
     method @RequiresApi(18) public static final kotlin.collections.LongIterator valueIterator(android.util.SparseLongArray);
   }
 
@@ -641,16 +641,16 @@ package androidx.view {
 
   public final class ViewGroupKt {
     ctor public ViewGroupKt();
-    method public static final operator inline boolean contains(android.view.ViewGroup, android.view.View view);
+    method public static final operator boolean contains(android.view.ViewGroup, android.view.View view);
     method public static final void forEach(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super Integer,? super android.view.View,kotlin.Unit> action);
-    method public static final operator inline android.view.View get(android.view.ViewGroup, int index);
+    method public static final operator android.view.View get(android.view.ViewGroup, int index);
     method public static final int getSize(android.view.ViewGroup);
     method public static final boolean isEmpty(android.view.ViewGroup);
     method public static final boolean isNotEmpty(android.view.ViewGroup);
-    method public static final operator inline java.util.Iterator<android.view.View> iterator(android.view.ViewGroup);
-    method public static final operator inline void minusAssign(android.view.ViewGroup, android.view.View view);
-    method public static final operator inline void plusAssign(android.view.ViewGroup, android.view.View view);
+    method public static final operator java.util.Iterator<android.view.View> iterator(android.view.ViewGroup);
+    method public static final operator void minusAssign(android.view.ViewGroup, android.view.View view);
+    method public static final operator void plusAssign(android.view.ViewGroup, android.view.View view);
     method public static final void setMargins(android.view.ViewGroup.MarginLayoutParams, int size);
     method public static final void updateMargins(android.view.ViewGroup.MarginLayoutParams, int left = "leftMargin", int top = "topMargin", int right = "rightMargin", int bottom = "bottomMargin");
     method @RequiresApi(17) public static final void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, int start = "marginStart", int top = "topMargin", int end = "marginEnd", int bottom = "bottomMargin");
