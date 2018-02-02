@@ -8,7 +8,7 @@ Releasing
  5. `./gradlew clean assemble`
  6. Upload the ZIP in `build/distributions/` to Google's maven repository.
  7. `git tag -a X.Y.X -m "Version X.Y.Z"` (where X.Y.Z is the new version)
- 8. Update the `gradle.properties` to the next SNAPSHOT version.
+ 8. Update the `build.gradle` to the next SNAPSHOT version.
  9. `git commit -am "Prepare next development version."`
  10. `git push && git push --tags`
 
