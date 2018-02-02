@@ -81,6 +81,12 @@ dependencies {
     metalava 'org.jetbrains.kotlin:kotlin-stdlib:1.2.21'
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xno-param-assertions']
+    }
+}
+
 task ktlint(type: JavaExec, group: LifecycleBasePlugin.VERIFICATION_GROUP) {
     inputs.dir('src')
     outputs.dir('src')
