@@ -125,6 +125,7 @@ android.libraryVariants.all { variant ->
 
         doFirst {
             args = [
+                    '--no-banner',
                     '--source-path', 'src/main/java',
                     '--compatible-output=no',
                     '--omit-common-packages=yes',
@@ -146,6 +147,7 @@ android.libraryVariants.all { variant ->
 
         doFirst {
             args = [
+                    '--no-banner',
                     '--source-path', 'src/main/java',
                     '--compatible-output=no',
                     '--omit-common-packages=yes',
