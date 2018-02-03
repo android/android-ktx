@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>toBitmap - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.view</a>&nbsp;/&nbsp;<a href="index.html">android.view.View</a>&nbsp;/&nbsp;<a href=".">toBitmap</a><br/>
+<br/>
+<h1>toBitmap</h1>
+<a name="androidx.view$toBitmap(android.view.View, android.graphics.Bitmap.Config)"></a>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">toBitmap</span><span class="symbol">(</span><span class="identifier" id="androidx.view$toBitmap(android.view.View, android.graphics.Bitmap.Config)/config">config</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Bitmap/Config.html"><span class="identifier">Config</span></a>&nbsp;<span class="symbol">=</span>&nbsp;Bitmap.Config.ARGB_8888<span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a></code>
+<p>Return a <a href="https://developer.android.com/reference/android/graphics/Bitmap.html">Bitmap</a> representation of this <a href="https://developer.android.com/reference/android/view/View.html">View</a>.</p>
+<p>The resulting bitmap will be the same width and height as this view's current layout
+dimensions. This does not take into account any transformations such as scale or translation.</p>
+<p>Note, this will use the software rendering pipeline to draw the view to the bitmap. This may
+result with different drawing to what is rendered on a hardware accelerated canvas (such as
+the device screen).</p>
+<p>If this view has not been laid out this method will throw a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-illegal-state-exception/index.html">IllegalStateException</a>.</p>
+<h3>Parameters</h3>
+<p><a name="config"></a>
+<code>config</code> - Bitmap config of the desired bitmap. Defaults to <a href="#">Config.ARGB_8888</a>.</p>
+</BODY>
+</HTML>

@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>inSpans - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.text</a>&nbsp;/&nbsp;<a href="index.html">android.text.SpannableStringBuilder</a>&nbsp;/&nbsp;<a href=".">inSpans</a><br/>
+<br/>
+<h1>inSpans</h1>
+<a name="androidx.text$inSpans(android.text.SpannableStringBuilder, kotlin.Array((kotlin.Any)), kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))"></a>
+<code><span class="keyword">inline</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/text/SpannableStringBuilder.html"><span class="identifier">SpannableStringBuilder</span></a><span class="symbol">.</span><span class="identifier">inSpans</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="androidx.text$inSpans(android.text.SpannableStringBuilder, kotlin.Array((kotlin.Any)), kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))/spans">spans</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="androidx.text$inSpans(android.text.SpannableStringBuilder, kotlin.Array((kotlin.Any)), kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))/builderAction">builderAction</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/text/SpannableStringBuilder.html"><span class="identifier">SpannableStringBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/text/SpannableStringBuilder.html"><span class="identifier">SpannableStringBuilder</span></a></code>
+<p>Wrap appended text in <code>builderAction</code> in <code>spans</code>.</p>
+<p>Note: the spans will only have the correct position if the <code>builderAction</code> only appends or
+replaces text. Inserting, deleting, or clearing the text will cause the span to be placed at
+an incorrect position.</p>
+</BODY>
+</HTML>

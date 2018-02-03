@@ -1,0 +1,378 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:androidx.animation$addListener(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)), kotlin.Function1((android.animation.Animator, kotlin.Unit)), kotlin.Function1((android.animation.Animator, kotlin.Unit)), kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/add-listener.html
+$dokka.location:androidx.animation$addPauseListener(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)), kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/add-pause-listener.html
+$dokka.location:androidx.animation$doOnCancel(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/do-on-cancel.html
+$dokka.location:androidx.animation$doOnEnd(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/do-on-end.html
+$dokka.location:androidx.animation$doOnPause(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/do-on-pause.html
+$dokka.location:androidx.animation$doOnRepeat(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/do-on-repeat.html
+$dokka.location:androidx.animation$doOnResume(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/do-on-resume.html
+$dokka.location:androidx.animation$doOnStart(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/do-on-start.html
+$dokka.location:androidx.content$edit(android.content.SharedPreferences, kotlin.Function1((android.content.SharedPreferences.Editor, kotlin.Unit)))androidx.content/android.content.-shared-preferences/edit.html
+$dokka.location:androidx.content$systemService(android.content.Context)androidx.content/android.content.-context/system-service.html
+$dokka.location:androidx.content$withStyledAttributes(android.content.Context, android.util.AttributeSet, kotlin.IntArray, kotlin.Int, kotlin.Int, kotlin.Function1((android.content.res.TypedArray, kotlin.Unit)))androidx.content/android.content.-context/with-styled-attributes.html
+$dokka.location:androidx.content$withStyledAttributes(android.content.Context, kotlin.Int, kotlin.IntArray, kotlin.Function1((android.content.res.TypedArray, kotlin.Unit)))androidx.content/android.content.-context/with-styled-attributes.html
+$dokka.location:androidx.content.res$getBooleanOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-boolean-or-throw.html
+$dokka.location:androidx.content.res$getColorOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-color-or-throw.html
+$dokka.location:androidx.content.res$getColorStateListOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-color-state-list-or-throw.html
+$dokka.location:androidx.content.res$getDimensionOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-dimension-or-throw.html
+$dokka.location:androidx.content.res$getDimensionPixelOffsetOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-dimension-pixel-offset-or-throw.html
+$dokka.location:androidx.content.res$getDimensionPixelSizeOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-dimension-pixel-size-or-throw.html
+$dokka.location:androidx.content.res$getDrawableOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-drawable-or-throw.html
+$dokka.location:androidx.content.res$getFloatOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-float-or-throw.html
+$dokka.location:androidx.content.res$getFontOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-font-or-throw.html
+$dokka.location:androidx.content.res$getIntOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-int-or-throw.html
+$dokka.location:androidx.content.res$getIntegerOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-integer-or-throw.html
+$dokka.location:androidx.content.res$getStringOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-string-or-throw.html
+$dokka.location:androidx.content.res$getTextArrayOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-text-array-or-throw.html
+$dokka.location:androidx.content.res$getTextOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-text-or-throw.html
+$dokka.location:androidx.database$getBlob(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-blob.html
+$dokka.location:androidx.database$getBlobOrNull(android.database.Cursor, kotlin.Int)androidx.database/android.database.-cursor/get-blob-or-null.html
+$dokka.location:androidx.database$getBlobOrNull(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-blob-or-null.html
+$dokka.location:androidx.database$getDouble(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-double.html
+$dokka.location:androidx.database$getDoubleOrNull(android.database.Cursor, kotlin.Int)androidx.database/android.database.-cursor/get-double-or-null.html
+$dokka.location:androidx.database$getDoubleOrNull(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-double-or-null.html
+$dokka.location:androidx.database$getFloat(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-float.html
+$dokka.location:androidx.database$getFloatOrNull(android.database.Cursor, kotlin.Int)androidx.database/android.database.-cursor/get-float-or-null.html
+$dokka.location:androidx.database$getFloatOrNull(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-float-or-null.html
+$dokka.location:androidx.database$getInt(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-int.html
+$dokka.location:androidx.database$getIntOrNull(android.database.Cursor, kotlin.Int)androidx.database/android.database.-cursor/get-int-or-null.html
+$dokka.location:androidx.database$getIntOrNull(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-int-or-null.html
+$dokka.location:androidx.database$getLong(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-long.html
+$dokka.location:androidx.database$getLongOrNull(android.database.Cursor, kotlin.Int)androidx.database/android.database.-cursor/get-long-or-null.html
+$dokka.location:androidx.database$getLongOrNull(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-long-or-null.html
+$dokka.location:androidx.database$getShort(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-short.html
+$dokka.location:androidx.database$getShortOrNull(android.database.Cursor, kotlin.Int)androidx.database/android.database.-cursor/get-short-or-null.html
+$dokka.location:androidx.database$getShortOrNull(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-short-or-null.html
+$dokka.location:androidx.database$getString(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-string.html
+$dokka.location:androidx.database$getStringOrNull(android.database.Cursor, kotlin.Int)androidx.database/android.database.-cursor/get-string-or-null.html
+$dokka.location:androidx.database$getStringOrNull(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-string-or-null.html
+$dokka.location:androidx.database.sqlite$transaction(android.database.sqlite.SQLiteDatabase, kotlin.Boolean, kotlin.Function1((android.database.sqlite.SQLiteDatabase, androidx.database.sqlite.transaction.T)))androidx.database.sqlite/android.database.sqlite.-s-q-lite-database/transaction.html
+$dokka.location:androidx.graphics$alpha#kotlin.Intandroidx.graphics/kotlin.-int/alpha.html
+$dokka.location:androidx.graphics$alpha#kotlin.Longandroidx.graphics/kotlin.-long/alpha.html
+$dokka.location:androidx.graphics$and(android.graphics.Path, android.graphics.Path)androidx.graphics/android.graphics.-path/and.html
+$dokka.location:androidx.graphics$and(android.graphics.Rect, android.graphics.Rect)androidx.graphics/android.graphics.-rect/and.html
+$dokka.location:androidx.graphics$and(android.graphics.RectF, android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/and.html
+$dokka.location:androidx.graphics$and(android.graphics.Region, android.graphics.Rect)androidx.graphics/android.graphics.-region/and.html
+$dokka.location:androidx.graphics$and(android.graphics.Region, android.graphics.Region)androidx.graphics/android.graphics.-region/and.html
+$dokka.location:androidx.graphics$applyCanvas(android.graphics.Bitmap, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))androidx.graphics/android.graphics.-bitmap/apply-canvas.html
+$dokka.location:androidx.graphics$blue#kotlin.Intandroidx.graphics/kotlin.-int/blue.html
+$dokka.location:androidx.graphics$blue#kotlin.Longandroidx.graphics/kotlin.-long/blue.html
+$dokka.location:androidx.graphics$colorSpace#kotlin.Longandroidx.graphics/kotlin.-long/color-space.html
+$dokka.location:androidx.graphics$component1(android.graphics.Color)androidx.graphics/android.graphics.-color/component1.html
+$dokka.location:androidx.graphics$component1(android.graphics.Point)androidx.graphics/android.graphics.-point/component1.html
+$dokka.location:androidx.graphics$component1(android.graphics.PointF)androidx.graphics/android.graphics.-point-f/component1.html
+$dokka.location:androidx.graphics$component1(android.graphics.Rect)androidx.graphics/android.graphics.-rect/component1.html
+$dokka.location:androidx.graphics$component1(android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/component1.html
+$dokka.location:androidx.graphics$component1(kotlin.Int)androidx.graphics/kotlin.-int/component1.html
+$dokka.location:androidx.graphics$component1(kotlin.Long)androidx.graphics/kotlin.-long/component1.html
+$dokka.location:androidx.graphics$component2(android.graphics.Color)androidx.graphics/android.graphics.-color/component2.html
+$dokka.location:androidx.graphics$component2(android.graphics.Point)androidx.graphics/android.graphics.-point/component2.html
+$dokka.location:androidx.graphics$component2(android.graphics.PointF)androidx.graphics/android.graphics.-point-f/component2.html
+$dokka.location:androidx.graphics$component2(android.graphics.Rect)androidx.graphics/android.graphics.-rect/component2.html
+$dokka.location:androidx.graphics$component2(android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/component2.html
+$dokka.location:androidx.graphics$component2(kotlin.Int)androidx.graphics/kotlin.-int/component2.html
+$dokka.location:androidx.graphics$component2(kotlin.Long)androidx.graphics/kotlin.-long/component2.html
+$dokka.location:androidx.graphics$component3(android.graphics.Color)androidx.graphics/android.graphics.-color/component3.html
+$dokka.location:androidx.graphics$component3(android.graphics.Rect)androidx.graphics/android.graphics.-rect/component3.html
+$dokka.location:androidx.graphics$component3(android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/component3.html
+$dokka.location:androidx.graphics$component3(kotlin.Int)androidx.graphics/kotlin.-int/component3.html
+$dokka.location:androidx.graphics$component3(kotlin.Long)androidx.graphics/kotlin.-long/component3.html
+$dokka.location:androidx.graphics$component4(android.graphics.Color)androidx.graphics/android.graphics.-color/component4.html
+$dokka.location:androidx.graphics$component4(android.graphics.Rect)androidx.graphics/android.graphics.-rect/component4.html
+$dokka.location:androidx.graphics$component4(android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/component4.html
+$dokka.location:androidx.graphics$component4(kotlin.Int)androidx.graphics/kotlin.-int/component4.html
+$dokka.location:androidx.graphics$component4(kotlin.Long)androidx.graphics/kotlin.-long/component4.html
+$dokka.location:androidx.graphics$contains(android.graphics.Rect, android.graphics.Point)androidx.graphics/android.graphics.-rect/contains.html
+$dokka.location:androidx.graphics$contains(android.graphics.RectF, android.graphics.PointF)androidx.graphics/android.graphics.-rect-f/contains.html
+$dokka.location:androidx.graphics$contains(android.graphics.Region, android.graphics.Point)androidx.graphics/android.graphics.-region/contains.html
+$dokka.location:androidx.graphics$flatten(android.graphics.Path, kotlin.Float)androidx.graphics/android.graphics.-path/flatten.html
+$dokka.location:androidx.graphics$forEach(android.graphics.Region, kotlin.Function1((android.graphics.Rect, kotlin.Unit)))androidx.graphics/android.graphics.-region/for-each.html
+$dokka.location:androidx.graphics$get(android.graphics.Bitmap, kotlin.Int, kotlin.Int)androidx.graphics/android.graphics.-bitmap/get.html
+$dokka.location:androidx.graphics$green#kotlin.Intandroidx.graphics/kotlin.-int/green.html
+$dokka.location:androidx.graphics$green#kotlin.Longandroidx.graphics/kotlin.-long/green.html
+$dokka.location:androidx.graphics$isSrgb#kotlin.Longandroidx.graphics/kotlin.-long/is-srgb.html
+$dokka.location:androidx.graphics$isWideGamut#kotlin.Longandroidx.graphics/kotlin.-long/is-wide-gamut.html
+$dokka.location:androidx.graphics$iterator(android.graphics.Region)androidx.graphics/android.graphics.-region/iterator.html
+$dokka.location:androidx.graphics$luminance#kotlin.Intandroidx.graphics/kotlin.-int/luminance.html
+$dokka.location:androidx.graphics$luminance#kotlin.Longandroidx.graphics/kotlin.-long/luminance.html
+$dokka.location:androidx.graphics$minus(android.graphics.Path, android.graphics.Path)androidx.graphics/android.graphics.-path/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.Point, android.graphics.Point)androidx.graphics/android.graphics.-point/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.Point, kotlin.Int)androidx.graphics/android.graphics.-point/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.PointF, android.graphics.PointF)androidx.graphics/android.graphics.-point-f/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.PointF, kotlin.Float)androidx.graphics/android.graphics.-point-f/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.Rect, android.graphics.Point)androidx.graphics/android.graphics.-rect/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.Rect, android.graphics.Rect)androidx.graphics/android.graphics.-rect/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.Rect, kotlin.Int)androidx.graphics/android.graphics.-rect/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.RectF, android.graphics.PointF)androidx.graphics/android.graphics.-rect-f/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.RectF, android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.RectF, kotlin.Float)androidx.graphics/android.graphics.-rect-f/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.Region, android.graphics.Rect)androidx.graphics/android.graphics.-region/minus.html
+$dokka.location:androidx.graphics$minus(android.graphics.Region, android.graphics.Region)androidx.graphics/android.graphics.-region/minus.html
+$dokka.location:androidx.graphics$not(android.graphics.Region)androidx.graphics/android.graphics.-region/not.html
+$dokka.location:androidx.graphics$or(android.graphics.Path, android.graphics.Path)androidx.graphics/android.graphics.-path/or.html
+$dokka.location:androidx.graphics$or(android.graphics.Rect, android.graphics.Rect)androidx.graphics/android.graphics.-rect/or.html
+$dokka.location:androidx.graphics$or(android.graphics.RectF, android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/or.html
+$dokka.location:androidx.graphics$or(android.graphics.Region, android.graphics.Rect)androidx.graphics/android.graphics.-region/or.html
+$dokka.location:androidx.graphics$or(android.graphics.Region, android.graphics.Region)androidx.graphics/android.graphics.-region/or.html
+$dokka.location:androidx.graphics$plus(android.graphics.Color, android.graphics.Color)androidx.graphics/android.graphics.-color/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.Path, android.graphics.Path)androidx.graphics/android.graphics.-path/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.Point, android.graphics.Point)androidx.graphics/android.graphics.-point/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.Point, kotlin.Int)androidx.graphics/android.graphics.-point/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.PointF, android.graphics.PointF)androidx.graphics/android.graphics.-point-f/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.PointF, kotlin.Float)androidx.graphics/android.graphics.-point-f/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.Rect, android.graphics.Point)androidx.graphics/android.graphics.-rect/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.Rect, android.graphics.Rect)androidx.graphics/android.graphics.-rect/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.Rect, kotlin.Int)androidx.graphics/android.graphics.-rect/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.RectF, android.graphics.PointF)androidx.graphics/android.graphics.-rect-f/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.RectF, android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.RectF, kotlin.Float)androidx.graphics/android.graphics.-rect-f/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.Region, android.graphics.Rect)androidx.graphics/android.graphics.-region/plus.html
+$dokka.location:androidx.graphics$plus(android.graphics.Region, android.graphics.Region)androidx.graphics/android.graphics.-region/plus.html
+$dokka.location:androidx.graphics$record(android.graphics.Picture, kotlin.Int, kotlin.Int, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))androidx.graphics/android.graphics.-picture/record.html
+$dokka.location:androidx.graphics$red#kotlin.Intandroidx.graphics/kotlin.-int/red.html
+$dokka.location:androidx.graphics$red#kotlin.Longandroidx.graphics/kotlin.-long/red.html
+$dokka.location:androidx.graphics$scale(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Boolean)androidx.graphics/android.graphics.-bitmap/scale.html
+$dokka.location:androidx.graphics$set(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Int)androidx.graphics/android.graphics.-bitmap/set.html
+$dokka.location:androidx.graphics$times(android.graphics.Matrix, android.graphics.Matrix)androidx.graphics/android.graphics.-matrix/times.html
+$dokka.location:androidx.graphics$toColor(kotlin.Int)androidx.graphics/kotlin.-int/to-color.html
+$dokka.location:androidx.graphics$toColor(kotlin.Long)androidx.graphics/kotlin.-long/to-color.html
+$dokka.location:androidx.graphics$toColorFilter(android.graphics.PorterDuff.Mode, kotlin.Int)androidx.graphics/android.graphics.-porter-duff.-mode/to-color-filter.html
+$dokka.location:androidx.graphics$toColorInt(kotlin.Long)androidx.graphics/kotlin.-long/to-color-int.html
+$dokka.location:androidx.graphics$toColorLong(kotlin.Int)androidx.graphics/kotlin.-int/to-color-long.html
+$dokka.location:androidx.graphics$toPoint(android.graphics.PointF)androidx.graphics/android.graphics.-point-f/to-point.html
+$dokka.location:androidx.graphics$toPointF(android.graphics.Point)androidx.graphics/android.graphics.-point/to-point-f.html
+$dokka.location:androidx.graphics$toRect(android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/to-rect.html
+$dokka.location:androidx.graphics$toRectF(android.graphics.Rect)androidx.graphics/android.graphics.-rect/to-rect-f.html
+$dokka.location:androidx.graphics$toRegion(android.graphics.Rect)androidx.graphics/android.graphics.-rect/to-region.html
+$dokka.location:androidx.graphics$toRegion(android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/to-region.html
+$dokka.location:androidx.graphics$toXfermode(android.graphics.PorterDuff.Mode)androidx.graphics/android.graphics.-porter-duff.-mode/to-xfermode.html
+$dokka.location:androidx.graphics$transform(android.graphics.RectF, android.graphics.Matrix)androidx.graphics/android.graphics.-rect-f/transform.html
+$dokka.location:androidx.graphics$transform(android.graphics.Shader, kotlin.Function1((android.graphics.Matrix, kotlin.Unit)))androidx.graphics/android.graphics.-shader/transform.html
+$dokka.location:androidx.graphics$unaryMinus(android.graphics.Point)androidx.graphics/android.graphics.-point/unary-minus.html
+$dokka.location:androidx.graphics$unaryMinus(android.graphics.PointF)androidx.graphics/android.graphics.-point-f/unary-minus.html
+$dokka.location:androidx.graphics$unaryMinus(android.graphics.Region)androidx.graphics/android.graphics.-region/unary-minus.html
+$dokka.location:androidx.graphics$values(android.graphics.Matrix)androidx.graphics/android.graphics.-matrix/values.html
+$dokka.location:androidx.graphics$withRotation(android.graphics.Canvas, kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))androidx.graphics/android.graphics.-canvas/with-rotation.html
+$dokka.location:androidx.graphics$withSave(android.graphics.Canvas, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))androidx.graphics/android.graphics.-canvas/with-save.html
+$dokka.location:androidx.graphics$withScale(android.graphics.Canvas, kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))androidx.graphics/android.graphics.-canvas/with-scale.html
+$dokka.location:androidx.graphics$withSkew(android.graphics.Canvas, kotlin.Float, kotlin.Float, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))androidx.graphics/android.graphics.-canvas/with-skew.html
+$dokka.location:androidx.graphics$withTranslation(android.graphics.Canvas, kotlin.Float, kotlin.Float, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))androidx.graphics/android.graphics.-canvas/with-translation.html
+$dokka.location:androidx.graphics$xor(android.graphics.Path, android.graphics.Path)androidx.graphics/android.graphics.-path/xor.html
+$dokka.location:androidx.graphics$xor(android.graphics.Rect, android.graphics.Rect)androidx.graphics/android.graphics.-rect/xor.html
+$dokka.location:androidx.graphics$xor(android.graphics.RectF, android.graphics.RectF)androidx.graphics/android.graphics.-rect-f/xor.html
+$dokka.location:androidx.graphics$xor(android.graphics.Region, android.graphics.Rect)androidx.graphics/android.graphics.-region/xor.html
+$dokka.location:androidx.graphics$xor(android.graphics.Region, android.graphics.Region)androidx.graphics/android.graphics.-region/xor.html
+$dokka.location:androidx.graphics.drawable$toAdaptiveIcon(android.graphics.Bitmap)androidx.graphics.drawable/android.graphics.-bitmap/to-adaptive-icon.html
+$dokka.location:androidx.graphics.drawable$toBitmap(android.graphics.drawable.Drawable, kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)androidx.graphics.drawable/android.graphics.drawable.-drawable/to-bitmap.html
+$dokka.location:androidx.graphics.drawable$toDrawable(android.graphics.Bitmap, android.content.res.Resources)androidx.graphics.drawable/android.graphics.-bitmap/to-drawable.html
+$dokka.location:androidx.graphics.drawable$toDrawable(android.graphics.Color)androidx.graphics.drawable/android.graphics.-color/to-drawable.html
+$dokka.location:androidx.graphics.drawable$toDrawable(kotlin.Int)androidx.graphics.drawable/kotlin.-int/to-drawable.html
+$dokka.location:androidx.graphics.drawable$toIcon(android.graphics.Bitmap)androidx.graphics.drawable/android.graphics.-bitmap/to-icon.html
+$dokka.location:androidx.graphics.drawable$toIcon(android.net.Uri)androidx.graphics.drawable/android.net.-uri/to-icon.html
+$dokka.location:androidx.graphics.drawable$toIcon(kotlin.ByteArray)androidx.graphics.drawable/kotlin.-byte-array/to-icon.html
+$dokka.location:androidx.graphics.drawable$updateBounds(android.graphics.drawable.Drawable, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)androidx.graphics.drawable/android.graphics.drawable.-drawable/update-bounds.html
+$dokka.location:androidx.net$toUri(kotlin.String)androidx.net/kotlin.-string/to-uri.html
+$dokka.location:androidx.os$postAtTime(android.os.Handler, kotlin.Long, kotlin.Any, kotlin.Function0((kotlin.Unit)))androidx.os/android.os.-handler/post-at-time.html
+$dokka.location:androidx.os$postDelayed(android.os.Handler, java.lang.Runnable, kotlin.Any, kotlin.Long)androidx.os/android.os.-handler/post-delayed.html
+$dokka.location:androidx.os$postDelayed(android.os.Handler, java.time.Duration, kotlin.Any, kotlin.Function0((kotlin.Unit)))androidx.os/android.os.-handler/post-delayed.html
+$dokka.location:androidx.os$postDelayed(android.os.Handler, kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Any, kotlin.Function0((kotlin.Unit)))androidx.os/android.os.-handler/post-delayed.html
+$dokka.location:androidx.os$postDelayed(android.os.Handler, kotlin.Long, kotlin.Any, kotlin.Function0((kotlin.Unit)))androidx.os/android.os.-handler/post-delayed.html
+$dokka.location:androidx.text$backgroundColor(android.text.SpannableStringBuilder, kotlin.Int, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/background-color.html
+$dokka.location:androidx.text$bold(android.text.SpannableStringBuilder, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/bold.html
+$dokka.location:androidx.text$color(android.text.SpannableStringBuilder, kotlin.Int, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/color.html
+$dokka.location:androidx.text$inSpans(android.text.SpannableStringBuilder, kotlin.Array((kotlin.Any)), kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/in-spans.html
+$dokka.location:androidx.text$italic(android.text.SpannableStringBuilder, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/italic.html
+$dokka.location:androidx.text$underline(android.text.SpannableStringBuilder, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/underline.html
+$dokka.location:androidx.time$asDayOfWeek(kotlin.Int)androidx.time/kotlin.-int/as-day-of-week.html
+$dokka.location:androidx.time$asEpochMillis(kotlin.Long)androidx.time/kotlin.-long/as-epoch-millis.html
+$dokka.location:androidx.time$asEpochSeconds(kotlin.Long)androidx.time/kotlin.-long/as-epoch-seconds.html
+$dokka.location:androidx.time$asInt(java.time.DayOfWeek)androidx.time/java.time.-day-of-week/as-int.html
+$dokka.location:androidx.time$asInt(java.time.Month)androidx.time/java.time.-month/as-int.html
+$dokka.location:androidx.time$asInt(java.time.Year)androidx.time/java.time.-year/as-int.html
+$dokka.location:androidx.time$asMonth(kotlin.Int)androidx.time/kotlin.-int/as-month.html
+$dokka.location:androidx.time$asYear(kotlin.Int)androidx.time/kotlin.-int/as-year.html
+$dokka.location:androidx.time$component1(java.time.Duration)androidx.time/java.time.-duration/component1.html
+$dokka.location:androidx.time$component1(java.time.Instant)androidx.time/java.time.-instant/component1.html
+$dokka.location:androidx.time$component1(java.time.LocalDate)androidx.time/java.time.-local-date/component1.html
+$dokka.location:androidx.time$component1(java.time.LocalDateTime)androidx.time/java.time.-local-date-time/component1.html
+$dokka.location:androidx.time$component1(java.time.LocalTime)androidx.time/java.time.-local-time/component1.html
+$dokka.location:androidx.time$component1(java.time.MonthDay)androidx.time/java.time.-month-day/component1.html
+$dokka.location:androidx.time$component1(java.time.OffsetDateTime)androidx.time/java.time.-offset-date-time/component1.html
+$dokka.location:androidx.time$component1(java.time.OffsetTime)androidx.time/java.time.-offset-time/component1.html
+$dokka.location:androidx.time$component1(java.time.Period)androidx.time/java.time.-period/component1.html
+$dokka.location:androidx.time$component1(java.time.YearMonth)androidx.time/java.time.-year-month/component1.html
+$dokka.location:androidx.time$component1(java.time.ZonedDateTime)androidx.time/java.time.-zoned-date-time/component1.html
+$dokka.location:androidx.time$component2(java.time.Duration)androidx.time/java.time.-duration/component2.html
+$dokka.location:androidx.time$component2(java.time.Instant)androidx.time/java.time.-instant/component2.html
+$dokka.location:androidx.time$component2(java.time.LocalDate)androidx.time/java.time.-local-date/component2.html
+$dokka.location:androidx.time$component2(java.time.LocalDateTime)androidx.time/java.time.-local-date-time/component2.html
+$dokka.location:androidx.time$component2(java.time.LocalTime)androidx.time/java.time.-local-time/component2.html
+$dokka.location:androidx.time$component2(java.time.MonthDay)androidx.time/java.time.-month-day/component2.html
+$dokka.location:androidx.time$component2(java.time.OffsetDateTime)androidx.time/java.time.-offset-date-time/component2.html
+$dokka.location:androidx.time$component2(java.time.OffsetTime)androidx.time/java.time.-offset-time/component2.html
+$dokka.location:androidx.time$component2(java.time.Period)androidx.time/java.time.-period/component2.html
+$dokka.location:androidx.time$component2(java.time.YearMonth)androidx.time/java.time.-year-month/component2.html
+$dokka.location:androidx.time$component2(java.time.ZonedDateTime)androidx.time/java.time.-zoned-date-time/component2.html
+$dokka.location:androidx.time$component3(java.time.LocalDate)androidx.time/java.time.-local-date/component3.html
+$dokka.location:androidx.time$component3(java.time.LocalTime)androidx.time/java.time.-local-time/component3.html
+$dokka.location:androidx.time$component3(java.time.Period)androidx.time/java.time.-period/component3.html
+$dokka.location:androidx.time$component4(java.time.LocalTime)androidx.time/java.time.-local-time/component4.html
+$dokka.location:androidx.time$days(kotlin.Int)androidx.time/kotlin.-int/days.html
+$dokka.location:androidx.time$div(java.time.Duration, kotlin.Long)androidx.time/java.time.-duration/div.html
+$dokka.location:androidx.time$hours(kotlin.Int)androidx.time/kotlin.-int/hours.html
+$dokka.location:androidx.time$hours(kotlin.Long)androidx.time/kotlin.-long/hours.html
+$dokka.location:androidx.time$millis(kotlin.Int)androidx.time/kotlin.-int/millis.html
+$dokka.location:androidx.time$millis(kotlin.Long)androidx.time/kotlin.-long/millis.html
+$dokka.location:androidx.time$minutes(kotlin.Int)androidx.time/kotlin.-int/minutes.html
+$dokka.location:androidx.time$minutes(kotlin.Long)androidx.time/kotlin.-long/minutes.html
+$dokka.location:androidx.time$months(kotlin.Int)androidx.time/kotlin.-int/months.html
+$dokka.location:androidx.time$nanos(kotlin.Int)androidx.time/kotlin.-int/nanos.html
+$dokka.location:androidx.time$nanos(kotlin.Long)androidx.time/kotlin.-long/nanos.html
+$dokka.location:androidx.time$seconds(kotlin.Int)androidx.time/kotlin.-int/seconds.html
+$dokka.location:androidx.time$seconds(kotlin.Long)androidx.time/kotlin.-long/seconds.html
+$dokka.location:androidx.time$times(java.time.Duration, kotlin.Long)androidx.time/java.time.-duration/times.html
+$dokka.location:androidx.time$times(java.time.Period, kotlin.Int)androidx.time/java.time.-period/times.html
+$dokka.location:androidx.time$unaryMinus(java.time.Duration)androidx.time/java.time.-duration/unary-minus.html
+$dokka.location:androidx.time$unaryMinus(java.time.Period)androidx.time/java.time.-period/unary-minus.html
+$dokka.location:androidx.time$years(kotlin.Int)androidx.time/kotlin.-int/years.html
+$dokka.location:androidx.transition$addListener(android.transition.Transition, kotlin.Function1((android.transition.Transition, kotlin.Unit)), kotlin.Function1((android.transition.Transition, kotlin.Unit)), kotlin.Function1((android.transition.Transition, kotlin.Unit)), kotlin.Function1((android.transition.Transition, kotlin.Unit)), kotlin.Function1((android.transition.Transition, kotlin.Unit)))androidx.transition/android.transition.-transition/add-listener.html
+$dokka.location:androidx.transition$doOnCancel(android.transition.Transition, kotlin.Function1((android.transition.Transition, kotlin.Unit)))androidx.transition/android.transition.-transition/do-on-cancel.html
+$dokka.location:androidx.transition$doOnEnd(android.transition.Transition, kotlin.Function1((android.transition.Transition, kotlin.Unit)))androidx.transition/android.transition.-transition/do-on-end.html
+$dokka.location:androidx.transition$doOnPause(android.transition.Transition, kotlin.Function1((android.transition.Transition, kotlin.Unit)))androidx.transition/android.transition.-transition/do-on-pause.html
+$dokka.location:androidx.transition$doOnResume(android.transition.Transition, kotlin.Function1((android.transition.Transition, kotlin.Unit)))androidx.transition/android.transition.-transition/do-on-resume.html
+$dokka.location:androidx.transition$doOnStart(android.transition.Transition, kotlin.Function1((android.transition.Transition, kotlin.Unit)))androidx.transition/android.transition.-transition/do-on-start.html
+$dokka.location:androidx.util$and(android.util.Range((androidx.util.and.T)), android.util.Range((androidx.util.and.T)))androidx.util/android.util.-range/and.html
+$dokka.location:androidx.util$component1(android.util.Pair((androidx.util.component1.F, androidx.util.component1.S)))androidx.util/android.util.-pair/component1.html
+$dokka.location:androidx.util$component1(android.util.Size)androidx.util/android.util.-size/component1.html
+$dokka.location:androidx.util$component1(android.util.SizeF)androidx.util/android.util.-size-f/component1.html
+$dokka.location:androidx.util$component2(android.util.Pair((androidx.util.component2.F, androidx.util.component2.S)))androidx.util/android.util.-pair/component2.html
+$dokka.location:androidx.util$component2(android.util.Size)androidx.util/android.util.-size/component2.html
+$dokka.location:androidx.util$component2(android.util.SizeF)androidx.util/android.util.-size-f/component2.html
+$dokka.location:androidx.util$contains(android.util.LongSparseArray((androidx.util.contains.T)), kotlin.Long)androidx.util/android.util.-long-sparse-array/contains.html
+$dokka.location:androidx.util$contains(android.util.SparseArray((androidx.util.contains.T)), kotlin.Int)androidx.util/android.util.-sparse-array/contains.html
+$dokka.location:androidx.util$contains(android.util.SparseBooleanArray, kotlin.Int)androidx.util/android.util.-sparse-boolean-array/contains.html
+$dokka.location:androidx.util$contains(android.util.SparseIntArray, kotlin.Int)androidx.util/android.util.-sparse-int-array/contains.html
+$dokka.location:androidx.util$contains(android.util.SparseLongArray, kotlin.Int)androidx.util/android.util.-sparse-long-array/contains.html
+$dokka.location:androidx.util$containsKey(android.util.LongSparseArray((androidx.util.containsKey.T)), kotlin.Long)androidx.util/android.util.-long-sparse-array/contains-key.html
+$dokka.location:androidx.util$containsKey(android.util.SparseArray((androidx.util.containsKey.T)), kotlin.Int)androidx.util/android.util.-sparse-array/contains-key.html
+$dokka.location:androidx.util$containsKey(android.util.SparseBooleanArray, kotlin.Int)androidx.util/android.util.-sparse-boolean-array/contains-key.html
+$dokka.location:androidx.util$containsKey(android.util.SparseIntArray, kotlin.Int)androidx.util/android.util.-sparse-int-array/contains-key.html
+$dokka.location:androidx.util$containsKey(android.util.SparseLongArray, kotlin.Int)androidx.util/android.util.-sparse-long-array/contains-key.html
+$dokka.location:androidx.util$containsValue(android.util.LongSparseArray((androidx.util.containsValue.T)), androidx.util.containsValue.T)androidx.util/android.util.-long-sparse-array/contains-value.html
+$dokka.location:androidx.util$containsValue(android.util.SparseArray((androidx.util.containsValue.T)), androidx.util.containsValue.T)androidx.util/android.util.-sparse-array/contains-value.html
+$dokka.location:androidx.util$containsValue(android.util.SparseBooleanArray, kotlin.Boolean)androidx.util/android.util.-sparse-boolean-array/contains-value.html
+$dokka.location:androidx.util$containsValue(android.util.SparseIntArray, kotlin.Int)androidx.util/android.util.-sparse-int-array/contains-value.html
+$dokka.location:androidx.util$containsValue(android.util.SparseLongArray, kotlin.Long)androidx.util/android.util.-sparse-long-array/contains-value.html
+$dokka.location:androidx.util$forEach(android.util.LongSparseArray((androidx.util.forEach.T)), kotlin.Function2((kotlin.Long, androidx.util.forEach.T, kotlin.Unit)))androidx.util/android.util.-long-sparse-array/for-each.html
+$dokka.location:androidx.util$forEach(android.util.SparseArray((androidx.util.forEach.T)), kotlin.Function2((kotlin.Int, androidx.util.forEach.T, kotlin.Unit)))androidx.util/android.util.-sparse-array/for-each.html
+$dokka.location:androidx.util$forEach(android.util.SparseBooleanArray, kotlin.Function2((kotlin.Int, kotlin.Boolean, kotlin.Unit)))androidx.util/android.util.-sparse-boolean-array/for-each.html
+$dokka.location:androidx.util$forEach(android.util.SparseIntArray, kotlin.Function2((kotlin.Int, , kotlin.Unit)))androidx.util/android.util.-sparse-int-array/for-each.html
+$dokka.location:androidx.util$forEach(android.util.SparseLongArray, kotlin.Function2((kotlin.Int, kotlin.Long, kotlin.Unit)))androidx.util/android.util.-sparse-long-array/for-each.html
+$dokka.location:androidx.util$getOrDefault(android.util.LongSparseArray((androidx.util.getOrDefault.T)), kotlin.Long, androidx.util.getOrDefault.T)androidx.util/android.util.-long-sparse-array/get-or-default.html
+$dokka.location:androidx.util$getOrDefault(android.util.SparseArray((androidx.util.getOrDefault.T)), kotlin.Int, androidx.util.getOrDefault.T)androidx.util/android.util.-sparse-array/get-or-default.html
+$dokka.location:androidx.util$getOrDefault(android.util.SparseBooleanArray, kotlin.Int, kotlin.Boolean)androidx.util/android.util.-sparse-boolean-array/get-or-default.html
+$dokka.location:androidx.util$getOrDefault(android.util.SparseIntArray, kotlin.Int, kotlin.Int)androidx.util/android.util.-sparse-int-array/get-or-default.html
+$dokka.location:androidx.util$getOrDefault(android.util.SparseLongArray, kotlin.Int, kotlin.Long)androidx.util/android.util.-sparse-long-array/get-or-default.html
+$dokka.location:androidx.util$getOrElse(android.util.LongSparseArray((androidx.util.getOrElse.T)), kotlin.Long, kotlin.Function0((androidx.util.getOrElse.T)))androidx.util/android.util.-long-sparse-array/get-or-else.html
+$dokka.location:androidx.util$getOrElse(android.util.SparseArray((androidx.util.getOrElse.T)), kotlin.Int, kotlin.Function0((androidx.util.getOrElse.T)))androidx.util/android.util.-sparse-array/get-or-else.html
+$dokka.location:androidx.util$getOrElse(android.util.SparseBooleanArray, kotlin.Int, kotlin.Function0((kotlin.Boolean)))androidx.util/android.util.-sparse-boolean-array/get-or-else.html
+$dokka.location:androidx.util$getOrElse(android.util.SparseIntArray, kotlin.Int, kotlin.Function0((kotlin.Int)))androidx.util/android.util.-sparse-int-array/get-or-else.html
+$dokka.location:androidx.util$getOrElse(android.util.SparseLongArray, kotlin.Int, kotlin.Function0((kotlin.Long)))androidx.util/android.util.-sparse-long-array/get-or-else.html
+$dokka.location:androidx.util$isEmpty(android.util.LongSparseArray((androidx.util.isEmpty.T)))androidx.util/android.util.-long-sparse-array/is-empty.html
+$dokka.location:androidx.util$isEmpty(android.util.SparseArray((androidx.util.isEmpty.T)))androidx.util/android.util.-sparse-array/is-empty.html
+$dokka.location:androidx.util$isEmpty(android.util.SparseBooleanArray)androidx.util/android.util.-sparse-boolean-array/is-empty.html
+$dokka.location:androidx.util$isEmpty(android.util.SparseIntArray)androidx.util/android.util.-sparse-int-array/is-empty.html
+$dokka.location:androidx.util$isEmpty(android.util.SparseLongArray)androidx.util/android.util.-sparse-long-array/is-empty.html
+$dokka.location:androidx.util$isNotEmpty(android.util.LongSparseArray((androidx.util.isNotEmpty.T)))androidx.util/android.util.-long-sparse-array/is-not-empty.html
+$dokka.location:androidx.util$isNotEmpty(android.util.SparseArray((androidx.util.isNotEmpty.T)))androidx.util/android.util.-sparse-array/is-not-empty.html
+$dokka.location:androidx.util$isNotEmpty(android.util.SparseBooleanArray)androidx.util/android.util.-sparse-boolean-array/is-not-empty.html
+$dokka.location:androidx.util$isNotEmpty(android.util.SparseIntArray)androidx.util/android.util.-sparse-int-array/is-not-empty.html
+$dokka.location:androidx.util$isNotEmpty(android.util.SparseLongArray)androidx.util/android.util.-sparse-long-array/is-not-empty.html
+$dokka.location:androidx.util$keyIterator(android.util.LongSparseArray((androidx.util.keyIterator.T)))androidx.util/android.util.-long-sparse-array/key-iterator.html
+$dokka.location:androidx.util$keyIterator(android.util.SparseArray((androidx.util.keyIterator.T)))androidx.util/android.util.-sparse-array/key-iterator.html
+$dokka.location:androidx.util$keyIterator(android.util.SparseBooleanArray)androidx.util/android.util.-sparse-boolean-array/key-iterator.html
+$dokka.location:androidx.util$keyIterator(android.util.SparseIntArray)androidx.util/android.util.-sparse-int-array/key-iterator.html
+$dokka.location:androidx.util$keyIterator(android.util.SparseLongArray)androidx.util/android.util.-sparse-long-array/key-iterator.html
+$dokka.location:androidx.util$plus(android.util.LongSparseArray((androidx.util.plus.T)), android.util.LongSparseArray((androidx.util.plus.T)))androidx.util/android.util.-long-sparse-array/plus.html
+$dokka.location:androidx.util$plus(android.util.Range((androidx.util.plus.T)), android.util.Range((androidx.util.plus.T)))androidx.util/android.util.-range/plus.html
+$dokka.location:androidx.util$plus(android.util.Range((androidx.util.plus.T)), androidx.util.plus.T)androidx.util/android.util.-range/plus.html
+$dokka.location:androidx.util$plus(android.util.SparseArray((androidx.util.plus.T)), android.util.SparseArray((androidx.util.plus.T)))androidx.util/android.util.-sparse-array/plus.html
+$dokka.location:androidx.util$plus(android.util.SparseBooleanArray, android.util.SparseBooleanArray)androidx.util/android.util.-sparse-boolean-array/plus.html
+$dokka.location:androidx.util$plus(android.util.SparseIntArray, android.util.SparseIntArray)androidx.util/android.util.-sparse-int-array/plus.html
+$dokka.location:androidx.util$plus(android.util.SparseLongArray, android.util.SparseLongArray)androidx.util/android.util.-sparse-long-array/plus.html
+$dokka.location:androidx.util$putAll(android.util.LongSparseArray((androidx.util.putAll.T)), android.util.LongSparseArray((androidx.util.putAll.T)))androidx.util/android.util.-long-sparse-array/put-all.html
+$dokka.location:androidx.util$putAll(android.util.SparseArray((androidx.util.putAll.T)), android.util.SparseArray((androidx.util.putAll.T)))androidx.util/android.util.-sparse-array/put-all.html
+$dokka.location:androidx.util$putAll(android.util.SparseBooleanArray, android.util.SparseBooleanArray)androidx.util/android.util.-sparse-boolean-array/put-all.html
+$dokka.location:androidx.util$putAll(android.util.SparseIntArray, android.util.SparseIntArray)androidx.util/android.util.-sparse-int-array/put-all.html
+$dokka.location:androidx.util$putAll(android.util.SparseLongArray, android.util.SparseLongArray)androidx.util/android.util.-sparse-long-array/put-all.html
+$dokka.location:androidx.util$readBytes(android.util.AtomicFile)androidx.util/android.util.-atomic-file/read-bytes.html
+$dokka.location:androidx.util$readText(android.util.AtomicFile, java.nio.charset.Charset)androidx.util/android.util.-atomic-file/read-text.html
+$dokka.location:androidx.util$remove(android.util.LongSparseArray((androidx.util.remove.T)), kotlin.Long, androidx.util.remove.T)androidx.util/android.util.-long-sparse-array/remove.html
+$dokka.location:androidx.util$remove(android.util.SparseArray((androidx.util.remove.T)), kotlin.Int, androidx.util.remove.T)androidx.util/android.util.-sparse-array/remove.html
+$dokka.location:androidx.util$remove(android.util.SparseBooleanArray, kotlin.Int, kotlin.Boolean)androidx.util/android.util.-sparse-boolean-array/remove.html
+$dokka.location:androidx.util$remove(android.util.SparseIntArray, kotlin.Int, kotlin.Int)androidx.util/android.util.-sparse-int-array/remove.html
+$dokka.location:androidx.util$remove(android.util.SparseLongArray, kotlin.Int, kotlin.Long)androidx.util/android.util.-sparse-long-array/remove.html
+$dokka.location:androidx.util$removeAt(android.util.SparseBooleanArray, kotlin.Int)androidx.util/android.util.-sparse-boolean-array/remove-at.html
+$dokka.location:androidx.util$set(android.util.LongSparseArray((androidx.util.set.T)), kotlin.Long, androidx.util.set.T)androidx.util/android.util.-long-sparse-array/set.html
+$dokka.location:androidx.util$set(android.util.SparseArray((androidx.util.set.T)), kotlin.Int, androidx.util.set.T)androidx.util/android.util.-sparse-array/set.html
+$dokka.location:androidx.util$set(android.util.SparseBooleanArray, kotlin.Int, kotlin.Boolean)androidx.util/android.util.-sparse-boolean-array/set.html
+$dokka.location:androidx.util$set(android.util.SparseIntArray, kotlin.Int, kotlin.Int)androidx.util/android.util.-sparse-int-array/set.html
+$dokka.location:androidx.util$set(android.util.SparseLongArray, kotlin.Int, kotlin.Long)androidx.util/android.util.-sparse-long-array/set.html
+$dokka.location:androidx.util$size#android.util.LongSparseArray((androidx.util.size.T))androidx.util/android.util.-long-sparse-array/size.html
+$dokka.location:androidx.util$size#android.util.SparseArray((androidx.util.size.T))androidx.util/android.util.-sparse-array/size.html
+$dokka.location:androidx.util$size#android.util.SparseBooleanArrayandroidx.util/android.util.-sparse-boolean-array/size.html
+$dokka.location:androidx.util$size#android.util.SparseIntArrayandroidx.util/android.util.-sparse-int-array/size.html
+$dokka.location:androidx.util$size#android.util.SparseLongArrayandroidx.util/android.util.-sparse-long-array/size.html
+$dokka.location:androidx.util$toAndroidPair(kotlin.Pair((androidx.util.toAndroidPair.F, androidx.util.toAndroidPair.S)))androidx.util/kotlin.-pair/to-android-pair.html
+$dokka.location:androidx.util$toClosedRange(android.util.Range((androidx.util.toClosedRange.T)))androidx.util/android.util.-range/to-closed-range.html
+$dokka.location:androidx.util$toHalf(kotlin.Double)androidx.util/kotlin.-double/to-half.html
+$dokka.location:androidx.util$toHalf(kotlin.Float)androidx.util/kotlin.-float/to-half.html
+$dokka.location:androidx.util$toHalf(kotlin.Short)androidx.util/kotlin.-short/to-half.html
+$dokka.location:androidx.util$toHalf(kotlin.String)androidx.util/kotlin.-string/to-half.html
+$dokka.location:androidx.util$toKotlinPair(android.util.Pair((androidx.util.toKotlinPair.F, androidx.util.toKotlinPair.S)))androidx.util/android.util.-pair/to-kotlin-pair.html
+$dokka.location:androidx.util$toRange(kotlin.ranges.ClosedRange((androidx.util.toRange.T)))androidx.util/kotlin.ranges.-closed-range/to-range.html
+$dokka.location:androidx.util$tryWrite(android.util.AtomicFile, kotlin.Function1((java.io.FileOutputStream, kotlin.Unit)))androidx.util/android.util.-atomic-file/try-write.html
+$dokka.location:androidx.util$valueIterator(android.util.LongSparseArray((androidx.util.valueIterator.T)))androidx.util/android.util.-long-sparse-array/value-iterator.html
+$dokka.location:androidx.util$valueIterator(android.util.SparseArray((androidx.util.valueIterator.T)))androidx.util/android.util.-sparse-array/value-iterator.html
+$dokka.location:androidx.util$valueIterator(android.util.SparseBooleanArray)androidx.util/android.util.-sparse-boolean-array/value-iterator.html
+$dokka.location:androidx.util$valueIterator(android.util.SparseIntArray)androidx.util/android.util.-sparse-int-array/value-iterator.html
+$dokka.location:androidx.util$valueIterator(android.util.SparseLongArray)androidx.util/android.util.-sparse-long-array/value-iterator.html
+$dokka.location:androidx.util$writeBytes(android.util.AtomicFile, kotlin.ByteArray)androidx.util/android.util.-atomic-file/write-bytes.html
+$dokka.location:androidx.util$writeText(android.util.AtomicFile, kotlin.String, java.nio.charset.Charset)androidx.util/android.util.-atomic-file/write-text.html
+$dokka.location:androidx.view$contains(android.view.ViewGroup, android.view.View)androidx.view/android.view.-view-group/contains.html
+$dokka.location:androidx.view$doOnLayout(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))androidx.view/android.view.-view/do-on-layout.html
+$dokka.location:androidx.view$doOnNextLayout(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))androidx.view/android.view.-view/do-on-next-layout.html
+$dokka.location:androidx.view$doOnPreDraw(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))androidx.view/android.view.-view/do-on-pre-draw.html
+$dokka.location:androidx.view$forEach(android.view.ViewGroup, kotlin.Function1((android.view.View, kotlin.Unit)))androidx.view/android.view.-view-group/for-each.html
+$dokka.location:androidx.view$forEachIndexed(android.view.ViewGroup, kotlin.Function2((kotlin.Int, android.view.View, kotlin.Unit)))androidx.view/android.view.-view-group/for-each-indexed.html
+$dokka.location:androidx.view$get(android.view.ViewGroup, kotlin.Int)androidx.view/android.view.-view-group/get.html
+$dokka.location:androidx.view$isEmpty(android.view.ViewGroup)androidx.view/android.view.-view-group/is-empty.html
+$dokka.location:androidx.view$isNotEmpty(android.view.ViewGroup)androidx.view/android.view.-view-group/is-not-empty.html
+$dokka.location:androidx.view$iterator(android.view.ViewGroup)androidx.view/android.view.-view-group/iterator.html
+$dokka.location:androidx.view$minusAssign(android.view.ViewGroup, android.view.View)androidx.view/android.view.-view-group/minus-assign.html
+$dokka.location:androidx.view$plusAssign(android.view.ViewGroup, android.view.View)androidx.view/android.view.-view-group/plus-assign.html
+$dokka.location:androidx.view$postDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))androidx.view/android.view.-view/post-delayed.html
+$dokka.location:androidx.view$postOnAnimationDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))androidx.view/android.view.-view/post-on-animation-delayed.html
+$dokka.location:androidx.view$setMargins(android.view.ViewGroup.MarginLayoutParams, kotlin.Int)androidx.view/android.view.-view-group.-margin-layout-params/set-margins.html
+$dokka.location:androidx.view$setPadding(android.view.View, kotlin.Int)androidx.view/android.view.-view/set-padding.html
+$dokka.location:androidx.view$size#android.view.ViewGroupandroidx.view/android.view.-view-group/size.html
+$dokka.location:androidx.view$toBitmap(android.view.View, android.graphics.Bitmap.Config)androidx.view/android.view.-view/to-bitmap.html
+$dokka.location:androidx.view$updateMargins(android.view.ViewGroup.MarginLayoutParams, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)androidx.view/android.view.-view-group.-margin-layout-params/update-margins.html
+$dokka.location:androidx.view$updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)androidx.view/android.view.-view-group.-margin-layout-params/update-margins-relative.html
+$dokka.location:androidx.view$updatePadding(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)androidx.view/android.view.-view/update-padding.html
+$dokka.location:androidx.view$updatePaddingRelative(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)androidx.view/android.view.-view/update-padding-relative.html
+androidx.animation
+androidx.content
+androidx.content.res
+androidx.database
+androidx.database.sqlite
+androidx.graphics
+androidx.graphics.drawable
+androidx.net
+androidx.os
+androidx.text
+androidx.time
+androidx.transition
+androidx.util
+androidx.view

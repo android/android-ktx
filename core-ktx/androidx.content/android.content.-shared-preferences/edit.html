@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>edit - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.content</a>&nbsp;/&nbsp;<a href="index.html">android.content.SharedPreferences</a>&nbsp;/&nbsp;<a href=".">edit</a><br/>
+<br/>
+<h1>edit</h1>
+<a name="androidx.content$edit(android.content.SharedPreferences, kotlin.Function1((android.content.SharedPreferences.Editor, kotlin.Unit)))"></a>
+<code><span class="keyword">inline</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/content/SharedPreferences.html"><span class="identifier">SharedPreferences</span></a><span class="symbol">.</span><span class="identifier">edit</span><span class="symbol">(</span><span class="identifier" id="androidx.content$edit(android.content.SharedPreferences, kotlin.Function1((android.content.SharedPreferences.Editor, kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/SharedPreferences/Editor.html"><span class="identifier">Editor</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Allows editing of this preference instance with a call to
+<a href="https://developer.android.com/reference/android/content/SharedPreferences/Editor.html#apply()">SharedPreferences.Editor.apply</a> to persist the changes.</p>
+<pre><code>prefs.edit {
+    putString("key", value)
+}
+</code></pre>
+</BODY>
+</HTML>

@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>postOnAnimationDelayed - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.view</a>&nbsp;/&nbsp;<a href="index.html">android.view.View</a>&nbsp;/&nbsp;<a href=".">postOnAnimationDelayed</a><br/>
+<br/>
+<h1>postOnAnimationDelayed</h1>
+<a name="androidx.view$postOnAnimationDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">postOnAnimationDelayed</span><span class="symbol">(</span><span class="identifier" id="androidx.view$postOnAnimationDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))/delayInMillis">delayInMillis</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="androidx.view$postOnAnimationDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/java/lang/Runnable.html"><span class="identifier">Runnable</span></a></code>
+<p>Version of <a href="https://developer.android.com/reference/android/view/View.html#postOnAnimationDelayed(java.lang.Runnable, long)">View.postOnAnimationDelayed</a> which re-orders the parameters, allowing the action
+to be placed outside of parentheses.</p>
+<pre><code>view.postOnAnimationDelayed(16) {
+    doSomething()
+}
+</code></pre>
+<p><strong>Return</strong><br/>
+the created Runnable</p>
+</BODY>
+</HTML>

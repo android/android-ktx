@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>androidx.graphics.android.graphics.RectF - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href=".">android.graphics.RectF</a><br/>
+<br/>
+<h3>Extensions for android.graphics.RectF</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="and.html">and</a></p>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">and</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$and(android.graphics.RectF, android.graphics.RectF)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a></code>
+<p>Returns the union of two rectangles as a new rectangle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="component1.html">component1</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">component1</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Returns "left", the first component of the rectangle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="component2.html">component2</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">component2</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Returns "top", the first component of the rectangle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="component3.html">component3</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">component3</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Returns "right", the first component of the rectangle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="component4.html">component4</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">component4</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Returns "bottom", the first component of the rectangle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="contains.html">contains</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">contains</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$contains(android.graphics.RectF, android.graphics.PointF)/p">p</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/PointF.html"><span class="identifier">PointF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns true if the specified point is inside the rectangle.
+The left and top are considered to be inside, while the right and bottom are not.
+This means that for a point to be contained: left &lt;= x &lt; right and top &lt;= y &lt; bottom.
+An empty rectangle never contains any point.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="minus.html">minus</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">minus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$minus(android.graphics.RectF, android.graphics.RectF)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Returns the difference of this rectangle and the specified rectangle as a new region.
+This rectangle is first converted to a <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> using <a href="#">RectF.toRect</a>.</p>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">minus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$minus(android.graphics.RectF, kotlin.Float)/xy">xy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a></code>
+<p>Returns a new rectangle representing this rectangle offset by the negation
+of the specified amount on both X and Y axis.</p>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">minus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$minus(android.graphics.RectF, android.graphics.PointF)/xy">xy</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/PointF.html"><span class="identifier">PointF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a></code>
+<p>Returns a new rectangle representing this rectangle offset by the negation of
+the specified point.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="or.html">or</a></p>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">or</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$or(android.graphics.RectF, android.graphics.RectF)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a></code>
+<p>Returns the intersection of two rectangles as a new rectangle.
+If the rectangles do not intersect, returns a copy of the left hand side
+rectangle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="plus.html">plus</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">plus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$plus(android.graphics.RectF, android.graphics.RectF)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a></code>
+<p>Performs the union of this rectangle and the specified rectangle and returns
+the result as a new rectangle.</p>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">plus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$plus(android.graphics.RectF, kotlin.Float)/xy">xy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a></code>
+<p>Returns a new rectangle representing this rectangle offset by the specified
+amount on both X and Y axis.</p>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">plus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$plus(android.graphics.RectF, android.graphics.PointF)/xy">xy</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/PointF.html"><span class="identifier">PointF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a></code>
+<p>Returns a new rectangle representing this rectangle offset by the specified
+point.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-rect.html">toRect</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">toRect</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Rect.html"><span class="identifier">Rect</span></a></code>
+<p>Returns a <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> representation of this rectangle. The resulting rect will be sized such
+that this rect can fit within it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-region.html">toRegion</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">toRegion</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Returns a <a href="https://developer.android.com/reference/android/graphics/Region.html">Region</a> representation of this rectangle. The resulting rect will be sized such
+that this rect can fit within it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="transform.html">transform</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">transform</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$transform(android.graphics.RectF, android.graphics.Matrix)/m">m</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Matrix.html"><span class="identifier">Matrix</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a></code>
+<p>Transform this rectangle in place using the supplied <a href="https://developer.android.com/reference/android/graphics/Matrix.html">Matrix</a> and returns
+this rectangle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="xor.html">xor</a></p>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">xor</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$xor(android.graphics.RectF, android.graphics.RectF)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Returns the union minus the intersection of two rectangles as a new region.
+The two rectangles are first converted to <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> using <a href="#">RectF.toRect</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
