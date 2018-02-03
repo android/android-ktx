@@ -196,7 +196,7 @@ uploadArchives {
             pom.project {
                 name "Android KTX Core"
                 description "A set of Kotlin extensions for Android app development."
-                url "https://github.com/android/kotlin-extensions"
+                url "https://github.com/android/android-ktx"
                 inceptionYear 2017
 
                 licenses {
@@ -214,8 +214,8 @@ uploadArchives {
                 }
 
                 scm {
-                    url "https://github.com/android/kotlin-extensions"
-                    connection "scm:git:git://github.com/android/kotlin-extensions.git"
+                    url "https://github.com/android/android-ktx"
+                    connection "scm:git:git://github.com/android/android-ktx.git"
                 }
             }
         }

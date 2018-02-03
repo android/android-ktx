@@ -41,9 +41,8 @@ more rigorous and careful about maintaining API compatibility.
 Links
 -----
 
- * [Android KTX Guide](http://TBD) ==TODO==
- * [API reference documentation](http://TBD) ==TODO==
- * [Issue tracker: Report a defect or feature request](https://github.com/android/kotlin-extensions/issues/new)
+ * [API reference documentation](https://android.github.io/android-ktx/core-ktx/)
+ * [Issue tracker: Report a defect or feature request](https://github.com/android/android-ktx/issues/new)
  * [StackOverflow: Ask "how-to" and "why didn't it work" type questions](https://stackoverflow.com/questions/ask?tags=android-ktx)
 
 
@@ -55,12 +54,12 @@ We welcome your contributions to this project. There are various ways to contrib
 **Reporting issues**
 
 Help improve the project by reporting issues that you find by filing a new issue at the
-[Android KTX issue tracker](https://github.com/android/kotlin-extensions/issues/new).
+[Android KTX issue tracker](https://github.com/android/android-ktx/issues/new).
 
 **Features suggestions**
 
 You can also add feature suggestions by filing a new issue at the
-[Android KTX issue tracker](https://github.com/android/kotlin-extensions/issues/new).
+[Android KTX issue tracker](https://github.com/android/android-ktx/issues/new).
 
 **Documentation**
 
