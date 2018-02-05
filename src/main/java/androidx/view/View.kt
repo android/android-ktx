@@ -203,4 +203,4 @@ fun View.isGone() = visibility == View.GONE
  *
  *  @return true if visibility for current view is INVISIBLE
  */
-fun View.isHide() = visibility == View.INVISIBLE
+fun View.isHidden() = visibility == View.INVISIBLE
