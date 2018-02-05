@@ -114,6 +114,12 @@ fun View.setPadding(size: Int) {
     setPadding(size, size, size, size)
 }
 
+fun <T : View> T.postApply(action: T.() -> Unit): Runnable {
+    val runnable = Runnable { action(this) }
+    post(runnable)
+    return runnable
+}
+
 /**
  * Version of [View.postDelayed] which re-orders the parameters, allowing the action to be placed
  * outside of parentheses.
@@ -130,6 +136,12 @@ fun View.postDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
     return Runnable(action).apply {
         postDelayed(this, delayInMillis)
     }
+}
+
+fun <T : View> T.postDelayedApply(delayInMillis: Long, action: T.() -> Unit): Runnable {
+    val runnable = Runnable { action(this) }
+    postDelayed(runnable, delayInMillis)
+    return runnable
 }
 
 /**
@@ -171,3 +183,4 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     }
     return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
 }
+
