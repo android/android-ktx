@@ -17,6 +17,7 @@
 package androidx.view
 
 import android.graphics.Bitmap
+import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewCompat
 import android.view.View
@@ -82,10 +83,10 @@ inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
  */
 @RequiresApi(17)
 fun View.updatePaddingRelative(
-    start: Int = paddingStart,
-    top: Int = paddingTop,
-    end: Int = paddingEnd,
-    bottom: Int = paddingBottom
+    @Px start: Int = paddingStart,
+    @Px top: Int = paddingTop,
+    @Px end: Int = paddingEnd,
+    @Px bottom: Int = paddingBottom
 ) {
     setPaddingRelative(start, top, end, bottom)
 }
@@ -97,10 +98,10 @@ fun View.updatePaddingRelative(
  * @see View.setPadding
  */
 fun View.updatePadding(
-    left: Int = paddingLeft,
-    top: Int = paddingTop,
-    right: Int = paddingRight,
-    bottom: Int = paddingBottom
+    @Px left: Int = paddingLeft,
+    @Px top: Int = paddingTop,
+    @Px right: Int = paddingRight,
+    @Px bottom: Int = paddingBottom
 ) {
     setPadding(left, top, right, bottom)
 }
@@ -110,7 +111,7 @@ fun View.updatePadding(
  *
  * @see View.setPadding
  */
-fun View.setPadding(size: Int) {
+fun View.setPadding(@Px size: Int) {
     setPadding(size, size, size, size)
 }
 
