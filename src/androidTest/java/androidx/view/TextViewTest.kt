@@ -16,6 +16,7 @@
 
 package androidx.view
 
+import android.R
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.support.test.InstrumentationRegistry
@@ -30,18 +31,73 @@ class TextViewTest {
     private val resources = context.resources
     private val textView = TextView(context)
 
-    @Test
-    fun testDrawables() {
-        val original = createBitmap(10, 10).apply {
-            eraseColor(Color.RED)
+    private val resourceId = R.drawable.btn_default
+    private val drawable: BitmapDrawable
+        get() {
+            return BitmapDrawable(resources,
+                    createBitmap(10, 10).apply {
+                        eraseColor(Color.RED)
+                    })
         }
-        val drawable = BitmapDrawable(resources, original)
-        textView.updateCompoundDrawablesRelative(start = drawable)
 
-        Assert.assertEquals(drawable, textView.compoundDrawables[0])
+    @Test
+    fun updateCompoundDrawables() {
+        textView.updateCompoundDrawables(start = drawable, end = drawable)
+
+        Assert.assertNotNull(textView.compoundDrawables[0])
         Assert.assertNull(textView.compoundDrawables[1])
-        Assert.assertNull(textView.compoundDrawables[2])
+        Assert.assertNotNull(textView.compoundDrawables[2])
         Assert.assertNull(textView.compoundDrawables[3])
     }
 
+    @Test
+    fun updateCompoundDrawablesWithIntrinsicBounds() {
+        textView.updateCompoundDrawablesWithIntrinsicBounds(top = drawable, bottom = drawable)
+
+        Assert.assertNull(textView.compoundDrawables[0])
+        Assert.assertNotNull(textView.compoundDrawables[1])
+        Assert.assertNull(textView.compoundDrawables[2])
+        Assert.assertNotNull(textView.compoundDrawables[3])
+    }
+
+    @Test
+    fun updateCompoundDrawablesWithIntrinsicBoundsWithResourceIds() {
+        textView.updateCompoundDrawablesWithIntrinsicBounds(start = resourceId, bottom = resourceId)
+
+        Assert.assertNotNull(textView.compoundDrawables[0])
+        Assert.assertNull(textView.compoundDrawables[1])
+        Assert.assertNull(textView.compoundDrawables[2])
+        Assert.assertNotNull(textView.compoundDrawables[3])
+    }
+
+    @Test
+    fun updateCompoundDrawablesRelative() {
+        textView.updateCompoundDrawablesRelative(start = drawable, bottom = drawable, end = drawable)
+
+        Assert.assertNotNull(textView.compoundDrawablesRelative[0])
+        Assert.assertNull(textView.compoundDrawablesRelative[1])
+        Assert.assertNotNull(textView.compoundDrawablesRelative[2])
+        Assert.assertNotNull(textView.compoundDrawablesRelative[3])
+    }
+
+    @Test
+    fun updateCompoundDrawablesRelativeWithIntrinsicBounds() {
+        textView.updateCompoundDrawablesRelativeWithIntrinsicBounds(top = drawable)
+
+        Assert.assertNull(textView.compoundDrawablesRelative[0])
+        Assert.assertNotNull(textView.compoundDrawablesRelative[1])
+        Assert.assertNull(textView.compoundDrawablesRelative[2])
+        Assert.assertNull(textView.compoundDrawablesRelative[3])
+    }
+
+    @Test
+    fun updateCompoundDrawablesRelativeWithIntrinsicBoundsWithResourceIds() {
+        textView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
+                start = resourceId, top = resourceId, bottom = resourceId, end = resourceId)
+
+        Assert.assertNotNull(textView.compoundDrawablesRelative[0])
+        Assert.assertNotNull(textView.compoundDrawablesRelative[1])
+        Assert.assertNotNull(textView.compoundDrawablesRelative[2])
+        Assert.assertNotNull(textView.compoundDrawablesRelative[3])
+    }
 }
