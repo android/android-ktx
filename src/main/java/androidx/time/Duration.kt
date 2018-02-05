@@ -126,7 +126,7 @@ inline fun Long.seconds(): Duration = Duration.ofSeconds(this)
  *
  * @see Duration.ofMinutes
  */
-@RequiresApi(260)
+@RequiresApi(26)
 inline fun Int.minutes(): Duration = Duration.ofMinutes(toLong())
 
 /**
@@ -134,7 +134,7 @@ inline fun Int.minutes(): Duration = Duration.ofMinutes(toLong())
  *
  * @see Duration.ofMinutes
  */
-@RequiresApi(260)
+@RequiresApi(26)
 inline fun Long.minutes(): Duration = Duration.ofMinutes(this)
 
 /**
@@ -142,7 +142,7 @@ inline fun Long.minutes(): Duration = Duration.ofMinutes(this)
  *
  * @see Duration.ofHours
  */
-@RequiresApi(260)
+@RequiresApi(26)
 inline fun Int.hours(): Duration = Duration.ofHours(toLong())
 
 /**
@@ -150,5 +150,5 @@ inline fun Int.hours(): Duration = Duration.ofHours(toLong())
  *
  * @see Duration.ofHours
  */
-@RequiresApi(260)
+@RequiresApi(26)
 inline fun Long.hours(): Duration = Duration.ofHours(this)
