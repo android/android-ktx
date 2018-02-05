@@ -20,18 +20,44 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 
+/**
+ * Add an action which will be invoked after text of this TextView has been changed.
+ *
+ * @return the [TextWatcher] added to the TextView
+ * @see [TextWatcher.afterTextChanged]
+ */
 fun TextView.doAfterChanged(
     afterChanged: (Editable) -> Unit
 ): TextWatcher = addTextChangedListener(afterChanged = afterChanged)
 
+/**
+ * Add an action which will be invoked before text of this TextView has been changed.
+ *
+ * @return the [TextWatcher] added to the TextView
+ * @see [TextWatcher.beforeTextChanged]
+ */
 fun TextView.doBeforeChanged(
     beforeChanged: (s: CharSequence, start: Int, count: Int, after: Int) -> Unit
 ): TextWatcher = addTextChangedListener(beforeChanged = beforeChanged)
 
+/**
+ * Add an action which will be invoked when text of this TextView has been changed.
+ *
+ * @return the [TextWatcher] added to the TextView
+ * @see [TextWatcher.onTextChanged]
+ */
 fun TextView.doOnChanged(
     onChanged: (s: CharSequence, start: Int, before: Int, count: Int) -> Unit
 ): TextWatcher = addTextChangedListener(onChanged = onChanged)
 
+/**
+ * Add a watcher to this TextView using the provided actions.
+ *
+ * @return the [TextWatcher] added to the TextView
+ * @see [TextWatcher.beforeTextChanged]
+ * @see [TextWatcher.afterTextChanged]
+ * @see [TextWatcher.onTextChanged]
+ */
 fun TextView.addTextChangedListener(
     beforeChanged: ((s: CharSequence, start: Int, count: Int, after: Int) -> Unit)? = null,
     afterChanged: ((Editable) -> Unit)? = null,
