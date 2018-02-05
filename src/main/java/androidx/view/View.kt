@@ -31,17 +31,15 @@ import androidx.graphics.applyCanvas
  * @see doOnLayout
  */
 inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
-    addOnLayoutChangeListener(
-            object : View.OnLayoutChangeListener {
-                override fun onLayoutChange(
-                    view: View, left: Int, top: Int, right: Int, bottom: Int,
-                    oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int
-                ) {
-                    view.removeOnLayoutChangeListener(this)
-                    action(view)
-                }
-            }
-    )
+    addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
+        override fun onLayoutChange(
+            view: View, left: Int, top: Int, right: Int, bottom: Int,
+            oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int
+        ) {
+            view.removeOnLayoutChangeListener(this)
+            action(view)
+        }
+    })
 }
 
 /**
@@ -66,18 +64,16 @@ inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
  */
 inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
     val vto = viewTreeObserver
-    vto.addOnPreDrawListener(
-            object : ViewTreeObserver.OnPreDrawListener {
-                override fun onPreDraw(): Boolean {
-                    action(this@doOnPreDraw)
-                    when {
-                        vto.isAlive -> vto.removeOnPreDrawListener(this)
-                        else -> viewTreeObserver.removeOnPreDrawListener(this)
-                    }
-                    return true
-                }
+    vto.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+        override fun onPreDraw(): Boolean {
+            action(this@doOnPreDraw)
+            when {
+                vto.isAlive -> vto.removeOnPreDrawListener(this)
+                else -> viewTreeObserver.removeOnPreDrawListener(this)
             }
-    )
+            return true
+        }
+    })
 }
 
 /**
