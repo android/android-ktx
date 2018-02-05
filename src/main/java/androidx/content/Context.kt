@@ -19,9 +19,13 @@ package androidx.content
 import android.content.Context
 import android.content.res.TypedArray
 import android.support.annotation.AttrRes
+import android.support.annotation.LayoutRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
 import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 
 /**
  * Return the handle to a system-level service by class.
@@ -91,3 +95,9 @@ inline fun Context.withStyledAttributes(
         typedArray.recycle()
     }
 }
+
+fun Context.inflate(
+    @LayoutRes layoutId: Int,
+    root: ViewGroup? = null,
+    attachToRoot: Boolean = false
+): View = LayoutInflater.from(this).inflate(layoutId, root, attachToRoot)
