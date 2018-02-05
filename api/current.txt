@@ -605,6 +605,16 @@ package androidx.core.view {
     method public static operator java.util.Iterator<android.view.MenuItem> iterator(android.view.Menu);
   }
 
+  public final class TextViewKt {
+    ctor public TextViewKt();
+    method public static final void updateCompoundDrawables(android.widget.TextView, android.graphics.drawable.Drawable? start = "null", android.graphics.drawable.Drawable? top = "null", android.graphics.drawable.Drawable? end = "null", android.graphics.drawable.Drawable? bottom = "null");
+    method @RequiresApi(17) public static final void updateCompoundDrawablesRelative(android.widget.TextView, android.graphics.drawable.Drawable? start = "null", android.graphics.drawable.Drawable? top = "null", android.graphics.drawable.Drawable? end = "null", android.graphics.drawable.Drawable? bottom = "null");
+    method @RequiresApi(17) public static final void updateCompoundDrawablesRelativeWithIntrinsicBounds(android.widget.TextView, @DrawableRes int start = "0", @DrawableRes int top = "0", @DrawableRes int end = "0", @DrawableRes int bottom = "0");
+    method @RequiresApi(17) public static final void updateCompoundDrawablesRelativeWithIntrinsicBounds(android.widget.TextView, android.graphics.drawable.Drawable? start = "null", android.graphics.drawable.Drawable? top = "null", android.graphics.drawable.Drawable? end = "null", android.graphics.drawable.Drawable? bottom = "null");
+    method public static final void updateCompoundDrawablesWithIntrinsicBounds(android.widget.TextView, @DrawableRes int start = "0", @DrawableRes int top = "0", @DrawableRes int end = "0", @DrawableRes int bottom = "0");
+    method public static final void updateCompoundDrawablesWithIntrinsicBounds(android.widget.TextView, android.graphics.drawable.Drawable? start = "null", android.graphics.drawable.Drawable? top = "null", android.graphics.drawable.Drawable? end = "null", android.graphics.drawable.Drawable? bottom = "null");
+  }
+
   public final class ViewGroupKt {
     ctor public ViewGroupKt();
     method public static operator boolean contains(android.view.ViewGroup, android.view.View view);
