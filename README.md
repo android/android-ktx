@@ -1,11 +1,77 @@
-Android KTX: Kotlin Extensions for Android
-==========================================
+Android KTX
+===========
 
 A set of Kotlin extensions for Android app development. The goal of Android KTX is to make Android
 development with Kotlin more concise, pleasant, and idiomatic. It is an explicit goal of this
 project to not add any new feature to the existing Android APIs.
 
-==TODO: add some sample code snippets.==
+**Kotlin:**
+```kotlin
+val uri = Uri.parse(myUriString)
+```
+**Kotlin with Android KTX:**
+```kotlin
+val uri = myUriString.toUri()
+```
+
+----
+
+**Kotlin:**
+```kotlin
+sharedPreferences.edit()
+    .putBoolean("key", value)
+    .apply()
+```
+**Kotlin with Android KTX:**
+```kotlin
+sharedPreferences.edit {
+    putBoolean("key", value)
+}
+```
+
+----
+
+**Kotlin:**
+```kotlin
+val pathDifference = Path(myPath1).apply {
+    op(myPath2, Path.Op.DIFFERENCE)
+}
+
+canvas.apply {
+  val checkpoint = save()
+  translate(0F, 100F)
+  drawPath(pathDifference, myPaint)
+  restoreToCount(checkpoint)
+}
+```
+**Kotlin with Android KTX:**
+```kotlin
+val pathDifference = myPath1 - myPath2
+
+canvas.withTranslation(y = 100F) {
+    drawPath(pathDifference, myPaint)
+}
+```
+
+----
+
+**Kotlin:**
+```kotlin
+view.viewTreeObserver.addOnPreDrawListener(
+    object : ViewTreeObserver.OnPreDrawListener {
+        override fun onPreDraw(): Boolean {
+            viewTreeObserver.removeOnPreDrawListener(this)
+            actionToBeTriggered()
+            return true
+        }
+    })
+```
+**Kotlin with Android KTX:**
+```kotlin
+view.doOnPreDraw {
+     actionToBeTriggered()
+}
+```
 
 
 Getting Started
@@ -68,16 +134,19 @@ consider your proposed changes.
 
 **Bug fixes**
 
-For minor bug fixes that do not involve any changes to existing API, you can send a pull request to the project administrators.
+Pull requests are welcome for minor bug fixes that do not involve any changes to existing API.
+These changes should ideally be accompanied by a test case that would have otherwise failed without
+the fix.
 
 **New API or API changes**
 
-TBD: need to discuss what the process should be.
+Pull requests for new APIs or changes to existing APIs are welcome, but may require a bit of
+discussion. Consider creating an issue to discuss and changes before you implement the change.
 
 Before submitting,
 
- * If you are making an API change, run `./gradlew updateApi` and commit any changes in the
-   `src/main/api/` directory.
+ * If you are making an API change, run `./gradlew updateApi` and commit any changes in the `api/`
+   directory.
  * Check that lint, unit tests, and code style enforcement all pass by running `./gradlew check`.
  * Check that instrumentation tests pass by starting an API 26 or newer emulator and running
    `./gradlew connectedCheck`
