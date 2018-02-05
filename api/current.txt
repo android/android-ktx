@@ -369,12 +369,12 @@ package androidx.time {
     method @RequiresApi(26) public static final operator long component1(java.time.Duration);
     method @RequiresApi(26) public static final operator int component2(java.time.Duration);
     method @RequiresApi(26) public static final operator java.time.Duration div(java.time.Duration, long divisor);
-    method @RequiresApi(260) public static final java.time.Duration hours(int);
-    method @RequiresApi(260) public static final java.time.Duration hours(long);
+    method @RequiresApi(26) public static final java.time.Duration hours(int);
+    method @RequiresApi(26) public static final java.time.Duration hours(long);
     method @RequiresApi(26) public static final java.time.Duration millis(int);
     method @RequiresApi(26) public static final java.time.Duration millis(long);
-    method @RequiresApi(260) public static final java.time.Duration minutes(int);
-    method @RequiresApi(260) public static final java.time.Duration minutes(long);
+    method @RequiresApi(26) public static final java.time.Duration minutes(int);
+    method @RequiresApi(26) public static final java.time.Duration minutes(long);
     method @RequiresApi(26) public static final java.time.Duration nanos(int);
     method @RequiresApi(26) public static final java.time.Duration nanos(long);
     method @RequiresApi(26) public static final java.time.Duration seconds(int);
