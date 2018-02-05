@@ -18,9 +18,11 @@
 
 package androidx.view
 
+import android.support.annotation.LayoutRes
 import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.ViewGroup
+import androidx.content.inflate
 
 /**
  * Returns the view at `index`.
@@ -113,3 +115,8 @@ fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
     marginEnd = end
     bottomMargin = bottom
 }
+
+fun ViewGroup.inflate(
+    @LayoutRes layoutId: Int,
+    attachToRoot: Boolean = false
+): View = context.inflate(layoutId, this, attachToRoot)
