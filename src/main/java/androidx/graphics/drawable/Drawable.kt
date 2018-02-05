@@ -21,6 +21,7 @@ import android.graphics.Bitmap.Config
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.support.annotation.Px
 import androidx.graphics.component1
 import androidx.graphics.component2
 import androidx.graphics.component3
@@ -39,8 +40,8 @@ import androidx.graphics.component4
  * any. Defaults to [Config.ARGB_8888] otherwise.
  */
 fun Drawable.toBitmap(
-    width: Int = intrinsicWidth,
-    height: Int = intrinsicHeight,
+    @Px width: Int = intrinsicWidth,
+    @Px height: Int = intrinsicHeight,
     config: Config? = null
 ): Bitmap {
     if (this is BitmapDrawable) {
@@ -71,10 +72,10 @@ fun Drawable.toBitmap(
  * @see Drawable.setBounds
  */
 fun Drawable.updateBounds(
-    left: Int = bounds.left,
-    top: Int = bounds.top,
-    right: Int = bounds.right,
-    bottom: Int = bounds.bottom
+    @Px left: Int = bounds.left,
+    @Px top: Int = bounds.top,
+    @Px right: Int = bounds.right,
+    @Px bottom: Int = bounds.bottom
 ) {
     setBounds(left, top, right, bottom)
 }

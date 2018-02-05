@@ -290,8 +290,8 @@ package androidx.graphics.drawable {
 
   public final class DrawableKt {
     ctor public DrawableKt();
-    method public static final android.graphics.Bitmap toBitmap(android.graphics.drawable.Drawable, int width = "intrinsicWidth", int height = "intrinsicHeight", android.graphics.Bitmap.Config? config = "null");
-    method public static final void updateBounds(android.graphics.drawable.Drawable, int left = "bounds.left", int top = "bounds.top", int right = "bounds.right", int bottom = "bounds.bottom");
+    method public static final android.graphics.Bitmap toBitmap(android.graphics.drawable.Drawable, @Px int width = "intrinsicWidth", @Px int height = "intrinsicHeight", android.graphics.Bitmap.Config? config = "null");
+    method public static final void updateBounds(android.graphics.drawable.Drawable, @Px int left = "bounds.left", @Px int top = "bounds.top", @Px int right = "bounds.right", @Px int bottom = "bounds.bottom");
   }
 
   public final class IconKt {
@@ -651,9 +651,9 @@ package androidx.view {
     method public static final operator java.util.Iterator<android.view.View> iterator(android.view.ViewGroup);
     method public static final operator void minusAssign(android.view.ViewGroup, android.view.View view);
     method public static final operator void plusAssign(android.view.ViewGroup, android.view.View view);
-    method public static final void setMargins(android.view.ViewGroup.MarginLayoutParams, int size);
-    method public static final void updateMargins(android.view.ViewGroup.MarginLayoutParams, int left = "leftMargin", int top = "topMargin", int right = "rightMargin", int bottom = "bottomMargin");
-    method @RequiresApi(17) public static final void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, int start = "marginStart", int top = "topMargin", int end = "marginEnd", int bottom = "bottomMargin");
+    method public static final void setMargins(android.view.ViewGroup.MarginLayoutParams, @Px int size);
+    method public static final void updateMargins(android.view.ViewGroup.MarginLayoutParams, @Px int left = "leftMargin", @Px int top = "topMargin", @Px int right = "rightMargin", @Px int bottom = "bottomMargin");
+    method @RequiresApi(17) public static final void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, @Px int start = "marginStart", @Px int top = "topMargin", @Px int end = "marginEnd", @Px int bottom = "bottomMargin");
   }
 
   public final class ViewKt {
@@ -663,10 +663,10 @@ package androidx.view {
     method public static final void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final Runnable postDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method @RequiresApi(16) public static final Runnable postOnAnimationDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
-    method public static final void setPadding(android.view.View, int size);
+    method public static final void setPadding(android.view.View, @Px int size);
     method public static final android.graphics.Bitmap toBitmap(android.view.View, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
-    method public static final void updatePadding(android.view.View, int left = "paddingLeft", int top = "paddingTop", int right = "paddingRight", int bottom = "paddingBottom");
-    method @RequiresApi(17) public static final void updatePaddingRelative(android.view.View, int start = "paddingStart", int top = "paddingTop", int end = "paddingEnd", int bottom = "paddingBottom");
+    method public static final void updatePadding(android.view.View, @Px int left = "paddingLeft", @Px int top = "paddingTop", @Px int right = "paddingRight", @Px int bottom = "paddingBottom");
+    method @RequiresApi(17) public static final void updatePaddingRelative(android.view.View, @Px int start = "paddingStart", @Px int top = "paddingTop", @Px int end = "paddingEnd", @Px int bottom = "paddingBottom");
   }
 
 }
