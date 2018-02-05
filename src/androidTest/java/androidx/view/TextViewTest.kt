@@ -30,14 +30,11 @@ class TextViewTest {
     private val context = InstrumentationRegistry.getContext()
     private val resources = context.resources
     private val textView = TextView(context)
-
     private val resourceId = R.drawable.btn_default
     private val drawable: BitmapDrawable
         get() {
-            return BitmapDrawable(resources,
-                    createBitmap(10, 10).apply {
-                        eraseColor(Color.RED)
-                    })
+            return BitmapDrawable(resources, createBitmap(10, 10)
+                    .apply { eraseColor(Color.RED) })
         }
 
     @Test
@@ -62,7 +59,8 @@ class TextViewTest {
 
     @Test
     fun updateCompoundDrawablesWithIntrinsicBoundsWithResourceIds() {
-        textView.updateCompoundDrawablesWithIntrinsicBounds(start = resourceId, bottom = resourceId)
+        textView.updateCompoundDrawablesWithIntrinsicBounds(
+                start = resourceId, bottom = resourceId)
 
         Assert.assertNotNull(textView.compoundDrawables[0])
         Assert.assertNull(textView.compoundDrawables[1])
@@ -72,7 +70,8 @@ class TextViewTest {
 
     @Test
     fun updateCompoundDrawablesRelative() {
-        textView.updateCompoundDrawablesRelative(start = drawable, bottom = drawable, end = drawable)
+        textView.updateCompoundDrawablesRelative(
+                start = drawable, bottom = drawable, end = drawable)
 
         Assert.assertNotNull(textView.compoundDrawablesRelative[0])
         Assert.assertNull(textView.compoundDrawablesRelative[1])
