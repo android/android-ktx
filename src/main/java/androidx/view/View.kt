@@ -17,6 +17,8 @@
 package androidx.view
 
 import android.graphics.Bitmap
+import android.os.Build.VERSION
+import android.os.Build.VERSION_CODES
 import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewCompat
 import android.view.View
@@ -29,15 +31,17 @@ import androidx.graphics.applyCanvas
  * @see doOnLayout
  */
 inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
-    addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
-        override fun onLayoutChange(
-            view: View, left: Int, top: Int, right: Int, bottom: Int,
-            oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int
-        ) {
-            view.removeOnLayoutChangeListener(this)
-            action(view)
-        }
-    })
+    addOnLayoutChangeListener(
+            object : View.OnLayoutChangeListener {
+                override fun onLayoutChange(
+                    view: View, left: Int, top: Int, right: Int, bottom: Int,
+                    oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int
+                ) {
+                    view.removeOnLayoutChangeListener(this)
+                    action(view)
+                }
+            }
+    )
 }
 
 /**
@@ -62,16 +66,44 @@ inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
  */
 inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
     val vto = viewTreeObserver
-    vto.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-        override fun onPreDraw(): Boolean {
-            action(this@doOnPreDraw)
-            when {
-                vto.isAlive -> vto.removeOnPreDrawListener(this)
-                else -> viewTreeObserver.removeOnPreDrawListener(this)
+    vto.addOnPreDrawListener(
+            object : ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    action(this@doOnPreDraw)
+                    when {
+                        vto.isAlive -> vto.removeOnPreDrawListener(this)
+                        else -> viewTreeObserver.removeOnPreDrawListener(this)
+                    }
+                    return true
+                }
             }
-            return true
-        }
-    })
+    )
+}
+
+/**
+ * Performs the given action when the global layout state or the visibility of
+ * views within the view tree changes
+ */
+inline fun View.doAfterDraw(crossinline action: (view: View) -> Unit) {
+    val vto = viewTreeObserver
+    vto.addOnGlobalLayoutListener(
+            object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    action(this@doAfterDraw)
+                    if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
+                        when {
+                            vto.isAlive -> vto.removeOnGlobalLayoutListener(this)
+                            else -> viewTreeObserver.removeOnGlobalLayoutListener(this)
+                        }
+                    } else {
+                        when {
+                            vto.isAlive -> vto.removeGlobalOnLayoutListener(this)
+                            else -> viewTreeObserver.removeGlobalOnLayoutListener(this)
+                        }
+                    }
+                }
+            }
+    )
 }
 
 /**
@@ -171,3 +203,29 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     }
     return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
 }
+
+/** Show current view */
+fun View.show() {
+    visibility = View.VISIBLE
+}
+
+/** Hide current view */
+fun View.hide() {
+    visibility = View.INVISIBLE
+}
+
+/** Gone current view */
+fun View.gone() {
+    visibility = View.GONE
+}
+
+/** Gone current view or show, depending on the condition */
+fun View.visibleIf(prediction: Boolean?) {
+    if (prediction == true) show() else gone()
+}
+
+/** Return state of current view
+ *
+ *  @return the visibility for current view
+ */
+fun View.isVisible() = visibility == View.VISIBLE
