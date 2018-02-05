@@ -18,6 +18,7 @@
 
 package androidx.view
 
+import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.ViewGroup
@@ -76,7 +77,7 @@ operator fun ViewGroup.iterator() = object : MutableIterator<View> {
  *
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
-fun ViewGroup.MarginLayoutParams.setMargins(size: Int) {
+fun ViewGroup.MarginLayoutParams.setMargins(@Px size: Int) {
     setMargins(size, size, size, size)
 }
 
@@ -87,10 +88,10 @@ fun ViewGroup.MarginLayoutParams.setMargins(size: Int) {
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
 fun ViewGroup.MarginLayoutParams.updateMargins(
-    left: Int = leftMargin,
-    top: Int = topMargin,
-    right: Int = rightMargin,
-    bottom: Int = bottomMargin
+    @Px left: Int = leftMargin,
+    @Px top: Int = topMargin,
+    @Px right: Int = rightMargin,
+    @Px bottom: Int = bottomMargin
 ) {
     setMargins(left, top, right, bottom)
 }
@@ -103,10 +104,10 @@ fun ViewGroup.MarginLayoutParams.updateMargins(
  */
 @RequiresApi(17)
 fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
-    start: Int = marginStart,
-    top: Int = topMargin,
-    end: Int = marginEnd,
-    bottom: Int = bottomMargin
+    @Px start: Int = marginStart,
+    @Px top: Int = topMargin,
+    @Px end: Int = marginEnd,
+    @Px bottom: Int = bottomMargin
 ) {
     marginStart = start
     topMargin = top
