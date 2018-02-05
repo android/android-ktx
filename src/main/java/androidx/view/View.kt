@@ -116,6 +116,24 @@ fun View.setPadding(@Px size: Int) {
 }
 
 /**
+ * Version of [View.post] which applies the action to receiver
+ *
+ * ```
+ * view.postApply {
+ *     scaleX = 0
+ *     scaleY = 0
+ * }
+ * ```
+ *
+ * @return the created Runnable
+ */
+fun <T : View> T.postApply(action: T.() -> Unit): Runnable {
+    val runnable = Runnable { action(this) }
+    post(runnable)
+    return runnable
+}
+
+/**
  * Version of [View.postDelayed] which re-orders the parameters, allowing the action to be placed
  * outside of parentheses.
  *
@@ -131,6 +149,25 @@ fun View.postDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
     return Runnable(action).apply {
         postDelayed(this, delayInMillis)
     }
+}
+
+/**
+ * Version of [View.postDelayed] which re-orders the parameters allowing the action to be placed
+ * outside of parentheses and applies the action to receiver
+ *
+ * ```
+ * view.postApply {
+ *     scaleX = 0
+ *     scaleY = 0
+ * }
+ * ```
+ *
+ * @return the created Runnable
+ */
+fun <T : View> T.postDelayedApply(delayInMillis: Long, action: T.() -> Unit): Runnable {
+    val runnable = Runnable { action(this) }
+    postDelayed(runnable, delayInMillis)
+    return runnable
 }
 
 /**
