@@ -21,11 +21,13 @@ import android.support.test.filters.SdkSuppress
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.ktx.test.R
 import androidx.testutils.assertThrows
 import androidx.testutils.fail
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotSame
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -260,5 +262,17 @@ class ViewGroupTest {
         assertEquals(40, layoutParams.bottomMargin)
         assertEquals(10, layoutParams.marginStart)
         assertEquals(30, layoutParams.marginEnd)
+    }
+
+    @Test fun inflate() {
+        val inflatedView = viewGroup.inflate<View>(R.layout.test_item, false)
+        assertNotSame(inflatedView, viewGroup)
+        assertEquals(viewGroup.childCount, 0)
+        assertEquals(inflatedView.id, R.id.test_container)
+
+        assertSame(viewGroup.inflate(R.layout.test_item), viewGroup)
+
+        assertEquals(viewGroup.childCount, 1)
+        assertEquals(viewGroup[0].id, R.id.test_container)
     }
 }
