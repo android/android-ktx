@@ -71,11 +71,14 @@ infix fun <T : CharSequence> String.to(value: Array<T>) = BundlePair({ putCharSe
 infix fun <T : Serializable> String.to(value: Array<T>) = BundlePair({ putSerializable(this@to, value) })
 
 /**
- * Marker function for invalid arrays
+ * Marker function for invalid arrays. Valid arrays are covered by explicit [to] implementations.
  */
 @Suppress("unused", "UNUSED_PARAMETER")
 infix fun <T> String.to(value: Array<T>) = ArrayNotValid
 
+/**
+ * Marker object for invalid array types
+ */
 object ArrayNotValid
 
 class BundlePair internal constructor(internal val putFunction: Bundle.() -> Unit)

@@ -16,6 +16,7 @@
 
 package androidx.os
 
+import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.os.PersistableBundle
 import android.support.annotation.RequiresApi
 import androidx.os.persistable.PersistableBundlePair
@@ -25,7 +26,7 @@ import androidx.os.persistable.PersistableBundlePair
  *
  * @throws IllegalArgumentException When a value is not a supported type of [PersistableBundle].
  */
-@RequiresApi(21)
+@RequiresApi(LOLLIPOP)
 fun persistableBundleOf(vararg pairs: PersistableBundlePair) = PersistableBundle(pairs.size).apply {
     pairs.forEach { it.putFunction(this) }
 }

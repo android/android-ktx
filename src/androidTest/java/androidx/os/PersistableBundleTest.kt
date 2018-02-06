@@ -16,6 +16,8 @@
 
 package androidx.os
 
+import android.os.Build.VERSION_CODES.LOLLIPOP
+import android.os.Build.VERSION_CODES.LOLLIPOP_MR1
 import android.support.test.filters.SdkSuppress
 import androidx.os.persistable.to
 import com.google.common.truth.Truth.assertThat
@@ -24,7 +26,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
 
-@SdkSuppress(minSdkVersion = 21)
+@SdkSuppress(minSdkVersion = LOLLIPOP)
 class PersistableBundleTest {
     @Test fun persistableBundleOfValid() {
         val bundle = persistableBundleOf(
@@ -60,7 +62,7 @@ class PersistableBundleTest {
         assertThat(bundle["stringArray"] as Array<*>).asList().containsExactly("hey")
     }
 
-    @SdkSuppress(minSdkVersion = 22)
+    @SdkSuppress(minSdkVersion = LOLLIPOP_MR1)
     @Test fun persistableBundleOfValidApi22() {
         val bundle = persistableBundleOf(
             "boolean" to true,

@@ -16,53 +16,55 @@
 
 package androidx.os.persistable
 
-import android.os.Build.VERSION_CODES
+import android.os.Build.VERSION_CODES.LOLLIPOP
+import android.os.Build.VERSION_CODES.LOLLIPOP_MR1
 import android.os.PersistableBundle
 import android.support.annotation.RequiresApi
 
 // Scalars
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: Boolean) = PersistableBundlePair({ putBoolean(this@to, value) })
 
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: Double) = PersistableBundlePair({ putDouble(this@to, value) })
 
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: Int) = PersistableBundlePair({ putInt(this@to, value) })
 
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: Long) = PersistableBundlePair({ putLong(this@to, value) })
 
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: String) = PersistableBundlePair({ putString(this@to, value) })
 
 @Suppress("UNUSED_PARAMETER")
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: Nothing?) = PersistableBundlePair({ putString(this@to, null) })
 
-
 // Scalar Array
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: BooleanArray) = PersistableBundlePair({ putBooleanArray(this@to, value) })
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: DoubleArray) = PersistableBundlePair({ putDoubleArray(this@to, value) })
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: IntArray) = PersistableBundlePair({ putIntArray(this@to, value) })
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun String.to(value: LongArray) = PersistableBundlePair({ putLongArray(this@to, value) })
 
-
 // Reference Arrays
-@RequiresApi(VERSION_CODES.LOLLIPOP)
+@RequiresApi(LOLLIPOP)
 infix fun String.to(value: Array<String>) = PersistableBundlePair({ putStringArray(this@to, value) })
 
 /**
- * Marker function for invalid arrays
+ * Marker function for invalid arrays. Valid arrays are covered by explicit [to] implementations.
  */
 @Suppress("unused", "UNUSED_PARAMETER")
-@RequiresApi(VERSION_CODES.LOLLIPOP_MR1)
+@RequiresApi(LOLLIPOP_MR1)
 infix fun <T> String.to(value: Array<T>) = ArrayNotValid
 
+/**
+ * Marker object for invalid array types
+ */
 object ArrayNotValid
 
 data class PersistableBundlePair(val putFunction: PersistableBundle.() -> Unit)
