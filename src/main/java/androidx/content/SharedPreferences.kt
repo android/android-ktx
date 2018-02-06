@@ -19,6 +19,27 @@ package androidx.content
 import android.content.SharedPreferences
 
 /**
+ * @deprecated
+ * Allows editing of this preference instance with a call to
+ * [SharedPreferences.Editor.apply] to persist the changes.
+ *
+ * ```
+ * prefs.edit {
+ *     putString("key", value)
+ * }
+ * ```
+ */
+@Deprecated(
+    replaceWith = ReplaceWith(expression = "apply()"),
+    message = "Use apply() instead of edit"
+)
+inline fun SharedPreferences.edit(action: SharedPreferences.Editor.() -> Unit) {
+    val editor = edit()
+    action(editor)
+    editor.apply()
+}
+
+/**
  * Allows editing of this preference instance with a call to
  * [SharedPreferences.Editor.apply] to persist the changes.
  *
