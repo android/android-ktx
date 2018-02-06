@@ -25,6 +25,7 @@
       app:string_present="Hello"
       app:float_present="0.1"
       app:integer_present="1"
+      app:resource_present="@font/inconsolata_regular"
       app:font_present="@font/inconsolata_regular"
       app:text_array_present="@array/text_array"
 />
