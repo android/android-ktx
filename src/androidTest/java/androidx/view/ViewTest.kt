@@ -169,4 +169,18 @@ class ViewTest {
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
     }
+
+    @Test
+    fun showView() {
+        view.alpha = 0.0f
+        view.show(animate = false)
+        assertEquals(1.0f, view.alpha)
+    }
+
+    @Test
+    fun hideView() {
+        view.alpha = 1.0f
+        view.hide(animate = false)
+        assertEquals(0.0f, view.alpha)
+    }
 }

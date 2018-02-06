@@ -16,6 +16,8 @@
 
 package androidx.view
 
+import android.animation.Animator
+import android.animation.Animator.AnimatorListener
 import android.graphics.Bitmap
 import android.support.annotation.Px
 import android.support.annotation.RequiresApi
@@ -171,4 +173,86 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
         throw IllegalStateException("View needs to be laid out before calling toBitmap()")
     }
     return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
+}
+
+/**
+ * Shows the [View] by setting the alpha to 1.0f.
+ *
+ * Animates the transition by default and has an optional callback when animation is finished.
+ *
+ * @param animate Boolean used to determine whether to animate alpha change.
+ *  If false then 1.0f is just set as the alpha of the [View]. Defaults to true.
+ * @param duration Long used as the duration of the animation if animate parameter is true.
+ *  Ignored if not animating. Defaults to 0.225s, the material design recommendation for elements
+ *  entering the screen.
+ * @param onFinished An lambda that will be called in [AnimatorListener.onAnimationEnd] to alert
+ *  the caller the animation finished. Defaults to null.
+ */
+@RequiresApi(12)
+fun View.show(animate: Boolean = true, duration: Long = 0.225.toLong(), onFinished: (() -> Unit)? = null) {
+    if (animate) {
+        this.animate()
+            .alpha(1.0f)
+            .setListener(object : AnimatorListener {
+                override fun onAnimationStart(animation: Animator?) {
+                    // Ignore
+                }
+
+                override fun onAnimationRepeat(animation: Animator?) {
+                    // Ignore
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    onFinished?.invoke()
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                    // Ignore
+                }
+            }).duration = duration
+
+    } else {
+        this.alpha = 1.0f
+    }
+}
+
+/**
+ * Hides the [View] by setting the alpha to 0.0f.
+ *
+ * Animates the transition by default and has an optional callback when animation is finished.
+ *
+ * @param animate Boolean used to determine whether to animate alpha change.
+ *  If false then 1.0f is just set as the alpha of the [View]. Defaults to true.
+ * @param duration Long used as the duration of the animation if animate parameter is true.
+ *  Ignored if not animating. Defaults to 0.195s, the material design recommendation for elements
+ *  leaving the screen.
+ * @param onFinished An lambda that will be called in [AnimatorListener.onAnimationEnd] to alert
+ *  the caller the animation finished. Defaults to null.
+ */
+@RequiresApi(12)
+fun View.hide(animate: Boolean = true, duration: Long = 0.195.toLong(), onFinished: (() -> Unit)? = null) {
+    if (animate) {
+        this.animate()
+            .alpha(0.0f)
+            .setListener(object : AnimatorListener {
+                override fun onAnimationStart(animation: Animator?) {
+                    // Ignore
+                }
+
+                override fun onAnimationRepeat(animation: Animator?) {
+                    // Ignore
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    onFinished?.invoke()
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                    // Ignore
+                }
+            }).duration = duration
+
+    } else {
+        this.alpha = 0.0f
+    }
 }
