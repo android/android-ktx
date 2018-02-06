@@ -143,7 +143,7 @@ the fix.
 **New API or API changes**
 
 Pull requests for new APIs or changes to existing APIs are welcome, but may require a bit of
-discussion. Consider creating an issue to discuss and changes before you implement the change.
+discussion. Consider creating an issue to discuss any changes before you implement the change.
 
 Before submitting,
 
