@@ -17,7 +17,6 @@
 package androidx.view
 
 import android.R
-import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.support.test.InstrumentationRegistry
 import android.widget.TextView
@@ -26,15 +25,13 @@ import org.junit.Assert
 import org.junit.Test
 
 class TextViewTest {
-
     private val context = InstrumentationRegistry.getContext()
     private val resources = context.resources
     private val textView = TextView(context)
     private val resourceId = R.drawable.btn_default
     private val drawable: BitmapDrawable
         get() {
-            return BitmapDrawable(resources, createBitmap(10, 10)
-                    .apply { eraseColor(Color.RED) })
+            return BitmapDrawable(resources, createBitmap(10, 10))
         }
 
     @Test
