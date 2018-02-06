@@ -63,6 +63,26 @@ class ViewTest {
     }
 
     @Test
+    fun doOnLayoutWhileLayoutRequested() {
+        // First layout the view
+        view.layout(0, 0, 10, 10)
+        // Then later a layout is requested
+        view.requestLayout()
+
+        var called = false
+        view.doOnLayout {
+            called = true
+        }
+
+        // Assert that we haven't been called while the layout pass is pending
+        assertFalse(called)
+
+        // Now layout the view and assert that we're called
+        view.layout(0, 0, 20, 20)
+        assertTrue(called)
+    }
+
+    @Test
     fun doOnPreDraw() {
         var calls = 0
         view.doOnPreDraw {
