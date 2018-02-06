@@ -29,7 +29,7 @@ import java.io.IOException
 
 @SdkSuppress(minSdkVersion = 17)
 class AtomicFileTest {
-    @get:Rule val temporaryFolder = TemporaryFolder()
+    @get:Rule private val temporaryFolder = TemporaryFolder()
 
     private lateinit var file: AtomicFile
 
