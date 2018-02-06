@@ -172,3 +172,30 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     }
     return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
 }
+
+/**
+ * Updates this view's visibility. This version of the method simplifies setting of visibility
+ *
+ * @see View.setVisibility
+ */
+fun View.visible(){
+    visibility=View.VISIBLE
+}
+
+/**
+ * Updates this view's visibility. This version of the method simplifies setting of visibility
+ *
+ * @see View.setVisibility
+ */
+fun View.invisible(){
+    visibility=View.INVISIBLE
+}
+
+/**
+ * Updates this view's visibility. This version of the method simplifies setting of visibility
+ *
+ * @see View.setVisibility
+ */
+fun View.gone(){
+    visibility=View.GONE
+}
