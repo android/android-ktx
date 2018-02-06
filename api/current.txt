@@ -81,7 +81,7 @@ package androidx.database {
     method public static final String getString(android.database.Cursor, String columnName);
     method public static final String? getStringOrNull(android.database.Cursor, int index);
     method public static final error.NonExistentClass getStringOrNull(android.database.Cursor, String columnName);
-    method public static final <R> java.util.Collection<R> read(android.database.Cursor cursor, java.util.Collection<R> outCollection, kotlin.jvm.functions.Function1<? super android.database.Cursor,? extends R> itemReadFunc);
+    method public static final <R> java.util.Collection<R> read(android.database.Cursor, java.util.Collection<R> outCollection, kotlin.jvm.functions.Function1<? super android.database.Cursor,? extends R> itemReadFunc);
     method public static final <R> R? readFirst(android.database.Cursor, kotlin.jvm.functions.Function1<? super android.database.Cursor,? extends R> readFunc);
     method public static final <R> java.util.List<R> readList(android.database.Cursor, kotlin.jvm.functions.Function1<? super android.database.Cursor,? extends R> itemReadFunc);
     method public static final <R> java.util.Set<R> readSet(android.database.Cursor, kotlin.jvm.functions.Function1<? super android.database.Cursor,? extends R> itemReadFunc);
