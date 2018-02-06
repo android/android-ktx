@@ -18,6 +18,7 @@ package androidx.view
 
 import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
+import android.util.Log
 import android.view.View
 import androidx.assertThrows
 import org.junit.Assert.assertEquals
@@ -168,5 +169,19 @@ class ViewTest {
         val bitmap = view.toBitmap(Bitmap.Config.RGB_565)
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
+    }
+
+    @Test
+    fun showView() {
+        view.alpha = 0.0f
+        view.show(animate = false)
+        assertEquals(1.0f, view.alpha)
+    }
+
+    @Test
+    fun hideView() {
+        view.alpha = 1.0f
+        view.hide(animate = false)
+        assertEquals(0.0f, view.alpha)
     }
 }
