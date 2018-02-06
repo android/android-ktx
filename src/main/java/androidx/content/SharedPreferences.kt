@@ -23,13 +23,29 @@ import android.content.SharedPreferences
  * [SharedPreferences.Editor.apply] to persist the changes.
  *
  * ```
- * prefs.edit {
+ * prefs.apply {
  *     putString("key", value)
  * }
  * ```
  */
-inline fun SharedPreferences.edit(action: SharedPreferences.Editor.() -> Unit) {
+inline fun SharedPreferences.apply(action: SharedPreferences.Editor.() -> Unit) {
     val editor = edit()
     action(editor)
     editor.apply()
+}
+
+/**
+ * Allows editing of this preference instance with a call to
+ * [SharedPreferences.Editor.commit] to persist the changes.
+ *
+ * ```
+ * prefs.commit {
+ *     putString("key", value)
+ * }
+ * ```
+ */
+inline fun SharedPreferences.commit(action: SharedPreferences.Editor.() -> Unit) {
+    val editor = edit()
+    action(editor)
+    editor.commit()
 }
