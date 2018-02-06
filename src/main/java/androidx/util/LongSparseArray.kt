@@ -27,7 +27,7 @@ inline val <T> LongSparseArray<T>.size get() = size()
 
 /** Returns true if the collection contains [key]. */
 @RequiresApi(16)
-inline operator fun <T> LongSparseArray<T>.contains(key: Long) = indexOfKey(key) != -1
+inline operator fun <T> LongSparseArray<T>.contains(key: Long) = indexOfKey(key) >= 0
 
 /** Allows the use of the index operator for storing values in the collection. */
 @RequiresApi(16)
@@ -44,7 +44,7 @@ operator fun <T> LongSparseArray<T>.plus(other: LongSparseArray<T>): LongSparseA
 
 /** Returns true if the collection contains [key]. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.containsKey(key: Long) = indexOfKey(key) != -1
+inline fun <T> LongSparseArray<T>.containsKey(key: Long) = indexOfKey(key) >= 0
 
 /** Returns true if the collection contains [value]. */
 @RequiresApi(16)
