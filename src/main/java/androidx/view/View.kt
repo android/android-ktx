@@ -172,3 +172,21 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     }
     return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
 }
+
+/**
+ * Sets the view's visibility by Boolean lambda.
+ *
+ * @see View.setVisibility
+ */
+inline fun View.visibility(expression: () -> Boolean) {
+    this.visibility = if(expression()) View.VISIBLE else View.GONE
+}
+
+/**
+ * Sets the view's invisibility by Boolean lambda.
+ *
+ * @see View.setVisibility
+ */
+inline fun View.invisibility(expression: () -> Boolean) {
+    this.visibility = if(expression()) View.INVISIBLE else View.VISIBLE
+}
