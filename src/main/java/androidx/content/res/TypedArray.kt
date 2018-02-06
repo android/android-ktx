@@ -20,6 +20,7 @@ import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.support.annotation.AnyRes
 import android.support.annotation.ColorInt
 import android.support.annotation.Dimension
 import android.support.annotation.RequiresApi
@@ -167,6 +168,19 @@ fun TypedArray.getIntOrThrow(@StyleableRes index: Int): Int {
 fun TypedArray.getIntegerOrThrow(@StyleableRes index: Int): Int {
     checkAttribute(index)
     return getInteger(index, 0)
+}
+
+/**
+ * Retrieves the resource identifier for the attribute at [index] or throws
+ * [IllegalArgumentException] if not defined.
+ *
+ * @see TypedArray.hasValue
+ * @see TypedArray.getResourceId
+ */
+@AnyRes
+fun TypedArray.getResourceIdOrThrow(@StyleableRes index: Int): Int {
+    checkAttribute(index)
+    return getResourceId(index, 0)
 }
 
 /**
