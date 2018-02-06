@@ -203,11 +203,8 @@ class ViewGroupTest {
         val views = listOf(View(context), View(context), View(context))
         views.forEach { viewGroup.addView(it) }
 
-        var index = 0
-        viewGroup
-                .children
-                .forEach { child ->
-                    assertSame(views[index++], child)
+        viewGroup.children.forEachIndexed { index, child ->
+                    assertSame(views[index], child)
                 }
     }
 
