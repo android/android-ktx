@@ -71,6 +71,16 @@ operator fun ViewGroup.iterator() = object : MutableIterator<View> {
     override fun remove() = removeViewAt(--index)
 }
 
+/** Returns a [Sequence] over the child views in this view group. */
+val ViewGroup.children: Sequence<View>
+    get() {
+        var index = -1
+        return generateSequence {
+            index++
+            getChildAt(index)
+        }
+    }
+
 /**
  * Sets the margins in the ViewGroup's MarginLayoutParams. This version of the method sets all axes
  * to the provided size.

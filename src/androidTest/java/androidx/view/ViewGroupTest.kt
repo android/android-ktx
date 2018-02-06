@@ -199,6 +199,18 @@ class ViewGroupTest {
         }
     }
 
+    @Test fun children() {
+        val views = listOf(View(context), View(context), View(context))
+        views.forEach { viewGroup.addView(it) }
+
+        var index = 0
+        viewGroup
+                .children
+                .forEach { child ->
+                    assertSame(views[index++], child)
+                }
+    }
+
     @Test fun setMargins() {
         val layoutParams = ViewGroup.MarginLayoutParams(100, 200)
         layoutParams.setMargins(42)
