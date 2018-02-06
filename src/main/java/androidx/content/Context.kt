@@ -16,7 +16,11 @@
 
 package androidx.content
 
+import android.app.Service
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
 import android.content.res.TypedArray
 import android.support.annotation.AttrRes
 import android.support.annotation.RequiresApi
@@ -90,4 +94,30 @@ inline fun Context.withStyledAttributes(
     } finally {
         typedArray.recycle()
     }
+}
+
+/**
+ * Starts the [Service] with an intent which is passed as receiver to [initializer] block
+ *
+ * @see [Context.startService]
+ */
+inline fun <reified T : Service> Context.startService(
+    initializer: Intent.() -> Unit = {}
+): ComponentName {
+    val intent = Intent(this, T::class.java).apply(initializer)
+    return startService(intent)
+}
+
+/**
+ * Binds the [Service] with an intent which is passed as receiver to [initializer] block
+ *
+ * @see [Context.bindService]
+ */
+inline fun <reified T : Service> Context.bindService(
+    connection: ServiceConnection,
+    flags: Int = Context.BIND_AUTO_CREATE,
+    initializer: Intent.() -> Unit = {}
+): Boolean {
+    val intent = Intent(this, T::class.java).apply(initializer)
+    return bindService(intent, connection, flags)
 }
