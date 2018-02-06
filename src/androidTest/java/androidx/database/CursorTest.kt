@@ -21,6 +21,7 @@ import android.database.MatrixCursor
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class CursorTest {
@@ -150,8 +151,42 @@ class CursorTest {
         assertNull(string)
     }
 
-    private fun scalarCursor(item: Any?): Cursor = MatrixCursor(arrayOf("data")).apply {
-        addRow(arrayOf(item))
+    @Test fun readList() {
+        val data = arrayOf(43, 56, 219, 323)
+        val cursor = scalarCursor(*data)
+
+        val resultList = cursor.readList { it.getInt("data") }
+
+        assertEquals(data.size, resultList.size)
+
+        repeat (data.size) {
+            assertEquals(data[it], resultList[it])
+        }
+    }
+
+    @Test fun readSet() {
+        val data = arrayOf(5, 6, 5, 5)
+        val cursor = scalarCursor(*data)
+
+        val resultSet = cursor.readSet { it.getInt("data") }
+
+        val expected = data.toSet()
+        assertEquals(expected.size, resultSet.size)
+
+        expected.forEach { assertTrue(it in resultSet) }
+    }
+
+    @Test fun readFirst() {
+        val data = arrayOf(4, 5)
+        val cursor = scalarCursor(*data)
+
+        val result = cursor.readFirst { it.getInt("data") }
+
+        assertEquals(data.first(), result)
+    }
+
+    private fun scalarCursor(vararg items: Any?): Cursor = MatrixCursor(arrayOf("data")).apply {
+        items.forEach { addRow(arrayOf(it)) }
         moveToFirst() // Prepare for consumers to read.
     }
 }
