@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package androidx.view
 
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.support.annotation.DrawableRes
 import android.support.annotation.RequiresApi
 import android.widget.TextView
@@ -29,10 +28,10 @@ import android.widget.TextView
  * @see TextView.setCompoundDrawables
  */
 fun TextView.updateCompoundDrawables(
-        start: Drawable? = null,
-        top: Drawable? = null,
-        end: Drawable? = null,
-        bottom: Drawable? = null
+    start: Drawable? = null,
+    top: Drawable? = null,
+    end: Drawable? = null,
+    bottom: Drawable? = null
 ) {
     setCompoundDrawables(start, top, end, bottom)
 }
@@ -44,10 +43,10 @@ fun TextView.updateCompoundDrawables(
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-        @DrawableRes start: Int = 0,
-        @DrawableRes top: Int = 0,
-        @DrawableRes end: Int = 0,
-        @DrawableRes bottom: Int = 0
+    @DrawableRes start: Int = 0,
+    @DrawableRes top: Int = 0,
+    @DrawableRes end: Int = 0,
+    @DrawableRes bottom: Int = 0
 ) {
     setCompoundDrawablesWithIntrinsicBounds(start, top, end, bottom)
 }
@@ -59,10 +58,10 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-        start: Drawable? = null,
-        top: Drawable? = null,
-        end: Drawable? = null,
-        bottom: Drawable? = null
+    start: Drawable? = null,
+    top: Drawable? = null,
+    end: Drawable? = null,
+    bottom: Drawable? = null
 ) {
     setCompoundDrawablesWithIntrinsicBounds(start, top, end, bottom)
 }
@@ -73,12 +72,12 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
  *
  * @see TextView.setCompoundDrawablesRelative
  */
-@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+@RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelative(
-        start: Drawable? = null,
-        top: Drawable? = null,
-        end: Drawable? = null,
-        bottom: Drawable? = null
+    start: Drawable? = null,
+    top: Drawable? = null,
+    end: Drawable? = null,
+    bottom: Drawable? = null
 ) {
     setCompoundDrawablesRelative(start, top, end, bottom)
 }
@@ -89,12 +88,12 @@ fun TextView.updateCompoundDrawablesRelative(
  *
  * @see TextView.setCompoundDrawablesRelativeWithIntrinsicBounds
  */
-@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+@RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-        @DrawableRes start: Int = 0,
-        @DrawableRes top: Int = 0,
-        @DrawableRes end: Int = 0,
-        @DrawableRes bottom: Int = 0
+    @DrawableRes start: Int = 0,
+    @DrawableRes top: Int = 0,
+    @DrawableRes end: Int = 0,
+    @DrawableRes bottom: Int = 0
 ) {
     setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
 }
@@ -105,12 +104,12 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
  *
  * @see TextView.setCompoundDrawablesRelativeWithIntrinsicBounds
  */
-@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+@RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-        start: Drawable? = null,
-        top: Drawable? = null,
-        end: Drawable? = null,
-        bottom: Drawable? = null
+    start: Drawable? = null,
+    top: Drawable? = null,
+    end: Drawable? = null,
+    bottom: Drawable? = null
 ) {
     setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
 }
