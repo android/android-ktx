@@ -169,4 +169,21 @@ class ViewTest {
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
     }
+
+    @Test
+    fun showHide() {
+
+        view.show()
+        assertEquals(view.visibility, View.VISIBLE)
+        view.hide()
+        assertEquals(view.visibility, View.GONE)
+    }
+
+    @Test
+    fun showHideIf() {
+        view.showIf(true)
+        assertEquals(view.visibility, View.VISIBLE)
+        view.showIf(false)
+        assertEquals(view.visibility, View.GONE)
+    }
 }
