@@ -23,6 +23,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.util.LinkedList
 
 class CursorTest {
     @Test fun blobByName() {
@@ -174,6 +175,20 @@ class CursorTest {
         assertEquals(expected.size, resultSet.size)
 
         expected.forEach { assertTrue(it in resultSet) }
+    }
+
+    @Test fun readCollection() {
+        val data = arrayOf(43, 56, 219, 323)
+        val cursor = scalarCursor(*data)
+
+        val resultList = cursor.read(LinkedList()) { it.getInt("data") } as List
+
+        assertTrue(resultList is LinkedList)
+        assertEquals(data.size, resultList.size)
+
+        repeat (data.size) {
+            assertEquals(data[it], resultList[it])
+        }
     }
 
     @Test fun readFirst() {

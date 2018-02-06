@@ -278,7 +278,7 @@ inline fun Cursor.getStringOrNull(columnName: String) =
  * @param itemReadFunc
  */
 fun <R> Cursor.readList(itemReadFunc: (Cursor) -> R): List<R> =
-    read(this, arrayListOf(), itemReadFunc) as List
+    read(arrayListOf(), itemReadFunc) as List
 
 /**
  * Populates Set from cursor
@@ -290,7 +290,7 @@ fun <R> Cursor.readList(itemReadFunc: (Cursor) -> R): List<R> =
  * @param itemReadFunc
  */
 fun <R> Cursor.readSet(itemReadFunc: (Cursor) -> R): Set<R> =
-    read(this, hashSetOf(), itemReadFunc) as Set
+    read(hashSetOf(), itemReadFunc) as Set
 
 /**
  * Reads first element from cursor
@@ -313,17 +313,16 @@ fun <R> Cursor.readFirst(readFunc: (Cursor) -> R): R? {
 /**
  * Populates given MutableCollection from cursor
  */
-fun <R> read(
-    cursor: Cursor,
+fun <R> Cursor.read(
     outCollection: MutableCollection<R>,
     itemReadFunc: (Cursor) -> R
 ): Collection<R> {
-    cursor.use {
-        cursor.moveToFirst()
+    use {
+        moveToFirst()
 
-        while (!cursor.isAfterLast) {
-            outCollection.add(itemReadFunc(cursor))
-            cursor.moveToNext()
+        while (!isAfterLast) {
+            outCollection.add(itemReadFunc(it))
+            moveToNext()
         }
     }
 
