@@ -169,4 +169,31 @@ class ViewTest {
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
     }
+
+    @Test
+    fun doViewVisible() {
+        val a = 3
+        val b = 5
+        view.visibility { a < b }
+
+        assertEquals(view.visibility, View.GONE)
+    }
+
+    @Test
+    fun doViewInvisible() {
+        val a = 3
+        val b = 5
+        view.invisibility { a < b }
+
+        assertEquals(view.visibility, View.INVISIBLE)
+    }
+
+    @Test
+    fun doViewGone() {
+        val a = 3
+        val b = 5
+        view.visibility { a == b }
+
+        assertEquals(view.visibility, View.GONE)
+    }
 }
