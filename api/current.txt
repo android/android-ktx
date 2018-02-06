@@ -651,6 +651,7 @@ package androidx.view {
     method public static final void forEach(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super Integer,? super android.view.View,kotlin.Unit> action);
     method public static final operator android.view.View get(android.view.ViewGroup, int index);
+    method public static final kotlin.sequences.Sequence<android.view.View> getChildren(android.view.ViewGroup);
     method public static final int getSize(android.view.ViewGroup);
     method public static final boolean isEmpty(android.view.ViewGroup);
     method public static final boolean isNotEmpty(android.view.ViewGroup);
