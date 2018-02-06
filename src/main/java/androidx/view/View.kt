@@ -61,7 +61,7 @@ inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
 /**
  * Performs the given action when the view tree is about to be drawn.
  */
-inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
+inline fun <T : View> T.doOnPreDraw(crossinline action: (view: T) -> Unit) {
     val vto = viewTreeObserver
     vto.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
         override fun onPreDraw(): Boolean {
