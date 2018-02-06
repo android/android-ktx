@@ -22,23 +22,23 @@ import android.widget.Toolbar
 import androidx.assertThrows
 import androidx.fail
 import com.google.common.truth.Truth.assertThat
-import junit.framework.Assert.assertEquals
-import junit.framework.Assert.assertFalse
-import junit.framework.Assert.assertNotNull
-import junit.framework.Assert.assertTrue
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class MenuTest {
     private val menu = Toolbar(InstrumentationRegistry.getContext()).menu
 
-    @Test fun get() {
+    @Test
+    fun get() {
         val item = menu.add("")
-        assertNotNull(menu[0])
-        assertEquals(item, menu[0])
+        assertSame(item, menu[0])
     }
 
-    @Test fun contains() {
+    @Test
+    fun contains() {
         val item1 = menu.add("")
         assertTrue(item1 in menu)
         assertFalse(item1 !in menu)
@@ -48,18 +48,22 @@ class MenuTest {
         assertFalse(item2 !in menu)
     }
 
-    @Test fun isEmpty() {
+    @Test
+    fun isEmpty() {
         assertTrue(menu.isEmpty())
         menu.add("")
         assertFalse(menu.isEmpty())
     }
 
-    @Test fun isNotEmpty() {
+    @Test
+    fun isNotEmpty() {
+        assertFalse(menu.isNotEmpty())
         menu.add("")
         assertTrue(menu.isNotEmpty())
     }
 
-    @Test fun forEach() {
+    @Test
+    fun forEach() {
         menu.forEach {
             fail("Empty menu should not invoke lambda")
         }
@@ -74,7 +78,8 @@ class MenuTest {
         assertThat(items).containsExactly(item1, item2)
     }
 
-    @Test fun forEachIndexed() {
+    @Test
+    fun forEachIndexed() {
         menu.forEach {
             fail("Empty menu should not invoke lambda")
         }
@@ -90,7 +95,8 @@ class MenuTest {
         assertThat(items).containsExactly(item1, item2)
     }
 
-    @Test fun iterator() {
+    @Test
+    fun iterator() {
         val item1 = menu.add("")
         val item2 = menu.add("")
 
@@ -102,6 +108,34 @@ class MenuTest {
         assertFalse(iterator.hasNext())
         assertThrows<IndexOutOfBoundsException> {
             iterator.next()
+        }
+    }
+
+    @Test
+    fun iteratorRemoving() {
+        val item1 = menu.add("")
+        val item2 = menu.add("")
+
+        val iterator = menu.iterator()
+
+        assertSame(item1, iterator.next())
+        iterator.remove()
+        assertFalse(item1 in menu)
+        assertEquals(1, menu.size())
+
+        assertSame(item2, iterator.next())
+        iterator.remove()
+        assertFalse(item2 in menu)
+        assertEquals(0, menu.size())
+    }
+
+    @Test
+    fun iteratorForEach() {
+        val items = listOf(menu.add(""), menu.add(""))
+
+        var index = 0
+        for (item in menu) {
+            assertSame(items[index++], item)
         }
     }
 }

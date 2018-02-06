@@ -638,7 +638,6 @@ package androidx.util {
 }
 
 package androidx.view {
-
   public final class MenuKt {
     ctor public MenuKt();
     method public static final operator boolean contains(android.view.Menu, android.view.MenuItem item);

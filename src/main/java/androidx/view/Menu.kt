@@ -30,7 +30,12 @@ inline operator fun Menu.get(index: Int): MenuItem = getItem(index)
 
 /** Returns `true` if `item` is found in this menu. */
 operator fun Menu.contains(item: MenuItem): Boolean {
-    return (0 until size()).any { getItem(it) == item }
+    for (index in 0 until size()) {
+        if (getItem(index) == item) {
+            return false
+        }
+    }
+    return false
 }
 
 /** Returns true if this menu contains no items. */
