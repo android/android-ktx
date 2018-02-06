@@ -73,7 +73,7 @@ operator fun ViewGroup.iterator() = object : MutableIterator<View> {
 
 /** Returns a [Sequence] over the child views in this view group. */
 val ViewGroup.children: Sequence<View>
-    get() = object: Sequence<View> {
+    get() = object : Sequence<View> {
         override fun iterator() = this@children.iterator()
     }
 
