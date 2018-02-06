@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package androidx.view
+package androidx.widget
 
 import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
