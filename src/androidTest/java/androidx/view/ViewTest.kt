@@ -20,9 +20,7 @@ import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
 import android.view.View
 import androidx.assertThrows
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Test
 
 class ViewTest {
@@ -147,5 +145,32 @@ class ViewTest {
         val bitmap = view.toBitmap(Bitmap.Config.RGB_565)
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
+    }
+
+    @Test
+    fun doViewVisible() {
+        val a = 3
+        val b = 5
+        view.visibility { a < b }
+
+        assertEquals(view.visibility, View.GONE)
+    }
+
+    @Test
+    fun doViewInvisible() {
+        val a = 3
+        val b = 5
+        view.invisibility { a < b }
+
+        assertEquals(view.visibility, View.INVISIBLE)
+    }
+
+    @Test
+    fun doViewGone() {
+        val a = 3
+        val b = 5
+        view.visibility { a == b }
+
+        assertEquals(view.visibility, View.GONE)
     }
 }
