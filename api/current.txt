@@ -36,6 +36,11 @@ package androidx.content {
 
 package androidx.content.res {
 
+  public final class ResourcesKt {
+    ctor public ResourcesKt();
+    method public static final int getDp(int);
+  }
+
   public final class TypedArrayKt {
     ctor public TypedArrayKt();
     method public static final boolean getBooleanOrThrow(android.content.res.TypedArray, @StyleableRes int index);
