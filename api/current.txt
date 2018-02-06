@@ -320,6 +320,11 @@ package androidx.os {
     method public static final error.NonExistentClass bundleOf(kotlin.Pair<String,?>... pairs);
   }
 
+  public final class FileKt {
+    ctor public FileKt();
+    method public static final android.net.Uri toUri(java.io.File);
+  }
+
   public final class HandlerKt {
     ctor public HandlerKt();
     method public static final error.NonExistentClass postAtTime(android.os.Handler, long uptimeMillis, Object? token = "null", kotlin.jvm.functions.Function0<kotlin.Unit> action);

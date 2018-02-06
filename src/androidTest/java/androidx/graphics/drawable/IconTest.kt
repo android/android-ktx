@@ -21,10 +21,10 @@ import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.Icon
-import android.net.Uri
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
 import androidx.graphics.createBitmap
+import androidx.os.toUri
 import okio.Okio.buffer
 import okio.Okio.sink
 import okio.Okio.source
@@ -74,7 +74,7 @@ class IconTest {
                 sink.writeAll(source)
             }
         }
-        val uri = Uri.fromFile(cacheFile)
+        val uri = cacheFile.toUri()
         val icon = uri.toIcon()
 
         val rendered = icon.toIntrinsicBitmap()
