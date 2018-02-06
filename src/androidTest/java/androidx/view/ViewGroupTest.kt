@@ -204,8 +204,8 @@ class ViewGroupTest {
         views.forEach { viewGroup.addView(it) }
 
         viewGroup.children.forEachIndexed { index, child ->
-                    assertSame(views[index], child)
-                }
+            assertSame(views[index], child)
+        }
     }
 
     @Test fun setMargins() {
