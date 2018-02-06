@@ -32,7 +32,7 @@ inline operator fun Menu.get(index: Int): MenuItem = getItem(index)
 operator fun Menu.contains(item: MenuItem): Boolean {
     for (index in 0 until size()) {
         if (getItem(index) == item) {
-            return false
+            return true
         }
     }
     return false
