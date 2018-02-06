@@ -42,14 +42,14 @@ inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
 }
 
 /**
- * Performs the given action when this view is laid out. If the view has been laid out, the action
- * will be performed straight away, otherwise the action will be performed after the
- * view is laid out.
+ * Performs the given action when this view is laid out. If the view has been laid out and it
+ * has not requested a layout, the action will be performed straight away, otherwise the
+ * action will be performed after the view is next laid out.
  *
  * @see doOnNextLayout
  */
 inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
-    if (ViewCompat.isLaidOut(this)) {
+    if (ViewCompat.isLaidOut(this) && !isLayoutRequested) {
         action(this)
     } else {
         doOnNextLayout {
