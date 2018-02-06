@@ -18,7 +18,6 @@ package androidx.view
 
 import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
-import android.util.Log
 import android.view.View
 import androidx.assertThrows
 import org.junit.Assert.assertEquals
