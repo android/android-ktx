@@ -178,6 +178,7 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
  *
  * @see View.setVisibility
  */
+@RequiresApi(14)
 inline fun View.visibility(expression: () -> Boolean?) {
     this.visibility = if(expression.invoke() == true) View.VISIBLE else View.GONE
 }
@@ -187,6 +188,7 @@ inline fun View.visibility(expression: () -> Boolean?) {
  *
  * @see View.setVisibility
  */
+@RequiresApi(14)
 inline fun View.invisibility(expression: () -> Boolean?) {
     this.visibility = if(expression.invoke() == true) View.INVISIBLE else View.VISIBLE
 }
