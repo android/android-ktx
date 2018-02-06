@@ -172,3 +172,33 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     }
     return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
 }
+
+/**
+ * Whether the view is visible (visiblilty == View.VISIBLE)
+ */
+fun View.isVisible() = this.visibility == View.VISIBLE
+
+/**
+ * Shows the view (sets the visibility property to VISIBLE)
+ */
+fun View.show() {
+    this.visibility = View.VISIBLE
+}
+
+/**
+ * Hides the view (sets the visiblity property to GONE)
+ */
+fun View.hide() {
+    this.visibility = View.GONE
+}
+
+/**
+ * Conditionally show or hide the view
+ */
+fun View.showIf(show: Boolean) {
+    if (show) {
+        show()
+    } else {
+        hide()
+    }
+}

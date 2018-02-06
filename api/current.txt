@@ -639,6 +639,12 @@ package androidx.util {
 
 package androidx.view {
 
+  public final class TextViewKt {
+    ctor public TextViewKt();
+    method public static final void onAfterTextChanged(android.widget.TextView, kotlin.jvm.functions.Function1<? super android.text.Editable,kotlin.Unit> listener);
+    method public static final void onTextChanged(android.widget.TextView, kotlin.jvm.functions.Function1<? super CharSequence,kotlin.Unit> listener);
+  }
+
   public final class ViewGroupKt {
     ctor public ViewGroupKt();
     method public static final operator boolean contains(android.view.ViewGroup, android.view.View view);
@@ -661,9 +667,13 @@ package androidx.view {
     method public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final void hide(android.view.View);
+    method public static final boolean isVisible(android.view.View);
     method public static final Runnable postDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method @RequiresApi(16) public static final Runnable postOnAnimationDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method public static final void setPadding(android.view.View, @Px int size);
+    method public static final void show(android.view.View);
+    method public static final void showIf(android.view.View, boolean show);
     method public static final android.graphics.Bitmap toBitmap(android.view.View, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
     method public static final void updatePadding(android.view.View, @Px int left = "paddingLeft", @Px int top = "paddingTop", @Px int right = "paddingRight", @Px int bottom = "paddingBottom");
     method @RequiresApi(17) public static final void updatePaddingRelative(android.view.View, @Px int start = "paddingStart", @Px int top = "paddingTop", @Px int end = "paddingEnd", @Px int bottom = "paddingBottom");
