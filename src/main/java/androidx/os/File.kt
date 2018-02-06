@@ -20,6 +20,15 @@ package androidx.os
 
 import android.net.Uri
 import java.io.File
+import android.support.v4.content.FileProvider
+import android.content.Context
+/**
+ * Creates a Uri from the given file
+ * Uri.fromFile() throw FileUriExposedException on API 24+
+ * @see Uri.parse
+ */
+@RequiresApi(24)
+inline fun File.toUri(context: Context, authority: String): Uri = FileProvider.getUriForFile(context, authority, this)
 
 /**
  * Creates a Uri from the given file.
