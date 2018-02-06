@@ -60,4 +60,3 @@ operator fun Menu.iterator() = object : MutableIterator<MenuItem> {
     override fun next() = getItem(index++) ?: throw IndexOutOfBoundsException()
     override fun remove() = removeItem(--index)
 }
-
