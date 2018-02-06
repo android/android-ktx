@@ -16,10 +16,8 @@
 
 package androidx.os
 
-import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
-import android.view.View
-import androidx.assertThrows
+import androidx.os.persistable.to
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
@@ -73,13 +71,4 @@ class PersistableBundleTest {
         assertArrayEquals(booleanArrayOf(), bundle["booleanArray"] as BooleanArray)
     }
 
-    @Test fun persistableBundleOfInvalid() {
-        assertThrows<IllegalArgumentException> {
-            persistableBundleOf("nope" to View(InstrumentationRegistry.getContext()))
-        }.hasMessageThat().isEqualTo("Illegal value type android.view.View for key \"nope\"")
-
-        assertThrows<IllegalArgumentException> {
-            persistableBundleOf("nopes" to arrayOf(View(InstrumentationRegistry.getContext())))
-        }.hasMessageThat().isEqualTo("Illegal value array type android.view.View for key \"nopes\"")
-    }
 }

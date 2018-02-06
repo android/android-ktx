@@ -19,12 +19,10 @@ package androidx.os
 import android.graphics.Rect
 import android.os.Binder
 import android.os.Bundle
-import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
 import android.util.Size
 import android.util.SizeF
-import android.view.View
-import androidx.assertThrows
+import androidx.os.bundle.to
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
@@ -129,13 +127,4 @@ class BundleTest {
         assertSame(sizeFValue, bundle["sizeF"])
     }
 
-    @Test fun bundleOfInvalid() {
-        assertThrows<IllegalArgumentException> {
-            bundleOf("nope" to View(InstrumentationRegistry.getContext()))
-        }.hasMessageThat().isEqualTo("Illegal value type android.view.View for key \"nope\"")
-
-        assertThrows<IllegalArgumentException> {
-            bundleOf("nopes" to arrayOf(View(InstrumentationRegistry.getContext())))
-        }.hasMessageThat().isEqualTo("Illegal value array type android.view.View for key \"nopes\"")
-    }
 }
