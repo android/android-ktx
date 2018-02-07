@@ -29,14 +29,16 @@ import androidx.graphics.applyCanvas
  *
  * @see doOnLayout
  */
-inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
+inline fun <T : View> T.doOnNextLayout(crossinline action: (view: T) -> Unit) {
     addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
         override fun onLayoutChange(
             view: View, left: Int, top: Int, right: Int, bottom: Int,
             oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int
         ) {
             view.removeOnLayoutChangeListener(this)
-            action(view)
+            if (view == this@doOnNextLayout) {
+                action(this@doOnNextLayout)
+            }
         }
     })
 }
@@ -48,7 +50,7 @@ inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
  *
  * @see doOnNextLayout
  */
-inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
+inline fun <T : View> T.doOnLayout(crossinline action: (view: T) -> Unit) {
     if (ViewCompat.isLaidOut(this) && !isLayoutRequested) {
         action(this)
     } else {
@@ -61,7 +63,7 @@ inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
 /**
  * Performs the given action when the view tree is about to be drawn.
  */
-inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
+inline fun <T : View> T.doOnPreDraw(crossinline action: (view: T) -> Unit) {
     val vto = viewTreeObserver
     vto.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
         override fun onPreDraw(): Boolean {
