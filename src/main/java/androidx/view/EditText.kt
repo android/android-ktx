@@ -52,12 +52,12 @@ fun EditText.clear() = text.clear()
 fun EditText.onTextChanged(
     before: (string: String, start: Int, count: Int, after: Int) -> Unit = { _, _, _, _ -> },
     after: (s: Editable) -> Unit = {},
-    onTextChanged: (string: String, start: Int, count: Int, after: Int) -> Unit
+    onTextChanged: (string: String, start: Int, before: Int, count: Int) -> Unit
 ) =
     addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(s: Editable) = after.invoke(s)
+        override fun afterTextChanged(s: Editable) = after(s)
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) =
-            before.invoke(s.toString(), start, count, after)
+            before(s.toString(), start, count, after)
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) =
             onTextChanged(s.toString(), start, before, count)

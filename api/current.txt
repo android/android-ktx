@@ -677,5 +677,15 @@ package androidx.view {
     method @RequiresApi(17) public static final void updatePaddingRelative(android.view.View, @Px int start = "paddingStart", @Px int top = "paddingTop", @Px int end = "paddingEnd", @Px int bottom = "paddingBottom");
   }
 
+  public final class EditTextKt {
+    ctor public ViewKt();
+    method public static final boolean isEmpty();
+    method public static final boolean isBlank();
+    method public static final void clear()
+    method public static final void onTextChanged(kotlin.jvm.functions.Function4<String, int, int, int, kotlin.Unit> before, kotlin.jvm.functions.Function1<android.text.Editable, kotlin.Unit> after, kotlin.jvm.functions.Function4<String, int, int, int, kotlin.Unit> onTextChanged)
+    method public static final String getContent();
+    method public static final void setContent(String);
+  }
+
 }
 
