@@ -42,6 +42,16 @@ class LongSparseArrayTest {
         assertTrue(1L in array)
     }
 
+    @Test fun containsOperatorWithValue() {
+        val array = LongSparseArray<String>()
+
+        array.put(1L, "one")
+        assertFalse(2L in array)
+
+        array.put(2L, "two")
+        assertTrue(2L in array)
+    }
+
     @Test fun setOperator() {
         val array = LongSparseArray<String>()
         array[1L] = "one"
@@ -64,6 +74,16 @@ class LongSparseArrayTest {
         assertFalse(array.containsKey(1L))
         array.put(1L, "one")
         assertTrue(array.containsKey(1L))
+    }
+
+    @Test fun containsKeyWithValue() {
+        val array = LongSparseArray<String>()
+
+        array.put(1L, "one")
+        assertFalse(array.containsKey(2L))
+
+        array.put(2L, "one")
+        assertTrue(array.containsKey(2L))
     }
 
     @Test fun containsValue() {
