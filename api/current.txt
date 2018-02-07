@@ -343,6 +343,14 @@ package androidx.os {
 
 package androidx.text {
 
+  public final class SpannableStringKt {
+    ctor public SpannableStringKt();
+    method public static final void clearSpans(android.text.Spannable);
+    method public static final void minusAssign(android.text.Spannable, Object span);
+    method public static final void plusAssign(android.text.Spannable, Object span);
+    method public static final android.text.Spannable toSpannable(String);
+  }
+
   public final class SpannableStringBuilderKt {
     ctor public SpannableStringBuilderKt();
     method public static final android.text.SpannableStringBuilder backgroundColor(android.text.SpannableStringBuilder, @ColorInt int color, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
@@ -352,6 +360,14 @@ package androidx.text {
     method public static final android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, Object[] spans, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static final android.text.SpannableStringBuilder italic(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static final android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
+  }
+
+  public final class SpannedStringKt {
+    ctor public SpannedStringKt();
+    method public static final operator boolean contains(android.text.Spanned, Object span);
+    method public static final T[] getSpans(android.text.Spanned, Class type);
+    method public static final Object[] getSpans(android.text.Spanned);
+    method public static final android.text.Spanned toSpanned(String);
   }
 
 }

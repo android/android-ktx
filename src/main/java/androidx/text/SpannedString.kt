@@ -27,10 +27,11 @@ import android.text.SpannedString
  */
 inline fun CharSequence.toSpanned(): Spanned = SpannedString.valueOf(this)
 
+/** Returns `true` if [span] is found in this text. */
+inline operator fun Spanned.contains(span: Any): Boolean = spans.contains(span)
+
 /** Get all spans that are instance of [type]. */
-inline fun <reified T> Spanned.getSpans(type: Class<T>): Array<out T> {
-    return getSpans(0, length, type)
-}
+inline fun <T> Spanned.getSpans(type: Class<T>): Array<out T> = getSpans(0, length, type)
 
 /** Get all spans attached from this text. */
 inline val Spanned.spans: Array<out Any> get() = getSpans(Any::class.java)

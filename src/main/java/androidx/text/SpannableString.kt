@@ -21,17 +21,20 @@ package androidx.text
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
+import android.text.Spanned.SPAN_INCLUSIVE_EXCLUSIVE
 
 /**
  * Returns a new [SpannableStringBuilder] from source,
  * or the source itself if it is already an instance of [SpannableStringBuilder].
  */
-inline fun CharSequence.toSpannable(): SpannableString = SpannableString.valueOf(this)
+inline fun CharSequence.toSpannable(): Spannable = SpannableString.valueOf(this)
 
-/** Remove [spans] from this text. */
-inline fun Spannable.removeSpans(vararg spans: Any) {
-    for (span in spans) removeSpan(span)
-}
+/** Adds [span] to the entire text. */
+inline operator fun Spannable.plusAssign(span: Any) =
+    setSpan(span, 0, length, SPAN_INCLUSIVE_EXCLUSIVE)
+
+/** Removes [span] from this text. */
+inline operator fun Spannable.minusAssign(span: Any) = removeSpan(span)
 
 /** Clear all spans from this text. */
-inline fun Spannable.clearSpans() = removeSpans(*spans)
+inline fun Spannable.clearSpans() = spans.forEach { removeSpan(it) }
