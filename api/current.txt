@@ -23,6 +23,8 @@ package androidx.content {
 
   public final class ContextKt {
     ctor public ContextKt();
+    method public static final android.graphics.Bitmap getBitmap(android.content.res.Resources, @DrawableRes int resId, android.graphics.BitmapFactory.Options? options = "null");
+    method public static final android.graphics.Bitmap getBitmap(android.content.Context, @DrawableRes int resId, android.graphics.BitmapFactory.Options? options = "null");
     method public static final void withStyledAttributes(android.content.Context, android.util.AttributeSet? set = "null", int[] attrs, @AttrRes int defStyleAttr = "0", @StyleRes int defStyleRes = "0", kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
     method public static final void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }
@@ -104,8 +106,6 @@ package androidx.graphics {
     method public static final android.graphics.Bitmap createBitmap(int width, int height, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
     method @RequiresApi(26) public static final android.graphics.Bitmap createBitmap(int width, int height, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888", boolean hasAlpha = "true", android.graphics.ColorSpace colorSpace = "ColorSpace.get(ColorSpace.Named.SRGB)");
     method public static final operator int get(android.graphics.Bitmap, int x, int y);
-    method public static final android.graphics.Bitmap! getBitmap(android.content.res.Resources, @DrawableRes int resId, android.graphics.BitmapFactory.Options? options = "null");
-    method public static final android.graphics.Bitmap! getBitmap(android.content.Context, @DrawableRes int resId, android.graphics.BitmapFactory.Options? options = "null");
     method public static final android.graphics.Bitmap scale(android.graphics.Bitmap, int width, int height, boolean filter = "true");
     method public static final operator void set(android.graphics.Bitmap, int x, int y, @ColorInt int color);
   }
