@@ -74,17 +74,17 @@ class ContextTest {
     }
 
     @Test fun getBitmapFromResources() {
-        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box)
-        val extension = context.resources.getBitmap(R.drawable.box)
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.green)
+        val extension = context.resources.getBitmap(R.drawable.green)
 
-        assertEquals(original, extension)
+        assertTrue(original.sameAs(extension))
     }
 
     @Test fun getBitmapFromContext() {
-        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box)
-        val extension = context.getBitmap(R.drawable.box)
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.green)
+        val extension = context.getBitmap(R.drawable.green)
 
-        assertEquals(original, extension)
+        assertTrue(original.sameAs(extension))
     }
 
     @Test fun getBitmapFromResourcesWithOptions() {
@@ -92,10 +92,10 @@ class ContextTest {
             inPreferredConfig = ARGB_4444
             inSampleSize = 2
         }
-        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box, opts)
-        val extension = context.resources.getBitmap(R.drawable.box, opts)
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.green, opts)
+        val extension = context.resources.getBitmap(R.drawable.green, opts)
 
-        assertEquals(original, extension)
+        assertTrue(original.sameAs(extension))
     }
 
     @Test fun getBitmapFromContextWithOptions() {
@@ -103,9 +103,9 @@ class ContextTest {
             inPreferredConfig = ARGB_4444
             inSampleSize = 2
         }
-        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box, opts)
-        val extension = context.getBitmap(R.drawable.box, opts)
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.green, opts)
+        val extension = context.getBitmap(R.drawable.green, opts)
 
-        assertEquals(original, extension)
+        assertTrue(original.sameAs(extension))
     }
 }
