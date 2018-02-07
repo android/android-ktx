@@ -16,6 +16,7 @@
 
 package androidx.content
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.TypedArray
@@ -97,12 +98,12 @@ inline fun Context.withStyledAttributes(
 /**
  * Syntactic sugar for [Context.startActivity(Intent)][Context.startActivity].
  */
-inline fun <reified T> Context.startActivity(block: Intent.() -> Unit = {}) =
+inline fun <reified T: Activity> Context.startActivity(block: Intent.() -> Unit = {}) =
         startActivity(Intent(this, T::class.java).apply(block))
 
 /**
  * Syntactic sugar for [Context.startActivity(Intent, Bundle)][Context.startActivity].
  */
 @RequiresApi(16)
-inline fun <reified T> Context.startActivity(options: Bundle, block: Intent.() -> Unit = {}) =
+inline fun <reified T: Activity> Context.startActivity(options: Bundle, block: Intent.() -> Unit = {}) =
         startActivity(Intent(this, T::class.java).apply(block), options)
