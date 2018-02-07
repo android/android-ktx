@@ -20,6 +20,7 @@ import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.support.annotation.AnyRes
 import android.support.annotation.ColorInt
 import android.support.annotation.Dimension
 import android.support.annotation.RequiresApi
@@ -170,6 +171,19 @@ fun TypedArray.getIntegerOrThrow(@StyleableRes index: Int): Int {
 }
 
 /**
+ * Retrieves the resource identifier for the attribute at [index] or throws
+ * [IllegalArgumentException] if not defined.
+ *
+ * @see TypedArray.hasValue
+ * @see TypedArray.getResourceId
+ */
+@AnyRes
+fun TypedArray.getResourceIdOrThrow(@StyleableRes index: Int): Int {
+    checkAttribute(index)
+    return getResourceId(index, 0)
+}
+
+/**
  * Retrieve the string value for the attribute at [index] or throws [IllegalArgumentException]
  * if not defined.
  *
@@ -207,4 +221,15 @@ fun TypedArray.getTextOrThrow(@StyleableRes index: Int): CharSequence {
 fun TypedArray.getTextArrayOrThrow(@StyleableRes index: Int): Array<CharSequence> {
     checkAttribute(index)
     return getTextArray(index)
+}
+
+/**
+ * Executes the given [block] function on this TypedArray and then recycles it.
+ *
+ * @see kotlin.io.use
+ */
+inline fun <R> TypedArray.use(block: (TypedArray) -> R): R {
+    return block(this).also {
+        recycle()
+    }
 }
