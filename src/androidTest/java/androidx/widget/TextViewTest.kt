@@ -25,27 +25,27 @@ class TextViewTest {
     private val context = InstrumentationRegistry.getContext()
     private val view = TextView(context)
 
-    @Test fun doAfterChanged() {
+    @Test fun doAfterTextChanged() {
         var called = false
-        view.doAfterChanged {
+        view.doAfterTextChanged {
             called = true
         }
         view.text = "test"
         assertTrue(called)
     }
 
-    @Test fun doBeforeChanged() {
+    @Test fun doBeforeTextChanged() {
         var called = false
-        view.doBeforeChanged { s, start, count, after ->
+        view.doBeforeTextChanged { s, start, count, after ->
             called = true
         }
         view.text = "test"
         assertTrue(called)
     }
 
-    @Test fun doOnChanged() {
+    @Test fun doOnTextChanged() {
         var called = false
-        view.doOnChanged { s, start, count, after ->
+        view.doOnTextChanged { s, start, before, count ->
             called = true
         }
         view.text = "test"

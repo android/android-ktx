@@ -676,9 +676,9 @@ package androidx.widget {
   public final class TextViewKt {
     ctor public TextViewKt();
     method public static final android.text.TextWatcher addTextChangedListener(android.widget.TextView, kotlin.jvm.functions.Function4<? super CharSequence,? super Integer,? super Integer,? super Integer,kotlin.Unit>? beforeChanged = "null", kotlin.jvm.functions.Function1<? super android.text.Editable,kotlin.Unit>? afterChanged = "null", kotlin.jvm.functions.Function4<? super CharSequence,? super Integer,? super Integer,? super Integer,kotlin.Unit>? onChanged = "null");
-    method public static final android.text.TextWatcher doAfterChanged(android.widget.TextView, kotlin.jvm.functions.Function1<? super android.text.Editable,kotlin.Unit> afterChanged);
-    method public static final android.text.TextWatcher doBeforeChanged(android.widget.TextView, kotlin.jvm.functions.Function4<? super CharSequence,? super Integer,? super Integer,? super Integer,kotlin.Unit> beforeChanged);
-    method public static final android.text.TextWatcher doOnChanged(android.widget.TextView, kotlin.jvm.functions.Function4<? super CharSequence,? super Integer,? super Integer,? super Integer,kotlin.Unit> onChanged);
+    method public static final android.text.TextWatcher doAfterTextChanged(android.widget.TextView, kotlin.jvm.functions.Function1<? super android.text.Editable,kotlin.Unit> afterChanged);
+    method public static final android.text.TextWatcher doBeforeTextChanged(android.widget.TextView, kotlin.jvm.functions.Function4<? super CharSequence,? super Integer,? super Integer,? super Integer,kotlin.Unit> beforeChanged);
+    method public static final android.text.TextWatcher doOnTextChanged(android.widget.TextView, kotlin.jvm.functions.Function4<? super CharSequence,? super Integer,? super Integer,? super Integer,kotlin.Unit> onChanged);
   }
 
 }
