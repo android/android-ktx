@@ -204,4 +204,18 @@ class TypedArrayTest {
             array.getTextOrThrow(R.styleable.TypedArrayTypes_text_array_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
     }
+
+    @Test fun useRecyclesArray() {
+        val attrs = context.getAttributeSet(R.layout.typed_array)
+        val array = context.obtainStyledAttributes(attrs, R.styleable.TypedArrayTypes)
+
+        val result = array.use {
+            it.getBoolean(R.styleable.TypedArrayTypes_boolean_present, false)
+        }
+        assertTrue(result)
+
+        assertThrows<RuntimeException> {
+            array.recycle()
+        }
+    }
 }
