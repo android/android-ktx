@@ -24,6 +24,7 @@ import android.text.SpannableStringBuilder
 import android.text.SpannedString
 import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
+import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 
@@ -97,3 +98,11 @@ inline fun SpannableStringBuilder.backgroundColor(
     @ColorInt color: Int,
     builderAction: SpannableStringBuilder.() -> Unit
 ) = inSpans(BackgroundColorSpan(color), builderAction = builderAction)
+
+/**
+ * Wrap appended text in `builderAction` in a bold [StrikethroughSpan].
+ *
+ * @see SpannableStringBuilder.inSpans
+ */
+inline fun SpannableStringBuilder.strikeThrough(builderAction: SpannableStringBuilder.() -> Unit) =
+    inSpans(StrikethroughSpan(), builderAction = builderAction)

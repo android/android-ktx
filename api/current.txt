@@ -359,6 +359,7 @@ package androidx.text {
     method public static android.text.SpannableStringBuilder color(android.text.SpannableStringBuilder, @ColorInt int color, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, Object[] spans, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static android.text.SpannableStringBuilder italic(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
+    method public static android.text.SpannableStringBuilder strikeThrough(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
   }
 

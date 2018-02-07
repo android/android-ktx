@@ -24,6 +24,7 @@ import android.text.SpannedString
 import android.text.style.BackgroundColorSpan
 import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
+import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.SubscriptSpan
 import android.text.style.SuperscriptSpan
@@ -147,6 +148,23 @@ class SpannableStringBuilderTest {
         assertEquals(RED, color.backgroundColor)
         assertEquals(7, result.getSpanStart(color))
         assertEquals(12, result.getSpanEnd(color))
+    }
+
+    @Test fun builderStrikeThrough() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            strikeThrough {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans<Any>()
+        assertEquals(1, spans.size)
+
+        val strikeThrough = spans.filterIsInstance<StrikethroughSpan>().single()
+        assertEquals(7, result.getSpanStart(strikeThrough))
+        assertEquals(12, result.getSpanEnd(strikeThrough))
     }
 
     @Test fun nested() {
