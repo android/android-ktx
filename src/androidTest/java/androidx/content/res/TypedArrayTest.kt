@@ -211,16 +211,19 @@ class TypedArrayTest {
 
         var booleanPresent = false
         array.use {
-            booleanPresent = it.getBooleanOrThrow(R.styleable.TypedArrayTypes_boolean_present)
+            booleanPresent = it.getBoolean(
+                R.styleable.TypedArrayTypes_boolean_present,
+                booleanPresent
+            )
         }
         assertTrue(
-            "Boolean obtained from attrs wasn't correct. " +
-                "Either the 'use' block wasn't run, or the boolean was missing from the TypedArray.",
+            "Boolean obtained from attrs wasn't correct. Either" +
+                " the 'use' block wasn't run, or the boolean was missing from the TypedArray.",
             booleanPresent
         )
 
         assertThrows<RuntimeException> {
             array.recycle()
-        }.hasMessageThat().isEqualTo("$array recycled twice!")
+        }
     }
 }
