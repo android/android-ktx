@@ -17,12 +17,18 @@
 package androidx.graphics
 
 import android.graphics.Bitmap
+import android.graphics.Bitmap.Config.ARGB_4444
+import android.graphics.BitmapFactory
 import android.graphics.ColorSpace
+import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
+import androidx.kotlin.test.R
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class BitmapTest {
+    private val context = InstrumentationRegistry.getContext()
+
     @Test fun create() {
         val bitmap = createBitmap(7, 9)
         assertEquals(7, bitmap.width)
@@ -67,5 +73,41 @@ class BitmapTest {
         val b = createBitmap(2, 2)
         b[1, 1] = 0x40302010
         assertEquals(0x40302010, b[1, 1])
+    }
+
+    @Test fun getBitmapFromResources() {
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box)
+        val extension = context.resources.getBitmap(R.drawable.box)
+
+        assertEquals(original, extension)
+    }
+
+    @Test fun getBitmapFromContext() {
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box)
+        val extension = context.getBitmap(R.drawable.box)
+
+        assertEquals(original, extension)
+    }
+
+    @Test fun getBitmapFromResourcesWithOptions() {
+        val opts = BitmapFactory.Options().apply {
+            inPreferredConfig = ARGB_4444
+            inSampleSize = 2
+        }
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box, opts)
+        val extension = context.resources.getBitmap(R.drawable.box, opts)
+
+        assertEquals(original, extension)
+    }
+
+    @Test fun getBitmapFromContextWithOptions() {
+        val opts = BitmapFactory.Options().apply {
+            inPreferredConfig = ARGB_4444
+            inSampleSize = 2
+        }
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box, opts)
+        val extension = context.getBitmap(R.drawable.box, opts)
+
+        assertEquals(original, extension)
     }
 }
