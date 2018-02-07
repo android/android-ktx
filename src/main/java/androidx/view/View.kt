@@ -172,35 +172,32 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
 }
 
-/** Show current view */
-fun View.show() {
+/** Makes view visible.
+ *  It's equivalent to calling view.visibility = View.VISIBLE.
+ * */
+inline fun View.show() {
     visibility = View.VISIBLE
 }
 
-/** Hide current view */
-fun View.hide() {
+/** Makes view invisible.
+ *  It's equivalent to calling view.visibility = View.INVISIBLE.
+ * */
+inline fun View.hide() {
     visibility = View.INVISIBLE
 }
 
-/** Gone current view */
-fun View.gone() {
+/** Makes view gone.
+ *  It's equivalent to calling view.visibility = View.GONE.
+ * */
+inline fun View.gone() {
     visibility = View.GONE
 }
 
-/** Return state of current view
- *
- *  @return true if visibility for current view is VISIBLE
- */
+/** Checks visibility state of view. If it is VISIBLE then return true. */
 fun View.isVisible() = visibility == View.VISIBLE
 
-/** Return state of current view
- *
- *  @return true if visibility for current view is GONE
- */
-fun View.isGone() = visibility == View.GONE
-
-/** Return state of current view
- *
- *  @return true if visibility for current view is INVISIBLE
- */
+/** Checks visibility state of view. If it is INVISIBLE then return true. */ */
 fun View.isHidden() = visibility == View.INVISIBLE
+
+/** Checks visibility state of view. If it is GONE then return true. */
+fun View.isGone() = visibility == View.GONE
