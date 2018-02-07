@@ -24,6 +24,7 @@ import android.text.SpannedString
 import android.text.style.BackgroundColorSpan
 import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.text.style.SubscriptSpan
 import android.text.style.SuperscriptSpan
@@ -147,6 +148,24 @@ class SpannableStringBuilderTest {
         assertEquals(RED, color.backgroundColor)
         assertEquals(7, result.getSpanStart(color))
         assertEquals(12, result.getSpanEnd(color))
+    }
+
+    @Test fun builderScale() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            scale(2f) {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans(0, result.length, Any::class.java)
+        assertEquals(1, spans.size)
+
+        val scale = spans.filterIsInstance<RelativeSizeSpan>().single()
+        assertEquals(2f, scale.sizeChange)
+        assertEquals(7, result.getSpanStart(scale))
+        assertEquals(12, result.getSpanEnd(scale))
     }
 
     @Test fun nested() {
