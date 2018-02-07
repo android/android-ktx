@@ -39,6 +39,16 @@ class SparseBooleanArrayTest {
         assertTrue(1 in array)
     }
 
+    @Test fun containsOperatorWithValue() {
+        val array = SparseBooleanArray()
+
+        array.put(1, true)
+        assertFalse(2 in array)
+
+        array.put(2, true)
+        assertTrue(2 in array)
+    }
+
     @Test fun setOperator() {
         val array = SparseBooleanArray()
         array[1] = true
@@ -61,6 +71,16 @@ class SparseBooleanArrayTest {
         assertFalse(array.containsKey(1))
         array.put(1, true)
         assertTrue(array.containsKey(1))
+    }
+
+    @Test fun containsKeyWithValue() {
+        val array = SparseBooleanArray()
+
+        array.put(1, true)
+        assertFalse(array.containsKey(2))
+
+        array.put(2, true)
+        assertTrue(array.containsKey(2))
     }
 
     @Test fun containsValue() {

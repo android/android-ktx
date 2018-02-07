@@ -40,6 +40,16 @@ class SparseArrayTest {
         assertTrue(1 in array)
     }
 
+    @Test fun containsOperatorWithItem() {
+        val array = SparseArray<String>()
+
+        array.put(1, "one")
+        assertFalse(2 in array)
+
+        array.put(2, "two")
+        assertTrue(2 in array)
+    }
+
     @Test fun setOperator() {
         val array = SparseArray<String>()
         array[1] = "one"

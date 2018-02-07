@@ -24,7 +24,7 @@ import android.util.SparseBooleanArray
 inline val SparseBooleanArray.size get() = size()
 
 /** Returns true if the collection contains [key]. */
-inline operator fun SparseBooleanArray.contains(key: Int) = indexOfKey(key) != -1
+inline operator fun SparseBooleanArray.contains(key: Int) = indexOfKey(key) >= 0
 
 /** Allows the use of the index operator for storing values in the collection. */
 inline operator fun SparseBooleanArray.set(key: Int, value: Boolean) = put(key, value)
@@ -38,7 +38,7 @@ operator fun SparseBooleanArray.plus(other: SparseBooleanArray): SparseBooleanAr
 }
 
 /** Returns true if the collection contains [key]. */
-inline fun SparseBooleanArray.containsKey(key: Int) = indexOfKey(key) != -1
+inline fun SparseBooleanArray.containsKey(key: Int) = indexOfKey(key) >= 0
 
 /** Returns true if the collection contains [value]. */
 inline fun SparseBooleanArray.containsValue(value: Boolean) = indexOfValue(value) != -1

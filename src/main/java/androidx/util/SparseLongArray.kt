@@ -27,7 +27,7 @@ inline val SparseLongArray.size get() = size()
 
 /** Returns true if the collection contains [key]. */
 @RequiresApi(18)
-inline operator fun SparseLongArray.contains(key: Int) = indexOfKey(key) != -1
+inline operator fun SparseLongArray.contains(key: Int) = indexOfKey(key) >= 0
 
 /** Allows the use of the index operator for storing values in the collection. */
 @RequiresApi(18)
@@ -44,7 +44,7 @@ operator fun SparseLongArray.plus(other: SparseLongArray): SparseLongArray {
 
 /** Returns true if the collection contains [key]. */
 @RequiresApi(18)
-inline fun SparseLongArray.containsKey(key: Int) = indexOfKey(key) != -1
+inline fun SparseLongArray.containsKey(key: Int) = indexOfKey(key) >= 0
 
 /** Returns true if the collection contains [value]. */
 @RequiresApi(18)
