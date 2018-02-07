@@ -25,7 +25,7 @@ import android.widget.SeekBar
  * @see SeekBar.OnSeekBarChangeListener.onStartTrackingTouch
  */
 fun SeekBar.doOnStartTracking(action: (seekBar: SeekBar) -> Unit): SeekBar.OnSeekBarChangeListener =
-    OnSeekBarChangeListener(onStartTracking = action)
+    setOnSeekBarChangeListener(onStartTracking = action)
 
 /**
  * Add an action which will be invoked when the SeekBar has stopped tracking touch.
@@ -34,7 +34,7 @@ fun SeekBar.doOnStartTracking(action: (seekBar: SeekBar) -> Unit): SeekBar.OnSee
  * @see SeekBar.OnSeekBarChangeListener.onStopTrackingTouch
  */
 fun SeekBar.doOnStopTracking(action: (seekBar: SeekBar) -> Unit): SeekBar.OnSeekBarChangeListener =
-    OnSeekBarChangeListener(onStopTracking = action)
+    setOnSeekBarChangeListener(onStopTracking = action)
 
 /**
  * Add an action which will be invoked when the SeekBar has the progress changed.
@@ -43,12 +43,12 @@ fun SeekBar.doOnStopTracking(action: (seekBar: SeekBar) -> Unit): SeekBar.OnSeek
  * @see SeekBar.OnSeekBarChangeListener.onProgressChanged
  */
 fun SeekBar.doOnChanged(action: (seekBar: SeekBar, progress: Int, fromUser: Boolean) -> Unit): SeekBar.OnSeekBarChangeListener =
-    OnSeekBarChangeListener(onChanged = action)
+    setOnSeekBarChangeListener(onChanged = action)
 
 /**
  * Set the listener to this SeekBar using the provided actions.
  */
-fun SeekBar.OnSeekBarChangeListener(
+fun SeekBar.setOnSeekBarChangeListener(
     onStartTracking: ((seekBar: SeekBar) -> Unit)? = null,
     onStopTracking: ((seekBar: SeekBar) -> Unit)? = null,
     onChanged: ((seekBar: SeekBar, progress: Int, fromUser: Boolean) -> Unit)? = null
