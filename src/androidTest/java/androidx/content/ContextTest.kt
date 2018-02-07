@@ -16,6 +16,8 @@
 
 package androidx.content
 
+import android.graphics.Bitmap.Config.ARGB_4444
+import android.graphics.BitmapFactory
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
 import android.test.mock.MockContext
@@ -69,5 +71,41 @@ class ContextTest {
         context.withStyledAttributes(attrs, R.styleable.SampleAttrs, 0, 0) {
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
         }
+    }
+
+    @Test fun getBitmapFromResources() {
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box)
+        val extension = context.resources.getBitmap(R.drawable.box)
+
+        assertEquals(original, extension)
+    }
+
+    @Test fun getBitmapFromContext() {
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box)
+        val extension = context.getBitmap(R.drawable.box)
+
+        assertEquals(original, extension)
+    }
+
+    @Test fun getBitmapFromResourcesWithOptions() {
+        val opts = BitmapFactory.Options().apply {
+            inPreferredConfig = ARGB_4444
+            inSampleSize = 2
+        }
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box, opts)
+        val extension = context.resources.getBitmap(R.drawable.box, opts)
+
+        assertEquals(original, extension)
+    }
+
+    @Test fun getBitmapFromContextWithOptions() {
+        val opts = BitmapFactory.Options().apply {
+            inPreferredConfig = ARGB_4444
+            inSampleSize = 2
+        }
+        val original = BitmapFactory.decodeResource(context.resources, R.drawable.box, opts)
+        val extension = context.getBitmap(R.drawable.box, opts)
+
+        assertEquals(original, extension)
     }
 }
