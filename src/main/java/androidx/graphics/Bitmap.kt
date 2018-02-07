@@ -111,3 +111,13 @@ inline fun createBitmap(
 ): Bitmap {
     return Bitmap.createBitmap(width, height, config, hasAlpha, colorSpace)
 }
+
+/**
+ * Executes the given [block] function on this Bitmap and then recycles it
+ *
+ * @see kotlin.io.use
+ * @see Bitmap.recycle
+ */
+inline fun <T> Bitmap.use(block: (Bitmap) -> T): T {
+    return block(this).also { recycle() }
+}
