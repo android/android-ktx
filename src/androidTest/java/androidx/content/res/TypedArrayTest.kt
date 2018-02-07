@@ -155,6 +155,21 @@ class TypedArrayTest {
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
     }
 
+    @Test
+    fun resourceId() {
+        val attrs = context.getAttributeSet(R.layout.typed_array)
+        val array = context.obtainStyledAttributes(attrs, R.styleable.TypedArrayTypes)
+
+        assertEquals(
+            R.font.inconsolata_regular,
+            array.getResourceIdOrThrow(R.styleable.TypedArrayTypes_resource_present)
+        )
+
+        assertThrows<IllegalArgumentException> {
+            array.getResourceIdOrThrow(R.styleable.TypedArrayTypes_resource_absent)
+        }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+    }
+
     @Test fun string() {
         val attrs = context.getAttributeSet(R.layout.typed_array)
         val array = context.obtainStyledAttributes(attrs, R.styleable.TypedArrayTypes)
