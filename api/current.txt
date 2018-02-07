@@ -362,6 +362,19 @@ package androidx.text {
     method public static android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
   }
 
+  public final class SpannableStringKt {
+    ctor public SpannableStringKt();
+    method public static error.NonExistentClass clearSpans(android.text.Spannable);
+    method public static operator void minusAssign(android.text.Spannable, Object span);
+    method public static operator void plusAssign(android.text.Spannable, Object span);
+    method public static android.text.Spannable toSpannable(CharSequence);
+  }
+
+  public final class SpannedStringKt {
+    ctor public SpannedStringKt();
+    method public static android.text.Spanned toSpanned(CharSequence);
+  }
+
 }
 
 package androidx.time {
