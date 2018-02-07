@@ -29,6 +29,7 @@ import java.io.IOException
 
 @SdkSuppress(minSdkVersion = 17)
 class AtomicFileTest {
+    @Suppress("MemberVisibilityCanPrivate")
     @get:Rule val temporaryFolder = TemporaryFolder()
 
     private lateinit var file: AtomicFile
