@@ -19,54 +19,28 @@ package androidx.content
 import android.content.SharedPreferences
 
 /**
- * @deprecated
  * Allows editing of this preference instance with a call to
- * [SharedPreferences.Editor.apply] to persist the changes.
+ * [SharedPreferences.Editor.apply] or [SharedPreferences.Editor.commit] to persist the changes.
+ * Default behaviour is [SharedPreferences.Editor.apply]
  *
+ * To [SharedPreferences.Editor.apply] changes
  * ```
  * prefs.edit {
  *     putString("key", value)
  * }
  * ```
- */
-@Deprecated(
-    replaceWith = ReplaceWith(expression = "apply()"),
-    message = "Use apply() instead of edit"
-)
-inline fun SharedPreferences.edit(action: SharedPreferences.Editor.() -> Unit) {
-    val editor = edit()
-    action(editor)
-    editor.apply()
-}
-
-/**
- * Allows editing of this preference instance with a call to
- * [SharedPreferences.Editor.apply] to persist the changes.
- *
- * ```
- * prefs.apply {
+ * To [SharedPreferences.Editor.commit] changes
+ * prefs.edit {
  *     putString("key", value)
  * }
- * ```
  */
-inline fun SharedPreferences.apply(action: SharedPreferences.Editor.() -> Unit) {
+inline fun SharedPreferences.edit(
+    commit: Boolean = false,
+    action: SharedPreferences.Editor.() -> Unit) {
     val editor = edit()
     action(editor)
-    editor.apply()
-}
-
-/**
- * Allows editing of this preference instance with a call to
- * [SharedPreferences.Editor.commit] to persist the changes.
- *
- * ```
- * prefs.commit {
- *     putString("key", value)
- * }
- * ```
- */
-inline fun SharedPreferences.commit(action: SharedPreferences.Editor.() -> Unit) {
-    val editor = edit()
-    action(editor)
-    editor.commit()
+    when (commit) {
+        true -> editor.commit()
+        else -> editor.apply()
+    }
 }
