@@ -21,6 +21,7 @@ import android.support.test.InstrumentationRegistry
 import android.view.View
 import androidx.assertThrows
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -61,6 +62,26 @@ class ViewTest {
         view.doOnLayout {
             called = true
         }
+        assertTrue(called)
+    }
+
+    @Test
+    fun doOnLayoutWhileLayoutRequested() {
+        // First layout the view
+        view.layout(0, 0, 10, 10)
+        // Then later a layout is requested
+        view.requestLayout()
+
+        var called = false
+        view.doOnLayout {
+            called = true
+        }
+
+        // Assert that we haven't been called while the layout pass is pending
+        assertFalse(called)
+
+        // Now layout the view and assert that we're called
+        view.layout(0, 0, 20, 20)
         assertTrue(called)
     }
 
