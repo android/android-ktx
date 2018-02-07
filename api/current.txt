@@ -679,3 +679,15 @@ package androidx.view {
 
 }
 
+package androidx.widget {
+
+  public final class ToastKt {
+    ctor public ToastKt();
+    method public static final void toast(android.content.Context, String text);
+    method public static final void toast(android.content.Context, @StringRes int resID);
+    method public static final void toastLong(android.content.Context, String text);
+    method public static final void toastLong(android.content.Context, @StringRes int resID);
+  }
+
+}
+
