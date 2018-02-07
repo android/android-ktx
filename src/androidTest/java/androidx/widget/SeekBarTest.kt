@@ -17,6 +17,7 @@
 package androidx.widget
 
 import android.support.test.InstrumentationRegistry
+import android.view.MotionEvent
 import android.widget.SeekBar
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -33,6 +34,26 @@ class SeekBarTest {
             called = true
         }
         view.progress = 1
+        assertTrue(called)
+    }
+
+    @Test
+    fun testDoOnStartTracking() {
+        var called = false
+        view.doOnStartTracking {
+            called = true
+        }
+        view.onTouchEvent(MotionEvent.obtain(0, 0, MotionEvent.ACTION_UP, 10.0f, 10.0f, 0))
+        assertTrue(called)
+    }
+
+    @Test
+    fun testDoOnStopTracking() {
+        var called = false
+        view.doOnStopTracking {
+            called = true
+        }
+        view.onTouchEvent(MotionEvent.obtain(0, 0, MotionEvent.ACTION_UP, 10.0f, 10.0f, 0))
         assertTrue(called)
     }
 }
