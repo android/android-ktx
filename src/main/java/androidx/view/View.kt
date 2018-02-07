@@ -196,7 +196,7 @@ inline fun View.gone() {
 /** Checks visibility state of view. If it is VISIBLE then return true. */
 fun View.isVisible() = visibility == View.VISIBLE
 
-/** Checks visibility state of view. If it is INVISIBLE then return true. */ */
+/** Checks visibility state of view. If it is INVISIBLE then return true. */
 fun View.isHidden() = visibility == View.INVISIBLE
 
 /** Checks visibility state of view. If it is GONE then return true. */
