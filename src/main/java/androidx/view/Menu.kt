@@ -22,15 +22,15 @@ import android.view.Menu
 import android.view.MenuItem
 
 /**
- * Returns the menu at `index`.
+ * Returns the menu at [index].
  *
  * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to the count.
  */
 inline operator fun Menu.get(index: Int): MenuItem = getItem(index)
 
-/** Returns `true` if `item` is found in this menu. */
+/** Returns `true` if [item] is found in this menu. */
 operator fun Menu.contains(item: MenuItem): Boolean {
-    for (index in 0 until size()) {
+    for (index in 0 until size) {
         if (getItem(index) == item) {
             return true
         }
@@ -38,11 +38,14 @@ operator fun Menu.contains(item: MenuItem): Boolean {
     return false
 }
 
+/** Returns the number of items in this menu. */
+inline val Menu.size get() = size()
+
 /** Returns true if this menu contains no items. */
-inline fun Menu.isEmpty() = size() == 0
+inline fun Menu.isEmpty() = size == 0
 
 /** Returns true if this menu contains one or more items. */
-inline fun Menu.isNotEmpty() = size() != 0
+inline fun Menu.isNotEmpty() = size != 0
 
 /** Performs the given action on each item in this menu. */
 inline fun Menu.forEach(action: (item: MenuItem) -> Unit) {

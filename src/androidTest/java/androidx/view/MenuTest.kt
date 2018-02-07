@@ -17,6 +17,7 @@
 package androidx.view
 
 import android.support.test.InstrumentationRegistry
+import android.view.Menu.NONE
 import android.view.MenuItem
 import android.widget.Toolbar
 import androidx.assertThrows
@@ -31,14 +32,12 @@ import org.junit.Test
 class MenuTest {
     private val menu = Toolbar(InstrumentationRegistry.getContext()).menu
 
-    @Test
-    fun get() {
+    @Test fun get() {
         val item = menu.add("")
         assertSame(item, menu[0])
     }
 
-    @Test
-    fun contains() {
+    @Test fun contains() {
         val item1 = menu.add("")
         assertTrue(item1 in menu)
         assertFalse(item1 !in menu)
@@ -48,22 +47,32 @@ class MenuTest {
         assertFalse(item2 !in menu)
     }
 
-    @Test
-    fun isEmpty() {
+    @Test fun size() {
+        assertEquals(0, menu.size)
+
+        menu.add("")
+        assertEquals(1, menu.size)
+
+        menu.add(NONE, 123, NONE, "")
+        assertEquals(2, menu.size)
+
+        menu.removeItem(123)
+        assertEquals(1, menu.size)
+    }
+
+    @Test fun isEmpty() {
         assertTrue(menu.isEmpty())
         menu.add("")
         assertFalse(menu.isEmpty())
     }
 
-    @Test
-    fun isNotEmpty() {
+    @Test fun isNotEmpty() {
         assertFalse(menu.isNotEmpty())
         menu.add("")
         assertTrue(menu.isNotEmpty())
     }
 
-    @Test
-    fun forEach() {
+    @Test fun forEach() {
         menu.forEach {
             fail("Empty menu should not invoke lambda")
         }
@@ -78,8 +87,7 @@ class MenuTest {
         assertThat(items).containsExactly(item1, item2)
     }
 
-    @Test
-    fun forEachIndexed() {
+    @Test fun forEachIndexed() {
         menu.forEach {
             fail("Empty menu should not invoke lambda")
         }
@@ -95,8 +103,7 @@ class MenuTest {
         assertThat(items).containsExactly(item1, item2)
     }
 
-    @Test
-    fun iterator() {
+    @Test fun iterator() {
         val item1 = menu.add("")
         val item2 = menu.add("")
 
@@ -111,8 +118,7 @@ class MenuTest {
         }
     }
 
-    @Test
-    fun iteratorRemoving() {
+    @Test fun iteratorRemoving() {
         val item1 = menu.add("")
         val item2 = menu.add("")
 
@@ -129,8 +135,7 @@ class MenuTest {
         assertEquals(0, menu.size())
     }
 
-    @Test
-    fun iteratorForEach() {
+    @Test fun iteratorForEach() {
         val items = listOf(menu.add(""), menu.add(""))
 
         var index = 0
