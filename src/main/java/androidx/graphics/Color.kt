@@ -375,3 +375,8 @@ inline val @receiver:ColorLong Long.isWideGamut get() = Color.isWideGamut(this)
  */
 @get:RequiresApi(26)
 inline val @receiver:ColorLong Long.colorSpace: ColorSpace get() = Color.colorSpace(this)
+
+/**
+ * Return a corresponding [Int] color of this [String].
+ */
+inline fun String.toColorInt(): Int = Color.parseColor(this)
