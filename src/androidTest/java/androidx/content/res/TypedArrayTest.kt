@@ -204,4 +204,23 @@ class TypedArrayTest {
             array.getTextOrThrow(R.styleable.TypedArrayTypes_text_array_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
     }
+
+    @Test fun use() {
+        val attrs = context.getAttributeSet(R.layout.typed_array)
+        val array = context.obtainStyledAttributes(attrs, R.styleable.TypedArrayTypes)
+
+        var booleanPresent = false
+        array.use {
+            booleanPresent = it.getBooleanOrThrow(R.styleable.TypedArrayTypes_boolean_present)
+        }
+        assertTrue(
+            "Boolean obtained from attrs wasn't correct. " +
+                "Either the 'use' block wasn't run, or the boolean was missing from the TypedArray.",
+            booleanPresent
+        )
+
+        assertThrows<RuntimeException> {
+            array.recycle()
+        }.hasMessageThat().isEqualTo("$array recycled twice!")
+    }
 }
