@@ -100,8 +100,7 @@ inline fun Context.withStyledAttributes(
  * Return a [Bitmap] decoded from [Resources]
  *
  * @param resId Resource id of a drawable from `res/drawable` folder
- * @param options null-ok; Options that control downsampling and whether the
- * image should be completely decoded, or just is size returned.
+ * @param options Decoding options
  */
 inline fun Resources.getBitmap(
     @DrawableRes resId: Int,
@@ -112,8 +111,7 @@ inline fun Resources.getBitmap(
  * Return a [Bitmap] decoded from [Resources] of this [Context]
  *
  * @param resId Resource id of a drawable from `res/drawable` folder
- * @param options null-ok; Options that control downsampling and whether the
- * image should be completely decoded, or just is size returned.
+ * @param options Decoding options
  */
 inline fun Context.getBitmap(
     @DrawableRes resId: Int,
