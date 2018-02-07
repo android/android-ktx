@@ -41,6 +41,16 @@ class SparseLongArrayTest {
         assertTrue(1 in array)
     }
 
+    @Test fun containsOperatorWithValue() {
+        val array = SparseLongArray()
+
+        array.put(1, 11L)
+        assertFalse(2 in array)
+
+        array.put(2, 22L)
+        assertTrue(2 in array)
+    }
+
     @Test fun setOperator() {
         val array = SparseLongArray()
         array[1] = 11L
@@ -63,6 +73,16 @@ class SparseLongArrayTest {
         assertFalse(array.containsKey(1))
         array.put(1, 11L)
         assertTrue(array.containsKey(1))
+    }
+
+    @Test fun containsKeyWithValue() {
+        val array = SparseLongArray()
+
+        array.put(1, 11L)
+        assertFalse(array.containsKey(2))
+
+        array.put(2, 22L)
+        assertTrue(array.containsKey(2))
     }
 
     @Test fun containsValue() {
