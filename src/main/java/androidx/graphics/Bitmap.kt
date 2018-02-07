@@ -18,14 +18,10 @@
 
 package androidx.graphics
 
-import android.content.Context
-import android.content.res.Resources
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.ColorSpace
 import android.support.annotation.ColorInt
-import android.support.annotation.DrawableRes
 import android.support.annotation.RequiresApi
 
 /**
@@ -115,27 +111,3 @@ inline fun createBitmap(
 ): Bitmap {
     return Bitmap.createBitmap(width, height, config, hasAlpha, colorSpace)
 }
-
-/**
- * Return a [Bitmap] decoded from [Resources]
- *
- * @param resId Resource id of a drawable from `res/drawable` folder
- * @param options null-ok; Options that control downsampling and whether the
- * image should be completely decoded, or just is size returned.
- */
-inline fun Resources.getBitmap(
-    @DrawableRes resId: Int,
-    options: BitmapFactory.Options? = null
-) = BitmapFactory.decodeResource(this, resId, options)
-
-/**
- * Return a [Bitmap] decoded from [Resources] of this [Context]
- *
- * @param resId Resource id of a drawable from `res/drawable` folder
- * @param options null-ok; Options that control downsampling and whether the
- * image should be completely decoded, or just is size returned.
- */
-inline fun Context.getBitmap(
-    @DrawableRes resId: Int,
-    options: BitmapFactory.Options? = null
-) = resources.getBitmap(resId, options)
