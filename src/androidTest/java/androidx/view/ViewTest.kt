@@ -19,6 +19,7 @@ package androidx.view
 import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
 import android.view.View
+import android.widget.ImageView
 import androidx.assertThrows
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
@@ -44,6 +45,17 @@ class ViewTest {
     }
 
     @Test
+    fun doOnNextLayoutWithImageView() {
+        var isImageView = false
+        val imageView = ImageView(context)
+        imageView.doOnNextLayout {
+            isImageView = it is ImageView
+        }
+        imageView.layout(0, 0, 10, 10)
+        assertTrue(isImageView)
+    }
+
+    @Test
     fun doOnLayoutBeforeLayout() {
         var called = false
         view.doOnLayout {
@@ -51,6 +63,17 @@ class ViewTest {
         }
         view.layout(0, 0, 10, 10)
         assertTrue(called)
+    }
+
+    @Test
+    fun doOnLayoutBeforeLayoutWithImageView() {
+        var isImageView = false
+        val imageView = ImageView(context)
+        imageView.doOnLayout {
+            isImageView = it is ImageView
+        }
+        imageView.layout(0, 0, 10, 10)
+        assertTrue(isImageView)
     }
 
     @Test
@@ -76,6 +99,17 @@ class ViewTest {
         // Now dispatch again to make sure that the listener was removed
         view.viewTreeObserver.dispatchOnPreDraw()
         assertEquals(1, calls)
+    }
+
+    @Test
+    fun doOnPreDrawWithImageView() {
+        var isImageView = false
+        val imageView = ImageView(context)
+        imageView.doOnPreDraw {
+            isImageView = it is ImageView
+        }
+        imageView.viewTreeObserver.dispatchOnPreDraw()
+        assertTrue(isImageView)
     }
 
     @Test

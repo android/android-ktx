@@ -658,9 +658,9 @@ package androidx.view {
 
   public final class ViewKt {
     ctor public ViewKt();
-    method public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
-    method public static final void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
-    method public static final void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final <T extends android.view.View> void doOnLayout(T, kotlin.jvm.functions.Function1<? super T,kotlin.Unit> action);
+    method public static final <T extends android.view.View> void doOnNextLayout(T, kotlin.jvm.functions.Function1<? super T,kotlin.Unit> action);
+    method public static final <T extends android.view.View> void doOnPreDraw(T, kotlin.jvm.functions.Function1<? super T,kotlin.Unit> action);
     method public static final Runnable postDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method @RequiresApi(16) public static final Runnable postOnAnimationDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method public static final void setPadding(android.view.View, @Px int size);
