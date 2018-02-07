@@ -53,6 +53,7 @@ package androidx.content.res {
     method public static final String getStringOrThrow(android.content.res.TypedArray, @StyleableRes int index);
     method public static final CharSequence[] getTextArrayOrThrow(android.content.res.TypedArray, @StyleableRes int index);
     method public static final CharSequence getTextOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final <R> R! use(android.content.res.TypedArray, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,? extends R> block);
   }
 
 }
