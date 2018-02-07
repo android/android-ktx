@@ -17,9 +17,9 @@
 package androidx.os
 
 import android.os.Build.VERSION_CODES.LOLLIPOP
+import android.os.Build.VERSION_CODES.LOLLIPOP_MR1
 import android.os.PersistableBundle
 import android.support.annotation.RequiresApi
-import androidx.os.persistable.PersistableBundlePair
 
 /**
  * Returns a new [PersistableBundle] with the given key/value pairs as elements.
@@ -30,3 +30,47 @@ import androidx.os.persistable.PersistableBundlePair
 fun persistableBundleOf(vararg pairs: PersistableBundlePair) = PersistableBundle(pairs.size).apply {
     pairs.forEach { it.putFunction(this) }
 }
+
+
+// Scalars
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Boolean) = PersistableBundlePair({ putBoolean(this@persistTo, value) })
+
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Double) = PersistableBundlePair({ putDouble(this@persistTo, value) })
+
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Int) = PersistableBundlePair({ putInt(this@persistTo, value) })
+
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Long) = PersistableBundlePair({ putLong(this@persistTo, value) })
+
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: String) = PersistableBundlePair({ putString(this@persistTo, value) })
+
+@Suppress("UNUSED_PARAMETER")
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Nothing?) = PersistableBundlePair({ putString(this@persistTo, null) })
+
+// Scalar Array
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: BooleanArray) = PersistableBundlePair({ putBooleanArray(this@persistTo, value) })
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: DoubleArray) = PersistableBundlePair({ putDoubleArray(this@persistTo, value) })
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: IntArray) = PersistableBundlePair({ putIntArray(this@persistTo, value) })
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: LongArray) = PersistableBundlePair({ putLongArray(this@persistTo, value) })
+
+// Reference Arrays
+@RequiresApi(LOLLIPOP)
+infix fun String.persistTo(value: Array<String>) = PersistableBundlePair({ putStringArray(this@persistTo, value) })
+
+/**
+ * Marker function for invalid arrays. Valid arrays are covered by explicit [to] implementations.
+ */
+@Suppress("unused", "UNUSED_PARAMETER")
+@RequiresApi(LOLLIPOP_MR1)
+infix fun <T> String.persistTo(value: Array<T>) = ArrayContainsInvalidType
+
+data class PersistableBundlePair(val putFunction: PersistableBundle.() -> Unit)

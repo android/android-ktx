@@ -19,7 +19,6 @@ package androidx.os
 import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.os.Build.VERSION_CODES.LOLLIPOP_MR1
 import android.support.test.filters.SdkSuppress
-import androidx.os.persistable.to
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
@@ -30,19 +29,19 @@ import org.junit.Test
 class PersistableBundleTest {
     @Test fun persistableBundleOfValid() {
         val bundle = persistableBundleOf(
-            "null" to null,
+            "null" persistTo null,
 
-            "double" to 1.0,
-            "int" to 1,
-            "long" to 1L,
+            "double" persistTo 1.0,
+            "int" persistTo 1,
+            "long" persistTo 1L,
 
-            "string" to "hey",
+            "string" persistTo "hey",
 
-            "doubleArray" to doubleArrayOf(),
-            "intArray" to intArrayOf(),
-            "longArray" to longArrayOf(),
+            "doubleArray" persistTo doubleArrayOf(),
+            "intArray" persistTo intArrayOf(),
+            "longArray" persistTo longArrayOf(),
 
-            "stringArray" to arrayOf("hey")
+            "stringArray" persistTo arrayOf("hey")
         )
 
         assertEquals(9, bundle.size())
@@ -65,8 +64,8 @@ class PersistableBundleTest {
     @SdkSuppress(minSdkVersion = LOLLIPOP_MR1)
     @Test fun persistableBundleOfValidApi22() {
         val bundle = persistableBundleOf(
-            "boolean" to true,
-            "booleanArray" to booleanArrayOf()
+            "boolean" persistTo true,
+            "booleanArray" persistTo booleanArrayOf()
         )
 
         assertEquals(true, bundle["boolean"])

@@ -22,7 +22,6 @@ import android.os.Bundle
 import android.support.test.filters.SdkSuppress
 import android.util.Size
 import android.util.SizeF
-import androidx.os.bundle.to
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
