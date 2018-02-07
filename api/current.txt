@@ -677,3 +677,15 @@ package androidx.view {
 
 }
 
+package androidx.widget {
+
+  public final class SeekBarKt {
+    ctor public SeekBarKt();
+    method public static final android.widget.SeekBar.OnSeekBarChangeListener doOnChanged(android.widget.SeekBar, kotlin.jvm.functions.Function3<? super android.widget.SeekBar,? super Integer,? super Boolean,kotlin.Unit> action);
+    method public static final android.widget.SeekBar.OnSeekBarChangeListener doOnStartTracking(android.widget.SeekBar, kotlin.jvm.functions.Function1<? super android.widget.SeekBar,kotlin.Unit> action);
+    method public static final android.widget.SeekBar.OnSeekBarChangeListener doOnStopTracking(android.widget.SeekBar, kotlin.jvm.functions.Function1<? super android.widget.SeekBar,kotlin.Unit> action);
+    method public static final android.widget.SeekBar.OnSeekBarChangeListener setOnSeekBarChangeListener(android.widget.SeekBar, kotlin.jvm.functions.Function1<? super android.widget.SeekBar,kotlin.Unit>? onStartTracking = "null", kotlin.jvm.functions.Function1<? super android.widget.SeekBar,kotlin.Unit>? onStopTracking = "null", kotlin.jvm.functions.Function3<? super android.widget.SeekBar,? super Integer,? super Boolean,kotlin.Unit>? onChanged = "null");
+  }
+
+}
+

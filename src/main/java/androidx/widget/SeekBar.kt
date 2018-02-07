@@ -42,8 +42,8 @@ fun SeekBar.doOnStopTracking(action: (seekBar: SeekBar) -> Unit): SeekBar.OnSeek
  * @return the [SeekBar.OnSeekBarChangeListener] added to the SeekBar
  * @see SeekBar.OnSeekBarChangeListener.onProgressChanged
  */
-fun SeekBar.doOnChanged(action: (seekBar: SeekBar, progress: Int, fromUser: Boolean) -> Unit): SeekBar.OnSeekBarChangeListener =
-    setOnSeekBarChangeListener(onChanged = action)
+fun SeekBar.doOnChanged(action: (seekBar: SeekBar, progress: Int, fromUser: Boolean) -> Unit):
+        SeekBar.OnSeekBarChangeListener = setOnSeekBarChangeListener(onChanged = action)
 
 /**
  * Set the listener to this SeekBar using the provided actions.
