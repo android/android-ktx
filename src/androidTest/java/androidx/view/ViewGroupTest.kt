@@ -52,7 +52,6 @@ class ViewGroupTest {
         }.hasMessageThat().isEqualTo("Index: 2, Size: 2")
     }
 
-
     @Test fun getOrNull() {
         val view1 = View(context)
         viewGroup.addView(view1)

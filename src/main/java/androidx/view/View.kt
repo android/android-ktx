@@ -181,11 +181,11 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
  * @see ViewGroup.MarginLayoutParams.setMargins
  * @throws IllegalStateException if view doesn't have layoutParams as  ViewGroup.MarginLayoutParams
  */
-fun View.setMargins(@Px size: Int){
-    if(layoutParams is ViewGroup.MarginLayoutParams){
+fun View.setMargins(@Px size: Int) {
+    if (layoutParams is ViewGroup.MarginLayoutParams) {
         (layoutParams as ViewGroup.MarginLayoutParams).setMargins(size)
     } else {
-        throw IllegalStateException("View needs to have ViewGroup.MarginLayoutParams to call setMargins()")
+        throw IllegalStateException("View needs to have ViewGroup.MarginLayoutParams " +
+                "to call setMargins()")
     }
 }
-

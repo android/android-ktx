@@ -34,7 +34,6 @@ fun Animation.doOnEnd(action: (animation: Animation) -> Unit) = addListener(onEn
  */
 fun Animation.doOnStart(action: (animation: Animation) -> Unit) = addListener(onStart = action)
 
-
 /**
  * Add an action which will be invoked when the animation has repeated.
  * @return the [Animation.AnimationListener] added to the Animation
@@ -65,4 +64,3 @@ fun Animation.addListener(
     setAnimationListener(listener)
     return listener
 }
-

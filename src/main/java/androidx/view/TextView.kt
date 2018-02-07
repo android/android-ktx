@@ -32,4 +32,3 @@ fun TextView.underLine() {
 fun TextView.strikeThrough() {
     paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 }
-

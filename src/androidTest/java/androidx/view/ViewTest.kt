@@ -172,7 +172,7 @@ class ViewTest {
     }
 
     @Test
-    fun setMargins(){
+    fun setMargins() {
         view.layoutParams = ViewGroup.MarginLayoutParams(100, 200)
         view.setMargins(42)
         assertEquals(42, (view.layoutParams as ViewGroup.MarginLayoutParams).leftMargin)

@@ -87,11 +87,10 @@ fun Drawable.updateBounds(
     setBounds(left, top, right, bottom)
 }
 
-
 /**
  *  Tint color over drawable by Color Id
  *
- *  @see  ContextCompat.getColor
+ *  @see ContextCompat.getColor
  *  @param context a context to call ContextCompat.getColor()
  *  @param colorId colorId to tint
  * */

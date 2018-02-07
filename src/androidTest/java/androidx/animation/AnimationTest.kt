@@ -60,7 +60,6 @@ class AnimationTest {
         assertTrue(called)
     }
 
-
     @Test
     fun testDoOnRepeat() {
         var called = false
@@ -71,5 +70,4 @@ class AnimationTest {
         listener.onAnimationRepeat(animation)
         assertTrue(called)
     }
-
 }

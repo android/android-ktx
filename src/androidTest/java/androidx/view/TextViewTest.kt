@@ -22,7 +22,6 @@ import android.widget.TextView
 import org.junit.Assert
 import org.junit.Test
 
-
 class TextViewTest {
 
     private val context = InstrumentationRegistry.getContext()
