@@ -101,6 +101,18 @@ inline fun Cursor.getString(columnName: String): String =
     getString(getColumnIndexOrThrow(columnName))
 
 /**
+ * Returns the value of the requested column as a boolean.
+ *
+ * The result and whether this method throws an exception when the column value is null or the
+ * column type is not an integral type is implementation-defined.
+ *
+ * @see Cursor.getColumnIndexOrThrow
+ * @see Cursor.getInt
+ */
+inline fun Cursor.getBoolean(columnName: String): Boolean =
+    getInt(getColumnIndexOrThrow(columnName)) == 1
+
+/**
  * Returns the value of the requested column as a nullable byte array.
  *
  * The result and whether this method throws an exception when the column type is not a blob type is
@@ -176,6 +188,17 @@ inline fun Cursor.getShortOrNull(index: Int) = if (isNull(index)) null else getS
  * @see Cursor.getString
  */
 inline fun Cursor.getStringOrNull(index: Int) = if (isNull(index)) null else getString(index)
+
+/**
+ * Returns the value of the requested column as a nullable boolean.
+ *
+ * The result and whether this method throws an exception when the column type is not an integral
+ * type is implementation-defined.
+ *
+ * @see Cursor.isNull
+ * @see Cursor.getInt
+ */
+inline fun Cursor.getBooleanOrNull(index: Int) = if (isNull(index)) null else getInt(index) == 1
 
 /**
  * Returns the value of the requested column as a nullable byte array.
@@ -267,3 +290,16 @@ inline fun Cursor.getShortOrNull(columnName: String) =
  */
 inline fun Cursor.getStringOrNull(columnName: String) =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getString(it) }
+
+/**
+ * Returns the value of the requested column as a nullable boolean.
+ *
+ * The result and whether this method throws an exception when the column type is not an integral
+ * type is implementation-defined.
+ *
+ * @see Cursor.getColumnIndexOrThrow
+ * @see Cursor.isNull
+ * @see Cursor.getString
+ */
+inline fun Cursor.getBooleanOrNull(columnName: String) =
+    getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getInt(it) == 1 }
