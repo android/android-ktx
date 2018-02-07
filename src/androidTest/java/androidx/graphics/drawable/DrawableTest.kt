@@ -21,6 +21,7 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.support.test.InstrumentationRegistry
+import android.support.v4.content.ContextCompat
 import androidx.graphics.createBitmap
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -163,5 +164,27 @@ class DrawableTest {
         assertEquals(2, drawable.bounds.top)
         assertEquals(3, drawable.bounds.right)
         assertEquals(4, drawable.bounds.bottom)
+    }
+
+    @Test fun tintColorTest(){
+        val drawable = object : ColorDrawable(Color.RED) {
+            override fun getIntrinsicWidth() = 10
+            override fun getIntrinsicHeight() = 10
+        }
+        drawable.setBounds(0, 0, 10, 10)
+        drawable.tintColor(Color.BLUE)
+        val p =  drawable.toBitmap().getPixel(0, 0)
+        assertEquals(Color.BLUE, p)
+    }
+
+    @Test fun tintColorByIdTest(){
+        val drawable = object : ColorDrawable(Color.RED) {
+            override fun getIntrinsicWidth() = 10
+            override fun getIntrinsicHeight() = 10
+        }
+        drawable.setBounds(0, 0, 10, 10)
+        drawable.tintByColorId(context, android.R.color.black)
+        val p =  drawable.toBitmap().getPixel(0, 0)
+        assertEquals(ContextCompat.getColor(context, android.R.color.black), p)
     }
 }
