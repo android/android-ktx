@@ -21,6 +21,7 @@ import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewCompat
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.graphics.applyCanvas
 
@@ -171,4 +172,20 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
         throw IllegalStateException("View needs to be laid out before calling toBitmap()")
     }
     return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
+}
+
+/**
+ * Sets the margins in the ViewGroup's MarginLayoutParams. This version of the method sets all axes
+ * to the provided size.
+ *
+ * @see ViewGroup.MarginLayoutParams.setMargins
+ * @throws IllegalStateException if view doesn't have layoutParams as  ViewGroup.MarginLayoutParams
+ */
+fun View.setMargins(@Px size: Int) {
+    if (layoutParams is ViewGroup.MarginLayoutParams) {
+        (layoutParams as ViewGroup.MarginLayoutParams).setMargins(size)
+    } else {
+        throw IllegalStateException("View needs to have ViewGroup.MarginLayoutParams " +
+                "to call setMargins()")
+    }
 }

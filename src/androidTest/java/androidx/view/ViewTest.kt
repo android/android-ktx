@@ -19,6 +19,7 @@ package androidx.view
 import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
 import android.view.View
+import android.view.ViewGroup
 import androidx.assertThrows
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -168,5 +169,15 @@ class ViewTest {
         val bitmap = view.toBitmap(Bitmap.Config.RGB_565)
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
+    }
+
+    @Test
+    fun setMargins() {
+        view.layoutParams = ViewGroup.MarginLayoutParams(100, 200)
+        view.setMargins(42)
+        assertEquals(42, (view.layoutParams as ViewGroup.MarginLayoutParams).leftMargin)
+        assertEquals(42, (view.layoutParams as ViewGroup.MarginLayoutParams).topMargin)
+        assertEquals(42, (view.layoutParams as ViewGroup.MarginLayoutParams).rightMargin)
+        assertEquals(42, (view.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin)
     }
 }

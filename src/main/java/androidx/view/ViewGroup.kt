@@ -31,6 +31,15 @@ import android.view.ViewGroup
 operator fun ViewGroup.get(index: Int) =
     getChildAt(index) ?: throw IndexOutOfBoundsException("Index: $index, Size: $childCount")
 
+/**
+ * Returns the view at `index` or null
+ *
+ */
+fun ViewGroup.getOrNull(position: Int): View? = when {
+    position < this.childCount && position >= 0 -> get(position)
+    else -> null
+}
+
 /** Returns `true` if `view` is found in this view group. */
 inline operator fun ViewGroup.contains(view: View) = indexOfChild(view) != -1
 
