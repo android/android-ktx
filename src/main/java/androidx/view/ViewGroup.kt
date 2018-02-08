@@ -22,6 +22,7 @@ import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 
 /**
  * Returns the view at [index].
@@ -76,6 +77,31 @@ val ViewGroup.children: Sequence<View>
     get() = object : Sequence<View> {
         override fun iterator() = this@children.iterator()
     }
+
+/**
+ * Executes [block] with the ViewGroup's layoutParams and reassigns the layoutParams with the
+ * updated version.
+ *
+ * @see ViewGroup.getLayoutParams
+ * @see ViewGroup.setLayoutParams
+ **/
+inline fun ViewGroup.updateLayoutParams(block: LayoutParams.() -> Unit) {
+    updateLayoutParams<LayoutParams>(block)
+}
+
+/**
+ * Executes [block] with a typed version of the ViewGroup's layoutParams and reassigns the
+ * layoutParams with the updated version.
+ *
+ * @see ViewGroup.getLayoutParams
+ * @see ViewGroup.setLayoutParams
+ **/
+@JvmName("updateLayoutParamsTyped")
+inline fun <reified T : LayoutParams> ViewGroup.updateLayoutParams(block: T.() -> Unit) {
+    val params = layoutParams as T
+    block(params)
+    layoutParams = params
+}
 
 /**
  * Sets the margins in the ViewGroup's MarginLayoutParams. This version of the method sets all axes
