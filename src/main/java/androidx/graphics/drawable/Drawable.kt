@@ -16,23 +16,16 @@
 
 package androidx.graphics.drawable
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Bitmap.Config
 import android.graphics.Canvas
-import android.graphics.PorterDuff
-import android.graphics.PorterDuff.Mode.SRC_IN
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorRes
 import android.support.annotation.Px
-import android.support.v4.content.ContextCompat
 import androidx.graphics.component1
 import androidx.graphics.component2
 import androidx.graphics.component3
 import androidx.graphics.component4
-import androidx.graphics.toColorFilter
 
 /**
  * Return a [Bitmap] representation of this [Drawable].
@@ -85,26 +78,4 @@ fun Drawable.updateBounds(
     @Px bottom: Int = bounds.bottom
 ) {
     setBounds(left, top, right, bottom)
-}
-
-/**
- *  Tint color over drawable by Color Id
- *
- *  @see ContextCompat.getColor
- *  @param context a context to call ContextCompat.getColor()
- *  @param colorId colorId to tint
- * */
-fun Drawable.tintByColorId(context: Context, @ColorRes colorId: Int) {
-    tintColor(ContextCompat.getColor(context, colorId))
-}
-
-/**
- *  Tint color over drawable
- *
- *  @see Drawable.setColorFilter()
- *  @param color color to tint
- *  @param mode PorterDuff.Mode of the desired drawable. Defaults to [PorterDuff.Mode.SRC_IN].
- * */
-fun Drawable.tintColor(@ColorInt color: Int, mode: PorterDuff.Mode = SRC_IN) {
-    this.colorFilter = mode.toColorFilter(color)
 }
