@@ -169,4 +169,34 @@ class ViewTest {
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
     }
+
+    @Test fun isVisible() {
+        view.isVisible = true
+        assertTrue(view.isVisible)
+        assertEquals(View.VISIBLE, view.visibility)
+
+        view.isVisible = false
+        assertFalse(view.isVisible)
+        assertEquals(View.GONE, view.visibility)
+    }
+
+    @Test fun isInvisible() {
+        view.isInvisible = true
+        assertTrue(view.isInvisible)
+        assertEquals(View.INVISIBLE, view.visibility)
+
+        view.isInvisible = false
+        assertFalse(view.isInvisible)
+        assertEquals(View.VISIBLE, view.visibility)
+    }
+
+    @Test fun isGone() {
+        view.isGone = true
+        assertTrue(view.isGone)
+        assertEquals(View.GONE, view.visibility)
+
+        view.isGone = false
+        assertFalse(view.isGone)
+        assertEquals(View.VISIBLE, view.visibility)
+    }
 }

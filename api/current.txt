@@ -1,13 +1,5 @@
 package androidx.animation {
 
-  public final class AnimationKt {
-    ctor public AnimationKt();
-    method public static final android.view.animation.Animation.AnimationListener addListener(android.view.animation.Animation, kotlin.jvm.functions.Function1<? super android.view.animation.Animation,kotlin.Unit>? onEnd = "null", kotlin.jvm.functions.Function1<? super android.view.animation.Animation,kotlin.Unit>? onStart = "null", kotlin.jvm.functions.Function1<? super android.view.animation.Animation,kotlin.Unit>? onRepeat = "null");
-    method public static final android.view.animation.Animation.AnimationListener doOnEnd(android.view.animation.Animation, kotlin.jvm.functions.Function1<? super android.view.animation.Animation,kotlin.Unit> action);
-    method public static final android.view.animation.Animation.AnimationListener doOnRepeat(android.view.animation.Animation, kotlin.jvm.functions.Function1<? super android.view.animation.Animation,kotlin.Unit> action);
-    method public static final android.view.animation.Animation.AnimationListener doOnStart(android.view.animation.Animation, kotlin.jvm.functions.Function1<? super android.view.animation.Animation,kotlin.Unit> action);
-  }
-
   public final class AnimatorKt {
     ctor public AnimatorKt();
     method public static final android.animation.Animator.AnimatorListener addListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onEnd = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onStart = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onCancel = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onRepeat = "null");
@@ -300,8 +292,6 @@ package androidx.graphics.drawable {
 
   public final class DrawableKt {
     ctor public DrawableKt();
-    method public static final void tintByColorId(android.graphics.drawable.Drawable, android.content.Context context, @ColorRes int colorId);
-    method public static final void tintColor(android.graphics.drawable.Drawable, @ColorInt int color, android.graphics.PorterDuff.Mode mode = "SRC_IN");
     method public static final android.graphics.Bitmap toBitmap(android.graphics.drawable.Drawable, @Px int width = "intrinsicWidth", @Px int height = "intrinsicHeight", android.graphics.Bitmap.Config? config = "null");
     method public static final void updateBounds(android.graphics.drawable.Drawable, @Px int left = "bounds.left", @Px int top = "bounds.top", @Px int right = "bounds.right", @Px int bottom = "bounds.bottom");
   }
@@ -656,12 +646,6 @@ package androidx.util {
 
 package androidx.view {
 
-  public final class TextViewKt {
-    ctor public TextViewKt();
-    method public static final void strikeThrough(android.widget.TextView);
-    method public static final void underLine(android.widget.TextView);
-  }
-
   public final class ViewGroupKt {
     ctor public ViewGroupKt();
     method public static final operator boolean contains(android.view.ViewGroup, android.view.View view);
@@ -669,7 +653,6 @@ package androidx.view {
     method public static final void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super Integer,? super android.view.View,kotlin.Unit> action);
     method public static final operator android.view.View get(android.view.ViewGroup, int index);
     method public static final kotlin.sequences.Sequence<android.view.View> getChildren(android.view.ViewGroup);
-    method public static final android.view.View? getOrNull(android.view.ViewGroup, int position);
     method public static final int getSize(android.view.ViewGroup);
     method public static final boolean isEmpty(android.view.ViewGroup);
     method public static final boolean isNotEmpty(android.view.ViewGroup);
@@ -686,10 +669,15 @@ package androidx.view {
     method public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final boolean isGone(android.view.View);
+    method public static final boolean isInvisible(android.view.View);
+    method public static final boolean isVisible(android.view.View);
     method public static final Runnable postDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method @RequiresApi(16) public static final Runnable postOnAnimationDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
-    method public static final void setMargins(android.view.View, @Px int size);
+    method public static final void setGone(android.view.View, boolean value);
+    method public static final void setInvisible(android.view.View, boolean value);
     method public static final void setPadding(android.view.View, @Px int size);
+    method public static final void setVisible(android.view.View, boolean value);
     method public static final android.graphics.Bitmap toBitmap(android.view.View, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
     method public static final void updatePadding(android.view.View, @Px int left = "paddingLeft", @Px int top = "paddingTop", @Px int right = "paddingRight", @Px int bottom = "paddingBottom");
     method @RequiresApi(17) public static final void updatePaddingRelative(android.view.View, @Px int start = "paddingStart", @Px int top = "paddingTop", @Px int end = "paddingEnd", @Px int bottom = "paddingBottom");
