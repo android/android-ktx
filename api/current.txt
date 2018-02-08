@@ -364,7 +364,6 @@ package androidx.text {
 
   public final class SpannedStringKt {
     ctor public SpannedStringKt();
-    method public static final operator boolean contains(android.text.Spanned, Object span);
     method public static final android.text.Spanned toSpanned(String);
   }
 

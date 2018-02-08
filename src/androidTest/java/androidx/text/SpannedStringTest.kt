@@ -20,22 +20,13 @@ import android.graphics.Typeface.BOLD
 import android.text.SpannedString
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SpannedStringTest {
 
     @Test fun toSpanned() = assertTrue("Hello, World".toSpanned() is SpannedString)
-
-    @Test fun contains() {
-        val s = "Hello, World".toSpannable()
-        val bold = StyleSpan(BOLD)
-        s += bold
-        assertTrue(bold in s)
-        assertFalse(bold !in s)
-    }
 
     @Test fun getSpans() {
         val s = "Hello, World".toSpannable()

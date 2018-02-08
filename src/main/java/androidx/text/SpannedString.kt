@@ -22,13 +22,10 @@ import android.text.Spanned
 import android.text.SpannedString
 
 /**
- * Returns a new [SpannedString] from source,
+ * Returns a new [Spanned] from [CharSequence],
  * or the source itself if it is already an instance of [SpannedString].
  */
 inline fun CharSequence.toSpanned(): Spanned = SpannedString.valueOf(this)
-
-/** Returns `true` if [span] is found in this text. */
-inline operator fun Spanned.contains(span: Any): Boolean = getSpans<Any>().contains(span)
 
 /** Get all spans that are instance of [T]. */
 inline fun <reified T> Spanned.getSpans(): Array<out T> = getSpans(0, length, T::class.java)
