@@ -523,35 +523,22 @@ package androidx.util {
   public final class LogKt {
     ctor public LogKt();
     method public static final <T> void d(T, kotlin.jvm.functions.Function0<String> msg);
-    method public static final <T> void d(T, String msg, java.lang.Object... args);
     method public static final <T> void d(T, String msg);
-    method public static final void d(String tag, String msg, java.lang.Object... args);
     method public static final int d(String tag, String msg);
     method public static final <T> void e(T, kotlin.jvm.functions.Function0<String> msg);
-    method public static final <T> void e(T, String msg, java.lang.Object... args);
     method public static final <T> void e(T, String msg);
-    method public static final void e(String tag, String msg, java.lang.Object... args);
     method public static final int e(String tag, String msg);
-    method public static final void formatMessage(String msg, Object[] args, kotlin.jvm.functions.Function1<? super String,kotlin.Unit> block);
     method public static final <T> void i(T, kotlin.jvm.functions.Function0<String> msg);
-    method public static final <T> void i(T, String msg, java.lang.Object... args);
     method public static final <T> void i(T, String msg);
-    method public static final void i(String tag, String msg, java.lang.Object... args);
     method public static final int i(String tag, String msg);
     method public static final <T> void v(T, kotlin.jvm.functions.Function0<String> msg);
-    method public static final <T> void v(T, String msg, java.lang.Object... args);
     method public static final <T> void v(T, String msg);
-    method public static final void v(String tag, String msg, java.lang.Object... args);
     method public static final int v(String tag, String msg);
     method public static final <T> void w(T, kotlin.jvm.functions.Function0<String> msg);
-    method public static final <T> void w(T, String msg, java.lang.Object... args);
     method public static final <T> void w(T, String msg);
-    method public static final void w(String tag, String msg, java.lang.Object... args);
     method public static final int w(String tag, String msg);
-    method public static final <T> void wtf(T, kotlin.jvm.functions.Function0<String> msg);
-    method public static final <T> void wtf(T, String msg, java.lang.Object... args);
-    method public static final <T> void wtf(T, String msg);
-    method public static final void wtf(String tag, String msg, java.lang.Object... args);
+    method public static final <T> int wtf(T, kotlin.jvm.functions.Function0<String> msg);
+    method public static final <T> int wtf(T, String msg);
     method public static final int wtf(String tag, String msg);
   }
 
