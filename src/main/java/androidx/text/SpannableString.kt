@@ -37,4 +37,4 @@ inline operator fun Spannable.plusAssign(span: Any) =
 inline operator fun Spannable.minusAssign(span: Any) = removeSpan(span)
 
 /** Clear all spans from this text. */
-inline fun Spannable.clearSpans() = spans.forEach { removeSpan(it) }
+inline fun Spannable.clearSpans() = getSpans<Any>().forEach { removeSpan(it) }

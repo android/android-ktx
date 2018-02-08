@@ -29,26 +29,26 @@ class SpannableStringTest {
 
     @Test fun plusAssign() {
         val s = "Hello, World".toSpannable()
-        assertTrue(s.spans.isEmpty())
+        assertTrue(s.getSpans<Any>().isEmpty())
         s += StyleSpan(BOLD)
-        assertTrue(s.spans.isNotEmpty())
+        assertTrue(s.getSpans<Any>().isNotEmpty())
     }
 
     @Test fun minusAssign() {
         val s = "Hello, World".toSpannable()
         val bold = StyleSpan(BOLD)
         s += bold
-        assertTrue(s.spans.isNotEmpty())
+        assertTrue(s.getSpans<Any>().isNotEmpty())
         s -= bold
-        assertTrue(s.spans.isEmpty())
+        assertTrue(s.getSpans<Any>().isEmpty())
     }
 
     @Test fun clearSpans() {
         val s = "Hello, World".toSpannable()
         s += StyleSpan(BOLD)
         s += UnderlineSpan()
-        assertTrue(s.spans.isNotEmpty())
+        assertTrue(s.getSpans<Any>().isNotEmpty())
         s.clearSpans()
-        assertTrue(s.spans.isEmpty())
+        assertTrue(s.getSpans<Any>().isEmpty())
     }
 }

@@ -20,9 +20,9 @@ import android.graphics.Typeface.BOLD
 import android.text.SpannedString
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
-import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class SpannedStringTest {
@@ -41,14 +41,8 @@ class SpannedStringTest {
         val s = "Hello, World".toSpannable()
         s += StyleSpan(BOLD)
         s += UnderlineSpan()
-        assertEquals(s.getSpans(StyleSpan::class.java).size, 1)
-        assertEquals(s.getSpans(UnderlineSpan::class.java).size, 1)
-    }
-
-    @Test fun spans() {
-        val s = "Hello, World".toSpannable()
-        s += StyleSpan(BOLD)
-        s += UnderlineSpan()
-        assertEquals(s.spans.size, 2)
+        assertEquals(s.getSpans<StyleSpan>().size, 1)
+        assertEquals(s.getSpans<UnderlineSpan>().size, 1)
+        assertEquals(s.getSpans<Any>().size, 2)
     }
 }
