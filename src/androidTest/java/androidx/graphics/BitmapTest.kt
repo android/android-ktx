@@ -20,6 +20,7 @@ import android.graphics.Bitmap
 import android.graphics.ColorSpace
 import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class BitmapTest {
@@ -67,5 +68,17 @@ class BitmapTest {
         val b = createBitmap(2, 2)
         b[1, 1] = 0x40302010
         assertEquals(0x40302010, b[1, 1])
+    }
+
+    @Test fun use() {
+        val bitmap = createBitmap(1, 1)
+
+        var called = false
+        bitmap.use {
+            called = true
+        }
+
+        assertTrue(called)
+        assertTrue(bitmap.isRecycled)
     }
 }

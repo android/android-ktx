@@ -106,6 +106,7 @@ package androidx.graphics {
     method public static final operator int get(android.graphics.Bitmap, int x, int y);
     method public static final android.graphics.Bitmap scale(android.graphics.Bitmap, int width, int height, boolean filter = "true");
     method public static final operator void set(android.graphics.Bitmap, int x, int y, @ColorInt int color);
+    method public static final <T> T! use(android.graphics.Bitmap, kotlin.jvm.functions.Function1<? super android.graphics.Bitmap,? extends T> block);
   }
 
   public final class CanvasKt {
