@@ -19,6 +19,7 @@
 package androidx.database
 
 import android.database.Cursor
+import java.util.UUID
 
 /**
  * Returns the value of the requested column as a byte array.
@@ -267,3 +268,20 @@ inline fun Cursor.getShortOrNull(columnName: String) =
  */
 inline fun Cursor.getStringOrNull(columnName: String) =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getString(it) }
+
+/**
+ * Returns the value of the requested column as an UUID.
+ *
+ * @see Cursor.isNull
+ * @see Cursor.getString
+ */
+inline fun Cursor.getUuidOrNull(columnIndex: Int): UUID? = if (isNull(columnIndex)) null else UUID.fromString(getString(columnIndex))
+
+/**
+ * Returns the value of the requested column as an UUID.
+ *
+ * @see Cursor.isNull
+ * @see Cursor.getString
+ * @see Cursor.getColumnIndexOrThrow
+ */
+inline fun Cursor.getUuidOrNull(columnName: String): UUID? = getColumnIndexOrThrow(columnName).let { getUuidOrNull(it) }
