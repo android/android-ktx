@@ -21,6 +21,7 @@ import android.support.test.filters.SdkSuppress
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.assertThrows
 import androidx.fail
 import com.google.common.truth.Truth.assertThat
@@ -205,6 +206,23 @@ class ViewGroupTest {
 
         viewGroup.children.forEachIndexed { index, child ->
             assertSame(views[index], child)
+        }
+    }
+
+    @Test fun layoutParamsAs() {
+        viewGroup.layoutParams = LinearLayout.LayoutParams(0, 0)
+        viewGroup.layoutParamsAs<LinearLayout.LayoutParams> {
+            assertSame(viewGroup.layoutParams, this)
+
+            width = 500
+            height = 1000
+        }
+
+        assertEquals(500, viewGroup.layoutParams.width)
+        assertEquals(1000, viewGroup.layoutParams.height)
+
+        assertThrows<ClassCastException> {
+            viewGroup.layoutParamsAs<RelativeLayout.LayoutParams> {}
         }
     }
 
