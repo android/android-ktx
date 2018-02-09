@@ -695,8 +695,8 @@ package androidx.widget {
     method public static final void setImageViewAlpha(android.widget.RemoteViews, @IdRes int viewId, @IntRange(from=0L, to=255L) int alpha);
     method public static final void setImageViewMaxHeight(android.widget.RemoteViews, @IdRes int viewId, @DimenRes int height);
     method public static final void setImageViewMaxWidth(android.widget.RemoteViews, @IdRes int viewId, @DimenRes int width);
-    method public static final void setTextViewMaxLines(android.widget.RemoteViews, @IdRes int viewId, @DimenRes int lines);
-    method public static final void setTextViewMinLines(android.widget.RemoteViews, @IdRes int viewId, @DimenRes int lines);
+    method public static final void setTextViewMaxLines(android.widget.RemoteViews, @IdRes int viewId, int lines);
+    method public static final void setTextViewMinLines(android.widget.RemoteViews, @IdRes int viewId, int lines);
     method public static final void setTextViewPaintFlags(android.widget.RemoteViews, @IdRes int viewId, int flags);
     method public static final void setTextViewTextSize(android.widget.RemoteViews, @IdRes int viewId, @DimenRes float size);
   }
