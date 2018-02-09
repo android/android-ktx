@@ -80,14 +80,16 @@ class RemoteViewsTest {
     @Test
     fun setTextViewTextSize() {
         var testTextSize = context.resources.getDimension(R.dimen.test_textSize_10sp)
-        remoteView.setTextViewTextSize(R.id.test_textView, 10f) //set textSize to 10sp
+        var actualSize = testTextSize * context.resources.displayMetrics.density
+        remoteView.setTextViewTextSize(R.id.test_textView, testTextSize)
         remoteView.reapply(rule.activity, result)
-        assertEquals(testTextSize, textView.textSize)
+        assertEquals(actualSize, textView.textSize)
 
         testTextSize = context.resources.getDimension(R.dimen.test_textSize_20sp)
-        remoteView.setTextViewTextSize(R.id.test_textView, 20f) //set textSize to 20sp
+        actualSize = testTextSize * context.resources.displayMetrics.density
+        remoteView.setTextViewTextSize(R.id.test_textView, testTextSize)
         remoteView.reapply(rule.activity, result)
-        assertEquals(testTextSize, textView.textSize)
+        assertEquals(actualSize, textView.textSize)
     }
 
     @Test

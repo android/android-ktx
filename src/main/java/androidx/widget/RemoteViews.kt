@@ -32,11 +32,11 @@ inline fun RemoteViews.setTextViewTextSize(@IdRes viewId: Int, @DimenRes size: F
     setFloat(viewId, "setTextSize", size)
 
 /** Set `minLines` to 'TextView' in 'RemoteView'. */
-inline fun RemoteViews.setTextViewMinLines(@IdRes viewId: Int, @DimenRes lines: Int) =
+inline fun RemoteViews.setTextViewMinLines(@IdRes viewId: Int, lines: Int) =
     setInt(viewId, "setMinLines", lines)
 
 /** Set `maxLines` to 'TextView' in 'RemoteView'. */
-inline fun RemoteViews.setTextViewMaxLines(@IdRes viewId: Int, @DimenRes lines: Int) =
+inline fun RemoteViews.setTextViewMaxLines(@IdRes viewId: Int, lines: Int) =
     setInt(viewId, "setMaxLines", lines)
 
 /** Set `paintFlags` to 'TextView' in 'RemoteView'. */
