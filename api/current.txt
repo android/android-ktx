@@ -317,6 +317,12 @@ package androidx.net {
 
 package androidx.os {
 
+  public final class BuildKt {
+    ctor public BuildKt();
+    method public static final void fromApi(int fromVersion, kotlin.jvm.functions.Function0<kotlin.Unit> block);
+    method public static final void toApi(int toVersion, kotlin.jvm.functions.Function0<kotlin.Unit> block);
+  }
+
   public final class BundleKt {
     ctor public BundleKt();
     method public static final error.NonExistentClass bundleOf(kotlin.Pair<String,?>... pairs);
