@@ -30,7 +30,7 @@ var EditText.content
     }
 
 /**
- * @returns Weather the EditText text is empty or not
+ * @returns Whether the EditText text is empty or not
  */
 val EditText.isEmpty get() = text.isEmpty()
 
