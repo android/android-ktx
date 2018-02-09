@@ -685,3 +685,21 @@ package androidx.view {
 
 }
 
+package androidx.widget {
+
+  public final class RemoteViewsKt {
+    ctor public RemoteViewsKt();
+    method public static final void setBackgroundColor(android.widget.RemoteViews, @IdRes int viewId, @ColorInt int color);
+    method public static final void setBackgroundResource(android.widget.RemoteViews, @IdRes int viewId, @DrawableRes int drawable);
+    method public static final void setEnabled(android.widget.RemoteViews, @IdRes int viewId, boolean enabled);
+    method public static final void setImageViewAlpha(android.widget.RemoteViews, @IdRes int viewId, @IntRange(from=0L, to=255L) int alpha);
+    method public static final void setImageViewMaxHeight(android.widget.RemoteViews, @IdRes int viewId, @DimenRes int height);
+    method public static final void setImageViewMaxWidth(android.widget.RemoteViews, @IdRes int viewId, @DimenRes int width);
+    method public static final void setTextViewMaxLines(android.widget.RemoteViews, @IdRes int viewId, @DimenRes int lines);
+    method public static final void setTextViewMinLines(android.widget.RemoteViews, @IdRes int viewId, @DimenRes int lines);
+    method public static final void setTextViewPaintFlags(android.widget.RemoteViews, @IdRes int viewId, int flags);
+    method public static final void setTextViewTextSize(android.widget.RemoteViews, @IdRes int viewId, @DimenRes float size);
+  }
+
+}
+
