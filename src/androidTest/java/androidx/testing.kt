@@ -18,17 +18,12 @@ package androidx
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.support.annotation.LayoutRes
 import android.util.AttributeSet
 import android.util.Xml
-import androidx.graphics.drawable.toBitmap
 import com.google.common.truth.ThrowableSubject
 import com.google.common.truth.Truth.assertThat
 import org.xmlpull.v1.XmlPullParser
-import java.io.ByteArrayOutputStream
-import java.util.Arrays
 
 inline fun <reified T : Throwable> assertThrows(body: () -> Unit): ThrowableSubject {
     try {
