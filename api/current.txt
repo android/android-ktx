@@ -49,9 +49,11 @@ package androidx.content.res {
     method @RequiresApi(26) public static final android.graphics.Typeface getFontOrThrow(android.content.res.TypedArray, @StyleableRes int index);
     method public static final int getIntOrThrow(android.content.res.TypedArray, @StyleableRes int index);
     method public static final int getIntegerOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method @AnyRes public static final int getResourceIdOrThrow(android.content.res.TypedArray, @StyleableRes int index);
     method public static final String getStringOrThrow(android.content.res.TypedArray, @StyleableRes int index);
     method public static final CharSequence[] getTextArrayOrThrow(android.content.res.TypedArray, @StyleableRes int index);
     method public static final CharSequence getTextOrThrow(android.content.res.TypedArray, @StyleableRes int index);
+    method public static final <R> R! use(android.content.res.TypedArray, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,? extends R> block);
   }
 
 }
@@ -322,6 +324,11 @@ package androidx.os {
   public final class BundleKt {
     ctor public BundleKt();
     method public static final error.NonExistentClass bundleOf(kotlin.Pair<String,?>... pairs);
+  }
+
+  public final class FileKt {
+    ctor public FileKt();
+    method public static final android.net.Uri toUri(java.io.File);
   }
 
   public final class HandlerKt {
@@ -649,6 +656,7 @@ package androidx.view {
     method public static final void forEach(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super Integer,? super android.view.View,kotlin.Unit> action);
     method public static final operator android.view.View get(android.view.ViewGroup, int index);
+    method public static final kotlin.sequences.Sequence<android.view.View> getChildren(android.view.ViewGroup);
     method public static final int getSize(android.view.ViewGroup);
     method public static final boolean isEmpty(android.view.ViewGroup);
     method public static final boolean isNotEmpty(android.view.ViewGroup);
@@ -665,9 +673,15 @@ package androidx.view {
     method public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final boolean isGone(android.view.View);
+    method public static final boolean isInvisible(android.view.View);
+    method public static final boolean isVisible(android.view.View);
     method public static final Runnable postDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method @RequiresApi(16) public static final Runnable postOnAnimationDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
+    method public static final void setGone(android.view.View, boolean value);
+    method public static final void setInvisible(android.view.View, boolean value);
     method public static final void setPadding(android.view.View, @Px int size);
+    method public static final void setVisible(android.view.View, boolean value);
     method public static final android.graphics.Bitmap toBitmap(android.view.View, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
     method public static final void updatePadding(android.view.View, @Px int left = "paddingLeft", @Px int top = "paddingTop", @Px int right = "paddingRight", @Px int bottom = "paddingBottom");
     method @RequiresApi(17) public static final void updatePaddingRelative(android.view.View, @Px int start = "paddingStart", @Px int top = "paddingTop", @Px int end = "paddingEnd", @Px int bottom = "paddingBottom");

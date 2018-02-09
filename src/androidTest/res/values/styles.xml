@@ -38,6 +38,9 @@
         <attr name="integer_present" format="integer"/>
         <attr name="integer_absent" format="integer"/>
 
+        <attr name="resource_present" format="reference"/>
+        <attr name="resource_absent" format="reference"/>
+
         <attr name="string_present" format="string"/>
         <attr name="string_absent" format="string"/>
 
