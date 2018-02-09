@@ -18,12 +18,17 @@ package androidx
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.support.annotation.LayoutRes
 import android.util.AttributeSet
 import android.util.Xml
+import androidx.graphics.drawable.toBitmap
 import com.google.common.truth.ThrowableSubject
 import com.google.common.truth.Truth.assertThat
 import org.xmlpull.v1.XmlPullParser
+import java.io.ByteArrayOutputStream
+import java.util.Arrays
 
 inline fun <reified T : Throwable> assertThrows(body: () -> Unit): ThrowableSubject {
     try {
@@ -48,3 +53,43 @@ fun Context.getAttributeSet(@LayoutRes layoutId: Int): AttributeSet {
     }
     return Xml.asAttributeSet(parser)
 }
+
+fun <T : Drawable> T.bytesEqualTo(t: T?) = toBitmap().bytesEqualTo(t?.toBitmap(), true)
+
+fun <T : Drawable> T.pixelsEqualTo(t: T?) = toBitmap().pixelsEqualTo(t?.toBitmap(), true)
+
+fun Bitmap.bytesEqualTo(otherBitmap: Bitmap?, shouldRecycle: Boolean = false) =
+    otherBitmap?.let { other ->
+        if (width == other.width && height == other.height) {
+            val res = toBytes().contentEquals(other.toBytes())
+            if (shouldRecycle) {
+                doRecycle().also { otherBitmap.doRecycle() }
+            }
+            res
+        } else false
+    } ?: run { false }
+
+fun Bitmap.pixelsEqualTo(otherBitmap: Bitmap?, shouldRecycle: Boolean = false) =
+    otherBitmap?.let { other ->
+        if (width == other.width && height == other.height) {
+            val res = Arrays.equals(toPixels(), other.toPixels())
+            if (shouldRecycle) {
+                doRecycle().also { otherBitmap.doRecycle() }
+            }
+            res
+        } else false
+    } ?: run { false }
+
+private fun Bitmap.toBytes(): ByteArray = ByteArrayOutputStream().use { stream ->
+    compress(Bitmap.CompressFormat.JPEG, 100, stream)
+    stream.toByteArray()
+}
+
+private fun Bitmap.doRecycle() {
+    if (!isRecycled) recycle()
+}
+
+private fun Bitmap.toPixels() =
+    IntArray(width * height).apply {
+        getPixels(this, 0, width, 0, 0, width, height)
+    }

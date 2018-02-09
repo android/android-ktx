@@ -26,25 +26,6 @@ import android.support.annotation.DrawableRes
 import android.support.annotation.IdRes
 import android.widget.RemoteViews
 
-
-inline fun RemoteViews.setViewEnabled(@IdRes viewId: Int, enabled: Boolean) =
-    setBoolean(viewId, "setEnabled", enabled)
-
-inline fun RemoteViews.setBackgroundColor(@IdRes viewId: Int, @ColorInt color: Int) =
-    setInt(viewId, "setBackgroundColor", color)
-
-inline fun RemoteViews.setBackgroundResource(@IdRes viewId: Int, @DrawableRes drawable: Int) =
-    setInt(viewId, "setBackgroundResource", drawable)
-
-inline fun RemoteViews.setImageViewAlpha(@IdRes viewId: Int, @DimenRes alpha: Int) =
-    setInt(viewId, "setImageAlpha", alpha)
-
-inline fun RemoteViews.setImageViewMaxWidth(@IdRes viewId: Int, @DimenRes width: Int) =
-    setInt(viewId, "setMaxWidth", width)
-
-inline fun RemoteViews.setImageViewMaxHeight(@IdRes viewId: Int, @DimenRes height: Int) =
-    setInt(viewId, "setMaxHeight", height)
-
 inline fun RemoteViews.setTextViewTextSize(@IdRes viewId: Int, @DimenRes size: Float) =
     setFloat(viewId, "setTextSize", size)
 
@@ -57,11 +38,20 @@ inline fun RemoteViews.setTextViewMaxLines(@IdRes viewId: Int, @DimenRes lines: 
 inline fun RemoteViews.setTextViewPaintFlags(@IdRes viewId: Int, flags: Int) =
     setInt(viewId, "setPaintFlags", flags)
 
-inline fun RemoteViews.setProgressBarIndeterminate(@IdRes viewId: Int, indeterminate: Boolean) =
-    setBoolean(viewId, "setIndeterminate", indeterminate)
+inline fun RemoteViews.setImageViewAlpha(@IdRes viewId: Int, @DimenRes alpha: Int) =
+    setInt(viewId, "setImageAlpha", alpha)
 
-inline fun RemoteViews.setProgressBarSecondaryProgress(@IdRes viewId: Int, secondaryProgress: Int) =
-    setInt(viewId, "setSecondaryProgress", secondaryProgress)
+inline fun RemoteViews.setImageViewMaxWidth(@IdRes viewId: Int, @DimenRes width: Int) =
+    setInt(viewId, "setMaxWidth", width)
 
-inline fun RemoteViews.setProgressBarProgress(@IdRes viewId: Int, progress: Int) =
-    setInt(viewId, "setProgress", progress)
+inline fun RemoteViews.setImageViewMaxHeight(@IdRes viewId: Int, @DimenRes height: Int) =
+    setInt(viewId, "setMaxHeight", height)
+
+inline fun RemoteViews.setEnabled(@IdRes viewId: Int, enabled: Boolean) =
+    setBoolean(viewId, "setEnabled", enabled)
+
+inline fun RemoteViews.setBackgroundColor(@IdRes viewId: Int, @ColorInt color: Int) =
+    setInt(viewId, "setBackgroundColor", color)
+
+inline fun RemoteViews.setBackgroundResource(@IdRes viewId: Int, @DrawableRes drawable: Int) =
+    setInt(viewId, "setBackgroundResource", drawable)
