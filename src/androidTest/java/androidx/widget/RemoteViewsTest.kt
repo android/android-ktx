@@ -20,16 +20,16 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
 import android.support.test.rule.ActivityTestRule
 import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.ImageView
 import android.widget.RemoteViews
 import android.widget.TextView
-import androidx.bytesEqualTo
+import androidx.graphics.drawable.toBitmap
 import androidx.kotlin.TestActivity
 import androidx.kotlin.test.R
-import androidx.pixelsEqualTo
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -160,10 +160,9 @@ class RemoteViewsTest {
     fun setBackgroundResource() {
         remoteView.setBackgroundResource(R.id.test_textView, R.drawable.box)
         remoteView.reapply(rule.activity, result)
-        val expectedDrawable = ContextCompat.getDrawable(context, R.drawable.box)
-        val isDrawablesEquals =
-            (textView.background.bytesEqualTo(expectedDrawable) &&
-                    textView.background.pixelsEqualTo(expectedDrawable))
+        val expectedDrawable = ContextCompat.getDrawable(context, R.drawable.box)?.toBitmap()
+        val isDrawablesEquals = (textView.background as GradientDrawable)
+            .toBitmap().sameAs(expectedDrawable)
         assertEquals(true, isDrawablesEquals)
     }
 }
