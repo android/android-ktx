@@ -35,7 +35,7 @@ var EditText.content
 val EditText.isEmpty get() = text.isEmpty()
 
 /**
- * @returns Weather the EditText text is blank or not
+ * @returns Whether the EditText text is blank or not
  */
 val EditText.isBlank get() = text.isBlank()
 
