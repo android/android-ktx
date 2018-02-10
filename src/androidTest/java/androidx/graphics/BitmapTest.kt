@@ -18,13 +18,11 @@ package androidx.graphics
 
 import android.graphics.Bitmap
 import android.graphics.ColorSpace
-import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class BitmapTest {
-    private val context = InstrumentationRegistry.getContext()
 
     @Test fun create() {
         val bitmap = createBitmap(7, 9)
