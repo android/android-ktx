@@ -39,6 +39,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getBooleanOrThrow(R.styleable.TypedArrayTypes_boolean_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun color() {
@@ -50,6 +51,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getColorOrThrow(R.styleable.TypedArrayTypes_color_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun colorStateList() {
@@ -62,6 +64,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getColorStateListOrThrow(R.styleable.TypedArrayTypes_color_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun dimension() {
@@ -73,6 +76,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getDimensionOrThrow(R.styleable.TypedArrayTypes_dimension_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun dimensionPixelSize() {
@@ -85,6 +89,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getDimensionPixelSizeOrThrow(R.styleable.TypedArrayTypes_dimension_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun dimensionPixelOffset() {
@@ -97,6 +102,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getDimensionPixelOffsetOrThrow(R.styleable.TypedArrayTypes_dimension_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun drawable() {
@@ -108,6 +114,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getDrawableOrThrow(R.styleable.TypedArrayTypes_drawable_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun float() {
@@ -119,6 +126,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getFloatOrThrow(R.styleable.TypedArrayTypes_float_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @SdkSuppress(minSdkVersion = 26)
@@ -131,6 +139,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getFontOrThrow(R.styleable.TypedArrayTypes_font_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun int() {
@@ -142,6 +151,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getIntOrThrow(R.styleable.TypedArrayTypes_integer_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun integer() {
@@ -153,6 +163,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getIntegerOrThrow(R.styleable.TypedArrayTypes_integer_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test
@@ -168,6 +179,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getResourceIdOrThrow(R.styleable.TypedArrayTypes_resource_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun string() {
@@ -179,6 +191,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getStringOrThrow(R.styleable.TypedArrayTypes_string_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun text() {
@@ -190,6 +203,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getTextOrThrow(R.styleable.TypedArrayTypes_string_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun textArray() {
@@ -203,6 +217,7 @@ class TypedArrayTest {
         assertThrows<IllegalArgumentException> {
             array.getTextOrThrow(R.styleable.TypedArrayTypes_text_array_absent)
         }.hasMessageThat().isEqualTo("Attribute not defined in set.")
+        array.recycle()
     }
 
     @Test fun useRecyclesArray() {

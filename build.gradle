@@ -72,12 +72,19 @@ dependencies {
 
     // Metalava isn't released yet. Check in its jar and explicitly track its transitive deps.
     metalava files('metalava.jar')
+    // noinspection GradleDependency
     metalava 'com.android.tools.external.org-jetbrains:uast:26.1.0-beta1'
+    // noinspection GradleDependency
     metalava 'com.android.tools.external.com-intellij:intellij-core:26.1.0-beta1'
+    // noinspection GradleDependency
     metalava 'com.android.tools.lint:lint-api:26.1.0-beta1'
+    // noinspection GradleDependency
     metalava 'com.android.tools.lint:lint-checks:26.1.0-beta1'
+    // noinspection GradleDependency
     metalava 'com.android.tools.lint:lint-gradle:26.1.0-beta1'
+    // noinspection GradleDependency
     metalava 'com.android.tools.lint:lint:26.1.0-beta1'
+    // noinspection GradleDependency
     metalava 'org.jetbrains.kotlin:kotlin-stdlib:1.2.21'
 }
 
