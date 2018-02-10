@@ -16,6 +16,7 @@
   -->
 
 <resources>
+    <string name="welcome_message">Hello, %1$s! You have &lt;b>%2$d new messages&lt;/b>.</string>
     <string-array name="text_array">
         <item>Hello</item>
         <item>World</item>
