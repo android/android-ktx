@@ -23,7 +23,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class BitmapTest {
-
     @Test fun create() {
         val bitmap = createBitmap(7, 9)
         assertEquals(7, bitmap.width)
