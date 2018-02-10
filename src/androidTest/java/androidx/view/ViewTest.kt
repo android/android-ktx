@@ -16,19 +16,31 @@
 
 package androidx.view
 
+import android.content.Intent
+import android.content.Intent.ACTION_MAIN
 import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
+import android.support.test.rule.ActivityTestRule
 import android.view.View
+import android.view.ViewGroup
 import androidx.assertThrows
+import androidx.graphics.component1
+import androidx.graphics.component2
+import androidx.kotlin.TestActivity
+import androidx.kotlin.test.R
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
+import org.junit.Rule
 import org.junit.Test
 
 class ViewTest {
     private val context = InstrumentationRegistry.getContext()
     private val view = View(context)
+
+    @JvmField @Rule
+    val rule = ActivityTestRule<TestActivity>(TestActivity::class.java, false, false)
 
     @Test
     fun doOnNextLayout() {
@@ -198,5 +210,50 @@ class ViewTest {
         view.isGone = false
         assertFalse(view.isGone)
         assertEquals(View.VISIBLE, view.visibility)
+    }
+
+    @Test fun locationOnScreenBeforeLayout() {
+        assertThrows<IllegalStateException> {
+            view.locationOnScreen
+        }
+    }
+
+    @Test fun locationOnScreen() {
+        rule.launchActivity(Intent(ACTION_MAIN))
+
+        attachViewToWindow(view)
+        view.layout(10, 20, 100, 100)
+
+        val (x, y) = view.locationOnScreen
+        val (_, parentOffset) = (view.parent as ViewGroup).locationOnScreen
+
+        assertEquals(x, 10)
+        assertEquals(y, 20 + parentOffset)
+    }
+
+    @Test fun locationInWindowBeforeLayout() {
+        assertThrows<IllegalStateException> {
+            view.locationInWindow
+        }
+    }
+
+    @Test fun locationInWindow() {
+        rule.launchActivity(Intent(ACTION_MAIN))
+
+        attachViewToWindow(view)
+        view.layout(10, 20, 100, 100)
+
+        val (x, y) = view.locationInWindow
+        val (_, parentOffset) = (view.parent as ViewGroup).locationOnScreen
+
+        assertEquals(x, 10)
+        assertEquals(y, 20 + parentOffset)
+    }
+
+    private fun attachViewToWindow(view: View) {
+        rule.runOnUiThread {
+            val root = rule.activity.findViewById<ViewGroup>(R.id.root)
+            root.addView(view)
+        }
     }
 }

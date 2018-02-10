@@ -669,6 +669,8 @@ package androidx.view {
     method public static final void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static final void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static final android.graphics.Point getLocationInWindow(android.view.View);
+    method public static final android.graphics.Point getLocationOnScreen(android.view.View);
     method public static final boolean isGone(android.view.View);
     method public static final boolean isInvisible(android.view.View);
     method public static final boolean isVisible(android.view.View);
