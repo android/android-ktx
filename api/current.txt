@@ -96,6 +96,30 @@ package androidx.database.sqlite {
 
 }
 
+package androidx.delegate {
+
+  public final class PhantomRef<T> implements kotlin.properties.ReadWriteProperty<java.lang.Object,T> {
+    ctor public PhantomRef(T? p, java.lang.ref.ReferenceQueue<T> queue);
+    method public T? getValue(Object? thisRef, kotlin.reflect.KProperty<?> property);
+    method public void setValue(Object? thisRef, kotlin.reflect.KProperty<?> property, T? value);
+  }
+
+  public final class SoftRef<T> implements kotlin.properties.ReadWriteProperty<java.lang.Object,T> {
+    ctor public SoftRef(T? p, java.lang.ref.ReferenceQueue<T>? queue);
+    ctor public SoftRef();
+    method public T? getValue(Object? thisRef, kotlin.reflect.KProperty<?> property);
+    method public void setValue(Object? thisRef, kotlin.reflect.KProperty<?> property, T? value);
+  }
+
+  public final class WeakRef<T> implements kotlin.properties.ReadWriteProperty<java.lang.Object,T> {
+    ctor public WeakRef(T? p, java.lang.ref.ReferenceQueue<T>? queue);
+    ctor public WeakRef();
+    method public T? getValue(Object? thisRef, kotlin.reflect.KProperty<?> property);
+    method public void setValue(Object? thisRef, kotlin.reflect.KProperty<?> property, T? value);
+  }
+
+}
+
 package androidx.graphics {
 
   public final class BitmapKt {
