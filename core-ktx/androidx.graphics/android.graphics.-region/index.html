@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>androidx.graphics.android.graphics.Region - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href=".">android.graphics.Region</a><br/>
+<br/>
+<h3>Extensions for android.graphics.Region</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="and.html">and</a></p>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">and</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$and(android.graphics.Region, android.graphics.Rect)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Rect.html"><span class="identifier">Rect</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the union of this region and the specified <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> as a new region.</p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">and</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$and(android.graphics.Region, android.graphics.Region)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the union of this region and the specified region as a new region.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="contains.html">contains</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">contains</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$contains(android.graphics.Region, android.graphics.Point)/p">p</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Point.html"><span class="identifier">Point</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return true if the region contains the specified <a href="https://developer.android.com/reference/android/graphics/Point.html">Point</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="for-each.html">forEach</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">forEach</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$forEach(android.graphics.Region, kotlin.Function1((android.graphics.Rect, kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">rect</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Rect.html"><span class="identifier">Rect</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Performs the given action on each rect in this region.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="iterator.html">iterator</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">iterator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/index.html"><span class="identifier">Iterator</span></a><span class="symbol">&lt;</span><a href="https://developer.android.com/reference/android/graphics/Rect.html"><span class="identifier">Rect</span></a><span class="symbol">&gt;</span></code>
+<p>Returns an <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/index.html">Iterator</a> over the rects in this region.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="minus.html">minus</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">minus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$minus(android.graphics.Region, android.graphics.Rect)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Rect.html"><span class="identifier">Rect</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the difference of this region and the specified <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> as a new region.</p>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">minus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$minus(android.graphics.Region, android.graphics.Region)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the difference of this region and the specified region as a new region.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="not.html">not</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">not</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Returns the negation of this region as a new region.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="or.html">or</a></p>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">or</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$or(android.graphics.Region, android.graphics.Rect)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Rect.html"><span class="identifier">Rect</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the intersection of this region and the specified <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> as a new region.</p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">or</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$or(android.graphics.Region, android.graphics.Region)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the intersection of this region and the specified region as a new region.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="plus.html">plus</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">plus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$plus(android.graphics.Region, android.graphics.Rect)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Rect.html"><span class="identifier">Rect</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the union of this region and the specified <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> as a new region.</p>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">plus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$plus(android.graphics.Region, android.graphics.Region)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the union of this region and the specified region as a new region.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="unary-minus.html">unaryMinus</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">unaryMinus</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Returns the negation of this region as a new region.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="xor.html">xor</a></p>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">xor</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$xor(android.graphics.Region, android.graphics.Rect)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Rect.html"><span class="identifier">Rect</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the union minus the intersection of this region and the specified <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a>
+as a new region.</p>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">.</span><span class="identifier">xor</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$xor(android.graphics.Region, android.graphics.Region)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
+<p>Return the union minus the intersection of this region and the specified region
+as a new region.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

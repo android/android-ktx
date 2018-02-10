@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>androidx.util.android.util.AtomicFile - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.util</a>&nbsp;/&nbsp;<a href=".">android.util.AtomicFile</a><br/>
+<br/>
+<h3>Extensions for android.util.AtomicFile</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="read-bytes.html">readBytes</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/util/AtomicFile.html"><span class="identifier">AtomicFile</span></a><span class="symbol">.</span><span class="identifier">readBytes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a></code>
+<p>Gets the entire content of this file as a byte array.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read-text.html">readText</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/util/AtomicFile.html"><span class="identifier">AtomicFile</span></a><span class="symbol">.</span><span class="identifier">readText</span><span class="symbol">(</span><span class="identifier" id="androidx.util$readText(android.util.AtomicFile, java.nio.charset.Charset)/charset">charset</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/java/nio/charset/Charset.html"><span class="identifier">Charset</span></a>&nbsp;<span class="symbol">=</span>&nbsp;Charsets.UTF_8<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Gets the entire content of this file as a String using UTF-8 or specified <a href="read-text.html#androidx.util$readText(android.util.AtomicFile, java.nio.charset.Charset)/charset">charset</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="try-write.html">tryWrite</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/util/AtomicFile.html"><span class="identifier">AtomicFile</span></a><span class="symbol">.</span><span class="identifier">tryWrite</span><span class="symbol">(</span><span class="identifier" id="androidx.util$tryWrite(android.util.AtomicFile, kotlin.Function1((java.io.FileOutputStream, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">out</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/java/io/FileOutputStream.html"><span class="identifier">FileOutputStream</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform the write operations inside <a href="try-write.html#androidx.util$tryWrite(android.util.AtomicFile, kotlin.Function1((java.io.FileOutputStream, kotlin.Unit)))/block">block</a> on this file. If <a href="try-write.html#androidx.util$tryWrite(android.util.AtomicFile, kotlin.Function1((java.io.FileOutputStream, kotlin.Unit)))/block">block</a> throws an exception the
+write will be failed. Otherwise the write will be applied atomically to the file.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-bytes.html">writeBytes</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/util/AtomicFile.html"><span class="identifier">AtomicFile</span></a><span class="symbol">.</span><span class="identifier">writeBytes</span><span class="symbol">(</span><span class="identifier" id="androidx.util$writeBytes(android.util.AtomicFile, kotlin.ByteArray)/array">array</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the content of this file as an <a href="write-bytes.html#androidx.util$writeBytes(android.util.AtomicFile, kotlin.ByteArray)/array">array</a> of bytes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-text.html">writeText</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/util/AtomicFile.html"><span class="identifier">AtomicFile</span></a><span class="symbol">.</span><span class="identifier">writeText</span><span class="symbol">(</span><span class="identifier" id="androidx.util$writeText(android.util.AtomicFile, kotlin.String, java.nio.charset.Charset)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="androidx.util$writeText(android.util.AtomicFile, kotlin.String, java.nio.charset.Charset)/charset">charset</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/java/nio/charset/Charset.html"><span class="identifier">Charset</span></a>&nbsp;<span class="symbol">=</span>&nbsp;Charsets.UTF_8<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the content of this file as <a href="write-text.html#androidx.util$writeText(android.util.AtomicFile, kotlin.String, java.nio.charset.Charset)/text">text</a> encoded using UTF-8 or specified <a href="write-text.html#androidx.util$writeText(android.util.AtomicFile, kotlin.String, java.nio.charset.Charset)/charset">charset</a>.
+If this file exists, it becomes overwritten.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

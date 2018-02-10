@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>postAtTime - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.os</a>&nbsp;/&nbsp;<a href="index.html">android.os.Handler</a>&nbsp;/&nbsp;<a href=".">postAtTime</a><br/>
+<br/>
+<h1>postAtTime</h1>
+<a name="androidx.os$postAtTime(android.os.Handler, kotlin.Long, kotlin.Any, kotlin.Function0((kotlin.Unit)))"></a>
+<code><span class="keyword">inline</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/os/Handler.html"><span class="identifier">Handler</span></a><span class="symbol">.</span><span class="identifier">postAtTime</span><span class="symbol">(</span><span class="identifier" id="androidx.os$postAtTime(android.os.Handler, kotlin.Long, kotlin.Any, kotlin.Function0((kotlin.Unit)))/uptimeMillis">uptimeMillis</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="androidx.os$postAtTime(android.os.Handler, kotlin.Long, kotlin.Any, kotlin.Function0((kotlin.Unit)))/token">token</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="keyword">crossinline</span> <span class="identifier" id="androidx.os$postAtTime(android.os.Handler, kotlin.Long, kotlin.Any, kotlin.Function0((kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/java/lang/Runnable.html"><span class="identifier">Runnable</span></a></code>
+<p>Version of <a href="https://developer.android.com/reference/android/os/Handler.html#postAtTime(java.lang.Runnable, long)">Handler.postAtTime</a> which re-orders the parameters, allowing the action to be
+placed outside of parentheses.</p>
+<pre><code>handler.postAtTime(200) {
+    doSomething()
+}
+</code></pre>
+<h3>Parameters</h3>
+<p><a name="token"></a>
+<code>token</code> - An optional object with which the posted message will be associated.</p>
+<p><strong>Return</strong><br/>
+the created Runnable</p>
+</BODY>
+</HTML>

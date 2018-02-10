@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>androidx.view.android.view.View - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.view</a>&nbsp;/&nbsp;<a href=".">android.view.View</a><br/>
+<br/>
+<h3>Extensions for android.view.View</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="do-on-layout.html">doOnLayout</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">doOnLayout</span><span class="symbol">(</span><span class="identifier" id="androidx.view$doOnLayout(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">view</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Performs the given action when this view is laid out. If the view has been laid out, the action
+will be performed straight away, otherwise the action will be performed after the
+view is laid out.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="do-on-next-layout.html">doOnNextLayout</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">doOnNextLayout</span><span class="symbol">(</span><span class="identifier" id="androidx.view$doOnNextLayout(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">view</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Performs the given action when this view is next laid out.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="do-on-pre-draw.html">doOnPreDraw</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">doOnPreDraw</span><span class="symbol">(</span><span class="identifier" id="androidx.view$doOnPreDraw(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">view</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Performs the given action when the view tree is about to be drawn.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-delayed.html">postDelayed</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">postDelayed</span><span class="symbol">(</span><span class="identifier" id="androidx.view$postDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))/delayInMillis">delayInMillis</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="androidx.view$postDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/java/lang/Runnable.html"><span class="identifier">Runnable</span></a></code>
+<p>Version of <a href="https://developer.android.com/reference/android/view/View.html#postDelayed(java.lang.Runnable, long)">View.postDelayed</a> which re-orders the parameters, allowing the action to be placed
+outside of parentheses.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-on-animation-delayed.html">postOnAnimationDelayed</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">postOnAnimationDelayed</span><span class="symbol">(</span><span class="identifier" id="androidx.view$postOnAnimationDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))/delayInMillis">delayInMillis</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="androidx.view$postOnAnimationDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/java/lang/Runnable.html"><span class="identifier">Runnable</span></a></code>
+<p>Version of <a href="https://developer.android.com/reference/android/view/View.html#postOnAnimationDelayed(java.lang.Runnable, long)">View.postOnAnimationDelayed</a> which re-orders the parameters, allowing the action
+to be placed outside of parentheses.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-padding.html">setPadding</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">setPadding</span><span class="symbol">(</span><span class="identifier" id="androidx.view$setPadding(android.view.View, kotlin.Int)/size">size</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the view's padding. This version of the method sets all axes to the provided size.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-bitmap.html">toBitmap</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">toBitmap</span><span class="symbol">(</span><span class="identifier" id="androidx.view$toBitmap(android.view.View, android.graphics.Bitmap.Config)/config">config</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Bitmap/Config.html"><span class="identifier">Config</span></a>&nbsp;<span class="symbol">=</span>&nbsp;Bitmap.Config.ARGB_8888<span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a></code>
+<p>Return a <a href="https://developer.android.com/reference/android/graphics/Bitmap.html">Bitmap</a> representation of this <a href="https://developer.android.com/reference/android/view/View.html">View</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-padding.html">updatePadding</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">updatePadding</span><span class="symbol">(</span><span class="identifier" id="androidx.view$updatePadding(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/left">left</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;paddingLeft<span class="symbol">, </span><span class="identifier" id="androidx.view$updatePadding(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/top">top</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;paddingTop<span class="symbol">, </span><span class="identifier" id="androidx.view$updatePadding(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/right">right</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;paddingRight<span class="symbol">, </span><span class="identifier" id="androidx.view$updatePadding(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/bottom">bottom</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;paddingBottom<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Updates this view's padding. This version of the method allows using named parameters
+to just set one or more axes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-padding-relative.html">updatePaddingRelative</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">updatePaddingRelative</span><span class="symbol">(</span><span class="identifier" id="androidx.view$updatePaddingRelative(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/start">start</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;paddingStart<span class="symbol">, </span><span class="identifier" id="androidx.view$updatePaddingRelative(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/top">top</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;paddingTop<span class="symbol">, </span><span class="identifier" id="androidx.view$updatePaddingRelative(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/end">end</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;paddingEnd<span class="symbol">, </span><span class="identifier" id="androidx.view$updatePaddingRelative(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)/bottom">bottom</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;paddingBottom<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Updates this view's relative padding. This version of the method allows using named parameters
+to just set one or more axes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>createBitmap - core-ktx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href=".">createBitmap</a><br/>
+<br/>
+<h1>createBitmap</h1>
+<a name="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)"></a>
+<code><span class="keyword">inline</span> <span class="keyword">fun </span><span class="identifier">createBitmap</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/width">width</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/height">height</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/config">config</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Bitmap/Config.html"><span class="identifier">Config</span></a>&nbsp;<span class="symbol">=</span>&nbsp;Bitmap.Config.ARGB_8888<span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a></code>
+<p>Returns a mutable bitmap with the specified <a href="create-bitmap.html#androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/width">width</a> and <a href="create-bitmap.html#androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/height">height</a>. A config
+can be optionally specified. If not, the default config is <a href="#">Bitmap.Config.ARGB_8888</a>.</p>
+<h3>Parameters</h3>
+<p><a name="width"></a>
+<code>width</code> - The new bitmap's desired width</p>
+<p><a name="height"></a>
+<code>height</code> - The new bitmap's desired height</p>
+<p><a name="config"></a>
+<code>config</code> - The new bitmap's desired <a href="https://developer.android.com/reference/android/graphics/Bitmap/Config.html">config</a></p>
+<p><strong>Return</strong><br/>
+A new bitmap with the specified dimensions and config</p>
+<a name="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config, kotlin.Boolean, android.graphics.ColorSpace)"></a>
+<code><span class="keyword">inline</span> <span class="keyword">fun </span><span class="identifier">createBitmap</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config, kotlin.Boolean, android.graphics.ColorSpace)/width">width</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config, kotlin.Boolean, android.graphics.ColorSpace)/height">height</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config, kotlin.Boolean, android.graphics.ColorSpace)/config">config</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Bitmap/Config.html"><span class="identifier">Config</span></a>&nbsp;<span class="symbol">=</span>&nbsp;Bitmap.Config.ARGB_8888<span class="symbol">, </span><span class="identifier" id="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config, kotlin.Boolean, android.graphics.ColorSpace)/hasAlpha">hasAlpha</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">, </span><span class="identifier" id="androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config, kotlin.Boolean, android.graphics.ColorSpace)/colorSpace">colorSpace</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/ColorSpace.html"><span class="identifier">ColorSpace</span></a>&nbsp;<span class="symbol">=</span>&nbsp;ColorSpace.get(ColorSpace.Named.SRGB)<span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a></code>
+<p>Returns a mutable bitmap with the specified <a href="create-bitmap.html#androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config, kotlin.Boolean, android.graphics.ColorSpace)/width">width</a> and <a href="create-bitmap.html#androidx.graphics$createBitmap(kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config, kotlin.Boolean, android.graphics.ColorSpace)/height">height</a>. The config,
+transparency and color space can optionally be specified. They respectively
+default to <a href="#">Bitmap.Config.ARGB_8888</a>, <code>true</code> and <a href="#">sRGB</a>.</p>
+<h3>Parameters</h3>
+<p><a name="width"></a>
+<code>width</code> - The new bitmap's desired width</p>
+<p><a name="height"></a>
+<code>height</code> - The new bitmap's desired height</p>
+<p><a name="config"></a>
+<code>config</code> - The new bitmap's desired <a href="https://developer.android.com/reference/android/graphics/Bitmap/Config.html">config</a></p>
+<p><a name="hasAlpha"></a>
+<code>hasAlpha</code> - Whether the new bitmap is opaque or not</p>
+<p><a name="colorSpace"></a>
+<code>colorSpace</code> - The new bitmap's color space</p>
+<p><strong>Return</strong><br/>
+A new bitmap with the specified dimensions and config</p>
+</BODY>
+</HTML>

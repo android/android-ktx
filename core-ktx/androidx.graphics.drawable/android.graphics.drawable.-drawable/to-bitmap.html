@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>toBitmap - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics.drawable</a>&nbsp;/&nbsp;<a href="index.html">android.graphics.drawable.Drawable</a>&nbsp;/&nbsp;<a href=".">toBitmap</a><br/>
+<br/>
+<h1>toBitmap</h1>
+<a name="androidx.graphics.drawable$toBitmap(android.graphics.drawable.Drawable, kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)"></a>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html"><span class="identifier">Drawable</span></a><span class="symbol">.</span><span class="identifier">toBitmap</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics.drawable$toBitmap(android.graphics.drawable.Drawable, kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/width">width</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;intrinsicWidth<span class="symbol">, </span><span class="identifier" id="androidx.graphics.drawable$toBitmap(android.graphics.drawable.Drawable, kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/height">height</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;intrinsicHeight<span class="symbol">, </span><span class="identifier" id="androidx.graphics.drawable$toBitmap(android.graphics.drawable.Drawable, kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/config">config</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Bitmap/Config.html"><span class="identifier">Config</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a></code>
+<p>Return a <a href="https://developer.android.com/reference/android/graphics/Bitmap.html">Bitmap</a> representation of this <a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html">Drawable</a>.</p>
+<p>If this instance is a <a href="https://developer.android.com/reference/android/graphics/drawable/BitmapDrawable.html">BitmapDrawable</a> and the <a href="to-bitmap.html#androidx.graphics.drawable$toBitmap(android.graphics.drawable.Drawable, kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/width">width</a>, <a href="to-bitmap.html#androidx.graphics.drawable$toBitmap(android.graphics.drawable.Drawable, kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/height">height</a>, and <a href="to-bitmap.html#androidx.graphics.drawable$toBitmap(android.graphics.drawable.Drawable, kotlin.Int, kotlin.Int, android.graphics.Bitmap.Config)/config">config</a> match, the
+underlying <a href="https://developer.android.com/reference/android/graphics/Bitmap.html">Bitmap</a> instance will be returned directly. If any of those three properties differ
+then a new <a href="https://developer.android.com/reference/android/graphics/Bitmap.html">Bitmap</a> is created. For all other <a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html">Drawable</a> types, a new <a href="https://developer.android.com/reference/android/graphics/Bitmap.html">Bitmap</a> is created.</p>
+<h3>Parameters</h3>
+<p><a name="width"></a>
+<code>width</code> - Width of the desired bitmap. Defaults to <a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html#getIntrinsicWidth()">Drawable.getIntrinsicWidth</a>.</p>
+<p><a name="height"></a>
+<code>height</code> - Height of the desired bitmap. Defaults to <a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html#getIntrinsicHeight()">Drawable.getIntrinsicHeight</a>.</p>
+<p><a name="config"></a>
+<code>config</code> - Bitmap config of the desired bitmap. Null attempts to use the native config, if
+any. Defaults to <a href="#">Config.ARGB_8888</a> otherwise.</p>
+</BODY>
+</HTML>
