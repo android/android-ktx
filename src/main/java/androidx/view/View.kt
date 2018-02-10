@@ -17,6 +17,7 @@
 package androidx.view
 
 import android.graphics.Bitmap
+import android.graphics.Point
 import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewCompat
@@ -234,4 +235,42 @@ inline var View.isGone: Boolean
     get() = visibility == View.GONE
     set(value) {
         visibility = if (value) View.GONE else View.VISIBLE
+    }
+
+/**
+ * Returns a [Point] which consists of x,y coordinates of this [View] on screen
+ *
+ * ```
+ * val (x, y) = view.locationOnScreen
+ * ```
+ *
+ * @throws IllegalStateException If this [View] has not been laid out
+ */
+inline val View.locationOnScreen: Point
+    get() = if (!ViewCompat.isLaidOut(this)) {
+        throw IllegalStateException("View needs to be laid out before calling locationOnScreen")
+    } else {
+        IntArray(2).let {
+            getLocationOnScreen(it)
+            Point(it[0], it[1])
+        }
+    }
+
+/**
+ * Returns a [Point] which consists of x,y coordinates of this [View] in its window
+ *
+ * ```
+ * val (x, y) = view.locationInWindow
+ * ```
+ *
+ * @throws IllegalStateException If this [View] has not been laid out
+ */
+inline val View.locationInWindow: Point
+    get() = if (!ViewCompat.isLaidOut(this)) {
+        throw IllegalStateException("View needs to be laid out before calling locationInWindow")
+    } else {
+        IntArray(2).let {
+            getLocationInWindow(it)
+            Point(it[0], it[1])
+        }
     }
