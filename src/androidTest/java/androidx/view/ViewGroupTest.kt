@@ -261,4 +261,19 @@ class ViewGroupTest {
         assertEquals(10, layoutParams.marginStart)
         assertEquals(30, layoutParams.marginEnd)
     }
+
+    @Test fun destructuringMarginLayoutParams() {
+        val (l, t, r, b) = ViewGroup.MarginLayoutParams(100, 100).apply {
+            updateMargins(
+                left = 4,
+                top = 8,
+                right = 16,
+                bottom = 24
+            )
+        }
+        assertEquals(4, l)
+        assertEquals(8, t)
+        assertEquals(16, r)
+        assertEquals(24, b)
+    }
 }
