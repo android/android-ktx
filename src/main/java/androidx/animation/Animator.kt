@@ -70,27 +70,27 @@ fun Animator.doOnPause(action: (animator: Animator) -> Unit) = addPauseListener(
 /**
  * Add a listener to this Animator using the provided actions.
  */
-fun Animator.addListener(
-    onEnd: ((animator: Animator) -> Unit)? = null,
-    onStart: ((animator: Animator) -> Unit)? = null,
-    onCancel: ((animator: Animator) -> Unit)? = null,
-    onRepeat: ((animator: Animator) -> Unit)? = null
+inline fun Animator.addListener(
+    crossinline onEnd: (animator: Animator) -> Unit = {},
+    crossinline onStart: (animator: Animator) -> Unit = {},
+    crossinline onCancel: (animator: Animator) -> Unit = {},
+    crossinline onRepeat: (animator: Animator) -> Unit = {}
 ): Animator.AnimatorListener {
     val listener = object : Animator.AnimatorListener {
         override fun onAnimationRepeat(animator: Animator) {
-            onRepeat?.invoke(animator)
+            onRepeat(animator)
         }
 
         override fun onAnimationEnd(animator: Animator) {
-            onEnd?.invoke(animator)
+            onEnd(animator)
         }
 
         override fun onAnimationCancel(animator: Animator) {
-            onCancel?.invoke(animator)
+            onCancel(animator)
         }
 
         override fun onAnimationStart(animator: Animator) {
-            onStart?.invoke(animator)
+            onStart(animator)
         }
     }
     addListener(listener)
@@ -101,17 +101,17 @@ fun Animator.addListener(
  * Add a pause and resume listener to this Animator using the provided actions.
  */
 @RequiresApi(19)
-fun Animator.addPauseListener(
-    onResume: ((animator: Animator) -> Unit)? = null,
-    onPause: ((animator: Animator) -> Unit)? = null
+inline fun Animator.addPauseListener(
+    crossinline onResume: (animator: Animator) -> Unit = {},
+    crossinline onPause: (animator: Animator) -> Unit = {}
 ): Animator.AnimatorPauseListener {
     val listener = object : Animator.AnimatorPauseListener {
         override fun onAnimationPause(animator: Animator) {
-            onPause?.invoke(animator)
+            onPause(animator)
         }
 
         override fun onAnimationResume(animator: Animator) {
-            onResume?.invoke(animator)
+            onResume(animator)
         }
     }
     addPauseListener(listener)
