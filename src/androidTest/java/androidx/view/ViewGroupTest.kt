@@ -209,9 +209,9 @@ class ViewGroupTest {
         }
     }
 
-    @Test fun layoutParamsAs() {
-        viewGroup.layoutParams = LinearLayout.LayoutParams(0, 0)
-        viewGroup.layoutParamsAs<LinearLayout.LayoutParams> {
+    @Test fun updateLayoutParams() {
+        viewGroup.layoutParams = ViewGroup.LayoutParams(0, 0)
+        viewGroup.updateLayoutParams {
             assertSame(viewGroup.layoutParams, this)
 
             width = 500
@@ -220,9 +220,20 @@ class ViewGroupTest {
 
         assertEquals(500, viewGroup.layoutParams.width)
         assertEquals(1000, viewGroup.layoutParams.height)
+    }
+
+    @Test fun updateLayoutParamsAs() {
+        viewGroup.layoutParams = LinearLayout.LayoutParams(0, 0)
+        viewGroup.updateLayoutParamsAs<LinearLayout.LayoutParams> {
+            assertSame(viewGroup.layoutParams, this)
+
+            weight = 2f
+        }
+
+        assertEquals(2f, (viewGroup.layoutParams as LinearLayout.LayoutParams).weight)
 
         assertThrows<ClassCastException> {
-            viewGroup.layoutParamsAs<RelativeLayout.LayoutParams> {}
+            viewGroup.updateLayoutParamsAs<RelativeLayout.LayoutParams> {}
         }
     }
 
