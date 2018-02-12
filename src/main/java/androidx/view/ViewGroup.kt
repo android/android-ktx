@@ -120,3 +120,47 @@ fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
     marginEnd = end
     bottomMargin = bottom
 }
+
+/**
+ * Returns "leftMargin", the first component of the [MarginLayoutParams].
+ *
+ * This method allows to use destructuring declarations when working with [MarginLayoutParams],
+ * for example:
+ * ```
+ * val (left, top, right, bottom) = marginLayoutParams
+ * ```
+ */
+inline operator fun ViewGroup.MarginLayoutParams.component1() = this.leftMargin
+
+/**
+ * Returns "topMargin", the second component of the [MarginLayoutParams].
+ *
+ * This method allows to use destructuring declarations when working with [MarginLayoutParams],
+ * for example:
+ * ```
+ * val (left, top, right, bottom) = marginLayoutParams
+ * ```
+ */
+inline operator fun ViewGroup.MarginLayoutParams.component2() = this.topMargin
+
+/**
+ * Returns "rightMargin", the third component of the [MarginLayoutParams].
+ *
+ * This method allows to use destructuring declarations when working with [MarginLayoutParams],
+ * for example:
+ * ```
+ * val (left, top, right, bottom) = marginLayoutParams
+ * ```
+ */
+inline operator fun ViewGroup.MarginLayoutParams.component3() = this.rightMargin
+
+/**
+ * Returns "bottomMargin", the fourth component of the [MarginLayoutParams].
+ *
+ * This method allows to use destructuring declarations when working with [MarginLayoutParams],
+ * for example:
+ * ```
+ * val (left, top, right, bottom) = marginLayoutParams
+ * ```
+ */
+inline operator fun ViewGroup.MarginLayoutParams.component4() = this.bottomMargin
