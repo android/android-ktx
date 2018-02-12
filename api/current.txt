@@ -96,6 +96,19 @@ package androidx.database.sqlite {
 
 }
 
+package androidx.general {
+
+  public final class CommonsKt {
+    ctor public CommonsKt();
+    method public static final String String(byte[] bytes, String charset) throws java.io.UnsupportedEncodingException;
+    method public static final String formatTimestamp(long, String format, java.util.Locale locale = "Locale.getDefault()") throws java.lang.IllegalArgumentException;
+    method public static final operator void invoke(boolean, kotlin.jvm.functions.Function1<? super Boolean,kotlin.Unit> functionTrue);
+    method public static final boolean toBoolean(int);
+    method public static final java.util.Date toDate(String, String formatFrom, java.util.Locale locale = "Locale.getDefault()") throws java.text.ParseException;
+  }
+
+}
+
 package androidx.graphics {
 
   public final class BitmapKt {
