@@ -32,11 +32,24 @@ class SnackbarTest {
     }
 
     @Test
-    fun snackbar_lengthShort() {
+    fun snackBar_LengthShort() {
         val view = CoordinatorLayout(context)
         val snackbar = view.snackBar(R.string.abc_action_mode_done)
 
         assertEquals(snackbar.duration, Snackbar.LENGTH_SHORT)
+
+        val snackbarLayout = snackbar.view as Snackbar.SnackbarLayout
+        val snackbarContentLayout = snackbarLayout.getChildAt(0) as SnackbarContentLayout
+        assertTrue(snackbarContentLayout.messageView != null)
+        assertEquals("Done", snackbarContentLayout.messageView.text)
+    }
+
+    @Test
+    fun snackBar_LengthLong() {
+        val view = CoordinatorLayout(context)
+        val snackbar = view.snackBar(R.string.abc_action_mode_done, Snackbar.LENGTH_LONG)
+
+        assertEquals(snackbar.duration, Snackbar.LENGTH_LONG)
 
         val snackbarLayout = snackbar.view as Snackbar.SnackbarLayout
         val snackbarContentLayout = snackbarLayout.getChildAt(0) as SnackbarContentLayout
