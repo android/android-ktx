@@ -38,7 +38,7 @@ import android.graphics.Region
 inline operator fun Rect.component1() = this.left
 
 /**
- * Returns "top", the first component of the rectangle.
+ * Returns "top", the second component of the rectangle.
  *
  * This method allows to use destructuring declarations when working with rectangles,
  * for example:
@@ -49,7 +49,7 @@ inline operator fun Rect.component1() = this.left
 inline operator fun Rect.component2() = this.top
 
 /**
- * Returns "right", the first component of the rectangle.
+ * Returns "right", the third component of the rectangle.
  *
  * This method allows to use destructuring declarations when working with rectangles,
  * for example:
@@ -60,7 +60,7 @@ inline operator fun Rect.component2() = this.top
 inline operator fun Rect.component3() = this.right
 
 /**
- * Returns "bottom", the first component of the rectangle.
+ * Returns "bottom", the fourth component of the rectangle.
  *
  * This method allows to use destructuring declarations when working with rectangles,
  * for example:
@@ -82,7 +82,7 @@ inline operator fun Rect.component4() = this.bottom
 inline operator fun RectF.component1() = this.left
 
 /**
- * Returns "top", the first component of the rectangle.
+ * Returns "top", the second component of the rectangle.
  *
  * This method allows to use destructuring declarations when working with rectangles,
  * for example:
@@ -93,7 +93,7 @@ inline operator fun RectF.component1() = this.left
 inline operator fun RectF.component2() = this.top
 
 /**
- * Returns "right", the first component of the rectangle.
+ * Returns "right", the third component of the rectangle.
  *
  * This method allows to use destructuring declarations when working with rectangles,
  * for example:
@@ -104,7 +104,7 @@ inline operator fun RectF.component2() = this.top
 inline operator fun RectF.component3() = this.right
 
 /**
- * Returns "bottom", the first component of the rectangle.
+ * Returns "bottom", the fourth component of the rectangle.
  *
  * This method allows to use destructuring declarations when working with rectangles,
  * for example:
