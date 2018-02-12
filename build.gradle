@@ -84,6 +84,7 @@ dependencies {
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
         freeCompilerArgs = ['-Xno-param-assertions']
+        allWarningsAsErrors = true
     }
 }
 
