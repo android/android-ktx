@@ -22,6 +22,9 @@ import java.util.Locale
 
 /**
  * Returns layout direction for a given locale.
+ * @see TextUtils.getLayoutDirectionFromLocale
  */
-@RequiresApi(17)
-fun Locale.getLayoutDirection(): Int = TextUtils.getLayoutDirectionFromLocale(this)
+
+val Locale.layoutDirection: Int
+        @RequiresApi(17)
+        get() = TextUtils.getLayoutDirectionFromLocale(this)

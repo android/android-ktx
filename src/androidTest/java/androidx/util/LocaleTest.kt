@@ -17,7 +17,7 @@
 package androidx.util
 
 import android.view.View
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.util.Locale
 
@@ -25,11 +25,11 @@ class LocaleTest {
 
     @Test fun layoutDirectionWithLTR() {
         val ltrLocale = Locale.Builder().setLanguage("en").build()
-        assertEquals(View.LAYOUT_DIRECTION_LTR, ltrLocale.getLayoutDirection())
+        assertEquals(View.LAYOUT_DIRECTION_LTR, ltrLocale.layoutDirection)
     }
 
     @Test fun layoutDirectionWithRTL() {
         val rtlLocale = Locale.Builder().setLanguage("ar").build()
-        assertEquals(View.LAYOUT_DIRECTION_RTL, rtlLocale.getLayoutDirection())
+        assertEquals(View.LAYOUT_DIRECTION_RTL, rtlLocale.layoutDirection)
     }
 }
