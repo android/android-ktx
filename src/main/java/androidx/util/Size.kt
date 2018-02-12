@@ -35,7 +35,7 @@ import android.util.SizeF
 inline operator fun Size.component1() = width
 
 /**
- * Returns "height", the first component of this [Size].
+ * Returns "height", the second component of this [Size].
  *
  * This method allows to use destructuring declarations when working with
  * sizes, for example:
@@ -59,7 +59,7 @@ inline operator fun Size.component2() = height
 inline operator fun SizeF.component1() = width
 
 /**
- * Returns "height", the first component of this [SizeF].
+ * Returns "height", the second component of this [SizeF].
  *
  * This method allows to use destructuring declarations when working with
  * sizes, for example:
