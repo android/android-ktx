@@ -39,6 +39,5 @@ class UriTest {
                 "key2" to "value2"
         ).build()
         assertEquals("$uri2&key2=value2", appendUri2.toString())
-
     }
 }
