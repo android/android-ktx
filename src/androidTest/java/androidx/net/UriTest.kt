@@ -21,14 +21,12 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class UriTest {
-    @Test
-    fun uri() {
+    @Test fun uri() {
         val string = "https://test.example.com/foo?bar#baz"
         assertEquals(Uri.parse(string), string.toUri())
     }
 
-    @Test
-    fun appendQueryParameters() {
+    @Test fun appendQueryParameters() {
         val uri1 = Uri.parse("https://test.example.com/foo")
         val appendUri1 = uri1.buildUpon().appendQueryParameters(
                 "key1" to "value1",
