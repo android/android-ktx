@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
+@file:Suppress("NOTHING_TO_INLINE")
+
+// Aliases to public API.
 
 package androidx.net
 
@@ -26,3 +28,13 @@ import android.net.Uri
  * @see Uri.parse
  */
 inline fun String.toUri(): Uri = Uri.parse(this)
+
+/**
+ * Append query parameters via multi Pair values.
+ */
+fun Uri.Builder.appendQueryParameters(vararg values: Pair<String, String>): Uri.Builder {
+    values.forEach {
+        appendQueryParameter(it.first, it.second)
+    }
+    return this
+}
