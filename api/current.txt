@@ -43,13 +43,6 @@ package androidx.content {
     method public static final void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }
 
-  public final class FragmentKt {
-    ctor public FragmentKt();
-    method @RequiresApi(19) public static final void getFileFromFilesystem(android.app.Fragment, int requestCode = "22", String type = "\"image/*\"");
-    method public static final void getImageFromCamera(android.app.Fragment, int requestCode = "23");
-    method public static final android.graphics.Rect getScreenRect(android.app.Fragment);
-  }
-
   public final class SharedPreferencesKt {
     ctor public SharedPreferencesKt();
     method public static final void edit(android.content.SharedPreferences, kotlin.jvm.functions.Function1<? super android.content.SharedPreferences.Editor,kotlin.Unit> action);

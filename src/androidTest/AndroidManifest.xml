@@ -2,6 +2,5 @@
           package="androidx.kotlin">
     <application>
         <activity android:name=".TestActivity"/>
-        <activity android:name=".TestActivityWithFragment"/>
     </application>
 </manifest>
