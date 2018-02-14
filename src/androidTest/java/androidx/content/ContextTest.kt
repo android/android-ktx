@@ -16,15 +16,28 @@
 
 package androidx.content
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Point
+import android.graphics.drawable.Drawable
+import android.provider.MediaStore
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
 import android.test.mock.MockContext
+import android.view.LayoutInflater
+import android.view.WindowManager
 import androidx.getAttributeSet
+import androidx.graphics.drawable.toBitmap
 import androidx.kotlin.test.R
+import androidx.os.toUri
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.io.File
+import java.io.FileOutputStream
+import java.nio.charset.Charset
 
 class ContextTest {
     private val context = InstrumentationRegistry.getContext()
@@ -69,5 +82,76 @@ class ContextTest {
         context.withStyledAttributes(attrs, R.styleable.SampleAttrs, 0, 0) {
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
         }
+    }
+
+    @Test
+    fun testScreenPointDimens() {
+        val point = Point()
+        (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+            .getSize(point)
+        val testPoint = context.screenPointDimens
+        assertEquals(point.x, testPoint.x)
+        assertEquals(point.y, testPoint.y)
+    }
+
+    @Test
+    fun testScreenAspectRatio() {
+        val point = context.screenPointDimens
+        val aspectRatio = point.x.toFloat() / point.y.toFloat()
+        val testAspectRatio = context.screenAspectRatio
+        assertEquals(aspectRatio, testAspectRatio)
+    }
+
+    @Test
+    fun testGetStringAsset() {
+        val inputStream = context.assets.open("test_text.txt")
+        val size = inputStream.available()
+        val buffer = ByteArray(size)
+        inputStream.read(buffer)
+        inputStream.close()
+        val resultString = String(buffer, Charset.forName("UTF-8"))
+        val testString = context.getStringAsset("test_text.txt")
+        assertEquals(resultString, testString)
+    }
+
+    @Test
+    fun testGetImageAssetAsBitmap() {
+        val ims = context.assets.open("red.png")
+        val bitmap = BitmapFactory.decodeStream(ims)
+        val testBitmap = context.getImageAssetAsBitmap("red.png")
+        assertEquals(bitmap.byteCount, testBitmap?.byteCount)
+    }
+
+    @Test
+    fun testImageAssetAsDrawable() {
+        val ims = context.assets.open("red.png")
+        val drawable = Drawable.createFromStream(ims, "red.png")
+        val testDrawable = context.getImageAssetAsDrawable("red.png")
+        assertEquals(drawable.toBitmap().byteCount, testDrawable?.toBitmap()?.byteCount)
+    }
+
+    @Test
+    fun testCreateTempFileFromBitmapAndViceVersa() {
+        val image = context.getImageAssetAsBitmap("red.png")
+        val fileTemp = File(context.externalCacheDir, "test.jpg")
+        fileTemp.createNewFile()
+        val fos = FileOutputStream(fileTemp)
+        image?.compress(Bitmap.CompressFormat.JPEG, 90, fos)
+        fos.close()
+        val file = fileTemp
+        val testFileUri = context.createTempFileFromBitmap(image)
+        assertEquals(file.exists(), testFileUri?.exists())
+        assertEquals(file.length(), testFileUri?.length())
+        val bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, file.toUri())
+        val testBitmap = context.createBitmapFromFile(file.toUri())
+        assertEquals(bitmap.byteCount, testBitmap?.byteCount)
+        context.externalCacheDir.delete()
+    }
+
+    @Test
+    fun testInflateView() {
+        val view = LayoutInflater.from(context).inflate(R.layout.test_activity, null, false)
+        val testView = context.inflateView(R.layout.test_activity)
+        assertEquals(view.drawableState, testView.drawableState)
     }
 }

@@ -18,10 +18,27 @@ package androidx.content
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Point
+import android.graphics.drawable.Drawable
+import android.net.Uri
+import android.provider.MediaStore
 import android.support.annotation.AttrRes
+import android.support.annotation.LayoutRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
 import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.IOException
+import java.net.MalformedURLException
+import java.nio.charset.Charset
 
 /**
  * Return the handle to a system-level service by class.
@@ -91,3 +108,100 @@ inline fun Context.withStyledAttributes(
         typedArray.recycle()
     }
 }
+
+/**
+ * Screen [Point] dimens
+ */
+val Context.screenPointDimens: Point
+    get() {
+        val point = Point()
+        (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+            .getSize(point)
+        return point
+    }
+
+/**
+ * Screen aspect ration
+ */
+val Context.screenAspectRatio: Float
+    get() {
+        val point = screenPointDimens
+        return point.x.toFloat() / point.y.toFloat()
+    }
+
+/**
+ * Return string asset for given [path] and [charset]
+ *
+ * Throws [IOException]
+ */
+@Throws(IOException::class)
+fun Context.getStringAsset(path: String, charset: String = "UTF-8"): String? {
+    val inputStream = assets.open(path)
+    val size = inputStream.available()
+    val buffer = ByteArray(size)
+    inputStream.read(buffer)
+    inputStream.close()
+    return String(buffer, Charset.forName(charset))
+}
+
+/**
+ * Return image asset for given [path] and [charset] like [Bitmap]
+ */
+fun Context.getImageAssetAsBitmap(path: String): Bitmap?{
+    val ims = assets.open(path)
+    return BitmapFactory.decodeStream(ims)
+}
+
+/**
+ * Return image asset for given [path] and [charset] like [Drawable]
+ */
+fun Context.getImageAssetAsDrawable(path: String): Drawable?{
+    val ims = assets.open(path)
+    return Drawable.createFromStream(ims, path)
+}
+
+/**
+ * Creates temp file from given bitmap. All exception are caught - returns null in case of exception
+ */
+fun Context.createTempFileFromBitmap(
+    image: Bitmap?,
+    fileName: String = "image_${System.currentTimeMillis()}.jpg"
+): File? {
+    try {
+        val fileTemp = File(externalCacheDir, fileName)
+        fileTemp.createNewFile()
+        val fos = FileOutputStream(fileTemp)
+        image?.compress(Bitmap.CompressFormat.JPEG, 90, fos)
+        fos.close()
+        return fileTemp
+    } catch (e: FileNotFoundException) {
+        e.printStackTrace()
+        return null
+    } catch (e: MalformedURLException) {
+        e.printStackTrace()
+        return null
+    } catch (e: IOException) {
+        e.printStackTrace()
+        return null
+    }
+}
+
+/**
+ * Creates bitmap from Uri of image file
+ *
+ * Throws [FileNotFoundException] and [IOException]
+ */
+@Suppress("HasPlatformType")
+@Throws(FileNotFoundException::class, IOException::class)
+fun Context.createBitmapFromFile(file: Uri) = MediaStore.Images.Media.getBitmap(contentResolver, file)
+
+/**
+ * Inflates view for given [layout]
+ *
+ * Throws [IOException]
+ */
+fun Context.inflateView(
+    @LayoutRes layout: Int, root: ViewGroup? = null,
+    attachToRoot: Boolean = false
+): View =
+    LayoutInflater.from(this).inflate(layout, root, attachToRoot)

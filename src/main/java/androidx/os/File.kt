@@ -24,6 +24,6 @@ import java.io.File
 /**
  * Creates a Uri from the given file.
  *
- * @see Uri.parse
+ * @see Uri.fromFile
  */
 inline fun File.toUri(): Uri = Uri.fromFile(this)
