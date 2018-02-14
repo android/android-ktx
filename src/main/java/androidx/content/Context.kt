@@ -136,7 +136,7 @@ val Context.screenAspectRatio: Float
  */
 @Throws(IOException::class)
 fun Context.getStringAsset(path: String, charset: String = "UTF-8"): String? {
-    val inputStream = javaClass.classLoader.getResourceAsStream("assets/$path")
+    val inputStream = assets.open(path)
     val size = inputStream.available()
     val buffer = ByteArray(size)
     inputStream.read(buffer)
@@ -148,7 +148,7 @@ fun Context.getStringAsset(path: String, charset: String = "UTF-8"): String? {
  * Return image asset for given [path] and [charset] like [Bitmap]
  */
 fun Context.getImageAssetAsBitmap(path: String): Bitmap?{
-    val ims = javaClass.classLoader.getResourceAsStream("assets/$path")
+    val ims = assets.open(path)
     return BitmapFactory.decodeStream(ims)
 }
 
@@ -156,7 +156,7 @@ fun Context.getImageAssetAsBitmap(path: String): Bitmap?{
  * Return image asset for given [path] and [charset] like [Drawable]
  */
 fun Context.getImageAssetAsDrawable(path: String): Drawable?{
-    val ims = javaClass.classLoader.getResourceAsStream("assets/$path")
+    val ims = assets.open(path)
     return Drawable.createFromStream(ims, path)
 }
 

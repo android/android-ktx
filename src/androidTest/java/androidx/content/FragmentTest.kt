@@ -16,10 +16,12 @@
 
 package androidx.content
 
+import android.app.Fragment
 import android.graphics.Rect
 import android.support.test.rule.ActivityTestRule
 import androidx.kotlin.TestActivityWithFragment
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -29,19 +31,26 @@ class FragmentTest {
     @Rule
     val rule = ActivityTestRule<TestActivityWithFragment>(TestActivityWithFragment::class.java)
 
+    var fragment: Fragment? = null
+
+    @Before
+    fun setup() {
+        rule.runOnUiThread {
+            fragment = rule.activity.fragmentManager.fragments[0]
+        }
+    }
+
     @Test
     fun testScreenRect() {
-        val fragment = rule.activity.fragmentManager.fragments[0]
         val displayRectangle = Rect()
         rule.activity.window.decorView.getWindowVisibleDisplayFrame(displayRectangle)
-        assertEquals(fragment.screenRect, displayRectangle)
+        assertEquals(fragment?.screenRect, displayRectangle)
     }
 
     @Test
     fun testWithActivity() {
-        val fragment = rule.activity.fragmentManager.fragments[0]
         var localSuccess = false
-        fragment.withActivity<TestActivityWithFragment> {
+        fragment?.withActivity<TestActivityWithFragment> {
             localSuccess = success
         }
         assertEquals(localSuccess, true)
@@ -49,10 +58,9 @@ class FragmentTest {
 
     @Test
     fun testWithActivityReturns() {
-        val fragment = rule.activity.fragmentManager.fragments[0]
-        val localSuccess = fragment.withActivity<TestActivityWithFragment, Boolean> {
+        val localSuccess = fragment?.withActivity<TestActivityWithFragment, Boolean> {
             success
-        }
+        } == true
         assertEquals(localSuccess, true)
     }
 

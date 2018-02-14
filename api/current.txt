@@ -16,6 +16,14 @@ package androidx.animation {
 
 package androidx.content {
 
+  public final class ActivityKt {
+    ctor public ActivityKt();
+    method @RequiresApi(19) public static final void getFileFromFilesystem(android.app.Activity, int requestCode = "22", String type = "\"image/*\"");
+    method public static final void getImageFromCamera(android.app.Activity, int requestCode = "23");
+    method public static final android.graphics.Rect getScreenRect(android.app.Activity);
+    method public static final void viewLink(android.app.Activity, String link = "\"http://www.google.com\"");
+  }
+
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
     method public static final error.NonExistentClass contentValuesOf(kotlin.Pair<String,?>... pairs);
@@ -23,8 +31,23 @@ package androidx.content {
 
   public final class ContextKt {
     ctor public ContextKt();
+    method public static final android.graphics.Bitmap! createBitmapFromFile(android.content.Context, android.net.Uri file) throws java.io.FileNotFoundException, java.io.IOException;
+    method public static final java.io.File? createTempFileFromBitmap(android.content.Context, android.graphics.Bitmap? image, String fileName = "\"image_${System.currentTimeMillis()}.jpg\"");
+    method public static final android.graphics.Bitmap? getImageAssetAsBitmap(android.content.Context, String path);
+    method public static final android.graphics.drawable.Drawable? getImageAssetAsDrawable(android.content.Context, String path);
+    method public static final float getScreenAspectRatio(android.content.Context);
+    method public static final android.graphics.Point getScreenPointDimens(android.content.Context);
+    method public static final String? getStringAsset(android.content.Context, String path, String charset = "\"UTF-8\"") throws java.io.IOException;
+    method public static final android.view.View inflateView(android.content.Context, @LayoutRes int layout, android.view.ViewGroup? root = "null", boolean attachToRoot = "false");
     method public static final void withStyledAttributes(android.content.Context, android.util.AttributeSet? set = "null", int[] attrs, @AttrRes int defStyleAttr = "0", @StyleRes int defStyleRes = "0", kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
     method public static final void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
+  }
+
+  public final class FragmentKt {
+    ctor public FragmentKt();
+    method @RequiresApi(19) public static final void getFileFromFilesystem(android.app.Fragment, int requestCode = "22", String type = "\"image/*\"");
+    method public static final void getImageFromCamera(android.app.Fragment, int requestCode = "23");
+    method public static final android.graphics.Rect getScreenRect(android.app.Fragment);
   }
 
   public final class SharedPreferencesKt {

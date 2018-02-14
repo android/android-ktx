@@ -28,6 +28,7 @@ import android.test.mock.MockContext
 import android.view.LayoutInflater
 import android.view.WindowManager
 import androidx.getAttributeSet
+import androidx.graphics.drawable.toBitmap
 import androidx.kotlin.test.R
 import androidx.os.toUri
 import org.junit.Assert.assertEquals
@@ -103,7 +104,7 @@ class ContextTest {
 
     @Test
     fun testGetStringAsset() {
-        val inputStream = javaClass.classLoader.getResourceAsStream("assets/test_text.txt")
+        val inputStream = context.assets.open("test_text.txt")
         val size = inputStream.available()
         val buffer = ByteArray(size)
         inputStream.read(buffer)
@@ -115,18 +116,18 @@ class ContextTest {
 
     @Test
     fun testGetImageAssetAsBitmap() {
-        val ims = javaClass.classLoader.getResourceAsStream("assets/red.png")
+        val ims = context.assets.open("red.png")
         val bitmap = BitmapFactory.decodeStream(ims)
         val testBitmap = context.getImageAssetAsBitmap("red.png")
-        assertEquals(bitmap, testBitmap)
+        assertEquals(bitmap.byteCount, testBitmap?.byteCount)
     }
 
     @Test
     fun testImageAssetAsDrawable() {
-        val ims = javaClass.classLoader.getResourceAsStream("assets/red.png")
+        val ims = context.assets.open("red.png")
         val drawable = Drawable.createFromStream(ims, "red.png")
         val testDrawable = context.getImageAssetAsDrawable("red.png")
-        assertEquals(drawable, testDrawable)
+        assertEquals(drawable.toBitmap().byteCount, testDrawable?.toBitmap()?.byteCount)
     }
 
     @Test
@@ -143,7 +144,7 @@ class ContextTest {
         assertEquals(file.length(), testFileUri?.length())
         val bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, file.toUri())
         val testBitmap = context.createBitmapFromFile(file.toUri())
-        assertEquals(bitmap, testBitmap)
+        assertEquals(bitmap.byteCount, testBitmap?.byteCount)
         context.externalCacheDir.delete()
     }
 
@@ -151,6 +152,6 @@ class ContextTest {
     fun testInflateView() {
         val view = LayoutInflater.from(context).inflate(R.layout.test_activity, null, false)
         val testView = context.inflateView(R.layout.test_activity)
-        assertEquals(view, testView)
+        assertEquals(view.drawableState, testView.drawableState)
     }
 }

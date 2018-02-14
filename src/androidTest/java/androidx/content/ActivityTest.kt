@@ -22,6 +22,7 @@ import android.graphics.Rect
 import android.net.Uri
 import android.provider.MediaStore
 import android.support.annotation.RequiresApi
+import android.support.test.InstrumentationRegistry
 import android.support.test.rule.ActivityTestRule
 import androidx.kotlin.TestActivity
 import org.junit.Assert.assertEquals
@@ -38,6 +39,7 @@ class ActivityTest {
     fun testScreenRect() {
         val displayRectangle = Rect()
         rule.activity.window.decorView.getWindowVisibleDisplayFrame(displayRectangle)
+        InstrumentationRegistry.getInstrumentation().waitForIdleSync()
         assertEquals(rule.activity.screenRect, displayRectangle)
     }
 

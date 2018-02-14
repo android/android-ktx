@@ -17,7 +17,24 @@
 package androidx.kotlin.fragment
 
 import android.app.Fragment
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.kotlin.test.R.layout
 
-class TestFragment: Fragment(){
+class TestFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater?,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return inflater?.inflate(layout.test_fragment, container, false) ?: super.onCreateView(
+            inflater,
+            container,
+            savedInstanceState
+        )
+    }
 
 }

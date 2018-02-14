@@ -86,7 +86,7 @@ inline fun <reified T : Activity?> Fragment.withActivity(block: T.() -> Unit) {
 @Throws(ClassCastException::class)
 inline fun <reified T : Activity?, reified R : Any?> Fragment.withActivity(block: T.() -> R): R? =
     if (activity != null && isAdded) {
-        block(this as T)
+        block(activity as T)
     } else {
         null
     }
