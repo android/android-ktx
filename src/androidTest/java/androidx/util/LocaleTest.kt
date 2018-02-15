@@ -22,7 +22,6 @@ import org.junit.Test
 import java.util.Locale
 
 class LocaleTest {
-
     @Test fun layoutDirectionWithLTR() {
         val ltrLocale = Locale.Builder().setLanguage("en").build()
         assertEquals(View.LAYOUT_DIRECTION_LTR, ltrLocale.layoutDirection)

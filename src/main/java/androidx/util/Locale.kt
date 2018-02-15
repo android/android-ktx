@@ -24,7 +24,6 @@ import java.util.Locale
  * Returns layout direction for a given locale.
  * @see TextUtils.getLayoutDirectionFromLocale
  */
-
 val Locale.layoutDirection: Int
         @RequiresApi(17)
         get() = TextUtils.getLayoutDirectionFromLocale(this)
