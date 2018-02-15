@@ -43,6 +43,7 @@ android {
 
     lintOptions {
         checkTestSources true
+        ignoreWarnings true
     }
 
     // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
@@ -85,6 +86,7 @@ dependencies {
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
         freeCompilerArgs = ['-Xno-param-assertions']
+        allWarningsAsErrors = true
     }
 }
 
