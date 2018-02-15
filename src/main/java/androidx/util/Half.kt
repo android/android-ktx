@@ -23,17 +23,37 @@ import android.support.annotation.HalfFloat
 import android.support.annotation.RequiresApi
 import android.util.Half
 
+/**
+ * Returns a [Half] instance representing given [Short].
+ *
+ * @see Half.valueOf
+ */
 // TODO https://youtrack.jetbrains.com/issue/KT-21696
 @Suppress("WRONG_ANNOTATION_TARGET_WITH_USE_SITE_TARGET_ON_TYPE")
 @SuppressLint("HalfFloat") // TODO remove https://issuetracker.google.com/issues/72509078
 @RequiresApi(26)
 inline fun @receiver:HalfFloat Short.toHalf(): Half = Half.valueOf(this)
 
+/**
+ * Returns a [Half] instance representing given [Float].
+ *
+ * @see Half.valueOf
+ */
 @RequiresApi(26)
 inline fun Float.toHalf(): Half = Half.valueOf(this)
 
+/**
+ * Returns a [Half] instance representing given [Double].
+ *
+ * @see Half.valueOf
+ */
 @RequiresApi(26)
 inline fun Double.toHalf(): Half = toFloat().toHalf()
 
+/**
+ * Returns a [Half] instance representing given [String].
+ *
+ * @see Half.valueOf
+ */
 @RequiresApi(26)
 inline fun String.toHalf(): Half = Half.valueOf(this)
