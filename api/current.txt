@@ -148,6 +148,7 @@ package androidx.graphics {
     method @RequiresApi(26) public static final android.graphics.Color toColor(int);
     method @RequiresApi(26) public static final android.graphics.Color toColor(long);
     method @RequiresApi(26) @ColorInt public static final int toColorInt(long);
+    method @ColorInt public static final int toColorInt(String);
     method @RequiresApi(26) @ColorLong public static final long toColorLong(int);
   }
 
