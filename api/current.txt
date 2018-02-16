@@ -349,6 +349,21 @@ package androidx.os {
 
 }
 
+package androidx.support.v7.app {
+
+  public final class AppCompatActivityKt {
+    ctor public AppCompatActivityKt();
+    method public static final void addFragment(android.support.v7.app.AppCompatActivity, android.support.v4.app.Fragment fragment, @IdRes int containerViewId = "0", String? tag = "null", Runnable? runnable = "null");
+    method public static final void attachFragment(android.support.v7.app.AppCompatActivity, android.support.v4.app.Fragment fragment, Runnable? runnable = "null");
+    method public static final void detachFragment(android.support.v7.app.AppCompatActivity, android.support.v4.app.Fragment fragment, Runnable? runnable = "null");
+    method public static final void hideFragment(android.support.v7.app.AppCompatActivity, android.support.v4.app.Fragment fragment, Runnable? runnable = "null");
+    method public static final void removeFragment(android.support.v7.app.AppCompatActivity, android.support.v4.app.Fragment fragment, Runnable? runnable = "null");
+    method public static final void replaceFragment(android.support.v7.app.AppCompatActivity, android.support.v4.app.Fragment fragment, @IdRes int containerViewId = "0", String? tag = "null", Runnable? runnable = "null");
+    method public static final void showFragment(android.support.v7.app.AppCompatActivity, android.support.v4.app.Fragment fragment, Runnable? runnable = "null");
+  }
+
+}
+
 package androidx.text {
 
   public final class SpannableStringBuilderKt {
