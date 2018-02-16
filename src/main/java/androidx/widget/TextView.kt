@@ -19,6 +19,7 @@ package androidx.widget
 import android.graphics.drawable.Drawable
 import android.support.annotation.DrawableRes
 import android.support.annotation.RequiresApi
+import android.support.v4.content.ContextCompat
 import android.widget.TextView
 
 /**
@@ -28,27 +29,32 @@ import android.widget.TextView
  * @see TextView.setCompoundDrawables
  */
 fun TextView.updateCompoundDrawables(
-    start: Drawable? = null,
-    top: Drawable? = null,
-    end: Drawable? = null,
-    bottom: Drawable? = null
+    start: Drawable? = compoundDrawables[0],
+    top: Drawable? = compoundDrawables[1],
+    end: Drawable? = compoundDrawables[2],
+    bottom: Drawable? = compoundDrawables[3]
 ) {
     setCompoundDrawables(start, top, end, bottom)
 }
 
 /**
  * Updates this TextView's Drawables. This version of the method allows using named parameters
- * to just set one or more Drawables.
+ * to just set one or more Drawables. Use 0 if you do not want a Drawable there.
  *
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-    @DrawableRes start: Int = 0,
-    @DrawableRes top: Int = 0,
-    @DrawableRes end: Int = 0,
-    @DrawableRes bottom: Int = 0
+    @DrawableRes start: Int = -1,
+    @DrawableRes top: Int = -1,
+    @DrawableRes end: Int = -1,
+    @DrawableRes bottom: Int = -1
 ) {
-    setCompoundDrawablesWithIntrinsicBounds(start, top, end, bottom)
+    setCompoundDrawablesWithIntrinsicBounds(
+        getUpdatedCompoundDrawable(start, 0),
+        getUpdatedCompoundDrawable(top, 1),
+        getUpdatedCompoundDrawable(end, 2),
+        getUpdatedCompoundDrawable(bottom, 3)
+    )
 }
 
 /**
@@ -58,10 +64,10 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-    start: Drawable? = null,
-    top: Drawable? = null,
-    end: Drawable? = null,
-    bottom: Drawable? = null
+    start: Drawable? = compoundDrawables[0],
+    top: Drawable? = compoundDrawables[1],
+    end: Drawable? = compoundDrawables[2],
+    bottom: Drawable? = compoundDrawables[3]
 ) {
     setCompoundDrawablesWithIntrinsicBounds(start, top, end, bottom)
 }
@@ -74,28 +80,33 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
  */
 @RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelative(
-    start: Drawable? = null,
-    top: Drawable? = null,
-    end: Drawable? = null,
-    bottom: Drawable? = null
+    start: Drawable? = compoundDrawables[0],
+    top: Drawable? = compoundDrawables[1],
+    end: Drawable? = compoundDrawables[2],
+    bottom: Drawable? = compoundDrawables[3]
 ) {
     setCompoundDrawablesRelative(start, top, end, bottom)
 }
 
 /**
  * Updates this TextView's Drawables. This version of the method allows using named parameters
- * to just set one or more Drawables.
+ * to just set one or more Drawables. Use 0 if you do not want a Drawable there.
  *
  * @see TextView.setCompoundDrawablesRelativeWithIntrinsicBounds
  */
 @RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-    @DrawableRes start: Int = 0,
-    @DrawableRes top: Int = 0,
-    @DrawableRes end: Int = 0,
-    @DrawableRes bottom: Int = 0
+    @DrawableRes start: Int = -1,
+    @DrawableRes top: Int = -1,
+    @DrawableRes end: Int = -1,
+    @DrawableRes bottom: Int = -1
 ) {
-    setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
+    updateCompoundDrawablesRelativeWithIntrinsicBounds(
+        getUpdatedCompoundDrawable(start, 0),
+        getUpdatedCompoundDrawable(top, 1),
+        getUpdatedCompoundDrawable(end, 2),
+        getUpdatedCompoundDrawable(bottom, 3)
+    )
 }
 
 /**
@@ -106,10 +117,17 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
  */
 @RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-    start: Drawable? = null,
-    top: Drawable? = null,
-    end: Drawable? = null,
-    bottom: Drawable? = null
+    start: Drawable? = compoundDrawables[0],
+    top: Drawable? = compoundDrawables[1],
+    end: Drawable? = compoundDrawables[2],
+    bottom: Drawable? = compoundDrawables[3]
 ) {
     setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
 }
+
+private fun TextView.getUpdatedCompoundDrawable(resId: Int, index: Int) =
+    when (resId) {
+        -1 -> compoundDrawables[index]
+        0 -> null
+        else -> ContextCompat.getDrawable(context, resId)
+    }
