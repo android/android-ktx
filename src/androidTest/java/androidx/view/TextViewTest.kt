@@ -22,7 +22,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class EditTextTest {
+class TextViewTest {
     private val context = InstrumentationRegistry.getContext()
     private val editText = EditText(context)
 
@@ -50,7 +50,7 @@ class EditTextTest {
 
     @Test fun onTextChanged() {
         var calls = 0
-        editText.onTextChanged { string, start, count, after ->
+        editText.onTextChanged { string, _, _, _ ->
             calls++
             assertEquals(string, "Hello")
         }

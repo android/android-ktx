@@ -19,37 +19,40 @@ package androidx.view
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.TextView
 
 /**
  * Set and Get the string value of EditText content
  */
-var EditText.content
+var TextView.content
     get() = text.toString()
     set(value) {
-        setText(value)
+        text = value
     }
 
 /**
  * @returns Weather the EditText text is empty or not
  */
-val EditText.isEmpty get() = text.isEmpty()
+val TextView.isEmpty get() = length() == 0
 
 /**
  * @returns Weather the EditText text is blank or not
  */
-val EditText.isBlank get() = text.isBlank()
+val TextView.isBlank get() = text.isBlank()
 
 /**
  * Clears the contents of the EditText
  */
-fun EditText.clear() = text.clear()
+fun TextView.clear() {
+    text = ""
+}
 
 /**
  * @param before action performed before text changes
  * @param after action performed after text changes
  * @param onTextChanged action preformed on text change
  */
-fun EditText.onTextChanged(
+fun TextView.onTextChanged(
     before: (string: String, start: Int, count: Int, after: Int) -> Unit = { _, _, _, _ -> },
     after: (s: Editable) -> Unit = {},
     onTextChanged: (string: String, start: Int, before: Int, count: Int) -> Unit
