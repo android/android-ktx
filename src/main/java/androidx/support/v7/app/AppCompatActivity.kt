@@ -20,7 +20,6 @@ import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 
-
 /**
  * Add a fragment to the activity state.
  * @param fragment The fragment to be added.  This fragment must not already
@@ -32,7 +31,6 @@ import android.support.v7.app.AppCompatActivity
  * @param runnable Runnable that will be run after this transaction has
  * been committed
  */
-@JvmOverloads
 fun AppCompatActivity.addFragment(
     fragment: Fragment,
     @IdRes containerViewId: Int = 0,
@@ -42,7 +40,7 @@ fun AppCompatActivity.addFragment(
     val transaction =
         supportFragmentManager.beginTransaction().add(containerViewId, fragment, tag)
     runnable.let { transaction.runOnCommit(runnable) }
-    transaction.commit();
+    transaction.commit()
 }
 
 /**
@@ -56,7 +54,6 @@ fun AppCompatActivity.addFragment(
  * @param runnable Runnable that will be run after this transaction has
  * been committed
  */
-@JvmOverloads
 fun AppCompatActivity.replaceFragment(
     fragment: Fragment,
     @IdRes containerViewId: Int = 0,
@@ -66,7 +63,7 @@ fun AppCompatActivity.replaceFragment(
     val transaction =
         supportFragmentManager.beginTransaction().replace(containerViewId, fragment, tag)
     runnable.let { transaction.runOnCommit(runnable) }
-    transaction.commit();
+    transaction.commit()
 }
 
 /**
@@ -78,14 +75,13 @@ fun AppCompatActivity.replaceFragment(
  * @param runnable Runnable that will be run after this transaction has
  * been committed
  */
-@JvmOverloads
 fun AppCompatActivity.removeFragment(
     fragment: Fragment,
     runnable: Runnable? = null
 ) {
     val transaction = supportFragmentManager.beginTransaction().remove(fragment)
     runnable.let { transaction.runOnCommit(runnable) }
-    transaction.commit();
+    transaction.commit()
 }
 
 /**
@@ -97,7 +93,6 @@ fun AppCompatActivity.removeFragment(
  * @param runnable Runnable that will be run after this transaction has
  * been committed
  */
-@JvmOverloads
 fun AppCompatActivity.hideFragment(
     fragment: Fragment,
     runnable: Runnable? = null
@@ -116,7 +111,6 @@ fun AppCompatActivity.hideFragment(
  * @param runnable Runnable that will be run after this transaction has
  * been committed
  */
-@JvmOverloads
 fun AppCompatActivity.showFragment(
     fragment: Fragment,
     runnable: Runnable? = null
@@ -137,7 +131,6 @@ fun AppCompatActivity.showFragment(
  * @param runnable Runnable that will be run after this transaction has
  * been committed
  */
-@JvmOverloads
 fun AppCompatActivity.detachFragment(
     fragment: Fragment,
     runnable: Runnable? = null
@@ -156,7 +149,6 @@ fun AppCompatActivity.detachFragment(
  * @param runnable Runnable that will be run after this transaction has
  * been committed
  */
-@JvmOverloads
 fun AppCompatActivity.attachFragment(
     fragment: Fragment,
     runnable: Runnable? = null
