@@ -20,7 +20,9 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.support.test.InstrumentationRegistry
 import android.widget.TextView
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertNotNull
 import org.junit.Test
 
 class TextViewTest {
@@ -64,7 +66,8 @@ class TextViewTest {
     fun updateCompoundDrawablesWithIntrinsicBounds_keepsDrawables() {
         val drawableRed = ColorDrawable(Color.RED)
         val drawableBlack = ColorDrawable(Color.BLACK)
-        textView.updateCompoundDrawablesWithIntrinsicBounds(top = drawableRed, bottom = drawableBlack)
+        textView.updateCompoundDrawablesWithIntrinsicBounds(
+            top = drawableRed, bottom = drawableBlack)
         textView.updateCompoundDrawablesWithIntrinsicBounds(end = drawableBlack, bottom = null)
 
         assertEquals(drawableRed, textView.compoundDrawables[1])
@@ -171,13 +174,11 @@ class TextViewTest {
                 top = android.R.drawable.btn_default,
                 bottom = android.R.drawable.btn_default,
                 end = android.R.drawable.btn_default)
-        textView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-                0, end = 0)
+        textView.updateCompoundDrawablesRelativeWithIntrinsicBounds(start = 0, end = 0)
 
         assertNotNull(textView.compoundDrawablesRelative[1])
         assertNotNull(textView.compoundDrawablesRelative[3])
         assertNull(textView.compoundDrawablesRelative[0])
         assertNull(textView.compoundDrawablesRelative[2])
-
     }
 }
