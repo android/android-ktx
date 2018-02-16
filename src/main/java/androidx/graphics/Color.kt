@@ -375,3 +375,22 @@ inline val @receiver:ColorLong Long.isWideGamut get() = Color.isWideGamut(this)
  */
 @get:RequiresApi(26)
 inline val @receiver:ColorLong Long.colorSpace: ColorSpace get() = Color.colorSpace(this)
+
+/**
+ * Return a corresponding [Int] color of this [String].
+ *
+ * Supported formats are:
+ * ```
+ * #RRGGBB
+ * #AARRGGBB
+ * ```
+ *
+ * The following names are also accepted: "red", "blue", "green", "black", "white",
+ * "gray", "cyan", "magenta", "yellow", "lightgray", "darkgray",
+ * "grey", "lightgrey", "darkgrey", "aqua", "fuchsia", "lime",
+ * "maroon", "navy", "olive", "purple", "silver", "teal".
+ *
+ * @throws IllegalArgumentException if this [String] cannot be parsed.
+ */
+@ColorInt
+inline fun String.toColorInt(): Int = Color.parseColor(this)
