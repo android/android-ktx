@@ -61,6 +61,7 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     implementation "com.android.support:support-annotations:${versions.supportLibrary}"
     implementation "com.android.support:support-compat:${versions.supportLibrary}"
+    implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"
 
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation "com.android.support:support-annotations:${versions.supportLibrary}"
