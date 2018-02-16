@@ -31,12 +31,12 @@ var TextView.content
     }
 
 /**
- * @returns Weather the EditText text is empty or not
+ * @returns Whether the EditText text is empty or not
  */
 val TextView.isEmpty get() = length() == 0
 
 /**
- * @returns Weather the EditText text is blank or not
+ * @returns Whether the EditText text is blank or not
  */
 val TextView.isBlank get() = text.isBlank()
 
