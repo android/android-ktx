@@ -267,3 +267,64 @@ inline fun Cursor.getShortOrNull(columnName: String) =
  */
 inline fun Cursor.getStringOrNull(columnName: String) =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getString(it) }
+
+/**
+ * Populates List from cursor
+ *
+ * ```
+ * cursor.readList { it.getInt(0) }
+ * ```
+ *
+ * @param itemReadFunc
+ */
+fun <R> Cursor.readList(itemReadFunc: (Cursor) -> R): List<R> =
+    read(arrayListOf(), itemReadFunc) as List
+
+/**
+ * Populates Set from cursor
+ *
+ * ```
+ * cursor.readSet { it.getInt(0) }
+ * ```
+ *
+ * @param itemReadFunc
+ */
+fun <R> Cursor.readSet(itemReadFunc: (Cursor) -> R): Set<R> =
+    read(hashSetOf(), itemReadFunc) as Set
+
+/**
+ * Reads first element from cursor
+ *
+ * ```
+ * cursor.readFirst { it.getInt(0) }
+ * ```
+ *
+ */
+fun <R> Cursor.readFirst(readFunc: (Cursor) -> R): R? {
+    use {
+        moveToFirst()
+
+        if (!isAfterLast) return readFunc(this)
+    }
+
+    return null
+}
+
+/**
+ * Populates given MutableCollection from cursor
+ */
+fun <R> Cursor.read(
+    outCollection: MutableCollection<R>,
+    itemReadFunc: (Cursor) -> R
+): Collection<R> {
+    use {
+        moveToFirst()
+
+        while (!isAfterLast) {
+            outCollection.add(itemReadFunc(it))
+            moveToNext()
+        }
+    }
+
+    return outCollection
+}
