@@ -311,6 +311,7 @@ package androidx.net {
 
   public final class UriKt {
     ctor public UriKt();
+    method public static final android.net.Uri.Builder appendQueryParameters(android.net.Uri.Builder, kotlin.Pair<String,java.lang.String>... values);
     method public static final android.net.Uri toUri(String);
   }
 

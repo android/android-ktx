@@ -25,4 +25,19 @@ class UriTest {
         val string = "https://test.example.com/foo?bar#baz"
         assertEquals(Uri.parse(string), string.toUri())
     }
+
+    @Test fun appendQueryParameters() {
+        val uri1 = Uri.parse("https://test.example.com/foo")
+        val appendUri1 = uri1.buildUpon().appendQueryParameters(
+                "key1" to "value1",
+                "key2" to "value2"
+        ).build()
+        assertEquals("$uri1?key1=value1&key2=value2", appendUri1.toString())
+
+        val uri2 = Uri.parse("https://test.example.com/foo?key1=value1")
+        val appendUri2 = uri2.buildUpon().appendQueryParameters(
+                "key2" to "value2"
+        ).build()
+        assertEquals("$uri2&key2=value2", appendUri2.toString())
+    }
 }

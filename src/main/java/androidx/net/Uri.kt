@@ -26,3 +26,13 @@ import android.net.Uri
  * @see Uri.parse
  */
 inline fun String.toUri(): Uri = Uri.parse(this)
+
+/**
+ * Append query parameters via multi Pair values.
+ */
+fun Uri.Builder.appendQueryParameters(vararg values: Pair<String, String>): Uri.Builder {
+    values.forEach {
+        appendQueryParameter(it.first, it.second)
+    }
+    return this
+}
