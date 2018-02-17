@@ -23,6 +23,8 @@ package androidx.content {
 
   public final class ContextKt {
     ctor public ContextKt();
+    method public static final android.graphics.Bitmap getBitmap(android.content.res.Resources, @DrawableRes int resId, android.graphics.BitmapFactory.Options? options = "null");
+    method public static final android.graphics.Bitmap getBitmap(android.content.Context, @DrawableRes int resId, android.graphics.BitmapFactory.Options? options = "null");
     method public static final void withStyledAttributes(android.content.Context, android.util.AttributeSet? set = "null", int[] attrs, @AttrRes int defStyleAttr = "0", @StyleRes int defStyleRes = "0", kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
     method public static final void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }

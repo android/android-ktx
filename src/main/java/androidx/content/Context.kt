@@ -17,8 +17,12 @@
 package androidx.content
 
 import android.content.Context
+import android.content.res.Resources
 import android.content.res.TypedArray
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.support.annotation.AttrRes
+import android.support.annotation.DrawableRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
 import android.util.AttributeSet
@@ -91,3 +95,25 @@ inline fun Context.withStyledAttributes(
         typedArray.recycle()
     }
 }
+
+/**
+ * Return a [Bitmap] decoded from [Resources]
+ *
+ * @param resId Resource id of a drawable from `res/drawable` folder
+ * @param options Decoding options
+ */
+inline fun Resources.getBitmap(
+    @DrawableRes resId: Int,
+    options: BitmapFactory.Options? = null
+): Bitmap = BitmapFactory.decodeResource(this, resId, options)
+
+/**
+ * Return a [Bitmap] decoded from [Resources] of this [Context]
+ *
+ * @param resId Resource id of a drawable from `res/drawable` folder
+ * @param options Decoding options
+ */
+inline fun Context.getBitmap(
+    @DrawableRes resId: Int,
+    options: BitmapFactory.Options? = null
+): Bitmap = resources.getBitmap(resId, options)
