@@ -65,6 +65,9 @@ package androidx.database {
     method public static final byte[] getBlob(android.database.Cursor, String columnName);
     method public static final byte[]? getBlobOrNull(android.database.Cursor, int index);
     method public static final error.NonExistentClass getBlobOrNull(android.database.Cursor, String columnName);
+    method public static final boolean getBoolean(android.database.Cursor, String columnName);
+    method public static final Boolean? getBooleanOrNull(android.database.Cursor, int index);
+    method public static final error.NonExistentClass getBooleanOrNull(android.database.Cursor, String columnName);
     method public static final double getDouble(android.database.Cursor, String columnName);
     method public static final Double? getDoubleOrNull(android.database.Cursor, int index);
     method public static final error.NonExistentClass getDoubleOrNull(android.database.Cursor, String columnName);

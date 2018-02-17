@@ -66,6 +66,12 @@ class CursorTest {
         assertEquals("hey", string)
     }
 
+    @Test fun booleanByName() {
+        val cursor = scalarCursor(1)
+        val boolean = cursor.getBoolean("data")
+        assertEquals(true, boolean)
+    }
+
     @Test fun blobOrNullByIndex() {
         val cursor = scalarCursor(null)
         val blob = cursor.getBlobOrNull(0)
@@ -108,6 +114,12 @@ class CursorTest {
         assertNull(string)
     }
 
+    @Test fun booleanOrNullByIndex() {
+        val cursor = scalarCursor(null)
+        val boolean = cursor.getBooleanOrNull(0)
+        assertNull(boolean)
+    }
+
     @Test fun blobOrNullByName() {
         val cursor = scalarCursor(null)
         val blob = cursor.getBlobOrNull("data")
@@ -148,6 +160,12 @@ class CursorTest {
         val cursor = scalarCursor(null)
         val string = cursor.getStringOrNull("data")
         assertNull(string)
+    }
+
+    @Test fun booleanOrNullByName() {
+        val cursor = scalarCursor(null)
+        val boolean = cursor.getBooleanOrNull("data")
+        assertNull(boolean)
     }
 
     private fun scalarCursor(item: Any?): Cursor = MatrixCursor(arrayOf("data")).apply {
