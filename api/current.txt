@@ -666,6 +666,7 @@ package androidx.view {
     method public static final operator void minusAssign(android.view.ViewGroup, android.view.View view);
     method public static final operator void plusAssign(android.view.ViewGroup, android.view.View view);
     method public static final void setMargins(android.view.ViewGroup.MarginLayoutParams, @Px int size);
+    method public static final void updateLayoutParams(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.ViewGroup.LayoutParams,kotlin.Unit> block);
     method public static final void updateMargins(android.view.ViewGroup.MarginLayoutParams, @Px int left = "leftMargin", @Px int top = "topMargin", @Px int right = "rightMargin", @Px int bottom = "bottomMargin");
     method @RequiresApi(17) public static final void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, @Px int start = "marginStart", @Px int top = "topMargin", @Px int end = "marginEnd", @Px int bottom = "bottomMargin");
   }

@@ -78,6 +78,31 @@ val ViewGroup.children: Sequence<View>
     }
 
 /**
+ * Executes [block] with the layoutParams and reassigns the layoutParams with the updated version.
+ *
+ * @see ViewGroup.getLayoutParams
+ * @see ViewGroup.setLayoutParams
+ **/
+inline fun ViewGroup.updateLayoutParams(block: ViewGroup.LayoutParams.() -> Unit) {
+    updateLayoutParamsAs(block)
+}
+
+/**
+ * Executes [block] with a typed version of the ViewGroup's layoutParams and reassigns the
+ * layoutParams with the updated version.
+ *
+ * @see ViewGroup.getLayoutParams
+ * @see ViewGroup.setLayoutParams
+ **/
+inline fun <reified T> ViewGroup.updateLayoutParamsAs(
+    block: T.() -> Unit
+) where T : ViewGroup.LayoutParams {
+    val typedLayoutParams = layoutParams as T
+    block(typedLayoutParams)
+    layoutParams = typedLayoutParams
+}
+
+/**
  * Sets the margins in the ViewGroup's MarginLayoutParams. This version of the method sets all axes
  * to the provided size.
  *
