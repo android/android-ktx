@@ -545,6 +545,11 @@ package androidx.util {
     method @RequiresApi(16) public static <T> java.util.Iterator<T> valueIterator(android.util.LongSparseArray<T>);
   }
 
+  public final class LruCacheKt {
+    ctor public LruCacheKt();
+    method public static <K, V> android.util.LruCache<K,V> lruCache(int maxSize, kotlin.jvm.functions.Function2<? super K,? super V,Integer> sizeOf = "{ _, _ -> 1 }", kotlin.jvm.functions.Function1<? super K,? extends V> create = "{ null as V? }", kotlin.jvm.functions.Function4<? super Boolean,? super K,? super V,? super V,kotlin.Unit> onEntryRemoved = "{ _, _, _, _ -> }");
+  }
+
   public final class PairKt {
     ctor public PairKt();
     method public static operator <F, S> F! component1(android.util.Pair<F,S>);
