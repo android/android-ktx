@@ -148,6 +148,7 @@ package androidx.graphics {
     method @RequiresApi(26) public static final android.graphics.Color toColor(int);
     method @RequiresApi(26) public static final android.graphics.Color toColor(long);
     method @RequiresApi(26) @ColorInt public static final int toColorInt(long);
+    method @ColorInt public static final int toColorInt(String);
     method @RequiresApi(26) @ColorLong public static final long toColorLong(int);
   }
 
@@ -518,6 +519,11 @@ package androidx.util {
     method @RequiresApi(26) public static final android.util.Half toHalf(float);
     method @RequiresApi(26) public static final android.util.Half toHalf(double);
     method @RequiresApi(26) public static final android.util.Half toHalf(String);
+  }
+
+  public final class LocaleKt {
+    ctor public LocaleKt();
+    method @RequiresApi(17) public static final int getLayoutDirection(java.util.Locale);
   }
 
   public final class LongSparseArrayKt {
