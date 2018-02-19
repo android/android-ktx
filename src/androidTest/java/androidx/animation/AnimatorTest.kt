@@ -112,4 +112,52 @@ class AnimatorTest {
 
         animator.cancel()
     }
+
+    @Test fun testDslOnStart() {
+        var called = false
+        animator.addAnimatorListener {
+            onStart {
+                called = true
+            }
+        }
+
+        animator.listeners.forEach { it.onAnimationStart(animator) }
+        assertTrue(called)
+    }
+
+    @Test fun testDslOnEnd() {
+        var called = false
+        animator.addAnimatorListener {
+            onEnd {
+                called = true
+            }
+        }
+
+        animator.listeners.forEach { it.onAnimationEnd(animator) }
+        assertTrue(called)
+    }
+
+    @Test fun testDslOnCancel() {
+        var called = false
+        animator.addAnimatorListener {
+            onCancel {
+                called = true
+            }
+        }
+
+        animator.listeners.forEach { it.onAnimationCancel(animator) }
+        assertTrue(called)
+    }
+
+    @Test fun testDslOnRepeat() {
+        var called = false
+        animator.addAnimatorListener {
+            onRepeat {
+                called = true
+            }
+        }
+
+        animator.listeners.forEach { it.onAnimationRepeat(animator) }
+        assertTrue(called)
+    }
 }

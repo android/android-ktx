@@ -2,6 +2,7 @@ package androidx.animation {
 
   public final class AnimatorKt {
     ctor public AnimatorKt();
+    method public static final error.NonExistentClass addAnimatorListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super androidx.animation.WrapperAnimatorListener,kotlin.Unit> listener);
     method public static final android.animation.Animator.AnimatorListener addListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onEnd = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onStart = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onCancel = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onRepeat = "null");
     method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener addPauseListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onResume = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onPause = "null");
     method public static final android.animation.Animator.AnimatorListener doOnCancel(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
@@ -10,6 +11,14 @@ package androidx.animation {
     method public static final android.animation.Animator.AnimatorListener doOnRepeat(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
     method @RequiresApi(19) public static final android.animation.Animator.AnimatorPauseListener doOnResume(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
     method public static final android.animation.Animator.AnimatorListener doOnStart(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+  }
+
+  public final class WrapperAnimatorListener {
+    ctor public WrapperAnimatorListener();
+    method public final void onCancel(kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onCancel);
+    method public final void onEnd(kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onEnd);
+    method public final void onRepeat(kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onRepeat);
+    method public final void onStart(kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onStart);
   }
 
 }

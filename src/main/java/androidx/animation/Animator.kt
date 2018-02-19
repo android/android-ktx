@@ -117,3 +117,37 @@ fun Animator.addPauseListener(
     addPauseListener(listener)
     return listener
 }
+
+/**
+ * For wrapping the DSL animator listener.
+ */
+class WrapperAnimatorListener {
+    internal var _onEnd: ((animator: Animator) -> Unit)? = null
+    internal var _onStart: ((animator: Animator) -> Unit)? = null
+    internal var _onCancel: ((animator: Animator) -> Unit)? = null
+    internal var _onRepeat: ((animator: Animator) -> Unit)? = null
+
+    fun onEnd(onEnd: ((animator: Animator) -> Unit)?) {
+        _onEnd = onEnd
+    }
+
+    fun onStart(onStart: ((animator: Animator) -> Unit)?) {
+        _onStart = onStart
+    }
+
+    fun onCancel(onCancel: ((animator: Animator) -> Unit)?) {
+        _onCancel = onCancel
+    }
+
+    fun onRepeat(onRepeat: ((animator: Animator) -> Unit)?) {
+        _onRepeat = onRepeat
+    }
+}
+
+/**
+ * Add a listener to this Animator using the DSL writing.
+ */
+fun Animator.addAnimatorListener(listener: WrapperAnimatorListener.() -> Unit) =
+    WrapperAnimatorListener()
+        .apply(listener)
+        .let { addListener(it._onEnd, it._onStart, it._onCancel, it._onRepeat) }
