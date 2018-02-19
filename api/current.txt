@@ -349,6 +349,26 @@ package androidx.os {
 
 }
 
+package androidx.security {
+
+  public final class CipherKt {
+    ctor public CipherKt();
+    method public static final javax.crypto.Cipher cipherOf(String transformation = "\"RSA/ECB/PKCS1Padding\"", String provider = "getCipherProvider()");
+    method public static final byte[] decrypt(javax.crypto.Cipher, String data, java.security.Key? key);
+    method public static final byte[] decrypt(javax.crypto.Cipher, byte[] data, java.security.Key? key);
+    method public static final byte[] encrypt(javax.crypto.Cipher, String data, java.security.Key key);
+    method public static final byte[] encrypt(javax.crypto.Cipher, byte[] data, java.security.Key key);
+  }
+
+  public final class KeyStoreKt {
+    ctor public KeyStoreKt();
+    method public static final java.security.KeyPair? getKeyPair(java.security.KeyStore, String alias, char[]? password = "null");
+    method public static final java.security.KeyStore keyStoreOf(String type = "\"AndroidKeyStore\"");
+    method public static final void removeKeyPair(java.security.KeyStore, String alias);
+  }
+
+}
+
 package androidx.text {
 
   public final class SpannableStringBuilderKt {
