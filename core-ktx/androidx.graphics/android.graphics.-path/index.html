@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>androidx.graphics.android.graphics.Path - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href=".">android.graphics.Path</a><br/>
+<br/>
+<h3>Extensions for android.graphics.Path</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="and.html">and</a></p>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">.</span><span class="identifier">and</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$and(android.graphics.Path, android.graphics.Path)/p">p</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a></code>
+<p>Returns the union of two paths as a new <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="flatten.html">flatten</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">.</span><span class="identifier">flatten</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$flatten(android.graphics.Path, kotlin.Float)/error">error</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a>&nbsp;<span class="symbol">=</span>&nbsp;0.5f<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html"><span class="identifier">Iterable</span></a><span class="symbol">&lt;</span><a href="../-path-segment/index.html"><span class="identifier">PathSegment</span></a><span class="symbol">&gt;</span></code>
+<p>Flattens (or approximate) the <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a> with a series of line segments.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="minus.html">minus</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">.</span><span class="identifier">minus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$minus(android.graphics.Path, android.graphics.Path)/p">p</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a></code>
+<p>Returns the difference of two paths as a new <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="or.html">or</a></p>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">.</span><span class="identifier">or</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$or(android.graphics.Path, android.graphics.Path)/p">p</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a></code>
+<p>Returns the intersection of two paths as a new <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a>.
+If the paths do not intersect, returns an empty path.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="plus.html">plus</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">.</span><span class="identifier">plus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$plus(android.graphics.Path, android.graphics.Path)/p">p</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a></code>
+<p>Returns the union of two paths as a new <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="xor.html">xor</a></p>
+</td>
+<td>
+<code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">.</span><span class="identifier">xor</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$xor(android.graphics.Path, android.graphics.Path)/p">p</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Path.html"><span class="identifier">Path</span></a></code>
+<p>Returns the union minus the intersection of two paths as a new <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>androidx.os - core-ktx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">core-ktx</a>&nbsp;/&nbsp;<a href=".">androidx.os</a><br/>
+<br/>
+<h2>Package androidx.os</h2>
+<h3>Extensions for External Classes</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="android.os.-handler/index.html">android.os.Handler</a></p>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="bundle-of.html">bundleOf</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">bundleOf</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="androidx.os$bundleOf(kotlin.Array((kotlin.Pair((kotlin.String, kotlin.Any)))))/pairs">pairs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html"><span class="identifier">Pair</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/os/Bundle.html"><span class="identifier">Bundle</span></a></code>
+<p>Returns a new <a href="https://developer.android.com/reference/android/os/Bundle.html">Bundle</a> with the given key/value pairs as elements.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="persistable-bundle-of.html">persistableBundleOf</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">persistableBundleOf</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="androidx.os$persistableBundleOf(kotlin.Array((kotlin.Pair((kotlin.String, kotlin.Any)))))/pairs">pairs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html"><span class="identifier">Pair</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/os/PersistableBundle.html"><span class="identifier">PersistableBundle</span></a></code>
+<p>Returns a new <a href="https://developer.android.com/reference/android/os/PersistableBundle.html">PersistableBundle</a> with the given key/value pairs as elements.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="trace.html">trace</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">trace</span><span class="symbol">(</span><span class="identifier" id="androidx.os$trace(kotlin.String, kotlin.Function0((androidx.os.trace.T)))/sectionName">sectionName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="androidx.os$trace(kotlin.String, kotlin.Function0((androidx.os.trace.T)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Wrap the specified <code>block</code> in calls to <a href="https://developer.android.com/reference/android/os/Trace.html#beginSection(java.lang.String)">Trace.beginSection</a> (with the supplied <code>sectionName</code>)
+and <a href="https://developer.android.com/reference/android/os/Trace.html#endSection()">Trace.endSection</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

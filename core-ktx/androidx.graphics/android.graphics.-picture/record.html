@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>record - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href="index.html">android.graphics.Picture</a>&nbsp;/&nbsp;<a href=".">record</a><br/>
+<br/>
+<h1>record</h1>
+<a name="androidx.graphics$record(android.graphics.Picture, kotlin.Int, kotlin.Int, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))"></a>
+<code><span class="keyword">inline</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Picture.html"><span class="identifier">Picture</span></a><span class="symbol">.</span><span class="identifier">record</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$record(android.graphics.Picture, kotlin.Int, kotlin.Int, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))/width">width</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$record(android.graphics.Picture, kotlin.Int, kotlin.Int, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))/height">height</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$record(android.graphics.Picture, kotlin.Int, kotlin.Int, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Canvas.html"><span class="identifier">Canvas</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Picture.html"><span class="identifier">Picture</span></a></code>
+<p>Creates a new <a href="https://developer.android.com/reference/android/graphics/Canvas.html">Canvas</a> to record commands in this <a href="https://developer.android.com/reference/android/graphics/Picture.html">Picture</a>, executes the specified
+<a href="record.html#androidx.graphics$record(android.graphics.Picture, kotlin.Int, kotlin.Int, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))/block">block</a> on the newly created canvas and returns this <a href="https://developer.android.com/reference/android/graphics/Picture.html">Picture</a>. Example:</p>
+<pre><code>return myPicture.record(1280, 720) {
+   drawLine(…)
+   translate(…)
+   drawRect(…)
+}
+</code></pre>
+</BODY>
+</HTML>

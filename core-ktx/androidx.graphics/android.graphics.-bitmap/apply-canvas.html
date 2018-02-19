@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>applyCanvas - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href="index.html">android.graphics.Bitmap</a>&nbsp;/&nbsp;<a href=".">applyCanvas</a><br/>
+<br/>
+<h1>applyCanvas</h1>
+<a name="androidx.graphics$applyCanvas(android.graphics.Bitmap, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))"></a>
+<code><span class="keyword">inline</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a><span class="symbol">.</span><span class="identifier">applyCanvas</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$applyCanvas(android.graphics.Bitmap, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Canvas.html"><span class="identifier">Canvas</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a></code>
+<p>Creates a new <a href="https://developer.android.com/reference/android/graphics/Canvas.html">Canvas</a> to draw on this bitmap and executes the specified
+<a href="apply-canvas.html#androidx.graphics$applyCanvas(android.graphics.Bitmap, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))/block">block</a> on the newly created canvas. Example:</p>
+<pre><code>return Bitmap.createBitmap(…).applyCanvas {
+   drawLine(…)
+   translate(…)
+   drawRect(…)
+}
+</code></pre>
+</BODY>
+</HTML>

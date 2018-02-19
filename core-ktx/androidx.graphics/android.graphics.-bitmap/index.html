@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>androidx.graphics.android.graphics.Bitmap - core-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href=".">android.graphics.Bitmap</a><br/>
+<br/>
+<h3>Extensions for android.graphics.Bitmap</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="apply-canvas.html">applyCanvas</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a><span class="symbol">.</span><span class="identifier">applyCanvas</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$applyCanvas(android.graphics.Bitmap, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Canvas.html"><span class="identifier">Canvas</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a></code>
+<p>Creates a new <a href="https://developer.android.com/reference/android/graphics/Canvas.html">Canvas</a> to draw on this bitmap and executes the specified
+<a href="apply-canvas.html#androidx.graphics$applyCanvas(android.graphics.Bitmap, kotlin.Function1((android.graphics.Canvas, kotlin.Unit)))/block">block</a> on the newly created canvas. Example:</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get.html">get</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a><span class="symbol">.</span><span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$get(android.graphics.Bitmap, kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$get(android.graphics.Bitmap, kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the value of the pixel at the specified location. The returned value
+is a <a href="https://developer.android.com/reference/android/graphics/Color.html">color int</a> in the sRGB color space.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="scale.html">scale</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a><span class="symbol">.</span><span class="identifier">scale</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$scale(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Boolean)/width">width</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$scale(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Boolean)/height">height</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$scale(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Boolean)/filter">filter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a></code>
+<p>Creates a new bitmap, scaled from this bitmap, when possible. If the specified
+<a href="scale.html#androidx.graphics$scale(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Boolean)/width">width</a> and <a href="scale.html#androidx.graphics$scale(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Boolean)/height">height</a> are the same as the current width and height of this bitmap,
+this bitmap is returned and no new bitmap is created.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set.html">set</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a><span class="symbol">.</span><span class="identifier">set</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$set(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$set(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics$set(android.graphics.Bitmap, kotlin.Int, kotlin.Int, kotlin.Int)/color">color</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Writes the specified <a href="https://developer.android.com/reference/android/graphics/Color.html">color int</a> into the bitmap
+(assuming it is mutable) at the specified <code>(x, y)</code> coordinate. The specified
+color is converted from sRGB to the bitmap's color space if needed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
