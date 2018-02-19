@@ -165,4 +165,6 @@ class ColorTest {
         assertEquals(0.00f, b, 1e-2f)
         assertEquals(2e-4f, a, 1e-5f)
     }
+
+    @Test fun stringToColorInt() = assertEquals(Color.GREEN, "#00ff00".toColorInt())
 }
