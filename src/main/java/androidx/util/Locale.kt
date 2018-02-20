@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
+package androidx.util
 
-package androidx.os
-
-import android.net.Uri
-import java.io.File
+import android.support.annotation.RequiresApi
+import android.text.TextUtils
+import java.util.Locale
 
 /**
- * Creates a Uri from the given file.
- *
- * @see Uri.fromFile
+ * Returns layout direction for a given locale.
+ * @see TextUtils.getLayoutDirectionFromLocale
  */
-inline fun File.toUri(): Uri = Uri.fromFile(this)
+val Locale.layoutDirection: Int
+        @RequiresApi(17)
+        get() = TextUtils.getLayoutDirectionFromLocale(this)
