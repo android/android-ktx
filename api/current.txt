@@ -521,6 +521,11 @@ package androidx.util {
     method @RequiresApi(26) public static final android.util.Half toHalf(String);
   }
 
+  public final class LocaleKt {
+    ctor public LocaleKt();
+    method @RequiresApi(17) public static final int getLayoutDirection(java.util.Locale);
+  }
+
   public final class LongSparseArrayKt {
     ctor public LongSparseArrayKt();
     method @RequiresApi(16) public static final operator <T> boolean contains(android.util.LongSparseArray<T>, long key);
