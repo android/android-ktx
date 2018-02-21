@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
 
 package androidx.util
 
@@ -39,13 +38,14 @@ import android.util.LruCache
 inline fun <K : Any, V : Any> lruCache(
         maxSize: Int,
         crossinline onSizeOf: (key: K, value: V) -> Int = { _, _ -> 1 },
-        crossinline onCreate: (key: K) -> V? = { _ -> null },
+        @Suppress("USELESS_CAST") // https://youtrack.jetbrains.com/issue/KT-21946
+        crossinline onCreate: (key: K) -> V? = { (null as V?) },
         crossinline onEntryRemoved: ((evicted: Boolean, key: K,
-                                      oldValue: V, newValue: V?) -> Unit) = { _, _, _, _ -> }): LruCache<K, V> {
-        return object : LruCache<K, V>(maxSize) {
+                                      oldValue: V, newValue: V?) -> Unit) = { _, _, _, _ -> }) =
+        object : LruCache<K, V>(maxSize) {
             override fun sizeOf(key: K, value: V): Int = onSizeOf(key, value)
             override fun create(key: K): V? = onCreate(key)
             override fun entryRemoved(evicted: Boolean, key: K, oldValue: V, newValue: V?) {
                 onEntryRemoved(evicted, key, oldValue, newValue)
             }
-        }}
+        }
