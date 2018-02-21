@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,23 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
 
 package androidx.util
 
 import android.util.LruCache
-
-private class DelegateLruCache<K, V>(
-        maxSize: Int,
-        private val sizeFunc: (K, V) -> Int,
-        private val factory: (K) -> V?,
-        val onEntryRemoved: ((Boolean, K, V, V?) -> Unit)) : LruCache<K, V>(maxSize) {
-
-    override fun sizeOf(key: K, value: V): Int = sizeFunc(key, value)
-    override fun create(key: K): V? = factory(key)
-    override fun entryRemoved(evicted: Boolean, key: K, oldValue: V, newValue: V) {
-        onEntryRemoved(evicted, key, oldValue, newValue)
-    }
-}
 
 /**
  * Creates [android.util.LruCache] with the given parameters.
@@ -48,10 +36,16 @@ private class DelegateLruCache<K, V>(
  * @see LruCache.create
  * @see LruCache.entryRemoved
  */
-fun <K, V> lruCache(maxSize: Int,
-                    onSizeOf: (K, V) -> Int = { _, _ -> 1 },
-                    onCreate: (K) -> V? = { _ -> null },
-                    onEntryRemoved: ((Boolean, K, V, V?) -> Unit) = { _, _, _, _ -> }):
-        LruCache<K, V> {
-    return DelegateLruCache(maxSize, onSizeOf, onCreate, onEntryRemoved)
-}
+inline fun <K : Any, V : Any> lruCache(
+        maxSize: Int,
+        crossinline onSizeOf: (key: K, value: V) -> Int = { _, _ -> 1 },
+        crossinline onCreate: (key: K) -> V? = { _ -> null },
+        crossinline onEntryRemoved: ((evicted: Boolean, key: K,
+                                      oldValue: V, newValue: V?) -> Unit) = { _, _, _, _ -> }): LruCache<K, V> {
+        return object : LruCache<K, V>(maxSize) {
+            override fun sizeOf(key: K, value: V): Int = onSizeOf(key, value)
+            override fun create(key: K): V? = onCreate(key)
+            override fun entryRemoved(evicted: Boolean, key: K, oldValue: V, newValue: V?) {
+                onEntryRemoved(evicted, key, oldValue, newValue)
+            }
+        }}
