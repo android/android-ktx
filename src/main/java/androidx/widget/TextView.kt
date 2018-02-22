@@ -50,10 +50,10 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
     @DrawableRes bottom: Int = -1
 ) {
     setCompoundDrawablesWithIntrinsicBounds(
-        getUpdatedCompoundDrawable(start, 0),
-        getUpdatedCompoundDrawable(top, 1),
-        getUpdatedCompoundDrawable(end, 2),
-        getUpdatedCompoundDrawable(bottom, 3)
+        getUpdatedCompoundDrawable(start, compoundDrawables[0]),
+        getUpdatedCompoundDrawable(top, compoundDrawables[1]),
+        getUpdatedCompoundDrawable(end, compoundDrawables[2]),
+        getUpdatedCompoundDrawable(bottom, compoundDrawables[3])
     )
 }
 
@@ -80,10 +80,10 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
  */
 @RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelative(
-    start: Drawable? = compoundDrawables[0],
-    top: Drawable? = compoundDrawables[1],
-    end: Drawable? = compoundDrawables[2],
-    bottom: Drawable? = compoundDrawables[3]
+    start: Drawable? = compoundDrawablesRelative[0],
+    top: Drawable? = compoundDrawablesRelative[1],
+    end: Drawable? = compoundDrawablesRelative[2],
+    bottom: Drawable? = compoundDrawablesRelative[3]
 ) {
     setCompoundDrawablesRelative(start, top, end, bottom)
 }
@@ -102,10 +102,10 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
     @DrawableRes bottom: Int = -1
 ) {
     updateCompoundDrawablesRelativeWithIntrinsicBounds(
-        getUpdatedCompoundDrawable(start, 0),
-        getUpdatedCompoundDrawable(top, 1),
-        getUpdatedCompoundDrawable(end, 2),
-        getUpdatedCompoundDrawable(bottom, 3)
+        getUpdatedCompoundDrawable(start, compoundDrawablesRelative[0]),
+        getUpdatedCompoundDrawable(top, compoundDrawablesRelative[1]),
+        getUpdatedCompoundDrawable(end, compoundDrawablesRelative[2]),
+        getUpdatedCompoundDrawable(bottom, compoundDrawablesRelative[3])
     )
 }
 
@@ -117,17 +117,17 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
  */
 @RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-    start: Drawable? = compoundDrawables[0],
-    top: Drawable? = compoundDrawables[1],
-    end: Drawable? = compoundDrawables[2],
-    bottom: Drawable? = compoundDrawables[3]
+    start: Drawable? = compoundDrawablesRelative[0],
+    top: Drawable? = compoundDrawablesRelative[1],
+    end: Drawable? = compoundDrawablesRelative[2],
+    bottom: Drawable? = compoundDrawablesRelative[3]
 ) {
     setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
 }
 
-private fun TextView.getUpdatedCompoundDrawable(resId: Int, index: Int) =
+private fun TextView.getUpdatedCompoundDrawable(resId: Int, drawable: Drawable?) =
     when (resId) {
-        -1 -> compoundDrawables[index]
+        -1 -> drawable
         0 -> null
         else -> ContextCompat.getDrawable(context, resId)
     }
