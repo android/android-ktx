@@ -318,6 +318,21 @@ package androidx.net {
 
 package androidx.os {
 
+  public final class AsyncTaskKTX<Params, Progress, Result> extends android.os.AsyncTask<Params,Progress,Result> {
+    ctor public AsyncTaskKTX();
+    method protected Result! doInBackground(Params... params);
+    method public final android.os.AsyncTask<Params,Progress,Result> runInBackground(kotlin.jvm.functions.Function1<? super androidx.os.AsyncTaskKTX<Params,Progress,Result>.Builder,kotlin.Unit> init);
+  }
+
+  public final class AsyncTaskKTX.Builder {
+    ctor public AsyncTaskKTX.Builder();
+    method public final void doInBg(kotlin.jvm.functions.Function1<? super Params[],? extends Result> background);
+    method public final androidx.os.AsyncTaskKTX<Params,Progress,Result> getAsyncTask();
+    method public final void onPostExecute(kotlin.jvm.functions.Function1<? super Result,kotlin.Unit> action);
+    method public final void onUpdate(kotlin.jvm.functions.Function1<? super Progress[],kotlin.Unit> update);
+    method public final void publishProgress(Progress... values);
+  }
+
   public final class BundleKt {
     ctor public BundleKt();
     method public static error.NonExistentClass bundleOf(kotlin.Pair<String,?>... pairs);
