@@ -2,5 +2,12 @@
           package="androidx.kotlin">
     <application>
         <activity android:name=".TestActivity"/>
+
+        <service android:name="androidx.accounts.TestAccountAuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/account_authenticator" />
+        </service>
     </application>
 </manifest>
