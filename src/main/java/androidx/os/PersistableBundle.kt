@@ -16,7 +16,8 @@
 
 package androidx.os
 
-import android.os.Build
+import android.os.Build.VERSION_CODES.LOLLIPOP
+import android.os.Build.VERSION_CODES.LOLLIPOP_MR1
 import android.os.PersistableBundle
 import android.support.annotation.RequiresApi
 
@@ -25,59 +26,51 @@ import android.support.annotation.RequiresApi
  *
  * @throws IllegalArgumentException When a value is not a supported type of [PersistableBundle].
  */
-@RequiresApi(21)
-fun persistableBundleOf(vararg pairs: Pair<String, Any?>) = PersistableBundle(pairs.size).apply {
-    for ((key, value) in pairs) {
-        when (value) {
-            null -> putString(key, null) // Any nullable type will suffice.
-
-            // Scalars
-            is Boolean -> {
-                if (Build.VERSION.SDK_INT >= 22) {
-                    putBoolean(key, value)
-                } else {
-                    throw IllegalArgumentException("Illegal value type boolean for key \"$key\"")
-                }
-            }
-            is Double -> putDouble(key, value)
-            is Int -> putInt(key, value)
-            is Long -> putLong(key, value)
-
-            // References
-            is String -> putString(key, value)
-
-            // Scalar arrays
-            is BooleanArray -> {
-                if (Build.VERSION.SDK_INT >= 22) {
-                    putBooleanArray(key, value)
-                } else {
-                    throw IllegalArgumentException("Illegal value type boolean[] for key \"$key\"")
-                }
-            }
-            is DoubleArray -> putDoubleArray(key, value)
-            is IntArray -> putIntArray(key, value)
-            is LongArray -> putLongArray(key, value)
-
-            // Reference arrays
-            is Array<*> -> {
-                val componentType = value::class.java.componentType
-                @Suppress("UNCHECKED_CAST") // Checked by reflection.
-                when {
-                    String::class.java.isAssignableFrom(componentType) -> {
-                        putStringArray(key, value as Array<String>)
-                    }
-                    else -> {
-                        val valueType = componentType.canonicalName
-                        throw IllegalArgumentException(
-                            "Illegal value array type $valueType for key \"$key\"")
-                    }
-                }
-            }
-
-            else -> {
-                val valueType = value.javaClass.canonicalName
-                throw IllegalArgumentException("Illegal value type $valueType for key \"$key\"")
-            }
-        }
-    }
+@RequiresApi(LOLLIPOP)
+fun persistableBundleOf(vararg pairs: PersistableBundlePair) = PersistableBundle(pairs.size).apply {
+    pairs.forEach { it.putFunction(this) }
 }
+
+
+// Scalars
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Boolean) = PersistableBundlePair({ putBoolean(this@persistTo, value) })
+
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Double) = PersistableBundlePair({ putDouble(this@persistTo, value) })
+
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Int) = PersistableBundlePair({ putInt(this@persistTo, value) })
+
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Long) = PersistableBundlePair({ putLong(this@persistTo, value) })
+
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: String) = PersistableBundlePair({ putString(this@persistTo, value) })
+
+@Suppress("UNUSED_PARAMETER")
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: Nothing?) = PersistableBundlePair({ putString(this@persistTo, null) })
+
+// Scalar Array
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: BooleanArray) = PersistableBundlePair({ putBooleanArray(this@persistTo, value) })
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: DoubleArray) = PersistableBundlePair({ putDoubleArray(this@persistTo, value) })
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: IntArray) = PersistableBundlePair({ putIntArray(this@persistTo, value) })
+@RequiresApi(LOLLIPOP_MR1)
+infix fun String.persistTo(value: LongArray) = PersistableBundlePair({ putLongArray(this@persistTo, value) })
+
+// Reference Arrays
+@RequiresApi(LOLLIPOP)
+infix fun String.persistTo(value: Array<String>) = PersistableBundlePair({ putStringArray(this@persistTo, value) })
+
+/**
+ * Marker function for invalid arrays. Valid arrays are covered by explicit [to] implementations.
+ */
+@Suppress("unused", "UNUSED_PARAMETER")
+@RequiresApi(LOLLIPOP_MR1)
+infix fun <T> String.persistTo(value: Array<T>) = ArrayContainsInvalidType
+
+data class PersistableBundlePair(val putFunction: PersistableBundle.() -> Unit)

@@ -16,33 +16,32 @@
 
 package androidx.os
 
-import android.support.test.InstrumentationRegistry
+import android.os.Build.VERSION_CODES.LOLLIPOP
+import android.os.Build.VERSION_CODES.LOLLIPOP_MR1
 import android.support.test.filters.SdkSuppress
-import android.view.View
-import androidx.assertThrows
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
 
-@SdkSuppress(minSdkVersion = 21)
+@SdkSuppress(minSdkVersion = LOLLIPOP)
 class PersistableBundleTest {
     @Test fun persistableBundleOfValid() {
         val bundle = persistableBundleOf(
-            "null" to null,
+            "null" persistTo null,
 
-            "double" to 1.0,
-            "int" to 1,
-            "long" to 1L,
+            "double" persistTo 1.0,
+            "int" persistTo 1,
+            "long" persistTo 1L,
 
-            "string" to "hey",
+            "string" persistTo "hey",
 
-            "doubleArray" to doubleArrayOf(),
-            "intArray" to intArrayOf(),
-            "longArray" to longArrayOf(),
+            "doubleArray" persistTo doubleArrayOf(),
+            "intArray" persistTo intArrayOf(),
+            "longArray" persistTo longArrayOf(),
 
-            "stringArray" to arrayOf("hey")
+            "stringArray" persistTo arrayOf("hey")
         )
 
         assertEquals(9, bundle.size())
@@ -62,24 +61,15 @@ class PersistableBundleTest {
         assertThat(bundle["stringArray"] as Array<*>).asList().containsExactly("hey")
     }
 
-    @SdkSuppress(minSdkVersion = 22)
+    @SdkSuppress(minSdkVersion = LOLLIPOP_MR1)
     @Test fun persistableBundleOfValidApi22() {
         val bundle = persistableBundleOf(
-            "boolean" to true,
-            "booleanArray" to booleanArrayOf()
+            "boolean" persistTo true,
+            "booleanArray" persistTo booleanArrayOf()
         )
 
         assertEquals(true, bundle["boolean"])
         assertArrayEquals(booleanArrayOf(), bundle["booleanArray"] as BooleanArray)
     }
 
-    @Test fun persistableBundleOfInvalid() {
-        assertThrows<IllegalArgumentException> {
-            persistableBundleOf("nope" to View(InstrumentationRegistry.getContext()))
-        }.hasMessageThat().isEqualTo("Illegal value type android.view.View for key \"nope\"")
-
-        assertThrows<IllegalArgumentException> {
-            persistableBundleOf("nopes" to arrayOf(View(InstrumentationRegistry.getContext())))
-        }.hasMessageThat().isEqualTo("Illegal value array type android.view.View for key \"nopes\"")
-    }
 }

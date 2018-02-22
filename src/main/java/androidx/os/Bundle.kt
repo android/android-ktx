@@ -17,9 +17,11 @@
 package androidx.os
 
 import android.os.Binder
-import android.os.Build
+import android.os.Build.VERSION_CODES.JELLY_BEAN_MR2
+import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.os.Bundle
 import android.os.Parcelable
+import android.support.annotation.RequiresApi
 import android.util.Size
 import android.util.SizeF
 import java.io.Serializable
@@ -29,76 +31,59 @@ import java.io.Serializable
  *
  * @throws IllegalArgumentException When a value is not a supported type of [Bundle].
  */
-fun bundleOf(vararg pairs: Pair<String, Any?>) = Bundle(pairs.size).apply {
-    for ((key, value) in pairs) {
-        when (value) {
-            null -> putString(key, null) // Any nullable type will suffice.
-
-            // Scalars
-            is Boolean -> putBoolean(key, value)
-            is Byte -> putByte(key, value)
-            is Char -> putChar(key, value)
-            is Double -> putDouble(key, value)
-            is Float -> putFloat(key, value)
-            is Int -> putInt(key, value)
-            is Long -> putLong(key, value)
-            is Short -> putShort(key, value)
-
-            // References
-            is Bundle -> putBundle(key, value)
-            is CharSequence -> putCharSequence(key, value)
-            is Parcelable -> putParcelable(key, value)
-
-            // Scalar arrays
-            is BooleanArray -> putBooleanArray(key, value)
-            is ByteArray -> putByteArray(key, value)
-            is CharArray -> putCharArray(key, value)
-            is DoubleArray -> putDoubleArray(key, value)
-            is FloatArray -> putFloatArray(key, value)
-            is IntArray -> putIntArray(key, value)
-            is LongArray -> putLongArray(key, value)
-            is ShortArray -> putShortArray(key, value)
-
-            // Reference arrays
-            is Array<*> -> {
-                val componentType = value::class.java.componentType
-                @Suppress("UNCHECKED_CAST") // Checked by reflection.
-                when {
-                    Parcelable::class.java.isAssignableFrom(componentType) -> {
-                        putParcelableArray(key, value as Array<Parcelable>)
-                    }
-                    String::class.java.isAssignableFrom(componentType) -> {
-                        putStringArray(key, value as Array<String>)
-                    }
-                    CharSequence::class.java.isAssignableFrom(componentType) -> {
-                        putCharSequenceArray(key, value as Array<CharSequence>)
-                    }
-                    Serializable::class.java.isAssignableFrom(componentType) -> {
-                        putSerializable(key, value)
-                    }
-                    else -> {
-                        val valueType = componentType.canonicalName
-                        throw IllegalArgumentException(
-                            "Illegal value array type $valueType for key \"$key\"")
-                    }
-                }
-            }
-
-            // Last resort. Also we must check this after Array<*> as all arrays are serializable.
-            is Serializable -> putSerializable(key, value)
-
-            else -> {
-                if (Build.VERSION.SDK_INT >= 18 && value is Binder) {
-                    putBinder(key, value)
-                } else if (Build.VERSION.SDK_INT >= 21 && value is Size) {
-                    putSize(key, value)
-                } else if (Build.VERSION.SDK_INT >= 21 && value is SizeF) {
-                    putSizeF(key, value)
-                } else {
-                    val valueType = value.javaClass.canonicalName
-                    throw IllegalArgumentException("Illegal value type $valueType for key \"$key\"")
-                }
-            }
-        }
-    }
+fun bundleOf(vararg pairs: BundlePair) = Bundle(pairs.size).apply {
+    pairs.forEach { it.putFunction(this) }
 }
+
+// Scalars
+infix fun String.to(value: Boolean) = BundlePair({ putBoolean(this@to, value) })
+infix fun String.to(value: Byte) = BundlePair({ putByte(this@to, value) })
+infix fun String.to(value: Char) = BundlePair({ putChar(this@to, value) })
+infix fun String.to(value: Double) = BundlePair({ putDouble(this@to, value) })
+infix fun String.to(value: Float) = BundlePair({ putFloat(this@to, value) })
+infix fun String.to(value: Int) = BundlePair({ putInt(this@to, value) })
+infix fun String.to(value: Long) = BundlePair({ putLong(this@to, value) })
+infix fun String.to(value: Short) = BundlePair({ putShort(this@to, value) })
+infix fun String.to(value: String) = BundlePair({ putString(this@to, value) })
+
+// References
+infix fun String.to(value: Bundle) = BundlePair({ putBundle(this@to, value) })
+infix fun String.to(value: CharSequence) = BundlePair({ putCharSequence(this@to, value) })
+infix fun String.to(value: Parcelable) = BundlePair({ putParcelable(this@to, value) })
+@Suppress("UNUSED_PARAMETER")
+infix fun String.to(value: Nothing?) = BundlePair({ putString(this@to, null) })
+infix fun <T : Serializable> String.to(value: T) = BundlePair({ putSerializable(this@to, value) })
+
+// compat References
+@RequiresApi(JELLY_BEAN_MR2)
+infix fun String.to(value: Binder) = BundlePair({ putBinder(this@to, value) })
+
+@RequiresApi(LOLLIPOP)
+infix fun String.to(value: Size) = BundlePair({ putSize(this@to, value) })
+
+@RequiresApi(LOLLIPOP)
+infix fun String.to(value: SizeF) = BundlePair({ putSizeF(this@to, value) })
+
+// Scalar Array
+infix fun String.to(value: BooleanArray) = BundlePair({ putBooleanArray(this@to, value) })
+infix fun String.to(value: ByteArray) = BundlePair({ putByteArray(this@to, value) })
+infix fun String.to(value: CharArray) = BundlePair({ putCharArray(this@to, value) })
+infix fun String.to(value: DoubleArray) = BundlePair({ putDoubleArray(this@to, value) })
+infix fun String.to(value: FloatArray) = BundlePair({ putFloatArray(this@to, value) })
+infix fun String.to(value: IntArray) = BundlePair({ putIntArray(this@to, value) })
+infix fun String.to(value: LongArray) = BundlePair({ putLongArray(this@to, value) })
+infix fun String.to(value: ShortArray) = BundlePair({ putShortArray(this@to, value) })
+
+// Reference Arrays
+infix fun <T : Parcelable> String.to(value: Array<T>) = BundlePair({ putParcelableArray(this@to, value) })
+infix fun String.to(value: Array<String>) = BundlePair({ putStringArray(this@to, value) })
+infix fun <T : CharSequence> String.to(value: Array<T>) = BundlePair({ putCharSequenceArray(this@to, value) })
+infix fun <T : Serializable> String.to(value: Array<T>) = BundlePair({ putSerializable(this@to, value) })
+
+/**
+ * Marker function for invalid arrays. Valid arrays are covered by explicit [to] implementations.
+ */
+@Suppress("unused", "UNUSED_PARAMETER")
+infix fun <T> String.to(value: Array<T>) = ArrayContainsInvalidType
+
+class BundlePair internal constructor(internal val putFunction: Bundle.() -> Unit)
