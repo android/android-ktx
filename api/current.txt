@@ -360,6 +360,11 @@ package androidx.security {
     method public static final byte[] encrypt(javax.crypto.Cipher, byte[] data, java.security.Key key);
   }
 
+  public final class KeyPairGeneratorKt {
+    ctor public KeyPairGeneratorKt();
+    method public static final java.security.KeyPairGenerator keyPairGeneratorOf(android.content.Context context, String alias, String algorithm = "\"RSA\"", String provider = "\"AndroidKeyStore\"");
+  }
+
   public final class KeyStoreKt {
     ctor public KeyStoreKt();
     method public static final java.security.KeyPair? getKeyPair(java.security.KeyStore, String alias, char[]? password = "null");
