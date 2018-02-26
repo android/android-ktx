@@ -33,25 +33,25 @@ class KeyPairGeneratorBuilder {
     var provider: String = "AndroidKeyStore"
 
     @RequiresApi(18)
-    fun buid(spec: KeyPairGeneratorSpec): KeyPairGenerator {
+    fun build(spec: KeyPairGeneratorSpec): KeyPairGenerator {
         return KeyPairGenerator.getInstance(algorithm, provider)
             .apply { initialize(spec) }
     }
 
     @RequiresApi(18)
-    fun buid(alias: String, context: Context): KeyPairGenerator {
+    fun build(alias: String, context: Context): KeyPairGenerator {
         return KeyPairGenerator.getInstance(algorithm, provider)
             .apply { initialize(getKeyPairGeneratorSpec(alias, context)) }
     }
 
     @RequiresApi(23)
-    fun buid(spec: KeyGenParameterSpec): KeyPairGenerator {
+    fun build(spec: KeyGenParameterSpec): KeyPairGenerator {
         return KeyPairGenerator.getInstance(algorithm, provider)
             .apply { initialize(spec) }
     }
 
     @RequiresApi(23)
-    fun buid(alias: String): KeyPairGenerator {
+    fun build(alias: String): KeyPairGenerator {
         return KeyPairGenerator.getInstance(algorithm, provider)
             .apply { initialize(getKeyGenParameterSpec(alias)) }
     }
