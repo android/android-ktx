@@ -370,6 +370,7 @@ package androidx.security {
 
   public final class KeyPairGeneratorBuilder {
     ctor public KeyPairGeneratorBuilder();
+    method public java.security.KeyPairGenerator build(kotlin.jvm.functions.Function1<? super java.security.KeyPairGenerator,kotlin.Unit> block);
     method @RequiresApi(18) public java.security.KeyPairGenerator build(android.security.KeyPairGeneratorSpec spec);
     method @RequiresApi(18) public java.security.KeyPairGenerator build(String alias, android.content.Context context);
     method @RequiresApi(23) public java.security.KeyPairGenerator build(android.security.keystore.KeyGenParameterSpec spec);

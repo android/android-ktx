@@ -32,6 +32,11 @@ class KeyPairGeneratorBuilder {
     var algorithm: String = "RSA"
     var provider: String = "AndroidKeyStore"
 
+    fun build(block: (KeyPairGenerator) -> Unit): KeyPairGenerator {
+        return KeyPairGenerator.getInstance(algorithm, provider)
+            .apply { block(this) }
+    }
+
     @RequiresApi(18)
     fun build(spec: KeyPairGeneratorSpec): KeyPairGenerator {
         return KeyPairGenerator.getInstance(algorithm, provider)
