@@ -100,7 +100,7 @@ inline fun SpannableStringBuilder.backgroundColor(
 ) = inSpans(BackgroundColorSpan(color), builderAction = builderAction)
 
 /**
- * Wrap appended text in `builderAction` in a bold [StrikethroughSpan].
+ * Wrap appended text in `builderAction` in a [StrikethroughSpan].
  *
  * @see SpannableStringBuilder.inSpans
  */
