@@ -52,10 +52,10 @@ fun TextView.clear() {
  * @param after action performed after text changes
  * @param onTextChanged action preformed on text change
  */
-fun TextView.onTextChanged(
-    before: (string: String, start: Int, count: Int, after: Int) -> Unit = { _, _, _, _ -> },
-    after: (s: Editable) -> Unit = {},
-    onTextChanged: (string: String, start: Int, before: Int, count: Int) -> Unit
+inline fun TextView.onTextChanged(
+    crossinline before: (string: String, start: Int, count: Int, after: Int) -> Unit = { _, _, _, _ -> },
+    crossinline after: (s: Editable) -> Unit = {},
+    crossinline onTextChanged: (string: String, start: Int, before: Int, count: Int) -> Unit
 ) =
     addTextChangedListener(object : TextWatcher {
         override fun afterTextChanged(s: Editable) = after(s)
