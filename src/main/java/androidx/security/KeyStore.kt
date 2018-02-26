@@ -30,7 +30,11 @@ class KeyStoreBuilder {
     }
 }
 
-fun KeyStore.getKeyPair(alias: String, password: CharArray? = null): KeyPair? {
+fun KeyStore.getKeyPair(alias: String): KeyPair? {
+    return getKeyPair(alias, null)
+}
+
+fun KeyStore.getKeyPair(alias: String, password: CharArray?): KeyPair? {
     val privateKey = getKey(alias, password) as? PrivateKey ?: return null
     val publicKey = getCertificate(alias)?.publicKey ?: return null
     return KeyPair(publicKey, privateKey)
