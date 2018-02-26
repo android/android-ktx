@@ -370,10 +370,10 @@ package androidx.security {
 
   public final class KeyPairGeneratorBuilder {
     ctor public KeyPairGeneratorBuilder();
-    method @RequiresApi(18) public final java.security.KeyPairGenerator buid(android.security.KeyPairGeneratorSpec spec);
-    method @RequiresApi(18) public final java.security.KeyPairGenerator buid(String alias, android.content.Context context);
-    method @RequiresApi(23) public final java.security.KeyPairGenerator buid(android.security.keystore.KeyGenParameterSpec spec);
-    method @RequiresApi(23) public final java.security.KeyPairGenerator buid(String alias);
+    method @RequiresApi(18) public final java.security.KeyPairGenerator build(android.security.KeyPairGeneratorSpec spec);
+    method @RequiresApi(18) public final java.security.KeyPairGenerator build(String alias, android.content.Context context);
+    method @RequiresApi(23) public final java.security.KeyPairGenerator build(android.security.keystore.KeyGenParameterSpec spec);
+    method @RequiresApi(23) public final java.security.KeyPairGenerator build(String alias);
     method public final String getAlgorithm();
     method public final String getProvider();
     method public final void setAlgorithm(String p);
