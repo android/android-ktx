@@ -83,7 +83,7 @@ val ViewGroup.children: Sequence<View>
  *
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
-fun ViewGroup.MarginLayoutParams.setMargins(@Px size: Int) {
+inline fun ViewGroup.MarginLayoutParams.setMargins(@Px size: Int) {
     setMargins(size, size, size, size)
 }
 
@@ -93,7 +93,7 @@ fun ViewGroup.MarginLayoutParams.setMargins(@Px size: Int) {
  *
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
-fun ViewGroup.MarginLayoutParams.updateMargins(
+inline fun ViewGroup.MarginLayoutParams.updateMargins(
     @Px left: Int = leftMargin,
     @Px top: Int = topMargin,
     @Px right: Int = rightMargin,
@@ -109,7 +109,7 @@ fun ViewGroup.MarginLayoutParams.updateMargins(
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
 @RequiresApi(17)
-fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
+inline fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
     @Px start: Int = marginStart,
     @Px top: Int = topMargin,
     @Px end: Int = marginEnd,
