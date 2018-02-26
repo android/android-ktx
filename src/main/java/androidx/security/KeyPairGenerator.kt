@@ -19,7 +19,6 @@
 package androidx.security
 
 import android.content.Context
-import android.os.Build
 import android.security.KeyPairGeneratorSpec
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
@@ -29,48 +28,54 @@ import java.security.KeyPairGenerator
 import java.util.Calendar
 import javax.security.auth.x500.X500Principal
 
-@RequiresApi(18)
-fun keyPairGeneratorOf(
-    context: Context,
-    alias: String,
-    algorithm: String = "RSA",
-    provider: String = "AndroidKeyStore"
-): KeyPairGenerator {
-    return KeyPairGenerator.getInstance(algorithm, provider).apply {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            initGeneratorWithKeyGenParameterSpec(this, alias)
-        } else {
-            initGeneratorWithKeyPairGeneratorSpec(this, alias, context)
-        }
+class KeyPairGeneratorBuilder {
+    var algorithm: String = "RSA"
+    var provider: String = "AndroidKeyStore"
+
+    @RequiresApi(18)
+    fun buid(spec: KeyPairGeneratorSpec): KeyPairGenerator {
+        return KeyPairGenerator.getInstance(algorithm, provider)
+            .apply { initialize(spec) }
     }
-}
 
-@RequiresApi(23)
-private fun initGeneratorWithKeyGenParameterSpec(generator: KeyPairGenerator, alias: String) {
-    val builder = KeyGenParameterSpec.Builder(
-        alias, KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-    )
-        .setBlockModes(KeyProperties.BLOCK_MODE_ECB)
-        .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
+    @RequiresApi(18)
+    fun buid(alias: String, context: Context): KeyPairGenerator {
+        return KeyPairGenerator.getInstance(algorithm, provider)
+            .apply { initialize(getKeyPairGeneratorSpec(alias, context)) }
+    }
 
-    generator.initialize(builder.build())
-}
+    @RequiresApi(23)
+    fun buid(spec: KeyGenParameterSpec): KeyPairGenerator {
+        return KeyPairGenerator.getInstance(algorithm, provider)
+            .apply { initialize(spec) }
+    }
 
-@RequiresApi(18)
-private fun initGeneratorWithKeyPairGeneratorSpec(
-    generator: KeyPairGenerator,
-    alias: String,
-    context: Context
-) {
-    val startDate = Calendar.getInstance()
-    val endDate = Calendar.getInstance()
-    endDate.add(Calendar.YEAR, 20)
-    val builder = KeyPairGeneratorSpec.Builder(context)
-        .setAlias(alias)
-        .setSerialNumber(BigInteger.ONE)
-        .setSubject(X500Principal("CN=$alias CA Certificate"))
-        .setStartDate(startDate.time)
-        .setEndDate(endDate.time)
+    @RequiresApi(23)
+    fun buid(alias: String): KeyPairGenerator {
+        return KeyPairGenerator.getInstance(algorithm, provider)
+            .apply { initialize(getKeyGenParameterSpec(alias)) }
+    }
 
-    generator.initialize(builder.build())
+    @RequiresApi(23)
+    private fun getKeyGenParameterSpec(alias: String): KeyGenParameterSpec {
+        return KeyGenParameterSpec.Builder(
+            alias, KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+        )
+            .setBlockModes(KeyProperties.BLOCK_MODE_ECB)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
+            .build()
+    }
+
+    @RequiresApi(18)
+    private fun getKeyPairGeneratorSpec(alias: String, context: Context): KeyPairGeneratorSpec {
+        val startDate = Calendar.getInstance()
+        val endDate = Calendar.getInstance().apply { add(Calendar.YEAR, 20) }
+        return KeyPairGeneratorSpec.Builder(context)
+            .setAlias(alias)
+            .setSerialNumber(BigInteger.ONE)
+            .setSubject(X500Principal("CN=$alias CA Certificate"))
+            .setStartDate(startDate.time)
+            .setEndDate(endDate.time)
+            .build()
+    }
 }

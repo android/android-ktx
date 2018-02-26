@@ -20,15 +20,17 @@ import android.os.Build
 import java.security.Key
 import javax.crypto.Cipher
 
-private fun getCipherProvider(): String {
-    return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) "AndroidOpenSSL"
-    else "AndroidKeyStoreBCWorkaround"
-}
+class CipherBuilder {
+    var transformation: String = "RSA/ECB/PKCS1Padding"
+    var provider: String = getDefaultCipherProvider()
 
-fun cipherOf(
-    transformation: String = "RSA/ECB/PKCS1Padding",
-    provider: String = getCipherProvider()
-): Cipher = Cipher.getInstance(transformation, provider)
+    private fun getDefaultCipherProvider(): String {
+        return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) "AndroidOpenSSL"
+        else "AndroidKeyStoreBCWorkaround"
+    }
+
+    fun build(): Cipher = Cipher.getInstance(transformation, provider)
+}
 
 fun Cipher.encrypt(data: String, key: Key): ByteArray {
     return encrypt(data.toByteArray(), key)

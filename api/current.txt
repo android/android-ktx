@@ -351,24 +351,45 @@ package androidx.os {
 
 package androidx.security {
 
+  public final class CipherBuilder {
+    ctor public CipherBuilder();
+    method public final javax.crypto.Cipher build();
+    method public final String getProvider();
+    method public final String getTransformation();
+    method public final void setProvider(String p);
+    method public final void setTransformation(String p);
+  }
+
   public final class CipherKt {
     ctor public CipherKt();
-    method public static final javax.crypto.Cipher cipherOf(String transformation = "\"RSA/ECB/PKCS1Padding\"", String provider = "getCipherProvider()");
     method public static final byte[] decrypt(javax.crypto.Cipher, String data, java.security.Key? key);
     method public static final byte[] decrypt(javax.crypto.Cipher, byte[] data, java.security.Key? key);
     method public static final byte[] encrypt(javax.crypto.Cipher, String data, java.security.Key key);
     method public static final byte[] encrypt(javax.crypto.Cipher, byte[] data, java.security.Key key);
   }
 
-  public final class KeyPairGeneratorKt {
-    ctor public KeyPairGeneratorKt();
-    method public static final java.security.KeyPairGenerator keyPairGeneratorOf(android.content.Context context, String alias, String algorithm = "\"RSA\"", String provider = "\"AndroidKeyStore\"");
+  public final class KeyPairGeneratorBuilder {
+    ctor public KeyPairGeneratorBuilder();
+    method @RequiresApi(18) public final java.security.KeyPairGenerator buid(android.security.KeyPairGeneratorSpec spec);
+    method @RequiresApi(18) public final java.security.KeyPairGenerator buid(String alias, android.content.Context context);
+    method @RequiresApi(23) public final java.security.KeyPairGenerator buid(android.security.keystore.KeyGenParameterSpec spec);
+    method @RequiresApi(23) public final java.security.KeyPairGenerator buid(String alias);
+    method public final String getAlgorithm();
+    method public final String getProvider();
+    method public final void setAlgorithm(String p);
+    method public final void setProvider(String p);
+  }
+
+  public final class KeyStoreBuilder {
+    ctor public KeyStoreBuilder();
+    method public final java.security.KeyStore build();
+    method public final String getType();
+    method public final void setType(String p);
   }
 
   public final class KeyStoreKt {
     ctor public KeyStoreKt();
     method public static final java.security.KeyPair? getKeyPair(java.security.KeyStore, String alias, char[]? password = "null");
-    method public static final java.security.KeyStore keyStoreOf(String type = "\"AndroidKeyStore\"");
     method public static final void removeKeyPair(java.security.KeyStore, String alias);
   }
 

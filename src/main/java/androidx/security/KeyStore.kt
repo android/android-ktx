@@ -20,10 +20,14 @@ import java.security.KeyPair
 import java.security.KeyStore
 import java.security.PrivateKey
 
-fun keyStoreOf(type: String = "AndroidKeyStore"): KeyStore {
-    val keyStore = KeyStore.getInstance(type)
-    keyStore.load(null)
-    return keyStore
+class KeyStoreBuilder {
+    var type: String = "AndroidKeyStore"
+
+    fun build(): KeyStore {
+        val keyStore = KeyStore.getInstance(type)
+        keyStore.load(null)
+        return keyStore
+    }
 }
 
 fun KeyStore.getKeyPair(alias: String, password: CharArray? = null): KeyPair? {
