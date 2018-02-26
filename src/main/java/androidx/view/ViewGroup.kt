@@ -24,20 +24,20 @@ import android.view.View
 import android.view.ViewGroup
 
 /**
- * Returns the view at `index`.
+ * Returns the view at [index].
  *
  * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to the count.
  */
 operator fun ViewGroup.get(index: Int) =
     getChildAt(index) ?: throw IndexOutOfBoundsException("Index: $index, Size: $childCount")
 
-/** Returns `true` if `view` is found in this view group. */
+/** Returns `true` if [view] is found in this view group. */
 inline operator fun ViewGroup.contains(view: View) = indexOfChild(view) != -1
 
-/** Adds `view` to this view group. */
+/** Adds [view] to this view group. */
 inline operator fun ViewGroup.plusAssign(view: View) = addView(view)
 
-/** Removes `view` from this view group. */
+/** Removes [view] from this view group. */
 inline operator fun ViewGroup.minusAssign(view: View) = removeView(view)
 
 /** Returns the number of views in this view group. */
@@ -88,7 +88,7 @@ inline fun ViewGroup.MarginLayoutParams.setMargins(@Px size: Int) {
 }
 
 /**
- * Updates the margins in the ViewGroup's MarginLayoutParams.
+ * Updates the margins in the [ViewGroup]'s [MarginLayoutParams].
  * This version of the method allows using named parameters to just set one or more axes.
  *
  * @see ViewGroup.MarginLayoutParams.setMargins
