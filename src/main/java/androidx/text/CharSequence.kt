@@ -18,9 +18,17 @@ package androidx.text
 
 import android.text.TextUtils
 
-
+/**
+ * Returns whether the given CharSequence contains only digits.
+ */
 @Suppress("NOTHING_TO_INLINE")
 inline fun CharSequence.isDigitsOnly(): Boolean = TextUtils.isDigitsOnly(this)
 
+
+/**
+ * Returns the length that the specified CharSequence would have if
+ * spaces and ASCII control characters were trimmed from the start and end,
+ * as by [String.trim].
+ */
 @Suppress("NOTHING_TO_INLINE")
 inline fun CharSequence.trimmedLength(): Int = TextUtils.getTrimmedLength(this)
