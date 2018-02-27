@@ -351,6 +351,12 @@ package androidx.os {
 
 package androidx.text {
 
+  public final class CharSequenceKt {
+    ctor public CharSequenceKt();
+    method public static boolean isDigitsOnly(CharSequence);
+    method public static int trimmedLength(CharSequence);
+  }
+
   public final class SpannableStringBuilderKt {
     ctor public SpannableStringBuilderKt();
     method public static android.text.SpannableStringBuilder backgroundColor(android.text.SpannableStringBuilder, @ColorInt int color, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
@@ -376,6 +382,11 @@ package androidx.text {
   public final class SpannedStringKt {
     ctor public SpannedStringKt();
     method public static android.text.Spanned toSpanned(CharSequence);
+  }
+
+  public final class StringKt {
+    ctor public StringKt();
+    method public static String htmlEncode(String);
   }
 
 }
