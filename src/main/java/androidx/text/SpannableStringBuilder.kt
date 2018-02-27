@@ -24,6 +24,8 @@ import android.text.SpannableStringBuilder
 import android.text.SpannedString
 import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
+import android.text.style.StrikethroughSpan
+import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 
@@ -51,6 +53,23 @@ inline fun SpannableStringBuilder.inSpans(
     val start = length
     builderAction()
     for (span in spans) setSpan(span, start, length, SPAN_INCLUSIVE_EXCLUSIVE)
+    return this
+}
+
+/**
+ * Wrap appended text in `builderAction` in `span`.
+ *
+ * Note: the span will only have the correct position if the `builderAction` only appends or
+ * replaces text. Inserting, deleting, or clearing the text will cause the span to be placed at
+ * an incorrect position.
+ */
+inline fun SpannableStringBuilder.inSpans(
+    span: Any,
+    builderAction: SpannableStringBuilder.() -> Unit
+): SpannableStringBuilder {
+    val start = length
+    builderAction()
+    setSpan(span, start, length, SPAN_INCLUSIVE_EXCLUSIVE)
     return this
 }
 
@@ -97,3 +116,21 @@ inline fun SpannableStringBuilder.backgroundColor(
     @ColorInt color: Int,
     builderAction: SpannableStringBuilder.() -> Unit
 ) = inSpans(BackgroundColorSpan(color), builderAction = builderAction)
+
+/**
+ * Wrap appended text in `builderAction` in a [StrikethroughSpan].
+ *
+ * @see SpannableStringBuilder.inSpans
+ */
+inline fun SpannableStringBuilder.strikeThrough(builderAction: SpannableStringBuilder.() -> Unit) =
+    inSpans(StrikethroughSpan(), builderAction = builderAction)
+
+/**
+ * Wrap appended text in `builderAction` in a [RelativeSizeSpan].
+ *
+ * @see SpannableStringBuilder.inSpans
+ */
+inline fun SpannableStringBuilder.scale(
+    proportion: Float,
+    builderAction: SpannableStringBuilder.() -> Unit
+) = inSpans(RelativeSizeSpan(proportion), builderAction = builderAction)
