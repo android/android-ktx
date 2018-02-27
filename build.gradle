@@ -139,6 +139,7 @@ android.libraryVariants.all { variant ->
                     '--omit-common-packages=yes',
                     '--output-kotlin-nulls=yes',
                     '--hide', 'HiddenSuperclass',
+                    '--hide', 'DeprecationMismatch',
                     '--classpath', variantClasspath(variant),
                     '--api', 'api/current.txt'
             ]
@@ -162,6 +163,7 @@ android.libraryVariants.all { variant ->
                     '--output-kotlin-nulls=yes',
                     '--input-kotlin-nulls=yes',
                     '--hide', 'HiddenSuperclass',
+                    '--hide', 'DeprecationMismatch',
                     '--classpath', variantClasspath(variant),
                     '--check-compatibility',
                     '--previous-api', 'api/current.txt'

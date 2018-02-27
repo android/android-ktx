@@ -33,6 +33,7 @@ import java.time.Period
  * @see Period.getYears
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun Period.component1(): Int = years
 
 /**
@@ -47,6 +48,7 @@ inline operator fun Period.component1(): Int = years
  * @see Period.getMonths
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun Period.component2(): Int = months
 
 /**
@@ -61,6 +63,7 @@ inline operator fun Period.component2(): Int = months
  * @see Period.getDays
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun Period.component3(): Int = days
 
 /**
@@ -69,6 +72,7 @@ inline operator fun Period.component3(): Int = days
  * @see Period.negated
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("this.negated()"))
 inline operator fun Period.unaryMinus(): Period = negated()
 
 /**
@@ -77,6 +81,7 @@ inline operator fun Period.unaryMinus(): Period = negated()
  * @see Period.multipliedBy
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("this.multipliedBy(multiplicand)"))
 inline operator fun Period.times(multiplicand: Int): Period = multipliedBy(multiplicand)
 
 /**
@@ -85,6 +90,7 @@ inline operator fun Period.times(multiplicand: Int): Period = multipliedBy(multi
  * @see Period.ofDays
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Period.ofDays(this)", "java.time.Period"))
 inline fun Int.days(): Period = Period.ofDays(this)
 
 /**
@@ -93,6 +99,7 @@ inline fun Int.days(): Period = Period.ofDays(this)
  * @see Period.ofMonths
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Period.ofMonths(this)", "java.time.Period"))
 inline fun Int.months(): Period = Period.ofMonths(this)
 
 /**
@@ -101,4 +108,5 @@ inline fun Int.months(): Period = Period.ofMonths(this)
  * @see Period.ofYears
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Period.ofYears(this)", "java.time.Period"))
 inline fun Int.years(): Period = Period.ofYears(this)

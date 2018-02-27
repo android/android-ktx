@@ -23,6 +23,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 
+@Suppress("DEPRECATION")
 @SdkSuppress(minSdkVersion = 26)
 class LocalDateTimeTest {
     @Test fun destructuring() {
