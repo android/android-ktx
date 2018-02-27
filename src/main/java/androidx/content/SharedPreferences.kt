@@ -21,7 +21,7 @@ import android.content.SharedPreferences
 /**
  * Allows editing of this preference instance with a call to
  * [SharedPreferences.Editor.apply] or [SharedPreferences.Editor.commit] to persist the changes.
- * Default behaviour is [SharedPreferences.Editor.apply]
+ * Default behaviour is [SharedPreferences.Editor.apply].
  *
  * To [SharedPreferences.Editor.apply] changes
  * ```
@@ -30,17 +30,21 @@ import android.content.SharedPreferences
  * }
  * ```
  * To [SharedPreferences.Editor.commit] changes
- * prefs.edit {
+ * ```
+ * prefs.edit(commit = true) {
  *     putString("key", value)
  * }
+ * ```
  */
 inline fun SharedPreferences.edit(
     commit: Boolean = false,
-    action: SharedPreferences.Editor.() -> Unit) {
+    action: SharedPreferences.Editor.() -> Unit
+) {
     val editor = edit()
     action(editor)
-    when (commit) {
-        true -> editor.commit()
-        else -> editor.apply()
+    if (commit) {
+        editor.commit()
+    } else {
+        editor.apply()
     }
 }

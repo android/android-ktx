@@ -35,7 +35,7 @@ class SharedPreferencesTest {
         assertEquals(100, preferences.getInt("test_key2", 0))
     }
 
-    @Test fun editAndApply() {
+    @Test fun editAndCommit() {
         val preferences = context.getSharedPreferences("prefs", 0)
         preferences.edit(true) {
             putString("test_key1", "test_value")
