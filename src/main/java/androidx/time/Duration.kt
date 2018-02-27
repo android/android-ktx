@@ -58,7 +58,7 @@ inline operator fun Duration.component2(): Int = nano
 inline operator fun Duration.unaryMinus(): Duration = negated()
 
 /**
- * Multiply this [Duration] by the `multiplicand`.
+ * Multiply this [Duration] by the [multiplicand].
  *
  * @see Duration.multipliedBy
  */
@@ -66,7 +66,7 @@ inline operator fun Duration.unaryMinus(): Duration = negated()
 inline operator fun Duration.times(multiplicand: Long): Duration = multipliedBy(multiplicand)
 
 /**
- * Divide this [Duration] by the `divisor`.
+ * Divide this [Duration] by the [divisor].
  *
  * @see Duration.dividedBy
  */

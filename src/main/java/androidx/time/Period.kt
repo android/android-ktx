@@ -72,7 +72,7 @@ inline operator fun Period.component3(): Int = days
 inline operator fun Period.unaryMinus(): Period = negated()
 
 /**
- * Multiply this [Period] by the `multiplicand`.
+ * Multiply this [Period] by the [multiplicand].
  *
  * @see Period.multipliedBy
  */
