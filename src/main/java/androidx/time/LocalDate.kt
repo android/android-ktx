@@ -34,6 +34,7 @@ import java.time.Month
  * @see LocalDate.getYear
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun LocalDate.component1(): Int = year
 
 /**
@@ -48,6 +49,7 @@ inline operator fun LocalDate.component1(): Int = year
  * @see LocalDate.getMonth
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun LocalDate.component2(): Month = month
 
 /**
@@ -62,4 +64,5 @@ inline operator fun LocalDate.component2(): Month = month
  * @see LocalDate.getDayOfMonth
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun LocalDate.component3(): Int = dayOfMonth

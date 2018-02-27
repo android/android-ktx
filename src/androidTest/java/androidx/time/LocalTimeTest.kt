@@ -21,6 +21,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.time.LocalTime
 
+@Suppress("DEPRECATION")
 @SdkSuppress(minSdkVersion = 26)
 class LocalTimeTest {
     @Test fun destructuring() {

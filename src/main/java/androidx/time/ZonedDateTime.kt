@@ -29,6 +29,7 @@ import java.time.ZonedDateTime
  * @see ZonedDateTime.toLocalDateTime
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun ZonedDateTime.component1(): LocalDateTime = toLocalDateTime()
 
 /**
@@ -37,4 +38,5 @@ inline operator fun ZonedDateTime.component1(): LocalDateTime = toLocalDateTime(
  * @see ZonedDateTime.getZone
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun ZonedDateTime.component2(): ZoneId = zone

@@ -35,6 +35,7 @@ import java.time.LocalTime
  * @see LocalDateTime.toLocalDate
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun LocalDateTime.component1(): LocalDate = toLocalDate()
 
 /**
@@ -49,4 +50,5 @@ inline operator fun LocalDateTime.component1(): LocalDate = toLocalDate()
  * @see LocalDateTime.toLocalTime
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun LocalDateTime.component2(): LocalTime = toLocalTime()

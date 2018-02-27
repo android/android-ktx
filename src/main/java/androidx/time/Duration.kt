@@ -33,6 +33,7 @@ import java.time.Duration
  * @see Duration.getSeconds
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun Duration.component1(): Long = seconds
 
 /**
@@ -47,6 +48,7 @@ inline operator fun Duration.component1(): Long = seconds
  * @see Duration.getNano
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun Duration.component2(): Int = nano
 
 /**
@@ -55,6 +57,7 @@ inline operator fun Duration.component2(): Int = nano
  * @see Duration.negated
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("this.negated()"))
 inline operator fun Duration.unaryMinus(): Duration = negated()
 
 /**
@@ -63,6 +66,7 @@ inline operator fun Duration.unaryMinus(): Duration = negated()
  * @see Duration.multipliedBy
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("this.multipliedBy(multiplicand)"))
 inline operator fun Duration.times(multiplicand: Long): Duration = multipliedBy(multiplicand)
 
 /**
@@ -71,6 +75,7 @@ inline operator fun Duration.times(multiplicand: Long): Duration = multipliedBy(
  * @see Duration.dividedBy
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("this.dividedBy(divisor)"))
 inline operator fun Duration.div(divisor: Long): Duration = dividedBy(divisor)
 
 /**
@@ -79,6 +84,10 @@ inline operator fun Duration.div(divisor: Long): Duration = dividedBy(divisor)
  * @see Duration.ofNanos
  */
 @RequiresApi(26)
+@Deprecated(
+    TIME_DEPRECATION_MESSAGE,
+    ReplaceWith("Duration.ofNanos(this.toLong())", "java.time.Duration")
+)
 inline fun Int.nanos(): Duration = Duration.ofNanos(toLong())
 
 /**
@@ -87,6 +96,7 @@ inline fun Int.nanos(): Duration = Duration.ofNanos(toLong())
  * @see Duration.ofNanos
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Duration.ofNanos(this)", "java.time.Duration"))
 inline fun Long.nanos(): Duration = Duration.ofNanos(this)
 
 /**
@@ -95,6 +105,10 @@ inline fun Long.nanos(): Duration = Duration.ofNanos(this)
  * @see Duration.ofMillis
  */
 @RequiresApi(26)
+@Deprecated(
+    TIME_DEPRECATION_MESSAGE,
+    ReplaceWith("Duration.ofMillis(this.toLong())", "java.time.Duration")
+)
 inline fun Int.millis(): Duration = Duration.ofMillis(toLong())
 
 /**
@@ -103,6 +117,7 @@ inline fun Int.millis(): Duration = Duration.ofMillis(toLong())
  * @see Duration.ofMillis
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Duration.ofMillis(this)", "java.time.Duration"))
 inline fun Long.millis(): Duration = Duration.ofMillis(this)
 
 /**
@@ -111,6 +126,10 @@ inline fun Long.millis(): Duration = Duration.ofMillis(this)
  * @see Duration.ofSeconds
  */
 @RequiresApi(26)
+@Deprecated(
+    TIME_DEPRECATION_MESSAGE,
+    ReplaceWith("Duration.ofSeconds(this.toLong())", "java.time.Duration")
+)
 inline fun Int.seconds(): Duration = Duration.ofSeconds(toLong())
 
 /**
@@ -119,6 +138,7 @@ inline fun Int.seconds(): Duration = Duration.ofSeconds(toLong())
  * @see Duration.ofSeconds
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Duration.ofSeconds(this)", "java.time.Duration"))
 inline fun Long.seconds(): Duration = Duration.ofSeconds(this)
 
 /**
@@ -127,6 +147,10 @@ inline fun Long.seconds(): Duration = Duration.ofSeconds(this)
  * @see Duration.ofMinutes
  */
 @RequiresApi(26)
+@Deprecated(
+    TIME_DEPRECATION_MESSAGE,
+    ReplaceWith("Duration.ofMinutes(this.toLong())", "java.time.Duration")
+)
 inline fun Int.minutes(): Duration = Duration.ofMinutes(toLong())
 
 /**
@@ -135,6 +159,7 @@ inline fun Int.minutes(): Duration = Duration.ofMinutes(toLong())
  * @see Duration.ofMinutes
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Duration.ofMinutes(this)", "java.time.Duration"))
 inline fun Long.minutes(): Duration = Duration.ofMinutes(this)
 
 /**
@@ -143,6 +168,10 @@ inline fun Long.minutes(): Duration = Duration.ofMinutes(this)
  * @see Duration.ofHours
  */
 @RequiresApi(26)
+@Deprecated(
+    TIME_DEPRECATION_MESSAGE,
+    ReplaceWith("Duration.ofHours(this.toLong())", "java.time.Duration")
+)
 inline fun Int.hours(): Duration = Duration.ofHours(toLong())
 
 /**
@@ -151,4 +180,5 @@ inline fun Int.hours(): Duration = Duration.ofHours(toLong())
  * @see Duration.ofHours
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Duration.ofHours(this)", "java.time.Duration"))
 inline fun Long.hours(): Duration = Duration.ofHours(this)

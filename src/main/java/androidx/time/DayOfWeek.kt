@@ -27,6 +27,7 @@ import java.time.DayOfWeek
  * @see DayOfWeek.of
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("DayOfWeek.of(this)", "java.time.DayOfWeek"))
 inline fun Int.asDayOfWeek(): DayOfWeek = DayOfWeek.of(this)
 
 /**
@@ -35,4 +36,5 @@ inline fun Int.asDayOfWeek(): DayOfWeek = DayOfWeek.of(this)
  * @see DayOfWeek.getValue
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("this.value"))
 inline fun DayOfWeek.asInt() = value
