@@ -21,7 +21,6 @@ import org.junit.Test
 
 class StringTest {
 
-
     @Test
     fun htmlEncode_should_html_encode_string() {
         val target = "htmlEncode <> & \' \""

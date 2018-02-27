@@ -24,7 +24,6 @@ import android.text.TextUtils
 @Suppress("NOTHING_TO_INLINE")
 inline fun CharSequence.isDigitsOnly(): Boolean = TextUtils.isDigitsOnly(this)
 
-
 /**
  * Returns the length that the specified CharSequence would have if
  * spaces and ASCII control characters were trimmed from the start and end,

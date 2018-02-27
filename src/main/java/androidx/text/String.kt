@@ -18,7 +18,6 @@ package androidx.text
 
 import android.text.TextUtils
 
-
 /**
  * Html-encode the string.
  */
