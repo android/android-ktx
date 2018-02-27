@@ -20,7 +20,7 @@ import android.os.Trace
 import android.support.v4.os.TraceCompat
 
 /**
- * Wrap the specified `block` in calls to [Trace.beginSection] (with the supplied `sectionName`)
+ * Wrap the specified [block] in calls to [Trace.beginSection] (with the supplied [sectionName])
  * and [Trace.endSection].
  */
 inline fun <T> trace(sectionName: String, block: () -> T): T {
