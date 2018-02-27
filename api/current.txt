@@ -351,6 +351,12 @@ package androidx.os {
 
 package androidx.text {
 
+  public final class CharSequenceKt {
+    ctor public CharSequenceKt();
+    method public static boolean isDigitsOnly(CharSequence);
+    method public static int trimmedLength(CharSequence);
+  }
+
   public final class SpannableStringBuilderKt {
     ctor public SpannableStringBuilderKt();
     method public static android.text.SpannableStringBuilder backgroundColor(android.text.SpannableStringBuilder, @ColorInt int color, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
@@ -360,6 +366,11 @@ package androidx.text {
     method public static android.text.SpannableStringBuilder inSpans(android.text.SpannableStringBuilder, Object[] spans, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static android.text.SpannableStringBuilder italic(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
+  }
+
+  public final class StringKt {
+    ctor public StringKt();
+    method public static String htmlEncode(String);
   }
 
 }
