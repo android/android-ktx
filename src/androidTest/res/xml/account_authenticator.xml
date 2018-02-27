@@ -15,10 +15,7 @@
   ~ limitations under the License.
   -->
 
-<resources>
-    <string-array name="text_array">
-        <item>Hello</item>
-        <item>World</item>
-    </string-array>
-    <string name="account_type">androidx.accounts</string>
-</resources>
+<account-authenticator
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accountType="@string/account_type"
+    />

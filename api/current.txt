@@ -1,3 +1,12 @@
+package androidx.accounts {
+
+  public final class AccountManagerExt {
+    ctor public AccountManagerExt();
+    method public static void removeAccount(android.accounts.AccountManager, android.accounts.Account account, android.app.Activity? activity = "null", android.os.Handler? handler = "null", kotlin.jvm.functions.Function1<? super android.accounts.AccountManagerFuture<android.os.Bundle>,kotlin.Unit>? callback = "null");
+  }
+
+}
+
 package androidx.animation {
 
   public final class AnimatorKt {
