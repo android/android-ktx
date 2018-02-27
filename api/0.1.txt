@@ -670,4 +670,3 @@ package androidx.view {
   }
 
 }
-

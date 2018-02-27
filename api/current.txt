@@ -688,6 +688,18 @@ package androidx.util {
 
 package androidx.view {
 
+  public final class MenuKt {
+    ctor public MenuKt();
+    method public static final operator boolean contains(android.view.Menu, android.view.MenuItem item);
+    method public static final void forEach(android.view.Menu, kotlin.jvm.functions.Function1 action);
+    method public static final void forEachIndexed(android.view.Menu, kotlin.jvm.functions.Function2 action);
+    method public static final operator android.view.MenuItem get(android.view.Menu, int index);
+    method public static final int getSize(android.view.Menu);
+    method public static final boolean isEmpty(android.view.Menu);
+    method public static final boolean isNotEmpty(android.view.Menu);
+    method public static final operator java.util.Iterator iterator(android.view.Menu);
+  }
+
   public final class ViewGroupKt {
     ctor public ViewGroupKt();
     method public static operator boolean contains(android.view.ViewGroup, android.view.View view);
