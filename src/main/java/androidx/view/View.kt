@@ -169,7 +169,7 @@ inline fun View.postOnAnimationDelayed(
  *
  * If this view has not been laid out this method will throw a [IllegalStateException].
  *
- * @param config Bitmap config of the desired bitmap. Defaults to [Config.ARGB_8888].
+ * @param config Bitmap config of the desired bitmap. Defaults to [Bitmap.Config.ARGB_8888].
  */
 fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     if (!ViewCompat.isLaidOut(this)) {
