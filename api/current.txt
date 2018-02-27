@@ -27,6 +27,18 @@ package androidx.content {
     method public static final void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }
 
+  public final class DisplayMetricsKt {
+    ctor public DisplayMetricsKt();
+    method public static final float getDp(int);
+    method public static final float getDp(float);
+    method public static final float getSp(int);
+    method public static final float getSp(float);
+    method public static final float getDpValue(int);
+    method public static final float getDpValue(float);
+    method public static final float getSpValue(int);
+    method public static final float getSpValue(float);
+  }
+
   public final class SharedPreferencesKt {
     ctor public SharedPreferencesKt();
     method public static final void edit(android.content.SharedPreferences, kotlin.jvm.functions.Function1<? super android.content.SharedPreferences.Editor,kotlin.Unit> action);
