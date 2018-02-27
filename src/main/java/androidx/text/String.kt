@@ -19,5 +19,8 @@ package androidx.text
 import android.text.TextUtils
 
 
+/**
+ * Html-encode the string.
+ */
 @Suppress("NOTHING_TO_INLINE")
 inline fun String.htmlEncode(): String = TextUtils.htmlEncode(this)
