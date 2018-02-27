@@ -36,7 +36,6 @@ import android.content.SharedPreferences
  * ```
  */
 @SuppressLint("ApplySharedPref")
-@JvmOverloads // For binary compatibility with 0.1. TODO remove for 1.0.
 inline fun SharedPreferences.edit(
     commit: Boolean = false,
     action: SharedPreferences.Editor.() -> Unit

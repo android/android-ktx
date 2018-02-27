@@ -30,7 +30,6 @@ package androidx.content {
   public final class SharedPreferencesKt {
     ctor public SharedPreferencesKt();
     method public static void edit(android.content.SharedPreferences, boolean commit = "false", kotlin.jvm.functions.Function1<? super android.content.SharedPreferences.Editor,kotlin.Unit> action);
-    method public static void edit(android.content.SharedPreferences = "false", kotlin.jvm.functions.Function1<? super android.content.SharedPreferences.Editor,kotlin.Unit> action);
   }
 
 }
