@@ -42,10 +42,10 @@ operator fun Menu.contains(item: MenuItem): Boolean {
 inline val Menu.size get() = size()
 
 /** Returns true if this menu contains no items. */
-inline fun Menu.isEmpty() = size == 0
+inline fun Menu.isEmpty() = size() == 0
 
 /** Returns true if this menu contains one or more items. */
-inline fun Menu.isNotEmpty() = size != 0
+inline fun Menu.isNotEmpty() = size() != 0
 
 /** Performs the given action on each item in this menu. */
 inline fun Menu.forEach(action: (item: MenuItem) -> Unit) {

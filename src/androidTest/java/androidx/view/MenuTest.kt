@@ -40,11 +40,9 @@ class MenuTest {
     @Test fun contains() {
         val item1 = menu.add("")
         assertTrue(item1 in menu)
-        assertFalse(item1 !in menu)
 
         val item2 = menu.add("")
         assertTrue(item2 in menu)
-        assertFalse(item2 !in menu)
     }
 
     @Test fun size() {
@@ -116,23 +114,6 @@ class MenuTest {
         assertThrows<IndexOutOfBoundsException> {
             iterator.next()
         }
-    }
-
-    @Test fun iteratorRemoving() {
-        val item1 = menu.add("")
-        val item2 = menu.add("")
-
-        val iterator = menu.iterator()
-
-        assertSame(item1, iterator.next())
-        iterator.remove()
-        assertFalse(item1 in menu)
-        assertEquals(1, menu.size())
-
-        assertSame(item2, iterator.next())
-        iterator.remove()
-        assertFalse(item2 in menu)
-        assertEquals(0, menu.size())
     }
 
     @Test fun iteratorForEach() {
