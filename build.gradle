@@ -20,7 +20,7 @@ buildscript {
 }
 
 group = 'androidx.core'
-version = '0.2'
+version = '0.3-SNAPSHOT'
 
 apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
