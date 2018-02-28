@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../../../style.css">
 </HEAD>
 <BODY>
-<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href=".">android.graphics.RectF</a><br/>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href="./index.html">android.graphics.RectF</a><br/>
 <br/>
 <h3>Extensions for android.graphics.RectF</h3>
 <table>
@@ -34,7 +34,7 @@
 </td>
 <td>
 <code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">component2</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
-<p>Returns "top", the first component of the rectangle.</p>
+<p>Returns "top", the second component of the rectangle.</p>
 </td>
 </tr>
 <tr>
@@ -43,7 +43,7 @@
 </td>
 <td>
 <code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">component3</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
-<p>Returns "right", the first component of the rectangle.</p>
+<p>Returns "right", the third component of the rectangle.</p>
 </td>
 </tr>
 <tr>
@@ -52,7 +52,7 @@
 </td>
 <td>
 <code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">component4</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
-<p>Returns "bottom", the first component of the rectangle.</p>
+<p>Returns "bottom", the fourth component of the rectangle.</p>
 </td>
 </tr>
 <tr>
@@ -74,7 +74,7 @@ An empty rectangle never contains any point.</p>
 <td>
 <code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">minus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$minus(android.graphics.RectF, android.graphics.RectF)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
 <p>Returns the difference of this rectangle and the specified rectangle as a new region.
-This rectangle is first converted to a <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> using <a href="#">RectF.toRect</a>.</p>
+This rectangle is first converted to a <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> using <a href="to-rect.html">RectF.toRect</a>.</p>
 <code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">minus</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$minus(android.graphics.RectF, kotlin.Float)/xy">xy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a></code>
 <p>Returns a new rectangle representing this rectangle offset by the negation
 of the specified amount on both X and Y axis.</p>
@@ -147,7 +147,7 @@ this rectangle.</p>
 <td>
 <code><span class="keyword">infix</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">.</span><span class="identifier">xor</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics$xor(android.graphics.RectF, android.graphics.RectF)/r">r</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/RectF.html"><span class="identifier">RectF</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Region.html"><span class="identifier">Region</span></a></code>
 <p>Returns the union minus the intersection of two rectangles as a new region.
-The two rectangles are first converted to <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> using <a href="#">RectF.toRect</a>.</p>
+The two rectangles are first converted to <a href="https://developer.android.com/reference/android/graphics/Rect.html">Rect</a> using <a href="to-rect.html">RectF.toRect</a>.</p>
 </td>
 </tr>
 </tbody>

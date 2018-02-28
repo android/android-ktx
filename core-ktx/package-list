@@ -8,7 +8,7 @@ $dokka.location:androidx.animation$doOnPause(android.animation.Animator, kotlin.
 $dokka.location:androidx.animation$doOnRepeat(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/do-on-repeat.html
 $dokka.location:androidx.animation$doOnResume(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/do-on-resume.html
 $dokka.location:androidx.animation$doOnStart(android.animation.Animator, kotlin.Function1((android.animation.Animator, kotlin.Unit)))androidx.animation/android.animation.-animator/do-on-start.html
-$dokka.location:androidx.content$edit(android.content.SharedPreferences, kotlin.Function1((android.content.SharedPreferences.Editor, kotlin.Unit)))androidx.content/android.content.-shared-preferences/edit.html
+$dokka.location:androidx.content$edit(android.content.SharedPreferences, kotlin.Boolean, kotlin.Function1((android.content.SharedPreferences.Editor, kotlin.Unit)))androidx.content/android.content.-shared-preferences/edit.html
 $dokka.location:androidx.content$systemService(android.content.Context)androidx.content/android.content.-context/system-service.html
 $dokka.location:androidx.content$withStyledAttributes(android.content.Context, android.util.AttributeSet, kotlin.IntArray, kotlin.Int, kotlin.Int, kotlin.Function1((android.content.res.TypedArray, kotlin.Unit)))androidx.content/android.content.-context/with-styled-attributes.html
 $dokka.location:androidx.content$withStyledAttributes(android.content.Context, kotlin.Int, kotlin.IntArray, kotlin.Function1((android.content.res.TypedArray, kotlin.Unit)))androidx.content/android.content.-context/with-styled-attributes.html
@@ -23,9 +23,11 @@ $dokka.location:androidx.content.res$getFloatOrThrow(android.content.res.TypedAr
 $dokka.location:androidx.content.res$getFontOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-font-or-throw.html
 $dokka.location:androidx.content.res$getIntOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-int-or-throw.html
 $dokka.location:androidx.content.res$getIntegerOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-integer-or-throw.html
+$dokka.location:androidx.content.res$getResourceIdOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-resource-id-or-throw.html
 $dokka.location:androidx.content.res$getStringOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-string-or-throw.html
 $dokka.location:androidx.content.res$getTextArrayOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-text-array-or-throw.html
 $dokka.location:androidx.content.res$getTextOrThrow(android.content.res.TypedArray, kotlin.Int)androidx.content.res/android.content.res.-typed-array/get-text-or-throw.html
+$dokka.location:androidx.content.res$use(android.content.res.TypedArray, kotlin.Function1((android.content.res.TypedArray, androidx.content.res.use.R)))androidx.content.res/android.content.res.-typed-array/use.html
 $dokka.location:androidx.database$getBlob(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-blob.html
 $dokka.location:androidx.database$getBlobOrNull(android.database.Cursor, kotlin.Int)androidx.database/android.database.-cursor/get-blob-or-null.html
 $dokka.location:androidx.database$getBlobOrNull(android.database.Cursor, kotlin.String)androidx.database/android.database.-cursor/get-blob-or-null.html
@@ -139,6 +141,7 @@ $dokka.location:androidx.graphics$toColor(kotlin.Int)androidx.graphics/kotlin.-
 $dokka.location:androidx.graphics$toColor(kotlin.Long)androidx.graphics/kotlin.-long/to-color.html
 $dokka.location:androidx.graphics$toColorFilter(android.graphics.PorterDuff.Mode, kotlin.Int)androidx.graphics/android.graphics.-porter-duff.-mode/to-color-filter.html
 $dokka.location:androidx.graphics$toColorInt(kotlin.Long)androidx.graphics/kotlin.-long/to-color-int.html
+$dokka.location:androidx.graphics$toColorInt(kotlin.String)androidx.graphics/kotlin.-string/to-color-int.html
 $dokka.location:androidx.graphics$toColorLong(kotlin.Int)androidx.graphics/kotlin.-int/to-color-long.html
 $dokka.location:androidx.graphics$toPoint(android.graphics.PointF)androidx.graphics/android.graphics.-point-f/to-point.html
 $dokka.location:androidx.graphics$toPointF(android.graphics.Point)androidx.graphics/android.graphics.-point/to-point-f.html
@@ -178,11 +181,24 @@ $dokka.location:androidx.os$postDelayed(android.os.Handler, java.lang.Runnable, 
 $dokka.location:androidx.os$postDelayed(android.os.Handler, java.time.Duration, kotlin.Any, kotlin.Function0((kotlin.Unit)))androidx.os/android.os.-handler/post-delayed.html
 $dokka.location:androidx.os$postDelayed(android.os.Handler, kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Any, kotlin.Function0((kotlin.Unit)))androidx.os/android.os.-handler/post-delayed.html
 $dokka.location:androidx.os$postDelayed(android.os.Handler, kotlin.Long, kotlin.Any, kotlin.Function0((kotlin.Unit)))androidx.os/android.os.-handler/post-delayed.html
+$dokka.location:androidx.os$toUri(java.io.File)androidx.os/java.io.-file/to-uri.html
 $dokka.location:androidx.text$backgroundColor(android.text.SpannableStringBuilder, kotlin.Int, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/background-color.html
 $dokka.location:androidx.text$bold(android.text.SpannableStringBuilder, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/bold.html
+$dokka.location:androidx.text$clearSpans(android.text.Spannable)androidx.text/android.text.-spannable/clear-spans.html
 $dokka.location:androidx.text$color(android.text.SpannableStringBuilder, kotlin.Int, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/color.html
+$dokka.location:androidx.text$getSpans(android.text.Spanned)androidx.text/android.text.-spanned/get-spans.html
+$dokka.location:androidx.text$htmlEncode(kotlin.String)androidx.text/kotlin.-string/html-encode.html
+$dokka.location:androidx.text$inSpans(android.text.SpannableStringBuilder, kotlin.Any, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/in-spans.html
 $dokka.location:androidx.text$inSpans(android.text.SpannableStringBuilder, kotlin.Array((kotlin.Any)), kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/in-spans.html
+$dokka.location:androidx.text$isDigitsOnly(kotlin.CharSequence)androidx.text/kotlin.-char-sequence/is-digits-only.html
 $dokka.location:androidx.text$italic(android.text.SpannableStringBuilder, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/italic.html
+$dokka.location:androidx.text$minusAssign(android.text.Spannable, kotlin.Any)androidx.text/android.text.-spannable/minus-assign.html
+$dokka.location:androidx.text$plusAssign(android.text.Spannable, kotlin.Any)androidx.text/android.text.-spannable/plus-assign.html
+$dokka.location:androidx.text$scale(android.text.SpannableStringBuilder, kotlin.Float, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/scale.html
+$dokka.location:androidx.text$strikeThrough(android.text.SpannableStringBuilder, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/strike-through.html
+$dokka.location:androidx.text$toSpannable(kotlin.CharSequence)androidx.text/kotlin.-char-sequence/to-spannable.html
+$dokka.location:androidx.text$toSpanned(kotlin.CharSequence)androidx.text/kotlin.-char-sequence/to-spanned.html
+$dokka.location:androidx.text$trimmedLength(kotlin.CharSequence)androidx.text/kotlin.-char-sequence/trimmed-length.html
 $dokka.location:androidx.text$underline(android.text.SpannableStringBuilder, kotlin.Function1((android.text.SpannableStringBuilder, kotlin.Unit)))androidx.text/android.text.-spannable-string-builder/underline.html
 $dokka.location:androidx.time$asDayOfWeek(kotlin.Int)androidx.time/kotlin.-int/as-day-of-week.html
 $dokka.location:androidx.time$asEpochMillis(kotlin.Long)androidx.time/kotlin.-long/as-epoch-millis.html
@@ -294,6 +310,7 @@ $dokka.location:androidx.util$keyIterator(android.util.SparseArray((androidx.uti
 $dokka.location:androidx.util$keyIterator(android.util.SparseBooleanArray)androidx.util/android.util.-sparse-boolean-array/key-iterator.html
 $dokka.location:androidx.util$keyIterator(android.util.SparseIntArray)androidx.util/android.util.-sparse-int-array/key-iterator.html
 $dokka.location:androidx.util$keyIterator(android.util.SparseLongArray)androidx.util/android.util.-sparse-long-array/key-iterator.html
+$dokka.location:androidx.util$layoutDirection#java.util.Localeandroidx.util/java.util.-locale/layout-direction.html
 $dokka.location:androidx.util$plus(android.util.LongSparseArray((androidx.util.plus.T)), android.util.LongSparseArray((androidx.util.plus.T)))androidx.util/android.util.-long-sparse-array/plus.html
 $dokka.location:androidx.util$plus(android.util.Range((androidx.util.plus.T)), android.util.Range((androidx.util.plus.T)))androidx.util/android.util.-range/plus.html
 $dokka.location:androidx.util$plus(android.util.Range((androidx.util.plus.T)), androidx.util.plus.T)androidx.util/android.util.-range/plus.html
@@ -340,15 +357,26 @@ $dokka.location:androidx.util$valueIterator(android.util.SparseIntArray)android
 $dokka.location:androidx.util$valueIterator(android.util.SparseLongArray)androidx.util/android.util.-sparse-long-array/value-iterator.html
 $dokka.location:androidx.util$writeBytes(android.util.AtomicFile, kotlin.ByteArray)androidx.util/android.util.-atomic-file/write-bytes.html
 $dokka.location:androidx.util$writeText(android.util.AtomicFile, kotlin.String, java.nio.charset.Charset)androidx.util/android.util.-atomic-file/write-text.html
+$dokka.location:androidx.view$children#android.view.ViewGroupandroidx.view/android.view.-view-group/children.html
+$dokka.location:androidx.view$contains(android.view.Menu, android.view.MenuItem)androidx.view/android.view.-menu/contains.html
 $dokka.location:androidx.view$contains(android.view.ViewGroup, android.view.View)androidx.view/android.view.-view-group/contains.html
 $dokka.location:androidx.view$doOnLayout(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))androidx.view/android.view.-view/do-on-layout.html
 $dokka.location:androidx.view$doOnNextLayout(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))androidx.view/android.view.-view/do-on-next-layout.html
 $dokka.location:androidx.view$doOnPreDraw(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))androidx.view/android.view.-view/do-on-pre-draw.html
+$dokka.location:androidx.view$forEach(android.view.Menu, kotlin.Function1((android.view.MenuItem, kotlin.Unit)))androidx.view/android.view.-menu/for-each.html
 $dokka.location:androidx.view$forEach(android.view.ViewGroup, kotlin.Function1((android.view.View, kotlin.Unit)))androidx.view/android.view.-view-group/for-each.html
+$dokka.location:androidx.view$forEachIndexed(android.view.Menu, kotlin.Function2((kotlin.Int, android.view.MenuItem, kotlin.Unit)))androidx.view/android.view.-menu/for-each-indexed.html
 $dokka.location:androidx.view$forEachIndexed(android.view.ViewGroup, kotlin.Function2((kotlin.Int, android.view.View, kotlin.Unit)))androidx.view/android.view.-view-group/for-each-indexed.html
+$dokka.location:androidx.view$get(android.view.Menu, kotlin.Int)androidx.view/android.view.-menu/get.html
 $dokka.location:androidx.view$get(android.view.ViewGroup, kotlin.Int)androidx.view/android.view.-view-group/get.html
+$dokka.location:androidx.view$isEmpty(android.view.Menu)androidx.view/android.view.-menu/is-empty.html
 $dokka.location:androidx.view$isEmpty(android.view.ViewGroup)androidx.view/android.view.-view-group/is-empty.html
+$dokka.location:androidx.view$isGone#android.view.Viewandroidx.view/android.view.-view/is-gone.html
+$dokka.location:androidx.view$isInvisible#android.view.Viewandroidx.view/android.view.-view/is-invisible.html
+$dokka.location:androidx.view$isNotEmpty(android.view.Menu)androidx.view/android.view.-menu/is-not-empty.html
 $dokka.location:androidx.view$isNotEmpty(android.view.ViewGroup)androidx.view/android.view.-view-group/is-not-empty.html
+$dokka.location:androidx.view$isVisible#android.view.Viewandroidx.view/android.view.-view/is-visible.html
+$dokka.location:androidx.view$iterator(android.view.Menu)androidx.view/android.view.-menu/iterator.html
 $dokka.location:androidx.view$iterator(android.view.ViewGroup)androidx.view/android.view.-view-group/iterator.html
 $dokka.location:androidx.view$minusAssign(android.view.ViewGroup, android.view.View)androidx.view/android.view.-view-group/minus-assign.html
 $dokka.location:androidx.view$plusAssign(android.view.ViewGroup, android.view.View)androidx.view/android.view.-view-group/plus-assign.html
@@ -356,8 +384,11 @@ $dokka.location:androidx.view$postDelayed(android.view.View, kotlin.Long, kotlin
 $dokka.location:androidx.view$postOnAnimationDelayed(android.view.View, kotlin.Long, kotlin.Function0((kotlin.Unit)))androidx.view/android.view.-view/post-on-animation-delayed.html
 $dokka.location:androidx.view$setMargins(android.view.ViewGroup.MarginLayoutParams, kotlin.Int)androidx.view/android.view.-view-group.-margin-layout-params/set-margins.html
 $dokka.location:androidx.view$setPadding(android.view.View, kotlin.Int)androidx.view/android.view.-view/set-padding.html
+$dokka.location:androidx.view$size#android.view.Menuandroidx.view/android.view.-menu/size.html
 $dokka.location:androidx.view$size#android.view.ViewGroupandroidx.view/android.view.-view-group/size.html
 $dokka.location:androidx.view$toBitmap(android.view.View, android.graphics.Bitmap.Config)androidx.view/android.view.-view/to-bitmap.html
+$dokka.location:androidx.view$updateLayoutParams(android.view.ViewGroup, kotlin.Function1((android.view.ViewGroup.LayoutParams, kotlin.Unit)))androidx.view/android.view.-view-group/update-layout-params.html
+$dokka.location:androidx.view$updateLayoutParams(android.view.ViewGroup, kotlin.Function1((androidx.view.updateLayoutParams.T, kotlin.Unit)))androidx.view/android.view.-view-group/update-layout-params.html
 $dokka.location:androidx.view$updateMargins(android.view.ViewGroup.MarginLayoutParams, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)androidx.view/android.view.-view-group.-margin-layout-params/update-margins.html
 $dokka.location:androidx.view$updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)androidx.view/android.view.-view-group.-margin-layout-params/update-margins-relative.html
 $dokka.location:androidx.view$updatePadding(android.view.View, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)androidx.view/android.view.-view/update-padding.html

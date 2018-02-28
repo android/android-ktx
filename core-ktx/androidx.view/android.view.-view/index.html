@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../../../style.css">
 </HEAD>
 <BODY>
-<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.view</a>&nbsp;/&nbsp;<a href=".">android.view.View</a><br/>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.view</a>&nbsp;/&nbsp;<a href="./index.html">android.view.View</a><br/>
 <br/>
 <h3>Extensions for android.view.View</h3>
 <table>
@@ -16,9 +16,9 @@
 </td>
 <td>
 <code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">doOnLayout</span><span class="symbol">(</span><span class="identifier" id="androidx.view$doOnLayout(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">view</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Performs the given action when this view is laid out. If the view has been laid out, the action
-will be performed straight away, otherwise the action will be performed after the
-view is laid out.</p>
+<p>Performs the given action when this view is laid out. If the view has been laid out and it
+has not requested a layout, the action will be performed straight away, otherwise the
+action will be performed after the view is next laid out.</p>
 </td>
 </tr>
 <tr>
@@ -37,6 +37,33 @@ view is laid out.</p>
 <td>
 <code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">doOnPreDraw</span><span class="symbol">(</span><span class="identifier" id="androidx.view$doOnPreDraw(android.view.View, kotlin.Function1((android.view.View, kotlin.Unit)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">view</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
 <p>Performs the given action when the view tree is about to be drawn.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-gone.html">isGone</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">isGone</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns true when this view's visibility is <a href="https://developer.android.com/reference/android/view/View.html#GONE">View.GONE</a>, false otherwise.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-invisible.html">isInvisible</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">isInvisible</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns true when this view's visibility is <a href="https://developer.android.com/reference/android/view/View.html#INVISIBLE">View.INVISIBLE</a>, false otherwise.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-visible.html">isVisible</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">.</span><span class="identifier">isVisible</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns true when this view's visibility is <a href="https://developer.android.com/reference/android/view/View.html#VISIBLE">View.VISIBLE</a>, false otherwise.</p>
 </td>
 </tr>
 <tr>

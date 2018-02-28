@@ -5,18 +5,27 @@
 <link rel="stylesheet" href="../../../style.css">
 </HEAD>
 <BODY>
-<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.view</a>&nbsp;/&nbsp;<a href=".">android.view.ViewGroup</a><br/>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.view</a>&nbsp;/&nbsp;<a href="./index.html">android.view.ViewGroup</a><br/>
 <br/>
 <h3>Extensions for android.view.ViewGroup</h3>
 <table>
 <tbody>
 <tr>
 <td>
+<p><a href="children.html">children</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">.</span><span class="identifier">children</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html"><span class="identifier">Sequence</span></a><span class="symbol">&lt;</span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">&gt;</span></code>
+<p>Returns a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html">Sequence</a> over the child views in this view group.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p><a href="contains.html">contains</a></p>
 </td>
 <td>
 <code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">.</span><span class="identifier">contains</span><span class="symbol">(</span><span class="identifier" id="androidx.view$contains(android.view.ViewGroup, android.view.View)/view">view</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
-<p>Returns <code>true</code> if <code>view</code> is found in this view group.</p>
+<p>Returns <code>true</code> if <a href="contains.html#androidx.view$contains(android.view.ViewGroup, android.view.View)/view">view</a> is found in this view group.</p>
 </td>
 </tr>
 <tr>
@@ -43,7 +52,7 @@
 </td>
 <td>
 <code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">.</span><span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="androidx.view$get(android.view.ViewGroup, kotlin.Int)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a></code>
-<p>Returns the view at <code>index</code>.</p>
+<p>Returns the view at <a href="get.html#androidx.view$get(android.view.ViewGroup, kotlin.Int)/index">index</a>.</p>
 </td>
 </tr>
 <tr>
@@ -79,7 +88,7 @@
 </td>
 <td>
 <code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">.</span><span class="identifier">minusAssign</span><span class="symbol">(</span><span class="identifier" id="androidx.view$minusAssign(android.view.ViewGroup, android.view.View)/view">view</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Removes <code>view</code> from this view group.</p>
+<p>Removes <a href="minus-assign.html#androidx.view$minusAssign(android.view.ViewGroup, android.view.View)/view">view</a> from this view group.</p>
 </td>
 </tr>
 <tr>
@@ -88,7 +97,7 @@
 </td>
 <td>
 <code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">.</span><span class="identifier">plusAssign</span><span class="symbol">(</span><span class="identifier" id="androidx.view$plusAssign(android.view.ViewGroup, android.view.View)/view">view</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Adds <code>view</code> to this view group.</p>
+<p>Adds <a href="plus-assign.html#androidx.view$plusAssign(android.view.ViewGroup, android.view.View)/view">view</a> to this view group.</p>
 </td>
 </tr>
 <tr>
@@ -98,6 +107,19 @@
 <td>
 <code><span class="keyword">val </span><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">.</span><span class="identifier">size</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
 <p>Returns the number of views in this view group.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-layout-params.html">updateLayoutParams</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">.</span><span class="identifier">updateLayoutParams</span><span class="symbol">(</span><span class="identifier" id="androidx.view$updateLayoutParams(android.view.ViewGroup, kotlin.Function1((android.view.ViewGroup.LayoutParams, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup/LayoutParams.html"><span class="identifier">LayoutParams</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Executes <a href="update-layout-params.html#androidx.view$updateLayoutParams(android.view.ViewGroup, kotlin.Function1((android.view.ViewGroup.LayoutParams, kotlin.Unit)))/block">block</a> with the ViewGroup's layoutParams and reassigns the layoutParams with the
+updated version.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup/LayoutParams.html"><span class="identifier">LayoutParams</span></a><span class="symbol">&gt;</span> <a href="https://developer.android.com/reference/android/view/ViewGroup.html"><span class="identifier">ViewGroup</span></a><span class="symbol">.</span><span class="identifier">updateLayoutParams</span><span class="symbol">(</span><span class="identifier" id="androidx.view$updateLayoutParams(android.view.ViewGroup, kotlin.Function1((androidx.view.updateLayoutParams.T, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="update-layout-params.html#T"><span class="identifier">T</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Executes <a href="update-layout-params.html#androidx.view$updateLayoutParams(android.view.ViewGroup, kotlin.Function1((androidx.view.updateLayoutParams.T, kotlin.Unit)))/block">block</a> with a typed version of the ViewGroup's layoutParams and reassigns the
+layoutParams with the updated version.</p>
 </td>
 </tr>
 </tbody>

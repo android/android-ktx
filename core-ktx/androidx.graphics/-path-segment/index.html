@@ -5,21 +5,12 @@
 <link rel="stylesheet" href="../../../style.css">
 </HEAD>
 <BODY>
-<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href=".">PathSegment</a><br/>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.graphics</a>&nbsp;/&nbsp;<a href="./index.html">PathSegment</a><br/>
 <br/>
 <h1>PathSegment</h1>
 <code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">PathSegment</span></code>
-<p>A PathSegment is a line segment that represents an approximate fraction
-of a <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a> after <a href="#">flattening</a>.</p>
-<h3>Parameters</h3>
-<p><a name="start"></a>
-<code>start</code> - The start point of the line segment</p>
-<p><a name="startFraction"></a>
-<code>startFraction</code> - Fraction along the length of the path that the start point resides</p>
-<p><a name="start"></a>
-<code>start</code> - The end point of the line segment</p>
-<p><a name="startFraction"></a>
-<code>startFraction</code> - Fraction along the length of the path that the end point resides</p>
+<p>A <a href="./index.html">PathSegment</a> is a line segment that represents an approximate fraction
+of a <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a> after <a href="../android.graphics.-path/flatten.html">flattening</a>.</p>
 <h3>Constructors</h3>
 <table>
 <tbody>
@@ -29,8 +20,8 @@ of a <a href="https://developer.android.com/reference/android/graphics/Path.html
 </td>
 <td>
 <code><span class="identifier">PathSegment</span><span class="symbol">(</span><span class="identifier" id="androidx.graphics.PathSegment$<init>(android.graphics.PointF, kotlin.Float, android.graphics.PointF, kotlin.Float)/start">start</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/PointF.html"><span class="identifier">PointF</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics.PathSegment$<init>(android.graphics.PointF, kotlin.Float, android.graphics.PointF, kotlin.Float)/startFraction">startFraction</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics.PathSegment$<init>(android.graphics.PointF, kotlin.Float, android.graphics.PointF, kotlin.Float)/end">end</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/PointF.html"><span class="identifier">PointF</span></a><span class="symbol">, </span><span class="identifier" id="androidx.graphics.PathSegment$<init>(android.graphics.PointF, kotlin.Float, android.graphics.PointF, kotlin.Float)/endFraction">endFraction</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span></code>
-<p>A PathSegment is a line segment that represents an approximate fraction
-of a <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a> after <a href="#">flattening</a>.</p>
+<p>A <a href="./index.html">PathSegment</a> is a line segment that represents an approximate fraction
+of a <a href="https://developer.android.com/reference/android/graphics/Path.html">Path</a> after <a href="../android.graphics.-path/flatten.html">flattening</a>.</p>
 </td>
 </tr>
 </tbody>
@@ -43,28 +34,36 @@ of a <a href="https://developer.android.com/reference/android/graphics/Path.html
 <p><a href="end.html">end</a></p>
 </td>
 <td>
-<code><span class="keyword">val </span><span class="identifier">end</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/PointF.html"><span class="identifier">PointF</span></a></code></td>
+<code><span class="keyword">val </span><span class="identifier">end</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/PointF.html"><span class="identifier">PointF</span></a></code>
+<p>The end point of the line segment.</p>
+</td>
 </tr>
 <tr>
 <td>
 <p><a href="end-fraction.html">endFraction</a></p>
 </td>
 <td>
-<code><span class="keyword">val </span><span class="identifier">endFraction</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+<code><span class="keyword">val </span><span class="identifier">endFraction</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Fraction along the length of the path that the end point resides.</p>
+</td>
 </tr>
 <tr>
 <td>
 <p><a href="start.html">start</a></p>
 </td>
 <td>
-<code><span class="keyword">val </span><span class="identifier">start</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/PointF.html"><span class="identifier">PointF</span></a></code></td>
+<code><span class="keyword">val </span><span class="identifier">start</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/PointF.html"><span class="identifier">PointF</span></a></code>
+<p>The start point of the line segment.</p>
+</td>
 </tr>
 <tr>
 <td>
 <p><a href="start-fraction.html">startFraction</a></p>
 </td>
 <td>
-<code><span class="keyword">val </span><span class="identifier">startFraction</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+<code><span class="keyword">val </span><span class="identifier">startFraction</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Fraction along the length of the path that the start point resides.</p>
+</td>
 </tr>
 </tbody>
 </table>

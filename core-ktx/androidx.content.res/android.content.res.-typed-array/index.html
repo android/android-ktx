@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../../../style.css">
 </HEAD>
 <BODY>
-<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.content.res</a>&nbsp;/&nbsp;<a href=".">android.content.res.TypedArray</a><br/>
+<a href="../../index.html">core-ktx</a>&nbsp;/&nbsp;<a href="../index.html">androidx.content.res</a>&nbsp;/&nbsp;<a href="./index.html">android.content.res.TypedArray</a><br/>
 <br/>
 <h3>Extensions for android.content.res.TypedArray</h3>
 <table>
@@ -122,6 +122,16 @@ if not defined.</p>
 </tr>
 <tr>
 <td>
+<p><a href="get-resource-id-or-throw.html">getResourceIdOrThrow</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/content/res/TypedArray.html"><span class="identifier">TypedArray</span></a><span class="symbol">.</span><span class="identifier">getResourceIdOrThrow</span><span class="symbol">(</span><span class="identifier" id="androidx.content.res$getResourceIdOrThrow(android.content.res.TypedArray, kotlin.Int)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Retrieves the resource identifier for the attribute at <a href="get-resource-id-or-throw.html#androidx.content.res$getResourceIdOrThrow(android.content.res.TypedArray, kotlin.Int)/index">index</a> or throws
+<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-illegal-argument-exception/index.html">IllegalArgumentException</a> if not defined.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p><a href="get-string-or-throw.html">getStringOrThrow</a></p>
 </td>
 <td>
@@ -148,6 +158,15 @@ if not defined.</p>
 <code><span class="keyword">fun </span><a href="https://developer.android.com/reference/android/content/res/TypedArray.html"><span class="identifier">TypedArray</span></a><span class="symbol">.</span><span class="identifier">getTextOrThrow</span><span class="symbol">(</span><span class="identifier" id="androidx.content.res$getTextOrThrow(android.content.res.TypedArray, kotlin.Int)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
 <p>Retrieve the text value for the attribute at <a href="get-text-or-throw.html#androidx.content.res$getTextOrThrow(android.content.res.TypedArray, kotlin.Int)/index">index</a> or throws <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-illegal-argument-exception/index.html">IllegalArgumentException</a>
 if not defined.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="use.html">use</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">R</span><span class="symbol">&gt;</span> <a href="https://developer.android.com/reference/android/content/res/TypedArray.html"><span class="identifier">TypedArray</span></a><span class="symbol">.</span><span class="identifier">use</span><span class="symbol">(</span><span class="identifier" id="androidx.content.res$use(android.content.res.TypedArray, kotlin.Function1((android.content.res.TypedArray, androidx.content.res.use.R)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="https://developer.android.com/reference/android/content/res/TypedArray.html"><span class="identifier">TypedArray</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="use.html#R"><span class="identifier">R</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="use.html#R"><span class="identifier">R</span></a></code>
+<p>Executes the given <a href="use.html#androidx.content.res$use(android.content.res.TypedArray, kotlin.Function1((android.content.res.TypedArray, androidx.content.res.use.R)))/block">block</a> function on this TypedArray and then recycles it.</p>
 </td>
 </tr>
 </tbody>
