@@ -29,14 +29,14 @@ package androidx.content {
 
   public final class DisplayMetricsKt {
     ctor public DisplayMetricsKt();
-    method public static final float getDp(int);
-    method public static final float getDp(float);
-    method public static final float getSp(int);
-    method public static final float getSp(float);
-    method public static final float getDpValue(int);
-    method public static final float getDpValue(float);
-    method public static final float getSpValue(int);
-    method public static final float getSpValue(float);
+    method public static final float toDp(android.content.Context, int);
+    method public static final float toDp(android.content.Context, float);
+    method public static final float toSp(android.content.Context, int);
+    method public static final float toSp(android.content.Context, float);
+    method public static final float getDp(android.content.Context, int);
+    method public static final float getDp(android.content.Context, float);
+    method public static final float getSp(android.content.Context, int);
+    method public static final float getSp(android.content.Context, float);
   }
 
   public final class SharedPreferencesKt {

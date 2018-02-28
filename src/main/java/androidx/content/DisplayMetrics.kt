@@ -14,33 +14,33 @@
  * limitations under the License.
  */
 
-@file:Suppress("WRONG_ANNOTATION_TARGET_WITH_USE_SITE_TARGET_ON_TYPE")
+@file:Suppress("NOTHING_TO_INLINE")
 
 package androidx.content
 
-import android.content.res.Resources.getSystem
+import android.content.res.Resources
 import android.support.annotation.Px
 
 /** Get converted pixel value of this dp. */
-inline val Int.dp: Float get() = this * getSystem().displayMetrics.density
+inline fun Resources.toDp(dp: Int): Float = dp * displayMetrics.density
 
 /** Get converted pixel value of this dp. */
-inline val Float.dp: Float get() = this * getSystem().displayMetrics.density
+inline fun Resources.toDp(dp: Float): Float = dp * displayMetrics.density
 
 /** Get converted pixel value of this sp. */
-inline val Int.sp: Float get() = this * getSystem().displayMetrics.scaledDensity
+inline fun Resources.toSp(sp: Int): Float = sp * displayMetrics.scaledDensity
 
 /** Get converted pixel value of this sp. */
-inline val Float.sp: Float get() = this * getSystem().displayMetrics.scaledDensity
+inline fun Resources.toSp(sp: Float): Float = sp * displayMetrics.scaledDensity
 
 /** Get converted dp value of this pixel. */
-inline val @receiver:Px Int.dpValue: Float get() = this / getSystem().displayMetrics.density
+inline fun Resources.getDp(@Px px: Int): Float = px / displayMetrics.density
 
 /** Get converted dp value of this pixel. */
-inline val @receiver:Px Float.dpValue: Float get() = this / getSystem().displayMetrics.density
+inline fun Resources.getDp(px: Float): Float = px / displayMetrics.density
 
 /** Get converted sp value of this pixel. */
-inline val @receiver:Px Int.spValue: Float get() = this / getSystem().displayMetrics.scaledDensity
+inline fun Resources.getSp(@Px px: Int): Float = px / displayMetrics.scaledDensity
 
 /** Get converted sp value of this pixel. */
-inline val @receiver:Px Float.spValue: Float get() = this / getSystem().displayMetrics.scaledDensity
+inline fun Resources.getSp(px: Float): Float = px / displayMetrics.scaledDensity

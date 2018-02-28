@@ -22,25 +22,29 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class DisplayMetricsTest {
-    private val context = InstrumentationRegistry.getContext()
+    private val res = InstrumentationRegistry.getContext().resources
 
-    @Test fun pxToDp() {
-        assertEquals(56.dp, context.resources.getDimension(R.dimen.dp))
-        assertEquals(56.5f.dp, context.resources.getDimension(R.dimen.decimal_point_dp))
+    @Test
+    fun pxToDp() {
+        assertEquals(res.toDp(56), res.getDimension(R.dimen.dp))
+        assertEquals(res.toDp(56.5f), res.getDimension(R.dimen.decimal_point_dp))
     }
 
-    @Test fun pxToSp() {
-        assertEquals(32.sp, context.resources.getDimension(R.dimen.sp))
-        assertEquals(32.5f.sp, context.resources.getDimension(R.dimen.decimal_point_sp))
+    @Test
+    fun pxToSp() {
+        assertEquals(res.toSp(32), res.getDimension(R.dimen.sp))
+        assertEquals(res.toSp(32.5f), res.getDimension(R.dimen.decimal_point_sp))
     }
 
-    @Test fun dpToPx() {
-        assertEquals(56f, context.resources.getDimension(R.dimen.dp).dpValue)
-        assertEquals(56.5f, context.resources.getDimension(R.dimen.decimal_point_dp).dpValue)
+    @Test
+    fun dpToPx() {
+        assertEquals(56f, res.getDp(res.getDimension(R.dimen.dp)))
+        assertEquals(56.5f, res.getDp(res.getDimension(R.dimen.decimal_point_dp)))
     }
 
-    @Test fun spToPx() {
-        assertEquals(32f, context.resources.getDimension(R.dimen.sp).spValue)
-        assertEquals(32.5f, context.resources.getDimension(R.dimen.decimal_point_sp).spValue)
+    @Test
+    fun spToPx() {
+        assertEquals(32f, res.getSp(res.getDimension(R.dimen.sp)))
+        assertEquals(32.5f, res.getSp(res.getDimension(R.dimen.decimal_point_sp)))
     }
 }
