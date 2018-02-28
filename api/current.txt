@@ -356,6 +356,25 @@ package androidx.text {
 
 }
 
+package androidx.preference {
+  
+  public final class PreferenceGroupKt {
+    ctor public PreferenceGroupKt();
+    method public static final operator boolean contains(android.preference.PreferenceGroup, android.preference.Preference preference);
+    method public static final void forEach(android.preference.PreferenceGroup, kotlin.jvm.functions.Function1<? super android.preference.Preference,kotlin.Unit> action);
+    method public static final void forEachIndexed(android.preference.PreferenceGroup, kotlin.jvm.functions.Function2<? super Integer,? super android.preference.Preference,kotlin.Unit> action);
+    method public static final operator android.preference.Preference get(android.preference.PreferenceGroup, CharSequence key);
+    method public static final operator android.preference.Preference get(android.preference.PreferenceGroup, int index);
+    method public static final int getSize(android.preference.PreferenceGroup);
+    method public static final boolean isEmpty(android.preference.PreferenceGroup);
+    method public static final boolean isNotEmpty(android.preference.PreferenceGroup);
+    method public static final operator java.util.Iterator<android.preference.Preference> iterator(android.preference.PreferenceGroup);
+    method public static final operator void minusAssign(android.preference.PreferenceGroup, android.preference.Preference preference);
+    method public static final operator void plusAssign(android.preference.PreferenceGroup, android.preference.Preference preference);
+  }
+  
+}
+
 package androidx.time {
 
   public final class DayOfWeekKt {
