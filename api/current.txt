@@ -648,24 +648,20 @@ package androidx.core.view {
 
 package androidx.core.widget {
 
+  public final class TextViewKt {
+    ctor public TextViewKt();
+    method public static void updateCompoundDrawables(android.widget.TextView, android.graphics.drawable.Drawable? left = "drawableSentinel", android.graphics.drawable.Drawable? top = "drawableSentinel", android.graphics.drawable.Drawable? right = "drawableSentinel", android.graphics.drawable.Drawable? bottom = "drawableSentinel");
+    method @RequiresApi(17) public static void updateCompoundDrawablesRelative(android.widget.TextView, android.graphics.drawable.Drawable? start = "drawableSentinel", android.graphics.drawable.Drawable? top = "drawableSentinel", android.graphics.drawable.Drawable? end = "drawableSentinel", android.graphics.drawable.Drawable? bottom = "drawableSentinel");
+    method @RequiresApi(17) public static void updateCompoundDrawablesRelativeWithIntrinsicBounds(android.widget.TextView, @DrawableRes int start = "-1", @DrawableRes int top = "-1", @DrawableRes int end = "-1", @DrawableRes int bottom = "-1");
+    method @RequiresApi(17) public static void updateCompoundDrawablesRelativeWithIntrinsicBounds(android.widget.TextView, android.graphics.drawable.Drawable? start = "drawableSentinel", android.graphics.drawable.Drawable? top = "drawableSentinel", android.graphics.drawable.Drawable? end = "drawableSentinel", android.graphics.drawable.Drawable? bottom = "drawableSentinel");
+    method public static void updateCompoundDrawablesWithIntrinsicBounds(android.widget.TextView, @DrawableRes int left = "-1", @DrawableRes int top = "-1", @DrawableRes int right = "-1", @DrawableRes int bottom = "-1");
+    method public static void updateCompoundDrawablesWithIntrinsicBounds(android.widget.TextView, android.graphics.drawable.Drawable? left = "drawableSentinel", android.graphics.drawable.Drawable? top = "drawableSentinel", android.graphics.drawable.Drawable? right = "drawableSentinel", android.graphics.drawable.Drawable? bottom = "drawableSentinel");
+  }
+
   public final class ToastKt {
     ctor public ToastKt();
     method public static android.widget.Toast toast(android.content.Context, CharSequence text, int duration = "Toast.LENGTH_SHORT");
     method public static android.widget.Toast toast(android.content.Context, @StringRes int resId, int duration = "Toast.LENGTH_SHORT");
-  }
-
-}
-
-package androidx.widget {
-
-  public final class TextViewKt {
-    ctor public TextViewKt();
-    method public static final void updateCompoundDrawables(android.widget.TextView, android.graphics.drawable.Drawable? start = "drawableSentinel", android.graphics.drawable.Drawable? top = "drawableSentinel", android.graphics.drawable.Drawable? end = "drawableSentinel", android.graphics.drawable.Drawable? bottom = "drawableSentinel");
-    method @RequiresApi(17) public static final void updateCompoundDrawablesRelative(android.widget.TextView, android.graphics.drawable.Drawable? start = "drawableSentinel", android.graphics.drawable.Drawable? top = "drawableSentinel", android.graphics.drawable.Drawable? end = "drawableSentinel", android.graphics.drawable.Drawable? bottom = "drawableSentinel");
-    method @RequiresApi(17) public static final void updateCompoundDrawablesRelativeWithIntrinsicBounds(android.widget.TextView, @DrawableRes int start = "-1", @DrawableRes int top = "-1", @DrawableRes int end = "-1", @DrawableRes int bottom = "-1");
-    method @RequiresApi(17) public static final void updateCompoundDrawablesRelativeWithIntrinsicBounds(android.widget.TextView, android.graphics.drawable.Drawable? start = "drawableSentinel", android.graphics.drawable.Drawable? top = "drawableSentinel", android.graphics.drawable.Drawable? end = "drawableSentinel", android.graphics.drawable.Drawable? bottom = "drawableSentinel");
-    method public static final void updateCompoundDrawablesWithIntrinsicBounds(android.widget.TextView, @DrawableRes int start = "-1", @DrawableRes int top = "-1", @DrawableRes int end = "-1", @DrawableRes int bottom = "-1");
-    method public static final void updateCompoundDrawablesWithIntrinsicBounds(android.widget.TextView, android.graphics.drawable.Drawable? start = "drawableSentinel", android.graphics.drawable.Drawable? top = "drawableSentinel", android.graphics.drawable.Drawable? end = "drawableSentinel", android.graphics.drawable.Drawable? bottom = "drawableSentinel");
   }
 
 }

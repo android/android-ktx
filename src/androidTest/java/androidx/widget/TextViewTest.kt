@@ -31,7 +31,7 @@ class TextViewTest {
     @Test
     fun updateCompoundDrawables() {
         val drawable = ColorDrawable(Color.RED)
-        textView.updateCompoundDrawables(start = drawable, end = drawable)
+        textView.updateCompoundDrawables(left = drawable, right = drawable)
 
         assertEquals(drawable, textView.compoundDrawables[0])
         assertEquals(drawable, textView.compoundDrawables[2])
@@ -43,8 +43,8 @@ class TextViewTest {
     fun updateCompoundDrawables_keepsDrawables() {
         val drawableRed = ColorDrawable(Color.RED)
         val drawableBlack = ColorDrawable(Color.BLACK)
-        textView.updateCompoundDrawables(start = drawableRed, top = drawableBlack)
-        textView.updateCompoundDrawables(end = drawableBlack, top = null)
+        textView.updateCompoundDrawables(left = drawableRed, top = drawableBlack)
+        textView.updateCompoundDrawables(right = drawableBlack, top = null)
         assertEquals(drawableRed, textView.compoundDrawables[0])
         assertEquals(drawableBlack, textView.compoundDrawables[2])
         assertNull(textView.compoundDrawables[1])
@@ -68,7 +68,7 @@ class TextViewTest {
         val drawableBlack = ColorDrawable(Color.BLACK)
         textView.updateCompoundDrawablesWithIntrinsicBounds(
             top = drawableRed, bottom = drawableBlack)
-        textView.updateCompoundDrawablesWithIntrinsicBounds(end = drawableBlack, bottom = null)
+        textView.updateCompoundDrawablesWithIntrinsicBounds(right = drawableBlack, bottom = null)
 
         assertEquals(drawableRed, textView.compoundDrawables[1])
         assertEquals(drawableBlack, textView.compoundDrawables[2])
@@ -79,7 +79,7 @@ class TextViewTest {
     @Test
     fun updateCompoundDrawablesWithIntrinsicBoundsWithResourceIds() {
         textView.updateCompoundDrawablesWithIntrinsicBounds(
-                start = android.R.drawable.btn_default, bottom = android.R.drawable.btn_default)
+                left = android.R.drawable.btn_default, bottom = android.R.drawable.btn_default)
 
         assertNotNull(textView.compoundDrawables[0])
         assertNotNull(textView.compoundDrawables[3])
@@ -90,9 +90,9 @@ class TextViewTest {
     @Test
     fun updateCompoundDrawablesWithIntrinsicBoundsWithResourceIds_keepsDrawables() {
         textView.updateCompoundDrawablesWithIntrinsicBounds(
-                start = android.R.drawable.btn_default, bottom = android.R.drawable.btn_default)
+                left = android.R.drawable.btn_default, bottom = android.R.drawable.btn_default)
         textView.updateCompoundDrawablesWithIntrinsicBounds(
-                start = 0, end = android.R.drawable.btn_default)
+                left = 0, right = android.R.drawable.btn_default)
 
         assertNotNull(textView.compoundDrawables[3])
         assertNotNull(textView.compoundDrawables[2])

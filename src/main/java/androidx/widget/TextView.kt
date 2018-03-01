@@ -32,12 +32,12 @@ private val drawableSentinel = DrawableContainer()
  * @see TextView.setCompoundDrawables
  */
 fun TextView.updateCompoundDrawables(
-    start: Drawable? = drawableSentinel,
+    left: Drawable? = drawableSentinel,
     top: Drawable? = drawableSentinel,
-    end: Drawable? = drawableSentinel,
+    right: Drawable? = drawableSentinel,
     bottom: Drawable? = drawableSentinel
 ) {
-    val drawables = updateDrawables(start, top, end, bottom, compoundDrawables)
+    val drawables = updateDrawables(left, top, right, bottom, compoundDrawables)
     setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3])
 }
 
@@ -48,15 +48,16 @@ fun TextView.updateCompoundDrawables(
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-    @DrawableRes start: Int = -1,
+    @DrawableRes left: Int = -1,
     @DrawableRes top: Int = -1,
-    @DrawableRes end: Int = -1,
+    @DrawableRes right: Int = -1,
     @DrawableRes bottom: Int = -1
 ) {
+    val compoundDrawables = compoundDrawables
     setCompoundDrawablesWithIntrinsicBounds(
-        getUpdatedCompoundDrawable(start, compoundDrawables[0]),
+        getUpdatedCompoundDrawable(left, compoundDrawables[0]),
         getUpdatedCompoundDrawable(top, compoundDrawables[1]),
-        getUpdatedCompoundDrawable(end, compoundDrawables[2]),
+        getUpdatedCompoundDrawable(right, compoundDrawables[2]),
         getUpdatedCompoundDrawable(bottom, compoundDrawables[3])
     )
 }
@@ -68,12 +69,12 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-    start: Drawable? = drawableSentinel,
+    left: Drawable? = drawableSentinel,
     top: Drawable? = drawableSentinel,
-    end: Drawable? = drawableSentinel,
+    right: Drawable? = drawableSentinel,
     bottom: Drawable? = drawableSentinel
 ) {
-    val drawables = updateDrawables(start, top, end, bottom, compoundDrawables)
+    val drawables = updateDrawables(left, top, right, bottom, compoundDrawables)
     setCompoundDrawablesWithIntrinsicBounds(drawables[0], drawables[1], drawables[2], drawables[3])
 }
 
@@ -107,7 +108,8 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
     @DrawableRes end: Int = -1,
     @DrawableRes bottom: Int = -1
 ) {
-    updateCompoundDrawablesRelativeWithIntrinsicBounds(
+    val compoundDrawablesRelative = compoundDrawablesRelative
+    setCompoundDrawablesRelativeWithIntrinsicBounds(
         getUpdatedCompoundDrawable(start, compoundDrawablesRelative[0]),
         getUpdatedCompoundDrawable(top, compoundDrawablesRelative[1]),
         getUpdatedCompoundDrawable(end, compoundDrawablesRelative[2]),
@@ -135,7 +137,11 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
 }
 
 private fun updateDrawables(
-    start: Drawable?, top: Drawable?, end: Drawable?, bottom: Drawable?, srcArray: Array<Drawable>
+    start: Drawable?,
+    top: Drawable?,
+    end: Drawable?,
+    bottom: Drawable?,
+    srcArray: Array<Drawable>
 ): Array<Drawable?> {
     val drawables = lazy(LazyThreadSafetyMode.NONE) { srcArray }
     return arrayOfNulls<Drawable>(srcArray.size).apply {
