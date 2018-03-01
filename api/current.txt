@@ -110,6 +110,7 @@ package androidx.graphics {
 
   public final class CanvasKt {
     ctor public CanvasKt();
+    method public static void withMatrix(android.graphics.Canvas, android.graphics.Matrix matrix = "Matrix()", kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
     method public static void withRotation(android.graphics.Canvas, float degrees = "0.0f", float pivotX = "0.0f", float pivotY = "0.0f", kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
     method public static void withSave(android.graphics.Canvas, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
     method public static void withScale(android.graphics.Canvas, float x = "1.0f", float y = "1.0f", float pivotX = "0.0f", float pivotY = "0.0f", kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
