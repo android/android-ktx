@@ -17,6 +17,7 @@
 package androidx.graphics
 
 import android.graphics.Canvas
+import android.graphics.Matrix
 
 /**
  * Wrap the specified [block] in calls to [Canvas.save]
@@ -99,6 +100,23 @@ inline fun Canvas.withSkew(
 ) {
     val checkpoint = save()
     skew(x, y)
+    try {
+        block()
+    } finally {
+        restoreToCount(checkpoint)
+    }
+}
+
+/**
+ * Wrap the specified [block] in calls to [Canvas.save]/[Canvas.concat]
+ * and [Canvas.restoreToCount].
+ */
+inline fun Canvas.withMatrix(
+    matrix: Matrix = Matrix(),
+    block: Canvas.() -> Unit
+) {
+    val checkpoint = save()
+    concat(matrix)
     try {
         block()
     } finally {

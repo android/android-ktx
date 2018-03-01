@@ -105,4 +105,23 @@ class CanvasTest {
         }
         assertEquals(beforeCount, canvas.saveCount)
     }
+
+    @Suppress("DEPRECATION")
+    @Test fun withMatrix() {
+        val originMatrix = canvas.matrix
+
+        val inputMatrix = Matrix()
+        inputMatrix.postTranslate(16.0f, 32.0f)
+        inputMatrix.postRotate(90.0f, 16.0f, 32.0f)
+        inputMatrix.postScale(2.0f, 4.0f, 16.0f, 32.0f)
+
+        val beforeCount = canvas.saveCount
+        canvas.withMatrix(inputMatrix) {
+            assertThat(beforeCount).isLessThan(saveCount)
+            assertEquals(inputMatrix, matrix)
+        }
+
+        assertEquals(originMatrix, canvas.matrix)
+        assertEquals(beforeCount, canvas.saveCount)
+    }
 }
