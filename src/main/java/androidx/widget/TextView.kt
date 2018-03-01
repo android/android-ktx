@@ -17,10 +17,13 @@
 package androidx.widget
 
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.DrawableContainer
 import android.support.annotation.DrawableRes
 import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import android.widget.TextView
+
+private val drawableSentinel = DrawableContainer()
 
 /**
  * Updates this TextView's Drawables. This version of the method allows using named parameters
@@ -29,12 +32,13 @@ import android.widget.TextView
  * @see TextView.setCompoundDrawables
  */
 fun TextView.updateCompoundDrawables(
-    start: Drawable? = compoundDrawables[0],
-    top: Drawable? = compoundDrawables[1],
-    end: Drawable? = compoundDrawables[2],
-    bottom: Drawable? = compoundDrawables[3]
+    start: Drawable? = drawableSentinel,
+    top: Drawable? = drawableSentinel,
+    end: Drawable? = drawableSentinel,
+    bottom: Drawable? = drawableSentinel
 ) {
-    setCompoundDrawables(start, top, end, bottom)
+    val drawables = updateDrawables(start, top, end, bottom, compoundDrawables)
+    setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3])
 }
 
 /**
@@ -64,12 +68,13 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-    start: Drawable? = compoundDrawables[0],
-    top: Drawable? = compoundDrawables[1],
-    end: Drawable? = compoundDrawables[2],
-    bottom: Drawable? = compoundDrawables[3]
+    start: Drawable? = drawableSentinel,
+    top: Drawable? = drawableSentinel,
+    end: Drawable? = drawableSentinel,
+    bottom: Drawable? = drawableSentinel
 ) {
-    setCompoundDrawablesWithIntrinsicBounds(start, top, end, bottom)
+    val drawables = updateDrawables(start, top, end, bottom, compoundDrawables)
+    setCompoundDrawablesWithIntrinsicBounds(drawables[0], drawables[1], drawables[2], drawables[3])
 }
 
 /**
@@ -80,12 +85,13 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
  */
 @RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelative(
-    start: Drawable? = compoundDrawablesRelative[0],
-    top: Drawable? = compoundDrawablesRelative[1],
-    end: Drawable? = compoundDrawablesRelative[2],
-    bottom: Drawable? = compoundDrawablesRelative[3]
+    start: Drawable? = drawableSentinel,
+    top: Drawable? = drawableSentinel,
+    end: Drawable? = drawableSentinel,
+    bottom: Drawable? = drawableSentinel
 ) {
-    setCompoundDrawablesRelative(start, top, end, bottom)
+    val drawables = updateDrawables(start, top, end, bottom, compoundDrawablesRelative)
+    setCompoundDrawablesRelative(drawables[0], drawables[1], drawables[2], drawables[3])
 }
 
 /**
@@ -117,12 +123,27 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
  */
 @RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-    start: Drawable? = compoundDrawablesRelative[0],
-    top: Drawable? = compoundDrawablesRelative[1],
-    end: Drawable? = compoundDrawablesRelative[2],
-    bottom: Drawable? = compoundDrawablesRelative[3]
+    start: Drawable? = drawableSentinel,
+    top: Drawable? = drawableSentinel,
+    end: Drawable? = drawableSentinel,
+    bottom: Drawable? = drawableSentinel
 ) {
-    setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
+    val drawables = updateDrawables(start, top, end, bottom, compoundDrawablesRelative)
+    setCompoundDrawablesRelativeWithIntrinsicBounds(
+        drawables[0], drawables[1], drawables[2], drawables[3]
+    )
+}
+
+private fun updateDrawables(
+    start: Drawable?, top: Drawable?, end: Drawable?, bottom: Drawable?, srcArray: Array<Drawable>
+): Array<Drawable?> {
+    val drawables = lazy(LazyThreadSafetyMode.NONE) { srcArray }
+    return arrayOfNulls<Drawable>(srcArray.size).apply {
+        this[0] = if (start === drawableSentinel) drawables.value[0] else start
+        this[1] = if (top === drawableSentinel) drawables.value[1] else top
+        this[2] = if (end === drawableSentinel) drawables.value[2] else end
+        this[3] = if (bottom === drawableSentinel) drawables.value[3] else bottom
+    }
 }
 
 private fun TextView.getUpdatedCompoundDrawable(resId: Int, drawable: Drawable?) =
