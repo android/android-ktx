@@ -14,7 +14,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.0-beta3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
     }
 }
@@ -58,14 +58,14 @@ configurations {
 }
 
 dependencies {
-    api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
-    implementation "com.android.support:support-annotations:${versions.supportLibrary}"
-    implementation "com.android.support:support-compat:${versions.supportLibrary}"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    implementation "com.android.support:support-annotations:$versions.supportLibrary"
+    implementation "com.android.support:support-compat:$versions.supportLibrary"
 
     androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation "com.android.support:support-annotations:${versions.supportLibrary}"
-    androidTestImplementation "com.android.support.test:runner:${versions.atsl}"
-    androidTestImplementation "com.android.support.test:rules:${versions.atsl}"
+    androidTestImplementation "com.android.support:support-annotations:$versions.supportLibrary"
+    androidTestImplementation "com.android.support.test:runner:$versions.atsl"
+    androidTestImplementation "com.android.support.test:rules:$versions.atsl"
     androidTestImplementation 'com.google.truth:truth:0.39'
     androidTestImplementation 'com.squareup.okio:okio:1.13.0'
 
@@ -79,7 +79,7 @@ dependencies {
     metalava 'com.android.tools.lint:lint-checks:26.1.0-beta1'
     metalava 'com.android.tools.lint:lint-gradle:26.1.0-beta1'
     metalava 'com.android.tools.lint:lint:26.1.0-beta1'
-    metalava 'org.jetbrains.kotlin:kotlin-stdlib:1.2.21'
+    metalava "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
