@@ -651,6 +651,14 @@ package androidx.core.view {
 
 package androidx.core.widget {
 
+  public final class TextViewKt {
+    ctor public TextViewKt();
+    method public static void addTextListener(android.widget.TextView, kotlin.jvm.functions.Function4<? super java.lang.CharSequence,? super java.lang.Integer,? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit>? beforeChanged = "null", kotlin.jvm.functions.Function4<? super java.lang.CharSequence,? super java.lang.Integer,? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit>? onChanged = "null", kotlin.jvm.functions.Function1<? super android.text.Editable,kotlin.Unit>? afterChanged = "null");
+    method public static String content(android.widget.TextView);
+    method public static void doOnAfterTextChanged(android.widget.TextView, kotlin.jvm.functions.Function1<? super android.text.Editable,kotlin.Unit> action);
+    method public static void doOnBeforeTextChanged(android.widget.TextView, kotlin.jvm.functions.Function4<? super java.lang.CharSequence,? super java.lang.Integer,? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit> action);
+  }
+
   public final class ToastKt {
     ctor public ToastKt();
     method public static android.widget.Toast toast(android.content.Context, CharSequence text, int duration = "Toast.LENGTH_SHORT");
