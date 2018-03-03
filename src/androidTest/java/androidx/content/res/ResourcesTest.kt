@@ -18,9 +18,11 @@ package androidx.content.res
 
 import android.graphics.Typeface
 import android.support.test.InstrumentationRegistry
+import android.text.Spannable
 import android.text.Spanned
 import android.text.style.StyleSpan
 import androidx.kotlin.test.R
+import androidx.text.getSpans
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -31,7 +33,7 @@ class ResourcesTest {
         val text = resources.getText(R.string.welcome_message, "Paul<O'Leary", 5)
         assertEquals("Hello, Paul<O'Leary! You have 5 new messages.", text.toString())
 
-        val spans = (text as Spanned).getSpans(0, text.length, StyleSpan::class.java)
+        val spans = (text as Spannable).getSpans<StyleSpan>()
         assertEquals(1, spans.size)
         assertEquals(Typeface.BOLD, spans[0].style)
     }
