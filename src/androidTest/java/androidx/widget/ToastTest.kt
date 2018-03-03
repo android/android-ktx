@@ -16,59 +16,65 @@
 
 package androidx.widget
 
-import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.ViewInteraction
-import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.RootMatchers.withDecorView
-import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
-import android.support.test.espresso.matcher.ViewMatchers.withText
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
+import android.support.test.InstrumentationRegistry
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
-import androidx.kotlin.R
-import androidx.kotlin.TestActivity
-import org.hamcrest.Matchers.not
-import org.junit.After
+import androidx.kotlin.test.R
+import androidx.view.forEach
+import androidx.view.isVisible
 import org.junit.Assert.assertEquals
-import org.junit.Rule
+import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
 class ToastTest {
-    private lateinit var toast: Toast
+    private val context = InstrumentationRegistry.getContext()
+    private val instrumentation = InstrumentationRegistry.getInstrumentation()
 
-    @JvmField @Rule val rule = ActivityTestRule(TestActivity::class.java)
-
-    @After fun cancelToast() {
-        toast.cancel()
-    }
-
-    @Test fun createToastWithTextShort() {
-        rule.runOnUiThread { toast = rule.activity.toast("Short Toast") }
+    @Test
+    fun createToastWithTextShort() = instrumentation.runOnMainSync {
+        val toast = context.toast("Short Toast")
         assertEquals(Toast.LENGTH_SHORT, toast.duration)
-        onView(withText("Short Toast")).checkToastDisplayed()
+        assertTrue(containsText(toast.view, "Short Toast"))
+        assertTrue(toast.view.isVisible)
     }
 
-    @Test fun createToastWithTextLong() {
-        rule.runOnUiThread { toast = rule.activity.toast("Long Toast", Toast.LENGTH_LONG) }
+    @Test
+    fun createToastWithTextLong() = instrumentation.runOnMainSync {
+        val toast = context.toast("Long Toast", Toast.LENGTH_LONG)
         assertEquals(Toast.LENGTH_LONG, toast.duration)
-        onView(withText("Long Toast")).checkToastDisplayed()
+        assertTrue(containsText(toast.view, "Long Toast"))
+        assertTrue(toast.view.isVisible)
     }
 
-    @Test fun createToastWithResIdShort() {
-        rule.runOnUiThread { toast = rule.activity.toast(R.id.text) }
+    @Test
+    fun createToastWithResIdShort() = instrumentation.runOnMainSync {
+        val toast = context.toast(R.string.text)
         assertEquals(Toast.LENGTH_SHORT, toast.duration)
-        onView(withText(R.id.text)).checkToastDisplayed()
+        assertTrue(containsText(toast.view, context.getString(R.string.text)))
+        assertTrue(toast.view.isVisible)
     }
 
-    @Test fun createToastWithResIdLong() {
-        rule.runOnUiThread { toast = rule.activity.toast(R.id.text, Toast.LENGTH_LONG) }
+    @Test
+    fun createToastWithResIdLong() = instrumentation.runOnMainSync {
+        val toast = context.toast(R.string.text, Toast.LENGTH_LONG)
         assertEquals(Toast.LENGTH_LONG, toast.duration)
-        onView(withText(R.id.text)).checkToastDisplayed()
+        assertTrue(containsText(toast.view, context.getString(R.string.text)))
+        assertTrue(toast.view.isVisible)
     }
 
-    private fun ViewInteraction.checkToastDisplayed() {
-        inRoot(withDecorView(not(rule.activity.window.decorView))).check(matches(isDisplayed()))
+    private fun containsText(view: View, text: String): Boolean {
+        if (view is TextView && view.text == text) {
+            return true
+        }
+        if (view is ViewGroup) {
+            view.forEach {
+                if (containsText(it, text)) {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }
