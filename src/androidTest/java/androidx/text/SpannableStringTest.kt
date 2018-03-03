@@ -20,6 +20,7 @@ import android.graphics.Typeface.BOLD
 import android.text.SpannableString
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -50,5 +51,37 @@ class SpannableStringTest {
         assertTrue(s.getSpans<Any>().isNotEmpty())
         s.clearSpans()
         assertTrue(s.getSpans<Any>().isEmpty())
+    }
+
+    @Test fun setIndices() {
+        val s = "Hello, World".toSpannable()
+        s[0, 5] = StyleSpan(BOLD)
+        s[7, 12] = UnderlineSpan()
+
+        val spans = s.getSpans<Any>()
+
+        val bold = spans.filterIsInstance<StyleSpan>().single()
+        assertEquals(0, s.getSpanStart(bold))
+        assertEquals(5, s.getSpanEnd(bold))
+
+        val underline = spans.filterIsInstance<UnderlineSpan>().single()
+        assertEquals(7, s.getSpanStart(underline))
+        assertEquals(12, s.getSpanEnd(underline))
+    }
+
+    @Test fun setRange() {
+        val s = "Hello, World".toSpannable()
+        s[0..5] = StyleSpan(BOLD)
+        s[7..12] = UnderlineSpan()
+
+        val spans = s.getSpans<Any>()
+
+        val bold = spans.filterIsInstance<StyleSpan>().single()
+        assertEquals(0, s.getSpanStart(bold))
+        assertEquals(5, s.getSpanEnd(bold))
+
+        val underline = spans.filterIsInstance<UnderlineSpan>().single()
+        assertEquals(7, s.getSpanStart(underline))
+        assertEquals(12, s.getSpanEnd(underline))
     }
 }
