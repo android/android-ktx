@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,27 +16,21 @@
 
 @file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
 
-package androidx.time
+package androidx.text
 
-import android.support.annotation.RequiresApi
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZonedDateTime
+import android.text.TextUtils
 
 /**
- * Return the [LocalDateTime] for this [ZonedDateTime].
+ * Returns whether the given [CharSequence] contains only digits.
  *
- * @see ZonedDateTime.toLocalDateTime
+ * @see TextUtils.isDigitsOnly
  */
-@RequiresApi(26)
-@Deprecated(TIME_DEPRECATION_MESSAGE)
-inline operator fun ZonedDateTime.component1(): LocalDateTime = toLocalDateTime()
+inline fun CharSequence.isDigitsOnly() = TextUtils.isDigitsOnly(this)
 
 /**
- * Return the [ZoneId] for this [ZonedDateTime].
+ * Returns the length that the specified [CharSequence] would have if spaces and ASCII control
+ * characters were trimmed from the start and end, as by [String.trim].
  *
- * @see ZonedDateTime.getZone
+ * @see TextUtils.getTrimmedLength
  */
-@RequiresApi(26)
-@Deprecated(TIME_DEPRECATION_MESSAGE)
-inline operator fun ZonedDateTime.component2(): ZoneId = zone
+inline fun CharSequence.trimmedLength() = TextUtils.getTrimmedLength(this)

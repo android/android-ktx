@@ -22,6 +22,7 @@ import org.junit.Test
 import java.time.Month
 import java.time.MonthDay
 
+@Suppress("DEPRECATION")
 @SdkSuppress(minSdkVersion = 26)
 class MonthDayTest {
     @Test fun destructuring() {

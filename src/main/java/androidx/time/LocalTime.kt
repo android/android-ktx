@@ -33,6 +33,7 @@ import java.time.LocalTime
  * @see LocalTime.getHour
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun LocalTime.component1(): Int = hour
 
 /**
@@ -47,6 +48,7 @@ inline operator fun LocalTime.component1(): Int = hour
  * @see LocalTime.getMinute
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun LocalTime.component2(): Int = minute
 
 /**
@@ -61,6 +63,7 @@ inline operator fun LocalTime.component2(): Int = minute
  * @see LocalTime.getSecond
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun LocalTime.component3(): Int = second
 
 /**
@@ -75,4 +78,5 @@ inline operator fun LocalTime.component3(): Int = second
  * @see LocalTime.getNano
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun LocalTime.component4(): Int = nano

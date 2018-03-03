@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,7 @@
 
 package androidx.time
 
-import android.support.test.filters.SdkSuppress
-import org.junit.Assert.assertEquals
-import org.junit.Test
-import java.time.LocalDate
-import java.time.Month
-
-@Suppress("DEPRECATION")
-@SdkSuppress(minSdkVersion = 26)
-class LocalDateTest {
-    @Test fun destructuring() {
-        val (year, month, day) = LocalDate.of(2017, 12, 20)
-        assertEquals(2017, year)
-        assertEquals(Month.DECEMBER, month)
-        assertEquals(20, day)
-    }
-}
+internal const val TIME_DEPRECATION_MESSAGE = "" +
+        "These extensions are for java.* APIs and not android.* APIs and thus are out of scope " +
+        "for this project. Star https://youtrack.jetbrains.com/issue/KT-21585 for future support " +
+        "of extensions like these. These extensions will be removed before core-ktx 1.0!"

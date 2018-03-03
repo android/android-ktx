@@ -34,6 +34,7 @@ import java.time.YearMonth
  * @see YearMonth.getYear
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun YearMonth.component1(): Int = year
 
 /**
@@ -48,4 +49,5 @@ inline operator fun YearMonth.component1(): Int = year
  * @see YearMonth.getMonth
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun YearMonth.component2(): Month = month

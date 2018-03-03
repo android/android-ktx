@@ -22,22 +22,23 @@ import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 
 /**
- * Returns the view at `index`.
+ * Returns the view at [index].
  *
  * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to the count.
  */
 operator fun ViewGroup.get(index: Int) =
     getChildAt(index) ?: throw IndexOutOfBoundsException("Index: $index, Size: $childCount")
 
-/** Returns `true` if `view` is found in this view group. */
+/** Returns `true` if [view] is found in this view group. */
 inline operator fun ViewGroup.contains(view: View) = indexOfChild(view) != -1
 
-/** Adds `view` to this view group. */
+/** Adds [view] to this view group. */
 inline operator fun ViewGroup.plusAssign(view: View) = addView(view)
 
-/** Removes `view` from this view group. */
+/** Removes [view] from this view group. */
 inline operator fun ViewGroup.minusAssign(view: View) = removeView(view)
 
 /** Returns the number of views in this view group. */
@@ -78,22 +79,47 @@ val ViewGroup.children: Sequence<View>
     }
 
 /**
+ * Executes [block] with the ViewGroup's layoutParams and reassigns the layoutParams with the
+ * updated version.
+ *
+ * @see ViewGroup.getLayoutParams
+ * @see ViewGroup.setLayoutParams
+ **/
+inline fun ViewGroup.updateLayoutParams(block: LayoutParams.() -> Unit) {
+    updateLayoutParams<LayoutParams>(block)
+}
+
+/**
+ * Executes [block] with a typed version of the ViewGroup's layoutParams and reassigns the
+ * layoutParams with the updated version.
+ *
+ * @see ViewGroup.getLayoutParams
+ * @see ViewGroup.setLayoutParams
+ **/
+@JvmName("updateLayoutParamsTyped")
+inline fun <reified T : LayoutParams> ViewGroup.updateLayoutParams(block: T.() -> Unit) {
+    val params = layoutParams as T
+    block(params)
+    layoutParams = params
+}
+
+/**
  * Sets the margins in the ViewGroup's MarginLayoutParams. This version of the method sets all axes
  * to the provided size.
  *
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
-fun ViewGroup.MarginLayoutParams.setMargins(@Px size: Int) {
+inline fun ViewGroup.MarginLayoutParams.setMargins(@Px size: Int) {
     setMargins(size, size, size, size)
 }
 
 /**
- * Updates the margins in the ViewGroup's MarginLayoutParams.
+ * Updates the margins in the [ViewGroup]'s [MarginLayoutParams].
  * This version of the method allows using named parameters to just set one or more axes.
  *
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
-fun ViewGroup.MarginLayoutParams.updateMargins(
+inline fun ViewGroup.MarginLayoutParams.updateMargins(
     @Px left: Int = leftMargin,
     @Px top: Int = topMargin,
     @Px right: Int = rightMargin,
@@ -109,7 +135,7 @@ fun ViewGroup.MarginLayoutParams.updateMargins(
  * @see ViewGroup.MarginLayoutParams.setMargins
  */
 @RequiresApi(17)
-fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
+inline fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
     @Px start: Int = marginStart,
     @Px top: Int = topMargin,
     @Px end: Int = marginEnd,
