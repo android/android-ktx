@@ -30,9 +30,11 @@ class SpannableStringTest {
 
     @Test fun plusAssign() {
         val s = "Hello, World".toSpannable()
-        assertTrue(s.getSpans<Any>().isEmpty())
-        s += StyleSpan(BOLD)
-        assertTrue(s.getSpans<Any>().isNotEmpty())
+
+        val bold = StyleSpan(BOLD)
+        s += bold
+        assertEquals(0, s.getSpanStart(bold))
+        assertEquals(s.length, s.getSpanEnd(bold))
     }
 
     @Test fun minusAssign() {
