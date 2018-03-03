@@ -33,6 +33,7 @@ import java.time.Instant
  * @see Instant.getEpochSecond
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun Instant.component1(): Long = epochSecond
 
 /**
@@ -47,6 +48,7 @@ inline operator fun Instant.component1(): Long = epochSecond
  * @see Instant.getNano
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun Instant.component2(): Int = nano
 
 /**
@@ -55,6 +57,10 @@ inline operator fun Instant.component2(): Int = nano
  * @see Instant.ofEpochSecond
  */
 @RequiresApi(26)
+@Deprecated(
+    TIME_DEPRECATION_MESSAGE,
+    ReplaceWith("Instant.ofEpochSecond(this)", "java.time.Instant")
+)
 inline fun Long.asEpochSeconds(): Instant = Instant.ofEpochSecond(this)
 
 /**
@@ -63,4 +69,8 @@ inline fun Long.asEpochSeconds(): Instant = Instant.ofEpochSecond(this)
  * @see Instant.ofEpochMilli
  */
 @RequiresApi(26)
+@Deprecated(
+    TIME_DEPRECATION_MESSAGE,
+    ReplaceWith("Instant.ofEpochMilli(this)", "java.time.Instant")
+)
 inline fun Long.asEpochMillis(): Instant = Instant.ofEpochMilli(this)

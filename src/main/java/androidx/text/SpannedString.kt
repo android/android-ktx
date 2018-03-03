@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,19 @@
  * limitations under the License.
  */
 
-package androidx.time
+@file:Suppress("NOTHING_TO_INLINE")
 
-import android.support.test.filters.SdkSuppress
-import org.junit.Assert.assertEquals
-import org.junit.Test
-import java.time.LocalDate
-import java.time.Month
+package androidx.text
 
-@Suppress("DEPRECATION")
-@SdkSuppress(minSdkVersion = 26)
-class LocalDateTest {
-    @Test fun destructuring() {
-        val (year, month, day) = LocalDate.of(2017, 12, 20)
-        assertEquals(2017, year)
-        assertEquals(Month.DECEMBER, month)
-        assertEquals(20, day)
-    }
-}
+import android.text.Spanned
+import android.text.SpannedString
+
+/**
+ * Returns a new [Spanned] from [CharSequence],
+ * or the source itself if it is already an instance of [SpannedString].
+ */
+inline fun CharSequence.toSpanned(): Spanned = SpannedString.valueOf(this)
+
+/** Get all spans that are instance of [T]. */
+inline fun <reified T : Any> Spanned.getSpans(): Array<out T> =
+    getSpans(0, length, T::class.java)

@@ -27,6 +27,7 @@ import java.time.Year
  * @see Year.of
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Year.of(this)", "java.time.Year"))
 inline fun Int.asYear(): Year = Year.of(this)
 
 /**
@@ -35,4 +36,5 @@ inline fun Int.asYear(): Year = Year.of(this)
  * @see Year.getValue
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("this.value"))
 inline fun Year.asInt() = value

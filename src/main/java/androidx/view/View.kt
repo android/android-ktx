@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("NOTHING_TO_INLINE") // Aliases to other public API.
+
 package androidx.view
 
 import android.graphics.Bitmap
@@ -32,8 +34,15 @@ import androidx.graphics.applyCanvas
 inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
     addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
         override fun onLayoutChange(
-            view: View, left: Int, top: Int, right: Int, bottom: Int,
-            oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int
+            view: View,
+            left: Int,
+            top: Int,
+            right: Int,
+            bottom: Int,
+            oldLeft: Int,
+            oldTop: Int,
+            oldRight: Int,
+            oldBottom: Int
         ) {
             view.removeOnLayoutChangeListener(this)
             action(view)
@@ -82,7 +91,7 @@ inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
  * @see View.setPaddingRelative
  */
 @RequiresApi(17)
-fun View.updatePaddingRelative(
+inline fun View.updatePaddingRelative(
     @Px start: Int = paddingStart,
     @Px top: Int = paddingTop,
     @Px end: Int = paddingEnd,
@@ -97,7 +106,7 @@ fun View.updatePaddingRelative(
  *
  * @see View.setPadding
  */
-fun View.updatePadding(
+inline fun View.updatePadding(
     @Px left: Int = paddingLeft,
     @Px top: Int = paddingTop,
     @Px right: Int = paddingRight,
@@ -111,7 +120,7 @@ fun View.updatePadding(
  *
  * @see View.setPadding
  */
-fun View.setPadding(@Px size: Int) {
+inline fun View.setPadding(@Px size: Int) {
     setPadding(size, size, size, size)
 }
 
@@ -127,10 +136,10 @@ fun View.setPadding(@Px size: Int) {
  *
  * @return the created Runnable
  */
-fun View.postDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
-    return Runnable(action).apply {
-        postDelayed(this, delayInMillis)
-    }
+inline fun View.postDelayed(delayInMillis: Long, crossinline action: () -> Unit): Runnable {
+    val runnable = Runnable { action() }
+    postDelayed(runnable, delayInMillis)
+    return runnable
 }
 
 /**
@@ -146,10 +155,13 @@ fun View.postDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
  * @return the created Runnable
  */
 @RequiresApi(16)
-fun View.postOnAnimationDelayed(delayInMillis: Long, action: () -> Unit): Runnable {
-    return Runnable(action).apply {
-        postOnAnimationDelayed(this, delayInMillis)
-    }
+inline fun View.postOnAnimationDelayed(
+    delayInMillis: Long,
+    crossinline action: () -> Unit
+): Runnable {
+    val runnable = Runnable { action() }
+    postOnAnimationDelayed(runnable, delayInMillis)
+    return runnable
 }
 
 /**
@@ -164,7 +176,7 @@ fun View.postOnAnimationDelayed(delayInMillis: Long, action: () -> Unit): Runnab
  *
  * If this view has not been laid out this method will throw a [IllegalStateException].
  *
- * @param config Bitmap config of the desired bitmap. Defaults to [Config.ARGB_8888].
+ * @param config Bitmap config of the desired bitmap. Defaults to [Bitmap.Config.ARGB_8888].
  */
 fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     if (!ViewCompat.isLaidOut(this)) {

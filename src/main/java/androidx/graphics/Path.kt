@@ -25,16 +25,15 @@ import android.support.annotation.RequiresApi
 /**
  * A [PathSegment] is a line segment that represents an approximate fraction
  * of a [Path] after [flattening][Path.flatten].
- *
- * @param start The start point of the line segment
- * @param startFraction Fraction along the length of the path that the start point resides
- * @param start The end point of the line segment
- * @param startFraction Fraction along the length of the path that the end point resides
  */
 data class PathSegment(
+    /** The start point of the line segment. */
     val start: PointF,
+    /** Fraction along the length of the path that the start point resides. */
     val startFraction: Float,
+    /** The end point of the line segment. */
     val end: PointF,
+    /** Fraction along the length of the path that the end point resides. */
     val endFraction: Float
 )
 

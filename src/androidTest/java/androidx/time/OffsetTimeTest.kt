@@ -23,6 +23,7 @@ import java.time.LocalTime
 import java.time.OffsetTime
 import java.time.ZoneOffset
 
+@Suppress("DEPRECATION")
 @SdkSuppress(minSdkVersion = 26)
 class OffsetTimeTest {
     @Test fun destructuring() {
