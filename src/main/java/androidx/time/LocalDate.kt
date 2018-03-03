@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
+@file:Suppress("NOTHING_TO_INLINE", "DeprecatedCallableAddReplaceWith") // Aliases to public API.
 
 package androidx.time
 
