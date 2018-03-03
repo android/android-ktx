@@ -741,3 +741,13 @@ package androidx.view {
 
 }
 
+package androidx.widget {
+
+  public final class ToastKt {
+    ctor public ToastKt();
+    method public static android.widget.Toast toast(android.content.Context, CharSequence text, int duration = "Toast.LENGTH_SHORT");
+    method public static android.widget.Toast toast(android.content.Context, @StringRes int resId, int duration = "Toast.LENGTH_SHORT");
+  }
+
+}
+
