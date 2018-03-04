@@ -377,6 +377,8 @@ package androidx.text {
     method public static error.NonExistentClass clearSpans(android.text.Spannable);
     method public static operator void minusAssign(android.text.Spannable, Object span);
     method public static operator void plusAssign(android.text.Spannable, Object span);
+    method public static operator void set(android.text.Spannable, int start, int end, Object span);
+    method public static operator void set(android.text.Spannable, kotlin.ranges.IntRange range, Object span);
     method public static android.text.Spannable toSpannable(CharSequence);
   }
 
