@@ -18,7 +18,7 @@ package androidx.content {
 
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
-    method public static error.NonExistentClass contentValuesOf(kotlin.Pair<String,?>... pairs);
+    method public static error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
   public final class ContextKt {
@@ -321,7 +321,7 @@ package androidx.os {
 
   public final class BundleKt {
     ctor public BundleKt();
-    method public static error.NonExistentClass bundleOf(kotlin.Pair<String,?>... pairs);
+    method public static error.NonExistentClass bundleOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
   public final class FileKt {
@@ -340,7 +340,7 @@ package androidx.os {
 
   public final class PersistableBundleKt {
     ctor public PersistableBundleKt();
-    method @RequiresApi(21) public static error.NonExistentClass persistableBundleOf(kotlin.Pair<String,?>... pairs);
+    method @RequiresApi(21) public static error.NonExistentClass persistableBundleOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
   public final class TraceKt {
@@ -565,7 +565,7 @@ package androidx.util {
     method @RequiresApi(16) public static operator <T> boolean contains(android.util.LongSparseArray<T>, long key);
     method @RequiresApi(16) public static <T> boolean containsKey(android.util.LongSparseArray<T>, long key);
     method @RequiresApi(16) public static <T> boolean containsValue(android.util.LongSparseArray<T>, T! value);
-    method @RequiresApi(16) public static <T> void forEach(android.util.LongSparseArray<T>, kotlin.jvm.functions.Function2<? super Long,? super T,kotlin.Unit> action);
+    method @RequiresApi(16) public static <T> void forEach(android.util.LongSparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Long,? super T,kotlin.Unit> action);
     method @RequiresApi(16) public static <T> T! getOrDefault(android.util.LongSparseArray<T>, long key, T! defaultValue);
     method @RequiresApi(16) public static <T> T! getOrElse(android.util.LongSparseArray<T>, long key, kotlin.jvm.functions.Function0<? extends T> defaultValue);
     method @RequiresApi(16) public static <T> int getSize(android.util.LongSparseArray<T>);
@@ -581,7 +581,7 @@ package androidx.util {
 
   public final class LruCacheKt {
     ctor public LruCacheKt();
-    method public static <K, V> android.util.LruCache<K,V> lruCache(int maxSize, kotlin.jvm.functions.Function2<? super K,? super V,Integer> sizeOf = "{ _, _ -> 1 }", kotlin.jvm.functions.Function1<? super K,? extends V> create = "{ null as V? }", kotlin.jvm.functions.Function4<? super Boolean,? super K,? super V,? super V,kotlin.Unit> onEntryRemoved = "{ _, _, _, _ -> }");
+    method public static <K, V> android.util.LruCache<K,V> lruCache(int maxSize, kotlin.jvm.functions.Function2<? super K,? super V,java.lang.Integer> sizeOf = "{ _, _ -> 1 }", kotlin.jvm.functions.Function1<? super K,? extends V> create = "{ null as V? }", kotlin.jvm.functions.Function4<? super java.lang.Boolean,? super K,? super V,? super V,kotlin.Unit> onEntryRemoved = "{ _, _, _, _ -> }");
   }
 
   public final class PairKt {
@@ -615,7 +615,7 @@ package androidx.util {
     method public static operator <T> boolean contains(android.util.SparseArray<T>, int key);
     method public static <T> boolean containsKey(android.util.SparseArray<T>, int key);
     method public static <T> boolean containsValue(android.util.SparseArray<T>, T! value);
-    method public static <T> void forEach(android.util.SparseArray<T>, kotlin.jvm.functions.Function2<? super Integer,? super T,kotlin.Unit> action);
+    method public static <T> void forEach(android.util.SparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super T,kotlin.Unit> action);
     method public static <T> T! getOrDefault(android.util.SparseArray<T>, int key, T! defaultValue);
     method public static <T> T! getOrElse(android.util.SparseArray<T>, int key, kotlin.jvm.functions.Function0<? extends T> defaultValue);
     method public static <T> int getSize(android.util.SparseArray<T>);
@@ -634,9 +634,9 @@ package androidx.util {
     method public static operator boolean contains(android.util.SparseBooleanArray, int key);
     method public static boolean containsKey(android.util.SparseBooleanArray, int key);
     method public static boolean containsValue(android.util.SparseBooleanArray, boolean value);
-    method public static void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super Integer,? super Boolean,kotlin.Unit> action);
+    method public static void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Boolean,kotlin.Unit> action);
     method public static boolean getOrDefault(android.util.SparseBooleanArray, int key, boolean defaultValue);
-    method public static error.NonExistentClass getOrElse(android.util.SparseBooleanArray, int key, kotlin.jvm.functions.Function0<Boolean> defaultValue);
+    method public static error.NonExistentClass getOrElse(android.util.SparseBooleanArray, int key, kotlin.jvm.functions.Function0<java.lang.Boolean> defaultValue);
     method public static int getSize(android.util.SparseBooleanArray);
     method public static boolean isEmpty(android.util.SparseBooleanArray);
     method public static boolean isNotEmpty(android.util.SparseBooleanArray);
@@ -654,9 +654,9 @@ package androidx.util {
     method public static operator boolean contains(android.util.SparseIntArray, int key);
     method public static boolean containsKey(android.util.SparseIntArray, int key);
     method public static boolean containsValue(android.util.SparseIntArray, int value);
-    method public static void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super Integer,? super Integer,kotlin.Unit> action);
+    method public static void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit> action);
     method public static int getOrDefault(android.util.SparseIntArray, int key, int defaultValue);
-    method public static error.NonExistentClass getOrElse(android.util.SparseIntArray, int key, kotlin.jvm.functions.Function0<Integer> defaultValue);
+    method public static error.NonExistentClass getOrElse(android.util.SparseIntArray, int key, kotlin.jvm.functions.Function0<java.lang.Integer> defaultValue);
     method public static int getSize(android.util.SparseIntArray);
     method public static boolean isEmpty(android.util.SparseIntArray);
     method public static boolean isNotEmpty(android.util.SparseIntArray);
@@ -673,9 +673,9 @@ package androidx.util {
     method @RequiresApi(18) public static operator boolean contains(android.util.SparseLongArray, int key);
     method @RequiresApi(18) public static boolean containsKey(android.util.SparseLongArray, int key);
     method @RequiresApi(18) public static boolean containsValue(android.util.SparseLongArray, long value);
-    method @RequiresApi(18) public static void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super Integer,? super Long,kotlin.Unit> action);
+    method @RequiresApi(18) public static void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Long,kotlin.Unit> action);
     method @RequiresApi(18) public static long getOrDefault(android.util.SparseLongArray, int key, long defaultValue);
-    method @RequiresApi(18) public static error.NonExistentClass getOrElse(android.util.SparseLongArray, int key, kotlin.jvm.functions.Function0<Long> defaultValue);
+    method @RequiresApi(18) public static error.NonExistentClass getOrElse(android.util.SparseLongArray, int key, kotlin.jvm.functions.Function0<java.lang.Long> defaultValue);
     method @RequiresApi(18) public static int getSize(android.util.SparseLongArray);
     method @RequiresApi(18) public static boolean isEmpty(android.util.SparseLongArray);
     method @RequiresApi(18) public static boolean isNotEmpty(android.util.SparseLongArray);
@@ -695,7 +695,7 @@ package androidx.view {
     ctor public MenuKt();
     method public static operator boolean contains(android.view.Menu, android.view.MenuItem item);
     method public static void forEach(android.view.Menu, kotlin.jvm.functions.Function1<? super android.view.MenuItem,kotlin.Unit> action);
-    method public static void forEachIndexed(android.view.Menu, kotlin.jvm.functions.Function2<? super Integer,? super android.view.MenuItem,kotlin.Unit> action);
+    method public static void forEachIndexed(android.view.Menu, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.view.MenuItem,kotlin.Unit> action);
     method public static operator android.view.MenuItem get(android.view.Menu, int index);
     method public static int getSize(android.view.Menu);
     method public static boolean isEmpty(android.view.Menu);
@@ -707,7 +707,7 @@ package androidx.view {
     ctor public ViewGroupKt();
     method public static operator boolean contains(android.view.ViewGroup, android.view.View view);
     method public static void forEach(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
-    method public static void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super Integer,? super android.view.View,kotlin.Unit> action);
+    method public static void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.view.View,kotlin.Unit> action);
     method public static operator android.view.View get(android.view.ViewGroup, int index);
     method public static kotlin.sequences.Sequence<android.view.View> getChildren(android.view.ViewGroup);
     method public static int getSize(android.view.ViewGroup);
