@@ -313,6 +313,7 @@ package androidx.net {
   public final class UriKt {
     ctor public UriKt();
     method public static android.net.Uri toUri(String);
+    method public static android.net.Uri toUri(java.io.File);
   }
 
 }
@@ -322,11 +323,6 @@ package androidx.os {
   public final class BundleKt {
     ctor public BundleKt();
     method public static error.NonExistentClass bundleOf(kotlin.Pair<java.lang.String,?>... pairs);
-  }
-
-  public final class FileKt {
-    ctor public FileKt();
-    method public static android.net.Uri toUri(java.io.File);
   }
 
   public final class HandlerKt {
