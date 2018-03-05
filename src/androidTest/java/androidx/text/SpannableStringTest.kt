@@ -16,8 +16,10 @@
 
 package androidx.text
 
+import android.graphics.Color
 import android.graphics.Typeface.BOLD
 import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import org.junit.Assert.assertEquals
@@ -85,5 +87,53 @@ class SpannableStringTest {
         val underline = spans.filterIsInstance<UnderlineSpan>().single()
         assertEquals(7, s.getSpanStart(underline))
         assertEquals(12, s.getSpanEnd(underline))
+    }
+
+    @Test fun overlay() {
+        val s = "Hello, World".toSpannable()
+        assertEquals(5, s.overlay("Hello", StyleSpan(BOLD)))
+        assertEquals(12, s.overlay("World", UnderlineSpan(), true))
+        assertEquals(-1, s.overlay("world", ForegroundColorSpan(Color.BLUE)))
+
+        val spans = s.getSpans<Any>()
+
+        val bold = spans.filterIsInstance<StyleSpan>().single()
+        assertEquals(0, s.getSpanStart(bold))
+        assertEquals(5, s.getSpanEnd(bold))
+
+        val underline = spans.filterIsInstance<UnderlineSpan>().single()
+        assertEquals(7, s.getSpanStart(underline))
+        assertEquals(12, s.getSpanEnd(underline))
+
+        val blue = spans.filterIsInstance<ForegroundColorSpan>()
+        assertEquals(emptyList<Any>(), blue)
+    }
+
+    @Test fun overlayAll() {
+        val s = "Hello, World, I'm world".toSpannable()
+        s.overlayAll("Hello") { StyleSpan(BOLD) }
+        s.overlayAll("World", true) { UnderlineSpan() }
+        s.overlayAll("world") { ForegroundColorSpan(Color.BLUE) }
+
+        val spans = s.getSpans<Any>()
+
+        val bold = spans.filterIsInstance<StyleSpan>().single()
+        assertEquals(0, s.getSpanStart(bold))
+        assertEquals(5, s.getSpanEnd(bold))
+
+        val underlines = spans.filterIsInstance<UnderlineSpan>().sortedBy { s.getSpanStart(it) }
+        assertEquals(2, underlines.count())
+
+        val underline1 = underlines.first()
+        assertEquals(7, s.getSpanStart(underline1))
+        assertEquals(12, s.getSpanEnd(underline1))
+
+        val underline2 = underlines.last()
+        assertEquals(18, s.getSpanStart(underline2))
+        assertEquals(23, s.getSpanEnd(underline2))
+
+        val blue = spans.filterIsInstance<ForegroundColorSpan>().single()
+        assertEquals(18, s.getSpanStart(blue))
+        assertEquals(23, s.getSpanEnd(blue))
     }
 }
