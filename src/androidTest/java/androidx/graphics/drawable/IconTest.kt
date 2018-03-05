@@ -24,7 +24,7 @@ import android.graphics.drawable.Icon
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
 import androidx.graphics.createBitmap
-import androidx.os.toUri
+import androidx.net.toUri
 import okio.Okio.buffer
 import okio.Okio.sink
 import okio.Okio.source
