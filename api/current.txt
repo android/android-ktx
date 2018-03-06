@@ -354,6 +354,12 @@ package androidx.text {
     method public static int trimmedLength(CharSequence);
   }
 
+  public final class HtmlKt {
+    ctor public HtmlKt();
+    method public static android.text.Spanned parseAsHtml(CharSequence, Integer? flags = "0");
+    method public static android.text.Spanned parseAsHtml(CharSequence, Integer? flags = "0", android.text.Html.ImageGetter imageGetter, android.text.Html.TagHandler tagHandler);
+  }
+
   public final class SpannableStringBuilderKt {
     ctor public SpannableStringBuilderKt();
     method public static android.text.SpannableStringBuilder backgroundColor(android.text.SpannableStringBuilder, @ColorInt int color, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
