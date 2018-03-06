@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-package androidx.os
+package androidx.text
 
-import android.net.Uri
-import android.support.test.InstrumentationRegistry
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.io.File
 
-class FileTest {
-    private val context = InstrumentationRegistry.getContext()
+class CharSequenceTest {
+    @Test fun isDigitsOnly() {
+        assertTrue("012345".isDigitsOnly())
+        assertFalse("0123 abc".isDigitsOnly())
+    }
 
-    @Test
-    fun uri() {
-        val cacheFile = File(context.cacheDir, "red.png")
-        assertEquals(Uri.fromFile(cacheFile), cacheFile.toUri())
+    @Test fun trimmedLength() {
+        assertEquals(6, "string    ".trimmedLength())
+        assertEquals(6, "    string".trimmedLength())
+        assertEquals(6, "string".trimmedLength())
+        assertEquals(0, "".trimmedLength())
     }
 }

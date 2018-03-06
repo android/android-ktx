@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,13 @@
  * limitations under the License.
  */
 
-package androidx.time
+package androidx.text
 
-import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZonedDateTime
 
-@Suppress("DEPRECATION")
-@SdkSuppress(minSdkVersion = 26)
-class ZonedDateTimeTest {
-    @Test fun destructuring() {
-        val paris = ZoneId.of("Europe/Paris")
-        val (dateTime, offset) = ZonedDateTime.of(2017, 12, 20, 5, 16, 42, 0, paris)
-        assertEquals(LocalDateTime.of(2017, 12, 20, 5, 16, 42), dateTime)
-        assertEquals(paris, offset)
+class StringTest {
+    @Test fun htmlEncode() {
+        assertEquals("&lt;&gt; &amp; &quot; &#39;", """<> & " '""".htmlEncode())
     }
 }

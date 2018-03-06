@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
+@file:Suppress("NOTHING_TO_INLINE")
 
-package androidx.os
+package androidx.text
 
-import android.net.Uri
-import java.io.File
+import android.text.Spanned
+import android.text.SpannedString
 
 /**
- * Creates a Uri from the given file.
- *
- * @see Uri.fromFile
+ * Returns a new [Spanned] from [CharSequence],
+ * or the source itself if it is already an instance of [SpannedString].
  */
-inline fun File.toUri(): Uri = Uri.fromFile(this)
+inline fun CharSequence.toSpanned(): Spanned = SpannedString.valueOf(this)
+
+/** Get all spans that are instance of [T]. */
+inline fun <reified T : Any> Spanned.getSpans(start: Int = 0, end: Int = length): Array<out T> =
+    getSpans(start, end, T::class.java)

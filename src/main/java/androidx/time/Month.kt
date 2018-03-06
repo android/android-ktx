@@ -27,6 +27,7 @@ import java.time.Month
  * @see Month.of
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("Month.of(this)", "java.time.Month"))
 inline fun Int.asMonth(): Month = Month.of(this)
 
 /**
@@ -35,4 +36,5 @@ inline fun Int.asMonth(): Month = Month.of(this)
  * @see Month.getValue
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE, ReplaceWith("this.value"))
 inline fun Month.asInt() = value

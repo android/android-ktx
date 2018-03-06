@@ -19,6 +19,7 @@
 package androidx.net
 
 import android.net.Uri
+import java.io.File
 
 /**
  * Creates a Uri from the given encoded URI string.
@@ -26,3 +27,10 @@ import android.net.Uri
  * @see Uri.parse
  */
 inline fun String.toUri(): Uri = Uri.parse(this)
+
+/**
+ * Creates a Uri from the given file.
+ *
+ * @see Uri.fromFile
+ */
+inline fun File.toUri(): Uri = Uri.fromFile(this)

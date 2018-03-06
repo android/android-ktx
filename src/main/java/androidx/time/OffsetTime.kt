@@ -35,6 +35,7 @@ import java.time.ZoneOffset
  * @see OffsetTime.toLocalTime
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun OffsetTime.component1(): LocalTime = toLocalTime()
 
 /**
@@ -49,4 +50,5 @@ inline operator fun OffsetTime.component1(): LocalTime = toLocalTime()
  * @see OffsetTime.getOffset
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun OffsetTime.component2(): ZoneOffset = offset

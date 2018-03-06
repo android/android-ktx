@@ -34,6 +34,7 @@ import java.time.MonthDay
  * @see MonthDay.getMonth
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun MonthDay.component1(): Month = month
 
 /**
@@ -48,4 +49,5 @@ inline operator fun MonthDay.component1(): Month = month
  * @see MonthDay.getDayOfMonth
  */
 @RequiresApi(26)
+@Deprecated(TIME_DEPRECATION_MESSAGE)
 inline operator fun MonthDay.component2(): Int = dayOfMonth
