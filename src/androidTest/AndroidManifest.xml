@@ -2,5 +2,7 @@
           package="androidx.kotlin">
     <application>
         <activity android:name=".TestActivity"/>
+
+        <service android:name=".TestService"/>
     </application>
 </manifest>

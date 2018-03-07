@@ -16,18 +16,29 @@
 
 package androidx.content
 
+import android.content.ComponentName
+import android.content.ServiceConnection
+import android.os.IBinder
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
+import android.support.test.rule.ServiceTestRule
 import android.test.mock.MockContext
 import androidx.getAttributeSet
+import androidx.kotlin.TestService
 import androidx.kotlin.test.R
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
+import org.junit.Rule
 import org.junit.Test
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
 class ContextTest {
     private val context = InstrumentationRegistry.getContext()
+
+    @JvmField @Rule val serviceRule = ServiceTestRule()
 
     @SdkSuppress(minSdkVersion = 23)
     @Test fun systemService() {
@@ -69,5 +80,58 @@ class ContextTest {
         context.withStyledAttributes(attrs, R.styleable.SampleAttrs, 0, 0) {
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
         }
+    }
+
+    @Test fun startService() {
+        context.startService<TestService> {
+            action = "test"
+        }
+
+        InstrumentationRegistry.getInstrumentation().waitForIdleSync()
+
+        assertTrue(TestService.isRunning.get())
+        assertEquals("test", TestService.startIntent.get()?.action)
+    }
+
+    @Test fun bindService() {
+        val latch = CountDownLatch(1)
+
+        var testBinder: TestService.Binder? = null
+        val connection = object : ServiceConnection {
+            override fun onServiceConnected(componentName: ComponentName, binder: IBinder) {
+                testBinder = binder as TestService.Binder
+                latch.countDown()
+            }
+
+            override fun onServiceDisconnected(componentName: ComponentName) {}
+        }
+
+        context.bindService<TestService>(connection) {
+            action = "test"
+        }
+
+        latch.await(1, TimeUnit.SECONDS)
+
+        assertTrue(TestService.isRunning.get())
+        assertEquals("test", testBinder!!.intent.action)
+    }
+
+    @Test fun bindServiceWithEmptyFlag() {
+        val latch = CountDownLatch(1)
+
+        val connection = object : ServiceConnection {
+            override fun onServiceConnected(componentName: ComponentName, binder: IBinder) {
+                latch.countDown()
+            }
+
+            override fun onServiceDisconnected(componentName: ComponentName) {}
+        }
+
+        context.bindService<TestService>(connection = connection, flags = 0) {
+            action = "test"
+        }
+
+        assertFalse(latch.await(1, TimeUnit.SECONDS))
+        assertFalse(TestService.isRunning.get())
     }
 }
