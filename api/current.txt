@@ -312,9 +312,9 @@ package androidx.net {
 
   public final class UriKt {
     ctor public UriKt();
+    method public static java.io.File toFile(android.net.Uri);
     method public static android.net.Uri toUri(String);
     method public static android.net.Uri toUri(java.io.File);
-    method public static java.io.File toFile(android.net.Uri);
   }
 
 }
