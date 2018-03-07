@@ -659,3 +659,15 @@ package androidx.core.widget {
 
 }
 
+package androidx.util {
+
+  public final class Base64Kt {
+    ctor public Base64Kt();
+    method public static String decodeBase64(kotlin.jvm.internal.StringCompanionObject, String input, int offset = "0", int len = "input.length", int flags = "Base64.DEFAULT", java.nio.charset.Charset byteArrayCharset = "Charsets.US_ASCII", java.nio.charset.Charset stringCharset = "Charsets.UTF_8");
+    method public static byte[] decodeBase64(byte[], int offset = "0", int len = "this.size", int flags = "Base64.DEFAULT");
+    method public static String encodeBase64(String, int offset = "0", int len = "this.length", int flags = "Base64.DEFAULT", java.nio.charset.Charset byteArrayCharset = "Charsets.US_ASCII", java.nio.charset.Charset stringCharset = "Charsets.UTF_8");
+    method public static byte[] encodeBase64(byte[], int offset = "0", int len = "this.size", int flags = "Base64.DEFAULT");
+  }
+
+}
+
