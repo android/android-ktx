@@ -725,6 +725,7 @@ package androidx.view {
 
   public final class ViewKt {
     ctor public ViewKt();
+    method @RequiresApi(16) public static void announceForAccessibility(android.view.View, @StringRes int resource);
     method public static void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);

@@ -21,10 +21,12 @@ package androidx.view
 import android.graphics.Bitmap
 import android.support.annotation.Px
 import android.support.annotation.RequiresApi
+import android.support.annotation.StringRes
 import android.support.v4.view.ViewCompat
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.view.accessibility.AccessibilityEvent
 import androidx.graphics.applyCanvas
 
 /**
@@ -83,6 +85,17 @@ inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
             return true
         }
     })
+}
+
+/**
+ * Sends [AccessibilityEvent] of type [AccessibilityEvent.TYPE_ANNOUNCEMENT].
+ *
+ * @see View.announceForAccessibility
+ */
+@RequiresApi(16)
+inline fun View.announceForAccessibility(@StringRes resource: Int) {
+    val announcement = resources.getString(resource)
+    announceForAccessibility(announcement)
 }
 
 /**
