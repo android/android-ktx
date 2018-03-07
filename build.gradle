@@ -13,7 +13,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.0-beta3'
+        classpath 'com.android.tools.build:gradle:3.1.0-rc01'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
     }
