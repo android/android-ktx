@@ -719,7 +719,6 @@ package androidx.view {
     method public static operator void minusAssign(android.view.ViewGroup, android.view.View view);
     method public static operator void plusAssign(android.view.ViewGroup, android.view.View view);
     method public static void setMargins(android.view.ViewGroup.MarginLayoutParams, @Px int size);
-    method public static void updateLayoutParams(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.ViewGroup.LayoutParams,kotlin.Unit> block);
     method public static void updateMargins(android.view.ViewGroup.MarginLayoutParams, @Px int left = "leftMargin", @Px int top = "topMargin", @Px int right = "rightMargin", @Px int bottom = "bottomMargin");
     method @RequiresApi(17) public static void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, @Px int start = "marginStart", @Px int top = "topMargin", @Px int end = "marginEnd", @Px int bottom = "bottomMargin");
   }
@@ -739,6 +738,7 @@ package androidx.view {
     method public static void setPadding(android.view.View, @Px int size);
     method public static void setVisible(android.view.View, boolean value);
     method public static android.graphics.Bitmap toBitmap(android.view.View, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
+    method public static void updateLayoutParams(android.view.View, kotlin.jvm.functions.Function1<? super android.view.ViewGroup.LayoutParams,kotlin.Unit> block);
     method public static void updatePadding(android.view.View, @Px int left = "paddingLeft", @Px int top = "paddingTop", @Px int right = "paddingRight", @Px int bottom = "paddingBottom");
     method @RequiresApi(17) public static void updatePaddingRelative(android.view.View, @Px int start = "paddingStart", @Px int top = "paddingTop", @Px int end = "paddingEnd", @Px int bottom = "paddingBottom");
   }

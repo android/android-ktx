@@ -23,6 +23,7 @@ import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewCompat
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.graphics.applyCanvas
 
@@ -247,3 +248,28 @@ inline var View.isGone: Boolean
     set(value) {
         visibility = if (value) View.GONE else View.VISIBLE
     }
+
+/**
+ * Executes [block] with the View's layoutParams and reassigns the layoutParams with the
+ * updated version.
+ *
+ * @see View.getLayoutParams
+ * @see View.setLayoutParams
+ **/
+inline fun View.updateLayoutParams(block: ViewGroup.LayoutParams.() -> Unit) {
+    updateLayoutParams<ViewGroup.LayoutParams>(block)
+}
+
+/**
+ * Executes [block] with a typed version of the View's layoutParams and reassigns the
+ * layoutParams with the updated version.
+ *
+ * @see View.getLayoutParams
+ * @see View.setLayoutParams
+ **/
+@JvmName("updateLayoutParamsTyped")
+inline fun <reified T : ViewGroup.LayoutParams> View.updateLayoutParams(block: T.() -> Unit) {
+    val params = layoutParams as T
+    block(params)
+    layoutParams = params
+}
