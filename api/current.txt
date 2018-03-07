@@ -325,11 +325,6 @@ package androidx.os {
     method public static error.NonExistentClass bundleOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
-  public final class FileKt {
-    ctor public FileKt();
-    method public static java.io.File toFile(android.net.Uri);
-  }
-
   public final class HandlerKt {
     ctor public HandlerKt();
     method public static error.NonExistentClass postAtTime(android.os.Handler, long uptimeMillis, Object? token = "null", kotlin.jvm.functions.Function0<kotlin.Unit> action);
