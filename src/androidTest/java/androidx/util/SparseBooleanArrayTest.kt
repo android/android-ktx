@@ -129,6 +129,23 @@ class SparseBooleanArrayTest {
         assertEquals(0, array.size())
     }
 
+    @Test fun removeAt() {
+        val array = SparseBooleanArray()
+        array.put(0, true)
+        array.put(1, false)
+        array.put(2, true)
+        assertEquals(3, array.size())
+        assertEquals(true, array[0])
+        assertEquals(false, array[1])
+        assertEquals(true, array[2])
+
+        array.removeAt(1)
+
+        assertEquals(2, array.size())
+        assertEquals(true, array[0])
+        assertEquals(true, array[2])
+    }
+
     @Test fun putAll() {
         val dest = SparseBooleanArray()
         val source = SparseBooleanArray()
