@@ -16,8 +16,11 @@
 
 package androidx.text
 
-import android.os.Build
+import android.annotation.SuppressLint
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.N
 import android.text.Html
+import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.text.Html.ImageGetter
 import android.text.Html.TagHandler
 import android.text.Spanned
@@ -31,9 +34,11 @@ import android.text.Spanned
  * @param flags Additional option to set the behavior of the HTML parsing. Default is set to
  * [Html.FROM_HTML_MODE_LEGACY] which was introduced in Android 7.0.
  */
-fun CharSequence.parseAsHtml(flags: Int? = 0): Spanned {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        Html.fromHtml(toString(), flags ?: Html.FROM_HTML_MODE_LEGACY)
+fun CharSequence.parseAsHtml(
+    @SuppressLint("InlinedApi") flags: Int = FROM_HTML_MODE_LEGACY
+): Spanned {
+    return if (SDK_INT >= N) {
+        Html.fromHtml(toString(), flags)
     } else {
         @Suppress("DEPRECATION")
         Html.fromHtml(toString())
@@ -53,12 +58,12 @@ fun CharSequence.parseAsHtml(flags: Int? = 0): Spanned {
  * not know how to interpret.
  */
 fun CharSequence.parseAsHtml(
-    flags: Int? = 0,
+    @SuppressLint("InlinedApi") flags: Int = FROM_HTML_MODE_LEGACY,
     imageGetter: ImageGetter,
     tagHandler: TagHandler
 ): Spanned {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        Html.fromHtml(toString(), flags ?: Html.FROM_HTML_MODE_LEGACY, imageGetter, tagHandler)
+    return if (SDK_INT >= N) {
+        Html.fromHtml(toString(), flags, imageGetter, tagHandler)
     } else {
         @Suppress("DEPRECATION")
         Html.fromHtml(toString(), imageGetter, tagHandler)
