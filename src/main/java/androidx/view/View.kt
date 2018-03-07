@@ -250,6 +250,22 @@ inline var View.isGone: Boolean
     }
 
 /**
+ * Toggle visibility of a view. By default visibility will be changed form [View.INVISIBLE] to
+ * [View.VISIBLE] or vice versa.
+ *
+ * @param nonVisibleState visibility in which to change. Defaults to [View.GONE]
+ * @return new visibility state.
+ **/
+inline fun View.toggleVisibility(nonVisibleState: Int = View.GONE): Int {
+    visibility = if (visibility == View.VISIBLE) {
+        nonVisibleState
+    } else {
+        View.VISIBLE
+    }
+    return visibility
+}
+
+/**
  * Executes [block] with the View's layoutParams and reassigns the layoutParams with the
  * updated version.
  *

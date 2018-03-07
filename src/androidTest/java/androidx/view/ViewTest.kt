@@ -26,6 +26,7 @@ import androidx.assertThrows
 import androidx.fail
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -202,6 +203,26 @@ class ViewTest {
         view.isGone = false
         assertFalse(view.isGone)
         assertEquals(View.VISIBLE, view.visibility)
+    }
+
+    @Test fun toggleVisibility() {
+        val visibility1 = view.visibility
+        val toggledVisibility1 = view.toggleVisibility()
+        assertNotEquals(visibility1, toggledVisibility1)
+
+        val toggledVisibility2 = view.toggleVisibility()
+        assertEquals(View.GONE, toggledVisibility1)
+        assertNotEquals(toggledVisibility1, toggledVisibility2)
+
+        view.visibility = View.VISIBLE
+        val toggleVisibility2 = view.toggleVisibility(View.GONE)
+        assertEquals(View.GONE, toggleVisibility2)
+        assertNotEquals(View.VISIBLE, toggleVisibility2)
+
+        view.visibility = View.VISIBLE
+        val toggledVisibility3 = view.toggleVisibility(View.INVISIBLE)
+        assertEquals(View.INVISIBLE, toggledVisibility3)
+        assertNotEquals(View.VISIBLE, toggledVisibility3)
     }
 
     @Test fun updateLayoutParams() {
