@@ -56,10 +56,6 @@ inline fun SparseBooleanArray.isEmpty() = size() == 0
 /** Return true when the collection contains elements. */
 inline fun SparseBooleanArray.isNotEmpty() = size() != 0
 
-/** Removes the mapping at the specified index. */
-// TODO https://issuetracker.google.com/issues/70934959
-fun SparseBooleanArray.removeAt(index: Int) = delete(keyAt(index))
-
 /** Removes the entry for [key] only if it is mapped to [value]. */
 fun SparseBooleanArray.remove(key: Int, value: Boolean): Boolean {
     val index = indexOfKey(key)
