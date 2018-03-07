@@ -351,6 +351,7 @@ package androidx.text {
   public final class CharSequenceKt {
     ctor public CharSequenceKt();
     method public static boolean isDigitsOnly(CharSequence);
+    method public static CharSequence? presence(CharSequence?);
     method public static int trimmedLength(CharSequence);
   }
 

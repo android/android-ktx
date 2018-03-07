@@ -18,6 +18,7 @@ package androidx.text
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -32,5 +33,15 @@ class CharSequenceTest {
         assertEquals(6, "    string".trimmedLength())
         assertEquals(6, "string".trimmedLength())
         assertEquals(0, "".trimmedLength())
+    }
+
+    @Test fun presence() {
+        assertEquals("hello", "hello".presence())
+        assertEquals("  hello  ", "  hello  ".presence())
+        assertNull(null.presence())
+        assertNull("".presence())
+        assertNull(" ".presence())
+        assertNull("\n".presence())
+        assertNull("\t".presence())
     }
 }
