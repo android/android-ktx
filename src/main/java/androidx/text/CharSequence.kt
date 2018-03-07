@@ -34,3 +34,10 @@ inline fun CharSequence.isDigitsOnly() = TextUtils.isDigitsOnly(this)
  * @see TextUtils.getTrimmedLength
  */
 inline fun CharSequence.trimmedLength() = TextUtils.getTrimmedLength(this)
+
+/**
+ * Returns the receiver if the [CharSequence] is not null and not blank. Otherwise return null.
+ *
+ * @see CharSequence.isNullOrBlank
+ */
+inline fun CharSequence?.presence() = if (isNullOrBlank()) null else this
