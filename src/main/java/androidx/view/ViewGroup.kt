@@ -88,7 +88,7 @@ inline fun ViewGroup.MarginLayoutParams.setMargins(@Px size: Int) {
 }
 
 /**
- * Updates the margins in the [ViewGroup]'s [MarginLayoutParams].
+ * Updates the margins in the [ViewGroup]'s [ViewGroup.MarginLayoutParams].
  * This version of the method allows using named parameters to just set one or more axes.
  *
  * @see ViewGroup.MarginLayoutParams.setMargins
