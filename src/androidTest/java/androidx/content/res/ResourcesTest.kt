@@ -19,7 +19,6 @@ package androidx.content.res
 import android.graphics.Typeface
 import android.support.test.InstrumentationRegistry
 import android.text.Spannable
-import android.text.Spanned
 import android.text.style.StyleSpan
 import androidx.kotlin.test.R
 import androidx.text.getSpans

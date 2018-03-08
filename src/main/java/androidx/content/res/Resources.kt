@@ -17,10 +17,9 @@
 package androidx.content.res
 
 import android.content.res.Resources
-import android.os.Build
 import android.support.annotation.StringRes
-import android.text.Html
 import android.text.TextUtils
+import androidx.text.parseAsHtml
 
 /**
  * Returns the string value associated with the [id], substituting the format arguments.
@@ -31,10 +30,5 @@ import android.text.TextUtils
 fun Resources.getText(@StringRes id: Int, vararg formatArgs: Any): CharSequence {
     val args = formatArgs.map { if (it is String) TextUtils.htmlEncode(it) else it }.toTypedArray()
     val string = getString(id, *args)
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        Html.fromHtml(string, Html.FROM_HTML_MODE_LEGACY)
-    } else {
-        @Suppress("DEPRECATION")
-        Html.fromHtml(string)
-    }
+    return string.parseAsHtml()
 }
