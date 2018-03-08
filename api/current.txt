@@ -398,6 +398,8 @@ package androidx.text {
     ctor public SpannableStringKt();
     method public static error.NonExistentClass clearSpans(android.text.Spannable);
     method public static operator void minusAssign(android.text.Spannable, Object span);
+    method public static int overlay(android.text.Spannable, String substring, Object span, boolean ignoreCase = "false", int startIndex = "0");
+    method public static void overlayAll(android.text.Spannable, String substring, boolean ignoreCase = "false", int startIndex = "0", kotlin.jvm.functions.Function0<?> spanFactory);
     method public static operator void plusAssign(android.text.Spannable, Object span);
     method public static operator void set(android.text.Spannable, int start, int end, Object span);
     method public static operator void set(android.text.Spannable, kotlin.ranges.IntRange range, Object span);
