@@ -24,6 +24,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.assertThrows
 import androidx.fail
+import androidx.kotlin.test.R
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
@@ -234,5 +235,14 @@ class ViewTest {
                 fail()
             }
         }
+    }
+
+    @Test fun announceForAccessibility() {
+        val testView = AccessibilityAnnouncementCapturingView(context)
+
+        testView.announceForAccessibility(R.string.text)
+
+        val resolvedText = context.getText(R.string.text)
+        assertEquals(testView.announcement, resolvedText)
     }
 }
