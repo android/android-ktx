@@ -347,6 +347,25 @@ package androidx.os {
 
 }
 
+package androidx.preference {
+
+  public final class PreferenceGroupKt {
+    ctor public PreferenceGroupKt();
+    method public static operator boolean contains(android.preference.PreferenceGroup, android.preference.Preference preference);
+    method public static void forEach(android.preference.PreferenceGroup, kotlin.jvm.functions.Function1<? super android.preference.Preference,kotlin.Unit> action);
+    method public static void forEachIndexed(android.preference.PreferenceGroup, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.preference.Preference,kotlin.Unit> action);
+    method public static operator android.preference.Preference get(android.preference.PreferenceGroup, CharSequence key);
+    method public static operator android.preference.Preference get(android.preference.PreferenceGroup, int index);
+    method public static int getSize(android.preference.PreferenceGroup);
+    method public static boolean isEmpty(android.preference.PreferenceGroup);
+    method public static boolean isNotEmpty(android.preference.PreferenceGroup);
+    method public static operator java.util.Iterator<android.preference.Preference> iterator(android.preference.PreferenceGroup);
+    method public static operator void minusAssign(android.preference.PreferenceGroup, android.preference.Preference preference);
+    method public static operator void plusAssign(android.preference.PreferenceGroup, android.preference.Preference preference);
+  }
+
+}
+
 package androidx.text {
 
   public final class CharSequenceKt {

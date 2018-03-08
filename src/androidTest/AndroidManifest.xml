@@ -2,5 +2,6 @@
           package="androidx.kotlin">
     <application>
         <activity android:name=".TestActivity"/>
+        <activity android:name=".TestPreferenceActivity"/>
     </application>
 </manifest>
