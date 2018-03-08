@@ -28,5 +28,5 @@ import android.text.SpannedString
 inline fun CharSequence.toSpanned(): Spanned = SpannedString.valueOf(this)
 
 /** Get all spans that are instance of [T]. */
-inline fun <reified T : Any> Spanned.getSpans(): Array<out T> =
-    getSpans(0, length, T::class.java)
+inline fun <reified T : Any> Spanned.getSpans(start: Int = 0, end: Int = length): Array<out T> =
+    getSpans(start, end, T::class.java)

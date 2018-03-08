@@ -13,7 +13,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.0-beta3'
+        classpath 'com.android.tools.build:gradle:3.1.0-rc01'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
     }
@@ -67,19 +67,19 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:${versions.atsl}"
     androidTestImplementation "com.android.support.test:rules:${versions.atsl}"
     androidTestImplementation 'com.google.truth:truth:0.39'
-    androidTestImplementation 'com.squareup.okio:okio:1.13.0'
+    androidTestImplementation 'com.squareup.okio:okio:1.14.0'
 
-    ktlint 'com.github.shyiko:ktlint:0.18.0'
+    ktlint 'com.github.shyiko:ktlint:0.19.0'
 
     // Metalava isn't released yet. Check in its jar and explicitly track its transitive deps.
     metalava files('metalava.jar')
-    metalava 'com.android.tools.external.org-jetbrains:uast:26.1.0-beta1'
-    metalava 'com.android.tools.external.com-intellij:intellij-core:26.1.0-beta1'
-    metalava 'com.android.tools.lint:lint-api:26.1.0-beta1'
-    metalava 'com.android.tools.lint:lint-checks:26.1.0-beta1'
-    metalava 'com.android.tools.lint:lint-gradle:26.1.0-beta1'
-    metalava 'com.android.tools.lint:lint:26.1.0-beta1'
-    metalava 'org.jetbrains.kotlin:kotlin-stdlib:1.2.21'
+    metalava 'com.android.tools.external.org-jetbrains:uast:26.1.0-beta4'
+    metalava 'com.android.tools.external.com-intellij:intellij-core:26.1.0-beta4'
+    metalava 'com.android.tools.lint:lint-api:26.1.0-beta4'
+    metalava 'com.android.tools.lint:lint-checks:26.1.0-beta4'
+    metalava 'com.android.tools.lint:lint-gradle:26.1.0-beta4'
+    metalava 'com.android.tools.lint:lint:26.1.0-beta4'
+    metalava 'org.jetbrains.kotlin:kotlin-stdlib:1.2.30'
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {

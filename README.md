@@ -3,7 +3,7 @@ Android KTX
 
 A set of Kotlin extensions for Android app development. The goal of Android KTX is to make Android
 development with Kotlin more concise, pleasant, and idiomatic. It is an explicit goal of this
-project to not add any new feature to the existing Android APIs.
+project to not add any new features to the existing Android APIs.
 
 **Kotlin:**
 ```kotlin
