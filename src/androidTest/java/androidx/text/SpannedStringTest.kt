@@ -17,10 +17,12 @@
 package androidx.text
 
 import android.graphics.Typeface.BOLD
+import android.text.Spanned.SPAN_INCLUSIVE_EXCLUSIVE
 import android.text.SpannedString
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -29,11 +31,18 @@ class SpannedStringTest {
     @Test fun toSpanned() = assertTrue("Hello, World".toSpanned() is SpannedString)
 
     @Test fun getSpans() {
+        val bold = StyleSpan(BOLD)
+        val underline = UnderlineSpan()
+
         val s = "Hello, World".toSpannable()
-        s += StyleSpan(BOLD)
-        s += UnderlineSpan()
-        assertEquals(s.getSpans<StyleSpan>().size, 1)
-        assertEquals(s.getSpans<UnderlineSpan>().size, 1)
+        s.setSpan(bold, 0, 5, SPAN_INCLUSIVE_EXCLUSIVE)
+        s.setSpan(underline, 7, 12, SPAN_INCLUSIVE_EXCLUSIVE)
+
+        assertSame(bold, s.getSpans<StyleSpan>().single())
+        assertSame(underline, s.getSpans<UnderlineSpan>().single())
         assertEquals(s.getSpans<Any>().size, 2)
+
+        assertSame(bold, s.getSpans<Any>(0, 6).single())
+        assertSame(underline, s.getSpans<Any>(6, 12).single())
     }
 }
