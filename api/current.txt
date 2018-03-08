@@ -347,6 +347,54 @@ package androidx.os {
 
 }
 
+package androidx.security {
+
+  public final class CipherBuilder {
+    ctor public CipherBuilder();
+    method public javax.crypto.Cipher build();
+    method public String getProvider();
+    method public String getTransformation();
+    method public void setProvider(String p);
+    method public void setTransformation(String p);
+  }
+
+  public final class CipherKt {
+    ctor public CipherKt();
+    method public static byte[] decrypt(javax.crypto.Cipher, String data, java.security.Key? key);
+    method public static byte[] decrypt(javax.crypto.Cipher, byte[] data, java.security.Key? key);
+    method public static byte[] encrypt(javax.crypto.Cipher, String data, java.security.Key key);
+    method public static byte[] encrypt(javax.crypto.Cipher, byte[] data, java.security.Key key);
+  }
+
+  public final class KeyPairGeneratorBuilder {
+    ctor public KeyPairGeneratorBuilder();
+    method public java.security.KeyPairGenerator build(kotlin.jvm.functions.Function1<? super java.security.KeyPairGenerator,kotlin.Unit> block);
+    method @RequiresApi(18) public java.security.KeyPairGenerator build(android.security.KeyPairGeneratorSpec spec);
+    method @RequiresApi(18) public java.security.KeyPairGenerator build(String alias, android.content.Context context);
+    method @RequiresApi(23) public java.security.KeyPairGenerator build(android.security.keystore.KeyGenParameterSpec spec);
+    method @RequiresApi(23) public java.security.KeyPairGenerator build(String alias);
+    method public String getAlgorithm();
+    method public String getProvider();
+    method public void setAlgorithm(String p);
+    method public void setProvider(String p);
+  }
+
+  public final class KeyStoreBuilder {
+    ctor public KeyStoreBuilder();
+    method public java.security.KeyStore build();
+    method public String getType();
+    method public void setType(String p);
+  }
+
+  public final class KeyStoreKt {
+    ctor public KeyStoreKt();
+    method public static java.security.KeyPair? getKeyPair(java.security.KeyStore, String alias);
+    method public static java.security.KeyPair? getKeyPair(java.security.KeyStore, String alias, char[]? password);
+    method public static void removeKeyPair(java.security.KeyStore, String alias);
+  }
+
+}
+
 package androidx.text {
 
   public final class CharSequenceKt {
