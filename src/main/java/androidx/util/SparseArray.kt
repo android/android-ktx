@@ -24,7 +24,7 @@ import android.util.SparseArray
 inline val <T> SparseArray<T>.size get() = size()
 
 /** Returns true if the collection contains [key]. */
-inline operator fun <T> SparseArray<T>.contains(key: Int) = indexOfKey(key) != -1
+inline operator fun <T> SparseArray<T>.contains(key: Int) = indexOfKey(key) >= 0
 
 /** Allows the use of the index operator for storing values in the collection. */
 inline operator fun <T> SparseArray<T>.set(key: Int, value: T) = put(key, value)
@@ -38,7 +38,7 @@ operator fun <T> SparseArray<T>.plus(other: SparseArray<T>): SparseArray<T> {
 }
 
 /** Returns true if the collection contains [key]. */
-inline fun <T> SparseArray<T>.containsKey(key: Int) = indexOfKey(key) != -1
+inline fun <T> SparseArray<T>.containsKey(key: Int) = indexOfKey(key) >= 0
 
 /** Returns true if the collection contains [value]. */
 inline fun <T> SparseArray<T>.containsValue(value: T) = indexOfValue(value) != -1

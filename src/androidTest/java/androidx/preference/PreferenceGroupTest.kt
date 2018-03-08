@@ -35,7 +35,9 @@ import org.junit.Test
 
 class PreferenceGroupTest {
 
-    @JvmField @Rule val rule = ActivityTestRule(TestPreferenceActivity::class.java)
+    @JvmField
+    @Rule
+    val rule = ActivityTestRule(TestPreferenceActivity::class.java)
     private val context = InstrumentationRegistry.getContext()
     private lateinit var preferenceGroup: PreferenceGroup
 
@@ -56,13 +58,15 @@ class PreferenceGroupTest {
     }
 
     @Test fun contains() {
-        val preference1 = Preference(context)
-        preferenceGroup.addPreference(preference1)
-        assertTrue(preference1 in preferenceGroup)
-
-        val preference2 = Preference(context)
-        preferenceGroup.addPreference(preference2)
-        assertTrue(preference2 in preferenceGroup)
+        val preference = Preference(context)
+        assertFalse(preference in preferenceGroup)
+        assertTrue(preference !in preferenceGroup)
+        preferenceGroup.addPreference(preference)
+        assertFalse(preference !in preferenceGroup)
+        assertTrue(preference in preferenceGroup)
+        preferenceGroup.removePreference(preference)
+        assertFalse(preference in preferenceGroup)
+        assertTrue(preference !in preferenceGroup)
     }
 
     @Test fun plusAssign() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,16 @@
  * limitations under the License.
  */
 
-package androidx.time
+package androidx.util
 
-import android.support.test.filters.SdkSuppress
-import org.junit.Assert.assertEquals
-import org.junit.Test
-import java.time.LocalTime
-import java.time.OffsetTime
-import java.time.ZoneOffset
+import android.support.annotation.RequiresApi
+import android.text.TextUtils
+import java.util.Locale
 
-@SdkSuppress(minSdkVersion = 26)
-class OffsetTimeTest {
-    @Test fun destructuring() {
-        val (time, offset) = OffsetTime.of(5, 16, 42, 0, ZoneOffset.UTC)
-        assertEquals(LocalTime.of(5, 16, 42), time)
-        assertEquals(ZoneOffset.UTC, offset)
-    }
-}
+/**
+ * Returns layout direction for a given locale.
+ * @see TextUtils.getLayoutDirectionFromLocale
+ */
+val Locale.layoutDirection: Int
+        @RequiresApi(17)
+        get() = TextUtils.getLayoutDirectionFromLocale(this)

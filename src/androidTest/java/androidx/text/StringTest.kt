@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,26 +14,13 @@
  * limitations under the License.
  */
 
-package androidx.time
+package androidx.text
 
-import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.Instant
 
-@SdkSuppress(minSdkVersion = 26)
-class InstantTest {
-    @Test fun destructuring() {
-        val (seconds, nanos) = Instant.ofEpochSecond(12, 3456789)
-        assertEquals(12L, seconds)
-        assertEquals(3456789, nanos)
-    }
-
-    @Test fun longSeconds() {
-        assertEquals(Instant.ofEpochSecond(12), 12L.asEpochSeconds())
-    }
-
-    @Test fun longMillis() {
-        assertEquals(Instant.ofEpochMilli(12), 12L.asEpochMillis())
+class StringTest {
+    @Test fun htmlEncode() {
+        assertEquals("&lt;&gt; &amp; &quot; &#39;", """<> & " '""".htmlEncode())
     }
 }

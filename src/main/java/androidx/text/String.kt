@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,23 +16,13 @@
 
 @file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
 
-package androidx.time
+package androidx.text
 
-import android.support.annotation.RequiresApi
-import java.time.Month
-
-/**
- * Return the [Month] for this value.
- *
- * @see Month.of
- */
-@RequiresApi(26)
-inline fun Int.asMonth(): Month = Month.of(this)
+import android.text.TextUtils
 
 /**
- * Return the integer value for this [Month].
+ * Html-encode the string.
  *
- * @see Month.getValue
+ * @see TextUtils.htmlEncode
  */
-@RequiresApi(26)
-inline fun Month.asInt() = value
+inline fun String.htmlEncode(): String = TextUtils.htmlEncode(this)

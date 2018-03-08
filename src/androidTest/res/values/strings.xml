@@ -16,6 +16,7 @@
   -->
 
 <resources>
+    <string name="text">Hello World</string>
     <string-array name="text_array">
         <item>Hello</item>
         <item>World</item>

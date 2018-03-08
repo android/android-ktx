@@ -23,10 +23,21 @@ import org.junit.Test
 class SharedPreferencesTest {
     private val context = InstrumentationRegistry.getContext()
 
-    @Test fun edit() {
+    @Test fun editApply() {
         val preferences = context.getSharedPreferences("prefs", 0)
 
         preferences.edit {
+            putString("test_key1", "test_value")
+            putInt("test_key2", 100)
+        }
+
+        assertEquals("test_value", preferences.getString("test_key1", null))
+        assertEquals(100, preferences.getInt("test_key2", 0))
+    }
+
+    @Test fun editCommit() {
+        val preferences = context.getSharedPreferences("prefs", 0)
+        preferences.edit(commit = true) {
             putString("test_key1", "test_value")
             putInt("test_key2", 100)
         }

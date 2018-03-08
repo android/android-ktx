@@ -18,7 +18,7 @@ package androidx.content {
 
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
-    method public static error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
+    method public static error.NonExistentClass contentValuesOf(kotlin.Pair<String,?>... pairs);
   }
 
   public final class ContextKt {
@@ -110,7 +110,6 @@ package androidx.graphics {
 
   public final class CanvasKt {
     ctor public CanvasKt();
-    method public static void withMatrix(android.graphics.Canvas, android.graphics.Matrix matrix = "Matrix()", kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
     method public static void withRotation(android.graphics.Canvas, float degrees = "0.0f", float pivotX = "0.0f", float pivotY = "0.0f", kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
     method public static void withSave(android.graphics.Canvas, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
     method public static void withScale(android.graphics.Canvas, float x = "1.0f", float y = "1.0f", float pivotX = "0.0f", float pivotY = "0.0f", kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);
@@ -312,9 +311,7 @@ package androidx.net {
 
   public final class UriKt {
     ctor public UriKt();
-    method public static java.io.File toFile(android.net.Uri);
     method public static android.net.Uri toUri(String);
-    method public static android.net.Uri toUri(java.io.File);
   }
 
 }
@@ -323,7 +320,12 @@ package androidx.os {
 
   public final class BundleKt {
     ctor public BundleKt();
-    method public static error.NonExistentClass bundleOf(kotlin.Pair<java.lang.String,?>... pairs);
+    method public static error.NonExistentClass bundleOf(kotlin.Pair<String,?>... pairs);
+  }
+
+  public final class FileKt {
+    ctor public FileKt();
+    method public static android.net.Uri toUri(java.io.File);
   }
 
   public final class HandlerKt {
@@ -337,31 +339,12 @@ package androidx.os {
 
   public final class PersistableBundleKt {
     ctor public PersistableBundleKt();
-    method @RequiresApi(21) public static error.NonExistentClass persistableBundleOf(kotlin.Pair<java.lang.String,?>... pairs);
+    method @RequiresApi(21) public static error.NonExistentClass persistableBundleOf(kotlin.Pair<String,?>... pairs);
   }
 
   public final class TraceKt {
     ctor public TraceKt();
     method public static <T> T! trace(String sectionName, kotlin.jvm.functions.Function0<? extends T> block);
-  }
-
-}
-
-package androidx.preference {
-
-  public final class PreferenceGroupKt {
-    ctor public PreferenceGroupKt();
-    method public static final operator boolean contains(android.preference.PreferenceGroup, android.preference.Preference preference);
-    method public static final void forEach(android.preference.PreferenceGroup, kotlin.jvm.functions.Function1<? super android.preference.Preference,kotlin.Unit> action);
-    method public static final void forEachIndexed(android.preference.PreferenceGroup, kotlin.jvm.functions.Function2<? super Integer,? super android.preference.Preference,kotlin.Unit> action);
-    method public static final operator android.preference.Preference get(android.preference.PreferenceGroup, CharSequence key);
-    method public static final operator android.preference.Preference get(android.preference.PreferenceGroup, int index);
-    method public static final int getSize(android.preference.PreferenceGroup);
-    method public static final boolean isEmpty(android.preference.PreferenceGroup);
-    method public static final boolean isNotEmpty(android.preference.PreferenceGroup);
-    method public static final operator java.util.Iterator<android.preference.Preference> iterator(android.preference.PreferenceGroup);
-    method public static final operator void minusAssign(android.preference.PreferenceGroup, android.preference.Preference preference);
-    method public static final operator void plusAssign(android.preference.PreferenceGroup, android.preference.Preference preference);
   }
 
 }
@@ -372,12 +355,6 @@ package androidx.text {
     ctor public CharSequenceKt();
     method public static boolean isDigitsOnly(CharSequence);
     method public static int trimmedLength(CharSequence);
-  }
-
-  public final class HtmlKt {
-    ctor public HtmlKt();
-    method public static android.text.Spanned parseAsHtml(CharSequence, Integer? flags = "0");
-    method public static android.text.Spanned parseAsHtml(CharSequence, Integer? flags = "0", android.text.Html.ImageGetter imageGetter, android.text.Html.TagHandler tagHandler);
   }
 
   public final class SpannableStringBuilderKt {
@@ -399,8 +376,6 @@ package androidx.text {
     method public static error.NonExistentClass clearSpans(android.text.Spannable);
     method public static operator void minusAssign(android.text.Spannable, Object span);
     method public static operator void plusAssign(android.text.Spannable, Object span);
-    method public static operator void set(android.text.Spannable, int start, int end, Object span);
-    method public static operator void set(android.text.Spannable, kotlin.ranges.IntRange range, Object span);
     method public static android.text.Spannable toSpannable(CharSequence);
   }
 
@@ -412,6 +387,122 @@ package androidx.text {
   public final class StringKt {
     ctor public StringKt();
     method public static String htmlEncode(String);
+  }
+
+}
+
+package androidx.time {
+
+  public final class DayOfWeekKt {
+    ctor public DayOfWeekKt();
+    method @RequiresApi(26) deprecated public static java.time.DayOfWeek asDayOfWeek(int);
+    method @RequiresApi(26) deprecated public static int asInt(java.time.DayOfWeek);
+  }
+
+  public final class DeprecationKt {
+    ctor public DeprecationKt();
+  }
+
+  public final class DurationKt {
+    ctor public DurationKt();
+    method @RequiresApi(26) deprecated public static operator long component1(java.time.Duration);
+    method @RequiresApi(26) deprecated public static operator int component2(java.time.Duration);
+    method @RequiresApi(26) deprecated public static operator java.time.Duration div(java.time.Duration, long divisor);
+    method @RequiresApi(26) deprecated public static java.time.Duration hours(int);
+    method @RequiresApi(26) deprecated public static java.time.Duration hours(long);
+    method @RequiresApi(26) deprecated public static java.time.Duration millis(int);
+    method @RequiresApi(26) deprecated public static java.time.Duration millis(long);
+    method @RequiresApi(26) deprecated public static java.time.Duration minutes(int);
+    method @RequiresApi(26) deprecated public static java.time.Duration minutes(long);
+    method @RequiresApi(26) deprecated public static java.time.Duration nanos(int);
+    method @RequiresApi(26) deprecated public static java.time.Duration nanos(long);
+    method @RequiresApi(26) deprecated public static java.time.Duration seconds(int);
+    method @RequiresApi(26) deprecated public static java.time.Duration seconds(long);
+    method @RequiresApi(26) deprecated public static operator java.time.Duration times(java.time.Duration, long multiplicand);
+    method @RequiresApi(26) deprecated public static operator java.time.Duration unaryMinus(java.time.Duration);
+  }
+
+  public final class InstantKt {
+    ctor public InstantKt();
+    method @RequiresApi(26) deprecated public static java.time.Instant asEpochMillis(long);
+    method @RequiresApi(26) deprecated public static java.time.Instant asEpochSeconds(long);
+    method @RequiresApi(26) deprecated public static operator long component1(java.time.Instant);
+    method @RequiresApi(26) deprecated public static operator int component2(java.time.Instant);
+  }
+
+  public final class LocalDateKt {
+    ctor public LocalDateKt();
+    method @RequiresApi(26) deprecated public static operator int component1(java.time.LocalDate);
+    method @RequiresApi(26) deprecated public static operator java.time.Month component2(java.time.LocalDate);
+    method @RequiresApi(26) deprecated public static operator int component3(java.time.LocalDate);
+  }
+
+  public final class LocalDateTimeKt {
+    ctor public LocalDateTimeKt();
+    method @RequiresApi(26) deprecated public static operator java.time.LocalDate component1(java.time.LocalDateTime);
+    method @RequiresApi(26) deprecated public static operator java.time.LocalTime component2(java.time.LocalDateTime);
+  }
+
+  public final class LocalTimeKt {
+    ctor public LocalTimeKt();
+    method @RequiresApi(26) deprecated public static operator int component1(java.time.LocalTime);
+    method @RequiresApi(26) deprecated public static operator int component2(java.time.LocalTime);
+    method @RequiresApi(26) deprecated public static operator int component3(java.time.LocalTime);
+    method @RequiresApi(26) deprecated public static operator int component4(java.time.LocalTime);
+  }
+
+  public final class MonthDayKt {
+    ctor public MonthDayKt();
+    method @RequiresApi(26) deprecated public static operator java.time.Month component1(java.time.MonthDay);
+    method @RequiresApi(26) deprecated public static operator int component2(java.time.MonthDay);
+  }
+
+  public final class MonthKt {
+    ctor public MonthKt();
+    method @RequiresApi(26) deprecated public static int asInt(java.time.Month);
+    method @RequiresApi(26) deprecated public static java.time.Month asMonth(int);
+  }
+
+  public final class OffsetDateTimeKt {
+    ctor public OffsetDateTimeKt();
+    method @RequiresApi(26) deprecated public static operator java.time.LocalDateTime component1(java.time.OffsetDateTime);
+    method @RequiresApi(26) deprecated public static operator java.time.ZoneOffset component2(java.time.OffsetDateTime);
+  }
+
+  public final class OffsetTimeKt {
+    ctor public OffsetTimeKt();
+    method @RequiresApi(26) deprecated public static operator java.time.LocalTime component1(java.time.OffsetTime);
+    method @RequiresApi(26) deprecated public static operator java.time.ZoneOffset component2(java.time.OffsetTime);
+  }
+
+  public final class PeriodKt {
+    ctor public PeriodKt();
+    method @RequiresApi(26) deprecated public static operator int component1(java.time.Period);
+    method @RequiresApi(26) deprecated public static operator int component2(java.time.Period);
+    method @RequiresApi(26) deprecated public static operator int component3(java.time.Period);
+    method @RequiresApi(26) deprecated public static java.time.Period days(int);
+    method @RequiresApi(26) deprecated public static java.time.Period months(int);
+    method @RequiresApi(26) deprecated public static operator java.time.Period times(java.time.Period, int multiplicand);
+    method @RequiresApi(26) deprecated public static operator java.time.Period unaryMinus(java.time.Period);
+    method @RequiresApi(26) deprecated public static java.time.Period years(int);
+  }
+
+  public final class YearKt {
+    ctor public YearKt();
+    method @RequiresApi(26) deprecated public static int asInt(java.time.Year);
+    method @RequiresApi(26) deprecated public static java.time.Year asYear(int);
+  }
+
+  public final class YearMonthKt {
+    ctor public YearMonthKt();
+    method @RequiresApi(26) deprecated public static operator int component1(java.time.YearMonth);
+    method @RequiresApi(26) deprecated public static operator java.time.Month component2(java.time.YearMonth);
+  }
+
+  public final class ZonedDateTimeKt {
+    ctor public ZonedDateTimeKt();
+    method @RequiresApi(26) deprecated public static operator java.time.LocalDateTime component1(java.time.ZonedDateTime);
+    method @RequiresApi(26) deprecated public static operator java.time.ZoneId component2(java.time.ZonedDateTime);
   }
 
 }
@@ -471,7 +562,7 @@ package androidx.util {
     method @RequiresApi(16) public static operator <T> boolean contains(android.util.LongSparseArray<T>, long key);
     method @RequiresApi(16) public static <T> boolean containsKey(android.util.LongSparseArray<T>, long key);
     method @RequiresApi(16) public static <T> boolean containsValue(android.util.LongSparseArray<T>, T! value);
-    method @RequiresApi(16) public static <T> void forEach(android.util.LongSparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Long,? super T,kotlin.Unit> action);
+    method @RequiresApi(16) public static <T> void forEach(android.util.LongSparseArray<T>, kotlin.jvm.functions.Function2<? super Long,? super T,kotlin.Unit> action);
     method @RequiresApi(16) public static <T> T! getOrDefault(android.util.LongSparseArray<T>, long key, T! defaultValue);
     method @RequiresApi(16) public static <T> T! getOrElse(android.util.LongSparseArray<T>, long key, kotlin.jvm.functions.Function0<? extends T> defaultValue);
     method @RequiresApi(16) public static <T> int getSize(android.util.LongSparseArray<T>);
@@ -487,7 +578,7 @@ package androidx.util {
 
   public final class LruCacheKt {
     ctor public LruCacheKt();
-    method public static <K, V> android.util.LruCache<K,V> lruCache(int maxSize, kotlin.jvm.functions.Function2<? super K,? super V,java.lang.Integer> sizeOf = "{ _, _ -> 1 }", kotlin.jvm.functions.Function1<? super K,? extends V> create = "{ null as V? }", kotlin.jvm.functions.Function4<? super java.lang.Boolean,? super K,? super V,? super V,kotlin.Unit> onEntryRemoved = "{ _, _, _, _ -> }");
+    method public static <K, V> android.util.LruCache<K,V> lruCache(int maxSize, kotlin.jvm.functions.Function2<? super K,? super V,Integer> sizeOf = "{ _, _ -> 1 }", kotlin.jvm.functions.Function1<? super K,? extends V> create = "{ null as V? }", kotlin.jvm.functions.Function4<? super Boolean,? super K,? super V,? super V,kotlin.Unit> onEntryRemoved = "{ _, _, _, _ -> }");
   }
 
   public final class PairKt {
@@ -521,7 +612,7 @@ package androidx.util {
     method public static operator <T> boolean contains(android.util.SparseArray<T>, int key);
     method public static <T> boolean containsKey(android.util.SparseArray<T>, int key);
     method public static <T> boolean containsValue(android.util.SparseArray<T>, T! value);
-    method public static <T> void forEach(android.util.SparseArray<T>, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super T,kotlin.Unit> action);
+    method public static <T> void forEach(android.util.SparseArray<T>, kotlin.jvm.functions.Function2<? super Integer,? super T,kotlin.Unit> action);
     method public static <T> T! getOrDefault(android.util.SparseArray<T>, int key, T! defaultValue);
     method public static <T> T! getOrElse(android.util.SparseArray<T>, int key, kotlin.jvm.functions.Function0<? extends T> defaultValue);
     method public static <T> int getSize(android.util.SparseArray<T>);
@@ -540,9 +631,9 @@ package androidx.util {
     method public static operator boolean contains(android.util.SparseBooleanArray, int key);
     method public static boolean containsKey(android.util.SparseBooleanArray, int key);
     method public static boolean containsValue(android.util.SparseBooleanArray, boolean value);
-    method public static void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Boolean,kotlin.Unit> action);
+    method public static void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super Integer,? super Boolean,kotlin.Unit> action);
     method public static boolean getOrDefault(android.util.SparseBooleanArray, int key, boolean defaultValue);
-    method public static error.NonExistentClass getOrElse(android.util.SparseBooleanArray, int key, kotlin.jvm.functions.Function0<java.lang.Boolean> defaultValue);
+    method public static error.NonExistentClass getOrElse(android.util.SparseBooleanArray, int key, kotlin.jvm.functions.Function0<Boolean> defaultValue);
     method public static int getSize(android.util.SparseBooleanArray);
     method public static boolean isEmpty(android.util.SparseBooleanArray);
     method public static boolean isNotEmpty(android.util.SparseBooleanArray);
@@ -550,6 +641,7 @@ package androidx.util {
     method public static operator android.util.SparseBooleanArray plus(android.util.SparseBooleanArray, android.util.SparseBooleanArray other);
     method public static void putAll(android.util.SparseBooleanArray, android.util.SparseBooleanArray other);
     method public static boolean remove(android.util.SparseBooleanArray, int key, boolean value);
+    method public static void removeAt(android.util.SparseBooleanArray, int index);
     method public static operator void set(android.util.SparseBooleanArray, int key, boolean value);
     method public static kotlin.collections.BooleanIterator valueIterator(android.util.SparseBooleanArray);
   }
@@ -559,9 +651,9 @@ package androidx.util {
     method public static operator boolean contains(android.util.SparseIntArray, int key);
     method public static boolean containsKey(android.util.SparseIntArray, int key);
     method public static boolean containsValue(android.util.SparseIntArray, int value);
-    method public static void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit> action);
+    method public static void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super Integer,? super Integer,kotlin.Unit> action);
     method public static int getOrDefault(android.util.SparseIntArray, int key, int defaultValue);
-    method public static error.NonExistentClass getOrElse(android.util.SparseIntArray, int key, kotlin.jvm.functions.Function0<java.lang.Integer> defaultValue);
+    method public static error.NonExistentClass getOrElse(android.util.SparseIntArray, int key, kotlin.jvm.functions.Function0<Integer> defaultValue);
     method public static int getSize(android.util.SparseIntArray);
     method public static boolean isEmpty(android.util.SparseIntArray);
     method public static boolean isNotEmpty(android.util.SparseIntArray);
@@ -578,9 +670,9 @@ package androidx.util {
     method @RequiresApi(18) public static operator boolean contains(android.util.SparseLongArray, int key);
     method @RequiresApi(18) public static boolean containsKey(android.util.SparseLongArray, int key);
     method @RequiresApi(18) public static boolean containsValue(android.util.SparseLongArray, long value);
-    method @RequiresApi(18) public static void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Long,kotlin.Unit> action);
+    method @RequiresApi(18) public static void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super Integer,? super Long,kotlin.Unit> action);
     method @RequiresApi(18) public static long getOrDefault(android.util.SparseLongArray, int key, long defaultValue);
-    method @RequiresApi(18) public static error.NonExistentClass getOrElse(android.util.SparseLongArray, int key, kotlin.jvm.functions.Function0<java.lang.Long> defaultValue);
+    method @RequiresApi(18) public static error.NonExistentClass getOrElse(android.util.SparseLongArray, int key, kotlin.jvm.functions.Function0<Long> defaultValue);
     method @RequiresApi(18) public static int getSize(android.util.SparseLongArray);
     method @RequiresApi(18) public static boolean isEmpty(android.util.SparseLongArray);
     method @RequiresApi(18) public static boolean isNotEmpty(android.util.SparseLongArray);
@@ -600,7 +692,7 @@ package androidx.view {
     ctor public MenuKt();
     method public static operator boolean contains(android.view.Menu, android.view.MenuItem item);
     method public static void forEach(android.view.Menu, kotlin.jvm.functions.Function1<? super android.view.MenuItem,kotlin.Unit> action);
-    method public static void forEachIndexed(android.view.Menu, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.view.MenuItem,kotlin.Unit> action);
+    method public static void forEachIndexed(android.view.Menu, kotlin.jvm.functions.Function2<? super Integer,? super android.view.MenuItem,kotlin.Unit> action);
     method public static operator android.view.MenuItem get(android.view.Menu, int index);
     method public static int getSize(android.view.Menu);
     method public static boolean isEmpty(android.view.Menu);
@@ -612,7 +704,7 @@ package androidx.view {
     ctor public ViewGroupKt();
     method public static operator boolean contains(android.view.ViewGroup, android.view.View view);
     method public static void forEach(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
-    method public static void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.view.View,kotlin.Unit> action);
+    method public static void forEachIndexed(android.view.ViewGroup, kotlin.jvm.functions.Function2<? super Integer,? super android.view.View,kotlin.Unit> action);
     method public static operator android.view.View get(android.view.ViewGroup, int index);
     method public static kotlin.sequences.Sequence<android.view.View> getChildren(android.view.ViewGroup);
     method public static int getSize(android.view.ViewGroup);
@@ -622,13 +714,13 @@ package androidx.view {
     method public static operator void minusAssign(android.view.ViewGroup, android.view.View view);
     method public static operator void plusAssign(android.view.ViewGroup, android.view.View view);
     method public static void setMargins(android.view.ViewGroup.MarginLayoutParams, @Px int size);
+    method public static void updateLayoutParams(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.ViewGroup.LayoutParams,kotlin.Unit> block);
     method public static void updateMargins(android.view.ViewGroup.MarginLayoutParams, @Px int left = "leftMargin", @Px int top = "topMargin", @Px int right = "rightMargin", @Px int bottom = "bottomMargin");
     method @RequiresApi(17) public static void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, @Px int start = "marginStart", @Px int top = "topMargin", @Px int end = "marginEnd", @Px int bottom = "bottomMargin");
   }
 
   public final class ViewKt {
     ctor public ViewKt();
-    method @RequiresApi(16) public static void announceForAccessibility(android.view.View, @StringRes int resource);
     method public static void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
@@ -642,19 +734,8 @@ package androidx.view {
     method public static void setPadding(android.view.View, @Px int size);
     method public static void setVisible(android.view.View, boolean value);
     method public static android.graphics.Bitmap toBitmap(android.view.View, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
-    method public static void updateLayoutParams(android.view.View, kotlin.jvm.functions.Function1<? super android.view.ViewGroup.LayoutParams,kotlin.Unit> block);
     method public static void updatePadding(android.view.View, @Px int left = "paddingLeft", @Px int top = "paddingTop", @Px int right = "paddingRight", @Px int bottom = "paddingBottom");
     method @RequiresApi(17) public static void updatePaddingRelative(android.view.View, @Px int start = "paddingStart", @Px int top = "paddingTop", @Px int end = "paddingEnd", @Px int bottom = "paddingBottom");
-  }
-
-}
-
-package androidx.widget {
-
-  public final class ToastKt {
-    ctor public ToastKt();
-    method public static android.widget.Toast toast(android.content.Context, CharSequence text, int duration = "Toast.LENGTH_SHORT");
-    method public static android.widget.Toast toast(android.content.Context, @StringRes int resId, int duration = "Toast.LENGTH_SHORT");
   }
 
 }

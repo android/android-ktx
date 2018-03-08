@@ -36,7 +36,7 @@ inline fun <K, V> arrayMapOf(): ArrayMap<K, V> = ArrayMap()
 fun <K, V> arrayMapOf(vararg pairs: Pair<K, V>): ArrayMap<K, V> {
     val map = ArrayMap<K, V>(pairs.size)
     for (pair in pairs) {
-        map.put(pair.first, pair.second)
+        map[pair.first] = pair.second
     }
     return map
 }

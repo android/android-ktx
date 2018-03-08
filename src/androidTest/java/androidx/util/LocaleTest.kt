@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package androidx.time
+package androidx.util
 
-import android.support.test.filters.SdkSuppress
+import android.view.View
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZonedDateTime
+import java.util.Locale
 
-@SdkSuppress(minSdkVersion = 26)
-class ZonedDateTimeTest {
-    @Test fun destructuring() {
-        val paris = ZoneId.of("Europe/Paris")
-        val (dateTime, offset) = ZonedDateTime.of(2017, 12, 20, 5, 16, 42, 0, paris)
-        assertEquals(LocalDateTime.of(2017, 12, 20, 5, 16, 42), dateTime)
-        assertEquals(paris, offset)
+class LocaleTest {
+    @Test fun layoutDirectionWithLTR() {
+        val ltrLocale = Locale.Builder().setLanguage("en").build()
+        assertEquals(View.LAYOUT_DIRECTION_LTR, ltrLocale.layoutDirection)
+    }
+
+    @Test fun layoutDirectionWithRTL() {
+        val rtlLocale = Locale.Builder().setLanguage("ar").build()
+        assertEquals(View.LAYOUT_DIRECTION_RTL, rtlLocale.layoutDirection)
     }
 }

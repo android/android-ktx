@@ -19,7 +19,11 @@ package androidx.view
 import android.graphics.Bitmap
 import android.support.test.InstrumentationRegistry
 import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.assertThrows
+import androidx.fail
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
@@ -168,5 +172,67 @@ class ViewTest {
         val bitmap = view.toBitmap(Bitmap.Config.RGB_565)
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
+    }
+
+    @Test fun isVisible() {
+        view.isVisible = true
+        assertTrue(view.isVisible)
+        assertEquals(View.VISIBLE, view.visibility)
+
+        view.isVisible = false
+        assertFalse(view.isVisible)
+        assertEquals(View.GONE, view.visibility)
+    }
+
+    @Test fun isInvisible() {
+        view.isInvisible = true
+        assertTrue(view.isInvisible)
+        assertEquals(View.INVISIBLE, view.visibility)
+
+        view.isInvisible = false
+        assertFalse(view.isInvisible)
+        assertEquals(View.VISIBLE, view.visibility)
+    }
+
+    @Test fun isGone() {
+        view.isGone = true
+        assertTrue(view.isGone)
+        assertEquals(View.GONE, view.visibility)
+
+        view.isGone = false
+        assertFalse(view.isGone)
+        assertEquals(View.VISIBLE, view.visibility)
+    }
+
+    @Test fun updateLayoutParams() {
+        view.layoutParams = ViewGroup.LayoutParams(0, 0)
+        view.updateLayoutParams {
+            assertSame(view.layoutParams, this)
+
+            width = 500
+            height = 1000
+        }
+
+        assertEquals(500, view.layoutParams.width)
+        assertEquals(1000, view.layoutParams.height)
+    }
+
+    @Test fun updateLayoutParamsAsType() {
+        view.layoutParams = LinearLayout.LayoutParams(0, 0)
+        view.updateLayoutParams<LinearLayout.LayoutParams> {
+            assertSame(view.layoutParams, this)
+
+            weight = 2f
+        }
+
+        assertEquals(2f, (view.layoutParams as LinearLayout.LayoutParams).weight)
+    }
+
+    @Test fun updateLayoutParamsWrongType() {
+        assertThrows<ClassCastException> {
+            view.updateLayoutParams<RelativeLayout.LayoutParams> {
+                fail()
+            }
+        }
     }
 }

@@ -19,10 +19,21 @@ package androidx.net
 import android.net.Uri
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import java.io.File
 
 class UriTest {
-    @Test fun uri() {
+    @Test fun uriFromString() {
         val string = "https://test.example.com/foo?bar#baz"
         assertEquals(Uri.parse(string), string.toUri())
+    }
+
+    @Test fun uriFromFile() {
+        val file = File("/path/to/my/file")
+        assertEquals(Uri.fromFile(file), file.toUri())
+    }
+
+    @Test fun fileFromUri() {
+        val uri = Uri.parse("path/to/my/file")
+        assertEquals(File(uri.path), uri.toFile())
     }
 }
