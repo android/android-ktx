@@ -357,8 +357,8 @@ package androidx.text {
 
   public final class HtmlKt {
     ctor public HtmlKt();
-    method public static android.text.Spanned parseAsHtml(CharSequence, Integer? flags = "0");
-    method public static android.text.Spanned parseAsHtml(CharSequence, Integer? flags = "0", android.text.Html.ImageGetter imageGetter, android.text.Html.TagHandler tagHandler);
+    method public static android.text.Spanned parseAsHtml(String, int flags = "FROM_HTML_MODE_LEGACY", android.text.Html.ImageGetter? imageGetter = "null", android.text.Html.TagHandler? tagHandler = "null");
+    method public static String toHtml(android.text.Spanned, int option = "TO_HTML_PARAGRAPH_LINES_CONSECUTIVE");
   }
 
   public final class SpannableStringBuilderKt {
