@@ -122,7 +122,6 @@ inline infix fun Path.xor(p: Path): Path {
  */
 inline fun createPathFromPoints(points: List<PointF>): Path {
     return Path().apply {
-        if (points.size < 3) throw IllegalArgumentException("points' size should be over 2")
         reset()
         moveTo(points[0].x, points[0].y)
         for (i in 1 until points.size) {

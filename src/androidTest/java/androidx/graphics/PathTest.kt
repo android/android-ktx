@@ -159,16 +159,10 @@ class PathTest {
         val points = ArrayList<PointF>()
         points.add(PointF(rect.left, rect.top))
         points.add(PointF(rect.right, rect.top))
-        try {
-            val illegalPath = createPathFromPoints(points)
-            assertEquals(true, illegalPath.isConvex)
-        } catch (e: IllegalArgumentException) {
-            e.printStackTrace()
-        }
         points.add(PointF(rect.right, rect.bottom))
         points.add(PointF(rect.left, rect.bottom))
-        val legalPath = createPathFromPoints(points)
 
-        assertEquals(true, legalPath.isConvex)
+        val path = createPathFromPoints(points)
+        assertEquals(true, path.isRect(rect))
     }
 }
