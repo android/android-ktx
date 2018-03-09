@@ -17,11 +17,34 @@
 package androidx.content
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.TypedArray
 import android.support.annotation.AttrRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
 import android.util.AttributeSet
+
+/**
+ * Launch a new activity [T].
+ *
+ * @param pairs extended data to the intent
+ * @param init custom intent initialization block
+ */
+inline fun <reified T> Context.startActivity(
+    vararg pairs: Pair<String, Any?>,
+    noinline init: (Intent.() -> Unit)? = null
+) = startActivity(intentOf<T>(*pairs, init = init))
+
+/**
+ * Request a service [T] to be started.
+ *
+ * @param pairs extended data to the intent
+ * @param init custom intent initialization block
+ */
+inline fun <reified T> Context.startService(
+    vararg pairs: Pair<String, Any?>,
+    noinline init: (Intent.() -> Unit)? = null
+) = startService(intentOf<T>(*pairs, init = init))
 
 /**
  * Return the handle to a system-level service by class.
