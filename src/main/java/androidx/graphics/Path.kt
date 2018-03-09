@@ -118,11 +118,10 @@ inline infix fun Path.xor(p: Path): Path {
 }
 
 /**
- * Generate a closed shape from [points].
+ * Create a path with closed shape from [points].
  */
-@RequiresApi(19)
-inline fun Path.fromPoints(points: List<PointF>) {
-    apply {
+inline fun createPathFromPoints(points: List<PointF>): Path {
+    return Path().apply {
         if (points.size < 3) throw IllegalArgumentException("points' size should be over 2")
         reset()
         moveTo(points[0].x, points[0].y)
