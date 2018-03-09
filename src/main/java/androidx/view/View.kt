@@ -21,9 +21,12 @@ package androidx.view
 import android.graphics.Bitmap
 import android.support.annotation.Px
 import android.support.annotation.RequiresApi
+import android.support.annotation.StringRes
 import android.support.v4.view.ViewCompat
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.view.accessibility.AccessibilityEvent
 import androidx.graphics.applyCanvas
 
 /**
@@ -82,6 +85,17 @@ inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
             return true
         }
     })
+}
+
+/**
+ * Sends [AccessibilityEvent] of type [AccessibilityEvent.TYPE_ANNOUNCEMENT].
+ *
+ * @see View.announceForAccessibility
+ */
+@RequiresApi(16)
+inline fun View.announceForAccessibility(@StringRes resource: Int) {
+    val announcement = resources.getString(resource)
+    announceForAccessibility(announcement)
 }
 
 /**
@@ -247,3 +261,28 @@ inline var View.isGone: Boolean
     set(value) {
         visibility = if (value) View.GONE else View.VISIBLE
     }
+
+/**
+ * Executes [block] with the View's layoutParams and reassigns the layoutParams with the
+ * updated version.
+ *
+ * @see View.getLayoutParams
+ * @see View.setLayoutParams
+ **/
+inline fun View.updateLayoutParams(block: ViewGroup.LayoutParams.() -> Unit) {
+    updateLayoutParams<ViewGroup.LayoutParams>(block)
+}
+
+/**
+ * Executes [block] with a typed version of the View's layoutParams and reassigns the
+ * layoutParams with the updated version.
+ *
+ * @see View.getLayoutParams
+ * @see View.setLayoutParams
+ **/
+@JvmName("updateLayoutParamsTyped")
+inline fun <reified T : ViewGroup.LayoutParams> View.updateLayoutParams(block: T.() -> Unit) {
+    val params = layoutParams as T
+    block(params)
+    layoutParams = params
+}

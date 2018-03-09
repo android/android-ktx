@@ -34,3 +34,6 @@ inline fun String.toUri(): Uri = Uri.parse(this)
  * @see Uri.fromFile
  */
 inline fun File.toUri(): Uri = Uri.fromFile(this)
+
+/** Creates a [File] from the given [Uri]. */
+inline fun Uri.toFile(): File = File(path)

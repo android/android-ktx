@@ -31,4 +31,9 @@ class UriTest {
         val file = File("/path/to/my/file")
         assertEquals(Uri.fromFile(file), file.toUri())
     }
+
+    @Test fun fileFromUri() {
+        val uri = Uri.parse("path/to/my/file")
+        assertEquals(File(uri.path), uri.toFile())
+    }
 }

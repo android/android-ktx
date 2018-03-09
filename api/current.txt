@@ -312,6 +312,7 @@ package androidx.net {
 
   public final class UriKt {
     ctor public UriKt();
+    method public static java.io.File toFile(android.net.Uri);
     method public static android.net.Uri toUri(String);
     method public static android.net.Uri toUri(java.io.File);
   }
@@ -346,6 +347,25 @@ package androidx.os {
 
 }
 
+package androidx.preference {
+
+  public final class PreferenceGroupKt {
+    ctor public PreferenceGroupKt();
+    method public static operator boolean contains(android.preference.PreferenceGroup, android.preference.Preference preference);
+    method public static void forEach(android.preference.PreferenceGroup, kotlin.jvm.functions.Function1<? super android.preference.Preference,kotlin.Unit> action);
+    method public static void forEachIndexed(android.preference.PreferenceGroup, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.preference.Preference,kotlin.Unit> action);
+    method public static operator android.preference.Preference get(android.preference.PreferenceGroup, CharSequence key);
+    method public static operator android.preference.Preference get(android.preference.PreferenceGroup, int index);
+    method public static int getSize(android.preference.PreferenceGroup);
+    method public static boolean isEmpty(android.preference.PreferenceGroup);
+    method public static boolean isNotEmpty(android.preference.PreferenceGroup);
+    method public static operator java.util.Iterator<android.preference.Preference> iterator(android.preference.PreferenceGroup);
+    method public static operator void minusAssign(android.preference.PreferenceGroup, android.preference.Preference preference);
+    method public static operator void plusAssign(android.preference.PreferenceGroup, android.preference.Preference preference);
+  }
+
+}
+
 package androidx.text {
 
   public final class CharSequenceKt {
@@ -356,8 +376,8 @@ package androidx.text {
 
   public final class HtmlKt {
     ctor public HtmlKt();
-    method public static android.text.Spanned parseAsHtml(CharSequence, Integer? flags = "0");
-    method public static android.text.Spanned parseAsHtml(CharSequence, Integer? flags = "0", android.text.Html.ImageGetter imageGetter, android.text.Html.TagHandler tagHandler);
+    method public static android.text.Spanned parseAsHtml(String, int flags = "FROM_HTML_MODE_LEGACY", android.text.Html.ImageGetter? imageGetter = "null", android.text.Html.TagHandler? tagHandler = "null");
+    method public static String toHtml(android.text.Spanned, int option = "TO_HTML_PARAGRAPH_LINES_CONSECUTIVE");
   }
 
   public final class SpannableStringBuilderKt {
@@ -392,122 +412,6 @@ package androidx.text {
   public final class StringKt {
     ctor public StringKt();
     method public static String htmlEncode(String);
-  }
-
-}
-
-package androidx.time {
-
-  public final class DayOfWeekKt {
-    ctor public DayOfWeekKt();
-    method @RequiresApi(26) deprecated public static java.time.DayOfWeek asDayOfWeek(int);
-    method @RequiresApi(26) deprecated public static int asInt(java.time.DayOfWeek);
-  }
-
-  public final class DeprecationKt {
-    ctor public DeprecationKt();
-  }
-
-  public final class DurationKt {
-    ctor public DurationKt();
-    method @RequiresApi(26) deprecated public static operator long component1(java.time.Duration);
-    method @RequiresApi(26) deprecated public static operator int component2(java.time.Duration);
-    method @RequiresApi(26) deprecated public static operator java.time.Duration div(java.time.Duration, long divisor);
-    method @RequiresApi(26) deprecated public static java.time.Duration hours(int);
-    method @RequiresApi(26) deprecated public static java.time.Duration hours(long);
-    method @RequiresApi(26) deprecated public static java.time.Duration millis(int);
-    method @RequiresApi(26) deprecated public static java.time.Duration millis(long);
-    method @RequiresApi(26) deprecated public static java.time.Duration minutes(int);
-    method @RequiresApi(26) deprecated public static java.time.Duration minutes(long);
-    method @RequiresApi(26) deprecated public static java.time.Duration nanos(int);
-    method @RequiresApi(26) deprecated public static java.time.Duration nanos(long);
-    method @RequiresApi(26) deprecated public static java.time.Duration seconds(int);
-    method @RequiresApi(26) deprecated public static java.time.Duration seconds(long);
-    method @RequiresApi(26) deprecated public static operator java.time.Duration times(java.time.Duration, long multiplicand);
-    method @RequiresApi(26) deprecated public static operator java.time.Duration unaryMinus(java.time.Duration);
-  }
-
-  public final class InstantKt {
-    ctor public InstantKt();
-    method @RequiresApi(26) deprecated public static java.time.Instant asEpochMillis(long);
-    method @RequiresApi(26) deprecated public static java.time.Instant asEpochSeconds(long);
-    method @RequiresApi(26) deprecated public static operator long component1(java.time.Instant);
-    method @RequiresApi(26) deprecated public static operator int component2(java.time.Instant);
-  }
-
-  public final class LocalDateKt {
-    ctor public LocalDateKt();
-    method @RequiresApi(26) deprecated public static operator int component1(java.time.LocalDate);
-    method @RequiresApi(26) deprecated public static operator java.time.Month component2(java.time.LocalDate);
-    method @RequiresApi(26) deprecated public static operator int component3(java.time.LocalDate);
-  }
-
-  public final class LocalDateTimeKt {
-    ctor public LocalDateTimeKt();
-    method @RequiresApi(26) deprecated public static operator java.time.LocalDate component1(java.time.LocalDateTime);
-    method @RequiresApi(26) deprecated public static operator java.time.LocalTime component2(java.time.LocalDateTime);
-  }
-
-  public final class LocalTimeKt {
-    ctor public LocalTimeKt();
-    method @RequiresApi(26) deprecated public static operator int component1(java.time.LocalTime);
-    method @RequiresApi(26) deprecated public static operator int component2(java.time.LocalTime);
-    method @RequiresApi(26) deprecated public static operator int component3(java.time.LocalTime);
-    method @RequiresApi(26) deprecated public static operator int component4(java.time.LocalTime);
-  }
-
-  public final class MonthDayKt {
-    ctor public MonthDayKt();
-    method @RequiresApi(26) deprecated public static operator java.time.Month component1(java.time.MonthDay);
-    method @RequiresApi(26) deprecated public static operator int component2(java.time.MonthDay);
-  }
-
-  public final class MonthKt {
-    ctor public MonthKt();
-    method @RequiresApi(26) deprecated public static int asInt(java.time.Month);
-    method @RequiresApi(26) deprecated public static java.time.Month asMonth(int);
-  }
-
-  public final class OffsetDateTimeKt {
-    ctor public OffsetDateTimeKt();
-    method @RequiresApi(26) deprecated public static operator java.time.LocalDateTime component1(java.time.OffsetDateTime);
-    method @RequiresApi(26) deprecated public static operator java.time.ZoneOffset component2(java.time.OffsetDateTime);
-  }
-
-  public final class OffsetTimeKt {
-    ctor public OffsetTimeKt();
-    method @RequiresApi(26) deprecated public static operator java.time.LocalTime component1(java.time.OffsetTime);
-    method @RequiresApi(26) deprecated public static operator java.time.ZoneOffset component2(java.time.OffsetTime);
-  }
-
-  public final class PeriodKt {
-    ctor public PeriodKt();
-    method @RequiresApi(26) deprecated public static operator int component1(java.time.Period);
-    method @RequiresApi(26) deprecated public static operator int component2(java.time.Period);
-    method @RequiresApi(26) deprecated public static operator int component3(java.time.Period);
-    method @RequiresApi(26) deprecated public static java.time.Period days(int);
-    method @RequiresApi(26) deprecated public static java.time.Period months(int);
-    method @RequiresApi(26) deprecated public static operator java.time.Period times(java.time.Period, int multiplicand);
-    method @RequiresApi(26) deprecated public static operator java.time.Period unaryMinus(java.time.Period);
-    method @RequiresApi(26) deprecated public static java.time.Period years(int);
-  }
-
-  public final class YearKt {
-    ctor public YearKt();
-    method @RequiresApi(26) deprecated public static int asInt(java.time.Year);
-    method @RequiresApi(26) deprecated public static java.time.Year asYear(int);
-  }
-
-  public final class YearMonthKt {
-    ctor public YearMonthKt();
-    method @RequiresApi(26) deprecated public static operator int component1(java.time.YearMonth);
-    method @RequiresApi(26) deprecated public static operator java.time.Month component2(java.time.YearMonth);
-  }
-
-  public final class ZonedDateTimeKt {
-    ctor public ZonedDateTimeKt();
-    method @RequiresApi(26) deprecated public static operator java.time.LocalDateTime component1(java.time.ZonedDateTime);
-    method @RequiresApi(26) deprecated public static operator java.time.ZoneId component2(java.time.ZonedDateTime);
   }
 
 }
@@ -646,7 +550,6 @@ package androidx.util {
     method public static operator android.util.SparseBooleanArray plus(android.util.SparseBooleanArray, android.util.SparseBooleanArray other);
     method public static void putAll(android.util.SparseBooleanArray, android.util.SparseBooleanArray other);
     method public static boolean remove(android.util.SparseBooleanArray, int key, boolean value);
-    method public static void removeAt(android.util.SparseBooleanArray, int index);
     method public static operator void set(android.util.SparseBooleanArray, int key, boolean value);
     method public static kotlin.collections.BooleanIterator valueIterator(android.util.SparseBooleanArray);
   }
@@ -719,13 +622,13 @@ package androidx.view {
     method public static operator void minusAssign(android.view.ViewGroup, android.view.View view);
     method public static operator void plusAssign(android.view.ViewGroup, android.view.View view);
     method public static void setMargins(android.view.ViewGroup.MarginLayoutParams, @Px int size);
-    method public static void updateLayoutParams(android.view.ViewGroup, kotlin.jvm.functions.Function1<? super android.view.ViewGroup.LayoutParams,kotlin.Unit> block);
     method public static void updateMargins(android.view.ViewGroup.MarginLayoutParams, @Px int left = "leftMargin", @Px int top = "topMargin", @Px int right = "rightMargin", @Px int bottom = "bottomMargin");
     method @RequiresApi(17) public static void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, @Px int start = "marginStart", @Px int top = "topMargin", @Px int end = "marginEnd", @Px int bottom = "bottomMargin");
   }
 
   public final class ViewKt {
     ctor public ViewKt();
+    method @RequiresApi(16) public static void announceForAccessibility(android.view.View, @StringRes int resource);
     method public static void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
@@ -739,6 +642,7 @@ package androidx.view {
     method public static void setPadding(android.view.View, @Px int size);
     method public static void setVisible(android.view.View, boolean value);
     method public static android.graphics.Bitmap toBitmap(android.view.View, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
+    method public static void updateLayoutParams(android.view.View, kotlin.jvm.functions.Function1<? super android.view.ViewGroup.LayoutParams,kotlin.Unit> block);
     method public static void updatePadding(android.view.View, @Px int left = "paddingLeft", @Px int top = "paddingTop", @Px int right = "paddingRight", @Px int bottom = "paddingBottom");
     method @RequiresApi(17) public static void updatePaddingRelative(android.view.View, @Px int start = "paddingStart", @Px int top = "paddingTop", @Px int end = "paddingEnd", @Px int bottom = "paddingBottom");
   }

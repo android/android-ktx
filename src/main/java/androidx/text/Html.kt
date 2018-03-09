@@ -16,51 +16,55 @@
 
 package androidx.text
 
-import android.os.Build
+import android.annotation.SuppressLint
+import android.os.Build.VERSION.SDK_INT
 import android.text.Html
+import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.text.Html.ImageGetter
+import android.text.Html.TO_HTML_PARAGRAPH_LINES_CONSECUTIVE
 import android.text.Html.TagHandler
 import android.text.Spanned
 
 /**
- * Returns a new [Spanned] from [CharSequence] HTML.
- *
- * In Android 7.0, additional options were introduced to allow for more
- * control on activity launch animations.
+ * Returns a [Spanned] from parsing this string as HTML.
  *
  * @param flags Additional option to set the behavior of the HTML parsing. Default is set to
- * [Html.FROM_HTML_MODE_LEGACY] which was introduced in Android 7.0.
- */
-fun CharSequence.parseAsHtml(flags: Int? = 0): Spanned {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        Html.fromHtml(toString(), flags ?: Html.FROM_HTML_MODE_LEGACY)
-    } else {
-        @Suppress("DEPRECATION")
-        Html.fromHtml(toString())
-    }
-}
-
-/**
- * Returns a new [Spanned] from [CharSequence] HTML.
- *
- * In Android 7.0, additional options were introduced to allow for more
- * control on activity launch animations.
- *
- * @param flags Additional option to set the behavior of the HTML parsing. Default is set to
- * [Html.FROM_HTML_MODE_LEGACY] which was introduced in Android 7.0.
+ * [Html.FROM_HTML_MODE_LEGACY] which was introduced in API 24.
  * @param imageGetter Returns displayable styled text from the provided HTML string.
  * @param tagHandler Notified when HTML tags are encountered a tag the parser does
  * not know how to interpret.
+ *
+ * @see Html.fromHtml
  */
-fun CharSequence.parseAsHtml(
-    flags: Int? = 0,
-    imageGetter: ImageGetter,
-    tagHandler: TagHandler
+fun String.parseAsHtml(
+    @SuppressLint("InlinedApi") flags: Int = FROM_HTML_MODE_LEGACY,
+    imageGetter: ImageGetter? = null,
+    tagHandler: TagHandler? = null
 ): Spanned {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        Html.fromHtml(toString(), flags ?: Html.FROM_HTML_MODE_LEGACY, imageGetter, tagHandler)
-    } else {
-        @Suppress("DEPRECATION")
-        Html.fromHtml(toString(), imageGetter, tagHandler)
+    // TODO replace with HtmlCompat once released.
+
+    if (SDK_INT >= 24) {
+        return Html.fromHtml(this, flags, imageGetter, tagHandler)
     }
+
+    @Suppress("DEPRECATION")
+    return Html.fromHtml(this, imageGetter, tagHandler)
+}
+
+/**
+ * Returns a string of HTML from the spans in this [Spanned].
+ *
+ * @see Html.toHtml
+ */
+fun Spanned.toHtml(
+    @SuppressLint("InlinedApi") option: Int = TO_HTML_PARAGRAPH_LINES_CONSECUTIVE
+): String {
+    // TODO replace with HtmlCompat in support library.
+
+    if (SDK_INT >= 24) {
+        return Html.toHtml(this, option)
+    }
+
+    @Suppress("DEPRECATION")
+    return Html.toHtml(this)
 }
