@@ -21,10 +21,10 @@ package androidx.util
 import android.util.SparseIntArray
 
 /** Returns the number of key/value pairs in the collection. */
-inline val SparseIntArray.size get() = size()
+inline val SparseIntArray.size: Int get() = size()
 
 /** Returns true if the collection contains [key]. */
-inline operator fun SparseIntArray.contains(key: Int) = indexOfKey(key) >= 0
+inline operator fun SparseIntArray.contains(key: Int): Boolean = indexOfKey(key) >= 0
 
 /** Allows the use of the index operator for storing values in the collection. */
 inline operator fun SparseIntArray.set(key: Int, value: Int) = put(key, value)
@@ -38,23 +38,23 @@ operator fun SparseIntArray.plus(other: SparseIntArray): SparseIntArray {
 }
 
 /** Returns true if the collection contains [key]. */
-inline fun SparseIntArray.containsKey(key: Int) = indexOfKey(key) >= 0
+inline fun SparseIntArray.containsKey(key: Int): Boolean = indexOfKey(key) >= 0
 
 /** Returns true if the collection contains [value]. */
-inline fun SparseIntArray.containsValue(value: Int) = indexOfValue(value) != -1
+inline fun SparseIntArray.containsValue(value: Int): Boolean = indexOfValue(value) != -1
 
 /** Return the value corresponding to [key], or [defaultValue] when not present. */
-inline fun SparseIntArray.getOrDefault(key: Int, defaultValue: Int) = get(key, defaultValue)
+inline fun SparseIntArray.getOrDefault(key: Int, defaultValue: Int): Int = get(key, defaultValue)
 
 /** Return the value corresponding to [key], or from [defaultValue] when not present. */
-inline fun SparseIntArray.getOrElse(key: Int, defaultValue: () -> Int) =
+inline fun SparseIntArray.getOrElse(key: Int, defaultValue: () -> Int): Int =
     indexOfKey(key).let { if (it != -1) valueAt(it) else defaultValue() }
 
 /** Return true when the collection contains no elements. */
-inline fun SparseIntArray.isEmpty() = size() == 0
+inline fun SparseIntArray.isEmpty(): Boolean = size() == 0
 
 /** Return true when the collection contains elements. */
-inline fun SparseIntArray.isNotEmpty() = size() != 0
+inline fun SparseIntArray.isNotEmpty(): Boolean = size() != 0
 
 /** Removes the entry for [key] only if it is mapped to [value]. */
 fun SparseIntArray.remove(key: Int, value: Int): Boolean {

@@ -36,7 +36,7 @@ import android.support.annotation.RequiresApi
  * ```
  */
 @RequiresApi(26)
-inline operator fun Color.component1() = getComponent(0)
+inline operator fun Color.component1(): Float = getComponent(0)
 
 /**
  * Returns the second component of the color. For instance, when the color model
@@ -50,7 +50,7 @@ inline operator fun Color.component1() = getComponent(0)
  * ```
  */
 @RequiresApi(26)
-inline operator fun Color.component2() = getComponent(1)
+inline operator fun Color.component2(): Float = getComponent(1)
 
 /**
  * Returns the third component of the color. For instance, when the color model
@@ -64,7 +64,7 @@ inline operator fun Color.component2() = getComponent(1)
  * ```
  */
 @RequiresApi(26)
-inline operator fun Color.component3() = getComponent(2)
+inline operator fun Color.component3(): Float = getComponent(2)
 
 /**
  * Returns the fourth component of the color. For instance, when the color model
@@ -78,7 +78,7 @@ inline operator fun Color.component3() = getComponent(2)
  * ```
  */
 @RequiresApi(26)
-inline operator fun Color.component4() = getComponent(3)
+inline operator fun Color.component4(): Float = getComponent(3)
 
 /**
  * Composites two translucent colors together. More specifically, adds two colors using
@@ -140,7 +140,7 @@ operator fun Color.plus(c: Color): Color {
  * Color.alpha(myInt)
  * ```
  */
-inline val @receiver:ColorInt Int.alpha get() = (this shr 24) and 0xff
+inline val @receiver:ColorInt Int.alpha: Int get() = (this shr 24) and 0xff
 
 /**
  * Return the red component of a color int. This is equivalent to calling:
@@ -148,7 +148,7 @@ inline val @receiver:ColorInt Int.alpha get() = (this shr 24) and 0xff
  * Color.red(myInt)
  * ```
  */
-inline val @receiver:ColorInt Int.red get() = (this shr 16) and 0xff
+inline val @receiver:ColorInt Int.red: Int get() = (this shr 16) and 0xff
 
 /**
  * Return the green component of a color int. This is equivalent to calling:
@@ -156,7 +156,7 @@ inline val @receiver:ColorInt Int.red get() = (this shr 16) and 0xff
  * Color.green(myInt)
  * ```
  */
-inline val @receiver:ColorInt Int.green get() = (this shr 8) and 0xff
+inline val @receiver:ColorInt Int.green: Int get() = (this shr 8) and 0xff
 
 /**
  * Return the blue component of a color int. This is equivalent to calling:
@@ -164,7 +164,7 @@ inline val @receiver:ColorInt Int.green get() = (this shr 8) and 0xff
  * Color.blue(myInt)
  * ```
  */
-inline val @receiver:ColorInt Int.blue get() = this and 0xff
+inline val @receiver:ColorInt Int.blue: Int get() = this and 0xff
 
 /**
  * Return the alpha component of a color int. This is equivalent to calling:
@@ -178,7 +178,7 @@ inline val @receiver:ColorInt Int.blue get() = this and 0xff
  * val (alpha, red, green, blue) = myColor
  * ```
  */
-inline operator fun @receiver:ColorInt Int.component1() = (this shr 24) and 0xff
+inline operator fun @receiver:ColorInt Int.component1(): Int = (this shr 24) and 0xff
 
 /**
  * Return the red component of a color int. This is equivalent to calling:
@@ -192,7 +192,7 @@ inline operator fun @receiver:ColorInt Int.component1() = (this shr 24) and 0xff
  * val (alpha, red, green, blue) = myColor
  * ```
  */
-inline operator fun @receiver:ColorInt Int.component2() = (this shr 16) and 0xff
+inline operator fun @receiver:ColorInt Int.component2(): Int = (this shr 16) and 0xff
 
 /**
  * Return the green component of a color int. This is equivalent to calling:
@@ -206,7 +206,7 @@ inline operator fun @receiver:ColorInt Int.component2() = (this shr 16) and 0xff
  * val (alpha, red, green, blue) = myColor
  * ```
  */
-inline operator fun @receiver:ColorInt Int.component3() = (this shr 8) and 0xff
+inline operator fun @receiver:ColorInt Int.component3(): Int = (this shr 8) and 0xff
 
 /**
  * Return the blue component of a color int. This is equivalent to calling:
@@ -220,7 +220,7 @@ inline operator fun @receiver:ColorInt Int.component3() = (this shr 8) and 0xff
  * val (alpha, red, green, blue) = myColor
  * ```
  */
-inline operator fun @receiver:ColorInt Int.component4() = this and 0xff
+inline operator fun @receiver:ColorInt Int.component4(): Int = this and 0xff
 
 /**
  * Returns the relative luminance of a color int, assuming sRGB encoding.
@@ -228,7 +228,8 @@ inline operator fun @receiver:ColorInt Int.component4() = this and 0xff
  * W3C Recommendation 11 December 2008.
  */
 @get:RequiresApi(26)
-inline val @receiver:ColorInt Int.luminance get() = Color.luminance(this)
+inline val @receiver:ColorInt Int.luminance: Float
+    get() = Color.luminance(this)
 
 /**
  * Creates a new [Color] instance from a color int. The resulting color
@@ -243,7 +244,7 @@ inline fun @receiver:ColorInt Int.toColor(): Color = Color.valueOf(this)
  */
 @RequiresApi(26)
 @ColorLong
-inline fun @receiver:ColorInt Int.toColorLong() = Color.pack(this)
+inline fun @receiver:ColorInt Int.toColorLong(): Long = Color.pack(this)
 
 /**
  * Returns the first component of the color. For instance, when the color model
@@ -257,7 +258,7 @@ inline fun @receiver:ColorInt Int.toColorLong() = Color.pack(this)
  * ```
  */
 @RequiresApi(26)
-inline operator fun @receiver:ColorLong Long.component1() = Color.red(this)
+inline operator fun @receiver:ColorLong Long.component1(): Float = Color.red(this)
 
 /**
  * Returns the second component of the color. For instance, when the color model
@@ -271,7 +272,7 @@ inline operator fun @receiver:ColorLong Long.component1() = Color.red(this)
  * ```
  */
 @RequiresApi(26)
-inline operator fun @receiver:ColorLong Long.component2() = Color.green(this)
+inline operator fun @receiver:ColorLong Long.component2(): Float = Color.green(this)
 
 /**
  * Returns the third component of the color. For instance, when the color model
@@ -285,7 +286,7 @@ inline operator fun @receiver:ColorLong Long.component2() = Color.green(this)
  * ```
  */
 @RequiresApi(26)
-inline operator fun @receiver:ColorLong Long.component3() = Color.blue(this)
+inline operator fun @receiver:ColorLong Long.component3(): Float = Color.blue(this)
 
 /**
  * Returns the fourth component of the color. For instance, when the color model
@@ -299,7 +300,7 @@ inline operator fun @receiver:ColorLong Long.component3() = Color.blue(this)
  * ```
  */
 @RequiresApi(26)
-inline operator fun @receiver:ColorLong Long.component4() = Color.alpha(this)
+inline operator fun @receiver:ColorLong Long.component4(): Float = Color.alpha(this)
 
 /**
  * Return the alpha component of a color long. This is equivalent to calling:
@@ -308,7 +309,8 @@ inline operator fun @receiver:ColorLong Long.component4() = Color.alpha(this)
  * ```
  */
 @get:RequiresApi(26)
-inline val @receiver:ColorLong Long.alpha get() = Color.alpha(this)
+inline val @receiver:ColorLong Long.alpha: Float
+    get() = Color.alpha(this)
 
 /**
  * Return the red component of a color long. This is equivalent to calling:
@@ -317,7 +319,8 @@ inline val @receiver:ColorLong Long.alpha get() = Color.alpha(this)
  * ```
  */
 @get:RequiresApi(26)
-inline val @receiver:ColorLong Long.red get() = Color.red(this)
+inline val @receiver:ColorLong Long.red: Float
+    get() = Color.red(this)
 
 /**
  * Return the green component of a color long. This is equivalent to calling:
@@ -326,7 +329,8 @@ inline val @receiver:ColorLong Long.red get() = Color.red(this)
  * ```
  */
 @get:RequiresApi(26)
-inline val @receiver:ColorLong Long.green get() = Color.green(this)
+inline val @receiver:ColorLong Long.green: Float
+    get() = Color.green(this)
 
 /**
  * Return the blue component of a color long. This is equivalent to calling:
@@ -335,14 +339,16 @@ inline val @receiver:ColorLong Long.green get() = Color.green(this)
  * ```
  */
 @get:RequiresApi(26)
-inline val @receiver:ColorLong Long.blue get() = Color.blue(this)
+inline val @receiver:ColorLong Long.blue: Float
+    get() = Color.blue(this)
 
 /**
  * Returns the relative luminance of a color. Based on the formula for
  * relative luminance defined in WCAG 2.0, W3C Recommendation 11 December 2008.
  */
 @get:RequiresApi(26)
-inline val @receiver:ColorLong Long.luminance get() = Color.luminance(this)
+inline val @receiver:ColorLong Long.luminance: Float
+    get() = Color.luminance(this)
 
 /**
  * Creates a new [Color] instance from a [color long][Color].
@@ -355,26 +361,29 @@ inline fun @receiver:ColorLong Long.toColor(): Color = Color.valueOf(this)
  */
 @RequiresApi(26)
 @ColorInt
-inline fun @receiver:ColorLong Long.toColorInt() = Color.toArgb(this)
+inline fun @receiver:ColorLong Long.toColorInt(): Int = Color.toArgb(this)
 
 /**
  * Indicates whether the color is in the [sRGB][android.graphics.ColorSpace.Named.SRGB]
  * color space.
  */
 @get:RequiresApi(26)
-inline val @receiver:ColorLong Long.isSrgb get() = Color.isSrgb(this)
+inline val @receiver:ColorLong Long.isSrgb: Boolean
+    get() = Color.isSrgb(this)
 
 /**
  * Indicates whether the color is in a [wide-gamut][android.graphics.ColorSpace] color space.
  */
 @get:RequiresApi(26)
-inline val @receiver:ColorLong Long.isWideGamut get() = Color.isWideGamut(this)
+inline val @receiver:ColorLong Long.isWideGamut: Boolean
+    get() = Color.isWideGamut(this)
 
 /**
  * Returns the color space encoded in the specified color long.
  */
 @get:RequiresApi(26)
-inline val @receiver:ColorLong Long.colorSpace: ColorSpace get() = Color.colorSpace(this)
+inline val @receiver:ColorLong Long.colorSpace: ColorSpace
+    get() = Color.colorSpace(this)
 
 /**
  * Return a corresponding [Int] color of this [String].

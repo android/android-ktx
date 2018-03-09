@@ -66,9 +66,8 @@ inline operator fun Bitmap.set(x: Int, y: Int, @ColorInt color: Int) = setPixel(
  *
  * @return The new scaled bitmap or the source bitmap if no scaling is required.
  */
-inline fun Bitmap.scale(width: Int, height: Int, filter: Boolean = true): Bitmap {
-    return Bitmap.createScaledBitmap(this, width, height, filter)
-}
+inline fun Bitmap.scale(width: Int, height: Int, filter: Boolean = true): Bitmap =
+    Bitmap.createScaledBitmap(this, width, height, filter)
 
 /**
  * Returns a mutable bitmap with the specified [width] and [height]. A config
@@ -84,9 +83,7 @@ inline fun createBitmap(
     width: Int,
     height: Int,
     config: Bitmap.Config = Bitmap.Config.ARGB_8888
-): Bitmap {
-    return Bitmap.createBitmap(width, height, config)
-}
+): Bitmap = Bitmap.createBitmap(width, height, config)
 
 /**
  * Returns a mutable bitmap with the specified [width] and [height]. The config,
@@ -108,6 +105,4 @@ inline fun createBitmap(
     config: Bitmap.Config = Bitmap.Config.ARGB_8888,
     hasAlpha: Boolean = true,
     colorSpace: ColorSpace = ColorSpace.get(ColorSpace.Named.SRGB)
-): Bitmap {
-    return Bitmap.createBitmap(width, height, config, hasAlpha, colorSpace)
-}
+): Bitmap = Bitmap.createBitmap(width, height, config, hasAlpha, colorSpace)

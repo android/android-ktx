@@ -23,41 +23,31 @@ import android.transition.Transition
  * Add an action which will be invoked when this transition has ended.
  */
 @RequiresApi(19)
-fun Transition.doOnEnd(action: (transition: Transition) -> Unit) {
-    addListener(onEnd = action)
-}
+fun Transition.doOnEnd(action: (transition: Transition) -> Unit) = addListener(onEnd = action)
 
 /**
  * Add an action which will be invoked when this transition has started.
  */
 @RequiresApi(19)
-fun Transition.doOnStart(action: (transition: Transition) -> Unit) {
-    addListener(onStart = action)
-}
+fun Transition.doOnStart(action: (transition: Transition) -> Unit) = addListener(onStart = action)
 
 /**
  * Add an action which will be invoked when this transition has been cancelled.
  */
 @RequiresApi(19)
-fun Transition.doOnCancel(action: (transition: Transition) -> Unit) {
-    addListener(onCancel = action)
-}
+fun Transition.doOnCancel(action: (transition: Transition) -> Unit) = addListener(onCancel = action)
 
 /**
  * Add an action which will be invoked when this transition has resumed after a pause.
  */
 @RequiresApi(19)
-fun Transition.doOnResume(action: (transition: Transition) -> Unit) {
-    addListener(onResume = action)
-}
+fun Transition.doOnResume(action: (transition: Transition) -> Unit) = addListener(onResume = action)
 
 /**
  * Add an action which will be invoked when this transition has been paused.
  */
 @RequiresApi(19)
-fun Transition.doOnPause(action: (transition: Transition) -> Unit) {
-    addListener(onPause = action)
-}
+fun Transition.doOnPause(action: (transition: Transition) -> Unit) = addListener(onPause = action)
 
 /**
  * Add a listener to this Transition using the provided actions.

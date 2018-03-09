@@ -23,11 +23,11 @@ import android.util.SparseLongArray
 
 /** Returns the number of key/value entries in the collection. */
 @get:RequiresApi(18)
-inline val SparseLongArray.size get() = size()
+inline val SparseLongArray.size: Int get() = size()
 
 /** Returns true if the collection contains [key]. */
 @RequiresApi(18)
-inline operator fun SparseLongArray.contains(key: Int) = indexOfKey(key) >= 0
+inline operator fun SparseLongArray.contains(key: Int): Boolean = indexOfKey(key) >= 0
 
 /** Allows the use of the index operator for storing values in the collection. */
 @RequiresApi(18)
@@ -44,28 +44,28 @@ operator fun SparseLongArray.plus(other: SparseLongArray): SparseLongArray {
 
 /** Returns true if the collection contains [key]. */
 @RequiresApi(18)
-inline fun SparseLongArray.containsKey(key: Int) = indexOfKey(key) >= 0
+inline fun SparseLongArray.containsKey(key: Int): Boolean = indexOfKey(key) >= 0
 
 /** Returns true if the collection contains [value]. */
 @RequiresApi(18)
-inline fun SparseLongArray.containsValue(value: Long) = indexOfValue(value) != -1
+inline fun SparseLongArray.containsValue(value: Long): Boolean = indexOfValue(value) != -1
 
 /** Return the value corresponding to [key], or [defaultValue] when not present. */
 @RequiresApi(18)
-inline fun SparseLongArray.getOrDefault(key: Int, defaultValue: Long) = get(key, defaultValue)
+inline fun SparseLongArray.getOrDefault(key: Int, defaultValue: Long): Long = get(key, defaultValue)
 
 /** Return the value corresponding to [key], or from [defaultValue] when not present. */
 @RequiresApi(18)
-inline fun SparseLongArray.getOrElse(key: Int, defaultValue: () -> Long) =
+inline fun SparseLongArray.getOrElse(key: Int, defaultValue: () -> Long): Long =
     indexOfKey(key).let { if (it != -1) valueAt(it) else defaultValue() }
 
 /** Return true when the collection contains no elements. */
 @RequiresApi(18)
-inline fun SparseLongArray.isEmpty() = size() == 0
+inline fun SparseLongArray.isEmpty(): Boolean = size() == 0
 
 /** Return true when the collection contains elements. */
 @RequiresApi(18)
-inline fun SparseLongArray.isNotEmpty() = size() != 0
+inline fun SparseLongArray.isNotEmpty(): Boolean = size() != 0
 
 /** Removes the entry for [key] only if it is set to [value]. */
 @RequiresApi(18)

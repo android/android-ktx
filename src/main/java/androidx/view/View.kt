@@ -34,7 +34,7 @@ import androidx.graphics.applyCanvas
  *
  * @see doOnLayout
  */
-inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
+inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) =
     addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
         override fun onLayoutChange(
             view: View,
@@ -51,7 +51,6 @@ inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
             action(view)
         }
     })
-}
 
 /**
  * Performs the given action when this view is laid out. If the view has been laid out and it
@@ -60,7 +59,7 @@ inline fun View.doOnNextLayout(crossinline action: (view: View) -> Unit) {
  *
  * @see doOnNextLayout
  */
-inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
+inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) =
     if (ViewCompat.isLaidOut(this) && !isLayoutRequested) {
         action(this)
     } else {
@@ -68,7 +67,6 @@ inline fun View.doOnLayout(crossinline action: (view: View) -> Unit) {
             action(it)
         }
     }
-}
 
 /**
  * Performs the given action when the view tree is about to be drawn.
@@ -110,9 +108,7 @@ inline fun View.updatePaddingRelative(
     @Px top: Int = paddingTop,
     @Px end: Int = paddingEnd,
     @Px bottom: Int = paddingBottom
-) {
-    setPaddingRelative(start, top, end, bottom)
-}
+) = setPaddingRelative(start, top, end, bottom)
 
 /**
  * Updates this view's padding. This version of the method allows using named parameters
@@ -125,18 +121,14 @@ inline fun View.updatePadding(
     @Px top: Int = paddingTop,
     @Px right: Int = paddingRight,
     @Px bottom: Int = paddingBottom
-) {
-    setPadding(left, top, right, bottom)
-}
+) = setPadding(left, top, right, bottom)
 
 /**
  * Sets the view's padding. This version of the method sets all axes to the provided size.
  *
  * @see View.setPadding
  */
-inline fun View.setPadding(@Px size: Int) {
-    setPadding(size, size, size, size)
-}
+inline fun View.setPadding(@Px size: Int) = setPadding(size, size, size, size)
 
 /**
  * Version of [View.postDelayed] which re-orders the parameters, allowing the action to be placed
@@ -269,9 +261,8 @@ inline var View.isGone: Boolean
  * @see View.getLayoutParams
  * @see View.setLayoutParams
  **/
-inline fun View.updateLayoutParams(block: ViewGroup.LayoutParams.() -> Unit) {
+inline fun View.updateLayoutParams(block: ViewGroup.LayoutParams.() -> Unit) =
     updateLayoutParams<ViewGroup.LayoutParams>(block)
-}
 
 /**
  * Executes [block] with a typed version of the View's layoutParams and reassigns the

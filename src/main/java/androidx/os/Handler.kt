@@ -51,9 +51,7 @@ inline fun Handler.postDelayed(
     delayInMillis: Long,
     token: Any? = null,
     crossinline action: () -> Unit
-) = Runnable { action() }.also {
-    postDelayed(it, token, delayInMillis)
-}
+): Runnable = Runnable { action() }.also { postDelayed(it, token, delayInMillis) }
 
 /**
  * Version of [Handler.postDelayed] which re-orders the parameters, allowing the action to be
@@ -72,7 +70,7 @@ inline fun Handler.postDelayed(
     unit: TimeUnit,
     token: Any? = null,
     crossinline action: () -> Unit
-) = postDelayed(unit.toMillis(amount), token, action)
+): Runnable = postDelayed(unit.toMillis(amount), token, action)
 
 /**
  * Version of [Handler.postDelayed] which re-orders the parameters, allowing the action to be
@@ -91,7 +89,7 @@ inline fun Handler.postDelayed(
     duration: Duration,
     token: Any? = null,
     crossinline action: () -> Unit
-) = postDelayed(duration.toMillis(), token, action)
+): Runnable = postDelayed(duration.toMillis(), token, action)
 
 /**
  * Version of [Handler.postAtTime] which re-orders the parameters, allowing the action to be
@@ -110,6 +108,6 @@ inline fun Handler.postAtTime(
     uptimeMillis: Long,
     token: Any? = null,
     crossinline action: () -> Unit
-) = Runnable { action() }.also {
+): Runnable = Runnable { action() }.also {
     postAtTime(it, token, uptimeMillis)
 }

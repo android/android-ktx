@@ -40,13 +40,13 @@ operator fun Menu.contains(item: MenuItem): Boolean {
 }
 
 /** Returns the number of items in this menu. */
-inline val Menu.size get() = size()
+inline val Menu.size: Int get() = size()
 
 /** Returns true if this menu contains no items. */
-inline fun Menu.isEmpty() = size() == 0
+inline fun Menu.isEmpty(): Boolean = size() == 0
 
 /** Returns true if this menu contains one or more items. */
-inline fun Menu.isNotEmpty() = size() != 0
+inline fun Menu.isNotEmpty(): Boolean = size() != 0
 
 /** Performs the given action on each item in this menu. */
 inline fun Menu.forEach(action: (item: MenuItem) -> Unit) {
@@ -63,7 +63,7 @@ inline fun Menu.forEachIndexed(action: (index: Int, item: MenuItem) -> Unit) {
 }
 
 /** Returns a [MutableIterator] over the items in this menu. */
-operator fun Menu.iterator() = object : MutableIterator<MenuItem> {
+operator fun Menu.iterator(): MutableIterator<MenuItem> = object : MutableIterator<MenuItem> {
     private var index = 0
     override fun hasNext() = index < size()
     override fun next() = getItem(index++) ?: throw IndexOutOfBoundsException()

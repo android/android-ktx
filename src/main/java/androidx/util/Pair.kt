@@ -29,7 +29,7 @@ import android.util.Pair
  * ```
  */
 @Suppress("HasPlatformType") // Intentionally propagating platform type with unknown nullability.
-inline operator fun <F, S> Pair<F, S>.component1() = first
+inline operator fun <F, S> Pair<F, S>.component1(): F = first
 
 /**
  * Returns the second component of the pair.
@@ -40,10 +40,10 @@ inline operator fun <F, S> Pair<F, S>.component1() = first
  * ```
  */
 @Suppress("HasPlatformType") // Intentionally propagating platform type with unknown nullability.
-inline operator fun <F, S> Pair<F, S>.component2() = second
+inline operator fun <F, S> Pair<F, S>.component2(): S = second
 
 /** Returns this [Pair] as a [kotlin.Pair]. */
-inline fun <F, S> Pair<F, S>.toKotlinPair() = kotlin.Pair(first, second)
+inline fun <F, S> Pair<F, S>.toKotlinPair(): kotlin.Pair<Any?, Any?> = kotlin.Pair(first, second)
 
 /** Returns this [kotlin.Pair] as an Android [Pair]. */
 // Note: the return type is explicitly specified here to prevent always seeing platform types.

@@ -76,6 +76,4 @@ fun Drawable.updateBounds(
     @Px top: Int = bounds.top,
     @Px right: Int = bounds.right,
     @Px bottom: Int = bounds.bottom
-) {
-    setBounds(left, top, right, bottom)
-}
+) = setBounds(left, top, right, bottom)
