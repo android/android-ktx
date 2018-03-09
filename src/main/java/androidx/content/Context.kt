@@ -34,7 +34,7 @@ import android.util.AttributeSet
  */
 @RequiresApi(23)
 @Suppress("HasPlatformType") // Intentionally propagating platform type with unknown nullability.
-inline fun <reified T> Context.systemService() = getSystemService(T::class.java)
+inline fun <reified T> Context.systemService(): T = getSystemService(T::class.java)
 
 /**
  * Executes [block] on a [TypedArray] receiver. The [TypedArray] holds the attribute

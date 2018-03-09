@@ -21,10 +21,10 @@ package androidx.util
 import android.util.SparseBooleanArray
 
 /** Returns the number of key/value pairs in the collection. */
-inline val SparseBooleanArray.size get() = size()
+inline val SparseBooleanArray.size: Int get() = size()
 
 /** Returns true if the collection contains [key]. */
-inline operator fun SparseBooleanArray.contains(key: Int) = indexOfKey(key) >= 0
+inline operator fun SparseBooleanArray.contains(key: Int): Boolean = indexOfKey(key) >= 0
 
 /** Allows the use of the index operator for storing values in the collection. */
 inline operator fun SparseBooleanArray.set(key: Int, value: Boolean) = put(key, value)
@@ -38,23 +38,24 @@ operator fun SparseBooleanArray.plus(other: SparseBooleanArray): SparseBooleanAr
 }
 
 /** Returns true if the collection contains [key]. */
-inline fun SparseBooleanArray.containsKey(key: Int) = indexOfKey(key) >= 0
+inline fun SparseBooleanArray.containsKey(key: Int): Boolean = indexOfKey(key) >= 0
 
 /** Returns true if the collection contains [value]. */
-inline fun SparseBooleanArray.containsValue(value: Boolean) = indexOfValue(value) != -1
+inline fun SparseBooleanArray.containsValue(value: Boolean): Boolean = indexOfValue(value) != -1
 
 /** Return the value corresponding to [key], or [defaultValue] when not present. */
-inline fun SparseBooleanArray.getOrDefault(key: Int, defaultValue: Boolean) = get(key, defaultValue)
+inline fun SparseBooleanArray.getOrDefault(key: Int, defaultValue: Boolean): Boolean =
+    get(key, defaultValue)
 
 /** Return the value corresponding to [key], or from [defaultValue] when not present. */
-inline fun SparseBooleanArray.getOrElse(key: Int, defaultValue: () -> Boolean) =
+inline fun SparseBooleanArray.getOrElse(key: Int, defaultValue: () -> Boolean): Boolean =
     indexOfKey(key).let { if (it != -1) valueAt(it) else defaultValue() }
 
 /** Return true when the collection contains no elements. */
-inline fun SparseBooleanArray.isEmpty() = size() == 0
+inline fun SparseBooleanArray.isEmpty(): Boolean = size() == 0
 
 /** Return true when the collection contains elements. */
-inline fun SparseBooleanArray.isNotEmpty() = size() != 0
+inline fun SparseBooleanArray.isNotEmpty(): Boolean = size() != 0
 
 /** Removes the entry for [key] only if it is mapped to [value]. */
 fun SparseBooleanArray.remove(key: Int, value: Boolean): Boolean {

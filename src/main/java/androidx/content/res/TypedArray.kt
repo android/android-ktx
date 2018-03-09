@@ -228,8 +228,4 @@ fun TypedArray.getTextArrayOrThrow(@StyleableRes index: Int): Array<CharSequence
  *
  * @see kotlin.io.use
  */
-inline fun <R> TypedArray.use(block: (TypedArray) -> R): R {
-    return block(this).also {
-        recycle()
-    }
-}
+inline fun <R> TypedArray.use(block: (TypedArray) -> R): R = block(this).also { recycle() }

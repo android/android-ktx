@@ -27,9 +27,8 @@ import android.widget.Toast
  *
  * @param duration Toast duration, defaults to [Toast.LENGTH_SHORT]
  */
-inline fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT): Toast {
-    return Toast.makeText(this, text, duration).apply { show() }
-}
+inline fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT): Toast =
+    Toast.makeText(this, text, duration).apply { show() }
 
 /**
  * Creates and shows a [Toast] with text from a resource
@@ -37,6 +36,5 @@ inline fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT)
  * @param resId Resource id of the string resource to use
  * @param duration Toast duration, defaults to [Toast.LENGTH_SHORT]
  */
-inline fun Context.toast(@StringRes resId: Int, duration: Int = Toast.LENGTH_SHORT): Toast {
-    return Toast.makeText(this, resId, duration).apply { show() }
-}
+inline fun Context.toast(@StringRes resId: Int, duration: Int = Toast.LENGTH_SHORT): Toast =
+    Toast.makeText(this, resId, duration).apply { show() }

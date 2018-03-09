@@ -24,8 +24,8 @@ import android.support.annotation.ColorInt
 import android.support.annotation.RequiresApi
 
 /** Create a [ColorDrawable] from this color value. */
-inline fun @receiver:ColorInt Int.toDrawable() = ColorDrawable(this)
+inline fun @receiver:ColorInt Int.toDrawable(): ColorDrawable = ColorDrawable(this)
 
 /** Create a [ColorDrawable] from this [Color] (via [Color.toArgb]). */
 @RequiresApi(26)
-inline fun Color.toDrawable() = ColorDrawable(toArgb())
+inline fun Color.toDrawable(): ColorDrawable = ColorDrawable(toArgb())

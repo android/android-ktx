@@ -26,10 +26,11 @@ import android.graphics.PorterDuffXfermode
  * Creates a new [PorterDuffXfermode] that uses this [PorterDuff.Mode] as the
  * alpha compositing or blending mode.
  */
-inline fun PorterDuff.Mode.toXfermode() = PorterDuffXfermode(this)
+inline fun PorterDuff.Mode.toXfermode(): PorterDuffXfermode = PorterDuffXfermode(this)
 
 /**
  * Creates a new [PorterDuffColorFilter] that uses this [PorterDuff.Mode] as the
  * alpha compositing or blending mode, and the specified [color].
  */
-inline fun PorterDuff.Mode.toColorFilter(color: Int) = PorterDuffColorFilter(color, this)
+inline fun PorterDuff.Mode.toColorFilter(color: Int): PorterDuffColorFilter =
+    PorterDuffColorFilter(color, this)

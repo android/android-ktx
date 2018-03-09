@@ -23,11 +23,11 @@ import android.util.LongSparseArray
 
 /** Returns the number of key/value pairs in the collection. */
 @get:RequiresApi(16)
-inline val <T> LongSparseArray<T>.size get() = size()
+inline val <T> LongSparseArray<T>.size: Int get() = size()
 
 /** Returns true if the collection contains [key]. */
 @RequiresApi(16)
-inline operator fun <T> LongSparseArray<T>.contains(key: Long) = indexOfKey(key) >= 0
+inline operator fun <T> LongSparseArray<T>.contains(key: Long): Boolean = indexOfKey(key) >= 0
 
 /** Allows the use of the index operator for storing values in the collection. */
 @RequiresApi(16)
@@ -44,29 +44,29 @@ operator fun <T> LongSparseArray<T>.plus(other: LongSparseArray<T>): LongSparseA
 
 /** Returns true if the collection contains [key]. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.containsKey(key: Long) = indexOfKey(key) >= 0
+inline fun <T> LongSparseArray<T>.containsKey(key: Long): Boolean = indexOfKey(key) >= 0
 
 /** Returns true if the collection contains [value]. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.containsValue(value: T) = indexOfValue(value) != -1
+inline fun <T> LongSparseArray<T>.containsValue(value: T): Boolean = indexOfValue(value) != -1
 
 /** Return the value corresponding to [key], or [defaultValue] when not present. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.getOrDefault(key: Long, defaultValue: T) =
+inline fun <T> LongSparseArray<T>.getOrDefault(key: Long, defaultValue: T): T =
     get(key) ?: defaultValue
 
 /** Return the value corresponding to [key], or from [defaultValue] when not present. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.getOrElse(key: Long, defaultValue: () -> T) =
+inline fun <T> LongSparseArray<T>.getOrElse(key: Long, defaultValue: () -> T): T =
     get(key) ?: defaultValue()
 
 /** Return true when the collection contains no elements. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.isEmpty() = size() == 0
+inline fun <T> LongSparseArray<T>.isEmpty(): Boolean = size() == 0
 
 /** Return true when the collection contains elements. */
 @RequiresApi(16)
-inline fun <T> LongSparseArray<T>.isNotEmpty() = size() != 0
+inline fun <T> LongSparseArray<T>.isNotEmpty(): Boolean = size() != 0
 
 /** Removes the entry for [key] only if it is mapped to [value]. */
 @RequiresApi(16)

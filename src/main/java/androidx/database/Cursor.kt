@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to other public API.
+@file:Suppress("NOTHING_TO_INLINE")
+
+// Aliases to other public API.
 
 package androidx.database
 
@@ -109,7 +111,8 @@ inline fun Cursor.getString(columnName: String): String =
  * @see Cursor.isNull
  * @see Cursor.getBlob
  */
-inline fun Cursor.getBlobOrNull(index: Int) = if (isNull(index)) null else getBlob(index)
+inline fun Cursor.getBlobOrNull(index: Int): ByteArray? =
+    if (isNull(index)) null else getBlob(index)
 
 /**
  * Returns the value of the requested column as a nullable double.
@@ -120,7 +123,8 @@ inline fun Cursor.getBlobOrNull(index: Int) = if (isNull(index)) null else getBl
  * @see Cursor.isNull
  * @see Cursor.getDouble
  */
-inline fun Cursor.getDoubleOrNull(index: Int) = if (isNull(index)) null else getDouble(index)
+inline fun Cursor.getDoubleOrNull(index: Int): Double? =
+    if (isNull(index)) null else getDouble(index)
 
 /**
  * Returns the value of the requested column as a nullable float.
@@ -131,7 +135,7 @@ inline fun Cursor.getDoubleOrNull(index: Int) = if (isNull(index)) null else get
  * @see Cursor.isNull
  * @see Cursor.getFloat
  */
-inline fun Cursor.getFloatOrNull(index: Int) = if (isNull(index)) null else getFloat(index)
+inline fun Cursor.getFloatOrNull(index: Int): Float? = if (isNull(index)) null else getFloat(index)
 
 /**
  * Returns the value of the requested column as a nullable integer.
@@ -142,7 +146,7 @@ inline fun Cursor.getFloatOrNull(index: Int) = if (isNull(index)) null else getF
  * @see Cursor.isNull
  * @see Cursor.getInt
  */
-inline fun Cursor.getIntOrNull(index: Int) = if (isNull(index)) null else getInt(index)
+inline fun Cursor.getIntOrNull(index: Int): Int? = if (isNull(index)) null else getInt(index)
 
 /**
  * Returns the value of the requested column as a nullable long.
@@ -153,7 +157,7 @@ inline fun Cursor.getIntOrNull(index: Int) = if (isNull(index)) null else getInt
  * @see Cursor.isNull
  * @see Cursor.getLong
  */
-inline fun Cursor.getLongOrNull(index: Int) = if (isNull(index)) null else getLong(index)
+inline fun Cursor.getLongOrNull(index: Int): Long? = if (isNull(index)) null else getLong(index)
 
 /**
  * Returns the value of the requested column as a nullable short.
@@ -164,7 +168,7 @@ inline fun Cursor.getLongOrNull(index: Int) = if (isNull(index)) null else getLo
  * @see Cursor.isNull
  * @see Cursor.getShort
  */
-inline fun Cursor.getShortOrNull(index: Int) = if (isNull(index)) null else getShort(index)
+inline fun Cursor.getShortOrNull(index: Int): Short? = if (isNull(index)) null else getShort(index)
 
 /**
  * Returns the value of the requested column as a nullable string.
@@ -175,7 +179,8 @@ inline fun Cursor.getShortOrNull(index: Int) = if (isNull(index)) null else getS
  * @see Cursor.isNull
  * @see Cursor.getString
  */
-inline fun Cursor.getStringOrNull(index: Int) = if (isNull(index)) null else getString(index)
+inline fun Cursor.getStringOrNull(index: Int): String? =
+    if (isNull(index)) null else getString(index)
 
 /**
  * Returns the value of the requested column as a nullable byte array.
@@ -187,7 +192,7 @@ inline fun Cursor.getStringOrNull(index: Int) = if (isNull(index)) null else get
  * @see Cursor.isNull
  * @see Cursor.getBlob
  */
-inline fun Cursor.getBlobOrNull(columnName: String) =
+inline fun Cursor.getBlobOrNull(columnName: String): ByteArray? =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getBlob(it) }
 
 /**
@@ -200,7 +205,7 @@ inline fun Cursor.getBlobOrNull(columnName: String) =
  * @see Cursor.isNull
  * @see Cursor.getDouble
  */
-inline fun Cursor.getDoubleOrNull(columnName: String) =
+inline fun Cursor.getDoubleOrNull(columnName: String): Double? =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getDouble(it) }
 
 /**
@@ -213,7 +218,7 @@ inline fun Cursor.getDoubleOrNull(columnName: String) =
  * @see Cursor.isNull
  * @see Cursor.getFloat
  */
-inline fun Cursor.getFloatOrNull(columnName: String) =
+inline fun Cursor.getFloatOrNull(columnName: String): Float? =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getFloat(it) }
 
 /**
@@ -226,7 +231,7 @@ inline fun Cursor.getFloatOrNull(columnName: String) =
  * @see Cursor.isNull
  * @see Cursor.getInt
  */
-inline fun Cursor.getIntOrNull(columnName: String) =
+inline fun Cursor.getIntOrNull(columnName: String): Int? =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getInt(it) }
 
 /**
@@ -239,7 +244,7 @@ inline fun Cursor.getIntOrNull(columnName: String) =
  * @see Cursor.isNull
  * @see Cursor.getLong
  */
-inline fun Cursor.getLongOrNull(columnName: String) =
+inline fun Cursor.getLongOrNull(columnName: String): Long? =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getLong(it) }
 
 /**
@@ -252,7 +257,7 @@ inline fun Cursor.getLongOrNull(columnName: String) =
  * @see Cursor.isNull
  * @see Cursor.getShort
  */
-inline fun Cursor.getShortOrNull(columnName: String) =
+inline fun Cursor.getShortOrNull(columnName: String): Short? =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getShort(it) }
 
 /**
@@ -265,5 +270,5 @@ inline fun Cursor.getShortOrNull(columnName: String) =
  * @see Cursor.isNull
  * @see Cursor.getString
  */
-inline fun Cursor.getStringOrNull(columnName: String) =
+inline fun Cursor.getStringOrNull(columnName: String): String? =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getString(it) }

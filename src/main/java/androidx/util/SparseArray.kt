@@ -21,10 +21,10 @@ package androidx.util
 import android.util.SparseArray
 
 /** Returns the number of key/value pairs in the collection. */
-inline val <T> SparseArray<T>.size get() = size()
+inline val <T> SparseArray<T>.size: Int get() = size()
 
 /** Returns true if the collection contains [key]. */
-inline operator fun <T> SparseArray<T>.contains(key: Int) = indexOfKey(key) >= 0
+inline operator fun <T> SparseArray<T>.contains(key: Int): Boolean = indexOfKey(key) >= 0
 
 /** Allows the use of the index operator for storing values in the collection. */
 inline operator fun <T> SparseArray<T>.set(key: Int, value: T) = put(key, value)
@@ -38,23 +38,23 @@ operator fun <T> SparseArray<T>.plus(other: SparseArray<T>): SparseArray<T> {
 }
 
 /** Returns true if the collection contains [key]. */
-inline fun <T> SparseArray<T>.containsKey(key: Int) = indexOfKey(key) >= 0
+inline fun <T> SparseArray<T>.containsKey(key: Int): Boolean = indexOfKey(key) >= 0
 
 /** Returns true if the collection contains [value]. */
-inline fun <T> SparseArray<T>.containsValue(value: T) = indexOfValue(value) != -1
+inline fun <T> SparseArray<T>.containsValue(value: T): Boolean = indexOfValue(value) != -1
 
 /** Return the value corresponding to [key], or [defaultValue] when not present. */
-inline fun <T> SparseArray<T>.getOrDefault(key: Int, defaultValue: T) = get(key) ?: defaultValue
+inline fun <T> SparseArray<T>.getOrDefault(key: Int, defaultValue: T): T = get(key) ?: defaultValue
 
 /** Return the value corresponding to [key], or from [defaultValue] when not present. */
-inline fun <T> SparseArray<T>.getOrElse(key: Int, defaultValue: () -> T) =
+inline fun <T> SparseArray<T>.getOrElse(key: Int, defaultValue: () -> T): T =
     get(key) ?: defaultValue()
 
 /** Return true when the collection contains no elements. */
-inline fun <T> SparseArray<T>.isEmpty() = size() == 0
+inline fun <T> SparseArray<T>.isEmpty(): Boolean = size() == 0
 
 /** Return true when the collection contains elements. */
-inline fun <T> SparseArray<T>.isNotEmpty() = size() != 0
+inline fun <T> SparseArray<T>.isNotEmpty(): Boolean = size() != 0
 
 /** Removes the entry for [key] only if it is mapped to [value]. */
 fun <T> SparseArray<T>.remove(key: Int, value: T): Boolean {

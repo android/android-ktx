@@ -26,7 +26,7 @@ import android.support.annotation.RequiresApi
  * @throws IllegalArgumentException When a value is not a supported type of [PersistableBundle].
  */
 @RequiresApi(21)
-fun persistableBundleOf(vararg pairs: Pair<String, Any?>) = PersistableBundle(pairs.size).apply {
+fun persistableBundleOf(vararg pairs: Pair<String, Any?>): PersistableBundle = PersistableBundle(pairs.size).apply {
     for ((key, value) in pairs) {
         when (value) {
             null -> putString(key, null) // Any nullable type will suffice.

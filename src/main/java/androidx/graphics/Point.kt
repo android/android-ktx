@@ -30,7 +30,7 @@ import android.graphics.PointF
  * val (x, y) = myPoint
  * ```
  */
-inline operator fun Point.component1() = this.x
+inline operator fun Point.component1(): Int = this.x
 
 /**
  * Returns the y coordinate of this point.
@@ -41,7 +41,7 @@ inline operator fun Point.component1() = this.x
  * val (x, y) = myPoint
  * ```
  */
-inline operator fun Point.component2() = this.y
+inline operator fun Point.component2(): Int = this.y
 
 /**
  * Returns the x coordinate of this point.
@@ -52,7 +52,7 @@ inline operator fun Point.component2() = this.y
  * val (x, y) = myPoint
  * ```
  */
-inline operator fun PointF.component1() = this.x
+inline operator fun PointF.component1(): Float = this.x
 
 /**
  * Returns the y coordinate of this point.
@@ -63,102 +63,70 @@ inline operator fun PointF.component1() = this.x
  * val (x, y) = myPoint
  * ```
  */
-inline operator fun PointF.component2() = this.y
+inline operator fun PointF.component2(): Float = this.y
 
 /**
  * Offsets this point by the specified point and returns the result as a new point.
  */
-inline operator fun Point.plus(p: Point): Point {
-    return Point(x, y).apply {
-        offset(p.x, p.y)
-    }
-}
+inline operator fun Point.plus(p: Point): Point = Point(x, y).apply { offset(p.x, p.y) }
 
 /**
  * Offsets this point by the specified point and returns the result as a new point.
  */
-inline operator fun PointF.plus(p: PointF): PointF {
-    return PointF(x, y).apply {
-        offset(p.x, p.y)
-    }
-}
+inline operator fun PointF.plus(p: PointF): PointF = PointF(x, y).apply { offset(p.x, p.y) }
 
 /**
  * Offsets this point by the specified amount on both X and Y axis and returns the
  * result as a new point.
  */
-inline operator fun Point.plus(xy: Int): Point {
-    return Point(x, y).apply {
-        offset(xy, xy)
-    }
-}
+inline operator fun Point.plus(xy: Int): Point = Point(x, y).apply { offset(xy, xy) }
 
 /**
  * Offsets this point by the specified amount on both X and Y axis and returns the
  * result as a new point.
  */
-inline operator fun PointF.plus(xy: Float): PointF {
-    return PointF(x, y).apply {
-        offset(xy, xy)
-    }
-}
+inline operator fun PointF.plus(xy: Float): PointF = PointF(x, y).apply { offset(xy, xy) }
 
 /**
  * Offsets this point by the negation of the specified point and returns the result
  * as a new point.
  */
-inline operator fun Point.minus(p: Point): Point {
-    return Point(x, y).apply {
-        offset(-p.x, -p.y)
-    }
-}
+inline operator fun Point.minus(p: Point): Point = Point(x, y).apply { offset(-p.x, -p.y) }
 
 /**
  * Offsets this point by the negation of the specified point and returns the result
  * as a new point.
  */
-inline operator fun PointF.minus(p: PointF): PointF {
-    return PointF(x, y).apply {
-        offset(-p.x, -p.y)
-    }
-}
+inline operator fun PointF.minus(p: PointF): PointF = PointF(x, y).apply { offset(-p.x, -p.y) }
 
 /**
  * Offsets this point by the negation of the specified amount on both X and Y axis and
  * returns the result as a new point.
  */
-inline operator fun Point.minus(xy: Int): Point {
-    return Point(x, y).apply {
-        offset(-xy, -xy)
-    }
-}
+inline operator fun Point.minus(xy: Int): Point = Point(x, y).apply { offset(-xy, -xy) }
 
 /**
  * Offsets this point by the negation of the specified amount on both X and Y axis and
  * returns the result as a new point.
  */
-inline operator fun PointF.minus(xy: Float): PointF {
-    return PointF(x, y).apply {
-        offset(-xy, -xy)
-    }
-}
+inline operator fun PointF.minus(xy: Float): PointF = PointF(x, y).apply { offset(-xy, -xy) }
 
 /**
  * Returns a new point representing the negation of this point.
  */
-inline operator fun Point.unaryMinus() = Point(-x, -y)
+inline operator fun Point.unaryMinus(): Point = Point(-x, -y)
 
 /**
  * Returns a new point representing the negation of this point.
  */
-inline operator fun PointF.unaryMinus() = PointF(-x, -y)
+inline operator fun PointF.unaryMinus(): PointF = PointF(-x, -y)
 
 /**
  * Returns a [PointF] representation of this point.
  */
-inline fun Point.toPointF() = PointF(this)
+inline fun Point.toPointF(): PointF = PointF(this)
 
 /**
  * Returns a [Point] representation of this point.
  */
-inline fun PointF.toPoint() = Point(x.toInt(), y.toInt())
+inline fun PointF.toPoint(): Point = Point(x.toInt(), y.toInt())

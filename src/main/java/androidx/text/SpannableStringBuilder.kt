@@ -24,8 +24,8 @@ import android.text.SpannableStringBuilder
 import android.text.SpannedString
 import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
-import android.text.style.StrikethroughSpan
 import android.text.style.RelativeSizeSpan
+import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 
@@ -78,24 +78,27 @@ inline fun SpannableStringBuilder.inSpans(
  *
  * @see SpannableStringBuilder.inSpans
  */
-inline fun SpannableStringBuilder.bold(builderAction: SpannableStringBuilder.() -> Unit) =
-    inSpans(StyleSpan(BOLD), builderAction = builderAction)
+inline fun SpannableStringBuilder.bold(
+    builderAction: SpannableStringBuilder.() -> Unit
+): SpannableStringBuilder = inSpans(StyleSpan(BOLD), builderAction = builderAction)
 
 /**
  * Wrap appended text in [builderAction] in an italic [StyleSpan].
  *
  * @see SpannableStringBuilder.inSpans
  */
-inline fun SpannableStringBuilder.italic(builderAction: SpannableStringBuilder.() -> Unit) =
-    inSpans(StyleSpan(ITALIC), builderAction = builderAction)
+inline fun SpannableStringBuilder.italic(
+    builderAction: SpannableStringBuilder.() -> Unit
+): SpannableStringBuilder = inSpans(StyleSpan(ITALIC), builderAction = builderAction)
 
 /**
  * Wrap appended text in [builderAction] in an [UnderlineSpan].
  *
  * @see SpannableStringBuilder.inSpans
  */
-inline fun SpannableStringBuilder.underline(builderAction: SpannableStringBuilder.() -> Unit) =
-    inSpans(UnderlineSpan(), builderAction = builderAction)
+inline fun SpannableStringBuilder.underline(
+    builderAction: SpannableStringBuilder.() -> Unit
+): SpannableStringBuilder = inSpans(UnderlineSpan(), builderAction = builderAction)
 
 /**
  * Wrap appended text in [builderAction] in a [ForegroundColorSpan].
@@ -105,7 +108,7 @@ inline fun SpannableStringBuilder.underline(builderAction: SpannableStringBuilde
 inline fun SpannableStringBuilder.color(
     @ColorInt color: Int,
     builderAction: SpannableStringBuilder.() -> Unit
-) = inSpans(ForegroundColorSpan(color), builderAction = builderAction)
+): SpannableStringBuilder = inSpans(ForegroundColorSpan(color), builderAction = builderAction)
 
 /**
  * Wrap appended text in [builderAction] in a [BackgroundColorSpan].
@@ -115,15 +118,16 @@ inline fun SpannableStringBuilder.color(
 inline fun SpannableStringBuilder.backgroundColor(
     @ColorInt color: Int,
     builderAction: SpannableStringBuilder.() -> Unit
-) = inSpans(BackgroundColorSpan(color), builderAction = builderAction)
+): SpannableStringBuilder = inSpans(BackgroundColorSpan(color), builderAction = builderAction)
 
 /**
  * Wrap appended text in [builderAction] in a [StrikethroughSpan].
  *
  * @see SpannableStringBuilder.inSpans
  */
-inline fun SpannableStringBuilder.strikeThrough(builderAction: SpannableStringBuilder.() -> Unit) =
-    inSpans(StrikethroughSpan(), builderAction = builderAction)
+inline fun SpannableStringBuilder.strikeThrough(
+    builderAction: SpannableStringBuilder.() -> Unit
+): SpannableStringBuilder = inSpans(StrikethroughSpan(), builderAction = builderAction)
 
 /**
  * Wrap appended text in [builderAction] in a [RelativeSizeSpan].
@@ -133,4 +137,4 @@ inline fun SpannableStringBuilder.strikeThrough(builderAction: SpannableStringBu
 inline fun SpannableStringBuilder.scale(
     proportion: Float,
     builderAction: SpannableStringBuilder.() -> Unit
-) = inSpans(RelativeSizeSpan(proportion), builderAction = builderAction)
+): SpannableStringBuilder = inSpans(RelativeSizeSpan(proportion), builderAction = builderAction)

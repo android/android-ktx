@@ -74,45 +74,29 @@ fun Path.flatten(error: Float = 0.5f): Iterable<PathSegment> {
  * Returns the union of two paths as a new [Path].
  */
 @RequiresApi(19)
-inline operator fun Path.plus(p: Path): Path {
-    return Path(this).apply {
-        op(p, Path.Op.UNION)
-    }
-}
+inline operator fun Path.plus(p: Path): Path = Path(this).apply { op(p, Path.Op.UNION) }
 
 /**
  * Returns the difference of two paths as a new [Path].
  */
 @RequiresApi(19)
-inline operator fun Path.minus(p: Path): Path {
-    return Path(this).apply {
-        op(p, Path.Op.DIFFERENCE)
-    }
-}
+inline operator fun Path.minus(p: Path): Path = Path(this).apply { op(p, Path.Op.DIFFERENCE) }
 
 /**
  * Returns the union of two paths as a new [Path].
  */
 @RequiresApi(19)
-inline infix fun Path.and(p: Path) = this + p
+inline infix fun Path.and(p: Path): Path = this + p
 
 /**
  * Returns the intersection of two paths as a new [Path].
  * If the paths do not intersect, returns an empty path.
  */
 @RequiresApi(19)
-inline infix fun Path.or(p: Path): Path {
-    return Path().apply {
-        op(this@or, p, Path.Op.INTERSECT)
-    }
-}
+inline infix fun Path.or(p: Path): Path = Path().apply { op(this@or, p, Path.Op.INTERSECT) }
 
 /**
  * Returns the union minus the intersection of two paths as a new [Path].
  */
 @RequiresApi(19)
-inline infix fun Path.xor(p: Path): Path {
-    return Path(this).apply {
-        op(p, Path.Op.XOR)
-    }
-}
+inline infix fun Path.xor(p: Path): Path = Path(this).apply { op(p, Path.Op.XOR) }

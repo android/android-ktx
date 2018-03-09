@@ -32,7 +32,7 @@ import android.util.SizeF
  * ```
  */
 @RequiresApi(21)
-inline operator fun Size.component1() = width
+inline operator fun Size.component1(): Int = width
 
 /**
  * Returns "height", the second component of this [Size].
@@ -44,7 +44,7 @@ inline operator fun Size.component1() = width
  * ```
  */
 @RequiresApi(21)
-inline operator fun Size.component2() = height
+inline operator fun Size.component2(): Int = height
 
 /**
  * Returns "width", the first component of this [SizeF].
@@ -56,7 +56,7 @@ inline operator fun Size.component2() = height
  * ```
  */
 @RequiresApi(21)
-inline operator fun SizeF.component1() = width
+inline operator fun SizeF.component1(): Float = width
 
 /**
  * Returns "height", the second component of this [SizeF].
@@ -68,4 +68,4 @@ inline operator fun SizeF.component1() = width
  * ```
  */
 @RequiresApi(21)
-inline operator fun SizeF.component2() = height
+inline operator fun SizeF.component2(): Float = height
