@@ -1,4 +1,4 @@
-package androidx.animation {
+package androidx.core.animation {
 
   public final class AnimatorKt {
     ctor public AnimatorKt();
@@ -14,7 +14,7 @@ package androidx.animation {
 
 }
 
-package androidx.content {
+package androidx.core.content {
 
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
@@ -34,7 +34,7 @@ package androidx.content {
 
 }
 
-package androidx.content.res {
+package androidx.core.content.res {
 
   public final class TypedArrayKt {
     ctor public TypedArrayKt();
@@ -58,7 +58,7 @@ package androidx.content.res {
 
 }
 
-package androidx.database {
+package androidx.core.database {
 
   public final class CursorKt {
     ctor public CursorKt();
@@ -87,7 +87,7 @@ package androidx.database {
 
 }
 
-package androidx.database.sqlite {
+package androidx.core.database.sqlite {
 
   public final class SQLiteDatabaseKt {
     ctor public SQLiteDatabaseKt();
@@ -96,7 +96,7 @@ package androidx.database.sqlite {
 
 }
 
-package androidx.graphics {
+package androidx.core.graphics {
 
   public final class BitmapKt {
     ctor public BitmapKt();
@@ -165,7 +165,7 @@ package androidx.graphics {
   public final class PathKt {
     ctor public PathKt();
     method @RequiresApi(19) public static infix android.graphics.Path and(android.graphics.Path, android.graphics.Path p);
-    method @RequiresApi(26) public static Iterable<androidx.graphics.PathSegment> flatten(android.graphics.Path, float error = "0.5f");
+    method @RequiresApi(26) public static Iterable<androidx.core.graphics.PathSegment> flatten(android.graphics.Path, float error = "0.5f");
     method @RequiresApi(19) public static operator android.graphics.Path minus(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(19) public static infix android.graphics.Path or(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(19) public static operator android.graphics.Path plus(android.graphics.Path, android.graphics.Path p);
@@ -178,7 +178,7 @@ package androidx.graphics {
     method public float component2();
     method public android.graphics.PointF component3();
     method public float component4();
-    method public androidx.graphics.PathSegment copy(android.graphics.PointF start, float startFraction, android.graphics.PointF end, float endFraction);
+    method public androidx.core.graphics.PathSegment copy(android.graphics.PointF start, float startFraction, android.graphics.PointF end, float endFraction);
     method public android.graphics.PointF getEnd();
     method public float getEndFraction();
     method public android.graphics.PointF getStart();
@@ -279,7 +279,7 @@ package androidx.graphics {
 
 }
 
-package androidx.graphics.drawable {
+package androidx.core.graphics.drawable {
 
   public final class BitmapDrawableKt {
     ctor public BitmapDrawableKt();
@@ -308,7 +308,7 @@ package androidx.graphics.drawable {
 
 }
 
-package androidx.net {
+package androidx.core.net {
 
   public final class UriKt {
     ctor public UriKt();
@@ -319,7 +319,7 @@ package androidx.net {
 
 }
 
-package androidx.os {
+package androidx.core.os {
 
   public final class BundleKt {
     ctor public BundleKt();
@@ -347,7 +347,7 @@ package androidx.os {
 
 }
 
-package androidx.preference {
+package androidx.core.preference {
 
   public final class PreferenceGroupKt {
     ctor public PreferenceGroupKt();
@@ -366,7 +366,7 @@ package androidx.preference {
 
 }
 
-package androidx.text {
+package androidx.core.text {
 
   public final class CharSequenceKt {
     ctor public CharSequenceKt();
@@ -416,7 +416,7 @@ package androidx.text {
 
 }
 
-package androidx.transition {
+package androidx.core.transition {
 
   public final class TransitionKt {
     ctor public TransitionKt();
@@ -430,7 +430,7 @@ package androidx.transition {
 
 }
 
-package androidx.util {
+package androidx.core.util {
 
   public final class ArrayMapKt {
     ctor public ArrayMapKt();
@@ -594,7 +594,7 @@ package androidx.util {
 
 }
 
-package androidx.view {
+package androidx.core.view {
 
   public final class MenuKt {
     ctor public MenuKt();
@@ -649,7 +649,7 @@ package androidx.view {
 
 }
 
-package androidx.widget {
+package androidx.core.widget {
 
   public final class ToastKt {
     ctor public ToastKt();
