@@ -166,6 +166,7 @@ package androidx.graphics {
     ctor public PathKt();
     method @RequiresApi(19) public static infix android.graphics.Path and(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(26) public static Iterable<androidx.graphics.PathSegment> flatten(android.graphics.Path, float error = "0.5f");
+    method @RequiresApi(19) public static void fromPoints(android.graphics.Path, java.util.List<? extends android.graphics.PointF> points);
     method @RequiresApi(19) public static operator android.graphics.Path minus(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(19) public static infix android.graphics.Path or(android.graphics.Path, android.graphics.Path p);
     method @RequiresApi(19) public static operator android.graphics.Path plus(android.graphics.Path, android.graphics.Path p);
