@@ -17,6 +17,8 @@
 package androidx.core.view
 
 import android.graphics.Bitmap
+import android.graphics.Outline
+import android.graphics.Rect
 import android.support.test.InstrumentationRegistry
 import android.view.View
 import android.view.ViewGroup
@@ -244,5 +246,10 @@ class ViewTest {
 
         val resolvedText = context.getText(R.string.text)
         assertEquals(testView.announcement, resolvedText)
+    }
+
+    @Test fun round() {
+        view.round(16)
+        assertTrue(view.clipToOutline)
     }
 }
