@@ -3,7 +3,7 @@ Android KTX
 
 A set of Kotlin extensions for Android app development. The goal of Android KTX is to make Android
 development with Kotlin more concise, pleasant, and idiomatic. It is an explicit goal of this
-project to not add any new feature to the existing Android APIs.
+project to not add any new features to the existing Android APIs.
 
 **Kotlin:**
 ```kotlin
@@ -85,7 +85,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:0.1'
+    implementation 'androidx.core:core-ktx:0.2'
 }
 ```
 
@@ -102,6 +102,8 @@ encourage you to try Android KTX so you can suggest ideas and report issues. Ple
 During the preview period, the Android KTX APIs may change at anytime. When the project reaches a
 stable state, we will update it to version 1.0 (or later). From that point forward, we will be much
 more rigorous and careful about maintaining API compatibility.
+
+This project does not currently cover the Android Support Library or Architecture Components APIs.
 
 
 Links
@@ -141,7 +143,7 @@ the fix.
 **New API or API changes**
 
 Pull requests for new APIs or changes to existing APIs are welcome, but may require a bit of
-discussion. Consider creating an issue to discuss and changes before you implement the change.
+discussion. Consider creating an issue to discuss any changes before you implement the change.
 
 Before submitting,
 
