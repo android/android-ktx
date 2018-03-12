@@ -23,7 +23,6 @@ package androidx.content {
 
   public final class ContextKt {
     ctor public ContextKt();
-    method public static java.util.List<java.lang.String> getPermissions(android.content.Context);
     method public static void withStyledAttributes(android.content.Context, android.util.AttributeSet? set = "null", int[] attrs, @AttrRes int defStyleAttr = "0", @StyleRes int defStyleRes = "0", kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
     method public static void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }
