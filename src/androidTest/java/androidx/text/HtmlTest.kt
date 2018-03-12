@@ -16,10 +16,11 @@
 
 package androidx.text
 
-import android.text.Html
+import android.text.Html.FROM_HTML_MODE_COMPACT
 import android.text.Html.ImageGetter
 import android.text.Html.TagHandler
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class HtmlTest {
@@ -27,34 +28,35 @@ class HtmlTest {
     private val tagHandler = TagHandler { _, _, _, _ -> }
 
     @Test fun parseAsHtml() {
-        val expected = "Hi \u00a9 > <"
-        val actual = "<b>Hi</b> © > <".parseAsHtml().toString()
-
-        assertEquals(expected, actual)
+        val parsed = "<b>Hi</b> © > <".parseAsHtml().toString()
+        assertEquals("Hi \u00a9 > <", parsed)
     }
 
     @Test fun parseAsHtmlFlags() {
-        val expected = "Hi \u00a9 > <"
-        val actual = "<b>Hi</b> © > <".parseAsHtml(Html.FROM_HTML_MODE_COMPACT).toString()
-
-        assertEquals(expected, actual)
+        val parsed = "<b>Hi</b> © > <".parseAsHtml(FROM_HTML_MODE_COMPACT).toString()
+        assertEquals("Hi \u00a9 > <", parsed)
     }
 
     @Test fun parseAsHtmlImageGetterTagHandler() {
-        val expected = "Hi \u00a9 > <"
-        val actual = "<b>Hi</b> © > <"
-            .parseAsHtml(Html.FROM_HTML_MODE_COMPACT, imageGetter, tagHandler)
+        val parsed = "<b>Hi</b> © > <"
+            .parseAsHtml(FROM_HTML_MODE_COMPACT, imageGetter, tagHandler)
             .toString()
-
-        assertEquals(expected, actual)
+        assertEquals("Hi \u00a9 > <", parsed)
     }
 
     @Test fun parseAsHtmlFlagsImageGetterTagHandler() {
-        val expected = "Hi \u00a9 > <"
-        val actual = "<b>Hi</b> © > <"
+        val parsed = "<b>Hi</b> © > <"
             .parseAsHtml(imageGetter = imageGetter, tagHandler = tagHandler)
             .toString()
+        assertEquals("Hi \u00a9 > <", parsed)
+    }
 
-        assertEquals(expected, actual)
+    @Test fun convertToHtml() {
+        val html = buildSpannedString {
+            bold {
+                append("Hi")
+            }
+        }.toHtml()
+        assertTrue(html, html.contains("<b>Hi</b>"))
     }
 }
