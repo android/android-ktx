@@ -119,7 +119,8 @@ inline fun createBitmap(
 
 
 /**
- * Bitmap to bytes.
+ * Returns ByteArray compressed from this bitmap with the specified [format]
+ * and [quality].
  *
  * @param format The format of bitmap.
  * @param quality Hint to the compressor, 0-100. 0 meaning compress for small size, 100 meaning compress for max quality.
@@ -129,7 +130,9 @@ inline fun Bitmap.toByteArray(format:CompressFormat = CompressFormat.JPEG, @IntR
         = ByteArrayOutputStream().also { compress(format, quality, it) }.toByteArray()
 
 /**
- * Return the clipped bitmap.
+ * Creates a new bitmap, clipped from this bitmap. If the specified [x],[y],
+ * [width],[height] are the same as the current width and height of this bitmap,
+ * this bitmap is returned and no new bitmap is created.
  *
  * @param x      The x coordinate of the first pixel.
  * @param y      The y coordinate of the first pixel.
@@ -141,7 +144,9 @@ inline fun Bitmap.clip(x:Int, y:Int, width: Int, height: Int)
         = Bitmap.createBitmap(this, x, y, width, height)
 
 /**
- * Return the skewed bitmap.
+ * Creates a new bitmap, skewed from this bitmap by [kx] and [ky],
+ * with a pivot point at ([px], [py]). The pivot point is the
+ * coordinate that should remain unchanged by the specified transformation.
  *
  * @param kx  The skew factor of x.
  * @param ky  The skew factor of y.
@@ -150,15 +155,17 @@ inline fun Bitmap.clip(x:Int, y:Int, width: Int, height: Int)
  * @return the skewed bitmap
  */
 inline fun Bitmap.skew(kx:Float, ky:Float, px:Float = 0f, py:Float = 0f):Bitmap
-        = createBitmap(this, 0, 0 , width, height, Matrix().apply { skew(kx, ky, px, py) }, true)
+        = createBitmap(this, 0, 0 , width, height, Matrix().apply { setSkew(kx, ky, px, py) }, true)
 
 /**
- * Return the rotated bitmap.
+ * Creates a new bitmap, rotated from this bitmap by [degrees] - the specified number of degrees,
+ * with a pivot point at ([px], [py]). The pivot point is the coordinate that should remain
+ * unchanged by the specified transformation.
  *
  * @param degrees The number of degrees.
  * @param px      The x coordinate of the pivot point.
  * @param py      The y coordinate of the pivot point.
  * @return the rotated bitmap
  */
-inline fun Bitmap.rotate(degrees:Int, px: Float, py: Float)
-        = createBitmap(this, 0, 0, width, height, Matrix().apply { rotate(degrees, px, py) }, true)
+inline fun Bitmap.rotate(degrees:Float, px: Float, py: Float)
+        = createBitmap(this, 0, 0, width, height, Matrix().apply { setRotate(degrees, px, py) }, true)
