@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package androidx.widget
+package androidx.core.widget
 
 import android.content.Context
 import android.graphics.Color
@@ -27,9 +27,19 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RemoteViews
 import android.widget.TextView
-import androidx.graphics.drawable.toBitmap
-import androidx.kotlin.TestActivity
-import androidx.kotlin.test.R
+import androidx.core.TestActivity
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.kotlin.test.R
+import androidx.widget.setBackgroundColor
+import androidx.widget.setBackgroundResource
+import androidx.widget.setEnabled
+import androidx.widget.setImageViewAlpha
+import androidx.widget.setImageViewMaxHeight
+import androidx.widget.setImageViewMaxWidth
+import androidx.widget.setTextViewMaxLines
+import androidx.widget.setTextViewMinLines
+import androidx.widget.setTextViewPaintFlags
+import androidx.widget.setTextViewTextSize
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule

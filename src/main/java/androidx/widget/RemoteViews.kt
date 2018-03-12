@@ -45,8 +45,9 @@ inline fun RemoteViews.setTextViewPaintFlags(@IdRes viewId: Int, flags: Int) =
 
 /** Set `alpha` to 'ImageView' in 'RemoteView'. */
 inline fun RemoteViews.setImageViewAlpha(
-    @IdRes viewId: Int, @IntRange(from = 0, to = 255) alpha: Int) =
-    setInt(viewId, "setImageAlpha", alpha)
+    @IdRes viewId: Int,
+    @IntRange(from = 0, to = 255) alpha: Int
+) = setInt(viewId, "setImageAlpha", alpha)
 
 /** Set `maxWidth` to 'ImageView' in 'RemoteView'. */
 inline fun RemoteViews.setImageViewMaxWidth(@IdRes viewId: Int, @DimenRes width: Int) =
