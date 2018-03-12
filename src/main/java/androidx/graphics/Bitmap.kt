@@ -155,8 +155,8 @@ inline fun Bitmap.clip(x: Int, y: Int, width: Int, height: Int) =
  * @param py The y coordinate of the pivot point.
  * @return the skewed bitmap
  */
-inline fun Bitmap.skew(kx: Float, ky: Float, px: Float = 0f, py: Float = 0f): Bitmap =
-    createBitmap(this, 0, 0, width, height, Matrix().apply { setSkew(kx, ky, px, py) }, true)
+inline fun Bitmap.skew(kx: Float, ky: Float) =
+    createBitmap(this, 0, 0, width, height, Matrix().apply { setSkew(kx, ky) }, true)
 
 /**
  * Creates a new bitmap, rotated from this bitmap by [degrees] - the specified number of degrees,
@@ -168,5 +168,5 @@ inline fun Bitmap.skew(kx: Float, ky: Float, px: Float = 0f, py: Float = 0f): Bi
  * @param py The y coordinate of the pivot point.
  * @return the rotated bitmap
  */
-inline fun Bitmap.rotate(degrees: Float, px: Float, py: Float) =
-    createBitmap(this, 0, 0, width, height, Matrix().apply { setRotate(degrees, px, py) }, true)
+inline fun Bitmap.rotate(degrees: Float) =
+    createBitmap(this, 0, 0, width, height, Matrix().apply { setRotate(degrees) }, true)

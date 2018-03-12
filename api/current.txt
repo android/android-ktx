@@ -105,10 +105,10 @@ package androidx.graphics {
     method public static android.graphics.Bitmap createBitmap(int width, int height, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
     method @RequiresApi(26) public static android.graphics.Bitmap createBitmap(int width, int height, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888", boolean hasAlpha = "true", android.graphics.ColorSpace colorSpace = "ColorSpace.get(ColorSpace.Named.SRGB)");
     method public static operator int get(android.graphics.Bitmap, int x, int y);
-    method public static android.graphics.Bitmap! rotate(android.graphics.Bitmap, float degrees, float px, float py);
+    method public static android.graphics.Bitmap! rotate(android.graphics.Bitmap, float degrees);
     method public static android.graphics.Bitmap scale(android.graphics.Bitmap, int width, int height, boolean filter = "true");
     method public static operator void set(android.graphics.Bitmap, int x, int y, @ColorInt int color);
-    method public static android.graphics.Bitmap skew(android.graphics.Bitmap, float kx, float ky, float px = "0f", float py = "0f");
+    method public static android.graphics.Bitmap! skew(android.graphics.Bitmap, float kx, float ky);
     method public static error.NonExistentClass toByteArray(android.graphics.Bitmap, android.graphics.Bitmap.CompressFormat format = "CompressFormat.JPEG", @IntRange(from=0L, to=100L) int quality = "100");
   }
 

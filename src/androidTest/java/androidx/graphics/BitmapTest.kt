@@ -17,6 +17,8 @@
 package androidx.graphics
 
 import android.graphics.Bitmap
+import android.graphics.Bitmap.CompressFormat.PNG
+import android.graphics.BitmapFactory
 import android.graphics.ColorSpace
 import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
@@ -67,5 +69,42 @@ class BitmapTest {
         val b = createBitmap(2, 2)
         b[1, 1] = 0x40302010
         assertEquals(0x40302010, b[1, 1])
+    }
+
+    @Test fun clip() {
+        val src = createBitmap(10, 10)
+        src[3, 5] = 0x40302010
+        val res = src.clip(3, 5, 2, 2)
+        assertEquals(2, res.width)
+        assertEquals(2, res.height)
+        assertEquals(0x40302010, res[0, 0])
+    }
+
+    @Test fun skew() {
+        val src = createBitmap(10, 10)
+        val res = src.skew(0.5f, 2f)
+        assertEquals(15, res.width)
+        assertEquals(30, res.height)
+    }
+
+    @Test fun rotate() {
+        val src = createBitmap(10, 10)
+        src[3, 5] = 0x40302010
+        src[0, 0] = 0x10203010
+        val res = src.rotate(90f)
+        assertEquals(10, res.width)
+        assertEquals(10, res.height)
+        assertEquals(0x10203010, res[9, 0])
+        assertEquals(0x40302010, res[4, 3])
+    }
+
+    @Test fun toByteArray() {
+        val src = createBitmap(10, 10)
+        src[3, 5] = 0x40302010
+        val bytes = src.toByteArray(PNG)
+        val back = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+        assertEquals(10, back.width)
+        assertEquals(10, back.height)
+        assertEquals(0x40302010, back[3, 5])
     }
 }
