@@ -20,17 +20,14 @@ package androidx.graphics
 
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
-import android.graphics.Bitmap.CompressFormat.JPEG
-import android.graphics.Bitmap.CompressFormat.PNG
 import android.graphics.Bitmap.createBitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.ColorSpace
 import android.graphics.Matrix
 import android.support.annotation.ColorInt
+import android.support.annotation.IntRange
 import android.support.annotation.RequiresApi
 import java.io.ByteArrayOutputStream
-import java.io.File
 
 /**
  * Creates a new [Canvas] to draw on this bitmap and executes the specified
@@ -128,7 +125,7 @@ inline fun createBitmap(
  * @param quality Hint to the compressor, 0-100. 0 meaning compress for small size, 100 meaning compress for max quality.
  * @return ByteArray
  */
-fun Bitmap.toBytes(format:CompressFormat = JPEG, quality: Int=100):ByteArray
+inline fun Bitmap.toByteArray(format:CompressFormat = CompressFormat.JPEG, @IntRange(from = 0, to = 100) quality: Int=100)
         = ByteArrayOutputStream().also { compress(format, quality, it) }.toByteArray()
 
 /**
@@ -140,7 +137,7 @@ fun Bitmap.toBytes(format:CompressFormat = JPEG, quality: Int=100):ByteArray
  * @param height The height.
  * @return the clipped bitmap
  */
-fun Bitmap.clip(x:Int, y:Int, width: Int, height: Int):Bitmap
+inline fun Bitmap.clip(x:Int, y:Int, width: Int, height: Int)
         = Bitmap.createBitmap(this, x, y, width, height)
 
 /**
@@ -152,7 +149,7 @@ fun Bitmap.clip(x:Int, y:Int, width: Int, height: Int):Bitmap
  * @param py  The y coordinate of the pivot point.
  * @return the skewed bitmap
  */
-fun Bitmap.skew(kx:Float, ky:Float, px:Float = 0f, py:Float = 0f):Bitmap
+inline fun Bitmap.skew(kx:Float, ky:Float, px:Float = 0f, py:Float = 0f):Bitmap
         = createBitmap(this, 0, 0 , width, height, Matrix().apply { skew(kx, ky, px, py) }, true)
 
 /**
@@ -163,5 +160,5 @@ fun Bitmap.skew(kx:Float, ky:Float, px:Float = 0f, py:Float = 0f):Bitmap
  * @param py      The y coordinate of the pivot point.
  * @return the rotated bitmap
  */
-fun Bitmap.rotate(degrees:Int, px: Float, py: Float):Bitmap
+inline fun Bitmap.rotate(degrees:Int, px: Float, py: Float)
         = createBitmap(this, 0, 0, width, height, Matrix().apply { rotate(degrees, px, py) }, true)
