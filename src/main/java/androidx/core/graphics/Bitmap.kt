@@ -23,6 +23,7 @@ import android.graphics.Canvas
 import android.graphics.ColorSpace
 import android.support.annotation.ColorInt
 import android.support.annotation.RequiresApi
+import android.view.Gravity
 
 /**
  * Creates a new [Canvas] to draw on this bitmap and executes the specified
@@ -110,4 +111,48 @@ inline fun createBitmap(
     colorSpace: ColorSpace = ColorSpace.get(ColorSpace.Named.SRGB)
 ): Bitmap {
     return Bitmap.createBitmap(width, height, config, hasAlpha, colorSpace)
+}
+
+/**
+ * @param gravity The gravity of the target bitmap relative to the source bitmap
+ *
+ * [Gravity.LEFT] or [Gravity.START]
+ * ⬇︎
+ *
+ * [Color.RED,  Color.RED,   Color.RED,   Color.RED,    <-[Gravity.TOP]
+ * Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,
+ * Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,  <-[Gravity.CENTER] or [Gravity.CENTER_VERTICAL]
+ * Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,
+ * Color.RED,   Color.RED,   Color.RED,   Color.RED]    <-[Gravity.BOTTOM]
+ *︎                                        ⬆︎ [Gravity.RIGHT] or [Gravity.END]
+ *     ⬆
+ *[Gravity.CENTER] or [Gravity.CENTER_HORIZONTAL]
+ * return a square bitmap from source
+ */
+inline fun Bitmap.toSquare(gravity: Int = Gravity.CENTER): Bitmap {
+    return when {
+        width < height -> Bitmap.createBitmap(
+            this,
+            0,
+            when (gravity) {
+                Gravity.TOP -> 0
+                Gravity.BOTTOM -> height - width
+                else -> height / 2 - width / 2
+            },
+            width,
+            width
+        )
+        width > height -> Bitmap.createBitmap(
+            this,
+            when (gravity) {
+                Gravity.START, Gravity.LEFT -> 0
+                Gravity.END, Gravity.RIGHT -> width - height
+                else -> width / 2 - height / 2
+            },
+            0,
+            height,
+            height
+        )
+        else -> this
+    }
 }

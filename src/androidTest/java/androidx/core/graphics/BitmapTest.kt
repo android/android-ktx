@@ -17,8 +17,10 @@
 package androidx.core.graphics
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.ColorSpace
 import android.support.test.filters.SdkSuppress
+import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -67,5 +69,27 @@ class BitmapTest {
         val b = createBitmap(2, 2)
         b[1, 1] = 0x40302010
         assertEquals(0x40302010, b[1, 1])
+    }
+
+    @Test fun toSquare() {
+        val a = intArrayOf(
+            Color.RED, Color.RED, Color.RED, Color.RED,
+            Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,
+            Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,
+            Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,
+            Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,
+            Color.RED, Color.RED, Color.RED, Color.RED
+        )
+        val expected = intArrayOf(
+            Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,
+            Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,
+            Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN,
+            Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN
+        )
+        val b = Bitmap.createBitmap(a, 4, 6, Bitmap.Config.ARGB_8888)
+        val s = b.toSquare()
+        val actual = IntArray(16)
+        s.getPixels(actual, 0, 4, 0, 0, 4, 4)
+        assertArrayEquals(expected, actual)
     }
 }
