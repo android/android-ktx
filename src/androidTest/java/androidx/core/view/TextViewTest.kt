@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package androidx.widget
+package androidx.core.view
 
 import android.support.test.InstrumentationRegistry
 import android.widget.TextView
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class TextViewTest {
@@ -33,27 +34,39 @@ class TextViewTest {
         assertEquals(expected, actual)
     }
 
-    @Test fun doOnBeforeTextChanged() {
+    @Test fun testDoBeforeTextChanged() {
         val text = "Hi Jared"
-        var calls = 0
-        textView.doOnBeforeTextChanged { _, _, _, _ ->
-            calls++
+        var called = false
+        textView.doBeforeTextChanged { _, _, _, _ ->
+            called = true
         }
         textView.text = text
 
         assertEquals(text, textView.text.toString())
-        assertEquals(1, calls)
+        assertTrue(called)
     }
 
-    @Test fun doOnAfterTextChanged() {
-        val text = "Hi Jared"
-        var calls = 0
-        textView.doOnAfterTextChanged { _ ->
-            calls++
+    @Test fun testDoOnTextChanged() {
+        val text = "Hi Jake"
+        var called = false
+        textView.doOnTextChanged { _, _, _, _ ->
+            called = true
         }
         textView.text = text
 
         assertEquals(text, textView.text.toString())
-        assertEquals(1, calls)
+        assertTrue(called)
+    }
+
+    @Test fun testDoAfterTextChanged() {
+        val text = "Hi Jared"
+        var called = false
+        textView.doAfterTextChanged { _ ->
+            called = true
+        }
+        textView.text = text
+
+        assertEquals(text, textView.text.toString())
+        assertTrue(called)
     }
 }

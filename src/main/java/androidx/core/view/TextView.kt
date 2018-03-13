@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package androidx.widget
+package androidx.core.view
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -31,9 +31,19 @@ fun TextView.content() = text.toString()
  *
  * @see TextWatcher.beforeTextChanged
  */
-fun TextView.doOnBeforeTextChanged(
+fun TextView.doBeforeTextChanged(
     action: (s: CharSequence, start: Int, count: Int, after: Int) -> Unit
 ) = addTextListener(beforeChanged = action)
+
+/**
+ * Adds a [TextWatcher.onTextChanged] to the list of those whose methods are called
+ * whenever this [TextView]'s text changes.
+ *
+ * @see TextWatcher.onTextChanged
+ */
+fun TextView.doOnTextChanged(
+    action: (s: CharSequence, start: Int, count: Int, after: Int) -> Unit
+) = addTextListener(onChanged = action)
 
 /**
  * Adds a [TextWatcher.afterTextChanged] to the list of those whose methods are called
@@ -41,7 +51,7 @@ fun TextView.doOnBeforeTextChanged(
  *
  * @see TextWatcher.afterTextChanged
  */
-fun TextView.doOnAfterTextChanged(
+fun TextView.doAfterTextChanged(
     action: (s: Editable) -> Unit
 ) = addTextListener(afterChanged = action)
 
@@ -53,10 +63,10 @@ fun TextView.addTextListener(
     beforeChanged: ((s: CharSequence, start: Int, count: Int, after: Int) -> Unit)? = null,
     onChanged: ((s: CharSequence, start: Int, before: Int, count: Int) -> Unit)? = null,
     afterChanged: ((s: Editable) -> Unit)? = null
-) =
-    addTextChangedListener(object : TextWatcher {
+): TextWatcher {
+    val listener = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            beforeChanged?.invoke(s.toString(), start, count, after)
+            beforeChanged?.invoke(s, start, count, after)
         }
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -66,4 +76,7 @@ fun TextView.addTextListener(
         override fun afterTextChanged(s: Editable) {
             afterChanged?.invoke(s)
         }
-    })
+    }
+    addTextChangedListener(listener)
+    return listener
+}
