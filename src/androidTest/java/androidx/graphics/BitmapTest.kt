@@ -80,13 +80,6 @@ class BitmapTest {
         assertEquals(0x40302010, res[0, 0])
     }
 
-    @Test fun skew() {
-        val src = createBitmap(10, 10)
-        val res = src.skew(0.5f, 2f)
-        assertEquals(15, res.width)
-        assertEquals(30, res.height)
-    }
-
     @Test fun rotate() {
         val src = createBitmap(10, 10)
         src[3, 5] = 0x40302010
@@ -98,11 +91,11 @@ class BitmapTest {
         assertEquals(0x40302010, res[4, 3])
     }
 
-    @Test fun toByteArray() {
+    @Test fun toStream() {
         val src = createBitmap(10, 10)
         src[3, 5] = 0x40302010
-        val bytes = src.toByteArray(PNG)
-        val back = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+        val stream = src.toStream(PNG)
+        val back = BitmapFactory.decodeStream(stream)
         assertEquals(10, back.width)
         assertEquals(10, back.height)
         assertEquals(0x40302010, back[3, 5])
