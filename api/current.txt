@@ -62,6 +62,7 @@ package androidx.database {
 
   public final class CursorKt {
     ctor public CursorKt();
+    method public static void forEach(android.database.Cursor, kotlin.jvm.functions.Function1<? super android.database.Cursor,kotlin.Unit> block);
     method public static byte[] getBlob(android.database.Cursor, String columnName);
     method public static byte[]? getBlobOrNull(android.database.Cursor, int index);
     method public static error.NonExistentClass getBlobOrNull(android.database.Cursor, String columnName);

@@ -267,3 +267,19 @@ inline fun Cursor.getShortOrNull(columnName: String) =
  */
 inline fun Cursor.getStringOrNull(columnName: String) =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getString(it) }
+
+/**
+ * Iterate the Cursor and run [block] on each raw.
+ * It will call Cursor.close() when complete iterate.
+ *
+ * @param block the inline lambda for each raw
+ */
+inline fun Cursor.forEach(block: (Cursor) -> Unit) {
+    use {
+        if (moveToFirst()) {
+            do {
+                block(it)
+            } while (moveToNext())
+        }
+    }
+}

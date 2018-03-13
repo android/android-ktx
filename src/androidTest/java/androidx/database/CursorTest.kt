@@ -150,6 +150,19 @@ class CursorTest {
         assertNull(string)
     }
 
+    @Test fun forEach() {
+        val cursor = MatrixCursor(arrayOf("data")).apply {
+            (1..5).forEach {
+                addRow(arrayOf(it))
+            }
+        }
+        val list = mutableListOf<Int>()
+        cursor.forEach {
+            list.add(it.getInt("data"))
+        }
+        assertArrayEquals(intArrayOf(1, 2, 3, 4, 5), list.toIntArray())
+    }
+
     private fun scalarCursor(item: Any?): Cursor = MatrixCursor(arrayOf("data")).apply {
         addRow(arrayOf(item))
         moveToFirst() // Prepare for consumers to read.
