@@ -84,7 +84,8 @@ class ContextTest {
             context.getBoolean(-1)
         }
 
-        assertEquals(context.getDimension(R.dimen.dimen_25), 25f * context.resources.displayMetrics.density)
+        assertEquals(context.getDimension(R.dimen.dimen_25),
+            25f * context.resources.displayMetrics.density)
         assertThrows< Resources.NotFoundException> {
             context.getDimension(-1)
         }
