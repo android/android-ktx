@@ -29,6 +29,8 @@ import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.text.style.SubscriptSpan
 import android.text.style.SuperscriptSpan
+import android.text.style.TypefaceSpan
+import android.text.style.URLSpan
 import android.text.style.UnderlineSpan
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
@@ -184,6 +186,76 @@ class SpannableStringBuilderTest {
         assertEquals(2f, scale.sizeChange)
         assertEquals(7, result.getSpanStart(scale))
         assertEquals(12, result.getSpanEnd(scale))
+    }
+
+    @Test fun builderUp() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            up {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans<Any>()
+        assertEquals(1, spans.size)
+
+        val up = spans.filterIsInstance<SuperscriptSpan>().single()
+        assertEquals(7, result.getSpanStart(up))
+        assertEquals(12, result.getSpanEnd(up))
+    }
+
+    @Test fun builderDown() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            down {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans<Any>()
+        assertEquals(1, spans.size)
+
+        val down = spans.filterIsInstance<SubscriptSpan>().single()
+        assertEquals(7, result.getSpanStart(down))
+        assertEquals(12, result.getSpanEnd(down))
+    }
+
+    @Test fun builderFont() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            font("serif") {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans<Any>()
+        assertEquals(1, spans.size)
+
+        val font = spans.filterIsInstance<TypefaceSpan>().single()
+        assertEquals("serif", font.family)
+        assertEquals(7, result.getSpanStart(font))
+        assertEquals(12, result.getSpanEnd(font))
+    }
+
+    @Test fun builderUrl() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            url("http://www.google.com") {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans<Any>()
+        assertEquals(1, spans.size)
+
+        val url = spans.filterIsInstance<URLSpan>().single()
+        assertEquals("http://www.google.com", url.url)
+        assertEquals(7, result.getSpanStart(url))
+        assertEquals(12, result.getSpanEnd(url))
     }
 
     @Test fun nested() {
