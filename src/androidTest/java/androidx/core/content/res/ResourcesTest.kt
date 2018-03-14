@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package androidx.content.res
+package androidx.core.content.res
 
 import android.graphics.Typeface
 import android.support.test.InstrumentationRegistry
 import android.text.Spannable
 import android.text.style.StyleSpan
-import androidx.kotlin.test.R
-import androidx.text.getSpans
+import androidx.core.kotlin.test.R
+import androidx.core.text.getSpans
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

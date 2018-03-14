@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package androidx.content.res
+package androidx.core.content.res
 
 import android.content.res.Resources
+import android.os.Build
 import android.support.annotation.StringRes
+import android.text.Html
 import android.text.TextUtils
-import androidx.text.parseAsHtml
 
 /**
  * Returns the string value associated with the [id], substituting the format arguments.
@@ -29,6 +30,11 @@ import androidx.text.parseAsHtml
  */
 fun Resources.getText(@StringRes id: Int, vararg formatArgs: Any): CharSequence {
     val args = formatArgs.map { if (it is String) TextUtils.htmlEncode(it) else it }.toTypedArray()
-    val string = getString(id, *args)
-    return string.parseAsHtml()
+    val text = getString(id, *args)
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        @Suppress("DEPRECATION")
+        Html.fromHtml(text)
+    }
 }
