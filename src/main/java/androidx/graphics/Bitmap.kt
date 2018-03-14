@@ -19,16 +19,12 @@
 package androidx.graphics
 
 import android.graphics.Bitmap
-import android.graphics.Bitmap.CompressFormat
 import android.graphics.Bitmap.createBitmap
 import android.graphics.Canvas
 import android.graphics.ColorSpace
 import android.graphics.Matrix
 import android.support.annotation.ColorInt
-import android.support.annotation.IntRange
 import android.support.annotation.RequiresApi
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
 
 /**
  * Creates a new [Canvas] to draw on this bitmap and executes the specified
@@ -119,21 +115,7 @@ inline fun createBitmap(
 }
 
 /**
- * Returns ByteArrayInputStream compressed from this bitmap with the specified [format]
- * and [quality].
- *
- * @param format The format of bitmap.
- * @param quality Hint to the compressor, 0-100. 0 meaning compress for small size, 100 meaning compress for max quality.
- * @return ByteArrayInputStream
- */
-inline fun Bitmap.toStream(
-    format: CompressFormat = CompressFormat.JPEG,
-    @IntRange(from = 0, to = 100) quality: Int = 100
-): ByteArrayInputStream =
-    ByteArrayOutputStream().also { compress(format, quality, it) }.toByteArray().inputStream()
-
-/**
- * Creates a new bitmap, clipped from this bitmap. If the specified [x], [y],
+ * Creates a new bitmap, cropped from this bitmap. If the specified [x], [y],
  * [width], [height] are the same as the current width and height of this bitmap,
  * this bitmap is returned and no new bitmap is created.
  *
@@ -141,9 +123,9 @@ inline fun Bitmap.toStream(
  * @param y The y coordinate of the first pixel.
  * @param width The width.
  * @param height The height.
- * @return the clipped bitmap
+ * @return the cropped bitmap
  */
-inline fun Bitmap.clip(x: Int, y: Int, width: Int, height: Int): Bitmap =
+inline fun Bitmap.crop(x: Int, y: Int, width: Int, height: Int) =
     Bitmap.createBitmap(this, x, y, width, height)
 
 /**
@@ -156,5 +138,5 @@ inline fun Bitmap.clip(x: Int, y: Int, width: Int, height: Int): Bitmap =
  * @param py The y coordinate of the pivot point.
  * @return the rotated bitmap
  */
-inline fun Bitmap.rotate(degrees: Float): Bitmap =
+inline fun Bitmap.rotate(degrees: Float) =
     createBitmap(this, 0, 0, width, height, Matrix().apply { setRotate(degrees) }, true)

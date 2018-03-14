@@ -17,8 +17,6 @@
 package androidx.graphics
 
 import android.graphics.Bitmap
-import android.graphics.Bitmap.CompressFormat.PNG
-import android.graphics.BitmapFactory
 import android.graphics.ColorSpace
 import android.support.test.filters.SdkSuppress
 import org.junit.Assert.assertEquals
@@ -71,10 +69,10 @@ class BitmapTest {
         assertEquals(0x40302010, b[1, 1])
     }
 
-    @Test fun clip() {
+    @Test fun crop() {
         val src = createBitmap(10, 10)
         src[3, 5] = 0x40302010
-        val res = src.clip(3, 5, 2, 2)
+        val res = src.crop(3, 5, 2, 2)
         assertEquals(2, res.width)
         assertEquals(2, res.height)
         assertEquals(0x40302010, res[0, 0])
@@ -89,15 +87,5 @@ class BitmapTest {
         assertEquals(10, res.height)
         assertEquals(0x10203010, res[9, 0])
         assertEquals(0x40302010, res[4, 3])
-    }
-
-    @Test fun toStream() {
-        val src = createBitmap(10, 10)
-        src[3, 5] = 0x40302010
-        val stream = src.toStream(PNG)
-        val back = BitmapFactory.decodeStream(stream)
-        assertEquals(10, back.width)
-        assertEquals(10, back.height)
-        assertEquals(0x40302010, back[3, 5])
     }
 }
