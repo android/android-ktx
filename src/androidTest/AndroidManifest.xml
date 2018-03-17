@@ -3,5 +3,6 @@
     <application>
         <activity android:name="androidx.core.TestActivity"/>
         <activity android:name="androidx.core.TestPreferenceActivity"/>
+        <activity android:name="androidx.core.TextExtraActivity"/>
     </application>
 </manifest>
