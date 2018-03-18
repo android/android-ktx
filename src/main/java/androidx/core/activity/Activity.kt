@@ -31,7 +31,7 @@ import android.app.Activity
  * }
  * ```
  *
- * If such value can be retrieved, an exception will be thrown. This will happen when:
+ * If such value can't be retrieved, an exception will be thrown. This will happen when:
  *
  * - There is an extra mapped by [key] and it can't be cast to [T]
  * - There's no extra mapped by [key] and [T] is not a nullable type
@@ -64,7 +64,7 @@ inline fun <reified T> Activity.extra(key: String): Lazy<T> = lazy {
  * }
  * ```
  *
- * If such value can be retrieved, the result from [default] will be returned. This will happen
+ * If such value can't be retrieved, the result from [default] will be returned. This will happen
  * when:
  *
  * - There is an extra mapped by [key] and it can't be cast to [T]
