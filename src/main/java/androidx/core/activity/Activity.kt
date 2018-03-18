@@ -60,7 +60,7 @@ inline fun <reified T> Activity.extra(key: String): Lazy<T> = lazy {
  * ```kotlin
  * class MyActivity : Activity() {
  *
- *   private val name by extra<String>("name")
+ *   private val name by extra("name") { "Default name" }
  * }
  * ```
  *
@@ -71,6 +71,7 @@ inline fun <reified T> Activity.extra(key: String): Lazy<T> = lazy {
  * - There's no extra mapped by [key] and [T] is not a nullable type
  *
  * @param key The extra key
+ * @param default A function that returns the default value
  * @param T The extra type
  * @return A [Lazy] that returns an intent extra
  */
