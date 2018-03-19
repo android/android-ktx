@@ -308,6 +308,15 @@ package androidx.core.graphics.drawable {
 
 }
 
+package androidx.core.io {
+
+  public final class FileKt {
+    ctor public FileKt();
+    method public static String? getMimeType(java.io.File);
+  }
+
+}
+
 package androidx.core.net {
 
   public final class UriKt {
