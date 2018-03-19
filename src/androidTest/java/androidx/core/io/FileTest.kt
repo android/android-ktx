@@ -16,13 +16,14 @@
 
 package androidx.core.io
 
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertSame
 import org.junit.Test
 import java.io.File
 
 class FileTest {
 
-    @Test fun jpeg() {
+    @Test fun jpg() {
         val photo = File("sunset.jpg")
         val type = photo.getMimeType()
         assertSame("image/jpeg", type)
@@ -34,4 +35,15 @@ class FileTest {
         assertSame("image/png", type)
     }
 
+    @Test fun noExtension() {
+        val path = File("foo/bar")
+        val type = path.getMimeType()
+        assertNull(type)
+    }
+
+    @Test fun unknownExtension() {
+        val unknownFile = File("foo/bar.baz")
+        val type = unknownFile.getMimeType()
+        assertNull(type)
+    }
 }
