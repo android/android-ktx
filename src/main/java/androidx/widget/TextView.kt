@@ -19,6 +19,7 @@ package androidx.widget
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.DrawableContainer
 import android.support.annotation.DrawableRes
+import android.support.annotation.IntRange
 import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import android.widget.TextView
@@ -60,10 +61,10 @@ fun TextView.updateCompoundDrawables(
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-    @DrawableRes left: Int = UPDATE_MODE_KEEP,
-    @DrawableRes top: Int = UPDATE_MODE_KEEP,
-    @DrawableRes right: Int = UPDATE_MODE_KEEP,
-    @DrawableRes bottom: Int = UPDATE_MODE_KEEP
+    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) left: Int = UPDATE_MODE_KEEP,
+    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) top: Int = UPDATE_MODE_KEEP,
+    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) right: Int = UPDATE_MODE_KEEP,
+    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) bottom: Int = UPDATE_MODE_KEEP
 ) {
     val compoundDrawables = compoundDrawables
     setCompoundDrawablesWithIntrinsicBounds(
@@ -127,10 +128,10 @@ fun TextView.updateCompoundDrawablesRelative(
  */
 @RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-    @DrawableRes start: Int = UPDATE_MODE_KEEP,
-    @DrawableRes top: Int = UPDATE_MODE_KEEP,
-    @DrawableRes end: Int = UPDATE_MODE_KEEP,
-    @DrawableRes bottom: Int = UPDATE_MODE_KEEP
+    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) start: Int = UPDATE_MODE_KEEP,
+    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) top: Int = UPDATE_MODE_KEEP,
+    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) end: Int = UPDATE_MODE_KEEP,
+    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) bottom: Int = UPDATE_MODE_KEEP
 ) {
     val compoundDrawablesRelative = compoundDrawablesRelative
     setCompoundDrawablesRelativeWithIntrinsicBounds(
