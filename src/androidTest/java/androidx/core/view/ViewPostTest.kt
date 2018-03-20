@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package androidx.view
+package androidx.core.view
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.annotation.UiThreadTest
 import android.support.test.rule.ActivityTestRule
 import android.view.View
-import androidx.kotlin.TestActivity
+import androidx.core.TestActivity
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
