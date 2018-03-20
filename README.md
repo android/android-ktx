@@ -34,7 +34,13 @@ sharedPreferences.edit {
 **Kotlin:**
 ```kotlin
 val pathDifference = Path(myPath1).apply {
-    op(myPath2, Path.Op.DIFFERENCE)
+    orepositori {
+    google ()
+}
+
+dependensi {
+    implementasi ' androidx.core: core-ktx: 0,2 ' 
+}p(myPath2, Path.Op.DIFFERENCE)
 }
 
 canvas.apply {
