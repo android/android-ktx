@@ -23,6 +23,11 @@ import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import android.widget.TextView
 
+@DrawableRes
+const val UPDATE_MODE_REMOVE = 0
+@DrawableRes
+const val UPDATE_MODE_KEEP = -1
+
 private val drawableSentinel = DrawableContainer()
 
 /**
@@ -37,21 +42,28 @@ fun TextView.updateCompoundDrawables(
     right: Drawable? = drawableSentinel,
     bottom: Drawable? = drawableSentinel
 ) {
-    val drawables = updateDrawables(left, top, right, bottom, compoundDrawables)
-    setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3])
+    val drawables = lazy(LazyThreadSafetyMode.NONE) { compoundDrawables }
+    setCompoundDrawables(
+        if (left === drawableSentinel) drawables.value[0] else left,
+        if (top === drawableSentinel) drawables.value[1] else top,
+        if (right === drawableSentinel) drawables.value[2] else right,
+        if (bottom === drawableSentinel) drawables.value[3] else bottom
+    )
 }
 
 /**
  * Updates this TextView's Drawables. This version of the method allows using named parameters
- * to just set one or more Drawables. Use 0 if you do not want a Drawable there.
+ * to just set one or more Drawables. Two special values can be used instead of regular resource IDs:
+ * - [UPDATE_MODE_REMOVE] to remove an existing drawable (ignored if no drawable exists)
+ * - [UPDATE_MODE_KEEP] to keep an existing drawable
  *
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-    @DrawableRes left: Int = -1,
-    @DrawableRes top: Int = -1,
-    @DrawableRes right: Int = -1,
-    @DrawableRes bottom: Int = -1
+    @DrawableRes left: Int = UPDATE_MODE_KEEP,
+    @DrawableRes top: Int = UPDATE_MODE_KEEP,
+    @DrawableRes right: Int = UPDATE_MODE_KEEP,
+    @DrawableRes bottom: Int = UPDATE_MODE_KEEP
 ) {
     val compoundDrawables = compoundDrawables
     setCompoundDrawablesWithIntrinsicBounds(
@@ -74,8 +86,13 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
     right: Drawable? = drawableSentinel,
     bottom: Drawable? = drawableSentinel
 ) {
-    val drawables = updateDrawables(left, top, right, bottom, compoundDrawables)
-    setCompoundDrawablesWithIntrinsicBounds(drawables[0], drawables[1], drawables[2], drawables[3])
+    val drawables = lazy(LazyThreadSafetyMode.NONE) { compoundDrawables }
+    setCompoundDrawablesWithIntrinsicBounds(
+        if (left === drawableSentinel) drawables.value[0] else left,
+        if (top === drawableSentinel) drawables.value[1] else top,
+        if (right === drawableSentinel) drawables.value[2] else right,
+        if (bottom === drawableSentinel) drawables.value[3] else bottom
+    )
 }
 
 /**
@@ -91,22 +108,29 @@ fun TextView.updateCompoundDrawablesRelative(
     end: Drawable? = drawableSentinel,
     bottom: Drawable? = drawableSentinel
 ) {
-    val drawables = updateDrawables(start, top, end, bottom, compoundDrawablesRelative)
-    setCompoundDrawablesRelative(drawables[0], drawables[1], drawables[2], drawables[3])
+    val drawables = lazy(LazyThreadSafetyMode.NONE) { compoundDrawablesRelative }
+    setCompoundDrawablesRelative(
+        if (start === drawableSentinel) drawables.value[0] else start,
+        if (top === drawableSentinel) drawables.value[1] else top,
+        if (end === drawableSentinel) drawables.value[2] else end,
+        if (bottom === drawableSentinel) drawables.value[3] else bottom
+    )
 }
 
 /**
  * Updates this TextView's Drawables. This version of the method allows using named parameters
- * to just set one or more Drawables. Use 0 if you do not want a Drawable there.
+ * to just set one or more Drawables. Two special values can be used instead of regular resource IDs:
+ * - [UPDATE_MODE_REMOVE] to remove an existing drawable (ignored if no drawable exists)
+ * - [UPDATE_MODE_KEEP] to keep an existing drawable
  *
  * @see TextView.setCompoundDrawablesRelativeWithIntrinsicBounds
  */
 @RequiresApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-    @DrawableRes start: Int = -1,
-    @DrawableRes top: Int = -1,
-    @DrawableRes end: Int = -1,
-    @DrawableRes bottom: Int = -1
+    @DrawableRes start: Int = UPDATE_MODE_KEEP,
+    @DrawableRes top: Int = UPDATE_MODE_KEEP,
+    @DrawableRes end: Int = UPDATE_MODE_KEEP,
+    @DrawableRes bottom: Int = UPDATE_MODE_KEEP
 ) {
     val compoundDrawablesRelative = compoundDrawablesRelative
     setCompoundDrawablesRelativeWithIntrinsicBounds(
@@ -130,31 +154,18 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
     end: Drawable? = drawableSentinel,
     bottom: Drawable? = drawableSentinel
 ) {
-    val drawables = updateDrawables(start, top, end, bottom, compoundDrawablesRelative)
+    val drawables = lazy(LazyThreadSafetyMode.NONE) { compoundDrawablesRelative }
     setCompoundDrawablesRelativeWithIntrinsicBounds(
-        drawables[0], drawables[1], drawables[2], drawables[3]
+        if (start === drawableSentinel) drawables.value[0] else start,
+        if (top === drawableSentinel) drawables.value[1] else top,
+        if (end === drawableSentinel) drawables.value[2] else end,
+        if (bottom === drawableSentinel) drawables.value[3] else bottom
     )
 }
 
-private fun updateDrawables(
-    start: Drawable?,
-    top: Drawable?,
-    end: Drawable?,
-    bottom: Drawable?,
-    srcArray: Array<Drawable>
-): Array<Drawable?> {
-    val drawables = lazy(LazyThreadSafetyMode.NONE) { srcArray }
-    return arrayOfNulls<Drawable>(srcArray.size).apply {
-        this[0] = if (start === drawableSentinel) drawables.value[0] else start
-        this[1] = if (top === drawableSentinel) drawables.value[1] else top
-        this[2] = if (end === drawableSentinel) drawables.value[2] else end
-        this[3] = if (bottom === drawableSentinel) drawables.value[3] else bottom
-    }
-}
-
-private fun TextView.getUpdatedCompoundDrawable(resId: Int, drawable: Drawable?) =
+private fun TextView.getUpdatedCompoundDrawable(@DrawableRes resId: Int, drawable: Drawable?) =
     when (resId) {
-        -1 -> drawable
-        0 -> null
+        UPDATE_MODE_KEEP -> drawable
+        UPDATE_MODE_REMOVE -> null
         else -> ContextCompat.getDrawable(context, resId)
     }
