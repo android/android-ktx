@@ -17,6 +17,7 @@
 package androidx.core.io
 
 import android.webkit.MimeTypeMap
+import androidx.core.text.urlEncode
 import java.io.File
 
 /**
@@ -26,6 +27,6 @@ import java.io.File
  * @return The MIME type for the files' extension or null iff there is none.
  */
 fun File.getMimeType(): String? {
-    return MimeTypeMap.getFileExtensionFromUrl(toString())
+    return MimeTypeMap.getFileExtensionFromUrl(toString().urlEncode())
         ?.apply { MimeTypeMap.getSingleton().getMimeTypeFromExtension(toLowerCase()) }
 }

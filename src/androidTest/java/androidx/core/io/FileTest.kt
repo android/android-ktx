@@ -35,6 +35,12 @@ class FileTest {
         assertSame("image/png", type)
     }
 
+    @Test fun pdfWithSpaces() {
+        val thesis = File("my documents/master thesis-v5.1-final-final2.pdf")
+        val type = thesis.getMimeType()
+        assertSame("application/pdf", type)
+    }
+
     @Test fun noExtension() {
         val path = File("foo/bar")
         val type = path.getMimeType()

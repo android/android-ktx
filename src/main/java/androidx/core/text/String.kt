@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
+@file:Suppress("NOTHING_TO_INLINE")
+
+// Aliases to public API.
 
 package androidx.core.text
 
+import android.net.Uri
 import android.text.TextUtils
 
 /**
@@ -26,3 +29,10 @@ import android.text.TextUtils
  * @see TextUtils.htmlEncode
  */
 inline fun String.htmlEncode(): String = TextUtils.htmlEncode(this)
+
+/**
+ * Url-encode the string.
+ *
+ * @see Uri.encode
+ */
+inline fun String.urlEncode(): String = Uri.encode(this)
