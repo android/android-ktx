@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package androidx.widget
+package androidx.core.widget
 
 import android.support.test.InstrumentationRegistry
 import android.widget.TextView
@@ -36,7 +36,7 @@ class TextViewTest {
 
     @Test fun doBeforeTextChanged() {
         var called = false
-        view.doBeforeTextChanged { s, start, count, after ->
+        view.doBeforeTextChanged { _, _, _, _ ->
             called = true
         }
         view.text = "test"
@@ -45,7 +45,7 @@ class TextViewTest {
 
     @Test fun doOnTextChanged() {
         var called = false
-        view.doOnTextChanged { s, start, before, count ->
+        view.doOnTextChanged { _, _, _, _ ->
             called = true
         }
         view.text = "test"

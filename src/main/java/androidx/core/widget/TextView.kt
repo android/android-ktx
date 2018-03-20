@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package androidx.widget
+package androidx.core.widget
 
 import android.text.Editable
 import android.text.TextWatcher
