@@ -421,6 +421,7 @@ package androidx.core.text {
   public final class StringKt {
     ctor public StringKt();
     method public static String htmlEncode(String);
+    method public static String urlEncode(String);
   }
 
 }
