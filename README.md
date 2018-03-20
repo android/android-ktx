@@ -103,6 +103,8 @@ During the preview period, the Android KTX APIs may change at anytime. When the 
 stable state, we will update it to version 1.0 (or later). From that point forward, we will be much
 more rigorous and careful about maintaining API compatibility.
 
+This project does not currently cover the Android Support Library or Architecture Components APIs.
+
 
 Links
 -----
