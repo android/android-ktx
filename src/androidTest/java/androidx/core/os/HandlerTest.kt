@@ -19,13 +19,11 @@ package androidx.core.os
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.SystemClock
-import android.support.test.filters.SdkSuppress
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import java.time.Duration
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.MILLISECONDS
@@ -44,26 +42,6 @@ class HandlerTest {
         handlerThread.quit()
     }
 
-    @Test fun postDelayedWithToken() {
-        var called = 0
-        val runnable = Runnable { called++ }
-        handler.postDelayed(runnable, Any(), 10)
-
-        handler.await(20, MILLISECONDS)
-        assertEquals(1, called)
-    }
-
-    @Test fun postDelayedWithTokenCancelWithToken() {
-        var called = 0
-        val runnable = Runnable { called++ }
-        val token = Any()
-        handler.postDelayed(runnable, token, 10)
-        handler.removeCallbacksAndMessages(token)
-
-        handler.await(20, MILLISECONDS)
-        assertEquals(0, called)
-    }
-
     @Test fun postDelayedLambdaMillis() {
         var called = 0
         handler.postDelayed(10) {
@@ -77,50 +55,6 @@ class HandlerTest {
     @Test fun postDelayedLambdaMillisRemoved() {
         var called = 0
         val runnable = handler.postDelayed(10) {
-            called++
-        }
-        handler.removeCallbacks(runnable)
-
-        handler.await(20, MILLISECONDS)
-        assertEquals(0, called)
-    }
-
-    @Test fun postDelayedLambdaTimeUnit() {
-        var called = 0
-        handler.postDelayed(10, MILLISECONDS) {
-            called++
-        }
-
-        handler.await(20, MILLISECONDS)
-        assertEquals(1, called)
-    }
-
-    @Test fun postDelayedLambdaTimeUnitRemoved() {
-        var called = 0
-        val runnable = handler.postDelayed(10, MILLISECONDS) {
-            called++
-        }
-        handler.removeCallbacks(runnable)
-
-        handler.await(20, MILLISECONDS)
-        assertEquals(0, called)
-    }
-
-    @SdkSuppress(minSdkVersion = 26)
-    @Test fun postDelayedLambdaDuration() {
-        var called = 0
-        handler.postDelayed(Duration.ofMillis(10)) {
-            called++
-        }
-
-        handler.await(20, MILLISECONDS)
-        assertEquals(1, called)
-    }
-
-    @SdkSuppress(minSdkVersion = 26)
-    @Test fun postDelayedLambdaDurationRemoved() {
-        var called = 0
-        val runnable = handler.postDelayed(Duration.ofMillis(10)) {
             called++
         }
         handler.removeCallbacks(runnable)
@@ -171,17 +105,6 @@ class HandlerTest {
             called++
         }
         handler.removeCallbacksAndMessages(token)
-
-        handler.await(20, MILLISECONDS)
-        assertEquals(0, called)
-    }
-
-    @Test fun postAtTimeLambdaWithTokenRemoved() {
-        var called = 0
-        val runnable = handler.postAtTime(SystemClock.uptimeMillis() + 10) {
-            called++
-        }
-        handler.removeCallbacks(runnable)
 
         handler.await(20, MILLISECONDS)
         assertEquals(0, called)
