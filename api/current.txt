@@ -23,6 +23,7 @@ package androidx.core.content {
 
   public final class ContextKt {
     ctor public ContextKt();
+    method public static void makeCall(android.content.Context, String number, kotlin.jvm.functions.Function2<? super android.content.Context,? super java.lang.Exception,kotlin.Unit> errorHandler = "{ e -> e.printStackTrace() }");
     method public static void withStyledAttributes(android.content.Context, android.util.AttributeSet? set = "null", int[] attrs, @AttrRes int defStyleAttr = "0", @StyleRes int defStyleRes = "0", kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
     method public static void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }

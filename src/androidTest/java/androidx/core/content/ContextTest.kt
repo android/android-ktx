@@ -70,4 +70,8 @@ class ContextTest {
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
         }
     }
+
+    @Test fun makeCall() {
+        context.makeCall(number = "12345678")
+    }
 }
