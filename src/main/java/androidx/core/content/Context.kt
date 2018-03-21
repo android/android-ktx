@@ -16,11 +16,8 @@
 
 package androidx.core.content
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.res.TypedArray
-import android.net.Uri
 import android.support.annotation.AttrRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
@@ -96,19 +93,17 @@ inline fun Context.withStyledAttributes(
 }
 
 /**
- * Make call with number, the number will be convert to desired uri, eg: tel: xxx.
+ * Get the height of the status bar, it will return -1 if get faield.
  *
- * @param number The phone number.
+ * @return The height of status bar.
  */
-@SuppressLint("MissingPermission")
-inline fun Context.makeCall(
-    number: String,
-    errorHandler: Context.(e: Exception) -> Unit = { e -> e.printStackTrace() }
-) {
-    try {
-        val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel: $number"))
-        startActivity(intent)
-    } catch (e: Exception) {
-        errorHandler(e)
+fun Context.statusBarHeight(): Int {
+    var statusBarHeight = -1
+
+    val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+    if (resourceId > 0) {
+        statusBarHeight = resources.getDimensionPixelSize(resourceId)
     }
+
+    return statusBarHeight
 }

@@ -71,7 +71,8 @@ class ContextTest {
         }
     }
 
-    @Test fun makeCall() {
-        context.makeCall(number = "12345678")
+    @Test fun getStatusBarHeight() {
+        val statusBarHeight = context.statusBarHeight()
+        assertTrue(statusBarHeight > 0)
     }
 }
