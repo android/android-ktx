@@ -91,3 +91,19 @@ inline fun Context.withStyledAttributes(
         typedArray.recycle()
     }
 }
+
+/**
+ * Get the height of the status bar, it will return -1 if get faield.
+ *
+ * @return The height of status bar.
+ */
+fun Context.statusBarHeight(): Int {
+    var statusBarHeight = -1
+
+    val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+    if (resourceId > 0) {
+        statusBarHeight = resources.getDimensionPixelSize(resourceId)
+    }
+
+    return statusBarHeight
+}
