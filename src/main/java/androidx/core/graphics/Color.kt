@@ -101,6 +101,8 @@ inline operator fun Color.component4() = getComponent(3)
  */
 @RequiresApi(26)
 operator fun Color.plus(c: Color): Color {
+    // TODO replace with ColorUtils.compositeColors when available.
+
     if (model != c.model) {
         throw IllegalArgumentException("Color models must match ($model vs ${c.model}")
     }
