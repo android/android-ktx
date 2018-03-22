@@ -19,12 +19,14 @@
 package androidx.core.view
 
 import android.graphics.Bitmap
+import android.graphics.Outline
 import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.support.annotation.StringRes
 import android.support.v4.view.ViewCompat
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.view.ViewTreeObserver
 import android.view.accessibility.AccessibilityEvent
 import androidx.core.graphics.applyCanvas
@@ -286,3 +288,26 @@ inline fun <reified T : ViewGroup.LayoutParams> View.updateLayoutParams(block: T
     block(params)
     layoutParams = params
 }
+
+/**
+ * Sets the Outline to the view defined by the corner radius.
+ *
+ * @see Outline.setRoundRect
+ */
+@RequiresApi(21)
+inline  fun View.round(@Px radius: Float) {
+    outlineProvider = object : ViewOutlineProvider() {
+        override fun getOutline(view: View, outline: Outline) {
+            outline.setRoundRect(0, 0, view.width, view.height, radius)
+        }
+    }
+    clipToOutline = true
+}
+
+/**
+ * Sets the Outline to the view defined by the corner radius.
+ *
+ * @see Outline.setRoundRect
+ */
+@RequiresApi(21)
+inline fun View.round(@Px radius: Int) = round(radius.toFloat())

@@ -634,6 +634,8 @@ package androidx.core.view {
     method public static boolean isVisible(android.view.View);
     method public static Runnable postDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
     method @RequiresApi(16) public static Runnable postOnAnimationDelayed(android.view.View, long delayInMillis, kotlin.jvm.functions.Function0<kotlin.Unit> action);
+    method @RequiresApi(21) public static void round(android.view.View, @Px float radius);
+    method @RequiresApi(21) public static void round(android.view.View, @Px int radius);
     method public static void setGone(android.view.View, boolean value);
     method public static void setInvisible(android.view.View, boolean value);
     method public static void setPadding(android.view.View, @Px int size);
