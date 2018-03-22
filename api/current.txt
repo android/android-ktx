@@ -27,6 +27,11 @@ package androidx.core.content {
     method public static void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }
 
+  public final class IntentKt {
+    ctor public IntentKt();
+    method public static android.content.Intent intentOf(String? action = "null", android.net.Uri? data = "null", String? type = "null", Integer? flags = "null", java.util.Set<java.lang.String> categories = "emptySet()", android.os.Bundle? extras = "null");
+  }
+
   public final class SharedPreferencesKt {
     ctor public SharedPreferencesKt();
     method public static void edit(android.content.SharedPreferences, boolean commit = "false", kotlin.jvm.functions.Function1<? super android.content.SharedPreferences.Editor,kotlin.Unit> action);

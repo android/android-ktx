@@ -17,7 +17,10 @@
 package androidx.core.content
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.TypedArray
+import android.net.Uri
+import android.os.Bundle
 import android.support.annotation.AttrRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
@@ -90,4 +93,34 @@ inline fun Context.withStyledAttributes(
     } finally {
         typedArray.recycle()
     }
+}
+
+/**
+ * Creates an [Intent] for the component [T] with explicitly specified parameters
+ *
+ * @see [Intent.setAction]
+ * @see [Intent.setData]
+ * @see [Intent.setType]
+ * @see [Intent.setDataAndType]
+ * @see [Intent.addCategory]
+ * @see [Intent.putExtras]
+ */
+inline fun <reified T : Any> Context.intentFor(
+    action: String? = null,
+    data: Uri? = null,
+    flags: Int? = null,
+    type: String? = null,
+    categories: Set<String> = emptySet(),
+    extras: Bundle? = null
+): Intent {
+    val intent = intentOf(
+        action = action,
+        data = data,
+        flags = flags,
+        type = type,
+        categories = categories,
+        extras = extras
+    )
+    intent.setClass(this, T::class.java)
+    return intent
 }
