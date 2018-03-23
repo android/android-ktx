@@ -26,6 +26,9 @@ fun Animatable2.doOnEnd(action: (Drawable) -> Unit) = addCallback(onEnd = action
 @RequiresApi(23)
 fun Animatable2.doOnStart(action: (Drawable) -> Unit) = addCallback(onStart = action)
 
+/**
+ * Add a callback to this Animatable2 using the provided actions.
+ */
 @RequiresApi(23)
 fun Animatable2.addCallback(
     onStart: ((drawable: Drawable) -> Unit)? = null,
