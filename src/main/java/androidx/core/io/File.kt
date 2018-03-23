@@ -24,9 +24,9 @@ import java.io.File
  * Returns the MIME type (content type) of this [File].
  *
  * @see MimeUtils
- * @return The MIME type for the files' extension or null iff there is none.
+ * @return The MIME type for the files' extension or null if there is none.
  */
 fun File.getMimeType(): String? {
-    return MimeTypeMap.getFileExtensionFromUrl(toString().urlEncode())
+    return MimeTypeMap.getFileExtensionFromUrl(path.urlEncode())
         ?.apply { MimeTypeMap.getSingleton().getMimeTypeFromExtension(toLowerCase()) }
 }
