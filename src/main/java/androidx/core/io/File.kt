@@ -29,4 +29,3 @@ import java.io.File
 val File.mimeTypeFromExtension: String?
     get() = MimeTypeMap.getFileExtensionFromUrl(path.urlEncode())
         ?.apply { MimeTypeMap.getSingleton().getMimeTypeFromExtension(toLowerCase()) }
-
