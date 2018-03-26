@@ -25,31 +25,31 @@ class FileTest {
 
     @Test fun jpg() {
         val photo = File("sunset.jpg")
-        val type = photo.getMimeType()
+        val type = photo.mimeTypeFromExtension
         assertSame("image/jpeg", type)
     }
 
     @Test fun png() {
         val logo = File("images/logo.png")
-        val type = logo.getMimeType()
+        val type = logo.mimeTypeFromExtension
         assertSame("image/png", type)
     }
 
     @Test fun pdfWithSpaces() {
         val thesis = File("my documents/master thesis-v5.1-final-final2.pdf")
-        val type = thesis.getMimeType()
+        val type = thesis.mimeTypeFromExtension
         assertSame("application/pdf", type)
     }
 
     @Test fun noExtension() {
         val path = File("foo/bar")
-        val type = path.getMimeType()
+        val type = path.mimeTypeFromExtension
         assertNull(type)
     }
 
     @Test fun unknownExtension() {
         val unknownFile = File("foo/bar.baz")
-        val type = unknownFile.getMimeType()
+        val type = unknownFile.mimeTypeFromExtension
         assertNull(type)
     }
 }

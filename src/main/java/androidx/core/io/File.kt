@@ -21,12 +21,12 @@ import androidx.core.text.urlEncode
 import java.io.File
 
 /**
- * Returns the MIME type (content type) of this [File].
+ * Returns the MIME type (content type) of this [File] based on its extension.
  *
  * @see MimeUtils
  * @return The MIME type for the files' extension or null if there is none.
  */
-fun File.getMimeType(): String? {
-    return MimeTypeMap.getFileExtensionFromUrl(path.urlEncode())
+val File.mimeTypeFromExtension: String?
+    get() = MimeTypeMap.getFileExtensionFromUrl(path.urlEncode())
         ?.apply { MimeTypeMap.getSingleton().getMimeTypeFromExtension(toLowerCase()) }
-}
+
