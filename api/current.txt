@@ -312,7 +312,7 @@ package androidx.core.io {
 
   public final class FileKt {
     ctor public FileKt();
-    method public static String? getMimeType(java.io.File);
+    method public static String? getMimeTypeFromExtension(java.io.File);
   }
 
 }
