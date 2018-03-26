@@ -144,7 +144,7 @@ inline fun SpannableStringBuilder.scale(
  *
  * @see SpannableStringBuilder.inSpans
  */
-inline fun SpannableStringBuilder.up(builderAction: SpannableStringBuilder.() -> Unit) =
+inline fun SpannableStringBuilder.superscript(builderAction: SpannableStringBuilder.() -> Unit) =
     inSpans(SuperscriptSpan(), builderAction = builderAction)
 
 /**
@@ -152,7 +152,7 @@ inline fun SpannableStringBuilder.up(builderAction: SpannableStringBuilder.() ->
  *
  * @see SpannableStringBuilder.inSpans
  */
-inline fun SpannableStringBuilder.down(builderAction: SpannableStringBuilder.() -> Unit) =
+inline fun SpannableStringBuilder.subscript(builderAction: SpannableStringBuilder.() -> Unit) =
     inSpans(SubscriptSpan(), builderAction = builderAction)
 
 /**
@@ -160,7 +160,7 @@ inline fun SpannableStringBuilder.down(builderAction: SpannableStringBuilder.() 
  *
  * @see SpannableStringBuilder.inSpans
  */
-inline fun SpannableStringBuilder.font(
+inline fun SpannableStringBuilder.typeface(
     family: String,
     builderAction: SpannableStringBuilder.() -> Unit
 ) = inSpans(TypefaceSpan(family), builderAction = builderAction)

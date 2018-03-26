@@ -191,7 +191,7 @@ class SpannableStringBuilderTest {
     @Test fun builderUp() {
         val result: SpannedString = buildSpannedString {
             append("Hello, ")
-            up {
+            superscript {
                 append("World")
             }
         }
@@ -208,7 +208,7 @@ class SpannableStringBuilderTest {
     @Test fun builderDown() {
         val result: SpannedString = buildSpannedString {
             append("Hello, ")
-            down {
+            subscript {
                 append("World")
             }
         }
@@ -225,7 +225,7 @@ class SpannableStringBuilderTest {
     @Test fun builderFont() {
         val result: SpannedString = buildSpannedString {
             append("Hello, ")
-            font("serif") {
+            typeface("serif") {
                 append("World")
             }
         }
