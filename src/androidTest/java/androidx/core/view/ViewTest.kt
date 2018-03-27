@@ -245,4 +245,11 @@ class ViewTest {
         val resolvedText = context.getText(R.string.text)
         assertEquals(testView.announcement, resolvedText)
     }
+
+    @Test fun scale() {
+        view.scale = 1.2f
+        assertEquals(1.2f, view.scale)
+        assertEquals(1.2f, view.scaleX)
+        assertEquals(1.2f, view.scaleY)
+    }
 }

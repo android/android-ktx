@@ -286,3 +286,18 @@ inline fun <reified T : ViewGroup.LayoutParams> View.updateLayoutParams(block: T
     block(params)
     layoutParams = params
 }
+
+/**
+ * Setting both x and y scale to view
+ *
+ * ```
+ * view.scale = 1.2f
+ * ```
+ * Returns the minimum scale of scaleY and scaleX
+ */
+var View.scale: Float
+    get() = Math.min(scaleX, scaleY)
+    set(value) {
+        scaleY = value
+        scaleX = value
+    }
