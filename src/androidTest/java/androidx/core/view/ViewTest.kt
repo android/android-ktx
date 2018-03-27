@@ -30,6 +30,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.util.concurrent.atomic.AtomicInteger
 
 class ViewTest {
     private val context = InstrumentationRegistry.getContext()
@@ -244,5 +245,15 @@ class ViewTest {
 
         val resolvedText = context.getText(R.string.text)
         assertEquals(testView.announcement, resolvedText)
+    }
+
+    @Test fun setDebounceClickListener() {
+        val ai = AtomicInteger(0)
+        view.setDebounceClickListener {
+            ai.incrementAndGet()
+        }
+        view.performClick()
+        view.performClick()
+        assertEquals(1, ai.get())
     }
 }

@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to other public API.
+@file:Suppress("NOTHING_TO_INLINE")
+
+// Aliases to other public API.
 
 package androidx.core.view
 
@@ -28,6 +30,8 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.accessibility.AccessibilityEvent
 import androidx.core.graphics.applyCanvas
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeUnit.SECONDS
 
 /**
  * Performs the given action when this view is next laid out.
@@ -285,4 +289,27 @@ inline fun <reified T : ViewGroup.LayoutParams> View.updateLayoutParams(block: T
     val params = layoutParams as T
     block(params)
     layoutParams = params
+}
+
+/**
+ * Executes the block only when the [duration] longer than the duration of two click timestamp
+ * default debounce time is 1 second
+ * @param duration [Long]
+ * @param timeUnit [TimeUnit]
+ */
+fun View.setDebounceClickListener(
+    duration: Long = 1,
+    timeUnit: TimeUnit = SECONDS,
+    block: (View) -> Unit
+) {
+    this.setOnClickListener(object : View.OnClickListener {
+        @Volatile private var lastClickTimestamp = 0L
+        override fun onClick(v: View) {
+            val now = System.currentTimeMillis()
+            if (now - lastClickTimestamp >= timeUnit.toMillis(duration)) {
+                lastClickTimestamp = now
+                block(v)
+            }
+        }
+    })
 }
