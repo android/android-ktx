@@ -328,11 +328,8 @@ package androidx.core.os {
 
   public final class HandlerKt {
     ctor public HandlerKt();
-    method public static error.NonExistentClass postAtTime(android.os.Handler, long uptimeMillis, Object? token = "null", kotlin.jvm.functions.Function0<kotlin.Unit> action);
-    method public static void postDelayed(android.os.Handler, Runnable runnable, Object? token, long delayInMillis);
-    method public static error.NonExistentClass postDelayed(android.os.Handler, long delayInMillis, Object? token = "null", kotlin.jvm.functions.Function0<kotlin.Unit> action);
-    method public static error.NonExistentClass postDelayed(android.os.Handler, long amount, java.util.concurrent.TimeUnit unit, Object? token = "null", kotlin.jvm.functions.Function0<kotlin.Unit> action);
-    method @RequiresApi(26) public static error.NonExistentClass postDelayed(android.os.Handler, java.time.Duration duration, Object? token = "null", kotlin.jvm.functions.Function0<kotlin.Unit> action);
+    method public static Runnable postAtTime(android.os.Handler, long uptimeMillis, Object? token = "null", kotlin.jvm.functions.Function0<kotlin.Unit> action);
+    method public static Runnable postDelayed(android.os.Handler, long delayInMillis, Object? token = "null", kotlin.jvm.functions.Function0<kotlin.Unit> action);
   }
 
   public final class PersistableBundleKt {
