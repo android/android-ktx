@@ -332,6 +332,11 @@ package androidx.core.os {
     method public static Runnable postDelayed(android.os.Handler, long delayInMillis, Object? token = "null", kotlin.jvm.functions.Function0<kotlin.Unit> action);
   }
 
+  public final class IntentKt {
+    ctor public IntentKt();
+    method public static void safe(android.content.Intent, android.content.pm.PackageManager packageManager, kotlin.jvm.functions.Function1<? super android.content.Intent,kotlin.Unit> onSafe, kotlin.jvm.functions.Function0<kotlin.Unit> onError);
+  }
+
   public final class PersistableBundleKt {
     ctor public PersistableBundleKt();
     method @RequiresApi(21) public static error.NonExistentClass persistableBundleOf(kotlin.Pair<java.lang.String,?>... pairs);
