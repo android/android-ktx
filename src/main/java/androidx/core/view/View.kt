@@ -19,14 +19,13 @@
 package androidx.core.view
 
 import android.graphics.Bitmap
-import android.support.annotation.Px
-import android.support.annotation.RequiresApi
-import android.support.annotation.StringRes
-import android.support.v4.view.ViewCompat
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.accessibility.AccessibilityEvent
+import androidx.annotation.Px
+import androidx.annotation.RequiresApi
+import androidx.annotation.StringRes
 import androidx.core.graphics.applyCanvas
 
 /**

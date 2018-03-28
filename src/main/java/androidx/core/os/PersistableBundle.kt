@@ -18,7 +18,7 @@ package androidx.core.os
 
 import android.os.Build
 import android.os.PersistableBundle
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 
 /**
  * Returns a new [PersistableBundle] with the given key/value pairs as elements.

@@ -172,19 +172,6 @@ package androidx.core.graphics {
     method @RequiresApi(19) public static infix android.graphics.Path xor(android.graphics.Path, android.graphics.Path p);
   }
 
-  public final class PathSegment {
-    ctor public PathSegment(android.graphics.PointF start, float startFraction, android.graphics.PointF end, float endFraction);
-    method public android.graphics.PointF component1();
-    method public float component2();
-    method public android.graphics.PointF component3();
-    method public float component4();
-    method public androidx.core.graphics.PathSegment copy(android.graphics.PointF start, float startFraction, android.graphics.PointF end, float endFraction);
-    method public android.graphics.PointF getEnd();
-    method public float getEndFraction();
-    method public android.graphics.PointF getStart();
-    method public float getStartFraction();
-  }
-
   public final class PictureKt {
     ctor public PictureKt();
     method public static android.graphics.Picture record(android.graphics.Picture, int width, int height, kotlin.jvm.functions.Function1<? super android.graphics.Canvas,kotlin.Unit> block);

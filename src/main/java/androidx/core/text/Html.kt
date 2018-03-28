@@ -17,7 +17,6 @@
 package androidx.core.text
 
 import android.annotation.SuppressLint
-import android.os.Build.VERSION.SDK_INT
 import android.text.Html
 import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.text.Html.ImageGetter
@@ -40,16 +39,7 @@ fun String.parseAsHtml(
     @SuppressLint("InlinedApi") flags: Int = FROM_HTML_MODE_LEGACY,
     imageGetter: ImageGetter? = null,
     tagHandler: TagHandler? = null
-): Spanned {
-    // TODO replace with HtmlCompat once released.
-
-    if (SDK_INT >= 24) {
-        return Html.fromHtml(this, flags, imageGetter, tagHandler)
-    }
-
-    @Suppress("DEPRECATION")
-    return Html.fromHtml(this, imageGetter, tagHandler)
-}
+): Spanned = HtmlCompat.fromHtml(this, flags, imageGetter, tagHandler)
 
 /**
  * Returns a string of HTML from the spans in this [Spanned].
@@ -58,13 +48,4 @@ fun String.parseAsHtml(
  */
 fun Spanned.toHtml(
     @SuppressLint("InlinedApi") option: Int = TO_HTML_PARAGRAPH_LINES_CONSECUTIVE
-): String {
-    // TODO replace with HtmlCompat in support library.
-
-    if (SDK_INT >= 24) {
-        return Html.toHtml(this, option)
-    }
-
-    @Suppress("DEPRECATION")
-    return Html.toHtml(this)
-}
+): String = HtmlCompat.toHtml(this, option)

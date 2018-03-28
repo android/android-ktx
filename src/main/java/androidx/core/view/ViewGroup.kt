@@ -18,10 +18,10 @@
 
 package androidx.core.view
 
-import android.support.annotation.Px
-import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.Px
+import androidx.annotation.RequiresApi
 
 /**
  * Returns the view at [index].
