@@ -21,25 +21,25 @@ import android.graphics.drawable.Drawable
 import android.support.annotation.RequiresApi
 
 @RequiresApi(23)
-fun Animatable2.doOnEnd(action: (Drawable) -> Unit) = addCallback(onEnd = action)
+fun Animatable2.doOnStart(action: (Drawable?) -> Unit) = addCallback(onStart = action)
 
 @RequiresApi(23)
-fun Animatable2.doOnStart(action: (Drawable) -> Unit) = addCallback(onStart = action)
+fun Animatable2.doOnEnd(action: (Drawable?) -> Unit) = addCallback(onEnd = action)
 
 /**
  * Add a callback to this Animatable2 using the provided actions.
  */
 @RequiresApi(23)
 fun Animatable2.addCallback(
-    onStart: ((drawable: Drawable) -> Unit)? = null,
-    onEnd: ((drawable: Drawable) -> Unit)? = null
+    onStart: ((drawable: Drawable?) -> Unit)? = null,
+    onEnd: ((drawable: Drawable?) -> Unit)? = null
 ): Animatable2.AnimationCallback {
     val callback = object : Animatable2.AnimationCallback() {
-        override fun onAnimationStart(drawable: Drawable) {
+        override fun onAnimationStart(drawable: Drawable?) {
             onStart?.invoke(drawable)
         }
 
-        override fun onAnimationEnd(drawable: Drawable) {
+        override fun onAnimationEnd(drawable: Drawable?) {
             onEnd?.invoke(drawable)
         }
     }

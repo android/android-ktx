@@ -30,6 +30,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class AnimatorTest {
+
     private val context = InstrumentationRegistry.getContext()
     private val view = View(context)
 
@@ -44,7 +45,6 @@ class AnimatorTest {
         animator.doOnStart {
             called = true
         }
-
         animator.listeners.forEach { it.onAnimationStart(animator) }
         assertTrue(called)
     }
