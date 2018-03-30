@@ -24,18 +24,17 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 @RunWith(AndroidJUnit4::class)
 class Animatable2Test {
 
-    lateinit private var animatable: Animatable2
+    private lateinit var animatable: Animatable2
 
     @Before fun init() {
-        animatable = object: Animatable2 {
+        animatable = object : Animatable2 {
 
             private var callback: AnimationCallback? = null
 
-            override fun isRunning(): Boolean  = false
+            override fun isRunning(): Boolean = false
 
             override fun registerAnimationCallback(callback: AnimationCallback?) {
                 this.callback = callback
@@ -54,7 +53,6 @@ class Animatable2Test {
             }
 
             override fun unregisterAnimationCallback(callback: AnimationCallback?) = false
-
         }
     }
 

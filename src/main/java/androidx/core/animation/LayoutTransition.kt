@@ -27,7 +27,6 @@ fun LayoutTransition.doOnStart(action: (LayoutTransition, ViewGroup, View, Int) 
 fun LayoutTransition.doOnEnd(action: (LayoutTransition, ViewGroup, View, Int) -> Unit) =
     addListener(onEnd = action)
 
-
 fun LayoutTransition.addListener(
     onStart: ((LayoutTransition, ViewGroup, View, Int) -> Unit)? = null,
     onEnd: ((LayoutTransition, ViewGroup, View, Int) -> Unit)? = null
@@ -51,7 +50,6 @@ fun LayoutTransition.addListener(
                 ) {
                     onEnd?.invoke(transition, container, view, transitionType)
                 }
-
             }
     )
 }
