@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="androidx.core.kotlin">
+
+    <uses-sdk tools:overrideLibrary="android.support.test.uiautomator.v18"/>
+
     <application>
         <activity android:name="androidx.core.TestActivity"/>
         <activity android:name="androidx.core.TestPreferenceActivity"/>
