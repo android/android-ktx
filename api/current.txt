@@ -637,6 +637,8 @@ package androidx.core.view {
     method public static void setGone(android.view.View, boolean value);
     method public static void setInvisible(android.view.View, boolean value);
     method public static void setPadding(android.view.View, @Px int size);
+    method public static void setUsageHint(android.view.View, @StringRes Integer? clickLabel = "null", @StringRes Integer? longClickLabel = "null");
+    method public static void setUsageHint(android.view.View, CharSequence? clickLabel = "null", CharSequence? longClickLabel = "null");
     method public static void setVisible(android.view.View, boolean value);
     method public static android.graphics.Bitmap toBitmap(android.view.View, android.graphics.Bitmap.Config config = "Bitmap.Config.ARGB_8888");
     method public static void updateLayoutParams(android.view.View, kotlin.jvm.functions.Function1<? super android.view.ViewGroup.LayoutParams,kotlin.Unit> block);

@@ -22,7 +22,12 @@ import android.graphics.Bitmap
 import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.support.annotation.StringRes
+import android.support.v4.view.AccessibilityDelegateCompat
 import android.support.v4.view.ViewCompat
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat.ACTION_CLICK
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat.ACTION_LONG_CLICK
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
@@ -96,6 +101,39 @@ inline fun View.doOnPreDraw(crossinline action: (view: View) -> Unit) {
 inline fun View.announceForAccessibility(@StringRes resource: Int) {
     val announcement = resources.getString(resource)
     announceForAccessibility(announcement)
+}
+
+/**
+ * Sets an [AccessibilityDelegateCompat] with custom usage hints for click and long-click actions.
+ */
+fun View.setUsageHint(@StringRes clickLabel: Int? = null, @StringRes longClickLabel: Int? = null) {
+    val resolvedClickLabel = clickLabel?.let { resources.getString(it) }
+    val resolvedLongClickLabel = longClickLabel?.let { resources.getString(it) }
+    setUsageHint(resolvedClickLabel, resolvedLongClickLabel)
+}
+
+/**
+ * Sets an [AccessibilityDelegateCompat] with custom usage hints for click and long-click actions.
+ */
+fun View.setUsageHint(clickLabel: CharSequence? = null, longClickLabel: CharSequence? = null) {
+    ViewCompat.setAccessibilityDelegate(this, object : AccessibilityDelegateCompat() {
+        override fun onInitializeAccessibilityNodeInfo(
+            host: View?,
+            info: AccessibilityNodeInfoCompat?
+        ) {
+            super.onInitializeAccessibilityNodeInfo(host, info)
+            if (host!!.isClickable) {
+                info?.addAction(
+                    AccessibilityActionCompat(ACTION_CLICK, clickLabel)
+                )
+            }
+            if (host.isLongClickable) {
+                info?.addAction(
+                    AccessibilityActionCompat(ACTION_LONG_CLICK, longClickLabel)
+                )
+            }
+        }
+    })
 }
 
 /**
