@@ -654,5 +654,13 @@ package androidx.core.widget {
     method public static android.widget.Toast toast(android.content.Context, @StringRes int resId, int duration = "Toast.LENGTH_SHORT");
   }
 
+  public final class AdapterViewKt {
+    ctor public AdapterViewKt();
+    method public static <ITEM> void onItemClick(android.widget.AdapterView<?>,kotlin.jvm.functions.Function1<? super ITEM,kotlin.Unit>);
+    method public static <ITEM> void onItemLongClick(android.widget.AdapterView<?>,kotlin.jvm.functions.Function1<? super ITEM,java.lang.Boolean>);
+    method public static <ITEM> void onItemSelected(android.widget.AdapterView<?>,kotlin.jvm.functions.Function0<kotlin.Unit> = "{}",kotlin.jvm.functions.Function4<? super android.widget.AdapterView<?>,? super android.view.View,? super java.lang.Integer,? super java.lang.Long,kotlin.Unit>);
+    method public static void onItemSelected(android.widget.AdapterView<?>,kotlin.jvm.functions.Function0<kotlin.Unit> = "{}",kotlin.jvm.functions.Function1<? super ITEM,kotlin.Unit>);
+  }
+
 }
 
