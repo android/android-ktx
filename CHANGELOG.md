@@ -4,7 +4,7 @@ Change Log
 Version 0.3 *(2018-04-02)*
 --------------------------
 
-Note: All extensions have moved into the `android.core.*` package.
+Note: All extensions have moved into the `androidx.core.*` package.
 
  * New: `Canvas.withMatrix` extension for manipulating a `Canvas` after `concat`enating a matrix.
  * New: Add `start` and `end` parameters for narrowing `Spanned.getSpans` lookup.
