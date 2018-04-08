@@ -86,7 +86,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:0.2'
+    implementation 'androidx.core:core-ktx:0.3'
 }
 ```
 
