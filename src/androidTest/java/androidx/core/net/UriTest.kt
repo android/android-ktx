@@ -16,6 +16,7 @@
 
 package androidx.core.net
 
+import android.content.ContentUris
 import android.net.Uri
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -35,5 +36,20 @@ class UriTest {
     @Test fun fileFromUri() {
         val uri = Uri.parse("path/to/my/file")
         assertEquals(File(uri.path), uri.toFile())
+    }
+
+    @Test fun appendId() {
+        val uriBuilder = Uri.parse("content://authority/path").buildUpon()
+        assertEquals(uriBuilder.appendId(4).build(), ContentUris.appendId(uriBuilder, 4).build())
+    }
+
+    @Test fun withAppendedId() {
+        val uri = Uri.parse("content://authority/path")
+        assertEquals(uri.withAppendedId(4), ContentUris.withAppendedId(uri, 4))
+    }
+
+    @Test fun parseId() {
+        val uri = Uri.parse("content://authority/path/4")
+        assertEquals(uri.parseId(), ContentUris.parseId(uri))
     }
 }

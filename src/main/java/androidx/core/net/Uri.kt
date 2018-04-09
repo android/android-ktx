@@ -18,6 +18,7 @@
 
 package androidx.core.net
 
+import android.content.ContentUris
 import android.net.Uri
 import java.io.File
 
@@ -37,3 +38,35 @@ inline fun File.toUri(): Uri = Uri.fromFile(this)
 
 /** Creates a [File] from the given [Uri]. */
 inline fun Uri.toFile(): File = File(path)
+
+/**
+ * Appends the given ID to the end of the path.
+ *
+ * @param id to append
+ *
+ * @return the builder
+ */
+inline fun Uri.Builder.appendId(id: Long): Uri.Builder = ContentUris.appendId(this, id)
+
+/**
+ * Appends the given ID to the end of the path.
+ *
+ * @param id to append
+ *
+ * @return a new URI with the given ID appended to the end of the path
+ */
+inline fun Uri.withAppendedId(id: Long): Uri = ContentUris.withAppendedId(this, id)
+
+/**
+ * Converts the last path segment to a long.
+ *
+ * <p>This supports a common convention for content URIs where an ID is
+ * stored in the last segment.
+ *
+ * @throws UnsupportedOperationException if this isn't a hierarchical URI
+ * @throws NumberFormatException if the last segment isn't a number
+ *
+ * @return the long conversion of the last segment or -1 if the path is
+ *  empty
+ */
+inline fun Uri.parseId(): Long = ContentUris.parseId(this)

@@ -312,9 +312,12 @@ package androidx.core.net {
 
   public final class UriKt {
     ctor public UriKt();
+    method public static android.net.Uri.Builder appendId(android.net.Uri.Builder, long id);
+    method public static long parseId(android.net.Uri);
     method public static java.io.File toFile(android.net.Uri);
     method public static android.net.Uri toUri(String);
     method public static android.net.Uri toUri(java.io.File);
+    method public static android.net.Uri withAppendedId(android.net.Uri, long id);
   }
 
 }
