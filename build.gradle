@@ -2,7 +2,7 @@ import com.android.build.gradle.api.BaseVariant
 
 buildscript {
     ext.versions = [
-        'kotlin': '1.2.30',
+        'kotlin': '1.2.31',
         'supportLibrary': '27.1.0',
         'atsl': '1.0.1',
     ]
@@ -13,14 +13,14 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.0-rc01'
+        classpath 'com.android.tools.build:gradle:3.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
     }
 }
 
 group = 'androidx.core'
-version = '0.3-SNAPSHOT'
+version = '0.4-SNAPSHOT'
 
 apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
@@ -69,7 +69,7 @@ dependencies {
     androidTestImplementation 'com.google.truth:truth:0.39'
     androidTestImplementation 'com.squareup.okio:okio:1.14.0'
 
-    ktlint 'com.github.shyiko:ktlint:0.19.0'
+    ktlint 'com.github.shyiko:ktlint:0.20.0'
 
     // Metalava isn't released yet. Check in its jar and explicitly track its transitive deps.
     metalava files('metalava.jar')
