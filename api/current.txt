@@ -621,6 +621,7 @@ package androidx.core.view {
     method public static void setMargins(android.view.ViewGroup.MarginLayoutParams, @Px int size);
     method public static void updateMargins(android.view.ViewGroup.MarginLayoutParams, @Px int left = "leftMargin", @Px int top = "topMargin", @Px int right = "rightMargin", @Px int bottom = "bottomMargin");
     method @RequiresApi(17) public static void updateMarginsRelative(android.view.ViewGroup.MarginLayoutParams, @Px int start = "marginStart", @Px int top = "topMargin", @Px int end = "marginEnd", @Px int bottom = "bottomMargin");
+    method public static void inflate(android.view.ViewGroup, @LayoutRes int id, boolean attach = "false");
   }
 
   public final class ViewKt {

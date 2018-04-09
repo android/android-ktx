@@ -16,11 +16,14 @@
 
 package androidx.core.view
 
+import android.content.res.Resources
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
+import android.view.InflateException
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.kotlin.test.R
 import androidx.testutils.assertThrows
 import androidx.testutils.fail
 import com.google.common.truth.Truth.assertThat
@@ -28,6 +31,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
+import org.junit.Assert.assertNotNull
 import org.junit.Test
 
 class ViewGroupTest {
@@ -260,5 +264,28 @@ class ViewGroupTest {
         assertEquals(40, layoutParams.bottomMargin)
         assertEquals(10, layoutParams.marginStart)
         assertEquals(30, layoutParams.marginEnd)
+    }
+
+    @Test fun inflate() {
+        viewGroup.removeAllViews()
+        assertEquals(0, viewGroup.childCount)
+
+        var view = viewGroup.inflate<ViewGroup>(R.layout.test_activity)
+        assertNotNull(view)
+        assertEquals(0, viewGroup.childCount)
+
+        view = viewGroup.inflate(R.layout.test_activity, true)
+        assertNotNull(view)
+        assertEquals(1, viewGroup.childCount)
+
+        try {
+            view.inflate<View>(-1)
+            fail("should throw exception")
+        } catch (e: Exception) {
+            when (e) {
+                is InflateException, is Resources.NotFoundException -> {}
+                else -> fail("should throw InflateException or Resources.NotFoundException")
+            }
+        }
     }
 }

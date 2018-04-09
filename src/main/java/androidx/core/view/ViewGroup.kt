@@ -18,8 +18,10 @@
 
 package androidx.core.view
 
+import android.support.annotation.LayoutRes
 import android.support.annotation.Px
 import android.support.annotation.RequiresApi
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
@@ -119,4 +121,26 @@ inline fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
     topMargin = top
     marginEnd = end
     bottomMargin = bottom
+}
+
+/**
+ * Inflate a new view hierarchy from the specified xml resource with providing current `ViewGroup`
+ * as optional parent for a new view hierarchy
+ *
+ * @param id ID for an XML layout resource to load (e.g., `R.layout.main_page`)
+ *
+ * @param attach Whether the inflated hierarchy should be attached to the root parameter?
+ * If `false`, root is only used to create the correct subclass of `LayoutParams` for the root view
+ * in the XML.
+ *
+ * @return The root View of the inflated hierarchy. If root was supplied and [attach] is `true`,
+ * this is root; otherwise it is the root of the inflated XML file.
+ *
+ * @throws android.view.InflateException if there is an error.
+ *
+ * @see LayoutInflater.inflate
+ * */
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T : View> ViewGroup.inflate(@LayoutRes id: Int, attach: Boolean = false): T {
+    return LayoutInflater.from(context).inflate(id, this, attach) as T
 }
