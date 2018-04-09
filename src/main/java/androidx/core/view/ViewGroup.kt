@@ -125,7 +125,7 @@ inline fun ViewGroup.MarginLayoutParams.updateMarginsRelative(
 
 /**
  * Inflate a new view hierarchy from the specified xml resource with providing current `ViewGroup`
- * as optional parent for new view hierarchy
+ * as optional parent for a new view hierarchy
  *
  * @param id ID for an XML layout resource to load (e.g., `R.layout.main_page`)
  *
