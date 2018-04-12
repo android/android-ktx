@@ -648,6 +648,11 @@ package androidx.core.view {
 
 package androidx.core.widget {
 
+  public final class TextViewKt {
+    ctor public TextViewKt();
+    method public static void validate(android.widget.TextView, kotlin.jvm.functions.Function1<? super java.lang.CharSequence,java.lang.String> check);
+  }
+
   public final class ToastKt {
     ctor public ToastKt();
     method public static android.widget.Toast toast(android.content.Context, CharSequence text, int duration = "Toast.LENGTH_SHORT");
