@@ -53,11 +53,7 @@ inline fun SharedPreferences.edit(
 }
 
 inline operator fun <reified T : Any> SharedPreferences.get(key: String, defaultValue: T? = null): T? {
-    return get(key, defaultValue, T::class.java)
-}
-
-inline operator fun <reified T: Any> SharedPreferences.get(key: String): T? {
-    return get(key = key, clazz = T::class.java)
+    return get(T::class.java, key, defaultValue)
 }
 
 inline operator fun <reified T: Any> SharedPreferences.set(key: String, value: T?) {
@@ -69,7 +65,7 @@ inline fun <reified T: Any> SharedPreferences.set(key: String) {
 }
 
 @Suppress("UNCHECKED_CAST")
-operator fun <T : Any> SharedPreferences.get(key: String, defaultValue: T? = null, clazz: Class<T>)
+operator fun <T : Any> SharedPreferences.get(clazz: Class<T>, key: String, defaultValue: T? = null)
         :T? {
     return when (defaultValue){
         null -> when{
@@ -167,17 +163,17 @@ operator fun <T: Any> SharedPreferences.set(clazz: Class<T>, key: String, value:
 }
 
 class SharedPreferencesDelegate<T: Any>(
-    private val clazz: Class<T>,
     private val preferenceName: String? = null,
     private val mode: Int = 0,
+    private val clazz: Class<T>,
     private val key: String,
     private val defaultValue: T?):
     ContextDelegateProperty<T> {
 
     override fun getValue(thisRef: Context, property: KProperty<*>): T? {
         return if(preferenceName != null)
-            thisRef.getSharedPreferences(preferenceName, mode)[key, defaultValue, clazz]
-        else PreferenceManager.getDefaultSharedPreferences(thisRef)[key, defaultValue, clazz]
+            thisRef.getSharedPreferences(preferenceName, mode)[clazz, key, defaultValue]
+        else PreferenceManager.getDefaultSharedPreferences(thisRef)[clazz, key, defaultValue]
     }
 
     override fun setValue(thisRef: Context, property: KProperty<*>, value: T?) {

@@ -19,7 +19,7 @@ package androidx.core
 import android.app.Activity
 import android.os.Bundle
 import android.preference.PreferenceFragment
-import androidx.core.content.bindPreference
+import androidx.core.content.bindSharedPreference
 import androidx.core.kotlin.test.R
 
 class TestPreferenceActivity : Activity() {
@@ -28,7 +28,7 @@ class TestPreferenceActivity : Activity() {
         const val TAG = "TestPreferenceActivity"
     }
 
-    var preference = bindPreference("key","default")
+    var preference = bindSharedPreference("key","default")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

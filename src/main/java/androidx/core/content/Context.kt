@@ -101,11 +101,11 @@ interface ContextDelegateProperty<T> {
 }
 
 
-inline fun <reified T: Any> bindPreference(
+inline fun <reified T: Any> bindSharedPreference(
     key: String,
     defaultValue: T? = null,
     preferencesName: String? = null,
     mode: Int = 0): SharedPreferencesDelegate<T>
-        = SharedPreferencesDelegate(T::class.java, preferencesName, mode, key, defaultValue)
+        = SharedPreferencesDelegate(preferencesName, mode, T::class.java, key, defaultValue)
 
 
