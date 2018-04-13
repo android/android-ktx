@@ -14,11 +14,24 @@ package androidx.core.animation {
 
 }
 
+package androidx.core.app {
+
+  public final class ActivityKt {
+    ctor public ActivityKt();
+  }
+
+}
+
 package androidx.core.content {
 
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
     method public static error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
+  }
+
+  public interface ContextDelegateProperty<T> {
+    method public operator T? getValue(android.content.Context thisRef, kotlin.reflect.KProperty<?> property);
+    method public operator void setValue(android.content.Context thisRef, kotlin.reflect.KProperty<?> property, T? value);
   }
 
   public final class ContextKt {
@@ -27,9 +40,17 @@ package androidx.core.content {
     method public static void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }
 
+  public final class SharedPreferencesDelegate<T> implements androidx.core.content.ContextDelegateProperty<T> {
+    ctor public SharedPreferencesDelegate(String? preferenceName, int mode, Class<T> clazz, String key, T? defaultValue);
+    method public T? getValue(android.content.Context thisRef, kotlin.reflect.KProperty<?> property);
+    method public void setValue(android.content.Context thisRef, kotlin.reflect.KProperty<?> property, T? value);
+  }
+
   public final class SharedPreferencesKt {
     ctor public SharedPreferencesKt();
     method public static void edit(android.content.SharedPreferences, boolean commit = "false", kotlin.jvm.functions.Function1<? super android.content.SharedPreferences.Editor,kotlin.Unit> action);
+    method public static operator <T> T? get(android.content.SharedPreferences, Class<T> clazz, String key, T? defaultValue = "null");
+    method public static operator <T> void set(android.content.SharedPreferences, Class<T> clazz, String key, T? value);
   }
 
 }
