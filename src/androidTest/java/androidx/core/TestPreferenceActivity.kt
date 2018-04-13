@@ -28,7 +28,7 @@ class TestPreferenceActivity : Activity() {
         const val TAG = "TestPreferenceActivity"
     }
 
-    var preference = bindSharedPreference("key","default")
+    var preference = bindSharedPreference("key", "default")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -52,21 +52,20 @@ inline fun SharedPreferences.edit(
     }
 }
 
-inline operator fun <reified T : Any> SharedPreferences.get(key: String, defaultValue: T? = null): T? {
-    return get(T::class.java, key, defaultValue)
-}
+inline operator fun <reified T : Any> SharedPreferences.get(key: String, defaultValue: T? = null):
+        T? = get(T::class.java, key, defaultValue)
 
-inline operator fun <reified T: Any> SharedPreferences.set(key: String, value: T?) {
+inline operator fun <reified T : Any> SharedPreferences.set(key: String, value: T?) {
     set(T::class.java, key, value)
 }
 
-inline fun <reified T: Any> SharedPreferences.set(key: String) {
+inline fun <reified T : Any> SharedPreferences.set(key: String) {
     set<T>(key, null)
 }
 
 @Suppress("UNCHECKED_CAST")// Checked by reflection.
-operator fun <T : Any> SharedPreferences.get(clazz: Class<T>, key: String, defaultValue: T? = null)
-        :T? = when (defaultValue){
+operator fun <T : Any> SharedPreferences.get(clazz: Class<T>, key: String, defaultValue: T? = null):
+        T? = when (defaultValue) {
     null -> when {
         clazz.isAssignableFrom(String::class.java) -> getString(key, defaultValue) as T?
         clazz.isAssignableFrom(Set::class.java) ->
@@ -79,11 +78,10 @@ operator fun <T : Any> SharedPreferences.get(clazz: Class<T>, key: String, defau
                 }
             }
         else ->
-            throw IllegalArgumentException("Illegal nullable type ${clazz.canonicalName}"
-                    + "for key \"$key\"")
-
+            throw IllegalArgumentException("Illegal nullable type ${clazz.canonicalName}" +
+                    "for key \"$key\"")
     }
-    else -> when(defaultValue){
+    else -> when (defaultValue) {
         is Float -> getFloat(key, defaultValue) as T
         is Int -> getInt(key, defaultValue) as T
         is Long -> getLong(key, defaultValue) as T
@@ -114,9 +112,9 @@ operator fun <T : Any> SharedPreferences.get(clazz: Class<T>, key: String, defau
  * if [value] is null and [clazz] isn't [String] or [Set] of [String]
  * if [value] isn't null but it's type is not supported by [SharedPreferences]
  */
-operator fun <T: Any> SharedPreferences.set(clazz: Class<T>, key: String, value: T?) {
-    when(value){
-        null -> when{
+operator fun <T : Any> SharedPreferences.set(clazz: Class<T>, key: String, value: T?) {
+    when (value) {
+        null -> when {
             clazz.isAssignableFrom(String::class.java) ->
                 edit { putString(key, value) }
 
@@ -130,9 +128,9 @@ operator fun <T: Any> SharedPreferences.set(clazz: Class<T>, key: String, value:
             else -> throw IllegalArgumentException(
                 "Illegal nullable value type ${javaClass.canonicalName} for key \"$key\"")
         }
-        else -> when(value){
-            is Boolean -> edit{ putBoolean(key, value) }
-            is Float -> edit{ putFloat(key, value) }
+        else -> when (value) {
+            is Boolean -> edit { putBoolean(key, value) }
+            is Float -> edit { putFloat(key, value) }
             is Int -> edit { putInt(key, value) }
             is Long -> edit { putLong(key, value) }
             is String -> edit { putString(key, value) }
@@ -159,22 +157,21 @@ operator fun <T: Any> SharedPreferences.set(clazz: Class<T>, key: String, value:
  * @constructor
  * @param preferenceName
  */
-class SharedPreferencesDelegate<T: Any>(
+class SharedPreferencesDelegateProperty<T : Any>(
     private val preferenceName: String? = null,
     private val mode: Int = 0,
     private val clazz: Class<T>,
     private val key: String,
-    private val defaultValue: T?):
-    ContextDelegateProperty<T> {
-
-    override fun getValue(thisRef: Context, property: KProperty<*>): T? {
-        return if(preferenceName != null)
+    private val defaultValue: T?
+) {
+    fun getValue(thisRef: Context, property: KProperty<*>): T? {
+        return if (preferenceName != null)
             thisRef.getSharedPreferences(preferenceName, mode)[clazz, key, defaultValue]
         else PreferenceManager.getDefaultSharedPreferences(thisRef)[clazz, key, defaultValue]
     }
 
-    override fun setValue(thisRef: Context, property: KProperty<*>, value: T?) {
-        if(preferenceName != null)
+    fun setValue(thisRef: Context, property: KProperty<*>, value: T?) {
+        if (preferenceName != null)
             thisRef.getSharedPreferences(preferenceName, mode)[clazz, key] = value
         else PreferenceManager.getDefaultSharedPreferences(thisRef)[clazz, key] = value
     }

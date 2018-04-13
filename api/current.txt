@@ -29,19 +29,14 @@ package androidx.core.content {
     method public static error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
-  public interface ContextDelegateProperty<T> {
-    method public operator T? getValue(android.content.Context thisRef, kotlin.reflect.KProperty<?> property);
-    method public operator void setValue(android.content.Context thisRef, kotlin.reflect.KProperty<?> property, T? value);
-  }
-
   public final class ContextKt {
     ctor public ContextKt();
     method public static void withStyledAttributes(android.content.Context, android.util.AttributeSet? set = "null", int[] attrs, @AttrRes int defStyleAttr = "0", @StyleRes int defStyleRes = "0", kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
     method public static void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }
 
-  public final class SharedPreferencesDelegate<T> implements androidx.core.content.ContextDelegateProperty<T> {
-    ctor public SharedPreferencesDelegate(String? preferenceName, int mode, Class<T> clazz, String key, T? defaultValue);
+  public final class SharedPreferencesDelegateProperty<T> {
+    ctor public SharedPreferencesDelegateProperty(String? preferenceName, int mode, Class<T> clazz, String key, T? defaultValue);
     method public T? getValue(android.content.Context thisRef, kotlin.reflect.KProperty<?> property);
     method public void setValue(android.content.Context thisRef, kotlin.reflect.KProperty<?> property, T? value);
   }
