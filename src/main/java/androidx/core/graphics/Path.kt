@@ -48,6 +48,8 @@ data class PathSegment(
  */
 @RequiresApi(26)
 fun Path.flatten(error: Float = 0.5f): Iterable<PathSegment> {
+    // TODO replace with PathUtils.flatten once available.
+
     val pathData = approximate(error)
     val pointCount = pathData.size / 3
     val segments = ArrayList<PathSegment>(pointCount / 2)
@@ -63,7 +65,7 @@ fun Path.flatten(error: Float = 0.5f): Iterable<PathSegment> {
         val px = pathData[prevIndex + 1]
         val py = pathData[prevIndex + 2]
 
-        if (d != pd && (x != py || y != py)) {
+        if (d != pd && (x != px || y != py)) {
             segments.add(PathSegment(PointF(px, py), pd, PointF(x, y), d))
         }
     }
