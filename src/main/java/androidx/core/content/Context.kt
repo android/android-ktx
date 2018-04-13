@@ -16,25 +16,12 @@
 
 package androidx.core.content
 
-import android.app.Activity
-import android.app.Fragment
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.TypedArray
-import android.os.Bundle
-import android.preference.PreferenceManager
 import android.support.annotation.AttrRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
 import android.util.AttributeSet
-import androidx.app.ActivityIntentExtraDelegate
-import androidx.content.delegate
-import androidx.core.os.get
-import androidx.core.os.set
-import java.io.Serializable
-import java.util.ArrayList
-import kotlin.properties.ReadOnlyProperty
-import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 /**
@@ -106,45 +93,19 @@ inline fun Context.withStyledAttributes(
     }
 }
 
-fun <T: Any> bindPreference(key: String, defaultValue: T? = null, preferenceName: String? = null, mode: Int = 0):
-        SharedPreferencesDelegate<T> {
-    return SharedPreferencesDelegate(preferenceName, mode, key, defaultValue)
-}
+interface ContextDelegateProperty<T> {
 
-class SharedPreferencesDelegate<T: Any>(
-    private val preferenceName: String? = null,
-    private val mode: Int = 0,
-    val key: String,
-    val defaultValue: T?):
-    SharedPreferencesProperty<T> {
-
-    override fun getValue(thisRef: Context, property: KProperty<*>): T? {
-        return if(preferenceName != null)
-            thisRef.getSharedPreferences(preferenceName, mode)[key, defaultValue]
-        else PreferenceManager.getDefaultSharedPreferences(thisRef)[key, defaultValue]
-    }
-
-    override fun setValue(thisRef: Context, property: KProperty<*>, value: T?) {
-        if(preferenceName != null)
-            thisRef.getSharedPreferences(preferenceName, mode)[key] = value
-        else PreferenceManager.getDefaultSharedPreferences(thisRef)[key] = value
-    }
-}
-
-interface SharedPreferencesProperty<T> {
-    /**
-     * Returns the value of the property for the given object.
-     * @param thisRef the object for which the value is requested.
-     * @param property the metadata for the property.
-     * @return the property value.
-     */
     operator fun getValue(thisRef: Context, property: KProperty<*>): T?
 
-    /**
-     * Sets the value of the property for the given object.
-     * @param thisRef the object for which the value is requested.
-     * @param property the metadata for the property.
-     * @param value the value to set.
-     */
     operator fun setValue(thisRef: Context, property: KProperty<*>, value: T?)
 }
+
+
+inline fun <reified T: Any> bindPreference(
+    key: String,
+    defaultValue: T? = null,
+    preferencesName: String? = null,
+    mode: Int = 0): SharedPreferencesDelegate<T>
+        = SharedPreferencesDelegate(T::class.java, preferencesName, mode, key, defaultValue)
+
+
