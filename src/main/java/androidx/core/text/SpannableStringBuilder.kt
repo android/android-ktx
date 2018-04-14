@@ -27,6 +27,8 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StrikethroughSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
+import android.text.style.SubscriptSpan
+import android.text.style.SuperscriptSpan
 import android.text.style.UnderlineSpan
 
 /**
@@ -134,3 +136,19 @@ inline fun SpannableStringBuilder.scale(
     proportion: Float,
     builderAction: SpannableStringBuilder.() -> Unit
 ) = inSpans(RelativeSizeSpan(proportion), builderAction = builderAction)
+
+/**
+ * Wrap appended text in [builderAction] in a [SuperscriptSpan].
+ *
+ * @see SpannableStringBuilder.inSpans
+ */
+inline fun SpannableStringBuilder.superscript(builderAction: SpannableStringBuilder.() -> Unit) =
+    inSpans(SuperscriptSpan(), builderAction = builderAction)
+
+/**
+ * Wrap appended text in [builderAction] in a [SubscriptSpan].
+ *
+ * @see SpannableStringBuilder.inSpans
+ */
+inline fun SpannableStringBuilder.subscript(builderAction: SpannableStringBuilder.() -> Unit) =
+    inSpans(SubscriptSpan(), builderAction = builderAction)
