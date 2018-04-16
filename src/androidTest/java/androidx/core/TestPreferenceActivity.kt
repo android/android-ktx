@@ -28,13 +28,14 @@ class TestPreferenceActivity : Activity() {
         const val TAG = "TestPreferenceActivity"
     }
 
-    var preference = bindSharedPreference("key", "default")
+    var preference by bindSharedPreference("key", "default")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fragmentManager.beginTransaction()
             .add(android.R.id.content, TestPreferenceFragment(), TAG)
             .commitNow()
+        preference = "test";
     }
 
     class TestPreferenceFragment : PreferenceFragment() {

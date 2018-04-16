@@ -82,6 +82,7 @@ operator fun <T : Any> SharedPreferences.get(clazz: Class<T>, key: String, defau
                     "for key \"$key\"")
     }
     else -> when (defaultValue) {
+        is Boolean -> getBoolean(key, defaultValue) as T
         is Float -> getFloat(key, defaultValue) as T
         is Int -> getInt(key, defaultValue) as T
         is Long -> getLong(key, defaultValue) as T
@@ -157,22 +158,24 @@ operator fun <T : Any> SharedPreferences.set(clazz: Class<T>, key: String, value
  * @constructor
  * @param preferenceName
  */
-class SharedPreferencesDelegateProperty<T : Any>(
+class SharedPreferencesDelegate<T : Any>(
     private val preferenceName: String? = null,
     private val mode: Int = 0,
     private val clazz: Class<T>,
     private val key: String,
     private val defaultValue: T?
 ) {
-    fun getValue(thisRef: Context, property: KProperty<*>): T? {
+    operator fun getValue(thisRef: Context, property: KProperty<*>): T? {
         return if (preferenceName != null)
             thisRef.getSharedPreferences(preferenceName, mode)[clazz, key, defaultValue]
         else PreferenceManager.getDefaultSharedPreferences(thisRef)[clazz, key, defaultValue]
     }
 
-    fun setValue(thisRef: Context, property: KProperty<*>, value: T?) {
+    operator fun setValue(thisRef: Context, property: KProperty<*>, value: T?) {
         if (preferenceName != null)
             thisRef.getSharedPreferences(preferenceName, mode)[clazz, key] = value
         else PreferenceManager.getDefaultSharedPreferences(thisRef)[clazz, key] = value
     }
 }
+
+

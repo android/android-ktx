@@ -22,6 +22,7 @@ import android.support.annotation.AttrRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
 import android.util.AttributeSet
+import kotlin.reflect.KProperty
 
 /**
  * Return the handle to a system-level service by class.
@@ -92,10 +93,24 @@ inline fun Context.withStyledAttributes(
     }
 }
 
+class SharedPreferencesLoader<T: Any>(
+    private val preferenceName: String? = null,
+    private val mode: Int = 0,
+    private val clazz: Class<T>,
+    private val key: String,
+    private val defaultValue: T?) {
+    operator fun provideDelegate(
+        thisRef: Context,
+        prop: KProperty<*>
+    ): SharedPreferencesDelegate<T> {
+        return SharedPreferencesDelegate(preferenceName, mode, clazz, key, defaultValue)
+    }
+}
+
 inline fun <reified T : Any> bindSharedPreference(
     key: String,
     defaultValue: T? = null,
     preferencesName: String? = null,
     mode: Int = 0
-): SharedPreferencesDelegateProperty<T> =
-    SharedPreferencesDelegateProperty(preferencesName, mode, T::class.java, key, defaultValue)
+): SharedPreferencesLoader<T> =
+    SharedPreferencesLoader(preferencesName, mode, T::class.java, key, defaultValue)

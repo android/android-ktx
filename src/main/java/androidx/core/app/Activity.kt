@@ -17,11 +17,11 @@
 package androidx.core.app
 
 import android.app.Activity
-import androidx.core.content.SharedPreferencesDelegateProperty
+import androidx.core.content.SharedPreferencesDelegate
 
 inline fun <reified T : Any> Activity.bindPreference(
     key: String,
     defaultValue: T? = null,
     mode: Int = 0
-): SharedPreferencesDelegateProperty<T> =
-    SharedPreferencesDelegateProperty(localClassName, mode, T::class.java, key, defaultValue)
+): SharedPreferencesDelegate<T> =
+    SharedPreferencesDelegate(localClassName, mode, T::class.java, key, defaultValue)
