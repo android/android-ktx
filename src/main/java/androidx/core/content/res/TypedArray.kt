@@ -20,6 +20,7 @@ import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.support.annotation.AnyRes
 import android.support.annotation.ColorInt
 import android.support.annotation.Dimension
@@ -224,12 +225,29 @@ fun TypedArray.getTextArrayOrThrow(@StyleableRes index: Int): Array<CharSequence
 }
 
 /**
- * Executes the given [block] function on this TypedArray and then recycles it.
+ * Executes the given [block] function on this TypedArray and then recycles it whether an exception
+ * is thrown or not.
  *
  * @see kotlin.io.use
  */
 inline fun <R> TypedArray.use(block: (TypedArray) -> R): R {
-    return block(this).also {
-        recycle()
+    var exception: Throwable? = null
+    try {
+        return block(this)
+    } catch (e: Throwable) {
+        exception = e
+        throw e
+    } finally {
+        if (exception == null) {
+            recycle()
+        } else {
+            try {
+                recycle()
+            } catch (recycleException: Throwable) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    exception.addSuppressed(recycleException)
+                }
+            }
+        }
     }
 }
