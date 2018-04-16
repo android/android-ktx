@@ -218,4 +218,19 @@ class TypedArrayTest {
             array.recycle()
         }
     }
+
+    @Test fun useRecyclesArrayOnException() {
+        val attrs = context.getAttributeSet(R.layout.typed_array)
+        val array = context.obtainStyledAttributes(attrs, R.styleable.TypedArrayTypes)
+
+        assertThrows<IllegalArgumentException> {
+            array.use {
+                throw IllegalArgumentException("Use block threw an exception.")
+            }
+        }.hasMessageThat().isEqualTo("Use block threw an exception.")
+
+        assertThrows<RuntimeException> {
+            array.recycle()
+        }
+    }
 }
