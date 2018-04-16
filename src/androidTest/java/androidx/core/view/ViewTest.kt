@@ -17,11 +17,14 @@
 package androidx.core.view
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.support.test.InstrumentationRegistry
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.ScrollView
+import android.widget.TextView
 import androidx.core.kotlin.test.R
 import androidx.testutils.assertThrows
 import androidx.testutils.fail
@@ -30,6 +33,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.util.UUID
 
 class ViewTest {
     private val context = InstrumentationRegistry.getContext()
@@ -173,6 +177,52 @@ class ViewTest {
         val bitmap = view.toBitmap(Bitmap.Config.RGB_565)
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
+    }
+
+    @Test
+    fun toBitmapScrolls() {
+        val textView = TextView(context)
+        val scrollView = ScrollView(context)
+        val lp = ViewGroup.LayoutParams(200, ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        scrollView.isVerticalScrollBarEnabled = false
+        scrollView.addView(textView, lp)
+        textView.textSize = 10f
+        textView.setTextColor(Color.BLACK)
+        textView.text = (0..10).joinToString("\n") {
+            UUID.randomUUID().toString()
+        }
+
+        scrollView.measure(
+                View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.EXACTLY))
+        scrollView.layout(0, 0, 100, 100)
+
+        val wholeViewBitmap = textView.toBitmap()
+        val noScroll = scrollView.toBitmap()
+
+        val scrollX = 50
+        val scrollY = 100
+        scrollView.scrollTo(scrollX, scrollY)
+
+        val scrolls = scrollView.toBitmap()
+
+        assertFalse(areBitmapsEqual(noScroll, scrolls, 0, 0))
+        assertTrue(areBitmapsEqual(noScroll, wholeViewBitmap, 0, 0))
+        assertTrue(areBitmapsEqual(scrolls, wholeViewBitmap, scrollX, scrollY))
+    }
+
+    private fun areBitmapsEqual(lhs: Bitmap, rhs: Bitmap, offX: Int, offY: Int): Boolean {
+        val width = lhs.width
+        val height = lhs.height
+        for (x in 0 until width) {
+            for (y in 0 until height) {
+                if (lhs.getPixel(x, y) != rhs.getPixel(x + offX, y + offY)) {
+                    return false
+                }
+            }
+        }
+        return true
     }
 
     @Test fun isVisible() {
