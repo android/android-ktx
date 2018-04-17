@@ -353,6 +353,7 @@ package androidx.core.preference {
     method public static void forEachIndexed(android.preference.PreferenceGroup, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.preference.Preference,kotlin.Unit> action);
     method public static operator android.preference.Preference get(android.preference.PreferenceGroup, CharSequence key);
     method public static operator android.preference.Preference get(android.preference.PreferenceGroup, int index);
+    method public static kotlin.sequences.Sequence<android.preference.Preference> getChildren(android.preference.PreferenceGroup);
     method public static int getSize(android.preference.PreferenceGroup);
     method public static boolean isEmpty(android.preference.PreferenceGroup);
     method public static boolean isNotEmpty(android.preference.PreferenceGroup);
