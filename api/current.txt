@@ -16,6 +16,15 @@ package androidx.core.animation {
 
 package androidx.core.content {
 
+  public final class ClipDataKt {
+    ctor public ClipDataKt();
+    method public static operator boolean contains(android.content.ClipData, android.content.ClipData.Item item);
+    method public static void forEach(android.content.ClipData, kotlin.jvm.functions.Function1<? super android.content.ClipData.Item,kotlin.Unit> action);
+    method public static void forEachIndexed(android.content.ClipData, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.content.ClipData.Item,kotlin.Unit> action);
+    method public static operator android.content.ClipData.Item get(android.content.ClipData, int index);
+    method public static operator java.util.Iterator<android.content.ClipData.Item> iterator(android.content.ClipData);
+  }
+
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
     method public static error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
