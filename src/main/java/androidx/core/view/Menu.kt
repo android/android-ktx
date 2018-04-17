@@ -39,6 +39,9 @@ operator fun Menu.contains(item: MenuItem): Boolean {
     return false
 }
 
+/** Removes [item] from this menu. */
+inline operator fun Menu.minusAssign(item: MenuItem) = removeItem(item.itemId)
+
 /** Returns the number of items in this menu. */
 inline val Menu.size get() = size()
 
@@ -69,3 +72,9 @@ operator fun Menu.iterator() = object : MutableIterator<MenuItem> {
     override fun next() = getItem(index++) ?: throw IndexOutOfBoundsException()
     override fun remove() = removeItem(--index)
 }
+
+/** Returns a [Sequence] over the items in this menu. */
+val Menu.children: Sequence<MenuItem>
+    get() = object : Sequence<MenuItem> {
+        override fun iterator() = this@children.iterator()
+    }
