@@ -33,7 +33,6 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.util.UUID
 
 class ViewTest {
     private val context = InstrumentationRegistry.getContext()
@@ -189,9 +188,16 @@ class ViewTest {
         scrollView.addView(textView, lp)
         textView.textSize = 10f
         textView.setTextColor(Color.BLACK)
-        textView.text = (0..10).joinToString("\n") {
-            UUID.randomUUID().toString()
-        }
+        textView.text = """
+            Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit.
+            Cras lobortis tortor felis,
+            ac scelerisque tortor varius at.
+            Suspendisse a neque sed purus.
+            Class aptent taciti sociosqu ad
+            litora torquent per conubia nostra,
+            per inceptos himenaeos.
+        """.trimIndent()
 
         scrollView.measure(
                 View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.EXACTLY),
