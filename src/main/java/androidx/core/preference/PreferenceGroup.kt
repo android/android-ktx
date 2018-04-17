@@ -88,3 +88,9 @@ operator fun PreferenceGroup.iterator() = object : MutableIterator<Preference> {
         removePreference(getPreference(--index))
     }
 }
+
+/** Returns a [Sequence] over the preferences in this preference group. */
+val PreferenceGroup.children: Sequence<Preference>
+    get() = object : Sequence<Preference> {
+        override fun iterator() = this@children.iterator()
+    }
