@@ -19,12 +19,11 @@ package androidx.core.view
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.support.test.InstrumentationRegistry
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import android.widget.ScrollView
-import android.widget.TextView
 import androidx.core.kotlin.test.R
 import androidx.testutils.assertThrows
 import androidx.testutils.fail
@@ -180,55 +179,25 @@ class ViewTest {
 
     @Test
     fun toBitmapScrolls() {
-        val textView = TextView(context)
-        val scrollView = ScrollView(context)
-        val lp = ViewGroup.LayoutParams(200, ViewGroup.LayoutParams.WRAP_CONTENT)
+        val scrollView = LayoutInflater.from(context)!!
+                .inflate(R.layout.test_bitmap_scrolls, null, false)
 
-        scrollView.isVerticalScrollBarEnabled = false
-        scrollView.addView(textView, lp)
-        textView.textSize = 10f
-        textView.setTextColor(Color.BLACK)
-        textView.text = """
-            Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit.
-            Cras lobortis tortor felis,
-            ac scelerisque tortor varius at.
-            Suspendisse a neque sed purus.
-            Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra,
-            per inceptos himenaeos.
-        """.trimIndent()
+        val size = 100
 
         scrollView.measure(
-                View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.EXACTLY))
-        scrollView.layout(0, 0, 100, 100)
+                View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.EXACTLY))
+        scrollView.layout(0, 0, size, size)
 
-        val wholeViewBitmap = textView.toBitmap()
         val noScroll = scrollView.toBitmap()
+        assertEquals(Color.WHITE, noScroll.getPixel(0, 0))
+        assertEquals(Color.WHITE, noScroll.getPixel(size - 1, size - 1))
 
-        val scrollX = 50
-        val scrollY = 100
-        scrollView.scrollTo(scrollX, scrollY)
-
+        scrollView.scrollTo(0, size)
         val scrolls = scrollView.toBitmap()
 
-        assertFalse(areBitmapsEqual(noScroll, scrolls, 0, 0))
-        assertTrue(areBitmapsEqual(noScroll, wholeViewBitmap, 0, 0))
-        assertTrue(areBitmapsEqual(scrolls, wholeViewBitmap, scrollX, scrollY))
-    }
-
-    private fun areBitmapsEqual(lhs: Bitmap, rhs: Bitmap, offX: Int, offY: Int): Boolean {
-        val width = lhs.width
-        val height = lhs.height
-        for (x in 0 until width) {
-            for (y in 0 until height) {
-                if (lhs.getPixel(x, y) != rhs.getPixel(x + offX, y + offY)) {
-                    return false
-                }
-            }
-        }
-        return true
+        assertEquals(Color.BLACK, scrolls.getPixel(0, 0))
+        assertEquals(Color.BLACK, scrolls.getPixel(size - 1, size - 1))
     }
 
     @Test fun isVisible() {

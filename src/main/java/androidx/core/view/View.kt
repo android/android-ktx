@@ -28,7 +28,6 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.accessibility.AccessibilityEvent
 import androidx.core.graphics.applyCanvas
-import androidx.core.graphics.withSave
 
 /**
  * Performs the given action when this view is next laid out.
@@ -198,10 +197,8 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
         throw IllegalStateException("View needs to be laid out before calling toBitmap()")
     }
     return Bitmap.createBitmap(width, height, config).applyCanvas {
-        withSave {
-            translate(-scrollX.toFloat(), -scrollY.toFloat())
-            draw(this)
-        }
+        translate(-scrollX.toFloat(), -scrollY.toFloat())
+        draw(this)
     }
 }
 
