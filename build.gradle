@@ -79,7 +79,7 @@ dependencies {
     metalava 'com.android.tools.lint:lint-checks:26.2.0-alpha11'
     metalava 'com.android.tools.lint:lint-gradle:26.2.0-alpha11'
     metalava 'com.android.tools.lint:lint:26.2.0-alpha11'
-    metalava 'org.jetbrains.kotlin:kotlin-stdlib:1.2.40'
+    metalava 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.40'
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
