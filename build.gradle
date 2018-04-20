@@ -3,7 +3,7 @@ import com.android.build.gradle.api.BaseVariant
 buildscript {
     ext.versions = [
         'kotlin': '1.2.40',
-        'supportLibrary': '27.1.0',
+        'supportLibrary': '27.1.1',
         'atsl': '1.0.1',
     ]
 
