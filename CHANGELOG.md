@@ -1,6 +1,19 @@
 Change Log
 ==========
 
+Version 1.0.0-alpha1 *(2017-05-07)*
+-----------------------------------
+
+Note: Support library dependencies have changed to AndroidX!
+
+ * New: `superscript` and `subscript` span blocks for `buildString`/`SpannableStringBuilder`.
+ * New: `Menu.children` extension returns a `Sequence<MenuItem>` for lazily iterating.
+ * New: `Menu.minusAssign` operator extension allow using `-=` to remove a `MenuItem`.
+ * New: `PreferenceGroup.children` extension returns a `Sequence<Preference>` for lazily iterating.
+ * New: `Location` destructuring extensions for latitude and longitude.
+ * Fix: `View.toBitmap` now takes into account the view's scroll position.
+
+
 Version 0.3 *(2018-04-02)*
 --------------------------
 
