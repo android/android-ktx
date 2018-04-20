@@ -3,7 +3,7 @@ import com.android.build.gradle.api.BaseVariant
 buildscript {
     ext.versions = [
         'kotlin': '1.2.40',
-        'supportLibrary': '27.1.0',
+        'supportLibrary': '27.1.1',
         'atsl': '1.0.1',
     ]
 
@@ -13,7 +13,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
     }
@@ -73,13 +73,13 @@ dependencies {
 
     // Metalava isn't released yet. Check in its jar and explicitly track its transitive deps.
     metalava files('metalava.jar')
-    metalava 'com.android.tools.external.org-jetbrains:uast:26.1.0-beta4'
-    metalava 'com.android.tools.external.com-intellij:intellij-core:26.1.0-beta4'
-    metalava 'com.android.tools.lint:lint-api:26.1.0-beta4'
-    metalava 'com.android.tools.lint:lint-checks:26.1.0-beta4'
-    metalava 'com.android.tools.lint:lint-gradle:26.1.0-beta4'
-    metalava 'com.android.tools.lint:lint:26.1.0-beta4'
-    metalava 'org.jetbrains.kotlin:kotlin-stdlib:1.2.30'
+    metalava 'com.android.tools.external.org-jetbrains:uast:26.2.0-alpha11'
+    metalava 'com.android.tools.external.com-intellij:intellij-core:26.2.0-alpha11'
+    metalava 'com.android.tools.lint:lint-api:26.2.0-alpha11'
+    metalava 'com.android.tools.lint:lint-checks:26.2.0-alpha11'
+    metalava 'com.android.tools.lint:lint-gradle:26.2.0-alpha11'
+    metalava 'com.android.tools.lint:lint:26.2.0-alpha11'
+    metalava 'org.jetbrains.kotlin:kotlin-stdlib:1.2.40'
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
