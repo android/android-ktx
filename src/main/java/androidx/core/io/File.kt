@@ -14,23 +14,18 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE") // Aliases to public API.
+package androidx.core.io
 
-package androidx.core.text
-
-import android.net.Uri
-import android.text.TextUtils
-
-/**
- * Html-encode the string.
- *
- * @see TextUtils.htmlEncode
- */
-inline fun String.htmlEncode(): String = TextUtils.htmlEncode(this)
+import android.webkit.MimeTypeMap
+import androidx.core.text.urlEncode
+import java.io.File
 
 /**
- * Url-encode the string.
+ * Returns the MIME type (content type) of this [File] based on its extension.
  *
- * @see Uri.encode
+ * @see MimeUtils
+ * @return The MIME type for the files' extension or null if there is none.
  */
-inline fun String.urlEncode(): String = Uri.encode(this)
+val File.mimeTypeFromExtension: String?
+    get() = MimeTypeMap.getFileExtensionFromUrl(path.urlEncode())
+        ?.apply { MimeTypeMap.getSingleton().getMimeTypeFromExtension(toLowerCase()) }

@@ -308,6 +308,15 @@ package androidx.core.graphics.drawable {
 
 }
 
+package androidx.core.io {
+
+  public final class FileKt {
+    ctor public FileKt();
+    method public static String? getMimeTypeFromExtension(java.io.File);
+  }
+
+}
+
 package androidx.core.net {
 
   public final class UriKt {
@@ -412,6 +421,7 @@ package androidx.core.text {
   public final class StringKt {
     ctor public StringKt();
     method public static String htmlEncode(String);
+    method public static String urlEncode(String);
   }
 
 }
