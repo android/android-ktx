@@ -17,7 +17,9 @@
 package androidx.core.view
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.support.test.InstrumentationRegistry
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -173,6 +175,29 @@ class ViewTest {
         val bitmap = view.toBitmap(Bitmap.Config.RGB_565)
 
         assertSame(Bitmap.Config.RGB_565, bitmap.config)
+    }
+
+    @Test
+    fun toBitmapScrolls() {
+        val scrollView = LayoutInflater.from(context)!!
+                .inflate(R.layout.test_bitmap_scrolls, null, false)
+
+        val size = 100
+
+        scrollView.measure(
+                View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.EXACTLY))
+        scrollView.layout(0, 0, size, size)
+
+        val noScroll = scrollView.toBitmap()
+        assertEquals(Color.WHITE, noScroll.getPixel(0, 0))
+        assertEquals(Color.WHITE, noScroll.getPixel(size - 1, size - 1))
+
+        scrollView.scrollTo(0, size)
+        val scrolls = scrollView.toBitmap()
+
+        assertEquals(Color.BLACK, scrolls.getPixel(0, 0))
+        assertEquals(Color.BLACK, scrolls.getPixel(size - 1, size - 1))
     }
 
     @Test fun isVisible() {
