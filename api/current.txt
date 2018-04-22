@@ -308,7 +308,22 @@ package androidx.core.graphics.drawable {
 
 }
 
+package androidx.core.location {
+
+  public final class LocationKt {
+    ctor public LocationKt();
+    method public static operator double component1(android.location.Location);
+    method public static operator double component2(android.location.Location);
+  }
+
+}
+
 package androidx.core.net {
+
+  public final class JsonObjectKt {
+    ctor public JsonObjectKt();
+    method public static org.json.JSONObject checkNotBlank(org.json.JSONObject, String key, Object? value);
+  }
 
   public final class UriKt {
     ctor public UriKt();
