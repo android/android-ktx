@@ -196,7 +196,10 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     if (!ViewCompat.isLaidOut(this)) {
         throw IllegalStateException("View needs to be laid out before calling toBitmap()")
     }
-    return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
+    return Bitmap.createBitmap(width, height, config).applyCanvas {
+        translate(-scrollX.toFloat(), -scrollY.toFloat())
+        draw(this)
+    }
 }
 
 /**

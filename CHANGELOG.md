@@ -1,6 +1,28 @@
 Change Log
 ==========
 
+Version 0.3 *(2018-04-02)*
+--------------------------
+
+Note: All extensions have moved into the `androidx.core.*` package.
+
+ * New: `Canvas.withMatrix` extension for manipulating a `Canvas` after `concat`enating a matrix.
+ * New: Add `start` and `end` parameters for narrowing `Spanned.getSpans` lookup.
+ * New: Extensions to `PreferenceGroup` to treat it more like a collection of `Preference`s.
+ * New: `View.announceForAccessibility` extensions which takes a resource ID instead of a string.
+ * New: `Spannable.set` operator extensions for adding a span with an `IntRange` or starting and ending index.
+ * New: `Context.toast` extension for showing simple `Toast`s.
+ * New: `Uri.toFile` extension to extract a `File` from the `Uri` path.
+ * New: `String.parseAsHtml` extension which calls `Html.fromHtml` on the string.
+ * New: `Spanned.toHtml` extension calls `Html.toHtml` on the supplied `Spanned` instance.
+ * Fix: Correct a logic bug in `Path.flatten` which would cause it omit some segments.
+ * Fix: Move `updateLayoutParams` extension from `ViewGroup` to `View`.
+ * Fix: Move `File.toUri` extension into 'net' package.
+ * `Handler.post*` overloads accepting a `TimeUnit` and `Duration` have been removed.
+ * `SparseBooleanArray.removeAt` has been removed as the function has been added directly on the type.
+ * Extensions to `java.time` types have been removed.
+
+
 Version 0.2 *(2018-02-28)*
 --------------------------
 

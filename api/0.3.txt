@@ -353,7 +353,6 @@ package androidx.core.preference {
     method public static void forEachIndexed(android.preference.PreferenceGroup, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.preference.Preference,kotlin.Unit> action);
     method public static operator android.preference.Preference get(android.preference.PreferenceGroup, CharSequence key);
     method public static operator android.preference.Preference get(android.preference.PreferenceGroup, int index);
-    method public static kotlin.sequences.Sequence<android.preference.Preference> getChildren(android.preference.PreferenceGroup);
     method public static int getSize(android.preference.PreferenceGroup);
     method public static boolean isEmpty(android.preference.PreferenceGroup);
     method public static boolean isNotEmpty(android.preference.PreferenceGroup);
@@ -389,8 +388,6 @@ package androidx.core.text {
     method public static android.text.SpannableStringBuilder italic(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static android.text.SpannableStringBuilder scale(android.text.SpannableStringBuilder, float proportion, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static android.text.SpannableStringBuilder strikeThrough(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
-    method public static android.text.SpannableStringBuilder subscript(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
-    method public static android.text.SpannableStringBuilder superscript(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
     method public static android.text.SpannableStringBuilder underline(android.text.SpannableStringBuilder, kotlin.jvm.functions.Function1<? super android.text.SpannableStringBuilder,kotlin.Unit> builderAction);
   }
 
@@ -602,12 +599,10 @@ package androidx.core.view {
     method public static void forEach(android.view.Menu, kotlin.jvm.functions.Function1<? super android.view.MenuItem,kotlin.Unit> action);
     method public static void forEachIndexed(android.view.Menu, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.view.MenuItem,kotlin.Unit> action);
     method public static operator android.view.MenuItem get(android.view.Menu, int index);
-    method public static kotlin.sequences.Sequence<android.view.MenuItem> getChildren(android.view.Menu);
     method public static int getSize(android.view.Menu);
     method public static boolean isEmpty(android.view.Menu);
     method public static boolean isNotEmpty(android.view.Menu);
     method public static operator java.util.Iterator<android.view.MenuItem> iterator(android.view.Menu);
-    method public static operator void minusAssign(android.view.Menu, android.view.MenuItem item);
   }
 
   public final class ViewGroupKt {
@@ -657,14 +652,6 @@ package androidx.core.widget {
     ctor public ToastKt();
     method public static android.widget.Toast toast(android.content.Context, CharSequence text, int duration = "Toast.LENGTH_SHORT");
     method public static android.widget.Toast toast(android.content.Context, @StringRes int resId, int duration = "Toast.LENGTH_SHORT");
-  }
-
-  public final class AdapterViewKt {
-    ctor public AdapterViewKt();
-    method public static <ITEM> void onItemClick(android.widget.AdapterView<?>,kotlin.jvm.functions.Function1<? super ITEM,kotlin.Unit>);
-    method public static <ITEM> void onItemLongClick(android.widget.AdapterView<?>,kotlin.jvm.functions.Function1<? super ITEM,java.lang.Boolean>);
-    method public static <ITEM> void onItemSelected(android.widget.AdapterView<?>,kotlin.jvm.functions.Function0<kotlin.Unit> = "{}",kotlin.jvm.functions.Function4<? super android.widget.AdapterView<?>,? super android.view.View,? super java.lang.Integer,? super java.lang.Long,kotlin.Unit>);
-    method public static void onItemSelected(android.widget.AdapterView<?>,kotlin.jvm.functions.Function0<kotlin.Unit> = "{}",kotlin.jvm.functions.Function1<? super ITEM,kotlin.Unit>);
   }
 
 }
