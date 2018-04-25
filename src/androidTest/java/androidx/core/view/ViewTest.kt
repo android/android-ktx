@@ -22,6 +22,7 @@ import android.support.test.InstrumentationRegistry
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.kotlin.test.R
@@ -269,5 +270,43 @@ class ViewTest {
 
         val resolvedText = context.getText(R.string.text)
         assertEquals(testView.announcement, resolvedText)
+    }
+
+    @Test fun usageHintClick() {
+        view.isClickable = true
+        view.setUsageHint("clicklabel")
+
+        assertViewHasAccessibilityActionWithLabel(
+            view,
+            AccessibilityNodeInfo.ACTION_CLICK,
+            "clicklabel"
+        )
+    }
+
+    @Test fun usageHintLongClick() {
+        view.isLongClickable = true
+        view.setUsageHint(longClickLabel = "longClickLabel")
+
+        assertViewHasAccessibilityActionWithLabel(
+            view,
+            AccessibilityNodeInfo.ACTION_LONG_CLICK,
+            "longClickLabel"
+        )
+    }
+
+    private fun assertViewHasAccessibilityActionWithLabel(
+        view: View,
+        actionId: Int,
+        expectedLabel: CharSequence
+    ) {
+        val accessibilityNodeInfo = view.createAccessibilityNodeInfo()
+        for (accessibilityAction in accessibilityNodeInfo.actionList) {
+            if (actionId == accessibilityAction.id) {
+                assertEquals(expectedLabel, accessibilityAction.label)
+                return
+            }
+        }
+        throw AssertionError("View did not contain AccessibilityAction with id" +
+                " $actionId and label $expectedLabel")
     }
 }
