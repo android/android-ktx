@@ -16,13 +16,16 @@
 
 package androidx.core.content
 
+import android.content.res.Resources
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
 import android.test.mock.MockContext
 import androidx.core.kotlin.test.R
+import androidx.testutils.assertThrows
 import androidx.testutils.getAttributeSet
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -68,6 +71,23 @@ class ContextTest {
 
         context.withStyledAttributes(attrs, R.styleable.SampleAttrs, 0, 0) {
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
+        }
+
+        assertEquals(context.getInteger(R.integer.integer_25), 25)
+        assertThrows< Resources.NotFoundException> {
+            context.getInteger(-1)
+        }
+
+        assertTrue(context.getBoolean(R.bool.bool_true))
+        assertFalse(context.getBoolean(R.bool.bool_false))
+        assertThrows< Resources.NotFoundException> {
+            context.getBoolean(-1)
+        }
+
+        assertEquals(context.getDimension(R.dimen.dimen_25),
+            25f * context.resources.displayMetrics.density)
+        assertThrows< Resources.NotFoundException> {
+            context.getDimension(-1)
         }
     }
 }
