@@ -42,7 +42,7 @@ inline fun <T> AdapterView<*>.onItemLongClick(crossinline onItemLongClick: (item
 }
 
 /**
- * Simple use case (default empty `onNothingSelected` set):
+ * Simple use case (empty `onNothingSelected` default provided):
  * ```kotlin
  *     spinner.onItemSelected { parent, _, position, _ ->
  *         val item = parent.getItemAtPosition(position)
@@ -82,7 +82,7 @@ inline fun AdapterView<*>.onItemSelected(
  * Sets selection listener with automatic item casting
  * (ClassCastException will be thrown if adapter's item type does not match)
  *
- * Simple use case (default empty `onNothingSelected` set):
+ * Simple use case (empty `onNothingSelected` default provided):
  * ```kotlin
  *     spinner.onItemSelected { item: T -> ??? }
  * ```
