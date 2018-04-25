@@ -19,24 +19,47 @@ package androidx.core.widget
 import android.view.View
 import android.widget.AdapterView
 
-inline fun <ITEM> AdapterView<*>.onItemClick(
-    crossinline onItemClick: (item: ITEM) -> Unit
-) {
+/**
+ * Sets click listener with automatic item casting
+ * (ClassCastException will be thrown if adapter's item type does not match)
+ */
+inline fun <T> AdapterView<*>.onItemClick(crossinline onItemClick: (item: T) -> Unit) {
     setOnItemClickListener { parent, _, position, _ ->
         @Suppress("UNCHECKED_CAST")
-        onItemClick(parent.getItemAtPosition(position) as ITEM)
+        onItemClick(parent.getItemAtPosition(position) as T)
     }
 }
 
-inline fun <ITEM> AdapterView<*>.onItemLongClick(
-    crossinline onItemLongClick: (item: ITEM) -> Boolean
-) {
+/**
+ * Sets long click listener with automatic item casting
+ * (ClassCastException will be thrown if adapter's item type does not match)
+ */
+inline fun <T> AdapterView<*>.onItemLongClick(crossinline onItemLongClick: (item: T) -> Boolean) {
     setOnItemLongClickListener { parent, _, position, _ ->
         @Suppress("UNCHECKED_CAST")
-        onItemLongClick(parent.getItemAtPosition(position) as ITEM)
+        onItemLongClick(parent.getItemAtPosition(position) as T)
     }
 }
 
+/**
+ * Simple use case (default empty `onNothingSelected` set):
+ * ```kotlin
+ *     spinner.onItemSelected { parent, _, position, _ ->
+ *         val item = parent.getItemAtPosition(position)
+ *         ???
+ *     }
+ * ```
+ * Use case with `onNothingSelected` handling:
+ * ```kotlin
+ *     spinner.onItemSelected(
+ *         onNothingSelected = { _: AdapterView<*> -> ??? },
+ *         onItemSelected = { parent, _, position, _ ->
+ *             val item = parent.getItemAtPosition(position)
+ *             ???
+ *     })
+ * ```
+ * @see android.widget.AdapterView.OnItemSelectedListener
+ */
 inline fun AdapterView<*>.onItemSelected(
     crossinline onNothingSelected: (parent: AdapterView<*>) -> Unit = {},
     crossinline onItemSelected: (
@@ -55,16 +78,36 @@ inline fun AdapterView<*>.onItemSelected(
     }
 }
 
-inline fun <ITEM> AdapterView<*>.onItemSelected(
+/**
+ * Sets selection listener with automatic item casting
+ * (ClassCastException will be thrown if adapter's item type does not match)
+ *
+ * Simple use case (default empty `onNothingSelected` set):
+ * ```kotlin
+ *     spinner.onItemSelected { item: T -> ??? }
+ * ```
+ * Use case with `onNothingSelected` handling:
+ * ```kotlin
+ *
+ *     spinner.onItemSelected(
+ *         onNothingSelected = { ??? },
+ *         onItemSelected = { item: String -> ??? }
+ *     )
+ * ```
+ * @param onNothingSelected optional action, default `{}`
+ * @param onItemSelected action with casted item passed
+ * @see android.widget.AdapterView.OnItemSelectedListener
+ */
+inline fun <T> AdapterView<*>.onItemSelected(
     crossinline onNothingSelected: () -> Unit = {},
-    crossinline onItemSelected: (item: ITEM) -> Unit
+    crossinline onItemSelected: (item: T) -> Unit
 ) {
     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onNothingSelected(parent: AdapterView<*>) = onNothingSelected()
 
         override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
             @Suppress("UNCHECKED_CAST")
-            onItemSelected(parent.getItemAtPosition(position) as ITEM)
+            onItemSelected(parent.getItemAtPosition(position) as T)
         }
     }
 }

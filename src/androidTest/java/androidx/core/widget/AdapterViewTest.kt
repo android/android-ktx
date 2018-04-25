@@ -17,7 +17,10 @@
 package androidx.core.widget
 
 import android.support.test.InstrumentationRegistry
+import android.widget.AbsListView.CHOICE_MODE_SINGLE
 import android.widget.AdapterView
+import android.widget.AdapterView.INVALID_POSITION
+import android.widget.AdapterView.INVALID_ROW_ID
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Spinner
@@ -39,17 +42,17 @@ class AdapterViewTest {
             .apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
 
     private val listView: ListView
-        get() = ListView(context).apply { adapter = arrayAdapter }
+        get() = ListView(context).apply { adapter = arrayAdapter; choiceMode = CHOICE_MODE_SINGLE }
     private val spinner: Spinner
         get() = Spinner(context).apply { adapter = arrayAdapter }
 
     private var testItem: Any? = null
-    private var testOnNothingSelectedFired = false
+    private var testOnNothingSelectedTriggered = false
 
     @Before
     fun setup() {
         testItem = null
-        testOnNothingSelectedFired = false
+        testOnNothingSelectedTriggered = false
     }
 
     @Test
@@ -59,19 +62,17 @@ class AdapterViewTest {
         for (position in data.indices) {
             assertTrue(
                 "listener not set",
-                adapterView.performItemClick(null, position, AdapterView.INVALID_ROW_ID)
+                adapterView.performItemClick(null, position, INVALID_ROW_ID)
             )
             assertEquals(data[position], testItem)
         }
     }
 
-    @Test
+    @Test(expected = ClassCastException::class)
     fun onItemClickCastExceptionOnWrongClass() {
         val adapterView = listView
         adapterView.onItemClick { item: WrongClass -> testItem = item }
-        assertThrows<ClassCastException> {
-            adapterView.performItemClick(null, 1, AdapterView.INVALID_ROW_ID)
-        }
+        adapterView.performItemClick(null, 1, INVALID_ROW_ID)
     }
 
 
@@ -80,7 +81,9 @@ class AdapterViewTest {
         spinner.onItemClick { _: Any? -> }
     }
 
-    // borrowed from https://android.googlesource.com/platform/cts/+/master/tests/tests/widget/src/android/widget/cts/AdapterViewTest.java#255
+    /**
+     * borrowed from [AdapterViewTest line:279](https://android.googlesource.com/platform/cts/+/42fbcbb2518ea10cc729c44614a93b182bf58696/tests/tests/widget/src/android/widget/cts/AdapterViewTest.java#279)
+     */
     @Test
     fun onItemLongClick() {
         val adapterView = listView
@@ -118,77 +121,96 @@ class AdapterViewTest {
     }
 
     @Test
+    fun onItemSelectedWithCastIgnoresOnNothingSelectedActions() {
+        listOf(listView, spinner).forEach { adapterView ->
+            adapterView.onItemSelected { item: String -> testItem = item }
+            assertFalse(testOnNothingSelectedTriggered)
+            assertNull(testItem)
+            selectAndFireOnSelected(adapterView, INVALID_POSITION)
+            assertFalse(testOnNothingSelectedTriggered)
+            assertNull(testItem)
+        }
+    }
+
+    @Test
     fun onItemSelectedWithCastExceptionOnWrongClass() {
         listOf(listView, spinner).forEach { adapterView ->
             adapterView.onItemSelected<WrongClass> { item -> testItem = item }
             assertThrows<ClassCastException> {
-                checkSelectionForPosition(adapterView, 1)
+                for (i in data.indices) checkSelectionForPosition(adapterView, i)
             }
         }
     }
 
     @Test
     fun onItemSelectedWithHandledOnNothingSelected() {
-        val adapterView = spinner
-        adapterView.onItemSelected(
-            onNothingSelected = { _: AdapterView<*> -> testOnNothingSelectedFired = true },
-            onItemSelected = { parent, _, position, _ ->
-                testItem = parent.getItemAtPosition(position)
-            })
-        checkSelectionForPosition(adapterView, AdapterView.INVALID_POSITION)
-        for (i in data.indices) checkSelectionForPosition(adapterView, i)
-        checkSelectionForPosition(adapterView, AdapterView.INVALID_POSITION)
+        listOf(listView, spinner).forEach { adapterView ->
+            adapterView.onItemSelected(
+                onNothingSelected = { _: AdapterView<*> -> testOnNothingSelectedTriggered = true },
+                onItemSelected = { parent, _, position, _ ->
+                    testItem = parent.getItemAtPosition(position)
+                })
+            checkSelectionForPosition(adapterView, INVALID_POSITION)
+            for (i in data.indices) checkSelectionForPosition(adapterView, i)
+            checkSelectionForPosition(adapterView, INVALID_POSITION)
+        }
     }
 
     @Test
     fun onItemSelectedWithCastWithHandledOnNothingSelected() {
-        val adapterView = spinner
-        adapterView.onItemSelected(
-            onNothingSelected = { testOnNothingSelectedFired = true },
-            onItemSelected = { item: String -> testItem = item }
-        )
-        checkSelectionForPosition(adapterView, AdapterView.INVALID_POSITION)
-        for (i in data.indices) checkSelectionForPosition(adapterView, i)
-        checkSelectionForPosition(adapterView, AdapterView.INVALID_POSITION)
+        listOf(listView, spinner).forEach { adapterView ->
+            adapterView.onItemSelected(
+                onNothingSelected = { testOnNothingSelectedTriggered = true },
+                onItemSelected = { item: String -> testItem = item }
+            )
+            checkSelectionForPosition(adapterView, INVALID_POSITION)
+            for (i in data.indices) checkSelectionForPosition(adapterView, i)
+            checkSelectionForPosition(adapterView, INVALID_POSITION)
+        }
     }
-
-    class WrongClass
 
     private fun checkSelectionForPosition(adapterView: AdapterView<*>, position: Int) {
-        assertFalse(testOnNothingSelectedFired)
+        assertFalse(testOnNothingSelectedTriggered)
         assertNull(testItem)
-        adapterView.setSelection(position)
-        fireOnSelected(adapterView)
+        selectAndFireOnSelected(adapterView, position)
         if (position < 0) {
-            assertTrue(testOnNothingSelectedFired)
+            assertTrue(testOnNothingSelectedTriggered)
             assertNull(testItem)
         } else {
+            assertFalse(testOnNothingSelectedTriggered)
             assertEquals(data[position], testItem)
-            assertFalse(testOnNothingSelectedFired)
         }
+        testOnNothingSelectedTriggered = false
         testItem = null
-        testOnNothingSelectedFired = false
-    }
-
-    /**
-     * reflection used to test to trigger selection
-     *
-     * workaround for using ActivityRule like here: https://android.googlesource.com/platform/cts/+/master/tests/tests/widget/src/android/widget/cts/AdapterViewTest.java#286
-     */
-    private fun fireOnSelected(adapterView: AdapterView<*>) {
-        try {
-            AdapterView::class.java.getDeclaredMethod("fireOnSelected")
-                .apply {
-                    isAccessible = true
-                    invoke(adapterView)
-                }
-        } catch (e: InvocationTargetException) {
-            throw e.targetException
-        }
     }
 
     companion object {
         private const val LAYOUT_WIDTH = 200
         private const val LAYOUT_HEIGHT = 200
+
+        /**
+         * Reflection used to shortcut trigger selection via AdapterView#fireOnSelected()
+         *
+         * More comprehensive test would involve ActivityRule like in [AdapterViewTest line:286](https://android.googlesource.com/platform/cts/+/42fbcbb2518ea10cc729c44614a93b182bf58696/tests/tests/widget/src/android/widget/cts/AdapterViewTest.java#286)
+         *
+         * @see android.widget.AdapterView
+         */
+        private fun selectAndFireOnSelected(adapterView: AdapterView<*>, position: Int) {
+            try {
+                AdapterView::class.java
+                    .getDeclaredMethod("setNextSelectedPositionInt", Int::class.java)
+                    .apply { isAccessible = true }
+                    .invoke(adapterView, position)
+                AdapterView::class.java
+                    .getDeclaredMethod("fireOnSelected")
+                    .apply { isAccessible = true }
+                    .invoke(adapterView)
+            } catch (e: InvocationTargetException) {
+                throw e.targetException
+            }
+        }
+
+        class WrongClass
+
     }
 }
