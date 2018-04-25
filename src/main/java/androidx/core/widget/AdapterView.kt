@@ -22,34 +22,34 @@ import android.widget.AdapterView
 inline fun <ITEM> AdapterView<*>.onItemClick(
     crossinline onItemClick: (item: ITEM) -> Unit
 ) {
-    setOnItemClickListener { _, _, position, _ ->
+    setOnItemClickListener { parent, _, position, _ ->
         @Suppress("UNCHECKED_CAST")
-        onItemClick(getItemAtPosition(position) as ITEM)
+        onItemClick(parent.getItemAtPosition(position) as ITEM)
     }
 }
 
 inline fun <ITEM> AdapterView<*>.onItemLongClick(
     crossinline onItemLongClick: (item: ITEM) -> Boolean
 ) {
-    setOnItemLongClickListener { _, _, position, _ ->
+    setOnItemLongClickListener { parent, _, position, _ ->
         @Suppress("UNCHECKED_CAST")
-        onItemLongClick(getItemAtPosition(position) as ITEM)
+        onItemLongClick(parent.getItemAtPosition(position) as ITEM)
     }
 }
 
 inline fun AdapterView<*>.onItemSelected(
-    crossinline onNothingSelected: () -> Unit = {},
+    crossinline onNothingSelected: (parent: AdapterView<*>) -> Unit = {},
     crossinline onItemSelected: (
-        parent: AdapterView<*>?,
+        parent: AdapterView<*>,
         view: View?,
         position: Int,
         id: Long
     ) -> Unit
 ) {
     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onNothingSelected(parent: AdapterView<*>?) = onNothingSelected()
+        override fun onNothingSelected(parent: AdapterView<*>) = onNothingSelected(parent)
 
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
             onItemSelected(parent, view, position, id)
         }
     }
@@ -60,11 +60,11 @@ inline fun <ITEM> AdapterView<*>.onItemSelected(
     crossinline onItemSelected: (item: ITEM) -> Unit
 ) {
     onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onNothingSelected(parent: AdapterView<*>?) = onNothingSelected()
+        override fun onNothingSelected(parent: AdapterView<*>) = onNothingSelected()
 
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
             @Suppress("UNCHECKED_CAST")
-            onItemSelected(getItemAtPosition(position) as ITEM)
+            onItemSelected(parent.getItemAtPosition(position) as ITEM)
         }
     }
 }
