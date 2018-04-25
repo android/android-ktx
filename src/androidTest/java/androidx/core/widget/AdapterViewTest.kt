@@ -26,7 +26,10 @@ import android.widget.ListView
 import android.widget.Spinner
 import androidx.core.view.get
 import androidx.testutils.assertThrows
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import java.lang.ClassCastException
@@ -74,7 +77,6 @@ class AdapterViewTest {
         adapterView.onItemClick { item: WrongClass -> testItem = item }
         adapterView.performItemClick(null, 1, INVALID_ROW_ID)
     }
-
 
     @Test(expected = RuntimeException::class)
     fun onItemClickRuntimeExceptionWithSpinner() {
@@ -188,6 +190,8 @@ class AdapterViewTest {
         private const val LAYOUT_WIDTH = 200
         private const val LAYOUT_HEIGHT = 200
 
+        class WrongClass
+
         /**
          * Reflection used to shortcut trigger selection via AdapterView#fireOnSelected()
          *
@@ -209,8 +213,5 @@ class AdapterViewTest {
                 throw e.targetException
             }
         }
-
-        class WrongClass
-
     }
 }
