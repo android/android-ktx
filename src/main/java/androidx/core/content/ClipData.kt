@@ -71,8 +71,8 @@ operator fun ClipData.iterator() = object : Iterator<ClipData.Item> {
  */
 inline fun <reified T> ClipData.map(transform: (ClipData.Item) -> T): List<T> {
     var m = mutableListOf<T>()
-    forEach {
-        m.add(transform(it))
+    for (i in 0 until itemCount) {
+        m.add(transform(getItemAt(i)))
     }
     return m.toList()
 }
