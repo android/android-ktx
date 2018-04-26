@@ -18,8 +18,10 @@ package androidx.core.view
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.os.SystemClock
 import android.support.test.InstrumentationRegistry
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -36,6 +38,15 @@ import org.junit.Test
 class ViewTest {
     private val context = InstrumentationRegistry.getContext()
     private val view = View(context)
+
+    private fun obtainMotionEvent(eventType: Int) = MotionEvent.obtain(
+        SystemClock.uptimeMillis(),
+        SystemClock.uptimeMillis() + 100,
+        eventType,
+        0f,
+        0f,
+        0
+    )
 
     @Test
     fun doOnNextLayout() {
@@ -269,5 +280,75 @@ class ViewTest {
 
         val resolvedText = context.getText(R.string.text)
         assertEquals(testView.announcement, resolvedText)
+    }
+
+    @Test fun doOnActionDown() {
+        var called = false
+        view.doOnActionDown {
+            called = true
+        }
+
+        view.dispatchTouchEvent(obtainMotionEvent(MotionEvent.ACTION_DOWN))
+        assertTrue(called)
+    }
+
+    @Test fun doOnActionUp() {
+        var called = false
+        view.doOnActionUp {
+            called = true
+        }
+
+        view.dispatchTouchEvent(obtainMotionEvent(MotionEvent.ACTION_UP))
+        assertTrue(called)
+    }
+
+    @Test fun doOnActionMove() {
+        var called = false
+        view.doOnActionMove {
+            called = true
+        }
+
+        view.dispatchTouchEvent(obtainMotionEvent(MotionEvent.ACTION_MOVE))
+        assertTrue(called)
+    }
+
+    @Test fun doOnActionCancel() {
+        var called = false
+        view.doOnActionCancel {
+            called = true
+        }
+
+        view.dispatchTouchEvent(obtainMotionEvent(MotionEvent.ACTION_CANCEL))
+        assertTrue(called)
+    }
+
+    @Test fun doOnActionOutside() {
+        var called = false
+        view.doOnActionOutside {
+            called = true
+        }
+
+        view.dispatchTouchEvent(obtainMotionEvent(MotionEvent.ACTION_OUTSIDE))
+        assertTrue(called)
+    }
+
+    @Test fun doOnActionPointerDown() {
+        var called = false
+        view.doOnActionPointerDown {
+            called = true
+        }
+
+        view.dispatchTouchEvent(obtainMotionEvent(MotionEvent.ACTION_POINTER_DOWN))
+        assertTrue(called)
+    }
+
+    @Test fun doOnActionPointerUp() {
+        var called = false
+        view.doOnActionPointerUp {
+            called = true
+        }
+
+        view.dispatchTouchEvent(obtainMotionEvent(MotionEvent.ACTION_POINTER_UP))
+        assertTrue(called)
     }
 }
