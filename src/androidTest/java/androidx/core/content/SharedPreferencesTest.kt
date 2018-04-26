@@ -45,4 +45,15 @@ class SharedPreferencesTest {
         assertEquals("test_value", preferences.getString("test_key1", null))
         assertEquals(100, preferences.getInt("test_key2", 0))
     }
+
+    @Test fun put_getDouble() {
+        val preferences = context.getSharedPreferences("prefs", 0)
+        val editor = preferences.edit()
+        editor.putDouble("test_key3", 100.123456)
+        editor.putDouble("test_key4", 123.1234567891234567)
+        editor.apply()
+
+        assertEquals(100.123456, preferences.getDouble("test_key3", 0.0), 0.0)
+        assertEquals(123.1234567891234567, preferences.getDouble("test_key4", 0.0), 0.0)
+    }
 }

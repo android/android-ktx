@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("NOTHING_TO_INLINE")
+
 package androidx.core.content
 
 import android.annotation.SuppressLint
@@ -47,4 +49,40 @@ inline fun SharedPreferences.edit(
     } else {
         editor.apply()
     }
+}
+
+/**
+ * Set a double value in the preferences editor, to be written back once
+ * [commit][SharedPreferences.Editor.commit] or [apply][SharedPreferences.Editor.apply] are called.
+ *
+ * @param key The name of the preference to modify.
+ * @param value The new value for the preference.
+ *
+ * @return Returns a reference to the same Editor object, so you can
+ * chain put calls together.
+ */
+
+inline fun SharedPreferences.Editor.putDouble(
+    key: String,
+    value: Double
+): SharedPreferences.Editor {
+    putLong(key, value.toRawBits())
+    return this
+}
+
+/**
+ * Retrieve a double value from the preferences.
+ *
+ * @param key The name of the preference to retrieve.
+ * @param defValue Value to return if this preference does not exist.
+ *
+ * @return Returns the preference value if it exists, or defValue.  Throws
+ * ClassCastException if there is a preference with this name that is not
+ * a double.
+ *
+ * @throws ClassCastException
+ */
+
+inline fun SharedPreferences.getDouble(key: String, defValue: Double): Double {
+    return Double.fromBits(getLong(key, defValue.toRawBits()))
 }
