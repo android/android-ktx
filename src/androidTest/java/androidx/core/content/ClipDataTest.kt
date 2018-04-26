@@ -108,6 +108,17 @@ class ClipDataTest {
         }
     }
 
+    @Test fun items() {
+        val itemsList = listOf(ClipData.Item(""), ClipData.Item(""))
+        itemsList.forEach { clip.addItem(it) }
+
+        clip.items.forEachIndexed { index, item ->
+            if (index != 0) {
+                assertSame(itemsList[index - 1], item)
+            }
+        }
+    }
+
     @Test fun map() {
         clip.addItem(ClipData.Item("item1"))
         clip.addItem(ClipData.Item("item2"))

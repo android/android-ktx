@@ -22,6 +22,7 @@ package androidx.core.content {
     method public static void forEach(android.content.ClipData, kotlin.jvm.functions.Function1<? super android.content.ClipData.Item,kotlin.Unit> action);
     method public static void forEachIndexed(android.content.ClipData, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super android.content.ClipData.Item,kotlin.Unit> action);
     method public static operator android.content.ClipData.Item get(android.content.ClipData, int index);
+    method public static kotlin.sequences.Sequence<android.content.ClipData.Item> getItems(android.content.ClipData);
     method public static operator java.util.Iterator<android.content.ClipData.Item> iterator(android.content.ClipData);
   }
 

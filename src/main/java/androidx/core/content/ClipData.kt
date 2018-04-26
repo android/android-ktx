@@ -65,6 +65,12 @@ operator fun ClipData.iterator() = object : Iterator<ClipData.Item> {
     override fun next() = getItemAt(index++) ?: throw IndexOutOfBoundsException()
 }
 
+/** Returns a [Sequence] over the items in this ClipData. */
+val ClipData.items: Sequence<ClipData.Item>
+    get() = object : Sequence<ClipData.Item> {
+        override fun iterator() = this@items.iterator()
+    }
+
 /**
  * Returns a [List] containing the results of applying the given transform function to each
  * item in this ClipData.
