@@ -16,10 +16,13 @@
 
 package androidx.core.content
 
+import android.content.Intent
+import android.net.Uri
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
 import android.test.mock.MockContext
 import androidx.core.kotlin.test.R
+import androidx.core.os.bundleOf
 import androidx.testutils.getAttributeSet
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
@@ -69,5 +72,29 @@ class ContextTest {
         context.withStyledAttributes(attrs, R.styleable.SampleAttrs, 0, 0) {
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
         }
+    }
+
+    @Test fun intentFor() {
+        val data = Uri.parse("uri")
+
+        val intent = context.intentFor<Unit>(
+            action = "action",
+            data = data,
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK,
+            type = "type",
+            categories = setOf("category1", "category2"),
+            extras = bundleOf("key1" to "value1", "key2" to "value2")
+        )
+
+        assertEquals("action", intent.action)
+        assertEquals(data, intent.data)
+        assertEquals(Intent.FLAG_ACTIVITY_CLEAR_TASK, intent.flags)
+        assertEquals("type", intent.type)
+        assertTrue(intent.hasCategory("category1"))
+        assertTrue(intent.hasCategory("category2"))
+        assertTrue(intent.hasExtra("key1"))
+        assertTrue(intent.hasExtra("key2"))
+        assertEquals(context.packageName, intent.component.packageName)
+        assertEquals(Unit::class.java.name, intent.component.className)
     }
 }
