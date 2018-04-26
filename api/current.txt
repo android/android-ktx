@@ -641,9 +641,17 @@ package androidx.core.view {
   public final class ViewKt {
     ctor public ViewKt();
     method @RequiresApi(16) public static void announceForAccessibility(android.view.View, @StringRes int resource);
+    method public static void doOnActionCancel(android.view.View, kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> action);
+    method public static void doOnActionDown(android.view.View, kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> action);
+    method public static void doOnActionMove(android.view.View, kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> action);
+    method public static void doOnActionOutside(android.view.View, kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> action);
+    method public static void doOnActionPointerDown(android.view.View, kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> action);
+    method public static void doOnActionPointerUp(android.view.View, kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> action);
+    method public static void doOnActionUp(android.view.View, kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> action);
     method public static void doOnLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static void doOnNextLayout(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
     method public static void doOnPreDraw(android.view.View, kotlin.jvm.functions.Function1<? super android.view.View,kotlin.Unit> action);
+    method public static void doOnTouch(android.view.View, kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> onActionDown = "{}", kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> onActionUp = "{}", kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> onActionMove = "{}", kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> onActionCancel = "{}", kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> onActionOutside = "{}", kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> onActionPointerDown = "{}", kotlin.jvm.functions.Function1<? super android.view.MotionEvent,kotlin.Unit> onActionPointerUp = "{}");
     method public static boolean isGone(android.view.View);
     method public static boolean isInvisible(android.view.View);
     method public static boolean isVisible(android.view.View);

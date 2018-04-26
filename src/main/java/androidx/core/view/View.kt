@@ -23,6 +23,14 @@ import android.support.annotation.Px
 import android.support.annotation.RequiresApi
 import android.support.annotation.StringRes
 import android.support.v4.view.ViewCompat
+import android.view.MotionEvent
+import android.view.MotionEvent.ACTION_CANCEL
+import android.view.MotionEvent.ACTION_DOWN
+import android.view.MotionEvent.ACTION_MOVE
+import android.view.MotionEvent.ACTION_OUTSIDE
+import android.view.MotionEvent.ACTION_POINTER_DOWN
+import android.view.MotionEvent.ACTION_POINTER_UP
+import android.view.MotionEvent.ACTION_UP
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
@@ -288,4 +296,90 @@ inline fun <reified T : ViewGroup.LayoutParams> View.updateLayoutParams(block: T
     val params = layoutParams as T
     block(params)
     layoutParams = params
+}
+
+/**
+ * Add an [action] which will be invoked when a pressed gesture has started
+ *
+ * @see View.setOnTouchListener
+ */
+inline fun View.doOnActionDown(crossinline action: (event: MotionEvent) -> Unit) =
+    doOnTouch(onActionDown = action)
+
+/**
+ * Add an [action] which will be invoked when a pressed gesture has finished
+ *
+ * @see View.setOnTouchListener
+ */
+inline fun View.doOnActionUp(crossinline action: (event: MotionEvent) -> Unit) =
+    doOnTouch(onActionUp = action)
+
+/**
+ * Add an [action] which will be invoked when a change has happened during a press gesture
+ *
+ * @see View.setOnTouchListener
+ */
+inline fun View.doOnActionMove(crossinline action: (event: MotionEvent) -> Unit) =
+    doOnTouch(onActionMove = action)
+
+/**
+ * Add an [action] which will be invoked when the current gesture has been aborted
+ *
+ * @see View.setOnTouchListener
+ */
+inline fun View.doOnActionCancel(crossinline action: (event: MotionEvent) -> Unit) =
+    doOnTouch(onActionCancel = action)
+
+/**
+ * Add an [action] which will be invoked when a movement has happened outside of the
+ * normal bounds of the UI element. This does not provide a full gesture,
+ * but only the initial location of the movement/touch.
+ *
+ * @see View.setOnTouchListener
+ */
+inline fun View.doOnActionOutside(crossinline action: (event: MotionEvent) -> Unit) =
+    doOnTouch(onActionOutside = action)
+
+/**
+ * Add an [action] which will be invoked when a non-primary pointer has gone down.
+ * Use [event.actionIndex] to retrieve the index of the pointer that changed.
+ *
+ * @see View.setOnTouchListener
+ */
+inline fun View.doOnActionPointerDown(crossinline action: (event: MotionEvent) -> Unit) =
+    doOnTouch(onActionPointerDown = action)
+
+/**
+ * Add an [action] which will be invoked when a non-primary pointer has gone up.
+ * Use [event.actionIndex] to retrieve the index of the pointer that changed.
+ *
+ * @see View.setOnTouchListener
+ */
+inline fun View.doOnActionPointerUp(crossinline action: (event: MotionEvent) -> Unit) =
+    doOnTouch(onActionPointerUp = action)
+
+/**
+ * Add a touch listener to this View using the provided actions.
+ */
+inline fun View.doOnTouch(
+    crossinline onActionDown: (event: MotionEvent) -> Unit = {},
+    crossinline onActionUp: (event: MotionEvent) -> Unit = {},
+    crossinline onActionMove: (event: MotionEvent) -> Unit = {},
+    crossinline onActionCancel: (event: MotionEvent) -> Unit = {},
+    crossinline onActionOutside: (event: MotionEvent) -> Unit = {},
+    crossinline onActionPointerDown: (event: MotionEvent) -> Unit = {},
+    crossinline onActionPointerUp: (event: MotionEvent) -> Unit = {}
+) {
+    setOnTouchListener { _, event ->
+        when (event.action) {
+            ACTION_DOWN -> onActionDown(event)
+            ACTION_UP -> onActionUp(event)
+            ACTION_MOVE -> onActionMove(event)
+            ACTION_CANCEL -> onActionCancel(event)
+            ACTION_OUTSIDE -> onActionOutside(event)
+            ACTION_POINTER_DOWN -> onActionPointerDown(event)
+            ACTION_POINTER_UP -> onActionPointerUp(event)
+        }
+        return@setOnTouchListener true
+    }
 }
