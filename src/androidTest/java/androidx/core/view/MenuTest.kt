@@ -45,6 +45,20 @@ class MenuTest {
         assertTrue(item2 in menu)
     }
 
+    @Test fun minusAssign() {
+        val item1 = menu.add(NONE, 1, NONE, "")
+        val item2 = menu.add(NONE, 2, NONE, "")
+
+        assertEquals(2, menu.size)
+
+        menu -= item2
+        assertEquals(1, menu.size)
+        assertSame(item1, menu.getItem(0))
+
+        menu -= item1
+        assertEquals(0, menu.size)
+    }
+
     @Test fun size() {
         assertEquals(0, menu.size)
 
@@ -131,5 +145,17 @@ class MenuTest {
         iterator.remove()
         assertFalse(item2 in menu)
         assertEquals(0, menu.size())
+    }
+
+    @Test fun children() {
+        val items = listOf(
+            menu.add(NONE, 1, NONE, ""),
+            menu.add(NONE, 2, NONE, ""),
+            menu.add(NONE, 3, NONE, "")
+        )
+
+        menu.children.forEachIndexed { index, child ->
+            assertSame(items[index], child)
+        }
     }
 }
