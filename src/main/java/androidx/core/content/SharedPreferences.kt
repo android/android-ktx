@@ -72,11 +72,11 @@ inline fun <reified T> SharedPreferences.get(key: String, default: T): T {
 inline fun <reified T> SharedPreferences.put(key: String, value: T, commit: Boolean = false) {
     val editor = edit()
     when (T::class) {
-        Boolean::class.java -> editor.putBoolean(key, value as Boolean)
-        String::class.java -> editor.putString(key, value as String)
+        Boolean::class -> editor.putBoolean(key, value as Boolean)
+        String::class -> editor.putString(key, value as String)
         Float::class -> editor.putFloat(key, value as Float)
-        Int::class.java -> editor.putInt(key, value as Int)
         Long::class -> editor.putLong(key, value as Long)
+        Int::class -> editor.putInt(key, value as Int)
     }
     if (commit) {
         editor.commit()
