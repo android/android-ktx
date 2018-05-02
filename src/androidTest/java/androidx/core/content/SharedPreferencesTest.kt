@@ -45,4 +45,36 @@ class SharedPreferencesTest {
         assertEquals("test_value", preferences.getString("test_key1", null))
         assertEquals(100, preferences.getInt("test_key2", 0))
     }
+
+    @Test fun putApply() {
+        val preferences = context.getSharedPreferences("prefs", 0)
+
+        preferences.put("test_key1", "test_value")
+        preferences.put("test_key2", 100)
+
+        assertEquals("test_value", preferences.getString("test_key1", null))
+        assertEquals(100, preferences.getInt("test_key2", 0))
+    }
+
+    @Test fun putCommit() {
+        val preferences = context.getSharedPreferences("prefs", 0)
+
+        preferences.put("test_key1", "test_value", commit = true)
+
+        assertEquals("test_value", preferences.getString("test_key1", null))
+    }
+
+    @Test fun getValue() {
+        val preferences = context.getSharedPreferences("prefs", 0)
+        val editor = preferences.edit()
+
+        editor.putString("test_key1", "test_value")
+        editor.putInt("test_key2", 100)
+        editor.putBoolean("test_key3", true)
+        editor.apply()
+
+        assertEquals("test_value", preferences.get("test_key1", ""))
+        assertEquals(true, preferences.get("test_key3", false))
+        assertEquals(100, preferences.get("test_key2", 0))
+    }
 }

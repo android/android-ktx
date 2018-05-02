@@ -48,3 +48,39 @@ inline fun SharedPreferences.edit(
         editor.apply()
     }
 }
+
+/**
+ * Returns value of given key
+ */
+inline fun <reified T> SharedPreferences.get(key: String, default: T): T {
+    return when (T::class) {
+        Boolean::class -> getBoolean(key, default as Boolean) as T
+        String::class -> getString(key, default as String) as T
+        Int::class -> getString(key, default as String) as T
+        Float::class -> getFloat(key, default as Float) as T
+        Long::class -> getLong(key, default as Long) as T
+        else -> default
+    }
+}
+
+/**
+ * Allows editing of this preference instance with a call to [apply][SharedPreferences.Editor.apply]
+ * or [commit][SharedPreferences.Editor.commit] to persist the changes.
+ * Default behaviour is [apply][SharedPreferences.Editor.apply].
+ */
+@SuppressLint("ApplySharedPref")
+inline fun <reified T> SharedPreferences.put(key: String, value: T, commit: Boolean = false) {
+    val editor = edit()
+    when (T::class) {
+        Boolean::class.java -> editor.putBoolean(key, value as Boolean)
+        String::class.java -> editor.putString(key, value as String)
+        Float::class -> editor.putFloat(key, value as Float)
+        Int::class.java -> editor.putInt(key, value as Int)
+        Long::class -> editor.putLong(key, value as Long)
+    }
+    if (commit) {
+        editor.commit()
+    } else {
+        editor.apply()
+    }
+}
