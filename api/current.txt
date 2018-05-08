@@ -663,6 +663,11 @@ package androidx.core.view {
 
 package androidx.core.widget {
 
+  public final class ImageViewKt {
+    ctor public ImageViewKt();
+    method public static void filter(android.widget.ImageView, float saturation);
+  }
+
   public final class ToastKt {
     ctor public ToastKt();
     method public static android.widget.Toast toast(android.content.Context, CharSequence text, int duration = "Toast.LENGTH_SHORT");
