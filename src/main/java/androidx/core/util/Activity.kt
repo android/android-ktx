@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-@file:Suppress("NOTHING_TO_INLINE")
-
 package androidx.core.util
 
-import java.math.BigDecimal
+import android.app.Activity
+import android.content.Intent
+/**
+ * Start a new activity
+ *
+ */
+inline fun Activity.startNewActivity(targetClass: Class<*>)=
+    this.startActivity(Intent(this, targetClass))
 
 /**
- * Round to given number of decimal places of [Double]
- * ```
- * example  x = 11.11111
- * x.roundToDecimalPlaces(2) will return 1.11
+ * Start a new activity for result
+ *
  */
-inline fun Double.roundToDecimalPlaces(digits: Int):Double =
-    BigDecimal(this).setScale(digits, BigDecimal.ROUND_HALF_UP).toDouble()
-
+inline fun Activity.startNewActivityForResult(targetClass: Class<*>,requestCode:Int)=
+    this.startActivityForResult(Intent(this,targetClass),requestCode)
