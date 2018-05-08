@@ -320,6 +320,16 @@ package androidx.core.location {
 
 package androidx.core.net {
 
+  public final class JsonObjectKt {
+    ctor public JsonObjectKt();
+    method public static org.json.JSONObject checkNotBlank(org.json.JSONObject, String key, Object? value);
+  }
+
+  public final class JsonObjectKt {
+    ctor public JsonObjectKt();
+    method public static org.json.JSONObject checkNotBlank(org.json.JSONObject, String key, Object? value);
+  }
+
   public final class UriKt {
     ctor public UriKt();
     method public static java.io.File toFile(android.net.Uri);
