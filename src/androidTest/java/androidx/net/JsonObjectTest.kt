@@ -16,8 +16,6 @@
 
 package androidx.net
 
-import androidx.assertThrows
-import org.json.JSONException
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -56,40 +54,5 @@ class JsonObjectTest {
         val value = 1f
         val json = JSONObject().apply { checkNotBlank(key, value) }
         assertEquals(value, json.get(key))
-    }
-
-    @Test fun putBlankString() {
-        val key = "NAME"
-        val value = null
-        val json = JSONObject().apply { checkNotBlank(key, value) }
-        assertThrows<JSONException> { json.get(key) }
-    }
-
-    @Test fun putZeroInt() {
-        val key = "NUMBER"
-        val value = 0
-        val json = JSONObject().apply { checkNotBlank(key, value) }
-        assertThrows<JSONException> { json.get(key) }
-    }
-
-    @Test fun putEmptyLong() {
-        val key = "ID"
-        val value = 0L
-        val json = JSONObject().apply { checkNotBlank(key, value) }
-        assertThrows<JSONException> { json.get(key) }
-    }
-
-    @Test fun putNoRadius() {
-        val key = "RADIUS"
-        val value = 0.0
-        val json = JSONObject().apply { checkNotBlank(key, value) }
-        assertThrows<JSONException> { json.get(key) }
-    }
-
-    @Test fun putWrongSize() {
-        val key = "SIZE"
-        val value = 0f
-        val json = JSONObject().apply { checkNotBlank(key, value) }
-        assertThrows<JSONException> { json.get(key) }
     }
 }

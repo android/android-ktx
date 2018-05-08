@@ -19,7 +19,7 @@ package androidx.net
 import org.json.JSONObject
 
 /**
- * Check JsonObject value before putting it
+ * Check JSONObject value before putting it
  *
  * @see JSONObject.put
  */
