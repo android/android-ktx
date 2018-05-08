@@ -1,0 +1,237 @@
+import com.android.build.gradle.api.BaseVariant
+
+buildscript {
+    ext.versions = [
+        'kotlin': '1.2.40',
+        'supportLibrary': '27.1.1',
+        'atsl': '1.0.1',
+    ]
+
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
+    }
+}
+
+group = 'androidx.core'
+version = '0.4-SNAPSHOT'
+
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: 'maven'
+
+repositories {
+    jcenter()
+    google()
+}
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 14
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        checkTestSources true
+        ignoreWarnings true
+    }
+
+    // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
+    libraryVariants.all {
+        it.generateBuildConfig.enabled = false
+    }
+}
+
+configurations {
+    ktlint
+    metalava
+}
+
+dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+    implementation "com.android.support:support-annotations:${versions.supportLibrary}"
+    implementation "com.android.support:support-compat:${versions.supportLibrary}"
+
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation "com.android.support:support-annotations:${versions.supportLibrary}"
+    androidTestImplementation "com.android.support.test:runner:${versions.atsl}"
+    androidTestImplementation "com.android.support.test:rules:${versions.atsl}"
+    androidTestImplementation 'com.google.truth:truth:0.39'
+    androidTestImplementation 'com.squareup.okio:okio:1.14.0'
+
+    ktlint 'com.github.shyiko:ktlint:0.20.0'
+
+    // Metalava isn't released yet. Check in its jar and explicitly track its transitive deps.
+    metalava files('metalava.jar')
+    metalava 'com.android.tools.external.org-jetbrains:uast:26.2.0-alpha11'
+    metalava 'com.android.tools.external.com-intellij:intellij-core:26.2.0-alpha11'
+    metalava 'com.android.tools.lint:lint-api:26.2.0-alpha11'
+    metalava 'com.android.tools.lint:lint-checks:26.2.0-alpha11'
+    metalava 'com.android.tools.lint:lint-gradle:26.2.0-alpha11'
+    metalava 'com.android.tools.lint:lint:26.2.0-alpha11'
+    metalava 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.40'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xno-param-assertions']
+        allWarningsAsErrors = true
+    }
+}
+
+task ktlint(type: JavaExec, group: LifecycleBasePlugin.VERIFICATION_GROUP) {
+    inputs.dir('src')
+    outputs.dir('src')
+
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = 'com.github.shyiko.ktlint.Main'
+    args '--android', 'src/**/*.kt'
+}
+check.dependsOn ktlint
+
+task ktFormat(type: JavaExec, group: 'formatting') {
+    inputs.dir('src')
+    outputs.dir('src')
+
+    description = 'Fix Kotlin code style deviations.'
+    classpath = configurations.ktlint
+    main = 'com.github.shyiko.ktlint.Main'
+    args '--android', '-F', 'src/**/*.kt'
+}
+
+
+def variantClasspath(BaseVariant variant) {
+    return (android.bootClasspath + variant.compileConfiguration.incoming.artifactView { config ->
+        config.attributes { container ->
+            container.attribute(Attribute.of("artifactType", String.class), "jar")
+        }
+    }.artifacts.artifacts.collect { it.file }).join(File.pathSeparator)
+}
+android.libraryVariants.all { variant ->
+    // TODO eliminate variants https://issuetracker.google.com/issues/62201427
+    if (variant.buildType.isDebuggable()) {
+        return
+    }
+
+    task updateApi(type: JavaExec) {
+        inputs.dir('src/main/java')
+        outputs.file('api/current.txt')
+
+        classpath = configurations.metalava
+        main = 'com.android.tools.metalava.Driver'
+
+        doFirst {
+            args = [
+                    '--no-banner',
+                    '--source-path', 'src/main/java',
+                    '--compatible-output=no',
+                    '--omit-common-packages=yes',
+                    '--output-kotlin-nulls=yes',
+                    '--hide', 'HiddenSuperclass',
+                    '--hide', 'DeprecationMismatch',
+                    '--classpath', variantClasspath(variant),
+                    '--api', 'api/current.txt'
+            ]
+        }
+    }
+
+    task checkApi(type: JavaExec) {
+        inputs.file('api/current.txt')
+        inputs.dir('src/main/java')
+        outputs.file('api/current.txt')
+
+        classpath = configurations.metalava
+        main = 'com.android.tools.metalava.Driver'
+
+        doFirst {
+            args = [
+                    '--no-banner',
+                    '--source-path', 'src/main/java',
+                    '--compatible-output=no',
+                    '--omit-common-packages=yes',
+                    '--output-kotlin-nulls=yes',
+                    '--input-kotlin-nulls=yes',
+                    '--hide', 'HiddenSuperclass',
+                    '--hide', 'DeprecationMismatch',
+                    '--classpath', variantClasspath(variant),
+                    '--check-compatibility',
+                    '--previous-api', 'api/current.txt'
+            ]
+        }
+    }
+    check.dependsOn checkApi
+}
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/documentation"
+}
+task dokkaJar(type: Jar, dependsOn: dokka) {
+    classifier = 'javadoc'
+    from dokka.outputDirectory
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.source
+}
+
+artifacts {
+    archives dokkaJar
+    archives sourcesJar
+}
+
+def googleRepo = "$buildDir/google-repo"
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://$googleRepo")
+            pom.project {
+                name "Android KTX Core"
+                description "A set of Kotlin extensions for Android app development."
+                url "https://github.com/android/android-ktx"
+                inceptionYear 2017
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        name "The Android Open Source Project"
+                    }
+                }
+
+                scm {
+                    url "https://github.com/android/android-ktx"
+                    connection "scm:git:git://github.com/android/android-ktx.git"
+                }
+            }
+        }
+    }
+}
+
+task deleteGoogleRepo(type: Delete) {
+    delete googleRepo
+}
+uploadArchives.dependsOn(deleteGoogleRepo)
+
+task googleZip(type: Zip, dependsOn: uploadArchives) {
+    from googleRepo
+}
+assemble.dependsOn(googleZip)

@@ -1,0 +1,17 @@
+# IDEA
+*.iml
+.idea/*
+!.idea/codeStyleSettings.xml
+!.idea/copyright
+
+# Gradle
+.gradle
+build
+/reports
+
+# Gradle Android
+/local.properties
+/captures
+
+# Secrets
+client-secret.json
