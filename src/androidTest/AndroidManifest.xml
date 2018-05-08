@@ -1,7 +1,0 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="androidx.core.kotlin">
-    <application>
-        <activity android:name="androidx.core.TestActivity"/>
-        <activity android:name="androidx.core.TestPreferenceActivity"/>
-    </application>
-</manifest>
