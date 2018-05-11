@@ -17,11 +17,14 @@
 package androidx.core.content
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.TypedArray
+import android.preference.PreferenceManager
 import android.support.annotation.AttrRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
 import android.util.AttributeSet
+import kotlin.reflect.KMutableProperty0
 import kotlin.reflect.KProperty
 
 /**
@@ -93,24 +96,13 @@ inline fun Context.withStyledAttributes(
     }
 }
 
-class SharedPreferencesLoader<T: Any>(
-    private val preferenceName: String? = null,
-    private val mode: Int = 0,
-    private val clazz: Class<T>,
-    private val key: String,
-    private val defaultValue: T?) {
-    operator fun provideDelegate(
-        thisRef: Context,
-        prop: KProperty<*>
-    ): SharedPreferencesDelegate<T> {
-        return SharedPreferencesDelegate(preferenceName, mode, clazz, key, defaultValue)
-    }
-}
-
-inline fun <reified T : Any> bindSharedPreference(
+inline fun <reified T : Any> Context.bindSharedPreference(
     key: String,
     defaultValue: T? = null,
     preferencesName: String? = null,
-    mode: Int = 0
-): SharedPreferencesLoader<T> =
-    SharedPreferencesLoader(preferencesName, mode, T::class.java, key, defaultValue)
+    mode: Int = Context.MODE_PRIVATE
+): SharedPreferencesProperty<T> {
+    return SharedPreferencesProperty(
+        this, preferencesName, mode, T::class.java, key, defaultValue)
+}
+

@@ -66,40 +66,40 @@ inline fun <reified T : Any> SharedPreferences.set(key: String) {
 @Suppress("UNCHECKED_CAST")// Checked by reflection.
 operator fun <T : Any> SharedPreferences.get(clazz: Class<T>, key: String, defaultValue: T? = null):
         T? = when (defaultValue) {
-    null -> when {
-        clazz.isAssignableFrom(String::class.java) -> getString(key, defaultValue) as T?
-        clazz.isAssignableFrom(Set::class.java) ->
-            when {
-                clazz.componentType.isAssignableFrom(String::class.java) ->
-                    getStringSet(key, defaultValue) as T?
-                else -> {
-                    throw IllegalArgumentException(
-                        "Illegal nullable Set type ${clazz.canonicalName} for key \"$key\"")
+        null -> when {
+            clazz.isAssignableFrom(String::class.java) -> getString(key, defaultValue) as T?
+            clazz.isAssignableFrom(Set::class.java) ->
+                when {
+                    clazz.componentType.isAssignableFrom(String::class.java) ->
+                        getStringSet(key, defaultValue) as T?
+                    else -> {
+                        throw IllegalArgumentException(
+                            "Illegal nullable Set type ${clazz.canonicalName} for key \"$key\"")
+                    }
+                }
+            else ->
+                throw IllegalArgumentException("Illegal nullable type ${clazz.canonicalName}" +
+                        "for key \"$key\"")
+        }
+        else -> when (defaultValue) {
+            is Boolean -> getBoolean(key, defaultValue) as T
+            is Float -> getFloat(key, defaultValue) as T
+            is Int -> getInt(key, defaultValue) as T
+            is Long -> getLong(key, defaultValue) as T
+            is String -> getString(key, defaultValue) as T
+
+            is Set<*> -> {
+                val componentType = defaultValue::class.java.componentType
+                when {
+                    String::class.java.isAssignableFrom(componentType) ->
+                        getStringSet(key, defaultValue as Set<String>) as T
+                    else -> throw IllegalArgumentException(
+                        "Illegal value Set type ${componentType.canonicalName} for key \"$key\"")
                 }
             }
-        else ->
-            throw IllegalArgumentException("Illegal nullable type ${clazz.canonicalName}" +
-                    "for key \"$key\"")
-    }
-    else -> when (defaultValue) {
-        is Boolean -> getBoolean(key, defaultValue) as T
-        is Float -> getFloat(key, defaultValue) as T
-        is Int -> getInt(key, defaultValue) as T
-        is Long -> getLong(key, defaultValue) as T
-        is String -> getString(key, defaultValue) as T
-
-        is Set<*> -> {
-            val componentType = defaultValue::class.java.componentType
-            when {
-                String::class.java.isAssignableFrom(componentType) ->
-                    getStringSet(key, defaultValue as Set<String>) as T
-                else -> throw IllegalArgumentException(
-                    "Illegal value Set type ${componentType.canonicalName} for key \"$key\"")
-            }
+            else -> throw IllegalArgumentException(
+                "Illegal value type ${defaultValue.javaClass.canonicalName} for key \"$key\"")
         }
-        else -> throw IllegalArgumentException(
-            "Illegal value type ${defaultValue.javaClass.canonicalName} for key \"$key\"")
-    }
 }
 
 /***
@@ -152,30 +152,32 @@ operator fun <T : Any> SharedPreferences.set(clazz: Class<T>, key: String, value
     }
 }
 
-/**
- * A Kotlin Delegate Property for [SharedPreferences]
- *
- * @constructor
- * @param preferenceName
- */
-class SharedPreferencesDelegate<T : Any>(
-    private val preferenceName: String? = null,
-    private val mode: Int = 0,
-    private val clazz: Class<T>,
-    private val key: String,
-    private val defaultValue: T?
-) {
-    operator fun getValue(thisRef: Context, property: KProperty<*>): T? {
-        return if (preferenceName != null)
-            thisRef.getSharedPreferences(preferenceName, mode)[clazz, key, defaultValue]
-        else PreferenceManager.getDefaultSharedPreferences(thisRef)[clazz, key, defaultValue]
-    }
+class SharedPreferencesDelegate (
+    private val context: Context,
+    private val preferencesName: String? = null,
+    private val mode: Int = Context.MODE_PRIVATE) {
 
-    operator fun setValue(thisRef: Context, property: KProperty<*>, value: T?) {
-        if (preferenceName != null)
-            thisRef.getSharedPreferences(preferenceName, mode)[clazz, key] = value
-        else PreferenceManager.getDefaultSharedPreferences(thisRef)[clazz, key] = value
+    operator fun getValue(thisRef: Any, property: KProperty<*>): SharedPreferences {
+        return if(preferencesName != null) context.getSharedPreferences(preferencesName, mode)
+        else PreferenceManager.getDefaultSharedPreferences(context)
     }
 }
 
+class SharedPreferencesProperty<T: Any>(
+    context: Context,
+    preferencesName: String? = null,
+    mode: Int = Context.MODE_PRIVATE,
+    private val clazz: Class<T>,
+    private val key: String,
+    private val defaultValue: T?) {
 
+    private val delegate: SharedPreferencesDelegate =
+        SharedPreferencesDelegate(context, preferencesName, mode)
+
+    operator fun getValue(thisRef: Any, property: KProperty<*>): T? =
+        delegate.getValue(thisRef, property)[clazz, key, defaultValue]
+
+    operator fun setValue(thisRef: Any, property: KProperty<*>, value: T?) {
+        delegate.getValue(thisRef, property)[clazz, key] = value
+    }
+}

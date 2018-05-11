@@ -21,7 +21,9 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class SharedPreferencesTest {
+
     private val context = InstrumentationRegistry.getContext()
+
 
     @Test fun editApply() {
         val preferences = context.getSharedPreferences("prefs", 0)
@@ -44,5 +46,13 @@ class SharedPreferencesTest {
 
         assertEquals("test_value", preferences.getString("test_key1", null))
         assertEquals(100, preferences.getInt("test_key2", 0))
+    }
+
+    var nullableStringPreference by context.bindSharedPreference("prefs", 0)
+
+    @Test fun bindNullableStringPreference() {
+
+        //assertEquals("test_value", nullableStringPreference.getString("test_key1", null))
+        //assertEquals(100, nullableStringPreference.getInt("test_key2", 0))
     }
 }
