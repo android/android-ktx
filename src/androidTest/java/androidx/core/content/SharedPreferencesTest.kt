@@ -72,7 +72,7 @@ class SharedPreferencesTest {
         assertEquals("test_value", preferences.getString("test_key5", "default"))
     }
 
-    @Test fun getReifiedOperator() {
+    @Test fun getInlinedOperator() {
         val preferences = context.getSharedPreferences("set_prefs", 0)
 
         assertEquals(true, preferences["test_key1", true])
@@ -82,7 +82,7 @@ class SharedPreferencesTest {
         assertEquals("test_value", preferences["test_key5", "test_value"])
     }
 
-    @Test fun setReifiedOperator() {
+    @Test fun setInlinedOperator() {
         val preferences = context.getSharedPreferences("set_prefs", 0)
 
         preferences["test_key1"] = true

@@ -102,14 +102,16 @@ class SharedPreferencesPropertyTest {
     @Test fun bindBooleanPreference() {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
 
-        assertEquals(preferences.getBoolean(BOOLEAN_PREFERENCE_KEY, BOOLEAN_PREFERENCE_DEFAULT_VALUE),
+        assertEquals(preferences.getBoolean(BOOLEAN_PREFERENCE_KEY,
+            BOOLEAN_PREFERENCE_DEFAULT_VALUE),
             booleanPreference)
 
         booleanPreference = BOOLEAN_PREFERENCE_TEST_VALUE
 
         assertEquals(BOOLEAN_PREFERENCE_TEST_VALUE, booleanPreference)
 
-        assertEquals(preferences.getBoolean(BOOLEAN_PREFERENCE_KEY, BOOLEAN_PREFERENCE_DEFAULT_VALUE),
+        assertEquals(preferences.getBoolean(BOOLEAN_PREFERENCE_KEY,
+            BOOLEAN_PREFERENCE_DEFAULT_VALUE),
             booleanPreference)
     }
 
