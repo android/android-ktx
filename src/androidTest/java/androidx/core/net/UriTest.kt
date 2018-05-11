@@ -27,6 +27,16 @@ class UriTest {
         assertEquals(Uri.parse(string), string.toUri())
     }
 
+    @Test fun uriDecode() {
+        val string = "http%3A%2F%2Ftest.example.com%2Ffoo%20bar"
+        assertEquals(Uri.decode(string), string.decode())
+    }
+
+    @Test fun uriEncode() {
+        val string = "https://test.example.com/foo bar"
+        assertEquals(Uri.encode(string), string.encode())
+    }
+
     @Test fun uriFromFile() {
         val file = File("/path/to/my/file")
         assertEquals(Uri.fromFile(file), file.toUri())
