@@ -59,10 +59,6 @@ inline operator fun <reified T : Any> SharedPreferences.set(key: String, value: 
     set(T::class.java, key, value)
 }
 
-inline fun <reified T : Any> SharedPreferences.set(key: String) {
-    set<T>(key, null)
-}
-
 @Suppress("UNCHECKED_CAST")// Checked by reflection.
 operator fun <T : Any> SharedPreferences.get(clazz: Class<T>, key: String, defaultValue: T? = null):
         T? = when (defaultValue) {
@@ -153,12 +149,13 @@ operator fun <T : Any> SharedPreferences.set(clazz: Class<T>, key: String, value
 }
 
 class SharedPreferencesDelegate (
+    private val context: Context,
     private val name: String? = null,
     private val mode: Int = Context.MODE_PRIVATE
 ) {
-    operator fun get(thisRef: Context): SharedPreferences =
-        if (name != null) thisRef.getSharedPreferences(name, mode)
-        else PreferenceManager.getDefaultSharedPreferences(thisRef)
+    operator fun getValue(any: Any, property: KProperty<*>): SharedPreferences =
+        if (name != null) context.getSharedPreferences(name, mode)
+        else PreferenceManager.getDefaultSharedPreferences(context)
 }
 
 class SharedPreferencesProperty<T : Any>(
@@ -170,9 +167,11 @@ class SharedPreferencesProperty<T : Any>(
     private val defaultValue: T?
 ) {
     operator fun getValue(thisRef: Any, property: KProperty<*>): T? =
-        SharedPreferencesDelegate(name, mode)[context][clazz, key, defaultValue]
+        SharedPreferencesDelegate(context, name, mode)
+            .getValue(thisRef, property)[clazz, key, defaultValue]
 
     operator fun setValue(thisRef: Any, property: KProperty<*>, value: T?) {
-        SharedPreferencesDelegate(name, mode)[context][clazz, key] = value
+        SharedPreferencesDelegate(context, name, mode)
+            .getValue(thisRef, property)[clazz, key] = value
     }
 }

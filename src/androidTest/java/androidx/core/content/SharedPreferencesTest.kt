@@ -16,22 +16,16 @@
 
 package androidx.core.content
 
-import android.content.Context
-import android.preference.PreferenceManager
 import android.support.test.InstrumentationRegistry
-import androidx.testutils.assertThrows
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
 import org.junit.Test
 
 class SharedPreferencesTest {
 
-    val CUSTOM_PREFERENCE_NAME = "CUSTOM_PREFERENCE_NAME"
     private val context = InstrumentationRegistry.getContext()
 
     @Test fun editApply() {
         val preferences = context.getSharedPreferences("prefs", 0)
-
         preferences.edit {
             putString("test_key1", "test_value")
             putInt("test_key2", 100)
@@ -52,91 +46,55 @@ class SharedPreferencesTest {
         assertEquals(100, preferences.getInt("test_key2", 0))
     }
 
-    val DEFAULT_PREFERENCE_NULLABLE_STRING_KEY = "DEFAULT_PREFERENCE_NULLABLE_STRING_KEY"
-    val DEFAULT_PREFERENCE_NULLABLE_STRING_DEFAULT_VALUE: String? = null
-    val DEFAULT_PREFERENCE_NULLABLE_STRING_TEST_VALUE = "test"
+    @Test fun getOperator() {
+        val preferences = context.getSharedPreferences("set_prefs", 0)
 
-    var nullableStringDefaultPreference by context.bindSharedPreference(
-        DEFAULT_PREFERENCE_NULLABLE_STRING_KEY,
-        DEFAULT_PREFERENCE_NULLABLE_STRING_DEFAULT_VALUE)
-
-    @Test fun bindDefaultSharedPreferenceNullableString() {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-
-        assertNull(preferences.getString(
-            DEFAULT_PREFERENCE_NULLABLE_STRING_KEY,
-            DEFAULT_PREFERENCE_NULLABLE_STRING_DEFAULT_VALUE))
-
-        assertNull(nullableStringDefaultPreference)
-
-        nullableStringDefaultPreference = DEFAULT_PREFERENCE_NULLABLE_STRING_TEST_VALUE
-
-        assertEquals(DEFAULT_PREFERENCE_NULLABLE_STRING_TEST_VALUE,
-            preferences.getString(
-                DEFAULT_PREFERENCE_NULLABLE_STRING_KEY,
-                DEFAULT_PREFERENCE_NULLABLE_STRING_DEFAULT_VALUE))
-
-        assertEquals(DEFAULT_PREFERENCE_NULLABLE_STRING_TEST_VALUE, nullableStringDefaultPreference)
+        assertEquals(true, preferences[Boolean::class.java, "test_key1", true])
+        assertEquals(0.1f, preferences[Float::class.java, "test_key2", 0.1f])
+        assertEquals(100, preferences[Int::class.java, "test_key3", 100])
+        assertEquals(123456789, preferences[Long::class.java, "test_key4", 123456789])
+        assertEquals("test_value", preferences[String::class.java, "test_key5", "test_value"])
     }
 
-    val INTEGER_PREFERENCE_KEY = "INTEGER_PREFERENCE_KEY"
-    val NULLABLE_INTEGER_PREFERENCE_KEY = "NULLABLE_INTEGER_PREFERENCE_KEY"
-    val INTEGER_PREFERENCE_DEFAULT_VALUE = 0
-    val INTEGER_PREFERENCE_TEST_VALUE = 1
+    @Test fun setOperator() {
+        val preferences = context.getSharedPreferences("set_prefs", 0)
 
-    private var integerDefaultPreference by context.bindSharedPreference(
-        INTEGER_PREFERENCE_KEY,
-        INTEGER_PREFERENCE_DEFAULT_VALUE)
+        preferences[Boolean::class.java, "test_key1"] = true
+        preferences[Float::class.java, "test_key2"] = 0.1f
+        preferences[Int::class.java, "test_key3"] = 100
+        preferences[Long::class.java, "test_key4"] = 123456789
+        preferences[String::class.java, "test_key5"] = "test_value"
 
-    @Test fun bindDefaultSharedPreferenceInteger() {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-
-        assertEquals(preferences.getInt(INTEGER_PREFERENCE_KEY, INTEGER_PREFERENCE_DEFAULT_VALUE),
-            integerDefaultPreference)
-
-        integerDefaultPreference = INTEGER_PREFERENCE_TEST_VALUE
-
-        assertEquals(INTEGER_PREFERENCE_TEST_VALUE, integerDefaultPreference)
-
-        assertEquals(preferences.getInt(INTEGER_PREFERENCE_KEY, INTEGER_PREFERENCE_DEFAULT_VALUE),
-            integerDefaultPreference)
+        assertEquals(true, preferences.getBoolean("test_key1", false))
+        assertEquals(0.1f, preferences.getFloat("test_key2", 0.2f))
+        assertEquals(100, preferences.getInt("test_key3", 101))
+        assertEquals(123456789, preferences.getLong("test_key4", 123456788))
+        assertEquals("test_value", preferences.getString("test_key5", "default"))
     }
 
-    private var integerCustomPreference by context.bindSharedPreference(
-        INTEGER_PREFERENCE_KEY,
-        INTEGER_PREFERENCE_DEFAULT_VALUE,
-        CUSTOM_PREFERENCE_NAME)
+    @Test fun getReifiedOperator() {
+        val preferences = context.getSharedPreferences("set_prefs", 0)
 
-    @Test fun bindCustomSharedPreferenceInteger() {
-        val preferences = context.getSharedPreferences(CUSTOM_PREFERENCE_NAME, Context.MODE_PRIVATE)
-
-        assertEquals(preferences.getInt(INTEGER_PREFERENCE_KEY, INTEGER_PREFERENCE_DEFAULT_VALUE),
-            integerCustomPreference)
-
-        integerCustomPreference = INTEGER_PREFERENCE_TEST_VALUE
-
-        assertEquals(INTEGER_PREFERENCE_TEST_VALUE, integerCustomPreference)
-
-        assertEquals(preferences.getInt(INTEGER_PREFERENCE_KEY, INTEGER_PREFERENCE_DEFAULT_VALUE),
-            integerCustomPreference)
+        assertEquals(true, preferences["test_key1", true])
+        assertEquals(0.1f, preferences["test_key2", 0.1f])
+        assertEquals(100, preferences["test_key3", 100])
+        assertEquals(123456789, preferences["test_key4", 123456789])
+        assertEquals("test_value", preferences["test_key5", "test_value"])
     }
 
-    var nullableIntegerDefaultPreference by context.bindSharedPreference<Int>(
-        NULLABLE_INTEGER_PREFERENCE_KEY,
-        null)
+    @Test fun setReifiedOperator() {
+        val preferences = context.getSharedPreferences("set_prefs", 0)
 
-    @Test fun bindDefaultSharedPreferenceNullableInteger() {
-        assertThrows<IllegalArgumentException> { nullableIntegerDefaultPreference }
-        assertThrows<IllegalArgumentException> { nullableIntegerDefaultPreference = null }
-    }
+        preferences["test_key1"] = true
+        preferences["test_key2"] = 0.1f
+        preferences["test_key3"] = 100
+        preferences["test_key4"] = 123456789
+        preferences["test_key5"] = "test_value"
 
-    var nullableIntegerCustomPreference by context.bindSharedPreference<Int>(
-        NULLABLE_INTEGER_PREFERENCE_KEY,
-        null,
-        CUSTOM_PREFERENCE_NAME)
-
-    @Test fun bindCustomSharedPreferenceNullableInteger() {
-        assertThrows<IllegalArgumentException> { nullableIntegerCustomPreference }
-        assertThrows<IllegalArgumentException> { nullableIntegerCustomPreference = null }
+        assertEquals(true, preferences.getBoolean("test_key1", false))
+        assertEquals(0.1f, preferences.getFloat("test_key2", 0.2f))
+        assertEquals(100, preferences.getInt("test_key3", 101))
+        assertEquals(123456789, preferences.getLong("test_key4", 123456788))
+        assertEquals("test_value", preferences.getString("test_key5", "default"))
     }
 }

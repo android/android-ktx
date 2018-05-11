@@ -36,9 +36,8 @@ package androidx.core.content {
   }
 
   public final class SharedPreferencesDelegate {
-    ctor public SharedPreferencesDelegate(String? name, int mode);
-    ctor public SharedPreferencesDelegate();
-    method public operator android.content.SharedPreferences get(android.content.Context thisRef);
+    ctor public SharedPreferencesDelegate(android.content.Context context, String? name, int mode);
+    method public operator android.content.SharedPreferences getValue(Object any, kotlin.reflect.KProperty<?> property);
   }
 
   public final class SharedPreferencesKt {
