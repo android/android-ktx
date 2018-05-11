@@ -33,7 +33,6 @@ class SharedPreferencesPropertyTest {
     val LONG_PREFERENCE_KEY = "LONG_PREFERENCE_KEY"
     val STRING_PREFERENCE_KEY = "STRING_PREFERENCE_KEY"
     val STRING_SET_PREFERENCE_KEY = "STRING_SET_PREFERENCE_KEY"
-    val ANY_PREFERENCE_KEY = "ANY_PREFERENCE_KEY"
 
     val INTEGER_PREFERENCE_DEFAULT_VALUE = 0
     val BOOLEAN_PREFERENCE_DEFAULT_VALUE = false
@@ -41,7 +40,6 @@ class SharedPreferencesPropertyTest {
     val LONG_PREFERENCE_DEFAULT_VALUE = 1212131232132132131
     val STRING_PREFERENCE_DEFAULT_VALUE = "default"
     val STRING_SET_PREFERENCE_DEFAULT_VALUE = HashSet<String>()
-    val ANY_PREFERENCE_DEFAULT_VALUE = Any()
 
     val INTEGER_PREFERENCE_TEST_VALUE = INTEGER_PREFERENCE_DEFAULT_VALUE + 1
     val BOOLEAN_PREFERENCE_TEST_VALUE = !BOOLEAN_PREFERENCE_DEFAULT_VALUE
@@ -49,7 +47,6 @@ class SharedPreferencesPropertyTest {
     val LONG_PREFERENCE_TEST_VALUE = 1212131232132132131
     val STRING_PREFERENCE_TEST_VALUE = "test"
     val STRING_SET_PREFERENCE_TEST_VALUE = "default"
-    val ANY_PREFERENCE_TEST_VALUE = Any()
 
     private var integerPreference by context.bindSharedPreference(
         INTEGER_PREFERENCE_KEY,
@@ -75,15 +72,20 @@ class SharedPreferencesPropertyTest {
         STRING_SET_PREFERENCE_KEY,
         STRING_SET_PREFERENCE_DEFAULT_VALUE)
 
-    private var anyPreference by context.bindSharedPreference(
-        ANY_PREFERENCE_KEY,
-        ANY_PREFERENCE_DEFAULT_VALUE)
+    private var unsupportedPreference by context.bindSharedPreference(
+        "unsupported", context)
 
-    private var nullableIntegerPreference by context.bindSharedPreference<Int>(
+    private var nullBooleanPreference by context.bindSharedPreference<Boolean>(
+        "boolean", null)
+
+    private var nullFloatPreference by context.bindSharedPreference<Float>(
+        "float", null)
+
+    private var nullIntegerPreference by context.bindSharedPreference<Int>(
         "int", null)
 
-    private var nullableBooleanPreference by context.bindSharedPreference<Boolean>(
-        "boolean", null)
+    private var nullLongPreference by context.bindSharedPreference<Long>(
+        "long", null)
 
     @Test fun bindIntegerPreference() {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -171,20 +173,21 @@ class SharedPreferencesPropertyTest {
             stringSetPreference)*/
     }
 
-    @Test fun bindAnyPreference() {
+    @Test fun bindUnsupportedPreference() {
         assertThrows<IllegalArgumentException> {
-            Log.d("", anyPreference.toString())
+            Log.d("", unsupportedPreference.toString())
         }
-        assertThrows<IllegalArgumentException> { anyPreference = null }
+        assertThrows<IllegalArgumentException> { unsupportedPreference = null }
     }
 
-    @Test fun bindNullableIntegerPreference() {
-        assertThrows<IllegalArgumentException> { nullableIntegerPreference }
-        assertThrows<IllegalArgumentException> { nullableIntegerPreference = null }
-    }
-
-    @Test fun bindNullableBooleanPreference() {
-        assertThrows<IllegalArgumentException> { nullableBooleanPreference }
-        assertThrows<IllegalArgumentException> { nullableBooleanPreference = null }
+    @Test fun bindNonNullPreferences() {
+        assertThrows<IllegalArgumentException> { Log.d("", nullBooleanPreference.toString()) }
+        assertThrows<IllegalArgumentException> { nullBooleanPreference = null }
+        assertThrows<IllegalArgumentException> { Log.d("", nullFloatPreference.toString()) }
+        assertThrows<IllegalArgumentException> { nullFloatPreference = null }
+        assertThrows<IllegalArgumentException> { Log.d("", nullIntegerPreference.toString()) }
+        assertThrows<IllegalArgumentException> { nullIntegerPreference = null }
+        assertThrows<IllegalArgumentException> { Log.d("", nullLongPreference.toString()) }
+        assertThrows<IllegalArgumentException> { nullLongPreference = null }
     }
 }
