@@ -16,6 +16,7 @@
 
 package androidx.core.content
 
+import android.content.Context
 import android.preference.PreferenceManager
 import android.support.test.InstrumentationRegistry
 import androidx.testutils.assertThrows
@@ -87,41 +88,54 @@ class SharedPreferencesTest {
         INTEGER_PREFERENCE_KEY,
         INTEGER_PREFERENCE_DEFAULT_VALUE)
 
+    @Test fun bindDefaultSharedPreferenceInteger() {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+
+        assertEquals(preferences.getInt(INTEGER_PREFERENCE_KEY, INTEGER_PREFERENCE_DEFAULT_VALUE),
+            integerDefaultPreference)
+
+        integerDefaultPreference = INTEGER_PREFERENCE_TEST_VALUE
+
+        assertEquals(INTEGER_PREFERENCE_TEST_VALUE, integerDefaultPreference)
+
+        assertEquals(preferences.getInt(INTEGER_PREFERENCE_KEY, INTEGER_PREFERENCE_DEFAULT_VALUE),
+            integerDefaultPreference)
+    }
+
     private var integerCustomPreference by context.bindSharedPreference(
         INTEGER_PREFERENCE_KEY,
         INTEGER_PREFERENCE_DEFAULT_VALUE,
         CUSTOM_PREFERENCE_NAME)
 
+    @Test fun bindCustomSharedPreferenceInteger() {
+        val preferences = context.getSharedPreferences(CUSTOM_PREFERENCE_NAME, Context.MODE_PRIVATE)
+
+        assertEquals(preferences.getInt(INTEGER_PREFERENCE_KEY, INTEGER_PREFERENCE_DEFAULT_VALUE),
+            integerCustomPreference)
+
+        integerCustomPreference = INTEGER_PREFERENCE_TEST_VALUE
+
+        assertEquals(INTEGER_PREFERENCE_TEST_VALUE, integerCustomPreference)
+
+        assertEquals(preferences.getInt(INTEGER_PREFERENCE_KEY, INTEGER_PREFERENCE_DEFAULT_VALUE),
+            integerCustomPreference)
+    }
+
     var nullableIntegerDefaultPreference by context.bindSharedPreference<Int>(
         NULLABLE_INTEGER_PREFERENCE_KEY,
         null)
+
+    @Test fun bindDefaultSharedPreferenceNullableInteger() {
+        assertThrows<IllegalArgumentException> { nullableIntegerDefaultPreference }
+        assertThrows<IllegalArgumentException> { nullableIntegerDefaultPreference = null }
+    }
 
     var nullableIntegerCustomPreference by context.bindSharedPreference<Int>(
         NULLABLE_INTEGER_PREFERENCE_KEY,
         null,
         CUSTOM_PREFERENCE_NAME)
 
-    @Test fun bindDefaultSharedPreferenceInteger() {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-
-        assertEquals(INTEGER_PREFERENCE_DEFAULT_VALUE,
-            preferences.getInt(
-                INTEGER_PREFERENCE_KEY,
-                INTEGER_PREFERENCE_DEFAULT_VALUE))
-
-        assertEquals(INTEGER_PREFERENCE_DEFAULT_VALUE, integerDefaultPreference)
-
-        integerDefaultPreference = INTEGER_PREFERENCE_TEST_VALUE
-
-        assertEquals(INTEGER_PREFERENCE_TEST_VALUE,
-            preferences.getInt(
-                INTEGER_PREFERENCE_KEY,
-                INTEGER_PREFERENCE_DEFAULT_VALUE))
-
-        assertEquals(INTEGER_PREFERENCE_TEST_VALUE, nullableStringDefaultPreference)
-
-        assertThrows<IllegalArgumentException> { nullableIntegerDefaultPreference }
-        assertThrows<IllegalArgumentException> { nullableIntegerDefaultPreference = null }
+    @Test fun bindCustomSharedPreferenceNullableInteger() {
         assertThrows<IllegalArgumentException> { nullableIntegerCustomPreference }
         assertThrows<IllegalArgumentException> { nullableIntegerCustomPreference = null }
     }
