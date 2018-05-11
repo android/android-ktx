@@ -16,6 +16,11 @@ package androidx.core.animation {
 
 package androidx.core.content {
 
+  public final class BroadcastReceiverKt {
+    ctor public BroadcastReceiverKt();
+    method public static android.content.BroadcastReceiver broadcastReceiver(kotlin.jvm.functions.Function2<? super android.content.Context,? super android.content.Intent,kotlin.Unit> onReceive);
+  }
+
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
     method public static error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
