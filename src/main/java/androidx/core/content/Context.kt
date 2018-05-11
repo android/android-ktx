@@ -17,15 +17,11 @@
 package androidx.core.content
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.TypedArray
-import android.preference.PreferenceManager
 import android.support.annotation.AttrRes
 import android.support.annotation.RequiresApi
 import android.support.annotation.StyleRes
 import android.util.AttributeSet
-import kotlin.reflect.KMutableProperty0
-import kotlin.reflect.KProperty
 
 /**
  * Return the handle to a system-level service by class.
@@ -99,10 +95,7 @@ inline fun Context.withStyledAttributes(
 inline fun <reified T : Any> Context.bindSharedPreference(
     key: String,
     defaultValue: T? = null,
-    preferencesName: String? = null,
+    name: String? = null,
     mode: Int = Context.MODE_PRIVATE
-): SharedPreferencesProperty<T> {
-    return SharedPreferencesProperty(
-        this, preferencesName, mode, T::class.java, key, defaultValue)
-}
-
+): SharedPreferencesProperty<T> =
+    SharedPreferencesProperty(name, mode, this, T::class.java, key, defaultValue)

@@ -19,7 +19,6 @@ package androidx.core
 import android.app.Activity
 import android.os.Bundle
 import android.preference.PreferenceFragment
-import androidx.core.content.bindSharedPreference
 import androidx.core.kotlin.test.R
 
 class TestPreferenceActivity : Activity() {
@@ -28,14 +27,11 @@ class TestPreferenceActivity : Activity() {
         const val TAG = "TestPreferenceActivity"
     }
 
-    var preference by bindSharedPreference("key", "default")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fragmentManager.beginTransaction()
             .add(android.R.id.content, TestPreferenceFragment(), TAG)
             .commitNow()
-        preference = "test";
     }
 
     class TestPreferenceFragment : PreferenceFragment() {

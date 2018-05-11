@@ -153,31 +153,26 @@ operator fun <T : Any> SharedPreferences.set(clazz: Class<T>, key: String, value
 }
 
 class SharedPreferencesDelegate (
-    private val context: Context,
-    private val preferencesName: String? = null,
-    private val mode: Int = Context.MODE_PRIVATE) {
-
-    operator fun getValue(thisRef: Any, property: KProperty<*>): SharedPreferences {
-        return if(preferencesName != null) context.getSharedPreferences(preferencesName, mode)
-        else PreferenceManager.getDefaultSharedPreferences(context)
-    }
+    private val name: String? = null,
+    private val mode: Int = Context.MODE_PRIVATE
+) {
+    operator fun get(thisRef: Context): SharedPreferences =
+        if (name != null) thisRef.getSharedPreferences(name, mode)
+        else PreferenceManager.getDefaultSharedPreferences(thisRef)
 }
 
-class SharedPreferencesProperty<T: Any>(
-    context: Context,
-    preferencesName: String? = null,
-    mode: Int = Context.MODE_PRIVATE,
+class SharedPreferencesProperty<T : Any>(
+    private val name: String? = null,
+    private val mode: Int = Context.MODE_PRIVATE,
+    private val context: Context,
     private val clazz: Class<T>,
     private val key: String,
-    private val defaultValue: T?) {
-
-    private val delegate: SharedPreferencesDelegate =
-        SharedPreferencesDelegate(context, preferencesName, mode)
-
+    private val defaultValue: T?
+) {
     operator fun getValue(thisRef: Any, property: KProperty<*>): T? =
-        delegate.getValue(thisRef, property)[clazz, key, defaultValue]
+        SharedPreferencesDelegate(name, mode)[context][clazz, key, defaultValue]
 
     operator fun setValue(thisRef: Any, property: KProperty<*>, value: T?) {
-        delegate.getValue(thisRef, property)[clazz, key] = value
+        SharedPreferencesDelegate(name, mode)[context][clazz, key] = value
     }
 }
