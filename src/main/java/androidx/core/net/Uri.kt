@@ -29,6 +29,20 @@ import java.io.File
 inline fun String.toUri(): Uri = Uri.parse(this)
 
 /**
+ * Decodes '%'-escaped octets in the given string using the UTF-8 scheme.
+ *
+ * @see Uri.decode
+ */
+inline fun String.decode(): String = Uri.decode(this)
+
+/**
+ * Encodes characters in the given string as '%'-escaped octets using the UTF-8 scheme.
+ *
+ * @see Uri.encode
+ */
+inline fun String.encode(allow: String? = null): String = Uri.encode(this, allow)
+
+/**
  * Creates a Uri from the given file.
  *
  * @see Uri.fromFile
