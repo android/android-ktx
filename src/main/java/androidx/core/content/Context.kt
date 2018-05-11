@@ -91,3 +91,11 @@ inline fun Context.withStyledAttributes(
         typedArray.recycle()
     }
 }
+
+inline fun <reified T : Any> Context.bindSharedPreference(
+    key: String,
+    defaultValue: T? = null,
+    name: String? = null,
+    mode: Int = Context.MODE_PRIVATE
+): SharedPreferencesProperty<T> =
+    SharedPreferencesProperty(name, mode, this, T::class.java, key, defaultValue)

@@ -14,6 +14,14 @@ package androidx.core.animation {
 
 }
 
+package androidx.core.app {
+
+  public final class ActivityKt {
+    ctor public ActivityKt();
+  }
+
+}
+
 package androidx.core.content {
 
   public final class ContentValuesKt {
@@ -27,9 +35,22 @@ package androidx.core.content {
     method public static void withStyledAttributes(android.content.Context, @StyleRes int resourceId, int[] attrs, kotlin.jvm.functions.Function1<? super android.content.res.TypedArray,kotlin.Unit> block);
   }
 
+  public final class SharedPreferencesDelegate {
+    ctor public SharedPreferencesDelegate(android.content.Context context, String? name, int mode);
+    method public operator android.content.SharedPreferences getValue(Object any, kotlin.reflect.KProperty<?> property);
+  }
+
   public final class SharedPreferencesKt {
     ctor public SharedPreferencesKt();
     method public static void edit(android.content.SharedPreferences, boolean commit = "false", kotlin.jvm.functions.Function1<? super android.content.SharedPreferences.Editor,kotlin.Unit> action);
+    method public static operator <T> T? get(android.content.SharedPreferences, Class<T> clazz, String key, T? defaultValue = "null");
+    method public static operator <T> void set(android.content.SharedPreferences, Class<T> clazz, String key, T? value);
+  }
+
+  public final class SharedPreferencesProperty<T> {
+    ctor public SharedPreferencesProperty(String? name, int mode, android.content.Context context, Class<T> clazz, String key, T? defaultValue);
+    method public operator T? getValue(Object thisRef, kotlin.reflect.KProperty<?> property);
+    method public operator void setValue(Object thisRef, kotlin.reflect.KProperty<?> property, T? value);
   }
 
 }

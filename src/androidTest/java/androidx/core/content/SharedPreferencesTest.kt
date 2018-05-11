@@ -21,11 +21,11 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class SharedPreferencesTest {
+
     private val context = InstrumentationRegistry.getContext()
 
     @Test fun editApply() {
         val preferences = context.getSharedPreferences("prefs", 0)
-
         preferences.edit {
             putString("test_key1", "test_value")
             putInt("test_key2", 100)
@@ -44,5 +44,57 @@ class SharedPreferencesTest {
 
         assertEquals("test_value", preferences.getString("test_key1", null))
         assertEquals(100, preferences.getInt("test_key2", 0))
+    }
+
+    @Test fun getOperator() {
+        val preferences = context.getSharedPreferences("set_prefs", 0)
+
+        assertEquals(true, preferences[Boolean::class.java, "test_key1", true])
+        assertEquals(0.1f, preferences[Float::class.java, "test_key2", 0.1f])
+        assertEquals(100, preferences[Int::class.java, "test_key3", 100])
+        assertEquals(123456789, preferences[Long::class.java, "test_key4", 123456789])
+        assertEquals("test_value", preferences[String::class.java, "test_key5", "test_value"])
+    }
+
+    @Test fun setOperator() {
+        val preferences = context.getSharedPreferences("set_prefs", 0)
+
+        preferences[Boolean::class.java, "test_key1"] = true
+        preferences[Float::class.java, "test_key2"] = 0.1f
+        preferences[Int::class.java, "test_key3"] = 100
+        preferences[Long::class.java, "test_key4"] = 123456789
+        preferences[String::class.java, "test_key5"] = "test_value"
+
+        assertEquals(true, preferences.getBoolean("test_key1", false))
+        assertEquals(0.1f, preferences.getFloat("test_key2", 0.2f))
+        assertEquals(100, preferences.getInt("test_key3", 101))
+        assertEquals(123456789, preferences.getLong("test_key4", 123456788))
+        assertEquals("test_value", preferences.getString("test_key5", "default"))
+    }
+
+    @Test fun getInlinedOperator() {
+        val preferences = context.getSharedPreferences("set_prefs", 0)
+
+        assertEquals(true, preferences["test_key1", true])
+        assertEquals(0.1f, preferences["test_key2", 0.1f])
+        assertEquals(100, preferences["test_key3", 100])
+        assertEquals(123456789, preferences["test_key4", 123456789])
+        assertEquals("test_value", preferences["test_key5", "test_value"])
+    }
+
+    @Test fun setInlinedOperator() {
+        val preferences = context.getSharedPreferences("set_prefs", 0)
+
+        preferences["test_key1"] = true
+        preferences["test_key2"] = 0.1f
+        preferences["test_key3"] = 100
+        preferences["test_key4"] = 123456789
+        preferences["test_key5"] = "test_value"
+
+        assertEquals(true, preferences.getBoolean("test_key1", false))
+        assertEquals(0.1f, preferences.getFloat("test_key2", 0.2f))
+        assertEquals(100, preferences.getInt("test_key3", 101))
+        assertEquals(123456789, preferences.getLong("test_key4", 123456788))
+        assertEquals("test_value", preferences.getString("test_key5", "default"))
     }
 }
