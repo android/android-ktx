@@ -602,6 +602,11 @@ package androidx.core.util {
     method @RequiresApi(18) public static kotlin.collections.LongIterator valueIterator(android.util.SparseLongArray);
   }
 
+  public final class TimingLoggerKt {
+    ctor public TimingLoggerKt();
+    method public static void log(android.util.TimingLogger, kotlin.Pair<java.lang.String,? extends kotlin.jvm.functions.Function0<kotlin.Unit>>... splits);
+  }
+
 }
 
 package androidx.core.view {
