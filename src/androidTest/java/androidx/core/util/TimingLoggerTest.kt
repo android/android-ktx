@@ -25,17 +25,17 @@ class TimingLoggerTest {
         val called = arrayOf(false, false, false)
 
         val timingLogger = TimingLogger("TAG", "methodA")
-        timingLogger.log(
-            "work A" to {
+        timingLogger.log {
+            split("work A") {
                 called[0] = true
-            },
-            "work B" to {
+            }
+            split("work B") {
                 called[1] = true
-            },
-            "work C" to {
+            }
+            split("work C") {
                 called[2] = true
             }
-        )
+        }
 
         assertTrue(called.reduce(Boolean::and))
     }

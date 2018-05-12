@@ -22,12 +22,16 @@ import android.util.TimingLogger
  * Resets the timing logger instance before timing each of the given splits and subsequently
  * dumping the results to the log output.
  */
-@Suppress("NOTHING_TO_INLINE") // aliases to other public API
-inline fun TimingLogger.log(vararg splits: Pair<String, () -> Unit>) {
+inline fun TimingLogger.log(work: TimingLogger.() -> Unit) {
     this.reset()
-    splits.forEach {
-        it.second()
-        this.addSplit(it.first)
-    }
+    work()
     this.dumpToLog()
+}
+
+/**
+ * Times the given work and subsequently adds a split to the timing logger instance.
+ */
+inline fun TimingLogger.split(splitLabel: String, work: () -> Unit) {
+    work()
+    this.addSplit(splitLabel)
 }
