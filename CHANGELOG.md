@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 1.0.0-alpha1 *(2017-05-07)*
+Version 1.0.0-alpha1 *(2018-05-07)*
 -----------------------------------
 
 Note: Support library dependencies have changed to AndroidX!
