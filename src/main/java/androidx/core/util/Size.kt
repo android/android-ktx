@@ -18,9 +18,9 @@
 
 package androidx.core.util
 
-import android.support.annotation.RequiresApi
 import android.util.Size
 import android.util.SizeF
+import androidx.annotation.RequiresApi
 
 /**
  * Returns "width", the first component of this [Size].

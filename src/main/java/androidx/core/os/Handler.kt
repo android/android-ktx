@@ -17,22 +17,6 @@
 package androidx.core.os
 
 import android.os.Handler
-import android.os.Message
-
-/**
- * Version of [Handler.postDelayed] which adds the ability to specify [token], enabling the use
- * of [Handler.removeCallbacksAndMessages].
- */
-@PublishedApi
-internal fun Handler.postDelayedWithToken(runnable: Runnable, token: Any?, delayInMillis: Long) {
-    // Note: this method signature ordering is designed to be an overload to the existing
-    // postDelayed methods on Handler and matches the existing overloads for postAtTime.
-    // TODO delete and replace with HandlerCompat.postDelayed once available.
-
-    val message = Message.obtain(this, runnable)
-    message.obj = token
-    sendMessageDelayed(message, delayInMillis)
-}
 
 /**
  * Version of [Handler.postDelayed] which re-orders the parameters, allowing the action to be
@@ -55,7 +39,7 @@ inline fun Handler.postDelayed(
     if (token == null) {
         postDelayed(runnable, delayInMillis)
     } else {
-        postDelayedWithToken(runnable, token, delayInMillis)
+        HandlerCompat.postDelayed(this, runnable, token, delayInMillis)
     }
     return runnable
 }

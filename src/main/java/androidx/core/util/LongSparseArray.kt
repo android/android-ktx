@@ -18,8 +18,8 @@
 
 package androidx.core.util
 
-import android.support.annotation.RequiresApi
 import android.util.LongSparseArray
+import androidx.annotation.RequiresApi
 
 /** Returns the number of key/value pairs in the collection. */
 @get:RequiresApi(16)

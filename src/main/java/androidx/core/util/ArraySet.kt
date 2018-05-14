@@ -18,8 +18,8 @@
 
 package androidx.core.util
 
-import android.support.annotation.RequiresApi
 import android.util.ArraySet
+import androidx.annotation.RequiresApi
 
 /** Returns an empty new [ArraySet]. */
 @RequiresApi(23)

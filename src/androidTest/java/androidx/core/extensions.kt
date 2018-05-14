@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
-package androidx.core.util
+package androidx.core
 
-import android.text.TextUtils
-import androidx.annotation.RequiresApi
-import java.util.Locale
+import android.annotation.SuppressLint
+import android.content.Context
+import android.support.annotation.LayoutRes
+import android.util.AttributeSet
+import android.util.Xml
+import org.xmlpull.v1.XmlPullParser
 
-/**
- * Returns layout direction for a given locale.
- * @see TextUtils.getLayoutDirectionFromLocale
- */
-val Locale.layoutDirection: Int
-        @RequiresApi(17)
-        get() = TextUtils.getLayoutDirectionFromLocale(this)
+@SuppressLint("ResourceType")
+fun Context.getAttributeSet(@LayoutRes layoutId: Int): AttributeSet {
+    val parser = resources.getXml(layoutId)
+    var type = parser.next()
+    while (type != XmlPullParser.START_TAG) {
+        type = parser.next()
+    }
+    return Xml.asAttributeSet(parser)
+}
