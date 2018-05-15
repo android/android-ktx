@@ -45,16 +45,16 @@ class ImageDecoderTest {
         TEST_FILE.delete()
     }
 
-    @Test fun toBitmap() {
+    @Test fun decodeBitmap() {
         val src = ImageDecoder.createSource(TEST_FILE)
-        val decodedBitmap = src.toBitmap { _, _ -> setTargetSize(10, 10) }
+        val decodedBitmap = src.decodeBitmap { _, _ -> setTargetSize(10, 10) }
         assertEquals(10, decodedBitmap.width)
         assertEquals(10, decodedBitmap.height)
     }
 
-    @Test fun toDrawable() {
+    @Test fun decodeDrawable() {
         val src = ImageDecoder.createSource(TEST_FILE)
-        val decodedDrawable = src.toDrawable { _, _ -> setTargetSize(10, 10) }
+        val decodedDrawable = src.decodeDrawable { _, _ -> setTargetSize(10, 10) }
         assertEquals(10, decodedDrawable.intrinsicWidth)
         assertEquals(10, decodedDrawable.intrinsicHeight)
     }

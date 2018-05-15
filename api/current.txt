@@ -155,8 +155,8 @@ package androidx.core.graphics {
 
   public final class ImageDecoderKt {
     ctor public ImageDecoderKt();
-    method @RequiresApi(28) public static android.graphics.Bitmap toBitmap(android.graphics.ImageDecoder.Source, kotlin.jvm.functions.Function3<? super android.graphics.ImageDecoder,? super android.graphics.ImageDecoder.ImageInfo,? super android.graphics.ImageDecoder.Source,kotlin.Unit> action);
-    method @RequiresApi(28) public static android.graphics.drawable.Drawable toDrawable(android.graphics.ImageDecoder.Source, kotlin.jvm.functions.Function3<? super android.graphics.ImageDecoder,? super android.graphics.ImageDecoder.ImageInfo,? super android.graphics.ImageDecoder.Source,kotlin.Unit> action);
+    method @RequiresApi(28) public static android.graphics.Bitmap decodeBitmap(android.graphics.ImageDecoder.Source, kotlin.jvm.functions.Function3<? super android.graphics.ImageDecoder,? super android.graphics.ImageDecoder.ImageInfo,? super android.graphics.ImageDecoder.Source,kotlin.Unit> action);
+    method @RequiresApi(28) public static android.graphics.drawable.Drawable decodeDrawable(android.graphics.ImageDecoder.Source, kotlin.jvm.functions.Function3<? super android.graphics.ImageDecoder,? super android.graphics.ImageDecoder.ImageInfo,? super android.graphics.ImageDecoder.Source,kotlin.Unit> action);
   }
 
   public final class MatrixKt {

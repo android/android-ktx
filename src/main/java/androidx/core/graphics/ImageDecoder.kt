@@ -29,7 +29,7 @@ import androidx.annotation.RequiresApi
  * @see ImageDecoder.decodeBitmap
  */
 @RequiresApi(28)
-inline fun ImageDecoder.Source.toBitmap(
+inline fun ImageDecoder.Source.decodeBitmap(
     crossinline action: ImageDecoder.(info: ImageInfo, source: Source) -> Unit
 ): Bitmap {
     return ImageDecoder.decodeBitmap(this) { decoder, info, source ->
@@ -43,7 +43,7 @@ inline fun ImageDecoder.Source.toBitmap(
  * @see ImageDecoder.decodeDrawable
  */
 @RequiresApi(28)
-inline fun ImageDecoder.Source.toDrawable(
+inline fun ImageDecoder.Source.decodeDrawable(
     crossinline action: ImageDecoder.(info: ImageInfo, source: Source) -> Unit
 ): Drawable {
     return ImageDecoder.decodeDrawable(this) { decoder, info, source ->
