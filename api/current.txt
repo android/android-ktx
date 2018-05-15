@@ -305,6 +305,16 @@ package androidx.core.location {
 
 }
 
+package androidx.core.media.audiofx {
+
+  public final class AudioEffectKt {
+    ctor public AudioEffectKt();
+    method public static void doOnControlStatusChange(android.media.audiofx.AudioEffect, kotlin.jvm.functions.Function2<? super android.media.audiofx.AudioEffect,? super java.lang.Boolean,kotlin.Unit> action);
+    method public static void doOnEnableStatusChange(android.media.audiofx.AudioEffect, kotlin.jvm.functions.Function2<? super android.media.audiofx.AudioEffect,? super java.lang.Boolean,kotlin.Unit> action);
+  }
+
+}
+
 package androidx.core.net {
 
   public final class UriKt {
