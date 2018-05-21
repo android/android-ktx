@@ -82,7 +82,7 @@ class BitmapTest {
         val src = createBitmap(10, 10)
         src[3, 5] = 0x40302010
         src[0, 0] = 0x10203010
-        val res = src.rotate(90f)
+        val res = src.rotate(90f, 0f, 0f)
         assertEquals(10, res.width)
         assertEquals(10, res.height)
         assertEquals(0x10203010, res[9, 0])
