@@ -127,7 +127,7 @@ class ClipDataTest {
         assertThat(items).containsExactly("", "item1", "item2")
     }
 
-    @Test fun clipDataOf() {
+    @Test fun clipDataOfValid() {
         clip.addItem(ClipData.Item("item1"))
         clip.addItem(ClipData.Item("item2"))
 
@@ -149,5 +149,11 @@ class ClipDataTest {
         val cI = clipDataOf(intents, "intents")
         val iI = cI.map { item -> item.intent }
         assertThat(iI).containsExactlyElementsIn(intents)
+    }
+
+    @Test fun clipDataOfInvalid() {
+        assertThrows<IllegalArgumentException> {
+            clipDataOf(listOf(1, 2, 3), "ints")
+        }.hasMessageThat().isEqualTo("Illegal type: java.lang.Integer")
     }
 }
