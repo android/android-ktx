@@ -109,10 +109,10 @@ inline fun <reified T> clipDataOf(
                 }
             }
         }
-    String::class.java.isAssignableFrom(T::class.java) ->
-        ClipData.newPlainText(label, l[0] as String).apply {
+    CharSequence::class.java.isAssignableFrom(T::class.java) ->
+        ClipData.newPlainText(label, l[0] as CharSequence).apply {
             l.forEachIndexed { index, item ->
-                if (index > 0) addItem(ClipData.Item(item as String))
+                if (index > 0) addItem(ClipData.Item(item as CharSequence))
             }
         }
     Intent::class.java.isAssignableFrom(T::class.java) ->
