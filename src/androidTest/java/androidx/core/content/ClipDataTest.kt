@@ -153,6 +153,10 @@ class ClipDataTest {
 
     @Test fun clipDataOfInvalid() {
         assertThrows<IllegalArgumentException> {
+            clipDataOf(listOf<String>(), "empty")
+        }.hasMessageThat().isEqualTo("Illegal argument, list cannot be empty.")
+
+        assertThrows<IllegalArgumentException> {
             clipDataOf(listOf(1, 2, 3), "ints")
         }.hasMessageThat().isEqualTo("Illegal type: java.lang.Integer")
     }

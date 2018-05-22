@@ -94,8 +94,10 @@ inline fun <reified T> clipDataOf(
     l: List<T>,
     label: String = "",
     cr: ContentResolver? = null
-): ClipData = when {
-    Uri::class.java.isAssignableFrom(T::class.java) ->
+): ClipData = if (l.isEmpty()) {
+        throw IllegalArgumentException("Illegal argument, list cannot be empty.")
+    } else when {
+        Uri::class.java.isAssignableFrom(T::class.java) ->
         if (cr == null) {
             ClipData.newRawUri(label, l[0] as Uri).apply {
                 l.forEachIndexed { index, item ->
@@ -109,19 +111,17 @@ inline fun <reified T> clipDataOf(
                 }
             }
         }
-    CharSequence::class.java.isAssignableFrom(T::class.java) ->
+        CharSequence::class.java.isAssignableFrom(T::class.java) ->
         ClipData.newPlainText(label, l[0] as CharSequence).apply {
             l.forEachIndexed { index, item ->
                 if (index > 0) addItem(ClipData.Item(item as CharSequence))
             }
         }
-    Intent::class.java.isAssignableFrom(T::class.java) ->
+        Intent::class.java.isAssignableFrom(T::class.java) ->
         ClipData.newIntent(label, l[0] as Intent).apply {
             l.forEachIndexed { index, item ->
                 if (index > 0) addItem(ClipData.Item(item as Intent))
             }
         }
-    else ->
-        throw IllegalArgumentException("Illegal type for $label and " +
-            "items: ${T::class.java.canonicalName}")
-}
+        else -> throw IllegalArgumentException("Illegal type: ${T::class.java.canonicalName}")
+    }
