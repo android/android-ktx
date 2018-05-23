@@ -16,6 +16,10 @@
 
 package androidx.core.content
 
+import android.app.Service
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
@@ -90,4 +94,22 @@ inline fun Context.withStyledAttributes(
     } finally {
         typedArray.recycle()
     }
+}
+
+/**
+ * Schedules a job with the Service [T].
+ *
+ * @param jobId the id of the job being scheduled
+ * @param buildSequence a lambda to set the appropriate JobInfo.Builder params
+ */
+@RequiresApi(21)
+inline fun <reified T : Service> Context.scheduleJob(
+    jobId: Int,
+    buildSequence: JobInfo.Builder.() -> Unit
+): Int {
+    val info = JobInfo.Builder(jobId, ComponentName(this, T::class.java))
+        .apply(buildSequence)
+        .build()
+    val scheduler = this.getSystemService(Context.JOB_SCHEDULER_SERVICE) as? JobScheduler
+    return scheduler?.schedule(info) ?: JobScheduler.RESULT_FAILURE
 }

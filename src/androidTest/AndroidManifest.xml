@@ -3,5 +3,7 @@
     <application>
         <activity android:name="androidx.core.TestActivity"/>
         <activity android:name="androidx.core.TestPreferenceActivity"/>
+        <service android:name="androidx.core.content.ContextTest$Companion$TestService"
+                 android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 </manifest>
