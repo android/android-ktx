@@ -16,51 +16,43 @@
 
 package androidx.core.graphics
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
-import android.support.test.InstrumentationRegistry
-import org.junit.After
 import org.junit.Assert.assertEquals
-import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import java.io.ByteArrayOutputStream
-import java.io.File
+import java.nio.ByteBuffer
 
 class ImageDecoderTest {
 
-    @Before fun before() {
-        val bStream = ByteArrayOutputStream().apply {
-            Bitmap
-                .createBitmap(1, 1, Bitmap.Config.ARGB_8888)
-                .compress(Bitmap.CompressFormat.JPEG, 100, this)
-        }
-
-        context.openFileOutput(TEST_FILE.name, Context.MODE_PRIVATE).use {
-            it.write(bStream.toByteArray())
-        }
-    }
-
-    @After fun after() {
-        TEST_FILE.delete()
-    }
-
     @Test fun decodeBitmap() {
-        val src = ImageDecoder.createSource(TEST_FILE)
+        val src = ImageDecoder.createSource(buffer)
         val decodedBitmap = src.decodeBitmap { _, _ -> setTargetSize(10, 10) }
         assertEquals(10, decodedBitmap.width)
         assertEquals(10, decodedBitmap.height)
     }
 
     @Test fun decodeDrawable() {
-        val src = ImageDecoder.createSource(TEST_FILE)
+        val src = ImageDecoder.createSource(buffer)
         val decodedDrawable = src.decodeDrawable { _, _ -> setTargetSize(10, 10) }
         assertEquals(10, decodedDrawable.intrinsicWidth)
         assertEquals(10, decodedDrawable.intrinsicHeight)
     }
 
     companion object {
-        private val context = InstrumentationRegistry.getContext()
-        private val TEST_FILE = File(context.filesDir, "test.jpg")
+        private lateinit var buffer: ByteBuffer
+
+        @BeforeClass
+        @JvmStatic
+        fun beforeClass() {
+            val stream = ByteArrayOutputStream().apply {
+                Bitmap
+                    .createBitmap(1, 1, Bitmap.Config.ARGB_8888)
+                    .compress(Bitmap.CompressFormat.JPEG, 100, this)
+            }
+
+            buffer = ByteBuffer.wrap(stream.toByteArray())
+        }
     }
 }
