@@ -16,88 +16,69 @@
 
 package androidx.core.media.audiofx
 
-import android.content.Context
 import android.media.AudioManager
 import android.media.audiofx.Equalizer
 import android.support.test.InstrumentationRegistry
+import androidx.core.content.systemService
+import org.junit.After
 import org.junit.Assert.assertFalse
+import org.junit.Before
 import org.junit.Test
-import java.util.concurrent.locks.ReentrantLock
-import kotlin.concurrent.withLock
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit.MILLISECONDS
 
 class AudioEffectTest {
     private val context = InstrumentationRegistry.getContext()
-    private val lock = ReentrantLock()
+    private val audioManager by lazy { context.systemService<AudioManager>() }
+    private var audioSessionId = 0
+    private lateinit var equalizer: Equalizer
+
+    @Before fun before() {
+        audioSessionId = audioManager.generateAudioSessionId().also {
+            equalizer = Equalizer(0, it)
+        }
+    }
+
+    @After fun after() {
+        equalizer.release()
+    }
 
     @Test fun doOnControlStatusChange() {
         var hasControl = true
 
-        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        val audioSessionId = audioManager.generateAudioSessionId()
-
-        val equalizer = Equalizer(0, audioSessionId)
-
-        val condition = lock.newCondition()
+        val latch = CountDownLatch(1)
 
         equalizer.doOnControlStatusChange {
-            lock.withLock {
-                if (this == equalizer) {
-                    hasControl = it
-                    condition.signal()
-                }
+            if (this == equalizer) {
+                hasControl = it
+                latch.countDown()
             }
         }
 
         Equalizer(Integer.MAX_VALUE, audioSessionId).enabled = true
 
-        var looperWaitCount = MAX_LOOPER_WAIT_COUNT
-        lock.withLock {
-            while (hasControl && looperWaitCount-- > 0) {
-                condition.await()
-            }
-        }
-
-        equalizer.release()
+        latch.await(20, MILLISECONDS)
 
         assertFalse(hasControl)
     }
 
     @Test fun doOnEnableStatusChange() {
-        var isEnabled: Boolean
+        var isEnabled = true
 
-        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        val audioSessionId = audioManager.generateAudioSessionId()
-
-        val equalizer = Equalizer(0, audioSessionId)
-
-        val condition = lock.newCondition()
+        val latch = CountDownLatch(1)
 
         equalizer.doOnEnableStatusChange {
-            lock.withLock {
-                if (this == equalizer) {
-                    isEnabled = it
-                    condition.signal()
-                }
+            if (this == equalizer) {
+                isEnabled = it
+                latch.countDown()
             }
         }
 
         equalizer.enabled = true
-        isEnabled = true
         Equalizer(0, audioSessionId).enabled = false
 
-        var looperWaitCount = MAX_LOOPER_WAIT_COUNT
-        lock.withLock {
-            while (isEnabled && looperWaitCount-- > 0) {
-                condition.await()
-            }
-        }
-
-        equalizer.release()
+        latch.await(20, MILLISECONDS)
 
         assertFalse(isEnabled)
-    }
-
-    companion object {
-        private const val MAX_LOOPER_WAIT_COUNT = 10
     }
 }
