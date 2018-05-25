@@ -21,5 +21,5 @@ fi
     echo " Done"
 
     echo -e "\nDependencies:\n"
-    ./gradlew dependencies --no-daemon --configuration implementation | \egrep '^.--- ' | cut -d' ' -f2
+    ./gradlew dependencies --no-daemon --configuration implementation | \egrep '^.--- ' | cut -d' ' -f2 | sort -f
 )
