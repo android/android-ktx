@@ -24,7 +24,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import androidx.core.kotlin.test.R
+import androidx.core.ktx.test.R
 import androidx.testutils.assertThrows
 import androidx.testutils.fail
 import org.junit.Assert.assertEquals

@@ -21,7 +21,7 @@ package androidx.core.graphics.drawable
 import android.graphics.Bitmap
 import android.graphics.drawable.Icon
 import android.net.Uri
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 
 /**
  * Create an [Icon] from this adaptive [Bitmap].

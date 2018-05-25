@@ -18,8 +18,8 @@
 
 package androidx.core.util
 
-import android.support.annotation.RequiresApi
 import android.util.AtomicFile
+import androidx.annotation.RequiresApi
 import java.io.FileOutputStream
 import java.nio.charset.Charset
 

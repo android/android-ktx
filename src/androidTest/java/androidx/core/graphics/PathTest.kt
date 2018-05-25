@@ -17,10 +17,8 @@
 package androidx.core.graphics
 
 import android.graphics.Path
-import android.graphics.PointF
 import android.graphics.RectF
 import android.support.test.filters.SdkSuppress
-import androidx.testutils.fail
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
@@ -28,41 +26,9 @@ import org.junit.Test
 
 class PathTest {
     @SdkSuppress(minSdkVersion = 26)
-    @Test fun testFlattenEmptyPath() {
-        Path().flatten().forEach { fail("An empty path should not have segments: " + it) }
-    }
-
-    @SdkSuppress(minSdkVersion = 26)
     @Test fun testFlatten() {
         val p = Path()
 
-        // Single line
-        p.lineTo(10.0f, 10.0f)
-        assertEquals(
-            PathSegment(PointF(), 0.0f, PointF(10.0f, 10.0f), 1.0f),
-            p.flatten().iterator().next())
-
-        // Only moves
-        p.reset()
-        p.moveTo(10.0f, 10.0f)
-        p.moveTo(20.0f, 20.0f)
-        p.flatten().forEach { fail("A path with only moves should not have segments: " + it) }
-
-        // Mix of moves/lines
-        p.reset()
-        p.moveTo(10.0f, 10.0f)
-        p.lineTo(20.0f, 20.0f)
-        p.lineTo(60.0f, 20.0f)
-
-        var count = 0
-        p.flatten().forEach {
-            count++
-            assertNotEquals(it.startFraction, it.endFraction)
-        }
-        assertEquals(2, count)
-
-        // Mix of moves/lines, starts with moves, ends with moves
-        p.reset()
         // Start with several moves
         p.moveTo(5.0f, 5.0f)
         p.moveTo(10.0f, 10.0f)
@@ -76,7 +42,7 @@ class PathTest {
         p.moveTo(10.0f, 10.0f)
         p.moveTo(30.0f, 30.0f)
 
-        count = 0
+        var count = 0
         p.flatten().forEach {
             count++
             assertNotEquals(it.startFraction, it.endFraction)

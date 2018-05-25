@@ -16,8 +16,8 @@
 
 package androidx.core.transition
 
-import android.support.annotation.RequiresApi
 import android.transition.Transition
+import androidx.annotation.RequiresApi
 
 /**
  * Add an action which will be invoked when this transition has ended.

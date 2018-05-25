@@ -12,24 +12,13 @@ package androidx.core.animation {
     method public static android.animation.Animator.AnimatorListener doOnStart(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
   }
 
-  public final class ViewPropertyAnimatorKt {
-    ctor public ViewPropertyAnimatorKt();
-    method public static android.animation.Animator.AnimatorListener doOnCancel(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
-    method public static android.animation.Animator.AnimatorListener doOnEnd(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
-    method public static android.animation.Animator.AnimatorListener doOnRepeat(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
-    method public static android.animation.Animator.AnimatorListener doOnStart(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
-    method @RequiresApi(19) public static android.animation.ValueAnimator.AnimatorUpdateListener doOnUpdate(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit> action);
-    method public static android.animation.Animator.AnimatorListener setListener(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onEnd = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onStart = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onCancel = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onRepeat = "null");
-    method @RequiresApi(19) public static android.animation.ValueAnimator.AnimatorUpdateListener setUpdateListener(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? onUpdate = "null");
-  }
-
 }
 
 package androidx.core.content {
 
   public final class ContentValuesKt {
     ctor public ContentValuesKt();
-    method public static android.content.ContentValues contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
+    method public static error.NonExistentClass contentValuesOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
   public final class ContextKt {
@@ -75,25 +64,25 @@ package androidx.core.database {
     ctor public CursorKt();
     method public static byte[] getBlob(android.database.Cursor, String columnName);
     method public static byte[]? getBlobOrNull(android.database.Cursor, int index);
-    method public static byte[]? getBlobOrNull(android.database.Cursor, String columnName);
+    method public static error.NonExistentClass getBlobOrNull(android.database.Cursor, String columnName);
     method public static double getDouble(android.database.Cursor, String columnName);
     method public static Double? getDoubleOrNull(android.database.Cursor, int index);
-    method public static Double? getDoubleOrNull(android.database.Cursor, String columnName);
+    method public static error.NonExistentClass getDoubleOrNull(android.database.Cursor, String columnName);
     method public static float getFloat(android.database.Cursor, String columnName);
     method public static Float? getFloatOrNull(android.database.Cursor, int index);
-    method public static Float? getFloatOrNull(android.database.Cursor, String columnName);
+    method public static error.NonExistentClass getFloatOrNull(android.database.Cursor, String columnName);
     method public static int getInt(android.database.Cursor, String columnName);
     method public static Integer? getIntOrNull(android.database.Cursor, int index);
-    method public static Integer? getIntOrNull(android.database.Cursor, String columnName);
+    method public static error.NonExistentClass getIntOrNull(android.database.Cursor, String columnName);
     method public static long getLong(android.database.Cursor, String columnName);
     method public static Long? getLongOrNull(android.database.Cursor, int index);
-    method public static Long? getLongOrNull(android.database.Cursor, String columnName);
+    method public static error.NonExistentClass getLongOrNull(android.database.Cursor, String columnName);
     method public static short getShort(android.database.Cursor, String columnName);
     method public static Short? getShortOrNull(android.database.Cursor, int index);
-    method public static Short? getShortOrNull(android.database.Cursor, String columnName);
+    method public static error.NonExistentClass getShortOrNull(android.database.Cursor, String columnName);
     method public static String getString(android.database.Cursor, String columnName);
     method public static String? getStringOrNull(android.database.Cursor, int index);
-    method public static String? getStringOrNull(android.database.Cursor, String columnName);
+    method public static error.NonExistentClass getStringOrNull(android.database.Cursor, String columnName);
   }
 
 }
@@ -166,11 +155,11 @@ package androidx.core.graphics {
 
   public final class MatrixKt {
     ctor public MatrixKt();
-    method public static android.graphics.Matrix rotationMatrix(float degrees, float px = "0.0f", float py = "0.0f");
-    method public static android.graphics.Matrix scaleMatrix(float sx = "1.0f", float sy = "1.0f");
-    method public static operator android.graphics.Matrix times(android.graphics.Matrix, android.graphics.Matrix m);
-    method public static android.graphics.Matrix translationMatrix(float tx = "0.0f", float ty = "0.0f");
-    method public static float[] values(android.graphics.Matrix);
+    method public static error.NonExistentClass rotationMatrix(float degrees, float px = "0.0f", float py = "0.0f");
+    method public static error.NonExistentClass scaleMatrix(float sx = "1.0f", float sy = "1.0f");
+    method public static operator error.NonExistentClass times(android.graphics.Matrix, android.graphics.Matrix m);
+    method public static error.NonExistentClass translationMatrix(float tx = "0.0f", float ty = "0.0f");
+    method public static error.NonExistentClass values(android.graphics.Matrix);
   }
 
   public final class PathKt {
@@ -246,7 +235,7 @@ package androidx.core.graphics {
     method public static android.graphics.RectF toRectF(android.graphics.Rect);
     method public static android.graphics.Region toRegion(android.graphics.Rect);
     method public static android.graphics.Region toRegion(android.graphics.RectF);
-    method public static android.graphics.RectF transform(android.graphics.RectF, android.graphics.Matrix m);
+    method public static error.NonExistentClass transform(android.graphics.RectF, android.graphics.Matrix m);
     method public static infix android.graphics.Region xor(android.graphics.Rect, android.graphics.Rect r);
     method public static infix android.graphics.Region xor(android.graphics.RectF, android.graphics.RectF r);
   }
@@ -331,7 +320,7 @@ package androidx.core.os {
 
   public final class BundleKt {
     ctor public BundleKt();
-    method public static android.os.Bundle bundleOf(kotlin.Pair<java.lang.String,?>... pairs);
+    method public static error.NonExistentClass bundleOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
   public final class HandlerKt {
@@ -342,7 +331,7 @@ package androidx.core.os {
 
   public final class PersistableBundleKt {
     ctor public PersistableBundleKt();
-    method @RequiresApi(21) public static android.os.PersistableBundle persistableBundleOf(kotlin.Pair<java.lang.String,?>... pairs);
+    method @RequiresApi(21) public static error.NonExistentClass persistableBundleOf(kotlin.Pair<java.lang.String,?>... pairs);
   }
 
   public final class TraceKt {
@@ -404,7 +393,7 @@ package androidx.core.text {
 
   public final class SpannableStringKt {
     ctor public SpannableStringKt();
-    method public static void clearSpans(android.text.Spannable);
+    method public static error.NonExistentClass clearSpans(android.text.Spannable);
     method public static operator void minusAssign(android.text.Spannable, Object span);
     method public static operator void plusAssign(android.text.Spannable, Object span);
     method public static operator void set(android.text.Spannable, int start, int end, Object span);
@@ -550,7 +539,7 @@ package androidx.core.util {
     method public static boolean containsValue(android.util.SparseBooleanArray, boolean value);
     method public static void forEach(android.util.SparseBooleanArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Boolean,kotlin.Unit> action);
     method public static boolean getOrDefault(android.util.SparseBooleanArray, int key, boolean defaultValue);
-    method public static boolean getOrElse(android.util.SparseBooleanArray, int key, kotlin.jvm.functions.Function0<java.lang.Boolean> defaultValue);
+    method public static error.NonExistentClass getOrElse(android.util.SparseBooleanArray, int key, kotlin.jvm.functions.Function0<java.lang.Boolean> defaultValue);
     method public static int getSize(android.util.SparseBooleanArray);
     method public static boolean isEmpty(android.util.SparseBooleanArray);
     method public static boolean isNotEmpty(android.util.SparseBooleanArray);
@@ -569,7 +558,7 @@ package androidx.core.util {
     method public static boolean containsValue(android.util.SparseIntArray, int value);
     method public static void forEach(android.util.SparseIntArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit> action);
     method public static int getOrDefault(android.util.SparseIntArray, int key, int defaultValue);
-    method public static int getOrElse(android.util.SparseIntArray, int key, kotlin.jvm.functions.Function0<java.lang.Integer> defaultValue);
+    method public static error.NonExistentClass getOrElse(android.util.SparseIntArray, int key, kotlin.jvm.functions.Function0<java.lang.Integer> defaultValue);
     method public static int getSize(android.util.SparseIntArray);
     method public static boolean isEmpty(android.util.SparseIntArray);
     method public static boolean isNotEmpty(android.util.SparseIntArray);
@@ -588,7 +577,7 @@ package androidx.core.util {
     method @RequiresApi(18) public static boolean containsValue(android.util.SparseLongArray, long value);
     method @RequiresApi(18) public static void forEach(android.util.SparseLongArray, kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Long,kotlin.Unit> action);
     method @RequiresApi(18) public static long getOrDefault(android.util.SparseLongArray, int key, long defaultValue);
-    method @RequiresApi(18) public static long getOrElse(android.util.SparseLongArray, int key, kotlin.jvm.functions.Function0<java.lang.Long> defaultValue);
+    method @RequiresApi(18) public static error.NonExistentClass getOrElse(android.util.SparseLongArray, int key, kotlin.jvm.functions.Function0<java.lang.Long> defaultValue);
     method @RequiresApi(18) public static int getSize(android.util.SparseLongArray);
     method @RequiresApi(18) public static boolean isEmpty(android.util.SparseLongArray);
     method @RequiresApi(18) public static boolean isNotEmpty(android.util.SparseLongArray);
@@ -598,12 +587,6 @@ package androidx.core.util {
     method @RequiresApi(18) public static boolean remove(android.util.SparseLongArray, int key, long value);
     method @RequiresApi(18) public static operator void set(android.util.SparseLongArray, int key, long value);
     method @RequiresApi(18) public static kotlin.collections.LongIterator valueIterator(android.util.SparseLongArray);
-  }
-
-  public final class TimingLoggerKt {
-    ctor public TimingLoggerKt();
-    method public static void log(android.util.TimingLogger, kotlin.jvm.functions.Function1<? super android.util.TimingLogger,kotlin.Unit> work);
-    method public static void split(android.util.TimingLogger, String splitLabel, kotlin.jvm.functions.Function0<kotlin.Unit> work);
   }
 
 }

@@ -20,8 +20,8 @@ package androidx.core.graphics.drawable
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.support.annotation.ColorInt
-import android.support.annotation.RequiresApi
+import androidx.annotation.ColorInt
+import androidx.annotation.RequiresApi
 
 /** Create a [ColorDrawable] from this color value. */
 inline fun @receiver:ColorInt Int.toDrawable() = ColorDrawable(this)

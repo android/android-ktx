@@ -19,23 +19,7 @@
 package androidx.core.graphics
 
 import android.graphics.Path
-import android.graphics.PointF
-import android.support.annotation.RequiresApi
-
-/**
- * A [PathSegment] is a line segment that represents an approximate fraction
- * of a [Path] after [flattening][Path.flatten].
- */
-data class PathSegment(
-    /** The start point of the line segment. */
-    val start: PointF,
-    /** Fraction along the length of the path that the start point resides. */
-    val startFraction: Float,
-    /** The end point of the line segment. */
-    val end: PointF,
-    /** Fraction along the length of the path that the end point resides. */
-    val endFraction: Float
-)
+import androidx.annotation.RequiresApi
 
 /**
  * Flattens (or approximate) the [Path] with a series of line segments.
@@ -47,30 +31,7 @@ data class PathSegment(
  * @see Path.approximate
  */
 @RequiresApi(26)
-fun Path.flatten(error: Float = 0.5f): Iterable<PathSegment> {
-    // TODO replace with PathUtils.flatten once available.
-
-    val pathData = approximate(error)
-    val pointCount = pathData.size / 3
-    val segments = ArrayList<PathSegment>(pointCount / 2)
-    for (i in 1 until pointCount) {
-        val index = i * 3
-        val prevIndex = (i - 1) * 3
-
-        val d = pathData[index]
-        val x = pathData[index + 1]
-        val y = pathData[index + 2]
-
-        val pd = pathData[prevIndex]
-        val px = pathData[prevIndex + 1]
-        val py = pathData[prevIndex + 2]
-
-        if (d != pd && (x != px || y != py)) {
-            segments.add(PathSegment(PointF(px, py), pd, PointF(x, y), d))
-        }
-    }
-    return segments
-}
+fun Path.flatten(error: Float = 0.5f): Iterable<PathSegment> = PathUtils.flatten(this, error)
 
 /**
  * Returns the union of two paths as a new [Path].

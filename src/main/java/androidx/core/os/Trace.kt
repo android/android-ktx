@@ -17,7 +17,6 @@
 package androidx.core.os
 
 import android.os.Trace
-import android.support.v4.os.TraceCompat
 
 /**
  * Wrap the specified [block] in calls to [Trace.beginSection] (with the supplied [sectionName])
