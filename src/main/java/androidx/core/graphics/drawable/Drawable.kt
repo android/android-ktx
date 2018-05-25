@@ -21,7 +21,7 @@ import android.graphics.Bitmap.Config
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.support.annotation.Px
+import androidx.annotation.Px
 import androidx.core.graphics.component1
 import androidx.core.graphics.component2
 import androidx.core.graphics.component3

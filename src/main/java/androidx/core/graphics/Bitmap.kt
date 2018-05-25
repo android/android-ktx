@@ -21,8 +21,8 @@ package androidx.core.graphics
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.ColorSpace
-import android.support.annotation.ColorInt
-import android.support.annotation.RequiresApi
+import androidx.annotation.ColorInt
+import androidx.annotation.RequiresApi
 
 /**
  * Creates a new [Canvas] to draw on this bitmap and executes the specified

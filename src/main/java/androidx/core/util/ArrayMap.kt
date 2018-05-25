@@ -18,8 +18,9 @@
 
 package androidx.core.util
 
-import android.support.annotation.RequiresApi
 import android.util.ArrayMap
+import androidx.annotation.RequiresApi
+import kotlin.Pair
 
 /** Returns an empty new [ArrayMap]. */
 @RequiresApi(19)

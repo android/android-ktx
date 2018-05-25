@@ -19,8 +19,8 @@
 package androidx.core.widget
 
 import android.content.Context
-import android.support.annotation.StringRes
 import android.widget.Toast
+import androidx.annotation.StringRes
 
 /**
  * Creates and shows a [Toast] with the given [text]

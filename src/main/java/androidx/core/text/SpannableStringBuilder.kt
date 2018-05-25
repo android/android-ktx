@@ -18,18 +18,18 @@ package androidx.core.text
 
 import android.graphics.Typeface.BOLD
 import android.graphics.Typeface.ITALIC
-import android.support.annotation.ColorInt
 import android.text.Spannable.SPAN_INCLUSIVE_EXCLUSIVE
 import android.text.SpannableStringBuilder
 import android.text.SpannedString
 import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
-import android.text.style.StrikethroughSpan
 import android.text.style.RelativeSizeSpan
+import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.SubscriptSpan
 import android.text.style.SuperscriptSpan
 import android.text.style.UnderlineSpan
+import androidx.annotation.ColorInt
 
 /**
  * Builds new string by populating a newly created [SpannableStringBuilder] using the provided

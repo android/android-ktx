@@ -16,14 +16,22 @@
 
 package androidx.core.util
 
-import android.text.TextUtils
-import androidx.annotation.RequiresApi
-import java.util.Locale
+import android.util.TimingLogger
 
 /**
- * Returns layout direction for a given locale.
- * @see TextUtils.getLayoutDirectionFromLocale
+ * Resets the timing logger instance before timing each of the given splits and subsequently
+ * dumping the results to the log output.
  */
-val Locale.layoutDirection: Int
-        @RequiresApi(17)
-        get() = TextUtils.getLayoutDirectionFromLocale(this)
+inline fun TimingLogger.log(work: TimingLogger.() -> Unit) {
+    this.reset()
+    work()
+    this.dumpToLog()
+}
+
+/**
+ * Times the given work and subsequently adds a split to the timing logger instance.
+ */
+inline fun TimingLogger.split(splitLabel: String, work: () -> Unit) {
+    work()
+    this.addSplit(splitLabel)
+}

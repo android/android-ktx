@@ -26,7 +26,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.TestActivity
-import androidx.core.kotlin.test.R
+import androidx.core.ktx.test.R
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule

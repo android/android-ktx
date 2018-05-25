@@ -19,7 +19,7 @@ package androidx.core
 import android.app.Activity
 import android.os.Bundle
 import android.preference.PreferenceFragment
-import androidx.core.kotlin.test.R
+import androidx.core.ktx.test.R
 
 class TestPreferenceActivity : Activity() {
 

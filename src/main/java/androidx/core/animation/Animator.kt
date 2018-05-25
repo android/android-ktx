@@ -17,7 +17,7 @@
 package androidx.core.animation
 
 import android.animation.Animator
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 
 /**
  * Add an action which will be invoked when the animation has ended.

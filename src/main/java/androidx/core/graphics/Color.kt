@@ -20,9 +20,9 @@ package androidx.core.graphics
 
 import android.graphics.Color
 import android.graphics.ColorSpace
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorLong
-import android.support.annotation.RequiresApi
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorLong
+import androidx.annotation.RequiresApi
 
 /**
  * Returns the first component of the color. For instance, when the color model
@@ -100,41 +100,7 @@ inline operator fun Color.component4() = getComponent(3)
  *                                  of the colors do not match
  */
 @RequiresApi(26)
-operator fun Color.plus(c: Color): Color {
-    // TODO replace with ColorUtils.compositeColors when available.
-
-    if (model != c.model) {
-        throw IllegalArgumentException("Color models must match ($model vs ${c.model}")
-    }
-
-    val s = if (colorSpace != c.colorSpace) c.convert(colorSpace) else c
-
-    val src = s.components
-    val dst = components
-
-    var sa = s.alpha()
-    // Destination alpha pre-composited
-    var da = alpha() * (1.0f - sa)
-
-    // Index of the alpha component
-    val ai = componentCount - 1
-
-    // Final alpha: src_alpha + dst_alpha * (1 - src_alpha)
-    dst[ai] = sa + da
-
-    // Divide by final alpha to return non pre-multiplied color
-    if (dst[ai] > 0) {
-        sa /= dst[ai]
-        da /= dst[ai]
-    }
-
-    // Composite non-alpha components
-    for (i in 0 until ai) {
-        dst[i] = src[i] * sa + dst[i] * da
-    }
-
-    return Color.valueOf(dst, colorSpace)
-}
+operator fun Color.plus(c: Color): Color = ColorUtils.compositeColors(c, this)
 
 /**
  * Return the alpha component of a color int. This is equivalent to calling:
