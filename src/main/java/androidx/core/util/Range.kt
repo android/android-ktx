@@ -18,8 +18,8 @@
 
 package androidx.core.util
 
-import android.support.annotation.RequiresApi
 import android.util.Range
+import androidx.annotation.RequiresApi
 
 /**
  * Creates a range from this [Comparable] value to [that].

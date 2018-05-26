@@ -14,16 +14,30 @@
  * limitations under the License.
  */
 
-package androidx.core.util
+@file:Suppress("NOTHING_TO_INLINE")
 
-import android.text.TextUtils
-import androidx.annotation.RequiresApi
-import java.util.Locale
+package androidx.core.location
+
+import android.location.Location
 
 /**
- * Returns layout direction for a given locale.
- * @see TextUtils.getLayoutDirectionFromLocale
+ * Returns the latitude of this [Location].
+ *
+ * This method allows to use destructuring declarations when working with [Location],
+ * for example:
+ * ```
+ * val (lat, lon) = myLocation
+ * ```
  */
-val Locale.layoutDirection: Int
-        @RequiresApi(17)
-        get() = TextUtils.getLayoutDirectionFromLocale(this)
+inline operator fun Location.component1() = this.latitude
+
+/**
+ * Returns the longitude of this [Location].
+ *
+ * This method allows to use destructuring declarations when working with [Location],
+ * for example:
+ * ```
+ * val (lat, lon) = myLocation
+ * ```
+ */
+inline operator fun Location.component2() = this.longitude

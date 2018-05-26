@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-package androidx.core.util
+package androidx.core.location
 
-import android.text.TextUtils
-import androidx.annotation.RequiresApi
-import java.util.Locale
+import android.location.Location
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
-/**
- * Returns layout direction for a given locale.
- * @see TextUtils.getLayoutDirectionFromLocale
- */
-val Locale.layoutDirection: Int
-        @RequiresApi(17)
-        get() = TextUtils.getLayoutDirectionFromLocale(this)
+class LocationTest {
+    @Test fun destructuring() {
+        val (lat, lon) = Location("").apply {
+            latitude = 1.0
+            longitude = 2.0
+        }
+        assertEquals(lat, 1.0, 0.0)
+        assertEquals(lon, 2.0, 0.0)
+    }
+}

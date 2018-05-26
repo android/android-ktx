@@ -38,8 +38,8 @@ operator fun PreferenceGroup.get(index: Int): Preference = getPreference(index)
 
 /** Returns `true` if `preference` is found in this preference group. */
 operator fun PreferenceGroup.contains(preference: Preference): Boolean {
-    for (index in 0 until size) {
-        if (get(index) == preference) {
+    for (index in 0 until preferenceCount) {
+        if (getPreference(index) == preference) {
             return true
         }
     }
@@ -67,14 +67,14 @@ inline fun PreferenceGroup.isNotEmpty(): Boolean = size != 0
 
 /** Performs the given action on each preference in this preference group. */
 inline fun PreferenceGroup.forEach(action: (preference: Preference) -> Unit) {
-    for (index in 0 until size) {
+    for (index in 0 until preferenceCount) {
         action(get(index))
     }
 }
 
 /** Performs the given action on each preference in this preference group, providing its sequential index. */
 inline fun PreferenceGroup.forEachIndexed(action: (index: Int, preference: Preference) -> Unit) {
-    for (index in 0 until size) {
+    for (index in 0 until preferenceCount) {
         action(index, get(index))
     }
 }
@@ -88,3 +88,9 @@ operator fun PreferenceGroup.iterator() = object : MutableIterator<Preference> {
         removePreference(getPreference(--index))
     }
 }
+
+/** Returns a [Sequence] over the preferences in this preference group. */
+val PreferenceGroup.children: Sequence<Preference>
+    get() = object : Sequence<Preference> {
+        override fun iterator() = this@children.iterator()
+    }

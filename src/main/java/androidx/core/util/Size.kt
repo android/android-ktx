@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 20188 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@
 
 package androidx.core.util
 
-import android.support.annotation.RequiresApi
 import android.util.Size
 import android.util.SizeF
+import androidx.annotation.RequiresApi
 
 /**
  * Returns "width", the first component of this [Size].

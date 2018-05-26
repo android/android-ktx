@@ -19,14 +19,13 @@
 package androidx.core.view
 
 import android.graphics.Bitmap
-import android.support.annotation.Px
-import android.support.annotation.RequiresApi
-import android.support.annotation.StringRes
-import android.support.v4.view.ViewCompat
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.accessibility.AccessibilityEvent
+import androidx.annotation.Px
+import androidx.annotation.RequiresApi
+import androidx.annotation.StringRes
 import androidx.core.graphics.applyCanvas
 
 /**
@@ -196,7 +195,10 @@ fun View.toBitmap(config: Bitmap.Config = Bitmap.Config.ARGB_8888): Bitmap {
     if (!ViewCompat.isLaidOut(this)) {
         throw IllegalStateException("View needs to be laid out before calling toBitmap()")
     }
-    return Bitmap.createBitmap(width, height, config).applyCanvas(::draw)
+    return Bitmap.createBitmap(width, height, config).applyCanvas {
+        translate(-scrollX.toFloat(), -scrollY.toFloat())
+        draw(this)
+    }
 }
 
 /**
