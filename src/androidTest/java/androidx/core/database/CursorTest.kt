@@ -18,9 +18,7 @@ package androidx.core.database
 
 import android.database.Cursor
 import android.database.MatrixCursor
-import org.junit.Assert.assertArrayEquals
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
+import org.junit.Assert.*
 import org.junit.Test
 
 class CursorTest {
@@ -150,8 +148,36 @@ class CursorTest {
         assertNull(string)
     }
 
+    @Test fun isEmptyIsTrueWhenEmpty() {
+        val cursor = emptyCursor()
+        val isEmpty = cursor.isEmpty()
+        assertTrue(isEmpty)
+    }
+
+    @Test fun isNotEmptyIsFalseWhenEmpty() {
+        val cursor = scalarCursor(1.5)
+        val isEmpty = cursor.isEmpty()
+        assertFalse(isEmpty)
+    }
+
+    @Test fun isEmptyIsFalseWhenNotEmpty() {
+        val cursor = scalarCursor(1.5)
+        val isEmpty = cursor.isEmpty()
+        assertFalse(isEmpty)
+    }
+
+    @Test fun isNotEmptyIsTrueWhenNotEmpty() {
+        val cursor = emptyCursor()
+        val isEmpty = cursor.isEmpty()
+        assertTrue(isEmpty)
+    }
+
     private fun scalarCursor(item: Any?): Cursor = MatrixCursor(arrayOf("data")).apply {
         addRow(arrayOf(item))
+        moveToFirst() // Prepare for consumers to read.
+    }
+
+    private fun emptyCursor(): Cursor = MatrixCursor(arrayOf("data")).apply {
         moveToFirst() // Prepare for consumers to read.
     }
 }
