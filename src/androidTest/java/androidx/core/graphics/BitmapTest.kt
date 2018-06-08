@@ -19,7 +19,7 @@ package androidx.core.graphics
 import android.graphics.Bitmap
 import android.graphics.ColorSpace
 import android.support.test.filters.SdkSuppress
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Test
 
 class BitmapTest {
@@ -28,6 +28,19 @@ class BitmapTest {
         assertEquals(7, bitmap.width)
         assertEquals(9, bitmap.height)
         assertEquals(Bitmap.Config.ARGB_8888, bitmap.config)
+    }
+
+    @Test fun checkIsEmpty() {
+        val bitmap = createBitmap(7, 9)
+        assertFalse(bitmap.isEmpty())
+    }
+
+    @Test fun checkIsNullOrEmpty() {
+        var bitmap: Bitmap? = createBitmap(7, 9)
+        assertFalse(bitmap.isNullOrEmpty())
+
+        bitmap = null
+        assertTrue(bitmap.isNullOrEmpty())
     }
 
     @Test fun createWithConfig() {

@@ -21,6 +21,7 @@ package androidx.core.graphics
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.ColorSpace
+import android.os.Build
 import androidx.annotation.ColorInt
 import androidx.annotation.RequiresApi
 
@@ -47,6 +48,20 @@ inline fun Bitmap.applyCanvas(block: Canvas.() -> Unit): Bitmap {
  * is a [color int][android.graphics.Color] in the sRGB color space.
  */
 inline operator fun Bitmap.get(x: Int, y: Int) = getPixel(x, y)
+
+/**
+ * Check if the bitmap is empty.
+ */
+inline fun Bitmap.isEmpty(): Boolean = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+    byteCount == 0
+} else {
+    allocationByteCount == 0
+}
+
+/**
+ * Check if the bitmap is null or empty.
+ */
+inline fun Bitmap?.isNullOrEmpty(): Boolean = this == null || isEmpty()
 
 /**
  * Writes the specified [color int][android.graphics.Color] into the bitmap
@@ -81,9 +96,9 @@ inline fun Bitmap.scale(width: Int, height: Int, filter: Boolean = true): Bitmap
  * @return A new bitmap with the specified dimensions and config
  */
 inline fun createBitmap(
-    width: Int,
-    height: Int,
-    config: Bitmap.Config = Bitmap.Config.ARGB_8888
+        width: Int,
+        height: Int,
+        config: Bitmap.Config = Bitmap.Config.ARGB_8888
 ): Bitmap {
     return Bitmap.createBitmap(width, height, config)
 }
@@ -103,11 +118,11 @@ inline fun createBitmap(
  */
 @RequiresApi(26)
 inline fun createBitmap(
-    width: Int,
-    height: Int,
-    config: Bitmap.Config = Bitmap.Config.ARGB_8888,
-    hasAlpha: Boolean = true,
-    colorSpace: ColorSpace = ColorSpace.get(ColorSpace.Named.SRGB)
+        width: Int,
+        height: Int,
+        config: Bitmap.Config = Bitmap.Config.ARGB_8888,
+        hasAlpha: Boolean = true,
+        colorSpace: ColorSpace = ColorSpace.get(ColorSpace.Named.SRGB)
 ): Bitmap {
     return Bitmap.createBitmap(width, height, config, hasAlpha, colorSpace)
 }
