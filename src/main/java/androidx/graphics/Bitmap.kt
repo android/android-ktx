@@ -138,5 +138,5 @@ inline fun Bitmap.crop(x: Int, y: Int, width: Int, height: Int) =
  * @param py The y coordinate of the pivot point.
  * @return the rotated bitmap
  */
-inline fun Bitmap.rotate(degrees: Float, px: Float, py: Float) =
+inline fun Bitmap.rotate(degrees: Float, px: Float = width / 2.0f, py: Float = height / 2.0f) =
     createBitmap(this, 0, 0, width, height, Matrix().apply { setRotate(degrees, px, py) }, true)
