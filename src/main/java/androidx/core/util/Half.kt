@@ -18,9 +18,9 @@
 
 package androidx.core.util
 
-import android.support.annotation.HalfFloat
-import android.support.annotation.RequiresApi
 import android.util.Half
+import androidx.annotation.HalfFloat
+import androidx.annotation.RequiresApi
 
 /**
  * Returns a [Half] instance representing given [Short].

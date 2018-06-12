@@ -19,7 +19,6 @@ package androidx.core.graphics
 import android.graphics.Color
 import android.graphics.ColorSpace
 import android.support.test.filters.SdkSuppress
-import androidx.testutils.assertThrows
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -116,54 +115,12 @@ class ColorTest {
     }
 
     @SdkSuppress(minSdkVersion = 26)
-    @Test fun addColorsDifferentModels() {
-        val lab = Color.valueOf(
-                floatArrayOf(54.0f, 80.0f, 70.0f, 1.0f),
-                ColorSpace.get(ColorSpace.Named.CIE_LAB))
-        val rgb = Color.valueOf(floatArrayOf(0.0f, 0.5f, 0.0f, 0.5f),
-                ColorSpace.get(ColorSpace.Named.SRGB))
-        assertThrows<IllegalArgumentException> {
-            lab + rgb
-        }
-    }
-
-    @SdkSuppress(minSdkVersion = 26)
     @Test fun addColorsSameColorSpace() {
         val (r, g, b, a) = 0x7f7f0000.toColor() + 0x7f007f00.toColor()
         assertEquals(0.16f, r, 1e-2f)
         assertEquals(0.33f, g, 1e-2f)
         assertEquals(0.00f, b, 1e-2f)
         assertEquals(0.75f, a, 1e-2f)
-    }
-
-    @SdkSuppress(minSdkVersion = 26)
-    @Test fun addColorsDifferentColorSpace() {
-        val p3 = ColorSpace.get(ColorSpace.Named.DISPLAY_P3)
-        val red = Color.valueOf(0.5f, 0.0f, 0.0f, 0.5f, p3)
-        val green = 0x7f007f00.toColor()
-
-        val mixed = red + green
-        assertEquals(p3, mixed.colorSpace)
-
-        val (r, g, b, a) = mixed
-        assertEquals(0.31f, r, 1e-2f)
-        assertEquals(0.33f, g, 1e-2f)
-        assertEquals(0.09f, b, 1e-2f)
-        assertEquals(0.75f, a, 1e-2f)
-    }
-
-    @SdkSuppress(minSdkVersion = 26)
-    @Test fun addColorsZeroAlpha() {
-        // Test potential divide by zero
-        assertEquals(0, (0x007f0000.toColor() + 0x00007f00.toColor()).toArgb())
-
-        // Test low alpha
-        val (r, g, b, a) = Color.valueOf(1.0f, 0.0f, 0.0f, 0.0001f) +
-                Color.valueOf(0.0f, 1.0f, 0.0f, 0.0001f)
-        assertEquals(0.50f, r, 1e-2f)
-        assertEquals(0.50f, g, 1e-2f)
-        assertEquals(0.00f, b, 1e-2f)
-        assertEquals(2e-4f, a, 1e-5f)
     }
 
     @Test fun stringToColorInt() = assertEquals(Color.GREEN, "#00ff00".toColorInt())
