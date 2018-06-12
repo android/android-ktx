@@ -16,18 +16,12 @@
 
 package androidx.widget
 
+import android.annotation.TargetApi
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.DrawableContainer
-import android.support.annotation.DrawableRes
-import android.support.annotation.IntRange
-import android.support.annotation.RequiresApi
-import android.support.v4.content.ContextCompat
 import android.widget.TextView
-
-@DrawableRes
-const val UPDATE_MODE_REMOVE = 0
-@DrawableRes
-const val UPDATE_MODE_KEEP = -1
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 
 private val drawableSentinel = DrawableContainer()
 
@@ -55,16 +49,16 @@ fun TextView.updateCompoundDrawables(
 /**
  * Updates this TextView's Drawables. This version of the method allows using named parameters
  * to just set one or more Drawables. Two special values can be used instead of regular resource IDs:
- * - [UPDATE_MODE_REMOVE] to remove an existing drawable (ignored if no drawable exists)
- * - [UPDATE_MODE_KEEP] to keep an existing drawable
+ * - 0 to remove an existing drawable (ignored if no drawable exists)
+ * - -1 to keep an existing drawable
  *
  * @see TextView.setCompoundDrawablesWithIntrinsicBounds
  */
 fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
-    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) left: Int = UPDATE_MODE_KEEP,
-    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) top: Int = UPDATE_MODE_KEEP,
-    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) right: Int = UPDATE_MODE_KEEP,
-    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) bottom: Int = UPDATE_MODE_KEEP
+    @DrawableRes left: Int = -1,
+    @DrawableRes top: Int = -1,
+    @DrawableRes right: Int = -1,
+    @DrawableRes bottom: Int = -1
 ) {
     val compoundDrawables = compoundDrawables
     setCompoundDrawablesWithIntrinsicBounds(
@@ -102,7 +96,7 @@ fun TextView.updateCompoundDrawablesWithIntrinsicBounds(
  *
  * @see TextView.setCompoundDrawablesRelative
  */
-@RequiresApi(17)
+@TargetApi(17)
 fun TextView.updateCompoundDrawablesRelative(
     start: Drawable? = drawableSentinel,
     top: Drawable? = drawableSentinel,
@@ -121,17 +115,17 @@ fun TextView.updateCompoundDrawablesRelative(
 /**
  * Updates this TextView's Drawables. This version of the method allows using named parameters
  * to just set one or more Drawables. Two special values can be used instead of regular resource IDs:
- * - [UPDATE_MODE_REMOVE] to remove an existing drawable (ignored if no drawable exists)
- * - [UPDATE_MODE_KEEP] to keep an existing drawable
+ * - 0 to remove an existing drawable (ignored if no drawable exists)
+ * - -1 to keep an existing drawable
  *
  * @see TextView.setCompoundDrawablesRelativeWithIntrinsicBounds
  */
-@RequiresApi(17)
+@TargetApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
-    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) start: Int = UPDATE_MODE_KEEP,
-    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) top: Int = UPDATE_MODE_KEEP,
-    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) end: Int = UPDATE_MODE_KEEP,
-    @DrawableRes @IntRange(from = UPDATE_MODE_KEEP.toLong()) bottom: Int = UPDATE_MODE_KEEP
+    @DrawableRes start: Int = -1,
+    @DrawableRes top: Int = -1,
+    @DrawableRes end: Int = -1,
+    @DrawableRes bottom: Int = -1
 ) {
     val compoundDrawablesRelative = compoundDrawablesRelative
     setCompoundDrawablesRelativeWithIntrinsicBounds(
@@ -148,7 +142,7 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
  *
  * @see TextView.setCompoundDrawablesRelativeWithIntrinsicBounds
  */
-@RequiresApi(17)
+@TargetApi(17)
 fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
     start: Drawable? = drawableSentinel,
     top: Drawable? = drawableSentinel,
@@ -166,7 +160,7 @@ fun TextView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
 
 private fun TextView.getUpdatedCompoundDrawable(@DrawableRes resId: Int, drawable: Drawable?) =
     when (resId) {
-        UPDATE_MODE_KEEP -> drawable
-        UPDATE_MODE_REMOVE -> null
+        -1 -> drawable
+        0 -> null
         else -> ContextCompat.getDrawable(context, resId)
     }

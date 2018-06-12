@@ -84,8 +84,8 @@ class TextViewTest {
         textView.updateCompoundDrawablesWithIntrinsicBounds(
             0,
             -1,
-            UPDATE_MODE_REMOVE,
-            UPDATE_MODE_KEEP
+            0,
+            -1
         )
         assertNull(textView.compoundDrawables[0])
         assertEquals(drawable, textView.compoundDrawables[1])
@@ -190,8 +190,8 @@ class TextViewTest {
         textView.updateCompoundDrawablesRelativeWithIntrinsicBounds(
             0,
             -1,
-            UPDATE_MODE_REMOVE,
-            UPDATE_MODE_KEEP
+            0,
+            -1
         )
         assertNull(textView.compoundDrawables[0])
         assertEquals(drawable, textView.compoundDrawables[1])
