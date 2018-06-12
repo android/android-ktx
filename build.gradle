@@ -33,7 +33,7 @@ repositories {
 }
 
 android {
-    compileSdkVersion 'android-P'
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 14
