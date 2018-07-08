@@ -18,6 +18,8 @@
 
 package androidx.core.view
 
+import android.app.Activity
+import android.content.ContextWrapper
 import android.graphics.Bitmap
 import android.view.View
 import android.view.ViewGroup
@@ -175,6 +177,22 @@ inline fun View.postOnAnimationDelayed(
     val runnable = Runnable { action() }
     postOnAnimationDelayed(runnable, delayInMillis)
     return runnable
+}
+
+/**
+ * Returns the parent [Activity] of this [View].
+ *
+ * If this View is not attached to any [Activity], this method will return null.
+ */
+inline fun <reified T : Activity> View.getParentActivity(): T? {
+    var context = this.context
+    while (context is ContextWrapper) {
+        if (context is T) {
+            return context
+        }
+        context = context.baseContext
+    }
+    return null
 }
 
 /**
