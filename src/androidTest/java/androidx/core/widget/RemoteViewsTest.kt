@@ -22,12 +22,12 @@ import android.graphics.Paint
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
 import android.support.test.rule.ActivityTestRule
-import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.ImageView
 import android.widget.RemoteViews
 import android.widget.TextView
 import androidx.core.TestActivity
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.ktx.test.R
 import org.junit.Assert.assertEquals
