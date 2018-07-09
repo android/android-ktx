@@ -93,7 +93,8 @@ inline fun Context.withStyledAttributes(
     }
 }
 
-
+/** Creates a [ComponentName] from the given [T]. */
 inline fun <reified T> Context.componentName() = ComponentName(this, T::class.java)
 
+/** Creates a [ComponentName] from the given [String]. */
 inline fun Context.componentName(className: String) = ComponentName(this, className)
