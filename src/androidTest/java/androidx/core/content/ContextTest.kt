@@ -81,8 +81,8 @@ class ContextTest {
     }
 
     @Test fun componentNameViaClassName() {
-        val componentName = ComponentName(context, "androidx.core.TestActivity")
-        context.componentName<TestActivity>().also {
+        val componentName = ComponentName(context, TestActivity::class.java)
+        context.componentName("androidx.core.TestActivity").also {
             assertEquals(componentName, it)
         }
     }
