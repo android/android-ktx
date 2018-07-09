@@ -153,6 +153,12 @@ package androidx.core.graphics {
     method @RequiresApi(26) @ColorLong public static long toColorLong(int);
   }
 
+  public final class ImageDecoderKt {
+    ctor public ImageDecoderKt();
+    method @RequiresApi(28) public static android.graphics.Bitmap decodeBitmap(android.graphics.ImageDecoder.Source, kotlin.jvm.functions.Function3<? super android.graphics.ImageDecoder,? super android.graphics.ImageDecoder.ImageInfo,? super android.graphics.ImageDecoder.Source,kotlin.Unit> action);
+    method @RequiresApi(28) public static android.graphics.drawable.Drawable decodeDrawable(android.graphics.ImageDecoder.Source, kotlin.jvm.functions.Function3<? super android.graphics.ImageDecoder,? super android.graphics.ImageDecoder.ImageInfo,? super android.graphics.ImageDecoder.Source,kotlin.Unit> action);
+  }
+
   public final class MatrixKt {
     ctor public MatrixKt();
     method public static android.graphics.Matrix rotationMatrix(float degrees, float px = "0.0f", float py = "0.0f");
