@@ -16,6 +16,7 @@
 
 package androidx.core.content
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
@@ -91,3 +92,7 @@ inline fun Context.withStyledAttributes(
         typedArray.recycle()
     }
 }
+
+inline fun <reified T> Context.componentName() = ComponentName(this, T::class.java)
+
+inline fun Context.componentName(className: String) = ComponentName(this, className)

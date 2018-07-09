@@ -16,9 +16,11 @@
 
 package androidx.core.content
 
+import android.content.ComponentName
 import android.content.ContextWrapper
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
+import androidx.core.TestActivity
 import androidx.core.ktx.test.R
 import androidx.core.getAttributeSet
 import org.junit.Assert.assertEquals
@@ -68,6 +70,20 @@ class ContextTest {
 
         context.withStyledAttributes(attrs, R.styleable.SampleAttrs, 0, 0) {
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
+        }
+    }
+
+    @Test fun componentName() {
+        val componentName = ComponentName(context, TestActivity::class.java)
+        context.componentName<TestActivity>().also {
+            assertEquals(componentName, it)
+        }
+    }
+
+    @Test fun componentNameViaClassName() {
+        val componentName = ComponentName(context, "androidx.core.TestActivity")
+        context.componentName<TestActivity>().also {
+            assertEquals(componentName, it)
         }
     }
 }
