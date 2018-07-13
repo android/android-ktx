@@ -16,11 +16,11 @@
 
 package androidx.core.content
 
+import android.content.ContextWrapper
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
-import android.test.mock.MockContext
-import androidx.core.kotlin.test.R
-import androidx.testutils.getAttributeSet
+import androidx.core.ktx.test.R
+import androidx.core.getAttributeSet
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
@@ -32,7 +32,7 @@ class ContextTest {
     @SdkSuppress(minSdkVersion = 23)
     @Test fun systemService() {
         var lookup: Class<*>? = null
-        val context = object : MockContext() {
+        val context = object : ContextWrapper(context) {
             override fun getSystemServiceName(serviceClass: Class<*>): String? {
                 lookup = serviceClass
                 return if (serviceClass == Unit::class.java) "unit" else null

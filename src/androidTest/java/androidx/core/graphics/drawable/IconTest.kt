@@ -25,9 +25,6 @@ import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
 import androidx.core.graphics.createBitmap
 import androidx.core.net.toUri
-import okio.Okio.buffer
-import okio.Okio.sink
-import okio.Okio.source
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.io.File
@@ -67,13 +64,9 @@ class IconTest {
 
     @Test fun fromUri() {
         // Icon can't read from file:///android_asset/red.png so copy to a real file.
-
         val cacheFile = File(context.cacheDir, "red.png")
-        buffer(sink(cacheFile)).use { sink ->
-            buffer(source(context.assets.open("red.png"))).use { source ->
-                sink.writeAll(source)
-            }
-        }
+        context.assets.open("red.png").use { cacheFile.writeBytes(it.readBytes()) }
+
         val uri = cacheFile.toUri()
         val icon = uri.toIcon()
 
@@ -84,7 +77,7 @@ class IconTest {
     }
 
     @Test fun fromByteArray() {
-        val bytes = buffer(source(context.assets.open("red.png"))).readByteArray()
+        val bytes = context.assets.open("red.png").use { it.readBytes() }
         val icon = bytes.toIcon()
 
         val rendered = icon.toIntrinsicBitmap()

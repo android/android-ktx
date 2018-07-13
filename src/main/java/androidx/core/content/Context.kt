@@ -18,10 +18,10 @@ package androidx.core.content
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.support.annotation.AttrRes
-import android.support.annotation.RequiresApi
-import android.support.annotation.StyleRes
 import android.util.AttributeSet
+import androidx.annotation.AttrRes
+import androidx.annotation.RequiresApi
+import androidx.annotation.StyleRes
 
 /**
  * Return the handle to a system-level service by class.

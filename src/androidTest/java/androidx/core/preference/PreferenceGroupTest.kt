@@ -173,4 +173,13 @@ class PreferenceGroupTest {
             iterator.next()
         }
     }
+
+    @Test fun children() {
+        val preferences = listOf(Preference(context), Preference(context), Preference(context))
+        preferences.forEach { preferenceGroup.addPreference(it) }
+
+        preferenceGroup.children.forEachIndexed { index, child ->
+            assertSame(preferences[index], child)
+        }
+    }
 }

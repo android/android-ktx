@@ -186,15 +186,49 @@ class SpannableStringBuilderTest {
         assertEquals(12, result.getSpanEnd(scale))
     }
 
+    @Test fun builderSuperscript() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            superscript {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans<Any>()
+        assertEquals(1, spans.size)
+
+        val superscript = spans.filterIsInstance<SuperscriptSpan>().single()
+        assertEquals(7, result.getSpanStart(superscript))
+        assertEquals(12, result.getSpanEnd(superscript))
+    }
+
+    @Test fun builderSubscript() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            subscript {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans<Any>()
+        assertEquals(1, spans.size)
+
+        val subscript = spans.filterIsInstance<SubscriptSpan>().single()
+        assertEquals(7, result.getSpanStart(subscript))
+        assertEquals(12, result.getSpanEnd(subscript))
+    }
+
     @Test fun nested() {
         val result: SpannedString = buildSpannedString {
             color(RED) {
                 append('H')
-                inSpans(SubscriptSpan()) {
+                subscript {
                     append('e')
                 }
                 append('l')
-                inSpans(SuperscriptSpan()) {
+                superscript {
                     append('l')
                 }
                 append('o')

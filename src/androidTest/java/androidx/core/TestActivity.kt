@@ -18,7 +18,7 @@ package androidx.core
 
 import android.app.Activity
 import android.os.Bundle
-import androidx.core.kotlin.test.R
+import androidx.core.ktx.test.R
 
 class TestActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

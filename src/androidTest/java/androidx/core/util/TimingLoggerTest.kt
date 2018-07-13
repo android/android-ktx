@@ -16,14 +16,27 @@
 
 package androidx.core.util
 
-import android.text.TextUtils
-import androidx.annotation.RequiresApi
-import java.util.Locale
+import android.util.TimingLogger
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
-/**
- * Returns layout direction for a given locale.
- * @see TextUtils.getLayoutDirectionFromLocale
- */
-val Locale.layoutDirection: Int
-        @RequiresApi(17)
-        get() = TextUtils.getLayoutDirectionFromLocale(this)
+class TimingLoggerTest {
+    @Test fun timingLogger() {
+        val called = arrayOf(false, false, false)
+
+        val timingLogger = TimingLogger("TAG", "methodA")
+        timingLogger.log {
+            split("work A") {
+                called[0] = true
+            }
+            split("work B") {
+                called[1] = true
+            }
+            split("work C") {
+                called[2] = true
+            }
+        }
+
+        assertTrue(called.reduce(Boolean::and))
+    }
+}
