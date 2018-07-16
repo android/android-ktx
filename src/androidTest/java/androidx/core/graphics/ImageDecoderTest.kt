@@ -16,6 +16,7 @@
 
 package androidx.core.graphics
 
+import android.support.test.filters.SdkSuppress
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import org.junit.Assert.assertEquals
@@ -24,6 +25,7 @@ import org.junit.Test
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
 
+@SdkSuppress(minSdkVersion = 28)
 class ImageDecoderTest {
 
     @Test fun decodeBitmap() {
