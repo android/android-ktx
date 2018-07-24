@@ -29,6 +29,7 @@ import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.SubscriptSpan
 import android.text.style.SuperscriptSpan
+import android.text.style.URLSpan
 import android.text.style.UnderlineSpan
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
@@ -113,6 +114,24 @@ class SpannableStringBuilderTest {
         val underline = spans.filterIsInstance<UnderlineSpan>().single()
         assertEquals(7, result.getSpanStart(underline))
         assertEquals(12, result.getSpanEnd(underline))
+    }
+
+    @Test fun builderURL() {
+        val result: SpannedString = buildSpannedString {
+            append("Hello, ")
+            url("https://www.google.com") {
+                append("World")
+            }
+        }
+        assertEquals("Hello, World", result.toString())
+
+        val spans = result.getSpans<Any>()
+        assertEquals(1, spans.size)
+
+        val url = spans.filterIsInstance<URLSpan>().single()
+        assertEquals("https://www.google.com", url.url)
+        assertEquals(7, result.getSpanStart(url))
+        assertEquals(12, result.getSpanEnd(url))
     }
 
     @Test fun builderColor() {

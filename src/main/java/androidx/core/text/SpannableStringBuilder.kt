@@ -28,6 +28,7 @@ import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.SubscriptSpan
 import android.text.style.SuperscriptSpan
+import android.text.style.URLSpan
 import android.text.style.UnderlineSpan
 import androidx.annotation.ColorInt
 
@@ -98,6 +99,16 @@ inline fun SpannableStringBuilder.italic(builderAction: SpannableStringBuilder.(
  */
 inline fun SpannableStringBuilder.underline(builderAction: SpannableStringBuilder.() -> Unit) =
     inSpans(UnderlineSpan(), builderAction = builderAction)
+
+/**
+ * Wrap appended text in [builderAction] in an [URLSpan].
+ *
+ * @see SpannableStringBuilder.inSpans
+ */
+inline fun SpannableStringBuilder.url(
+    url: String,
+    builderAction: SpannableStringBuilder.() -> Unit
+) = inSpans(URLSpan(url), builderAction = builderAction)
 
 /**
  * Wrap appended text in [builderAction] in a [ForegroundColorSpan].
