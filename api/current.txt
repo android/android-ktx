@@ -619,6 +619,16 @@ package androidx.core.view {
     method public static operator void minusAssign(android.view.Menu, android.view.MenuItem item);
   }
 
+  public final class TextViewKt {
+    ctor public TextViewKt();
+    method public static final void clear(android.widget.TextView);
+    method public static final String getContent(android.widget.TextView);
+    method public static final error.NonExistentClass isBlank(android.widget.TextView);
+    method public static final boolean isEmpty(android.widget.TextView);
+    method public static final void onTextChanged(android.widget.TextView, kotlin.jvm.functions.Function4<? super String,? super Integer,? super Integer,? super Integer,kotlin.Unit> before = "{ _, _, _, _ -> }", kotlin.jvm.functions.Function1<? super android.text.Editable,kotlin.Unit> after = "{}", kotlin.jvm.functions.Function4<? super String,? super Integer,? super Integer,? super Integer,kotlin.Unit> onTextChanged);
+    method public static final void setContent(android.widget.TextView, String value);
+  }
+
   public final class ViewGroupKt {
     ctor public ViewGroupKt();
     method public static operator boolean contains(android.view.ViewGroup, android.view.View view);
