@@ -670,3 +670,11 @@ package androidx.core.widget {
 
 }
 
+package androidx.view {
+
+  public final class LayoutInflaterKt {
+    ctor public LayoutInflaterKt();
+  }
+
+}
+
