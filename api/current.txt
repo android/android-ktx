@@ -619,6 +619,14 @@ package androidx.core.view {
     method public static operator void minusAssign(android.view.Menu, android.view.MenuItem item);
   }
 
+  public final class TextViewKt {
+    ctor public TextViewKt();
+    method public static android.text.TextWatcher addTextChangedListener(android.widget.TextView, kotlin.jvm.functions.Function4<? super java.lang.CharSequence,? super java.lang.Integer,? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit>? beforeTextChanged = "null", kotlin.jvm.functions.Function4<? super java.lang.CharSequence,? super java.lang.Integer,? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit>? onTextChanged = "null", kotlin.jvm.functions.Function1<? super android.text.Editable,kotlin.Unit>? afterTextChanged = "null");
+    method public static android.text.TextWatcher afterTextChanged(android.widget.TextView, kotlin.jvm.functions.Function1<? super android.text.Editable,kotlin.Unit> action);
+    method public static android.text.TextWatcher beforeTextChanged(android.widget.TextView, kotlin.jvm.functions.Function4<? super java.lang.CharSequence,? super java.lang.Integer,? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit> action);
+    method public static android.text.TextWatcher onTextChanged(android.widget.TextView, kotlin.jvm.functions.Function4<? super java.lang.CharSequence,? super java.lang.Integer,? super java.lang.Integer,? super java.lang.Integer,kotlin.Unit> action);
+  }
+
   public final class ViewGroupKt {
     ctor public ViewGroupKt();
     method public static operator boolean contains(android.view.ViewGroup, android.view.View view);
