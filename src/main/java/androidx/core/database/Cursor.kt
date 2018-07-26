@@ -267,3 +267,17 @@ inline fun Cursor.getShortOrNull(columnName: String) =
  */
 inline fun Cursor.getStringOrNull(columnName: String) =
     getColumnIndexOrThrow(columnName).let { if (isNull(it)) null else getString(it) }
+
+/**
+ * Returns true if the cursor has no entries, false otherwise.
+ */
+inline fun Cursor.isEmpty() =
+    count == 0
+
+/**
+ * Returns true if the cursor has at least one entry, false otherwise.
+ */
+inline fun Cursor.isNotEmpty() =
+    count > 0
+
+
