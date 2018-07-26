@@ -16,15 +16,20 @@
 
 package androidx.core.content
 
+import android.app.job.JobParameters
+import android.app.job.JobScheduler
+import android.app.job.JobService
 import android.content.ContextWrapper
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.SdkSuppress
-import androidx.core.ktx.test.R
 import androidx.core.getAttributeSet
+import androidx.core.ktx.test.R
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit.MILLISECONDS
 
 class ContextTest {
     private val context = InstrumentationRegistry.getContext()
@@ -68,6 +73,33 @@ class ContextTest {
 
         context.withStyledAttributes(attrs, R.styleable.SampleAttrs, 0, 0) {
             assertTrue(getInt(R.styleable.SampleAttrs_sample, -1) != -1)
+        }
+    }
+
+    @Test fun testScheduleJob() {
+        val result = context.scheduleJob<TestService>(0) {
+            setOverrideDeadline(1)
+        }
+
+        latch.await(20, MILLISECONDS)
+
+        assertTrue(called)
+        assertEquals(JobScheduler.RESULT_SUCCESS, result)
+    }
+
+    companion object {
+        private val latch = CountDownLatch(1)
+        private var called = false
+
+        class TestService : JobService() {
+            override fun onStartJob(params: JobParameters): Boolean {
+                called = true
+                latch.countDown()
+                jobFinished(params, false)
+                return true
+            }
+
+            override fun onStopJob(params: JobParameters): Boolean = false
         }
     }
 }
