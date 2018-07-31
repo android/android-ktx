@@ -1,3 +1,11 @@
+package androidx.core.activity {
+
+  public final class ActivityKt {
+    ctor public ActivityKt();
+  }
+
+}
+
 package androidx.core.animation {
 
   public final class AnimatorKt {
