@@ -1,5 +1,12 @@
 package androidx.core.animation {
 
+  public final class Animatable2Kt {
+    ctor public Animatable2Kt();
+    method @RequiresApi(23) public static android.graphics.drawable.Animatable2.AnimationCallback addCallback(android.graphics.drawable.Animatable2, kotlin.jvm.functions.Function1<? super android.graphics.drawable.Drawable,kotlin.Unit>? onStart = "null", kotlin.jvm.functions.Function1<? super android.graphics.drawable.Drawable,kotlin.Unit>? onEnd = "null");
+    method @RequiresApi(23) public static android.graphics.drawable.Animatable2.AnimationCallback doOnEnd(android.graphics.drawable.Animatable2, kotlin.jvm.functions.Function1<? super android.graphics.drawable.Drawable,kotlin.Unit> action);
+    method @RequiresApi(23) public static android.graphics.drawable.Animatable2.AnimationCallback doOnStart(android.graphics.drawable.Animatable2, kotlin.jvm.functions.Function1<? super android.graphics.drawable.Drawable,kotlin.Unit> action);
+  }
+
   public final class AnimatorKt {
     ctor public AnimatorKt();
     method public static android.animation.Animator.AnimatorListener addListener(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onEnd = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onStart = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onCancel = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onRepeat = "null");
@@ -10,6 +17,13 @@ package androidx.core.animation {
     method public static android.animation.Animator.AnimatorListener doOnRepeat(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
     method @RequiresApi(19) public static android.animation.Animator.AnimatorPauseListener doOnResume(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
     method public static android.animation.Animator.AnimatorListener doOnStart(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+  }
+
+  public final class LayoutTransitionKt {
+    ctor public LayoutTransitionKt();
+    method public static void addListener(android.animation.LayoutTransition, kotlin.jvm.functions.Function4<? super android.animation.LayoutTransition,? super android.view.ViewGroup,? super android.view.View,? super java.lang.Integer,kotlin.Unit>? onStart = "null", kotlin.jvm.functions.Function4<? super android.animation.LayoutTransition,? super android.view.ViewGroup,? super android.view.View,? super java.lang.Integer,kotlin.Unit>? onEnd = "null");
+    method public static void doOnEnd(android.animation.LayoutTransition, kotlin.jvm.functions.Function4<? super android.animation.LayoutTransition,? super android.view.ViewGroup,? super android.view.View,? super java.lang.Integer,kotlin.Unit> action);
+    method public static void doOnStart(android.animation.LayoutTransition, kotlin.jvm.functions.Function4<? super android.animation.LayoutTransition,? super android.view.ViewGroup,? super android.view.View,? super java.lang.Integer,kotlin.Unit> action);
   }
 
 }
