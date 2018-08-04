@@ -12,6 +12,17 @@ package androidx.core.animation {
     method public static android.animation.Animator.AnimatorListener doOnStart(android.animation.Animator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
   }
 
+  public final class ViewPropertyAnimatorKt {
+    ctor public ViewPropertyAnimatorKt();
+    method public static android.animation.Animator.AnimatorListener doOnCancel(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+    method public static android.animation.Animator.AnimatorListener doOnEnd(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+    method public static android.animation.Animator.AnimatorListener doOnRepeat(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+    method public static android.animation.Animator.AnimatorListener doOnStart(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit> action);
+    method public static android.animation.ValueAnimator.AnimatorUpdateListener doOnUpdate(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit> action);
+    method public static android.animation.Animator.AnimatorListener setListener(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onEnd = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onStart = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onCancel = "null", kotlin.jvm.functions.Function1<? super android.animation.Animator,kotlin.Unit>? onRepeat = "null");
+    method public static android.animation.ValueAnimator.AnimatorUpdateListener setUpdateListener(android.view.ViewPropertyAnimator, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? onUpdate = "null");
+  }
+
 }
 
 package androidx.core.content {
