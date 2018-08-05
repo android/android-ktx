@@ -456,6 +456,14 @@ package androidx.core.util {
     method @RequiresApi(17) public static void writeText(android.util.AtomicFile, String text, java.nio.charset.Charset charset = "Charsets.UTF_8");
   }
 
+  public final class Base64Kt {
+    ctor public Base64Kt();
+    method public static byte[] decodeBase64(String, int flags = "Base64.DEFAULT");
+    method public static byte[] decodeBase64(byte[], int flags = "Base64.DEFAULT", int offset = "0", int length = "size");
+    method public static String encodeBase64(String, int flags = "Base64.DEFAULT", java.nio.charset.Charset charset = "UTF_8");
+    method public static String encodeBase64(byte[], int flags = "Base64.DEFAULT", int offset = "0", int length = "size");
+  }
+
   public final class HalfKt {
     ctor public HalfKt();
     method @RequiresApi(26) public static android.util.Half toHalf(short);
