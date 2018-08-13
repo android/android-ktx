@@ -36,6 +36,11 @@ package androidx.core.content {
 
 package androidx.core.content.res {
 
+  public final class ResourcesKt {
+    ctor public ResourcesKt();
+    method public static CharSequence getText(android.content.res.Resources, @StringRes int id, java.lang.Object... formatArgs);
+  }
+
   public final class TypedArrayKt {
     ctor public TypedArrayKt();
     method public static boolean getBooleanOrThrow(android.content.res.TypedArray, @StyleableRes int index);
