@@ -288,3 +288,22 @@ inline fun <reified T : ViewGroup.LayoutParams> View.updateLayoutParams(block: T
     block(params)
     layoutParams = params
 }
+
+/**
+ * Type-safe wrapper method to get tag.
+ *
+ * @see View.getTag
+ *
+ * @param key Desired key for tag
+ * @return tagged object or null
+ **/
+inline fun <reified T> View.tag(key: Int): T? = getTag(key)?.let { it as T }
+
+/**
+ * Type-safe wrapper method to get tag.
+ *
+ * @see View.getTag
+ *
+ * @return tagged object or null
+ **/
+inline fun <reified T> View.tag(): T? = tag?.let { it as T }

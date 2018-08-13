@@ -29,6 +29,7 @@ import androidx.testutils.assertThrows
 import androidx.testutils.fail
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -269,5 +270,29 @@ class ViewTest {
 
         val resolvedText = context.getText(R.string.text)
         assertEquals(testView.announcement, resolvedText)
+    }
+
+    @Test fun getTagSetWithId() {
+        val value = context.getString(R.string.text)
+
+        view.setTag(R.id.sample_id, value)
+
+        assertEquals(value, view.tag(R.id.sample_id))
+    }
+
+    @Test fun getTagNotSetWithId() {
+        assertNull(view.tag(R.id.sample_id))
+    }
+
+    @Test fun getTagSetWithoutId() {
+        val value = context.getString(R.string.text)
+
+        view.tag = value
+
+        assertEquals(value, view.tag())
+    }
+
+    @Test fun getNotTagSetWithoutId() {
+        assertNull(view.tag())
     }
 }
