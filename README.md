@@ -99,7 +99,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.0.0-alpha1'
+    implementation 'androidx.core:core-ktx:1.0.0'
 }
 ```
 
